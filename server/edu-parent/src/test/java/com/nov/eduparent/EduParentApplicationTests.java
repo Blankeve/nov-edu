@@ -1,10 +1,10 @@
-package com.edu.nov;
+package com.nov.eduparent;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class NovApplicationTests {
+class EduParentApplicationTests {
 
     @Test
     void contextLoads() {

@@ -1,13 +1,13 @@
-package com.edu.nov;
+package com.nov.eduparent;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class NovApplication {
+public class EduParentApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(NovApplication.class, args);
+        SpringApplication.run(EduParentApplication.class, args);
     }
 
 }
