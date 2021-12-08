@@ -15,7 +15,7 @@ public class BaseResult<T> {
     }
 
     public static <T> BaseResult success(T data) {
-        return new BaseResult(ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getMsg(), data);
+        return new BaseResult<>(ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getMsg(), data);
     }
 
     public static BaseResult success(String msg) {
@@ -23,25 +23,25 @@ public class BaseResult<T> {
     }
 
     public static <T> BaseResult success(String msg, T data) {
-        return new BaseResult(ResultCode.SUCCESS.getCode(), msg, data);
+        return new BaseResult<>(ResultCode.SUCCESS.getCode(), msg, data);
     }
 
     public static <T> BaseResult error(T data) {
-        return new BaseResult(ResultCode.ERROR.getCode(), ResultCode.ERROR.getMsg(), data);
+        return new BaseResult<>(ResultCode.ERROR.getCode(), ResultCode.ERROR.getMsg(), data);
     }
 
     public static <T> BaseResult error(String msg) {
-        return new BaseResult(ResultCode.ERROR.getCode(), msg, "");
+        return new BaseResult<>(ResultCode.ERROR.getCode(), msg, "");
     }
 
     public static <T> BaseResult error(String msg, T data) {
-        return new BaseResult(ResultCode.ERROR.getCode(), msg, data);
+        return new BaseResult<>(ResultCode.ERROR.getCode(), msg, data);
     }
 
     public static  BaseResult setStatus(ResultCode result) {
-        return new BaseResult(result.getCode(), result.getMsg(),null);
+        return new BaseResult<>(result.getCode(), result.getMsg(),null);
     }
     public static <T> BaseResult setStatus(ResultCode result, T data) {
-        return new BaseResult(result.getCode(), result.getMsg(), data);
+        return new BaseResult<>(result.getCode(), result.getMsg(), data);
     }
 }

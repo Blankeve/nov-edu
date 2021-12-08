@@ -4,6 +4,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 /**
  * @author ：juam
  * @date ：2021/12/8 13:26
@@ -12,7 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @version:
  */
 @MapperScan(basePackages = "com.novedu.nov.edu.mapper")
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.novedu.nov")
 public class EduServiceApplication {
 
     public static void main(String[] args) {

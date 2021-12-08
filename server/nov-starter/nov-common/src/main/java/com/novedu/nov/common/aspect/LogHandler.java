@@ -34,21 +34,21 @@ public class LogHandler {
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         StringBuilder webLog = new StringBuilder();
-        webLog.append("\n------------->请求监控<-------------");
+        webLog.append("\n------------->request start<-------------");
         String reqUrl = request.getRequestURL().toString();
         String reqMethod = request.getMethod();
 //        UserInfo userInfo = JwtUtils.getAudience(request.getHeader("token"));
 //        String reqUser = userInfo == null ? "" : userInfo.getUsername();
         String reqAddr = request.getRemoteAddr();
-        webLog.append("\n请求地址:" + reqUrl);
-        webLog.append("\n请求方式:" + reqMethod);
+        webLog.append("\nURL:" + reqUrl);
+        webLog.append("\nmethod:" + reqMethod);
 //        webLog.append("\n用户名:" + reqUser);
-        webLog.append("\n源ip:" + reqAddr);
+        webLog.append("\nIP:" + reqAddr);
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         Method method = methodSignature.getMethod();
         String clazzName = joinPoint.getTarget().getClass().getName();
         String[][] params = getParamsName(method);
-        webLog.append(String.format("\n执行类:%s\n方法名:%s\n参数列表:", clazzName, method.getName()));
+        webLog.append(String.format("\nclass:%s\nmethod:%s\nargs:", clazzName, method.getName()));
         for (int i = 0; i < joinPoint.getArgs().length; i++) {
             webLog.append(String.format("\n\t%s %s:%s\t", params[i][0], params[i][1], joinPoint.getArgs()[i]));
         }
@@ -57,9 +57,9 @@ public class LogHandler {
         long spendTime = System.currentTimeMillis() - startTime;
         ObjectMapper objectMapper = new ObjectMapper();
         String json = objectMapper.writeValueAsString(obj);
-        webLog.append("\n返回结果:" + json);
-        webLog.append("\n操作耗时:" + spendTime + "ms");
-        webLog.append("\n------------->操作结束<-------------\n");
+        webLog.append("\nresult:" + json);
+        webLog.append("\nspend:" + spendTime + "ms");
+        webLog.append("\n------------->request end<-------------\n");
         log.debug(webLog.toString());
         return obj;
     }

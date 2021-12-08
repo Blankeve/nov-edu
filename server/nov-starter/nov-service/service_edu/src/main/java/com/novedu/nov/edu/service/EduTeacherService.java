@@ -1,7 +1,10 @@
 package com.novedu.nov.edu.service;
 
+import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduTeacher;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface EduTeacherService extends IService<EduTeacher> {
 
+    BaseResult<List<EduTeacher>> findAll();
+
+    BaseResult removeTeacher(String id);
 }
