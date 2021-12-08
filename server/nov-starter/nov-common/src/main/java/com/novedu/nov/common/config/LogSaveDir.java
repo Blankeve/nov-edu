@@ -20,7 +20,7 @@ public class LogSaveDir extends PropertyDefinerBase  {
         String os = System.getProperty("os.name").toLowerCase();
         System.out.println("os:"+os);
         if(os.indexOf("win")!=-1){
-            String projDir = System.clearProperty("user.dir");
+            String projDir = System.getProperty("user.dir");
             String user = System.getenv("USERNAME");
             logDir = String.format("%s/log",projDir);
         }
