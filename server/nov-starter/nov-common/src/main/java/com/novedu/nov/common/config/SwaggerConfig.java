@@ -29,8 +29,8 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
     @Bean
     public Docket getUserDocket() {
         ApiInfo apiInfo = new ApiInfoBuilder()
-                .title("用户管理")//api标题
-                .description("用户管理相关接口描述")//api描述
+                .title("课程中心API文档")//api标题
+                .description("课程中心相关接口描述")//api描述
                 .version("1.0.0")//版本号
                 .contact(new Contact("juam", "", ""))//本API负责人的联系信息
                 .build();
