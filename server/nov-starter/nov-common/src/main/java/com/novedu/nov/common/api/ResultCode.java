@@ -11,7 +11,7 @@ public enum ResultCode {
     SUCCESS(200, "操作成功"),
     ERROR(500, "操作失败"),
     LOGIN_FAIL(403, "登录失效，请重新登录"),
-    MULTI_DEVICE_LOGIN(4031, "当前账号已在别处登录，请重新登录");
+    OTHER_DEVICE_LOGIN(4031, "当前账号已在别处登录，请重新登录");
 
     private final int code;
     private final String msg;
