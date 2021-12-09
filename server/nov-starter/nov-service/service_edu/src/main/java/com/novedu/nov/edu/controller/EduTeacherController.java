@@ -1,6 +1,7 @@
 package com.novedu.nov.edu.controller;
 
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduTeacher;
 import com.novedu.nov.edu.service.EduTeacherService;
@@ -33,9 +34,9 @@ public class EduTeacherController {
         return BaseResult.success("操作成功");
     }
 
-    @GetMapping("/all")
-    public BaseResult<List<EduTeacher>> findAll(){
-        return eduTeacherService.findAll();
+    @GetMapping("/list")
+    public BaseResult<List<EduTeacher>> list(Page page){
+        return eduTeacherService.getList(page);
     }
 
     @ApiOperation("删除")

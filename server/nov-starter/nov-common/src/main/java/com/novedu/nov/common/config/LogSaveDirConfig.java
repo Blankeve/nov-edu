@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * @version:
  */
 @Component
-public class LogSaveDir extends PropertyDefinerBase  {
+public class LogSaveDirConfig extends PropertyDefinerBase  {
 
     @Override
     public String getPropertyValue() {

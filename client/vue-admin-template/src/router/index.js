@@ -55,24 +55,24 @@ export const constantRoutes = [
     }]
   },
   {
-    path: '/',
+    path: '/teacher',
     component: Layout,
-    redirect: '/dashboard',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'el-icon-s-help' },
+    redirect: '/teacher/list',
+    name: '讲师管理',
+    meta: { title: '讲师管理', icon: 'el-icon-s-help' },
     children: [{
-      path: 'dashboard',
-      name: 'Dashboard',
-      component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      path: 'list',
+      name: '讲师列表',
+      component: () => import('@/views/teacher/index'),
+      meta: { title: '讲师列表', icon: 'el-icon-s-help' }
     },
     {
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: 'Dashboard', icon: 'el-icon-s-help' }
     },
-  ]
+    ]
   },
   {
     path: '/example',

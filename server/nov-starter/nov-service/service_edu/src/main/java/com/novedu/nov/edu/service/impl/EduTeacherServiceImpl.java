@@ -1,5 +1,6 @@
 package com.novedu.nov.edu.service.impl;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduTeacher;
 import com.novedu.nov.edu.mapper.EduTeacherMapper;
@@ -24,8 +25,8 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
 
 
     @Override
-    public BaseResult<List<EduTeacher>> findAll() {
-        return BaseResult.success(list());
+    public BaseResult<List<EduTeacher>> getList(Page page) {
+        return BaseResult.success(page(page));
     }
 
     @Override
