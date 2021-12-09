@@ -40,15 +40,15 @@ public class LogHandler {
 //        UserInfo userInfo = JwtUtils.getAudience(request.getHeader("token"));
 //        String reqUser = userInfo == null ? "" : userInfo.getUsername();
         String reqAddr = request.getRemoteAddr();
-        webLog.append("\nURL:" + reqUrl);
-        webLog.append("\nmethod:" + reqMethod);
+        webLog.append("\nREQ URL:" + reqUrl);
+        webLog.append("\nREQ method:" + reqMethod);
 //        webLog.append("\n用户名:" + reqUser);
-        webLog.append("\nIP:" + reqAddr);
+        webLog.append("\nREQ IP:" + reqAddr);
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         Method method = methodSignature.getMethod();
         String clazzName = joinPoint.getTarget().getClass().getName();
         String[][] params = getParamsName(method);
-        webLog.append(String.format("\nclass:%s\nmethod:%s\nargs:", clazzName, method.getName()));
+        webLog.append(String.format("\nINV class:%s\nINV method:%s\nREQ args:", clazzName, method.getName()));
         for (int i = 0; i < joinPoint.getArgs().length; i++) {
             webLog.append(String.format("\n\t%s %s:%s\t", params[i][0], params[i][1], joinPoint.getArgs()[i]));
         }
