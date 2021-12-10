@@ -35,12 +35,12 @@ public class EduTeacherController {
     }
 
     @GetMapping("/list")
-    public BaseResult<List<EduTeacher>> list(Page page){
-        return eduTeacherService.getList(page);
+    public BaseResult<List<EduTeacher>> list(Page page,EduTeacher teacher){
+        return eduTeacherService.getList(page,teacher);
     }
 
     @ApiOperation("删除")
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/remove/{id}")
     public BaseResult removeTeacher(@PathVariable String id){
         return eduTeacherService.removeTeacher(id);
     }
