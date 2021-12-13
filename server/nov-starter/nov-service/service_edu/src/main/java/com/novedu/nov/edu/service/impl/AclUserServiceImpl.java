@@ -32,4 +32,14 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         return BaseResult.success("登录成功").map("token", token);
     }
 
+    @Override
+    public BaseResult getInfo(String token) {
+        String uid = JwtUtils.getAudience(token).get("uid");
+        AclUser user = getById(uid);
+        return BaseResult.success()
+                .map("username",user.getUsername())
+                .map("avatar",user.getAvatar());
+
+    }
+
 }

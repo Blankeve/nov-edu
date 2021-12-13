@@ -29,9 +29,8 @@ public class AclUserController {
 
     }
     @GetMapping("/info")
-    public BaseResult getInfo(){
-        return BaseResult.success().
-                map("name","张三");
+    public BaseResult getInfo(String token){
+        return aclUserService.getInfo(token);
     }
 }
 

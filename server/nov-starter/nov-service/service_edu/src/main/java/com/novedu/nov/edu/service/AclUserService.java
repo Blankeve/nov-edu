@@ -15,4 +15,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface AclUserService extends IService<AclUser> {
 
     BaseResult login(AclUser user);
+
+    BaseResult getInfo(String token);
 }
