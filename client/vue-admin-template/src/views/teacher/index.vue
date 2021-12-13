@@ -1,5 +1,37 @@
 <template>
   <div class="app-container">
+    <el-form :inline="true" :model="formInline" class="demo-form-inline">
+      <el-form-item>
+        <el-input
+          class="mid-input"
+          v-model="form.name"
+          placeholder="姓名"
+        ></el-input>
+      </el-form-item>
+
+      <el-form-item>
+        <el-select v-model="form.level" placeholder="讲师等级">
+          <el-option label="区域一" value="shanghai"></el-option>
+          <el-option label="区域二" value="beijing"></el-option>
+        </el-select>
+      </el-form-item>
+
+      <el-form-item>
+        <el-date-picker
+          v-model="form.joinDate"
+          type="datetime"
+          placeholder="入驻时间"
+          value-format="yyyy-MM-dd HH:mm:ss"
+        >
+        </el-date-picker>
+      </el-form-item>
+
+      <el-form-item>
+        <el-button type="primary" @click="onSubmit">查询</el-button>
+        <el-button type="danger" @click="resetData">清空</el-button>
+      </el-form-item>
+    </el-form>
+
     <el-table
       v-loading="listLoading"
       :data="list"
@@ -62,28 +94,28 @@
         </template>
       </el-table-column>
 
-      <el-table-column 
-       align="center"
-      label="操作">
-      <template slot-scope="scope">
-        <el-button
-          @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-        <el-button
-          type="danger"
-          @click="handleDelete(scope.$index, scope.row)">删除</el-button>
-      </template>
-    </el-table-column>
-
+      <el-table-column align="center" label="操作">
+        <template slot-scope="scope">
+          <el-button @click="handleEdit(scope.$index, scope.row)"
+            >编辑</el-button
+          >
+          <el-button
+            type="danger"
+            @click="handleDelete(scope.row.id)"
+            >删除</el-button
+          >
+        </template>
+      </el-table-column>
     </el-table>
     <div class="block">
       <el-pagination
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
-        :current-page="page.current"
+        :current-page="form.current"
         :page-sizes="sizes"
-        :page-size="page.size"
+        :page-size="form.size"
         layout="total, sizes, prev, pager, next, jumper"
-        :total="page.total"
+        :total="form.total"
       >
       </el-pagination>
     </div>
@@ -91,7 +123,7 @@
 </template>
 
 <script>
-import { getList } from "@/api/teacher";
+import { getList ,removeById} from "@/api/teacher";
 
 export default {
   filters: {
@@ -108,12 +140,15 @@ export default {
     return {
       list: null,
       listLoading: true,
-      page: {
+      form: {
+        name: "",
+        level: "",
+        joinDate: "",
         current: 1,
         size: 4,
-        total: 0
+        total: 0,
       },
-      sizes: []
+      sizes: [],
     };
   },
   created() {
@@ -122,24 +157,41 @@ export default {
   methods: {
     fetchData() {
       this.listLoading = true;
-      this.sizes = [this.page.size/2,this.page.size,this.page.size*2]
-      getList(this.page).then((response) => {
+      this.sizes =
+        this.form.size > 1
+          ? [this.form.size / 2, this.form.size, this.form.size * 2]
+          : [this.form.size, this.form.size * 2];
+      getList(this.form).then((response) => {
         let data = response.data;
-        this.page.current = data.current;
-        this.page.size = data.size;
-        this.page.total = data.total;
+        this.form.current = data.current;
+        this.form.size = data.size;
+        this.form.total = data.total;
         this.list = data.records;
         this.listLoading = false;
       });
     },
-    handleCurrentChange(p){
-      this.page.current = p;
+    handleCurrentChange(p) {
+      this.form.current = p;
       this.fetchData();
     },
-    handleSizeChange(s){
-      this.page.size = s;
+    handleSizeChange(s) {
+      this.form.size = s;
       this.fetchData();
-    }
+    },
+    handleDelete(id){
+        removeById(id).then((response)=>{
+           this.fetchData();
+        })
+    },
+    onSubmit() {
+      this.fetchData();
+    },
   },
 };
 </script>
+
+<style>
+.mid-input {
+  width: 80px;
+}
+</style>

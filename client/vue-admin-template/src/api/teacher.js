@@ -7,3 +7,11 @@ export function getList(params) {
       params
     })
   }
+
+  export function removeById(params) {
+    return request({
+      url: `/edu/edu-teacher/remove/${params}`,
+      method: 'delete',
+      
+    })
+  }
