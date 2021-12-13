@@ -31,7 +31,7 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
             queryWrapper.like("name", teacher.getName());
         if (teacher.getLevel() != null)
             queryWrapper.eq("level", teacher.getLevel());
-        if (teacher.getJoinDate() != null)
+        if (teacher.getCreateTime() != null)
             queryWrapper.apply("create_time > date_format({0},'%Y-%m-%d')", teacher.getCreateTime());
         queryWrapper.orderByDesc("create_time");
         return BaseResult.success(page(page, queryWrapper));

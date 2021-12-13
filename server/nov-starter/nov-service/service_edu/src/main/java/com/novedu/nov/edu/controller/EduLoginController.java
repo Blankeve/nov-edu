@@ -11,19 +11,10 @@ import org.springframework.web.bind.annotation.*;
  * @modified By：
  * @version:
  */
-@RequestMapping("/user")
+@RequestMapping("/test")
 @RestController
 public class EduLoginController {
 
-    @PostMapping("/login")
-    public BaseResult login(){
-        String token = JwtUtils.createToken("test","admin");
-        return BaseResult.success("登录成功").map("token",token);
-    }
-    @GetMapping("/info")
-    public BaseResult getInfo(){
-        return BaseResult.success().
-                map("name","张三");
-    }
+
 
 }
