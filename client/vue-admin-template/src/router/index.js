@@ -62,15 +62,22 @@ export const constantRoutes = [
     meta: { title: '讲师管理', icon: 'el-icon-s-help' },
     children: [{
       path: 'list',
-      name: '讲师列表',
+      name: 'list',
       component: () => import('@/views/teacher/index'),
       meta: { title: '讲师列表', icon: 'el-icon-s-help' }
     },
     {
-      path: 'dashboard',
-      name: 'Dashboard',
-      component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'el-icon-s-help' }
+      path: 'save',
+      name: 'save',
+      component: () => import('@/views/teacher/form'),
+      meta: { title: '添加讲师', icon: 'el-icon-s-help' }
+    },
+    {
+      path: 'edit',
+      name: 'edit',
+      component: () => import('@/views/teacher/form'),
+      meta: { title: '编辑讲师', icon: 'el-icon-s-help' },
+      hidden: true
     },
     ]
   },

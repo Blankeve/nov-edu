@@ -8,6 +8,7 @@ import com.novedu.nov.edu.service.EduTeacherService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -36,13 +37,27 @@ public class EduTeacherController {
 
     @GetMapping("/list")
     public BaseResult<List<EduTeacher>> list(Page page,EduTeacher teacher){
-        return eduTeacherService.getList(page,teacher);
+        return eduTeacherService.findTeacherList(page,teacher);
     }
 
+    @GetMapping("/info/{id}")
+    public BaseResult<EduTeacher> info(@PathVariable String id){
+        return eduTeacherService.findTeacherOne(id);
+    }
     @ApiOperation("删除")
     @DeleteMapping("/remove/{id}")
     public BaseResult removeTeacher(@PathVariable String id){
         return eduTeacherService.removeTeacher(id);
+    }
+
+    @PostMapping("/save")
+    public BaseResult saveTeacher(@RequestBody @Validated EduTeacher teacher){
+        return eduTeacherService.saveTeacher(teacher);
+    }
+
+    @PutMapping("/edit")
+    public BaseResult editTeacher(@RequestBody @Validated EduTeacher teacher){
+        return eduTeacherService.editTeacher(teacher);
     }
 }
 

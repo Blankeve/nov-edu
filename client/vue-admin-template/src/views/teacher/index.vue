@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
-    <el-form :inline="true" :model="formInline" class="demo-form-inline">
-      <el-form-item>
+    <el-form :inline="true" ref="form" :model="form">
+      <el-form-item prop="name">
         <el-input
           class="mid-input"
           v-model="form.name"
@@ -9,16 +9,16 @@
         ></el-input>
       </el-form-item>
 
-      <el-form-item>
+      <el-form-item prop="level">
         <el-select v-model="form.level" placeholder="讲师等级">
-          <el-option label="区域一" value="shanghai"></el-option>
-          <el-option label="区域二" value="beijing"></el-option>
+          <el-option label="高级讲师" value="1"></el-option>
+          <el-option label="首席讲师" value="2"></el-option>
         </el-select>
       </el-form-item>
 
-      <el-form-item>
+      <el-form-item prop="createTime">
         <el-date-picker
-          v-model="form.joinDate"
+          v-model="form.createTime"
           type="datetime"
           placeholder="入驻时间"
           value-format="yyyy-MM-dd HH:mm:ss"
@@ -28,7 +28,7 @@
 
       <el-form-item>
         <el-button type="primary" @click="onSubmit">查询</el-button>
-        <el-button type="danger" @click="resetData">清空</el-button>
+        <el-button @click="resetForm('form')">重置</el-button>
       </el-form-item>
     </el-form>
 
@@ -40,9 +40,9 @@
       fit
       highlight-current-row
     >
-      <el-table-column align="center" label="ID" width="50">
+      <el-table-column align="center" label="#" width="50">
         <template slot-scope="scope">
-          {{ scope.$index }}
+          {{ scope.$index +1 }}
         </template>
       </el-table-column>
 
@@ -52,25 +52,25 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="intro" width="150" align="center">
+      <el-table-column label="intro" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.intro }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column label="career" width="300" align="center">
+      <el-table-column label="career" align="center">
         <template slot-scope="scope">
           {{ scope.row.career }}
         </template>
       </el-table-column>
 
-      <el-table-column label="level" width="50" align="center">
+      <el-table-column label="level" width="100" align="center">
         <template slot-scope="scope">
-          {{ scope.row.level }}
+          {{ scope.row.level == 1? "高级讲师":"首席讲师" }} 
         </template>
       </el-table-column>
 
-      <el-table-column label="avatar" width="200" align="center">
+      <el-table-column label="avatar" width="100" align="center">
         <template slot-scope="scope">
           <img :src="scope.row.avatar" />
         </template>
@@ -94,14 +94,11 @@
         </template>
       </el-table-column>
 
-      <el-table-column align="center" label="操作">
+      <el-table-column align="center" label="操作" width="200">
         <template slot-scope="scope">
-          <el-button @click="handleEdit(scope.$index, scope.row)"
-            >编辑</el-button
-          >
-          <el-button
-            type="danger"
-            @click="handleDelete(scope.row.id)"
+          <el-button @click="handleEdit(scope.row.id)">编辑</el-button>
+
+          <el-button type="danger" @click="handleDelete(scope.row.id)"
             >删除</el-button
           >
         </template>
@@ -123,7 +120,7 @@
 </template>
 
 <script>
-import { getList ,removeById} from "@/api/teacher";
+import { getList, removeById } from "@/api/teacher";
 
 export default {
   filters: {
@@ -143,7 +140,7 @@ export default {
       form: {
         name: "",
         level: "",
-        joinDate: "",
+        createTime: "",
         current: 1,
         size: 4,
         total: 0,
@@ -178,13 +175,24 @@ export default {
       this.form.size = s;
       this.fetchData();
     },
-    handleDelete(id){
-        removeById(id).then((response)=>{
-           this.fetchData();
-        })
+    handleDelete(id) {
+      removeById(id).then((response) => {
+        this.fetchData();
+      });
+    },
+    handleEdit(id) {
+      this.$router.push({
+        path: "/teacher/edit",
+        query: {
+          id: id
+        },
+      });
     },
     onSubmit() {
       this.fetchData();
+    },
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
     },
   },
 };

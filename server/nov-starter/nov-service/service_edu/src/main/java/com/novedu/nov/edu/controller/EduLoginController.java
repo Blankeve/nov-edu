@@ -25,4 +25,5 @@ public class EduLoginController {
         return BaseResult.success().
                 map("name","张三");
     }
+
 }

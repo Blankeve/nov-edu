@@ -16,7 +16,7 @@ public class BaseResult<T> {
         this.data = data;
     }
 
-    public static <T> BaseResult success() {
+    public static BaseResult success() {
         return new BaseResult<>(ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getMsg(), "");
     }
 
@@ -32,7 +32,7 @@ public class BaseResult<T> {
         return new BaseResult<>(ResultCode.SUCCESS.getCode(), msg, data);
     }
 
-    public static <T> BaseResult error() {
+    public static BaseResult error() {
         return new BaseResult<>(ResultCode.ERROR.getCode(), ResultCode.ERROR.getMsg(), "");
     }
 
@@ -40,12 +40,19 @@ public class BaseResult<T> {
         return new BaseResult<>(ResultCode.ERROR.getCode(), ResultCode.ERROR.getMsg(), data);
     }
 
-    public static <T> BaseResult error(String msg) {
+    public static BaseResult error(String msg) {
         return new BaseResult<>(ResultCode.ERROR.getCode(), msg, "");
     }
 
     public static <T> BaseResult error(String msg, T data) {
         return new BaseResult<>(ResultCode.ERROR.getCode(), msg, data);
+    }
+
+    public static BaseResult successOrError(boolean flag) {
+        if (flag)
+            return new BaseResult<>(ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getMsg(), "");
+        else
+            return new BaseResult<>(ResultCode.ERROR.getCode(), ResultCode.ERROR.getMsg(), "");
     }
 
     public static BaseResult setStatus(ResultCode result) {

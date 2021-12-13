@@ -17,7 +17,13 @@ import java.util.List;
  */
 public interface EduTeacherService extends IService<EduTeacher> {
 
-    BaseResult<List<EduTeacher>> getList(Page page,EduTeacher teacher);
+    BaseResult<List<EduTeacher>> findTeacherList(Page page,EduTeacher teacher);
 
     BaseResult removeTeacher(String id);
+
+    BaseResult saveTeacher(EduTeacher teacher);
+
+    BaseResult editTeacher(EduTeacher teacher);
+
+    BaseResult<EduTeacher> findTeacherOne(String id);
 }
