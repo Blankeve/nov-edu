@@ -1,4 +1,4 @@
-package com.novedu.nov.common.utils;
+package com.novedu.nov.common.util;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;

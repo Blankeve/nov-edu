@@ -1,7 +1,7 @@
 package com.novedu.nov.edu.service.impl;
 
 import com.novedu.nov.common.api.BaseResult;
-import com.novedu.nov.common.utils.JwtUtils;
+import com.novedu.nov.common.util.JwtUtils;
 import com.novedu.nov.edu.entity.AclUser;
 import com.novedu.nov.edu.mapper.AclUserMapper;
 import com.novedu.nov.edu.service.AclUserService;

@@ -1,0 +1,55 @@
+2021-12-14 15:02:51.828 [main] INFO  OssTest-Starting OssTest using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 6708 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_upload)
+2021-12-14 15:02:51.834 [main] INFO  OssTest-No active profile set, falling back to default profiles: default
+2021-12-14 15:02:51.876 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2021-12-14 15:02:57.120 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-12-14 15:02:58.334 [main] INFO  org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener-
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-12-14 15:04:33.330 [main] INFO  OssTest-Starting OssTest using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 27004 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_upload)
+2021-12-14 15:04:33.332 [main] INFO  OssTest-No active profile set, falling back to default profiles: default
+2021-12-14 15:04:33.347 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2021-12-14 15:04:37.938 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-12-14 15:04:39.982 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2021-12-14 15:04:40.037 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2021-12-14 15:04:40.099 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2021-12-14 15:04:40.141 [main] INFO  OssTest-Started OssTest in 8.544 seconds (JVM running for 11.571)
+2021-12-14 15:13:10.334 [main] INFO  OssTest-Starting OssTest using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 6632 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_upload)
+2021-12-14 15:13:10.336 [main] INFO  OssTest-No active profile set, falling back to default profiles: default
+2021-12-14 15:13:10.337 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2021-12-14 15:13:15.132 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-12-14 15:13:17.935 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2021-12-14 15:13:17.993 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2021-12-14 15:13:18.065 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2021-12-14 15:13:18.110 [main] INFO  OssTest-Started OssTest in 9.707 seconds (JVM running for 12.847)
+2021-12-14 15:14:24.064 [main] INFO  OssTest-Starting OssTest using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 21460 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_upload)
+2021-12-14 15:14:24.066 [main] INFO  OssTest-No active profile set, falling back to default profiles: default
+2021-12-14 15:14:24.077 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2021-12-14 15:14:28.174 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-12-14 15:14:30.000 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2021-12-14 15:14:30.055 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2021-12-14 15:14:30.117 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2021-12-14 15:14:30.154 [main] INFO  OssTest-Started OssTest in 7.894 seconds (JVM running for 11.421)
+2021-12-14 15:20:39.425 [main] INFO  OssTest-Starting OssTest using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 9636 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_upload)
+2021-12-14 15:20:39.428 [main] INFO  OssTest-No active profile set, falling back to default profiles: default
+2021-12-14 15:20:39.445 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2021-12-14 15:20:45.524 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-12-14 15:20:46.910 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2021-12-14 15:20:46.963 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2021-12-14 15:20:47.023 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2021-12-14 15:20:47.068 [main] INFO  OssTest-Started OssTest in 9.435 seconds (JVM running for 12.505)
+2021-12-14 15:22:36.941 [main] INFO  OssTest-Starting OssTest using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 26620 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_upload)
+2021-12-14 15:22:36.943 [main] INFO  OssTest-No active profile set, falling back to default profiles: default
+2021-12-14 15:22:36.968 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2021-12-14 15:22:41.566 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-12-14 15:22:42.955 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2021-12-14 15:22:43.003 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2021-12-14 15:22:43.062 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2021-12-14 15:22:43.100 [main] INFO  OssTest-Started OssTest in 7.526 seconds (JVM running for 10.83)
+2021-12-14 15:28:39.277 [main] INFO  OssTest-Starting OssTest using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 14736 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_upload)
+2021-12-14 15:28:39.279 [main] INFO  OssTest-No active profile set, falling back to default profiles: default
+2021-12-14 15:28:39.298 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2021-12-14 15:28:44.594 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-12-14 15:28:46.136 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2021-12-14 15:28:46.184 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2021-12-14 15:28:46.245 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2021-12-14 15:28:46.284 [main] INFO  OssTest-Started OssTest in 8.732 seconds (JVM running for 12.315)

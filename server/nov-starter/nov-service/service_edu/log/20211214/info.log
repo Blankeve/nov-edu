@@ -1,0 +1,24 @@
+2021-12-14 14:00:13.148 [main] INFO  NoName-Starting NoName using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 23456 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_edu)
+2021-12-14 14:00:13.152 [main] INFO  NoName-The following profiles are active: dev
+2021-12-14 14:00:13.197 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2021-12-14 14:00:20.874 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-12-14 14:00:22.677 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2021-12-14 14:00:22.751 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2021-12-14 14:00:22.827 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2021-12-14 14:00:23.899 [main] INFO  NoName-Started NoName in 13.065 seconds (JVM running for 17.447)
+2021-12-14 14:01:30.006 [main] INFO  NoName-Starting NoName using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 1532 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_edu)
+2021-12-14 14:01:30.008 [main] INFO  NoName-The following profiles are active: dev
+2021-12-14 14:01:30.021 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2021-12-14 14:01:37.838 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-12-14 14:01:40.005 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2021-12-14 14:01:40.056 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2021-12-14 14:01:40.116 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2021-12-14 14:01:41.050 [main] INFO  NoName-Started NoName in 12.154 seconds (JVM running for 16.934)
+2021-12-14 14:02:16.448 [main] INFO  NoName-Starting NoName using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 27576 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_edu)
+2021-12-14 14:02:16.452 [main] INFO  NoName-The following profiles are active: dev
+2021-12-14 14:02:16.477 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2021-12-14 14:02:23.367 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-12-14 14:02:25.690 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2021-12-14 14:02:25.753 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2021-12-14 14:02:25.825 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2021-12-14 14:02:26.233 [main] INFO  NoName-Started NoName in 11.332 seconds (JVM running for 15.006)
