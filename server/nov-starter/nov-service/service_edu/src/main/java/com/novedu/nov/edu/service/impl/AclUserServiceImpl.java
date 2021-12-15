@@ -29,7 +29,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         if (user == null)
             return BaseResult.error("用户名或密码不正确");
         String token = JwtUtils.createToken(user.getId().toString(), user.getUsername());
-        return BaseResult.success("登录成功").map("token", token);
+        return BaseResult.success("登录成功").mapSet("token", token);
     }
 
     @Override
@@ -37,8 +37,8 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         String uid = JwtUtils.getAudience(token).get("uid");
         AclUser user = getById(uid);
         return BaseResult.success()
-                .map("username",user.getUsername())
-                .map("avatar",user.getAvatar());
+                .mapSet("username", user.getUsername())
+                .mapSet("avatar", user.getAvatar());
 
     }
 

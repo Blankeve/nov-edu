@@ -63,7 +63,7 @@ public class BaseResult<T> {
         return new BaseResult<>(result.getCode(), result.getMsg(), data);
     }
 
-    public BaseResult map(String key, Object data) {
+    public BaseResult mapSet(String key, Object data) {
         map.put(key, data);
         this.data = (T) map;
         return this;

@@ -8,8 +8,8 @@ package com.novedu.nov.common.api;
  * @version:
  */
 public enum ResultCode {
-    SUCCESS(200, "操作成功"),
-    ERROR(500, "操作失败"),
+    SUCCESS(200, "success"),
+    ERROR(500, "error"),
     LOGIN_FAIL(403, "登录失效，请重新登录"),
     OTHER_DEVICE_LOGIN(4031, "当前账号已在别处登录，请重新登录");
 

@@ -24,8 +24,8 @@ public class UploadController {
     OssHelper ossHelper;
 
     @PostMapping("/img")
-    public BaseResult<Map> uploadImg(MultipartFile img){
-        return BaseResult.success().map("path",ossHelper.uploadFile(img));
+    public BaseResult<Map> uploadImg(MultipartFile img) throws Exception {
+        return BaseResult.success().mapSet("path",ossHelper.uploadFile(img));
     }
 
 }

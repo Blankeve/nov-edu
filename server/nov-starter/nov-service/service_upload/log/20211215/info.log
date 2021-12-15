@@ -1,0 +1,16 @@
+2021-12-15 09:34:37.848 [main] INFO  SnowFlakeTest-Starting SnowFlakeTest using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 14832 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_upload)
+2021-12-15 09:34:37.852 [main] INFO  SnowFlakeTest-No active profile set, falling back to default profiles: default
+2021-12-15 09:34:37.862 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2021-12-15 09:34:43.419 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-12-15 09:34:44.978 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2021-12-15 09:34:45.058 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2021-12-15 09:34:45.134 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2021-12-15 09:34:45.435 [main] INFO  SnowFlakeTest-Started SnowFlakeTest in 9.247 seconds (JVM running for 13.935)
+2021-12-15 09:39:05.684 [main] INFO  SnowFlakeTest-Starting SnowFlakeTest using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 7884 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_upload)
+2021-12-15 09:39:05.688 [main] INFO  SnowFlakeTest-No active profile set, falling back to default profiles: default
+2021-12-15 09:39:05.705 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2021-12-15 09:39:10.978 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-12-15 09:39:13.147 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2021-12-15 09:39:13.220 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2021-12-15 09:39:13.320 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2021-12-15 09:39:13.795 [main] INFO  SnowFlakeTest-Started SnowFlakeTest in 9.559 seconds (JVM running for 12.872)

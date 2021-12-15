@@ -3,6 +3,8 @@ package com.novedu.nov.upload.helper;
 import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.model.ObjectMetadata;
 import com.aliyun.oss.model.PutObjectResult;
+import com.novedu.nov.common.helper.SnowFlake;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -37,12 +39,14 @@ public class OssHelper {
     @Value("${aliyun.oss.fileDir}")
     private String fileDir ;
 
+    @Autowired
+    SnowFlake snowFlake;
     /**
      * 1、单个文件上传
      * @param file
      * @return 返回完整URL地址
      */
-    public String uploadFile(MultipartFile file) {
+    public String uploadFile(MultipartFile file) throws Exception {
         String fileUrl = uploadImg2Oss(file);
         String str = getFileUrl(fileUrl);
         return str.trim();
@@ -69,7 +73,7 @@ public class OssHelper {
      * @param fileList
      * @return 返回完整URL，逗号分隔
      */
-    public String uploadFile(List<MultipartFile> fileList) {
+    public String uploadFile(List<MultipartFile> fileList) throws Exception {
         String fileUrl = "";
         String str = "";
         String photoUrl = "";
@@ -119,7 +123,7 @@ public class OssHelper {
     }
 
     // 上传文件
-    private String uploadImg2Oss(MultipartFile file) {
+    private String uploadImg2Oss(MultipartFile file) throws Exception {
         //1、限制最大文件为20M
         if (file.getSize() > 1024 * 1024 *20) {
             return "图片太大";
@@ -127,8 +131,7 @@ public class OssHelper {
 
         String fileName = file.getOriginalFilename();
         String suffix = fileName.substring(fileName.lastIndexOf(".")).toLowerCase(); //文件后缀
-        String uuid = UUID.randomUUID().toString();
-        String name = uuid + suffix;
+        String name = snowFlake.nextValue() + suffix;
 
         try {
             InputStream inputStream = file.getInputStream();
