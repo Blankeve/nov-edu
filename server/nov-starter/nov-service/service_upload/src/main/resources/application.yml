@@ -7,4 +7,3 @@ aliyun:
     accessKeyId: LTAI5tRgXNSsQE8sunVJTsxm
     accessKeySecret: IaWQw1XwUqyaDCT3ceVB1z3fQkWdC4
     bucketName: edu-nov
-    fileDir: avatar/

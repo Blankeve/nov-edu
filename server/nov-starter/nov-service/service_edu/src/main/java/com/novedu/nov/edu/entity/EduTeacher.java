@@ -1,5 +1,6 @@
 package com.novedu.nov.edu.entity;
 
+import cn.afterturn.easypoi.excel.annotation.Excel;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
 import java.util.Date;
@@ -34,19 +35,23 @@ public class EduTeacher implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Excel(name = "讲师id", height = 20, width = 30, isImportField = "true_st",orderNum = "1")
     @ApiModelProperty(value = "讲师ID")
     @TableId(value = "id", type = IdType.NONE)
     @JsonSerialize(using = ToStringSerializer.class)
     private Long id;
 
+    @Excel(name = "讲师姓名", height = 20, width = 30, isImportField = "true_st",orderNum = "2")
     @NotNull(message = "不能为空")
     @ApiModelProperty(value = "讲师姓名")
     private String name;
 
+    @Excel(name = "讲师简介", height = 20, width = 30, isImportField = "true_st",orderNum = "3")
     @NotNull(message = "不能为空")
     @ApiModelProperty(value = "讲师简介")
     private String intro;
 
+    @Excel(name = "讲师资历", height = 20, width = 30, isImportField = "true_st",orderNum = "4")
     @NotNull(message = "不能为空")
     @ApiModelProperty(value = "讲师资历,一句话说明讲师")
     private String career;

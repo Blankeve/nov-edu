@@ -12,9 +12,10 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
+
 
 /**
  * @author ：juam
@@ -35,41 +36,48 @@ public class OssHelper {
     @Value("${aliyun.oss.bucketName}")
     private String bucketName;
 
-    //文件存储目录
-    @Value("${aliyun.oss.fileDir}")
-    private String fileDir ;
+    //文件存储根目录
+    private String fileRoot;
+
+    private String filePath;
 
     @Autowired
     SnowFlake snowFlake;
+
+    public void setFileRoot(String fileRoot) {
+        this.fileRoot = fileRoot;
+    }
+
     /**
      * 1、单个文件上传
+     *
      * @param file
      * @return 返回完整URL地址
      */
     public String uploadFile(MultipartFile file) throws Exception {
         String fileUrl = uploadImg2Oss(file);
-        String str = getFileUrl(fileUrl);
-        return str.trim();
+        return fileUrl.trim();
     }
 
     /**
      * 1、单个文件上传(指定文件名（带后缀）)
+     *
      * @param file
      * @return 返回完整URL地址
      */
-    public String uploadFile(MultipartFile file,String fileName) {
+    public String uploadFile(MultipartFile file, String fileName) {
         try {
             InputStream inputStream = file.getInputStream();
             this.uploadFile2OSS(inputStream, fileName);
             return fileName;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return "上传失败";
         }
     }
 
     /**
      * 2、多文件上传
+     *
      * @param fileList
      * @return 返回完整URL，逗号分隔
      */
@@ -77,31 +85,18 @@ public class OssHelper {
         String fileUrl = "";
         String str = "";
         String photoUrl = "";
-        for(int i = 0;i< fileList.size();i++){
+        for (int i = 0; i < fileList.size(); i++) {
             fileUrl = uploadImg2Oss(fileList.get(i));
-            str = getFileUrl(fileUrl);
-            if(i == 0){
+            str = getFileUrl(filePath);
+            if (i == 0) {
                 photoUrl = str;
-            }else {
+            } else {
                 photoUrl += "," + str;
             }
         }
         return photoUrl.trim();
     }
 
-    /**
-     * 3、通过文件名获取文完整件路径
-     * @param fileUrl
-     * @return 完整URL路径
-     */
-    public String getFileUrl(String fileUrl) {
-        if (fileUrl !=null && fileUrl.length()>0) {
-            String[] split = fileUrl.split("/");
-            String url = this.getUrl(this.fileDir + split[split.length - 1]);
-            return url;
-        }
-        return null;
-    }
 
     //获取去掉参数的完整路径
     private String getShortUrl(String url) {
@@ -110,7 +105,7 @@ public class OssHelper {
     }
 
     // 获得url链接
-    private String getUrl(String key) {
+    private String getFileUrl(String key) {
         // 设置URL过期时间为20年 3600l* 1000*24*365*20
         Date expiration = new Date(new Date().getTime() + 3600l * 1000 * 24 * 365 * 20);
         // 生成URL
@@ -125,20 +120,20 @@ public class OssHelper {
     // 上传文件
     private String uploadImg2Oss(MultipartFile file) throws Exception {
         //1、限制最大文件为20M
-        if (file.getSize() > 1024 * 1024 *20) {
+        if (file.getSize() > 1024 * 1024 * 20) {
             return "图片太大";
         }
 
         String fileName = file.getOriginalFilename();
         String suffix = fileName.substring(fileName.lastIndexOf(".")).toLowerCase(); //文件后缀
-        String name = snowFlake.nextValue() + suffix;
+        String dateTime = new SimpleDateFormat("yyyy/MM/dd/").format(new Date());
+        String name = dateTime + snowFlake.nextValue() + suffix;
 
         try {
             InputStream inputStream = file.getInputStream();
-            this.uploadFile2OSS(inputStream, name);
-            return getFileUrl(name);
-        }
-        catch (Exception e) {
+            uploadFile2OSS(inputStream, name);
+            return getFileUrl(filePath);
+        } catch (Exception e) {
             return "上传失败";
         }
     }
@@ -157,7 +152,8 @@ public class OssHelper {
             objectMetadata.setContentDisposition("inline;filename=" + fileName);
             //上传文件
             OSSClient ossClient = new OSSClient(endpoint, accessKeyId, accessKeySecret);
-            PutObjectResult putResult = ossClient.putObject(bucketName, fileDir + fileName, instream, objectMetadata);
+            filePath = fileRoot + fileName;
+            PutObjectResult putResult = ossClient.putObject(bucketName, filePath, instream, objectMetadata);
             ret = putResult.getETag();
         } catch (IOException e) {
 
