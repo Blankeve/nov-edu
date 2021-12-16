@@ -1,13 +1,12 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8
     username: judb
     password: ju2009
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
-
 #  redis:
 #    host: 127.0.0.1
 #    port: 6379
@@ -33,4 +32,5 @@ mybatis-plus:
 #  configuration:
 #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 #    log-impl: org.apache.ibatis.logging.log4j2   #Log4j2Impl:这个不在控制台打印查询结果,但是在log4j中打印
-
+server:
+  port: 8081

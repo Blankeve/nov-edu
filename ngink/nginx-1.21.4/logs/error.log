@@ -1,0 +1,40 @@
+2021/12/16 13:56:42 [notice] 3852#260: signal process started
+2021/12/16 13:56:42 [error] 3852#260: CreateFile() "E:\juam-workspace\code\git\edu\ngink\nginx-1.21.4/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2021/12/16 13:56:48 [emerg] 18660#18208: bind() to 0.0.0.0:80 failed (10013: An attempt was made to access a socket in a way forbidden by its access permissions)
+2021/12/16 13:58:32 [emerg] 1628#12052: bind() to 0.0.0.0:80 failed (10013: An attempt was made to access a socket in a way forbidden by its access permissions)
+2021/12/16 13:59:55 [error] 17832#3696: *1 CreateFile() "E:\juam-workspace\code\git\edu\ngink\nginx-1.21.4/html/sockjs-node/info" failed (3: The system cannot find the path specified), client: 192.168.10.140, server: localhost, request: "GET /sockjs-node/info?t=1639634393967 HTTP/1.1", host: "192.168.10.140", referrer: "http://localhost/"
+2021/12/16 13:59:57 [error] 17832#3696: *1 CreateFile() "E:\juam-workspace\code\git\edu\ngink\nginx-1.21.4/html/sockjs-node/info" failed (3: The system cannot find the path specified), client: 192.168.10.140, server: localhost, request: "GET /sockjs-node/info?t=1639634397962 HTTP/1.1", host: "192.168.10.140", referrer: "http://localhost/"
+2021/12/16 14:00:02 [error] 17832#3696: *1 CreateFile() "E:\juam-workspace\code\git\edu\ngink\nginx-1.21.4/html/sockjs-node/info" failed (3: The system cannot find the path specified), client: 192.168.10.140, server: localhost, request: "GET /sockjs-node/info?t=1639634402964 HTTP/1.1", host: "192.168.10.140", referrer: "http://localhost/"
+2021/12/16 14:00:11 [error] 17832#3696: *1 CreateFile() "E:\juam-workspace\code\git\edu\ngink\nginx-1.21.4/html/sockjs-node/info" failed (3: The system cannot find the path specified), client: 192.168.10.140, server: localhost, request: "GET /sockjs-node/info?t=1639634411958 HTTP/1.1", host: "192.168.10.140", referrer: "http://localhost/"
+2021/12/16 14:00:28 [error] 17832#3696: *1 CreateFile() "E:\juam-workspace\code\git\edu\ngink\nginx-1.21.4/html/sockjs-node/info" failed (3: The system cannot find the path specified), client: 192.168.10.140, server: localhost, request: "GET /sockjs-node/info?t=1639634428953 HTTP/1.1", host: "192.168.10.140", referrer: "http://localhost/"
+2021/12/16 14:01:01 [error] 17832#3696: *1 CreateFile() "E:\juam-workspace\code\git\edu\ngink\nginx-1.21.4/html/sockjs-node/info" failed (3: The system cannot find the path specified), client: 192.168.10.140, server: localhost, request: "GET /sockjs-node/info?t=1639634461963 HTTP/1.1", host: "192.168.10.140", referrer: "http://localhost/"
+2021/12/16 14:02:06 [error] 17832#3696: *1 CreateFile() "E:\juam-workspace\code\git\edu\ngink\nginx-1.21.4/html/sockjs-node/info" failed (3: The system cannot find the path specified), client: 192.168.10.140, server: localhost, request: "GET /sockjs-node/info?t=1639634526956 HTTP/1.1", host: "192.168.10.140", referrer: "http://localhost/"
+2021/12/16 14:04:15 [error] 17832#3696: *3 CreateFile() "E:\juam-workspace\code\git\edu\ngink\nginx-1.21.4/html/sockjs-node/info" failed (3: The system cannot find the path specified), client: 192.168.10.140, server: localhost, request: "GET /sockjs-node/info?t=1639634655955 HTTP/1.1", host: "192.168.10.140", referrer: "http://localhost/"
+2021/12/16 14:08:32 [error] 17832#3696: *4 CreateFile() "E:\juam-workspace\code\git\edu\ngink\nginx-1.21.4/html/sockjs-node/info" failed (3: The system cannot find the path specified), client: 192.168.10.140, server: localhost, request: "GET /sockjs-node/info?t=1639634912962 HTTP/1.1", host: "192.168.10.140", referrer: "http://localhost/"
+2021/12/16 14:17:05 [error] 17832#3696: *5 CreateFile() "E:\juam-workspace\code\git\edu\ngink\nginx-1.21.4/html/sockjs-node/info" failed (3: The system cannot find the path specified), client: 192.168.10.140, server: localhost, request: "GET /sockjs-node/info?t=1639635425957 HTTP/1.1", host: "192.168.10.140", referrer: "http://localhost/"
+2021/12/16 14:25:26 [emerg] 12464#1628: unknown directive "　　　　　　#代理使用上面upstream定义名称为api的端口映射方式" in E:\juam-workspace\code\git\edu\ngink\nginx-1.21.4/conf/nginx.conf:50
+2021/12/16 14:25:46 [emerg] 18632#10212: unknown directive "　　　　　　#代理使用上面upstream定义名称为api的端口映射方式" in E:\juam-workspace\code\git\edu\ngink\nginx-1.21.4/conf/nginx.conf:50
+2021/12/16 14:26:36 [emerg] 10996#11644: unknown directive "　　　　　　proxy_pass" in E:\juam-workspace\code\git\edu\ngink\nginx-1.21.4/conf/nginx.conf:49
+2021/12/16 14:28:00 [emerg] 8008#7732: unknown directive "　　　　　　proxy_pass" in E:\juam-workspace\code\git\edu\ngink\nginx-1.21.4/conf/nginx.conf:49
+2021/12/16 14:28:05 [emerg] 15116#2512: unknown directive "　　　　　　proxy_pass" in E:\juam-workspace\code\git\edu\ngink\nginx-1.21.4/conf/nginx.conf:49
+2021/12/16 14:28:48 [emerg] 16840#2696: unknown directive "　　　　}" in E:\juam-workspace\code\git\edu\ngink\nginx-1.21.4/conf/nginx.conf:52
+2021/12/16 14:29:25 [emerg] 4424#19412: unknown directive "　　　　}" in E:\juam-workspace\code\git\edu\ngink\nginx-1.21.4/conf/nginx.conf:51
+2021/12/16 14:30:28 [emerg] 18716#17276: unknown directive "　　　　}" in E:\juam-workspace\code\git\edu\ngink\nginx-1.21.4/conf/nginx.conf:57
+2021/12/16 14:31:36 [emerg] 16680#1636: unexpected "}" in E:\juam-workspace\code\git\edu\ngink\nginx-1.21.4/conf/nginx.conf:84
+2021/12/16 14:34:10 [error] 17832#3696: *9 CreateFile() "E:\juam-workspace\code\git\edu\ngink\nginx-1.21.4/html/sockjs-node/info" failed (3: The system cannot find the path specified), client: 192.168.10.140, server: localhost, request: "GET /sockjs-node/info?t=1639636450957 HTTP/1.1", host: "192.168.10.140", referrer: "http://localhost/"
+2021/12/16 14:38:14 [error] 17832#3696: *10 CreateFile() "E:\juam-workspace\code\git\edu\ngink\nginx-1.21.4/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2021/12/16 14:39:00 [error] 13508#7848: *1 CreateFile() "E:\juam-workspace\code\git\edu\ngink\nginx-1.21.4/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/"
+2021/12/16 15:37:25 [notice] 2908#2072: signal process started
+2021/12/16 16:20:31 [notice] 4188#9644: signal process started
+2021/12/16 16:23:14 [notice] 15336#13568: signal process started
+2021/12/16 17:04:43 [notice] 4188#16464: signal process started
+2021/12/16 17:15:22 [notice] 16808#4432: signal process started
+2021/12/16 17:19:33 [notice] 6628#17668: signal process started
+2021/12/16 17:23:10 [notice] 7640#19592: signal process started
+2021/12/16 17:24:31 [notice] 14252#19996: signal process started
+2021/12/16 17:24:31 [emerg] 8484#14924: bind() to 0.0.0.0:80 failed (10013: An attempt was made to access a socket in a way forbidden by its access permissions)
+2021/12/16 17:25:28 [notice] 2080#8464: signal process started
+2021/12/16 17:25:28 [emerg] 8484#14924: bind() to 0.0.0.0:80 failed (10013: An attempt was made to access a socket in a way forbidden by its access permissions)
+2021/12/16 17:25:47 [notice] 14980#8500: signal process started
+2021/12/16 17:25:50 [emerg] 13164#15632: bind() to 0.0.0.0:80 failed (10013: An attempt was made to access a socket in a way forbidden by its access permissions)
+2021/12/16 17:27:33 [notice] 10504#19860: signal process started

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
  * @since 2021-12-13
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/edu/user")
 public class AclUserController {
 
     @Autowired
