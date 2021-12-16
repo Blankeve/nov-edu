@@ -38,3 +38,15 @@
 2021/12/16 17:25:47 [notice] 14980#8500: signal process started
 2021/12/16 17:25:50 [emerg] 13164#15632: bind() to 0.0.0.0:80 failed (10013: An attempt was made to access a socket in a way forbidden by its access permissions)
 2021/12/16 17:27:33 [notice] 10504#19860: signal process started
+2021/12/16 19:31:42 [emerg] 9408#4028: CreateDirectory() "F:\my space\nov-edu\ngink\nginx-1.21.4/temp/client_body_temp" failed (3: The system cannot find the path specified)
+2021/12/16 19:32:15 [emerg] 11344#4064: CreateDirectory() "F:\my space\nov-edu\ngink\nginx-1.21.4/temp/client_body_temp" failed (3: The system cannot find the path specified)
+2021/12/16 19:33:21 [emerg] 16076#13028: CreateDirectory() "F:\my space\nov-edu\ngink\nginx-1.21.4/temp/client_body_temp" failed (3: The system cannot find the path specified)
+2021/12/16 19:33:27 [emerg] 13276#13528: CreateDirectory() "F:\my space\nov-edu\ngink\nginx-1.21.4/temp/client_body_temp" failed (3: The system cannot find the path specified)
+2021/12/16 19:34:12 [emerg] 15784#12240: "location" directive is not allowed here in F:\my space\nov-edu\ngink\nginx-1.21.4/conf/nginx.conf:55
+2021/12/16 19:36:45 [error] 3972#15500: *1 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "OPTIONS /edu/edu-teacher/list?name=&level=&createTime=&current=1&size=4&total=0 HTTP/1.1", upstream: "http://127.0.0.1:8081/edu/edu-teacher/list?name=&level=&createTime=&current=1&size=4&total=0", host: "localhost:8000", referrer: "http://localhost/"
+2021/12/16 19:36:55 [error] 3972#15500: *1 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "OPTIONS /edu/edu-teacher/list?name=&level=&createTime=&current=1&size=4&total=0 HTTP/1.1", upstream: "http://127.0.0.1:8081/edu/edu-teacher/list?name=&level=&createTime=&current=1&size=4&total=0", host: "localhost:8000", referrer: "http://localhost/"
+2021/12/16 19:41:17 [error] 3972#15500: *5 client intended to send too large body: 1522509 bytes, client: 127.0.0.1, server: localhost, request: "POST /upload/img HTTP/1.1", host: "localhost:8000", referrer: "http://localhost/"
+2021/12/16 19:44:56 [notice] 14392#8136: signal process started
+2021/12/16 19:50:15 [error] 15204#4324: *7 client intended to send too large body: 1522509 bytes, client: 127.0.0.1, server: localhost, request: "POST /upload/img HTTP/1.1", host: "localhost:8000", referrer: "http://localhost/"
+2021/12/16 19:50:52 [error] 15204#4324: *13 client intended to send too large body: 1522509 bytes, client: 127.0.0.1, server: localhost, request: "POST /upload/img HTTP/1.1", host: "localhost:8000", referrer: "http://localhost/"
+2021/12/16 19:52:09 [notice] 12880#4772: signal process started

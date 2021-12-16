@@ -70,9 +70,9 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="avatar" width="100" align="center">
+      <el-table-column label="avatar" width="120"  align="center">
         <template slot-scope="scope">
-          <img :src="scope.row.avatar" />
+          <img :src="scope.row.avatar" width="100px" />
         </template>
       </el-table-column>
 
@@ -106,6 +106,7 @@
     </el-table>
     <div class="block">
       <el-pagination
+        background
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
         :current-page="form.current"
@@ -201,5 +202,8 @@ export default {
 <style>
 .mid-input {
   width: 80px;
+}
+.el-pagination{
+  text-align: center;
 }
 </style>
