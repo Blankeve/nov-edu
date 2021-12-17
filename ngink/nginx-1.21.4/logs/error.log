@@ -50,3 +50,5 @@
 2021/12/16 19:50:15 [error] 15204#4324: *7 client intended to send too large body: 1522509 bytes, client: 127.0.0.1, server: localhost, request: "POST /upload/img HTTP/1.1", host: "localhost:8000", referrer: "http://localhost/"
 2021/12/16 19:50:52 [error] 15204#4324: *13 client intended to send too large body: 1522509 bytes, client: 127.0.0.1, server: localhost, request: "POST /upload/img HTTP/1.1", host: "localhost:8000", referrer: "http://localhost/"
 2021/12/16 19:52:09 [notice] 12880#4772: signal process started
+2021/12/17 13:23:35 [notice] 21960#19908: signal process started
+2021/12/17 13:23:35 [error] 21960#19908: OpenEvent("Global\ngx_stop_12884") failed (2: The system cannot find the file specified)

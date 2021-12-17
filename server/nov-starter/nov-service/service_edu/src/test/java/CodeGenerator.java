@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
-public class CodeGeneration {
+public class CodeGenerator {
     public static void main(String[] args) {
 
 //1、创建代码生成器
@@ -54,7 +54,7 @@ public class CodeGeneration {
 //5、策略配置
         StrategyConfig strategy = new StrategyConfig();
 //数据库中表的名字，表示要对哪些表进行自动生成controllerservice、mapper...
-        strategy.setInclude("acl_user");
+        strategy.setInclude("edu_subject");
 //数据库表映射到实体的命名策略,驼峰命名法
         strategy.setNaming(NamingStrategy.underline_to_camel);
 //生成实体时去掉表前缀，比如edu_course，如果不加下面这句，生成的实体类名字就是：EduCourse

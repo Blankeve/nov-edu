@@ -27,6 +27,7 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
     @Override
     public void updateFill(MetaObject metaObject) {
         log.info("start update fill ....");
-        this.strictUpdateFill(metaObject, "updateTime", Date.class, new Date()); // 起始版本 3.3.0(推荐)
+        this.setFieldValByName("updateTime",new Date(),metaObject);   //当update_time为Null时照样填充
+       // this.strictUpdateFill(metaObject, "updateTime", Date.class, new Date()); // 起始版本 3.3.0(推荐)
     }
 }

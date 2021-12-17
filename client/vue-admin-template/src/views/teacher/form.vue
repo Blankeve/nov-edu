@@ -102,7 +102,7 @@ export default {
       }
     },
     handleAvatarSuccess(res, file) {
-      this.teacher.avatar = URL.createObjectURL(file.raw);
+      this.teacher.avatar = res.data.path;
     },
     beforeAvatarUpload(file) {
       const isJPG = file.type === "image/jpeg";

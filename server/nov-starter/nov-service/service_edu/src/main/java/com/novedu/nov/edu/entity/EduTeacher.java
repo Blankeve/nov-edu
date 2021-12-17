@@ -1,12 +1,10 @@
 package com.novedu.nov.edu.entity;
 
 import cn.afterturn.easypoi.excel.annotation.Excel;
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.util.Date;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
