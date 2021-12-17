@@ -33,13 +33,13 @@ public class EduSubjectServiceImpl extends ServiceImpl<EduSubjectMapper, EduSubj
 
     @Override
     public BaseResult exportSubjects(HttpServletResponse response) {
-        List <EduSubject>  eduSubjectVoList= new ArrayList<>();
-        eduSubjectVoList.add(new EduSubject());
-        try {
-            ExcelUtils.defaultExport("所有科目","所有科目",EduSubject.class,eduSubjectVoList,response);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        List <EduSubject>  eduSubjectVoList= new ArrayList<>();
+//        eduSubjectVoList.add(new EduSubject());
+//        try {
+//            ExcelUtils.defaultExport("所有科目","所有科目",EduSubject.class,eduSubjectVoList,response);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         return BaseResult.success("导出成功");
     }
 
