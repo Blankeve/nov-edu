@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -17,7 +19,13 @@ import javax.servlet.http.HttpServletResponse;
  */
 public interface EduSubjectService extends IService<EduSubject> {
 
-    BaseResult<EduSubject> getSubjects();
+    BaseResult<Map> getSubjects();
+
+    BaseResult addSubjects(List<EduSubject> subjects);
+
+    BaseResult removeSubjects(List<EduSubject> subjects);
 
     BaseResult exportSubjects(HttpServletResponse response);
+
+    BaseResult updateSubjects(Map<String,List<EduSubject>> eduSubjects);
 }

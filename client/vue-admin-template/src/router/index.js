@@ -49,9 +49,9 @@ export const constantRoutes = [
     redirect: '/dashboard',
     children: [{
       path: 'dashboard',
-      name: 'Dashboard',
+      name: '仪表盘',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: '仪表盘', icon: 'dashboard' }
     }]
   },
   {
@@ -85,14 +85,12 @@ export const constantRoutes = [
     path: '/subject',
     component: Layout,
     redirect: '/subject/list',
-    name: '课程分类管理',
-    meta: { title: '课程分类管理', icon: 'el-icon-s-help' },
     children: [
       {
         path: 'list',
-        name: '课程分类列表',
+        name: '科目管理',
         component: () => import('@/views/subject/index'),
-        meta: { title: '课程分类列表', icon: 'tree' }
+        meta: { title: '科目管理', icon: 'tree' }
       }
     ]
   },

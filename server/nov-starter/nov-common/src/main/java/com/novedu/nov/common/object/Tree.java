@@ -1,4 +1,6 @@
 package com.novedu.nov.common.object;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import java.util.List;
 
 /**
@@ -8,7 +10,8 @@ import java.util.List;
  * @modified By：
  * @version:
  */
-public abstract class Tree {
+
+public  class Tree {
 
     /**
      * @description： 当前节点id

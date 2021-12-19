@@ -1,5 +1,6 @@
 package com.novedu.nov.edu.entity;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
 import java.util.Date;
 
@@ -8,6 +9,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.novedu.nov.common.object.Tree;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -25,7 +28,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @ApiModel(value="EduSubject对象", description="课程科目")
-public class EduSubject extends Tree implements Serializable {
+public class EduSubject implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -42,12 +45,14 @@ public class EduSubject extends Tree implements Serializable {
     @ApiModelProperty(value = "排序字段")
     private Integer sort;
 
+    @TableField(value = "create_time",fill = FieldFill.INSERT)
     @ApiModelProperty(value = "创建时间")
     private Date createTime;
 
+    @TableField(value = "update_time",fill = FieldFill.INSERT_UPDATE)
     @ApiModelProperty(value = "更新时间")
     private Date updateTime;
 
     @TableField(exist = false)
-    private List<Tree> children;
+    private List<EduSubject> children ;
 }

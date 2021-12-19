@@ -6,3 +6,11 @@ export function getList() {
     method: 'get',
   })
 }
+
+export function update(data) {
+  return request({
+    url: '/edu/edu-subject/update',
+    method: 'put',
+    data
+  })
+}
