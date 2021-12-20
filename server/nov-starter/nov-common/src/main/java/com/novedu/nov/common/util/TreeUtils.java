@@ -19,9 +19,11 @@ public class TreeUtils {
     private static String id = "id";
     private static String parent = "parentId";
     private static String children = "children";
+    private static String title = "title";
     private static Field idField;
     private static Field parentField;
     private static Field childrenField;
+    private static Field titleField;
 
     /**
      * 集合转树结构
@@ -223,6 +225,15 @@ public class TreeUtils {
         }
     }
 
+
+    /**
+     * 检查变更节点
+     * 该方法可能有BUG，谨慎使用
+     * @param raw 初始集合
+     * @param ripe 变更集合
+     * @param clazz  集合元素类型
+     * @return 变更节点
+     */
     public static <T> Map<String, Collection<T>> checkChangedNodes(Collection<T> raw, Collection<T> ripe, @NotNull Class<T> clazz) {
         Map<String, Collection<T>> result = new HashMap<>();
         Collection<T> updateNodes = null;
@@ -239,51 +250,63 @@ public class TreeUtils {
                 removeNodes = new ArrayList<>();
             }
             initContext(clazz, null, null, null, raw);
+                titleField = clazz.getDeclaredField(title);
+                titleField.setAccessible(true);
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         }
-        for (T r : ripe
-        ) {
-            try {
-                Object rId = idField.get(r);
-                Object rPid = parentField.get(r);
-                boolean hasNode = false;
-                boolean beModified =false;
-                for (T rr : raw
-                ) {
-                    Object rrId = idField.get(rr);
-                    Object rrPid = parentField.get(rr);
-                    if (rrId.equals(rId)) {
-                        hasNode = true;
-                        if(!rrPid.equals(rPid))
-                            beModified = true;
+        if(ripe == null || ripe.size() == 0){
+            for (T rr: raw
+                 ) {
+                removeNodes.add(rr);
+            }
+        }
+        else {
+            for (T r : ripe
+            ) {
+                try {
+                    Object rId = idField.get(r);
+                    Object rPid = parentField.get(r);
+                    Object rTitle= titleField.get(r);
+                    boolean hasNode = false;
+                    boolean beModified =false;
+                    for (T rr : raw
+                    ) {
+                        Object rrId = idField.get(rr);
+                        Object rrPid = parentField.get(rr);
+                        Object rrTitle= titleField.get(rr);
+                        if (rrId.equals(rId)) {
+                            hasNode = true;
+                            if(!rrPid.equals(rPid)||!rrTitle.equals(rTitle))
+                                beModified = true;
+                        }
                     }
-                }
                     if (!hasNode) {
                         insertNodes.add(r);
                     }
                     else if (beModified)
                         updateNodes.add(r);
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        }
-        for (T r: raw
-             ) {
-            boolean hasRemove = true;
-            for (T rr: ripe
-                 ) {
-                try {
-                    Object rId = idField.get(r);
-                    Object rrId = idField.get(rr);
-                    if(rrId.equals(rId))
-                        hasRemove = false;
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                 }
             }
-           if(hasRemove)
-               removeNodes.add(r);
+            for (T r: raw
+            ) {
+                boolean hasRemove = true;
+                for (T rr: ripe
+                ) {
+                    try {
+                        Object rId = idField.get(r);
+                        Object rrId = idField.get(rr);
+                        if(rrId.equals(rId))
+                            hasRemove = false;
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if(hasRemove)
+                    removeNodes.add(r);
+            }
         }
         result.put("insertNodes",insertNodes);
         result.put("updateNodes",updateNodes);

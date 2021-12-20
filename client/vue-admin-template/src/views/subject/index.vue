@@ -75,9 +75,13 @@ export default {
   methods: {
     fetchData() {
       getList().then((resp) => {
-        id = resp.data.lastId;
-        this.data = resp.data.subjects;
-        this.resetData = JSON.parse(JSON.stringify(resp.data.subjects));
+        if (resp.code === 200) {
+          id = resp.data.lastId;
+          if (resp.data.subjects) {
+            this.data = resp.data.subjects;
+            this.resetData = JSON.parse(JSON.stringify(resp.data.subjects));
+          }
+        }
       });
     },
     initTree() {
@@ -87,9 +91,9 @@ export default {
       update({ eduSubjects: this.data }).then((resp) => {
         this.$message({
           message: "保存成功",
-          type: resp.code === 200? "success":"error",
+          type: resp.code === 200 ? "success" : "error",
         });
-          this.fetchData();
+        this.fetchData();
       });
     },
     filterNode(value, data) {
@@ -97,11 +101,28 @@ export default {
       return data.title.indexOf(value) !== -1;
     },
     append(data) {
-      const newChild = { id: id++, title: "未命名", children: [] };
-      if (!data.children) {
-        this.$set(data, "children", []);
-      }
-      data.children.push(newChild);
+      this.$prompt("添加的节点名称", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        inputValidator: function (val) {
+          console.log(val);
+          if (val) {
+            return true;
+          } else {
+            return "输入内容不能为空";
+          }
+        },
+      })
+        .then(({ value }) => {
+          const newChild = { id: id++, title: value, children: [] };
+          if (!data.children) {
+            this.$set(data, "children", []);
+          }
+          data.children.push(newChild);
+        })
+        .catch(() => {
+          return;
+        });
     },
     appendRoot(data) {
       const root = { id: id++, title: "未命名", children: [] };

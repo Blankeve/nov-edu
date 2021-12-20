@@ -35,18 +35,14 @@ public class EduSubjectServiceImpl extends ServiceImpl<EduSubjectMapper, EduSubj
         Map result = new HashMap();
         result.put("subjects", TreeUtils.toTree(eduSubjects, EduSubject.class));
         int size = eduSubjects.size();
-        int lastId = 100;
-        if (size > 0)
-            lastId = eduSubjects.get(size - 1).getId() + 1;
+        int lastId = size > 0 ? eduSubjects.get(size - 1).getId() + 1 : 1000;
         result.put("lastId", lastId);
         return BaseResult.success(result);
     }
 
     @Override
     public BaseResult addSubjects(List<EduSubject> subjects) {
-        subjects.forEach(o ->
-                save(o)
-        );
+        saveBatch(subjects);
         return BaseResult.success();
     }
 
@@ -84,9 +80,7 @@ public class EduSubjectServiceImpl extends ServiceImpl<EduSubjectMapper, EduSubj
             if (removeList != null && removeList.size() > 0)
                 removeSubjects(removeList);
             if (changeList != null && changeList.size() > 0) {
-                changeList.forEach(o ->
-                        updateById(o)
-                );
+                updateBatchById(changeList);
             }
         } catch (NoSuchFieldException e) {
             e.printStackTrace();

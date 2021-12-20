@@ -42,7 +42,7 @@
     >
       <el-table-column align="center" label="#" width="50">
         <template slot-scope="scope">
-          {{ scope.$index +1 }}
+          {{ scope.$index + 1 }}
         </template>
       </el-table-column>
 
@@ -66,21 +66,23 @@
 
       <el-table-column label="level" width="100" align="center">
         <template slot-scope="scope">
-          {{ scope.row.level == 1? "高级讲师":"首席讲师" }} 
+          {{ scope.row.level == 1 ? "高级讲师" : "首席讲师" }}
         </template>
       </el-table-column>
 
-      <el-table-column label="avatar" width="120"  align="center">
+      <el-table-column label="avatar" width="120" align="center">
         <template slot-scope="scope">
-          <img :src="scope.row.avatar" width="100px" />
+          <div class="demo-image__preview">
+            <el-image
+              :src="scope.row.avatar"
+              alt="图片获取失败"
+              title="点击查看大图"
+              width="100px"
+              :preview-src-list="[scope.row.avatar]"
+            />
+          </div>
         </template>
       </el-table-column>
-
-      <!-- <el-table-column class-name="status-col" label="Status" width="110" align="center">
-        <template slot-scope="scope">
-          <el-tag :type="scope.row.status | statusFilter">{{ scope.row.status }}</el-tag>
-        </template>
-      </el-table-column> -->
 
       <el-table-column
         align="center"
@@ -185,7 +187,7 @@ export default {
       this.$router.push({
         path: "/teacher/edit",
         query: {
-          id: id
+          id: id,
         },
       });
     },
@@ -203,7 +205,7 @@ export default {
 .mid-input {
   width: 80px;
 }
-.el-pagination{
+.el-pagination {
   text-align: center;
 }
 </style>
