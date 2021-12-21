@@ -1,0 +1,19 @@
+package com.novedu.nov.edu.service;
+
+import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.edu.entity.EduCourse;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.novedu.nov.edu.model.vo.EduCourseInfoVO;
+
+/**
+ * <p>
+ * 课程 服务类
+ * </p>
+ *
+ * @author juam
+ * @since 2021-12-21
+ */
+public interface EduCourseService extends IService<EduCourse> {
+
+    BaseResult addCourse(EduCourseInfoVO courseInfoVO);
+}

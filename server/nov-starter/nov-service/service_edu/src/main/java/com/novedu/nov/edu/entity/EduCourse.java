@@ -1,0 +1,75 @@
+package com.novedu.nov.edu.entity;
+
+import java.math.BigDecimal;
+
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.IdType;
+import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import java.io.Serializable;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+/**
+ * <p>
+ * 课程
+ * </p>
+ *
+ * @author juam
+ * @since 2021-12-21
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@ApiModel(value="EduCourse对象", description="课程")
+public class EduCourse implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    @ApiModelProperty(value = "课程ID")
+    @TableId(value = "id", type = IdType.NONE)
+    private Long id;
+
+    @ApiModelProperty(value = "课程讲师ID")
+    private String teacherId;
+
+    @ApiModelProperty(value = "课程专业ID")
+    private String subjectId;
+
+    @ApiModelProperty(value = "课程标题")
+    private String title;
+
+    @ApiModelProperty(value = "课程销售价格，设置为0则可免费观看")
+    private BigDecimal price;
+
+    @ApiModelProperty(value = "总课时")
+    private Integer lessonNum;
+
+    @ApiModelProperty(value = "课程封面图片路径")
+    private String cover;
+
+    @ApiModelProperty(value = "销售数量")
+    private Long buyCount;
+
+    @ApiModelProperty(value = "浏览数量")
+    private Long viewCount;
+
+    @ApiModelProperty(value = "乐观锁")
+    private Long version;
+
+    @ApiModelProperty(value = "课程状态 Draft未发布  Normal已发布")
+    private String status;
+
+    @TableField(value = "create_time",fill = FieldFill.INSERT)
+    @ApiModelProperty(value = "创建时间")
+    private Date createTime;
+
+    @TableField(value = "update_time",fill = FieldFill.INSERT_UPDATE)
+    @ApiModelProperty(value = "更新时间")
+    private Date updateTime;
+
+
+}

@@ -40,6 +40,11 @@ public class EduTeacherController {
         return eduTeacherService.findTeacherList(page,teacher);
     }
 
+    @GetMapping("/all")
+    public BaseResult<List<EduTeacher>> all(){
+        return eduTeacherService.findAll();
+    }
+
     @GetMapping("/info/{id}")
     public BaseResult<EduTeacher> info(@PathVariable String id){
         return eduTeacherService.findTeacherOne(id);

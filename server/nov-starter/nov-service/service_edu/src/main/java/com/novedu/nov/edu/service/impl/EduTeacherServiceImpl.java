@@ -59,5 +59,10 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
         return BaseResult.success(getById(id));
     }
 
+    @Override
+    public BaseResult<List<EduTeacher>> findAll() {
+        return BaseResult.success(list());
+    }
+
 
 }
