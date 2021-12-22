@@ -8,6 +8,13 @@ export function getList(params) {
   })
 }
 
+export function getAll() {
+  return request({
+    url: '/edu/edu-teacher/all',
+    method: 'get',
+  })
+}
+
 export function removeById(params) {
   return request({
     url: `/edu/edu-teacher/remove/${params}`,

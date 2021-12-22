@@ -94,7 +94,26 @@ export const constantRoutes = [
       }
     ]
   },
-
+  {
+    path: '/course',
+    component: Layout,
+    redirect: '/course/list',
+    name: '课程管理',
+    meta: { title: '课程管理', icon: 'el-icon-s-help' },
+    children: [{
+      path: 'list',
+      name: 'list',
+      component: () => import('@/views/teacher/index'),
+      meta: { title: '课程列表', icon: 'el-icon-s-help' }
+    },
+    {
+      path: 'save',
+      name: 'save',
+      component: () => import('@/views/course/form'),
+      meta: { title: '添加课程', icon: 'el-icon-s-help' }
+    },
+    ]
+  },
   {
     path: '/form',
     component: Layout,
