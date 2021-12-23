@@ -1,5 +1,6 @@
 <template>
   <div class="app-container">
+        <h2>发布新课程</h2>
     <el-steps :active="active" finish-status="success" align-center>
       <el-step
         :title="active > 0 ? '已完成' : '步骤1'"
@@ -15,66 +16,91 @@
         description="最终发布"
       ></el-step>
     </el-steps>
+    
     <div class="myFrm">
+      <el-form
+        v-show="active == 0"
+        :label-position="labelPosition"
+        label-width="80px"
+      >
+        <el-form-item label="课程标题">
+          <el-input v-model="course.title"></el-input>
+        </el-form-item>
 
-        <el-form v-show="active == 0" :label-position="labelPosition" label-width="80px">
-          <el-form-item label="课程标题">
-            <el-input v-model="course.title"></el-input>
-          </el-form-item>
-          <el-form-item label="总课时">
-            <el-input-number
-              v-model="course.lessonNum"
-              :min="0"
-              :max="100"
-              label="总课时"
-            ></el-input-number>
-          </el-form-item>
-          <el-form-item label="课程简介">
-            <el-input
-              v-model="course.description"
-            ></el-input>
-          </el-form-item>
-          <el-form-item label="课程价格">
-            <el-input-number
-              v-model="course.price"
-              :min="0"
-              :max="100"
-              label="课程价格"
-            ></el-input-number>
-          </el-form-item>
-        </el-form>
- <el-form v-show="active == 1" :label-position="labelPosition" label-width="80px">
-          <el-form-item label="课程标题">
-            <el-input v-model="course.title"></el-input>
-          </el-form-item>
-      <el-form-item label="课程讲师">
-    <el-select  placeholder="请选择讲师">
-      <el-option v-for="(item,index) in teacher" :label="item.name" :key="item.id" :value="item.id"></el-option>
-    </el-select>
-  </el-form-item>
-  <el-form-item label="课程分类">
-        <el-cascader
-    v-model="course.subjectId"
-    :options="subjects"
-    :props="{ expandTrigger: 'hover' ,label: 'title',value: 'id'}"
-    @change="handleChange"></el-cascader>
-  </el-form-item>
+        <el-form-item label="课程分类">
+          <el-cascader
+            v-model="course.subjectId"
+            :options="subjects"
+            :props="{ expandTrigger: 'hover', label: 'title', value: 'id' }"
+            @change="handleChange"
+          ></el-cascader>
+        </el-form-item>
 
-          </el-form-item>
-          <el-form-item label="课程简介">
-            <el-input
-            type="textarea"
-              v-model="course.description"
-                :rows="10"
-            ></el-input>
-          </el-form-item>
-        </el-form>
-      <br>
+        <el-form-item label="课程讲师">
+          <el-select v-model="course.teacherId" placeholder="请选择讲师">
+            <el-option
+              v-for="(item, index) in teacher"
+              :label="item.name"
+              :key="item.id"
+              :value="item.id"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+
+        <el-form-item label="总课时">
+          <el-input-number
+            v-model="course.lessonNum"
+            :min="0"
+            :max="100"
+            label="总课时"
+          ></el-input-number>
+        </el-form-item>
+        <el-form-item label="课程简介">
+          <quill-editor
+            v-model="course.description"
+            ref="VueQuillEditor"
+          ></quill-editor>
+        </el-form-item>
+        <el-form-item label="课程封面">
+          <el-upload
+            class="avatar-uploader"
+            name="img"
+            :action="baseURL + '/upload/img'"
+            :show-file-list="false"
+            :on-success="handleAvatarSuccess"
+            :before-upload="beforeAvatarUpload"
+          >
+            <img v-if="course.cover" :src="course.cover" class="avatar" />
+            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+          </el-upload>
+        </el-form-item>
+        <el-form-item label="课程价格">
+          <el-input-number
+            v-model="course.price"
+            :min="0"
+            :max="100"
+            label="课程价格"
+          ></el-input-number>
+        </el-form-item>
+      </el-form>
+      <el-form
+        v-show="active == 1"
+        :label-position="labelPosition"
+        label-width="80px"
+      >
+        <el-form-item label="课程标题">
+          <el-input v-model="course.title"></el-input>
+        </el-form-item>
+      </el-form>
+      <br />
       <el-button type="primary" @click="previousStep" v-show="active > 0"
         >上一步</el-button
       >
-      <el-button type="primary" @click="nextStep" v-show="active < 2"
+      <el-button type="primary" @click="submitForm" v-show="active < 1"
         >保存并下一步</el-button
+      >
+      <el-button type="primary" @click="submitForm" v-show="active == 1"
+        >发布课程</el-button
       >
     </div>
   </div>
@@ -82,18 +108,24 @@
 <script>
 import { getAll } from "@/api/teacher";
 import { getList } from "@/api/subject";
+import { save } from "@/api/course";
 
 export default {
   data() {
     return {
       active: 0,
-      labelPosition: "top",
+      labelPosition: "left",
+      editorOption: {
+        /* quill options */
+      },
       course: {
         title: "",
         lessonNum: "",
-        description: "",
         price: 0,
-        subjectId: "",
+        teacherId: null,
+        subjectId: [],
+        cover: "",
+        description: "",
       },
       teacher: [],
       subjects: [],
@@ -110,11 +142,11 @@ export default {
           this.teacher = resp.data;
         }
       });
-      getList().then(resp=>{
-              if (resp.code === 200) {
+      getList().then((resp) => {
+        if (resp.code === 200) {
           this.subjects = resp.data.subjects;
         }
-      })
+      });
     },
     nextStep() {
       this.active = this.active < 3 ? this.active + 1 : this.active;
@@ -123,22 +155,33 @@ export default {
       this.active = this.active > 0 ? this.active - 1 : this.active;
     },
     handleChange(value) {
-      console.log(value);
+      this.course.subjectId = value;
     },
-    saveOrEdit() {
-      if (this.teacher.id) {
-        updateById(this.teacher).then((resp) => {
-          if (resp.code == 200) {
-            this.$router.push({ path: "/teacher/list" });
-          }
-        });
-      } else {
-        save(this.teacher).then((resp) => {
-          if (resp.code == 200) {
-            this.$router.push({ path: "/teacher/list" });
+    beforeAvatarUpload(file) {
+      const isJPG = file.type === "image/jpeg";
+      const isPNG = file.type === "image/png";
+      const isLt2M = file.size / 1024 / 1024 < 2;
+
+      if (!(isJPG || isPNG)) {
+        this.$message.error("上传头像图片只能是 JPG，PNG 格式!");
+      }
+      if (!isLt2M) {
+        this.$message.error("上传头像图片大小不能超过 2MB!");
+      }
+      return (isJPG || isPNG) && isLt2M;
+    },
+    handleAvatarSuccess(res, file) {
+      this.course.cover = res.data.path;
+    },
+    submitForm() {
+      if (this.active === 10) {
+        save(this.course).then((resp) => {
+          if (resp.code === 200) {
+            this.nextStep();
           }
         });
       }
+               this.nextStep();
     },
   },
 };
@@ -170,11 +213,15 @@ export default {
 }
 
 .myFrm {
-  width: 500px;
+  width: 600px;
   margin: 0 auto;
 }
 
-.el-form-item {
-  margin-bottom: 0px;
+.ql-editor {
+  height: 300px;
+}
+
+h2{
+  text-align: center;
 }
 </style>

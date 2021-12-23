@@ -14,7 +14,16 @@ import router from './router'
 
 import '@/icons' // icon
 import '@/permission' // permission control
+// require styles
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
 
+import VueQuillEditor from 'vue-quill-editor'
+
+
+
+Vue.use(VueQuillEditor,  )
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api

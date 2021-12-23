@@ -185,19 +185,19 @@ export default {
       console.log("drag start", node);
     },
     handleDragEnter(draggingNode, dropNode, ev) {
-      console.log("tree drag enter: ", dropNode.label);
+      console.log("tree drag enter: ", dropNode.title);
     },
     handleDragLeave(draggingNode, dropNode, ev) {
-      console.log("tree drag leave: ", dropNode.label);
+      console.log("tree drag leave: ", dropNode.title);
     },
     handleDragOver(draggingNode, dropNode, ev) {
-      console.log("tree drag over: ", dropNode.label);
+      console.log("tree drag over: ", dropNode.title);
     },
     handleDragEnd(draggingNode, dropNode, dropType, ev) {
-      console.log("tree drag end: ", dropNode && dropNode.label, dropType);
+      console.log("tree drag end: ", dropNode && dropNode.title, dropType);
     },
     handleDrop(draggingNode, dropNode, dropType, ev) {
-      console.log("tree drop: ", dropNode.label, dropType);
+      console.log("tree drop: ", dropNode.title, dropType);
     },
     allowDrop(draggingNode, dropNode, type) {
       if (!dropNode.data.title) {

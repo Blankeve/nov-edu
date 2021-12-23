@@ -103,7 +103,7 @@ export const constantRoutes = [
     children: [{
       path: 'list',
       name: 'list',
-      component: () => import('@/views/teacher/index'),
+      component: () => import('@/views/course/index'),
       meta: { title: '课程列表', icon: 'el-icon-s-help' }
     },
     {

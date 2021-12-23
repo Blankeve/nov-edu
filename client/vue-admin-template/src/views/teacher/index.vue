@@ -46,7 +46,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="name" width="110" align="center">
+      <el-table-column label="name" align="center">
         <template slot-scope="scope">
           {{ scope.row.name }}
         </template>
@@ -58,13 +58,13 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="career" align="center">
+      <el-table-column label="career" width="400" align="center">
         <template slot-scope="scope">
           {{ scope.row.career }}
         </template>
       </el-table-column>
 
-      <el-table-column label="level" width="100" align="center">
+      <el-table-column label="level"  align="center">
         <template slot-scope="scope">
           {{ scope.row.level == 1 ? "高级讲师" : "首席讲师" }}
         </template>
@@ -88,7 +88,6 @@
         align="center"
         prop="created_at"
         label="joinDate"
-        width="200"
       >
         <template slot-scope="scope">
           <i class="el-icon-time" />
