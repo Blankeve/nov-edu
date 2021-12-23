@@ -20,10 +20,10 @@ import java.math.BigDecimal;
 public class EduCourseInfoVO {
 
     @ApiModelProperty(value = "课程讲师ID")
-    private String teacherId;
+    private Long teacherId;
 
     @ApiModelProperty(value = "课程专业ID")
-    private String subjectId;
+    private Integer[] subjectId;
 
     @ApiModelProperty(value = "课程标题")
     private String title;

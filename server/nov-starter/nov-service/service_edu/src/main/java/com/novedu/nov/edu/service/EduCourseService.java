@@ -11,9 +11,11 @@ import com.novedu.nov.edu.model.vo.EduCourseInfoVO;
  * </p>
  *
  * @author juam
- * @since 2021-12-21
+ * @since 2021-12-23
  */
 public interface EduCourseService extends IService<EduCourse> {
 
-    BaseResult addCourse(EduCourseInfoVO courseInfoVO);
+    BaseResult saveCourse(EduCourseInfoVO courseInfoVO);
+
+    BaseResult findCourseDetail(EduCourseInfoVO courseInfoVO);
 }

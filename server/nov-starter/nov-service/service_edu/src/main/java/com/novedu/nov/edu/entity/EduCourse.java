@@ -9,6 +9,8 @@ import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+import java.util.List;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -20,7 +22,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author juam
- * @since 2021-12-21
+ * @since 2021-12-23
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -30,14 +32,14 @@ public class EduCourse implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "课程ID")
-    @TableId(value = "id", type = IdType.NONE)
-    private Long id;
+    @TableId(value = "id", type = IdType.AUTO)
+    private Integer id;
 
     @ApiModelProperty(value = "课程讲师ID")
-    private String teacherId;
+    private Long teacherId;
 
     @ApiModelProperty(value = "课程专业ID")
-    private String subjectId;
+    private Integer subjectId;
 
     @ApiModelProperty(value = "课程标题")
     private String title;
@@ -60,8 +62,11 @@ public class EduCourse implements Serializable {
     @ApiModelProperty(value = "乐观锁")
     private Long version;
 
-    @ApiModelProperty(value = "课程状态 Draft未发布  Normal已发布")
-    private String status;
+    @ApiModelProperty(value = "课程状态 0未发布  1已发布")
+    private Integer status;
+
+    @ApiModelProperty(value = "逻辑删除 1删除 0未删除")
+    private Integer isDeleted;
 
     @TableField(value = "create_time",fill = FieldFill.INSERT)
     @ApiModelProperty(value = "创建时间")
@@ -71,5 +76,6 @@ public class EduCourse implements Serializable {
     @ApiModelProperty(value = "更新时间")
     private Date updateTime;
 
-
+    @TableField(exist = false)
+    private List<EduChapter> children ;
 }

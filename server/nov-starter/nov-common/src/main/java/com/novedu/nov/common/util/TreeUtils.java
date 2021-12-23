@@ -232,6 +232,7 @@ public class TreeUtils {
      * @param raw 初始集合
      * @param ripe 变更集合
      * @param clazz  集合元素类型
+     * titleField 对应节点名，如名字不一样需手动修改
      * @return 变更节点
      */
     public static <T> Map<String, Collection<T>> checkChangedNodes(Collection<T> raw, Collection<T> ripe, @NotNull Class<T> clazz) {

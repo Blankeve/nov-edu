@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- * 课程简介 前端控制器
+ * 课程 前端控制器
  * </p>
  *
  * @author juam
  * @since 2021-12-23
  */
 @RestController
-@RequestMapping("/edu/edu-course-intro")
-public class EduCourseIntroController {
+@RequestMapping("/edu/edu-chapter")
+public class EduChapterController {
 
 }
 
