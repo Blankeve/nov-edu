@@ -31,9 +31,6 @@ public class EduVideo implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty(value = "课程ID")
-    private Integer courseId;
-
     @ApiModelProperty(value = "章节ID")
     private Integer chapterId;
 

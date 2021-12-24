@@ -5,6 +5,7 @@ import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduChapter;
 import com.novedu.nov.edu.entity.EduCourse;
 import com.novedu.nov.edu.entity.EduCourseIntro;
+import com.novedu.nov.edu.entity.EduTeacher;
 import com.novedu.nov.edu.mapper.EduCourseMapper;
 import com.novedu.nov.edu.model.vo.EduCourseInfoVO;
 import com.novedu.nov.edu.service.EduChapterService;
@@ -33,6 +34,9 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     @Autowired
     EduCourseIntroService courseIntroService;
+
+    @Autowired
+    EduCourseMapper courseMapper;
 
     @Autowired
     EduChapterService eduChapterService;
@@ -64,6 +68,22 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
                     eduCourse.getChildren().add(chapter);
             }
         }
+        return BaseResult.success(eduCourses);
+    }
+
+    @Override
+    public BaseResult queryCoursesForTreeData(EduCourseInfoVO courseInfoVO) {
+        return BaseResult.success(courseMapper.queryCoursesForTreeData());
+    }
+
+    @Override
+    public BaseResult queryCourseList(EduCourseInfoVO courseInfoVO) {
+        return BaseResult.success(list());
+    }
+
+    @Override
+    public BaseResult queryCoursesByTeacherId(Long eduTeacher) {
+        List<EduCourse> eduCourses = query().eq("teacher_id",eduTeacher).list();
         return BaseResult.success(eduCourses);
     }
 

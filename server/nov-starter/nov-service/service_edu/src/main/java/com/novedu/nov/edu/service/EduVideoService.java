@@ -1,5 +1,6 @@
 package com.novedu.nov.edu.service;
 
+import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduVideo;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface EduVideoService extends IService<EduVideo> {
 
+    BaseResult saveVideo(EduVideo video);
 }

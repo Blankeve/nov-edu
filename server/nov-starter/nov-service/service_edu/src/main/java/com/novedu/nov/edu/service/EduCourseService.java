@@ -3,6 +3,7 @@ package com.novedu.nov.edu.service;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduCourse;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.novedu.nov.edu.entity.EduTeacher;
 import com.novedu.nov.edu.model.vo.EduCourseInfoVO;
 
 /**
@@ -18,4 +19,10 @@ public interface EduCourseService extends IService<EduCourse> {
     BaseResult saveCourse(EduCourseInfoVO courseInfoVO);
 
     BaseResult findCourseDetail(EduCourseInfoVO courseInfoVO);
+
+    BaseResult queryCoursesForTreeData(EduCourseInfoVO courseInfoVO);
+
+    BaseResult queryCourseList(EduCourseInfoVO courseInfoVO);
+
+    BaseResult queryCoursesByTeacherId(Long eduTeacher);
 }

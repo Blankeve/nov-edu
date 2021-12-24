@@ -1,5 +1,6 @@
 package com.novedu.nov.edu.service;
 
+import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduChapter;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -13,4 +14,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface EduChapterService extends IService<EduChapter> {
 
+    BaseResult saveChapter(EduChapter chapter);
+
+    BaseResult queryChaptersByCourseId(Long id);
 }

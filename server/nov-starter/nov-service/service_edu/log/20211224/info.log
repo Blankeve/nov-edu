@@ -1,0 +1,82 @@
+2021-12-24 10:39:40.319 [main] INFO  CRUD-Starting CRUD using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 20216 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_edu)
+2021-12-24 10:39:40.323 [main] INFO  CRUD-The following profiles are active: dev
+2021-12-24 10:39:40.398 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2021-12-24 10:39:45.362 [main] INFO  org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener-
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-12-24 10:41:14.672 [main] INFO  CRUD-Starting CRUD using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 17340 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_edu)
+2021-12-24 10:41:14.680 [main] INFO  CRUD-The following profiles are active: dev
+2021-12-24 10:41:14.713 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2021-12-24 10:41:22.959 [main] INFO  org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener-
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-12-24 10:43:16.987 [main] INFO  NoName-Starting NoName using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 9716 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_edu)
+2021-12-24 10:43:16.989 [main] INFO  NoName-The following profiles are active: dev
+2021-12-24 10:43:17.009 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2021-12-24 10:43:21.404 [main] INFO  org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener-
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-12-24 10:59:55.256 [main] INFO  CRUD-Starting CRUD using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 15484 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_edu)
+2021-12-24 10:59:55.258 [main] INFO  CRUD-The following profiles are active: dev
+2021-12-24 10:59:55.277 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2021-12-24 11:00:02.739 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-12-24 11:00:04.924 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2021-12-24 11:00:04.981 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2021-12-24 11:00:05.046 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2021-12-24 11:00:05.906 [main] INFO  CRUD-Started CRUD in 11.704 seconds (JVM running for 14.753)
+2021-12-24 11:00:53.840 [main] INFO  CRUD-Starting CRUD using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 19920 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_edu)
+2021-12-24 11:00:53.842 [main] INFO  CRUD-The following profiles are active: dev
+2021-12-24 11:00:53.856 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2021-12-24 11:01:00.747 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-12-24 11:01:02.300 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2021-12-24 11:01:02.346 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2021-12-24 11:01:02.414 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2021-12-24 11:01:02.826 [main] INFO  CRUD-Started CRUD in 10.645 seconds (JVM running for 14.541)
+2021-12-24 11:01:33.080 [main] INFO  CRUD-Starting CRUD using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 17504 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_edu)
+2021-12-24 11:01:33.082 [main] INFO  CRUD-The following profiles are active: dev
+2021-12-24 11:01:33.105 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2021-12-24 11:01:40.658 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-12-24 11:01:42.605 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2021-12-24 11:01:42.656 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2021-12-24 11:01:42.734 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2021-12-24 11:01:43.987 [main] INFO  CRUD-Started CRUD in 12.232 seconds (JVM running for 15.313)
+2021-12-24 11:02:51.241 [main] INFO  CRUD-Starting CRUD using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 21000 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_edu)
+2021-12-24 11:02:51.243 [main] INFO  CRUD-The following profiles are active: dev
+2021-12-24 11:02:51.275 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2021-12-24 11:02:58.677 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-12-24 11:03:00.232 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2021-12-24 11:03:00.284 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2021-12-24 11:03:00.348 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2021-12-24 11:03:00.780 [main] INFO  CRUD-Started CRUD in 10.911 seconds (JVM running for 14.319)
+2021-12-24 13:16:35.051 [main] INFO  CRUD-Starting CRUD using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 16872 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_edu)
+2021-12-24 13:16:35.053 [main] INFO  CRUD-The following profiles are active: dev
+2021-12-24 13:16:35.069 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2021-12-24 13:16:42.374 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-12-24 13:16:44.401 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2021-12-24 13:16:44.464 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2021-12-24 13:16:44.529 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2021-12-24 13:16:44.980 [main] INFO  CRUD-Started CRUD in 11.442 seconds (JVM running for 15.084)
+2021-12-24 13:17:23.111 [main] INFO  CRUD-Starting CRUD using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 16468 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_edu)
+2021-12-24 13:17:23.113 [main] INFO  CRUD-The following profiles are active: dev
+2021-12-24 13:17:23.120 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2021-12-24 13:17:30.213 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-12-24 13:17:31.716 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2021-12-24 13:17:31.768 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2021-12-24 13:17:31.844 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2021-12-24 13:17:32.341 [main] INFO  CRUD-Started CRUD in 10.745 seconds (JVM running for 14.219)
+2021-12-24 13:17:57.694 [main] INFO  CRUD-Starting CRUD using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 9564 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_edu)
+2021-12-24 13:17:57.696 [main] INFO  CRUD-The following profiles are active: dev
+2021-12-24 13:17:57.717 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2021-12-24 13:18:04.928 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-12-24 13:18:06.549 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2021-12-24 13:18:06.591 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2021-12-24 13:18:06.655 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2021-12-24 13:18:07.064 [main] INFO  CRUD-Started CRUD in 11.089 seconds (JVM running for 14.23)
+2021-12-24 13:19:00.487 [main] INFO  CRUD-Starting CRUD using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 7912 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_edu)
+2021-12-24 13:19:00.489 [main] INFO  CRUD-The following profiles are active: dev
+2021-12-24 13:19:00.513 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2021-12-24 13:19:08.570 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-12-24 13:19:11.355 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2021-12-24 13:19:11.442 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2021-12-24 13:19:11.544 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2021-12-24 13:19:12.149 [main] INFO  CRUD-Started CRUD in 12.774 seconds (JVM running for 16.301)

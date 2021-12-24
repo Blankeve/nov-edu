@@ -2,6 +2,8 @@ package com.novedu.nov.edu.mapper;
 
 import com.novedu.nov.edu.entity.AclUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 /**
  * <p>

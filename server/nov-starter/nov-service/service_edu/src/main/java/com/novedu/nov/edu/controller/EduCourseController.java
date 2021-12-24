@@ -2,6 +2,7 @@ package com.novedu.nov.edu.controller;
 
 
 import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.edu.entity.EduTeacher;
 import com.novedu.nov.edu.model.vo.EduCourseInfoVO;
 import com.novedu.nov.edu.service.EduCourseService;
 import io.swagger.annotations.Api;
@@ -29,9 +30,22 @@ public class EduCourseController {
         return eduCourseService.saveCourse(courseInfoVO);
     }
 
-    @PostMapping("/list")
+    @PostMapping("/detail")
     public BaseResult findCourseDetail(EduCourseInfoVO courseInfoVO){
         return eduCourseService.findCourseDetail(courseInfoVO);
+    }
+
+    @PostMapping("/list")
+    public BaseResult queryCourseList(EduCourseInfoVO courseInfoVO){
+        return eduCourseService.queryCourseList(courseInfoVO);
+    }
+    @PostMapping("/list-teacher")
+    public BaseResult queryCourseByTeacherId(Long id){
+        return eduCourseService.queryCoursesByTeacherId(id);
+    }
+    @PostMapping("/tree")
+    public BaseResult queryCoursesForTreeData(EduCourseInfoVO courseInfoVO){
+        return eduCourseService.queryCoursesForTreeData(courseInfoVO);
     }
 }
 
