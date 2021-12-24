@@ -112,6 +112,18 @@ export const constantRoutes = [
       component: () => import('@/views/course/form'),
       meta: { title: '添加课程', icon: 'el-icon-s-help' }
     },
+    {
+      path: 'chapter',
+      name: 'chapter',
+      component: () => import('@/views/course/chapter'),
+      meta: { title: '添加章节', icon: 'el-icon-s-help' }
+    },
+    {
+      path: 'video',
+      name: 'video',
+      component: () => import('@/views/course/video'),
+      meta: { title: '添加小节', icon: 'el-icon-s-help' }
+    },
     ]
   },
   {

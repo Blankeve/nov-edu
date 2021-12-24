@@ -1,22 +1,6 @@
 <template>
   <div class="app-container">
-        <h2>发布新课程</h2>
-    <el-steps :active="active" finish-status="success" align-center>
-      <el-step
-        :title="active > 0 ? '已完成' : '步骤1'"
-        icon="el-icon-edit"
-        description="编辑课程信息"
-      ></el-step>
-      <el-step
-        :title="active > 1 ? '已完成' : '步骤2'"
-        description="创建课程大纲"
-      ></el-step>
-      <el-step
-        :title="active > 2 ? '已完成' : '步骤3'"
-        description="最终发布"
-      ></el-step>
-    </el-steps>
-    
+    <h2>添加课程</h2>
     <div class="myFrm">
       <el-form
         v-show="active == 0"
@@ -93,15 +77,7 @@
         </el-form-item>
       </el-form>
       <br />
-      <el-button type="primary" @click="previousStep" v-show="active > 0"
-        >上一步</el-button
-      >
-      <el-button type="primary" @click="submitForm" v-show="active < 1"
-        >保存并下一步</el-button
-      >
-      <el-button type="primary" @click="submitForm" v-show="active == 1"
-        >发布课程</el-button
-      >
+      <el-button type="primary" @click="submitForm">添加课程</el-button>
     </div>
   </div>
 </template>
@@ -148,12 +124,6 @@ export default {
         }
       });
     },
-    nextStep() {
-      this.active = this.active < 3 ? this.active + 1 : this.active;
-    },
-    previousStep() {
-      this.active = this.active > 0 ? this.active - 1 : this.active;
-    },
     handleChange(value) {
       this.course.subjectId = value;
     },
@@ -177,11 +147,20 @@ export default {
       if (this.active === 10) {
         save(this.course).then((resp) => {
           if (resp.code === 200) {
-            this.nextStep();
+            this.$confirm("添加课程成功, 是否添加章节?", "提示", {
+              confirmButtonText: "确定",
+              cancelButtonText: "取消",
+              type: "warning",
+            })
+              .then(() => {
+                this.$router.push({
+                  path: "/course/chapter",
+                });
+              })
+              .catch(() => {});
           }
         });
       }
-               this.nextStep();
     },
   },
 };
@@ -221,7 +200,7 @@ export default {
   height: 300px;
 }
 
-h2{
+h2 {
   text-align: center;
 }
 </style>
