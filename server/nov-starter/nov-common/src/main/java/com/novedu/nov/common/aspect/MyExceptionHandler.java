@@ -47,7 +47,6 @@ public class MyExceptionHandler {
         e.printStackTrace(new PrintStream(byteArrayOutputStream));
         //3.使用logback输出异常信息至控制台并保存到本地文件
         log.error(byteArrayOutputStream.toString());
-        //4.返回简单异常信息给接口调用方，而不是整个异常块
         return BaseResult.error("未知错误");
     }
 }

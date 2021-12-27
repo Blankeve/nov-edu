@@ -3,9 +3,33 @@
 <mapper namespace="com.novedu.nov.edu.mapper.EduCourseMapper">
 
 
-
     <select id="queryAll" resultType="EduCourse">
-       select * from edu_course
+        select *
+        from edu_course
+    </select>
+
+    <select id="queryPage" parameterType="EduCourseInfoVO" resultType="EduCourseInfoVO">
+        select teacher.id          as teacherId,
+               teacher.name        as teacherName,
+               course.id           as courseId,
+               course.title        as courseTitle,
+               course.lesson_num   as courseLessonNum,
+               course.status       as courseStatus,
+               course.view_count   as courseViewCount,
+               course.buy_count    as courseBuyCount,
+               course.cover        as courseCover,
+               course.price        as coursePrice,
+               course.create_time  as courseCreateTime,
+               course.update_time  as courseUpdateTime,
+               subject.id          as subjectId,
+               subject.title       as subjectTitle,
+               subject.sort        as subjectSort,
+               subject.create_time as subjectCreateTime,
+               subject.update_time as subjectUpdateTime
+        from edu_course course
+                 left join edu_teacher teacher on course.teacher_id = teacher.id
+                 left join edu_subject subject on course.subject_id = subject.id
+        order by course.title, course.teacher_id, course.create_time
     </select>
 
     <resultMap id="EduCourseMap" type="EduCourse">
@@ -38,29 +62,30 @@
     </resultMap>
 
     <select id="queryCoursesForTreeData" resultMap="EduCourseMap">
-       select
-        c1.id as cid,
-        c1.teacher_id as teacherId,
-        c1.subject_id as subjectId,
-        c1.title as title,
-        c1.price as price,
-        c1.lesson_num as lessonNum,
-        c1.buy_count as buyCount,
-        c1.view_count as viewCount,
-        c1.version as version,
-        c1.status as status,
-        c1.is_deleted as isDeleted,
-        c1.create_time as createTime,
-        c1.update_time as updateTime,
-        c2.id as ccid,
-        c2.course_id as courseId,
-        c2.title as ccTitle,
-        c2.sort as ccSort,
-        c2.create_time as ccCreateTime,
-        c2.update_time as ccUpdateTime,
-        c3.id as cccId,
-        c3.chapter_id as chapterId,
-        c3.title as cccTitle
-        from edu_course c1 left join edu_chapter c2 on c1.id = c2.course_id left join  edu_video c3 on c3.chapter_id = c2.id
+        select c1.id          as cid,
+               c1.teacher_id  as teacherId,
+               c1.subject_id  as subjectId,
+               c1.title       as title,
+               c1.price       as price,
+               c1.lesson_num  as lessonNum,
+               c1.buy_count   as buyCount,
+               c1.view_count  as viewCount,
+               c1.version     as version,
+               c1.status      as status,
+               c1.is_deleted  as isDeleted,
+               c1.create_time as createTime,
+               c1.update_time as updateTime,
+               c2.id          as ccid,
+               c2.course_id   as courseId,
+               c2.title       as ccTitle,
+               c2.sort        as ccSort,
+               c2.create_time as ccCreateTime,
+               c2.update_time as ccUpdateTime,
+               c3.id          as cccId,
+               c3.chapter_id  as chapterId,
+               c3.title       as cccTitle
+        from edu_course c1
+                 left join edu_chapter c2 on c1.id = c2.course_id
+                 left join edu_video c3 on c3.chapter_id = c2.id
     </select>
 </mapper>

@@ -1,10 +1,11 @@
 package com.novedu.nov.edu.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduCourse;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.novedu.nov.edu.entity.EduTeacher;
-import com.novedu.nov.edu.model.vo.EduCourseInfoVO;
+import com.novedu.nov.edu.entity.dto.EduCourseInfoDTO;
+import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 
 /**
  * <p>
@@ -16,13 +17,15 @@ import com.novedu.nov.edu.model.vo.EduCourseInfoVO;
  */
 public interface EduCourseService extends IService<EduCourse> {
 
-    BaseResult saveCourse(EduCourseInfoVO courseInfoVO);
+    BaseResult saveCourse(EduCourseInfoDTO eduCourseInfoDTO);
 
-    BaseResult findCourseDetail(EduCourseInfoVO courseInfoVO);
+    BaseResult queryCourseDetail(EduCourseInfoVO courseInfoVO);
 
-    BaseResult queryCoursesForTreeData(EduCourseInfoVO courseInfoVO);
+    BaseResult queryCourseTree(EduCourseInfoVO courseInfoVO);
 
     BaseResult queryCourseList(EduCourseInfoVO courseInfoVO);
 
     BaseResult queryCoursesByTeacherId(Long eduTeacher);
+
+    BaseResult queryCoursePage(Page page, EduCourseInfoVO courseInfoVO);
 }

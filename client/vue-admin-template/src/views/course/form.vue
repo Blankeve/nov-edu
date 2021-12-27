@@ -144,7 +144,7 @@ export default {
       this.course.cover = res.data.path;
     },
     submitForm() {
-      if (this.active === 10) {
+
         save(this.course).then((resp) => {
           if (resp.code === 200) {
             this.$confirm("添加课程成功, 是否添加章节?", "提示", {
@@ -154,13 +154,13 @@ export default {
             })
               .then(() => {
                 this.$router.push({
-                  path: "/course/chapter",
+                  path: "/chapter/save",
                 });
               })
               .catch(() => {});
           }
         });
-      }
+      
     },
   },
 };

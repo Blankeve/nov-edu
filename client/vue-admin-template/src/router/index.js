@@ -97,33 +97,83 @@ export const constantRoutes = [
   {
     path: '/course',
     component: Layout,
-    redirect: '/course/list',
+    redirect: '/course/tree',
     name: '课程管理',
     meta: { title: '课程管理', icon: 'el-icon-s-help' },
     children: [{
+      path: 'tree',
+      name: 'course-list',
+      component: () => import('@/views/course/tree'),
+      meta: { title: '课程结构', icon: 'el-icon-s-help' }
+    },
+    {
       path: 'list',
-      name: 'list',
+      name: 'course-list',
       component: () => import('@/views/course/index'),
       meta: { title: '课程列表', icon: 'el-icon-s-help' }
     },
     {
       path: 'save',
-      name: 'save',
+      name: 'course-save',
       component: () => import('@/views/course/form'),
       meta: { title: '添加课程', icon: 'el-icon-s-help' }
-    },
-    {
-      path: 'chapter',
-      name: 'chapter',
-      component: () => import('@/views/course/chapter'),
-      meta: { title: '添加章节', icon: 'el-icon-s-help' }
-    },
-    {
-      path: 'video',
-      name: 'video',
-      component: () => import('@/views/course/video'),
-      meta: { title: '添加小节', icon: 'el-icon-s-help' }
-    },
+    }
+    ]
+  },
+  {
+    path: '/chapter',
+    component: Layout,
+    redirect: '/chapter/list',
+    name: '章节管理',
+    meta: { title: '章节管理', icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'list',
+        name: 'chapter-list',
+        component: () => import('@/views/chapter/index'),
+        meta: { title: '章节列表', icon: 'el-icon-s-help' }
+      },
+      {
+        path: 'save',
+        name: 'chapter-save',
+        component: () => import('@/views/chapter/form'),
+        meta: { title: '添加章节', icon: 'el-icon-s-help' }
+      },
+      {
+        path: 'edit',
+        name: 'chapter-edit',
+        component: () => import('@/views/chapter/form'),
+        meta: { title: '编辑章节', icon: 'el-icon-s-help' },
+        hidden: true
+      }
+    ]
+  },
+  {
+    path: '/video',
+    component: Layout,
+    redirect: '/video/list',
+    name: '小节管理',
+    meta: { title: '小节管理', icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'list',
+        name: 'video-list',
+        component: () => import('@/views/video/index'),
+        meta: { title: '小节列表', icon: 'el-icon-s-help' }
+      },
+      {
+        path: 'save',
+        name: 'video-save',
+        component: () => import('@/views/video/form'),
+        meta: { title: '添加小节', icon: 'el-icon-s-help' }
+      },
+      {
+        path: 'edit',
+        name: 'video-edit',
+        component: () => import('@/views/video/form'),
+        meta: { title: '编辑小节', icon: 'el-icon-s-help' },
+        hidden: true
+      }
     ]
   },
   {

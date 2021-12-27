@@ -46,55 +46,91 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="name" align="center">
+      <el-table-column label="小节标题" align="center">
         <template slot-scope="scope">
-          {{ scope.row.name }}
+          {{ scope.row.videoTitle }}
         </template>
       </el-table-column>
 
-      <el-table-column label="intro" align="center">
+      <el-table-column label="第几小节" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.intro }}</span>
+          {{ scope.row.videoSort }}
         </template>
       </el-table-column>
 
-      <el-table-column label="career" width="400" align="center">
+      <el-table-column label="视频名称" align="center">
         <template slot-scope="scope">
-          {{ scope.row.career }}
+          <span>{{ scope.row.videoOriginalName }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column label="level"  align="center">
+      <el-table-column label="视频路径" align="center">
         <template slot-scope="scope">
-          {{ scope.row.level == 1 ? "高级讲师" : "首席讲师" }}
+          <span>{{ scope.row.videoSourceId }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column label="avatar" width="120" align="center">
+      <el-table-column label="视频时长" align="center">
         <template slot-scope="scope">
-          <div class="demo-image__preview">
-            <el-image
-              :src="scope.row.avatar"
-              alt="图片获取失败"
-              title="点击查看大图"
-              width="100px"
-              :preview-src-list="[scope.row.avatar]"
-            />
-          </div>
+          <span>{{ scope.row.videoDuration }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column
-        align="center"
-        prop="created_at"
-        label="joinDate"
-      >
+      <el-table-column label="视频大小" align="center">
+        <template slot-scope="scope">
+          <span>{{ scope.row.videoSize }}</span>
+        </template>
+      </el-table-column>
+
+      <el-table-column label="是否试听" align="center">
+        <template slot-scope="scope">
+          <span>{{ scope.row.videoIsFree }}</span>
+        </template>
+      </el-table-column>
+
+      <el-table-column label="播放次数" align="center">
+        <template slot-scope="scope">
+          <span>{{ scope.row.videoPlayCount }}</span>
+        </template>
+      </el-table-column>
+
+      <el-table-column label="视频状态" align="center">
+        <template slot-scope="scope">
+          <span>{{ scope.row.videoStatus }}</span>
+        </template>
+      </el-table-column>
+
+      <el-table-column label="课程讲师" align="center">
+        <template slot-scope="scope">
+          {{ scope.row.teacherName }}
+        </template>
+      </el-table-column>
+
+      <el-table-column label="所属课程" align="center">
+        <template slot-scope="scope">
+          <span>{{ scope.row.courseTitle }}</span>
+        </template>
+      </el-table-column>
+
+      <el-table-column label="所属章节" align="center">
+        <template slot-scope="scope">
+          <span>{{ scope.row.chapterTitle }}</span>
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" prop="created_at" label="创建时间">
         <template slot-scope="scope">
           <i class="el-icon-time" />
-          <span>{{ scope.row.joinDate }}</span>
+          <span>{{ scope.row.videoCreateTime }}</span>
         </template>
       </el-table-column>
 
+      <el-table-column align="center" prop="created_at" label="更新时间">
+        <template slot-scope="scope">
+          <i class="el-icon-time" />
+          <span>{{ scope.row.videoUpdateTime }}</span>
+        </template>
+      </el-table-column>
       <el-table-column align="center" label="操作" width="200">
         <template slot-scope="scope">
           <el-button @click="handleEdit(scope.row.id)">编辑</el-button>
@@ -122,7 +158,7 @@
 </template>
 
 <script>
-import { getList, removeById } from "@/api/teacher";
+import { getPage, removeById } from "@/api/video";
 
 export default {
   filters: {
@@ -160,7 +196,7 @@ export default {
         this.form.size > 1
           ? [this.form.size / 2, this.form.size, this.form.size * 2]
           : [this.form.size, this.form.size * 2];
-      getList(this.form).then((response) => {
+      getPage(this.form).then((response) => {
         let data = response.data;
         this.form.current = data.current;
         this.form.size = data.size;

@@ -2,4 +2,39 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.novedu.nov.edu.mapper.EduVideoMapper">
 
+    <select id="queryPage" parameterType="EduCourseInfoVO" resultType="EduCourseInfoVO">
+        select teacher.id                as teacherId,
+               teacher.name              as teacherName,
+               course.id                 as courseId,
+               course.title              as courseTitle,
+               course.lesson_num         as courseLessonNum,
+               course.status             as courseStatus,
+               course.view_count         as courseViewCount,
+               course.buy_count          as courseBuyCount,
+               course.cover              as courseCover,
+               course.price              as coursePrice,
+               course.create_time        as courseCreateTime,
+               course.update_time        as courseUpdateTime,
+               chapter.id                as chapterId,
+               chapter.title             as chapterTitle,
+               chapter.sort              as chapterSort,
+               chapter.update_time       as chapterUpdateTime,
+               chapter.create_time       as chapterCreateTime,
+               video.id                  as videoId,
+               video.title               as videoTitle,
+               video.status              as videoStatus,
+               video.sort                as videoSort,
+               video.duration            as videoDuration,
+               video.is_free             as videoIsFree,
+               video.play_count          as videoPlayCount,
+               video.video_source_id     as videoSourceId,
+               video.video_original_name as videoOriginalName,
+               video.create_time         as videoCreateTime,
+               video.update_time         as videoUpdateTime
+        from edu_video video
+                 left join edu_chapter chapter on video.chapter_id = chapter.id
+                 left join edu_course course on chapter.course_id = course.id
+                 left join edu_teacher teacher on course.teacher_id = teacher.id
+        order by course.title,teacher.name,chapter.sort, video.sort
+    </select>
 </mapper>

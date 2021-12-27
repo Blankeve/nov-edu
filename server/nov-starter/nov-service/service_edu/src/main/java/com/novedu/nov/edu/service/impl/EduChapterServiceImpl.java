@@ -1,10 +1,14 @@
 package com.novedu.nov.edu.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduChapter;
+import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 import com.novedu.nov.edu.mapper.EduChapterMapper;
 import com.novedu.nov.edu.service.EduChapterService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -18,6 +22,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChapter> implements EduChapterService {
 
+    @Autowired
+    EduChapterMapper chapterMapper;
+
     @Override
     public BaseResult saveChapter(EduChapter chapter) {
         save(chapter);
@@ -28,4 +35,11 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
     public BaseResult queryChaptersByCourseId(Long id) {
         return BaseResult.success(query().eq("course_id",id).list());
     }
+
+    @Override
+    public BaseResult queryChapterPage(Page page, EduCourseInfoVO courseInfoVO) {
+        return BaseResult.success(chapterMapper.queryPage(page,null));
+    }
+
+
 }

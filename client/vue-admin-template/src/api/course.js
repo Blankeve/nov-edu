@@ -24,6 +24,14 @@ export function save(data) {
     })
   }
 
+  export function getPage(params) {
+    return request({
+      url: '/edu/course/page',
+      method: 'post',
+      params
+    })
+  }
+
   export function getListByTeacherId(id) {
     return request({
       url: '/edu/course/list-teacher',

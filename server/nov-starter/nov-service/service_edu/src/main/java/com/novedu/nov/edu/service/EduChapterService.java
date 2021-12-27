@@ -1,8 +1,10 @@
 package com.novedu.nov.edu.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduChapter;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 
 /**
  * <p>
@@ -17,4 +19,6 @@ public interface EduChapterService extends IService<EduChapter> {
     BaseResult saveChapter(EduChapter chapter);
 
     BaseResult queryChaptersByCourseId(Long id);
+
+    BaseResult queryChapterPage(Page page, EduCourseInfoVO courseInfoVO);
 }

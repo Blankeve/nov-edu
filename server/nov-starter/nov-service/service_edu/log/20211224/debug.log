@@ -566,7 +566,7 @@
 2021-12-24 11:00:05.505 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationModelsProvider-Reading parameters models for handlerMethod |findCourseDetail|
 2021-12-24 11:00:05.506 [main] DEBUG springfox.documentation.spring.web.scanners.ApiModelReader-Generated parameter model id: BaseResult, name: BaseResult, schema: {} models
 2021-12-24 11:00:05.506 [main] DEBUG springfox.documentation.spring.web.scanners.ApiModelReader-Adding a new model with key BaseResult
-2021-12-24 11:00:05.514 [main] DEBUG springfox.documentation.spring.web.readers.parameter.ModelAttributeParameterExpander-Expanding parameter type: com.novedu.nov.edu.model.vo.EduCourseInfoVO
+2021-12-24 11:00:05.514 [main] DEBUG springfox.documentation.spring.web.readers.parameter.ModelAttributeParameterExpander-Expanding parameter type: com.novedu.nov.edu.entity.vo.EduCourseInfoVO
 2021-12-24 11:00:05.522 [main] DEBUG springfox.documentation.spring.web.readers.parameter.ModelAttributeParameterExpander-Attempting to expand expandable field: subjectId
 2021-12-24 11:00:05.523 [main] DEBUG springfox.documentation.spring.web.readers.parameter.ModelAttributeParameterExpander-Expanding parameter type: java.lang.Integer[]
 2021-12-24 11:00:05.525 [main] DEBUG springfox.documentation.spring.web.readers.parameter.ModelAttributeParameterExpander-Attempting to expand collection/array field: subjectId

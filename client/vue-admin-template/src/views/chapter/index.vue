@@ -46,55 +46,52 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="name" align="center">
+      <el-table-column label="章节标题" align="center">
         <template slot-scope="scope">
-          {{ scope.row.name }}
+          {{ scope.row.chapterTitle }}
         </template>
       </el-table-column>
 
-      <el-table-column label="intro" align="center">
+      <el-table-column label="第几章节" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.intro }}</span>
+          <span>{{ scope.row.chapterSort }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column label="career" width="400" align="center">
+  <el-table-column label="课程讲师" align="center">
         <template slot-scope="scope">
-          {{ scope.row.career }}
+          {{ scope.row.teacherName }}
         </template>
       </el-table-column>
 
-      <el-table-column label="level"  align="center">
+      <el-table-column label="所属课程" align="center">
         <template slot-scope="scope">
-          {{ scope.row.level == 1 ? "高级讲师" : "首席讲师" }}
+          <span>{{ scope.row.courseTitle}}</span>
         </template>
       </el-table-column>
 
-      <el-table-column label="avatar" width="120" align="center">
-        <template slot-scope="scope">
-          <div class="demo-image__preview">
-            <el-image
-              :src="scope.row.avatar"
-              alt="图片获取失败"
-              title="点击查看大图"
-              width="100px"
-              :preview-src-list="[scope.row.avatar]"
-            />
-          </div>
-        </template>
-      </el-table-column>
 
       <el-table-column
         align="center"
         prop="created_at"
-        label="joinDate"
+        label="创建时间"
       >
         <template slot-scope="scope">
           <i class="el-icon-time" />
-          <span>{{ scope.row.joinDate }}</span>
+          <span>{{ scope.row.chapterCreateTime }}</span>
         </template>
       </el-table-column>
 
+   <el-table-column
+        align="center"
+        prop="created_at"
+        label="更新时间"
+      >
+        <template slot-scope="scope">
+          <i class="el-icon-time" />
+          <span>{{ scope.row.chapterUpdateTime }}</span>
+        </template>
+      </el-table-column>
       <el-table-column align="center" label="操作" width="200">
         <template slot-scope="scope">
           <el-button @click="handleEdit(scope.row.id)">编辑</el-button>
@@ -122,7 +119,7 @@
 </template>
 
 <script>
-import { getList, removeById } from "@/api/teacher";
+import { getPage, removeById } from "@/api/chapter";
 
 export default {
   filters: {
@@ -160,7 +157,7 @@ export default {
         this.form.size > 1
           ? [this.form.size / 2, this.form.size, this.form.size * 2]
           : [this.form.size, this.form.size * 2];
-      getList(this.form).then((response) => {
+      getPage(this.form).then((response) => {
         let data = response.data;
         this.form.current = data.current;
         this.form.size = data.size;

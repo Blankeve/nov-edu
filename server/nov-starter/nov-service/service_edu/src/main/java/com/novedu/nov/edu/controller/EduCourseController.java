@@ -1,9 +1,10 @@
 package com.novedu.nov.edu.controller;
 
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
-import com.novedu.nov.edu.entity.EduTeacher;
-import com.novedu.nov.edu.model.vo.EduCourseInfoVO;
+import com.novedu.nov.edu.entity.dto.EduCourseInfoDTO;
+import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 import com.novedu.nov.edu.service.EduCourseService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,26 +27,35 @@ public class EduCourseController {
     EduCourseService eduCourseService;
 
     @PostMapping("/save")
-    public BaseResult saveCourse(@RequestBody EduCourseInfoVO courseInfoVO){
-        return eduCourseService.saveCourse(courseInfoVO);
+    public BaseResult saveCourse(@RequestBody EduCourseInfoDTO courseInfoDTO) {
+        return eduCourseService.saveCourse(courseInfoDTO);
     }
 
     @PostMapping("/detail")
-    public BaseResult findCourseDetail(EduCourseInfoVO courseInfoVO){
-        return eduCourseService.findCourseDetail(courseInfoVO);
+    public BaseResult queryCourseDetail(EduCourseInfoVO courseInfoVO) {
+        return eduCourseService.queryCourseDetail(courseInfoVO);
     }
 
     @PostMapping("/list")
-    public BaseResult queryCourseList(EduCourseInfoVO courseInfoVO){
+    public BaseResult queryCourseList(EduCourseInfoVO courseInfoVO) {
         return eduCourseService.queryCourseList(courseInfoVO);
     }
+
     @PostMapping("/list-teacher")
-    public BaseResult queryCourseByTeacherId(Long id){
+    public BaseResult queryCourseByTeacherId(Long id) {
         return eduCourseService.queryCoursesByTeacherId(id);
     }
-    @PostMapping("/tree")
-    public BaseResult queryCoursesForTreeData(EduCourseInfoVO courseInfoVO){
-        return eduCourseService.queryCoursesForTreeData(courseInfoVO);
+
+    @PostMapping("/page")
+    public BaseResult queryCoursePage(Page page, EduCourseInfoVO courseInfoVO) {
+        return eduCourseService.queryCoursePage(page, courseInfoVO);
     }
+
+    @PostMapping("/tree")
+    public BaseResult queryCourseTree(EduCourseInfoVO courseInfoVO) {
+        return eduCourseService.queryCourseTree(courseInfoVO);
+    }
+
+
 }
 

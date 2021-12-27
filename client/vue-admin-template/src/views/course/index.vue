@@ -1,92 +1,193 @@
 <template>
   <div class="app-container">
-    <el-input placeholder="输入课程分类进行过滤" v-model="filterText">
-    </el-input>
-    <br />
-    <br />
-    <div class="down-tree" style="width: 100%">
-      <el-button type="text" size="mini" @click="() => appendRoot(data)">
-        添加课程
-      </el-button>
-      <el-button type="text" size="mini" @click="() => (expandAll = true)">
-        展开所有
-      </el-button>
-      <el-button type="text" size="mini" @click="() => (expandAll = false)">
-        收缩所有
-      </el-button>
-      <el-tree
-        :data="data"
-        show-checkbox
-        node-key="id"
-        ref="tree"
-        default-expand-all
-        :filter-node-method="filterNode"
-        @node-drag-start="handleDragStart"
-        @node-drag-enter="handleDragEnter"
-        @node-drag-leave="handleDragLeave"
-        @node-drag-over="handleDragOver"
-        @node-drag-end="handleDragEnd"
-        @node-drop="handleDrop"
-        :expand-on-click-node="false"
+    <el-form :inline="true" ref="form" :model="form">
+      <el-form-item prop="name">
+        <el-input
+          class="mid-input"
+          v-model="form.name"
+          placeholder="姓名"
+        ></el-input>
+      </el-form-item>
+
+      <el-form-item prop="level">
+        <el-select v-model="form.level" placeholder="讲师等级">
+          <el-option label="高级讲师" value="1"></el-option>
+          <el-option label="首席讲师" value="2"></el-option>
+        </el-select>
+      </el-form-item>
+
+      <el-form-item prop="createTime">
+        <el-date-picker
+          v-model="form.createTime"
+          type="datetime"
+          placeholder="入驻时间"
+          value-format="yyyy-MM-dd HH:mm:ss"
+        >
+        </el-date-picker>
+      </el-form-item>
+
+      <el-form-item>
+        <el-button type="primary" @click="onSubmit">查询</el-button>
+        <el-button @click="resetForm('form')">重置</el-button>
+      </el-form-item>
+    </el-form>
+
+    <el-table
+      v-loading="listLoading"
+      :data="list"
+      element-loading-text="Loading"
+      border
+      fit
+      highlight-current-row
+    >
+      <el-table-column align="center" label="#" width="50">
+        <template slot-scope="scope">
+          {{ scope.$index + 1 }}
+        </template>
+      </el-table-column>
+
+      <el-table-column label="课程标题" align="center">
+        <template slot-scope="scope">
+          {{ scope.row.courseTitle }}
+        </template>
+      </el-table-column>
+
+  <el-table-column label="课程讲师" align="center">
+        <template slot-scope="scope">
+          {{ scope.row.teacherName }}
+        </template>
+      </el-table-column>
+
+  <el-table-column label="课程分类" align="center">
+        <template slot-scope="scope">
+          {{ scope.row.subjectTitle }}
+        </template>
+      </el-table-column>
+
+       <el-table-column label="课程价格" align="center">
+        <template slot-scope="scope">
+          {{ scope.row.coursePrice }}
+        </template>
+      </el-table-column>
+
+       <el-table-column label="课程课时" align="center">
+        <template slot-scope="scope">
+          {{ scope.row.courseLessonNum }}
+        </template>
+      </el-table-column>
+
+       <el-table-column label="课程封面" width="120" align="center">
+        <template slot-scope="scope">
+          <div class="demo-image__preview">
+            <el-image
+              :src="scope.row.courseCover"
+              alt="图片获取失败"
+              title="点击查看大图"
+              width="100px"
+              :preview-src-list="[scope.row.courseCover]"
+            />
+          </div>
+        </template>
+      </el-table-column>
+
+       <el-table-column label="销售数量" align="center">
+        <template slot-scope="scope">
+          {{ scope.row.courseBuyCount }}
+        </template>
+      </el-table-column>
+
+       <el-table-column label="浏览数量" align="center">
+        <template slot-scope="scope">
+          {{ scope.row.courseViewCount }}
+        </template>
+      </el-table-column>
+
+       <el-table-column label="level"  align="center">
+        <template slot-scope="scope">
+          {{ scope.row.courseStatus == 1 ? "已上架" : "未上架" }}
+        </template>
+      </el-table-column>
+
+       <el-table-column label="课程简介" align="center">
+        <template slot-scope="scope">
+          {{ scope.row.courseId}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        align="center"
+        prop="created_at"
+        label="创建时间"
       >
-        <span class="custom-tree-node" slot-scope="{ node, data }">
-          <span>{{ data.title }}</span>
-          <span>
-            <el-button type="text" size="mini" @click="() => append(data)">
-              {{
-                node.data.price
-                  ? ""
-                  : node.data.courseId
-                  ? "添加章节"
-                  : node.data.chapterId
-                  ? "添加小节"
-                  : ""
-              }}
-            </el-button>
-            <el-button type="text" size="mini" @click="() => edit(node, data)">
-              编辑{{
-                node.data.price
-                  ? "课程"
-                  : node.data.courseId
-                  ? "章节"
-                  : node.data.chapterId
-                  ? "小节"
-                  : ""
-              }}
-            </el-button>
-            <el-button
-              type="text"
-              size="mini"
-              @click="() => remove(node, data)"
-            >
-              删除
-            </el-button>
-          </span>
-        </span>
-      </el-tree>
+        <template slot-scope="scope">
+          <i class="el-icon-time" />
+          <span>{{ scope.row.courseCreateTime }}</span>
+        </template>
+      </el-table-column>
+
+   <el-table-column
+        align="center"
+        prop="created_at"
+        label="更新时间"
+      >
+        <template slot-scope="scope">
+          <i class="el-icon-time" />
+          <span>{{ scope.row.courseUpdateTime }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column align="center" label="操作" width="200">
+        <template slot-scope="scope">
+          <el-button @click="handleEdit(scope.row.id)">编辑</el-button>
+
+          <el-button type="danger" @click="handleDelete(scope.row.id)"
+            >删除</el-button
+          >
+        </template>
+      </el-table-column>
+    </el-table>
+    <div class="block">
+      <el-pagination
+        background
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="form.current"
+        :page-sizes="sizes"
+        :page-size="form.size"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="form.total"
+      >
+      </el-pagination>
     </div>
-    <br />
-    <el-button type="primary" @click="onSubmit">保存</el-button>
-    <el-button @click="initTree">重置</el-button>
   </div>
 </template>
 
 <script>
-let id = 1000;
+import { getPage, removeById } from "@/api/course";
 
-import { getTree, update } from "@/api/course";
 export default {
-  watch: {
-    filterText(val) {
-      this.$refs.tree.filter(val);
+  filters: {
+    statusFilter(status) {
+      const statusMap = {
+        published: "success",
+        draft: "gray",
+        deleted: "danger",
+      };
+      return statusMap[status];
     },
   },
   data() {
     return {
-      filterText: "",
-      data: [],
-      resetData: [],
-      expandAll: false,
+      list: null,
+      listLoading: true,
+      form: {
+        name: "",
+        level: "",
+        createTime: "",
+        current: 1,
+        size: 8,
+        total: 0,
+      },
+      sizes: [],
     };
   },
   created() {
@@ -94,187 +195,56 @@ export default {
   },
   methods: {
     fetchData() {
-      getTree().then((resp) => {
-        if (resp.code === 200) {
-          // id = resp.data.lastId;
-          if (resp.data) {
-            this.data = resp.data;
-            this.resetData = JSON.parse(JSON.stringify(resp.data));
-          }
-        }
+      this.listLoading = true;
+      this.sizes =
+        this.form.size > 1
+          ? [this.form.size / 2, this.form.size, this.form.size * 2]
+          : [this.form.size, this.form.size * 2];
+      getPage(this.form).then((response) => {
+        let data = response.data;
+        this.form.current = data.current;
+        this.form.size = data.size;
+        this.form.total = data.total;
+        this.list = data.records;
+        this.listLoading = false;
       });
     },
-    initTree() {
-      this.data = JSON.parse(JSON.stringify(this.resetData));
+    handleCurrentChange(p) {
+      this.form.current = p;
+      this.fetchData();
     },
-    onSubmit() {
-      update({ eduSubjects: this.data }).then((resp) => {
-        this.$message({
-          message: "保存成功",
-          type: resp.code === 200 ? "success" : "error",
-        });
+    handleSizeChange(s) {
+      this.form.size = s;
+      this.fetchData();
+    },
+    handleDelete(id) {
+      removeById(id).then((response) => {
         this.fetchData();
       });
     },
-    filterNode(value, data) {
-      if (!value) return true;
-      return data.title.indexOf(value) !== -1;
-    },
-    append(data) {
-      if (data.courseId) {
-        this.$router.push({
-          path: "/course/chapter",
-        });
-      }
-      else if(data.chapterId){
-        this.$router.push({
-          path: "/course/video",
-        });
-      }
-    },
-    edit(node, data) {
-        if (data.courseId) {
-        this.$router.push({
-          path: "/course/chapter",
-          query: {
-            chapter: data,
-          },
-        });
-      }
-      else if(data.chapterId){
-        this.$router.push({
-          path: "/course/video",
-          query: {
-            video: data,
-          },
-        });
-      }
-    },
-    appendRoot(data) {
+    handleEdit(id) {
       this.$router.push({
-        path: "/course/save",
+        path: "/teacher/edit",
+        query: {
+          id: id,
+        },
       });
     },
-    remove(node, data) {
-      const parent = node.parent;
-      const children = parent.data.children || parent.data;
-      const index = children.findIndex((d) => d.id === data.id);
-      children.splice(index, 1);
+    onSubmit() {
+      this.fetchData();
     },
-
-    renderContent(h, { node, data, store }) {
-      return (
-        <span class="custom-tree-node">
-          <span>{node.title}</span>
-          <span>
-            <el-button
-              size="mini"
-              type="text"
-              on-click={() => this.append(data)}
-            >
-              Append
-            </el-button>
-            <el-button
-              size="mini"
-              type="text"
-              on-click={() => this.remove(node, data)}
-            >
-              Delete
-            </el-button>
-          </span>
-        </span>
-      );
-    },
-
-    handleDragStart(node, ev) {
-      console.log("drag start", node);
-    },
-    handleDragEnter(draggingNode, dropNode, ev) {
-      console.log("tree drag enter: ", dropNode.title);
-    },
-    handleDragLeave(draggingNode, dropNode, ev) {
-      console.log("tree drag leave: ", dropNode.title);
-    },
-    handleDragOver(draggingNode, dropNode, ev) {
-      console.log("tree drag over: ", dropNode.title);
-    },
-    handleDragEnd(draggingNode, dropNode, dropType, ev) {
-      console.log("tree drag end: ", dropNode && dropNode.title, dropType);
-    },
-    handleDrop(draggingNode, dropNode, dropType, ev) {
-      console.log("tree drop: ", dropNode.title, dropType);
-    },
-    allowDrop(draggingNode, dropNode, type) {
-      if (!dropNode.data.title) {
-        return type !== "inner";
-      } else {
-        return true;
-      }
-    },
-    allowDrag(draggingNode) {
-      return draggingNode.data.title != undefined;
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
     },
   },
 };
 </script>
 
 <style>
-.custom-tree-node {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 14px;
-  padding-right: 8px;
+.mid-input {
+  width: 80px;
 }
-
-.down-tree {
-  flex: 1;
-  max-width: 1200px;
-  height: 678px;
-  background: rgba(245, 248, 250, 1);
-  border-radius: 3px;
-  border: 1px solid rgba(211, 219, 222, 1);
-  margin-left: 12px;
-  padding: 14px;
-}
-
-.el-tree-node__label {
-  font-size: 12px;
-}
-
-.el-tree .el-tree-node__expand-icon.expanded {
-  -webkit-transform: rotate(0deg);
-  transform: rotate(0deg);
-}
-.el-tree .el-icon-caret-right:before {
-  background: url("../../icons/png/folder.png") no-repeat;
-  content: "";
-  display: block;
-  width: 28px;
-  height: 28px;
-  font-size: 28px;
-  background-size: 25px;
-}
-
-.el-tree-node__expand-icon.is-leaf::before {
-  background: url("../../icons/png/file.png") no-repeat;
-  content: "";
-  display: block;
-  width: 28px;
-  height: 28px;
-  font-size: 28px;
-  background-size: 25px;
-}
-
-.el-tree-node__content {
-  background: #f5f8fa;
-  height: 36px;
-}
-
-.el-tree-node.is-current > .el-tree-node__content {
-  background-color: #fde9be !important;
-  color: #333333;
+.el-pagination {
+  text-align: center;
 }
 </style>
-
