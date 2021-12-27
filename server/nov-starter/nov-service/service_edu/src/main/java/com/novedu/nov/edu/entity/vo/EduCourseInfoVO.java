@@ -71,11 +71,11 @@ public class EduCourseInfoVO {
     @ApiModelProperty(value = "课程状态 0未发布  1已发布")
     private Integer courseStatus;
 
-    @TableField(value = "create_time", fill = FieldFill.INSERT)
+
     @ApiModelProperty(value = "创建时间")
     private Date courseCreateTime;
 
-    @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
+
     @ApiModelProperty(value = "更新时间")
     private Date courseUpdateTime;
 
@@ -95,11 +95,11 @@ public class EduCourseInfoVO {
     @ApiModelProperty(value = "显示排序")
     private Integer chapterSort;
 
-    @TableField(value = "create_time", fill = FieldFill.INSERT)
+
     @ApiModelProperty(value = "创建时间")
     private Date chapterCreateTime;
 
-    @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
+
     @ApiModelProperty(value = "更新时间")
     private Date chapterUpdateTime;
 
@@ -140,11 +140,11 @@ public class EduCourseInfoVO {
     @ApiModelProperty(value = "乐观锁")
     private Long videoVersion;
 
-    @TableField(value = "create_time", fill = FieldFill.INSERT)
+
     @ApiModelProperty(value = "创建时间")
     private Date videoCreateTime;
 
-    @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
+
     @ApiModelProperty(value = "更新时间")
     private Date videoUpdateTime;
 }
