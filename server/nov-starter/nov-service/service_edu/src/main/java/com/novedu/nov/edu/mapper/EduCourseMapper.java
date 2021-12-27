@@ -22,7 +22,7 @@ import java.util.List;
 @Repository
 public interface EduCourseMapper extends BaseMapper<EduCourse> {
 
-        List<EduCourse> queryCoursesForTreeData();
+        List<EduCourse> queryCourseTree();
 
         List<EduCourse> queryAll();
 

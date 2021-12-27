@@ -75,7 +75,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     @Override
     public BaseResult queryCourseTree(EduCourseInfoVO courseInfoVO) {
-        return BaseResult.success(courseMapper.queryCoursesForTreeData());
+        return BaseResult.success(courseMapper.queryCourseTree());
     }
 
     @Override
