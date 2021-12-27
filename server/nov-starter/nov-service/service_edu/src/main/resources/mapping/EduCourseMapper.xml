@@ -57,7 +57,7 @@
         </collection>
     </resultMap>
 
-    <select id="queryCoursesForTreeData" resultMap="EduCourseMap">
+    <select id="queryCourseTree" resultMap="EduCourseMap">
         select c1.id          as cid,
                c1.teacher_id  as teacherId,
                c1.subject_id  as subjectId,

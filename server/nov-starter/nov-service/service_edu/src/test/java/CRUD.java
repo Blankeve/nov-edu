@@ -31,7 +31,7 @@ public class CRUD {
 
     @Test
     public void test2(){
-        List<EduCourse> eduCourses = eduCourseMapper.queryCoursesForTreeData();
+        List<EduCourse> eduCourses = eduCourseMapper.queryCourseTree();
         System.out.println(eduCourses.size());
     }
 }
