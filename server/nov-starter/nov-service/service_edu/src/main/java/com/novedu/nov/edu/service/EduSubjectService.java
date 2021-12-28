@@ -21,6 +21,8 @@ public interface EduSubjectService extends IService<EduSubject> {
 
     BaseResult<Map> getSubjects();
 
+    BaseResult<List<Integer>> getParentSubjects(Integer id);
+
     BaseResult addSubjects(List<EduSubject> subjects);
 
     BaseResult removeSubjects(List<EduSubject> subjects);

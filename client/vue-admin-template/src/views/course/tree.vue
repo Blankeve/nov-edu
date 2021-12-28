@@ -74,7 +74,7 @@
 <script>
 let id = 1000;
 
-import { getTree, update } from "@/api/course";
+import { getTree, update ,removeById } from "@/api/course";
 export default {
   watch: {
     filterText(val) {
@@ -121,31 +121,40 @@ export default {
       return data.title.indexOf(value) !== -1;
     },
     append(data) {
-      if (data.courseId) {
+      if (data.subjectId) {
+        this.$router.push({
+          path: "/course/save",
+        });
+      } else if (data.courseId) {
         this.$router.push({
           path: "/chapter/save",
         });
-      }
-      else if(data.chapterId){
+      } else if (data.chapterId) {
         this.$router.push({
           path: "/video/save",
         });
       }
     },
     edit(node, data) {
-        if (data.courseId) {
+      if (data.subjectId) {
+        this.$router.push({
+          path: "/course/edit",
+          query: {
+            course: data.id,
+          },
+        });
+      } else if (data.courseId) {
         this.$router.push({
           path: "/chapter/edit",
           query: {
-            chapter: data,
+            chapter: data.id,
           },
         });
-      }
-      else if(data.chapterId){
+      } else if (data.chapterId) {
         this.$router.push({
           path: "/video/edit",
           query: {
-            video: data,
+            video: data.id,
           },
         });
       }
@@ -156,10 +165,12 @@ export default {
       });
     },
     remove(node, data) {
-      const parent = node.parent;
-      const children = parent.data.children || parent.data;
-      const index = children.findIndex((d) => d.id === data.id);
-      children.splice(index, 1);
+      removeById(data.id).then(resp=>{
+        if(resp.code === 200){
+        this.$message.success("删除成功!");
+        this.fetchData();
+        }
+      })
     },
 
     renderContent(h, { node, data, store }) {

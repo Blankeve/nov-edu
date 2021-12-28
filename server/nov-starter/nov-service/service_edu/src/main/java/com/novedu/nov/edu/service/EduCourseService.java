@@ -19,7 +19,7 @@ public interface EduCourseService extends IService<EduCourse> {
 
     BaseResult saveCourse(EduCourseInfoDTO eduCourseInfoDTO);
 
-    BaseResult queryCourseDetail(EduCourseInfoVO courseInfoVO);
+    BaseResult queryCourseDetail(Integer id);
 
     BaseResult queryCourseTree(EduCourseInfoVO courseInfoVO);
 
@@ -28,4 +28,8 @@ public interface EduCourseService extends IService<EduCourse> {
     BaseResult queryCoursesByTeacherId(Long eduTeacher);
 
     BaseResult queryCoursePage(Page page, EduCourseInfoVO courseInfoVO);
+
+    BaseResult queryCourseById(EduCourse id);
+
+    BaseResult removeCourse(Integer id);
 }

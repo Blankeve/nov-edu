@@ -40,6 +40,31 @@ public class EduSubjectServiceImpl extends ServiceImpl<EduSubjectMapper, EduSubj
         return BaseResult.success(result);
     }
 
+    public BaseResult<List<Integer>> getParentSubjects(Integer id) {
+        List<EduSubject> eduSubjects = list();
+        List<Integer> nodes = new ArrayList<>();
+        nodes.add(id);
+        for (EduSubject o : eduSubjects) {
+            if (o.getId().equals(id)) {
+                addParentSubject(nodes, eduSubjects, o.getParentId());
+                break;
+            }
+        }
+        Collections.reverse(nodes);
+        return BaseResult.success(nodes);
+    }
+
+    private void addParentSubject(List<Integer> list, List<EduSubject> eduSubjects, Integer pid) {
+        if (pid == null || pid == 0)
+            return;
+        list.add(pid);
+        for (EduSubject eduSubject : eduSubjects) {
+            if (eduSubject.getId().equals(pid)) {
+                addParentSubject(list, eduSubjects, eduSubject.getParentId());
+            }
+        }
+    }
+
     @Override
     public BaseResult addSubjects(List<EduSubject> subjects) {
         saveBatch(subjects);

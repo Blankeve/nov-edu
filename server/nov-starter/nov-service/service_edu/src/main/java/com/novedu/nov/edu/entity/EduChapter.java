@@ -50,6 +50,9 @@ public class EduChapter implements Serializable {
     @ApiModelProperty(value = "更新时间")
     private Date updateTime;
 
+    @ApiModelProperty(value = "是否删除：1删除 2未删除")
+    private Integer isDeleted;
+
     @TableField(exist = false)
     private List<EduVideo> children ;
 }

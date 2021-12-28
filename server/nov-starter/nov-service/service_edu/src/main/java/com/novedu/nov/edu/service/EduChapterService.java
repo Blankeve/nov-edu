@@ -21,4 +21,6 @@ public interface EduChapterService extends IService<EduChapter> {
     BaseResult queryChaptersByCourseId(Long id);
 
     BaseResult queryChapterPage(Page page, EduCourseInfoVO courseInfoVO);
+
+    BaseResult updateChapterById(EduChapter id);
 }

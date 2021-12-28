@@ -35,6 +35,11 @@ public class EduChapterController {
         return chapterService.queryChapterPage(page, courseInfoVO);
     }
 
+    @PutMapping("/update-id")
+    public BaseResult updateChapterById(@RequestBody EduChapter id){
+        return chapterService.updateChapterById(id);
+    }
+
     @PostMapping("/list-course")
     public BaseResult queryCourseByTeacherId(Long id){
         return chapterService.queryChaptersByCourseId(id);

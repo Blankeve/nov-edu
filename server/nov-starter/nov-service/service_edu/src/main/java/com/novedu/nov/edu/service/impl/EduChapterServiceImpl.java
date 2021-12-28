@@ -41,5 +41,10 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
         return BaseResult.success(chapterMapper.queryPage(page,null));
     }
 
+    @Override
+    public BaseResult updateChapterById(EduChapter id) {
+        return BaseResult.successOrError(updateById(id));
+    }
+
 
 }

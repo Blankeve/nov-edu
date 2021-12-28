@@ -2,15 +2,15 @@ package com.novedu.nov.edu.entity;
 
 import java.math.BigDecimal;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.util.Date;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import java.util.List;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -35,9 +35,11 @@ public class EduCourse implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
+    @JsonSerialize(using = ToStringSerializer.class)
     @ApiModelProperty(value = "课程讲师ID")
     private Long teacherId;
 
+    @JsonSerialize(using = ToStringSerializer.class)
     @ApiModelProperty(value = "课程专业ID")
     private Integer subjectId;
 

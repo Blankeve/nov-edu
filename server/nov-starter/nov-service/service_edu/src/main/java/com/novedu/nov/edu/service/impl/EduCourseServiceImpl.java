@@ -6,6 +6,7 @@ import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduChapter;
 import com.novedu.nov.edu.entity.EduCourse;
 import com.novedu.nov.edu.entity.EduCourseIntro;
+import com.novedu.nov.edu.entity.EduSubject;
 import com.novedu.nov.edu.entity.dto.EduCourseInfoDTO;
 import com.novedu.nov.edu.mapper.EduCourseMapper;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
@@ -13,13 +14,12 @@ import com.novedu.nov.edu.service.EduChapterService;
 import com.novedu.nov.edu.service.EduCourseIntroService;
 import com.novedu.nov.edu.service.EduCourseService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.novedu.nov.edu.service.EduSubjectService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,6 +43,12 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     @Autowired
     EduChapterService eduChapterService;
 
+    @Autowired
+    EduCourseIntroService introService;
+
+    @Autowired
+    EduSubjectService subjectService;
+
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public BaseResult saveCourse(EduCourseInfoDTO courseInfoDTO) {
@@ -50,27 +56,27 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         EduCourseIntro courseIntro = new EduCourseIntro();
         BeanUtils.copyProperties(courseInfoDTO,course);
         course.setSubjectId(courseInfoDTO.getSubjectId()[courseInfoDTO.getSubjectId().length-1]);
-        save(course);
+        saveOrUpdate(course);
         BeanUtils.copyProperties(courseInfoDTO,courseIntro);
         courseIntro.setId(course.getId());
-        courseIntroService.save(courseIntro);
+        courseIntroService.saveOrUpdate(courseIntro);
         return BaseResult.success();
     }
 
     @Override
-    public BaseResult queryCourseDetail(EduCourseInfoVO courseInfoVO) {
-        QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.like("title",courseInfoVO.getCourseTitle());
-        List<EduCourse> eduCourses = list();
-        List<EduChapter> chapters = eduChapterService.list();
-        for (EduCourse eduCourse : eduCourses) {
-            eduCourse.setChildren(new ArrayList<>());
-            for (EduChapter chapter : chapters) {
-                if(chapter.getCourseId() == eduCourse.getId())
-                    eduCourse.getChildren().add(chapter);
-            }
+    public BaseResult queryCourseDetail(Integer id) {
+        EduCourseInfoDTO courseInfoDTO = new EduCourseInfoDTO();
+        EduCourse course = getById(id);
+        EduCourseIntro intro = introService.getById(id);
+        BeanUtils.copyProperties(course,courseInfoDTO);
+        courseInfoDTO.setDescription(intro.getDescription());
+        List<Integer> arr = subjectService.getParentSubjects(course.getSubjectId()).getData();
+        Integer []arr2 = new Integer[arr.size()];
+        for (int i = 0; i < arr.size(); i++) {
+            arr2[i] = arr.get(i);
         }
-        return BaseResult.success(eduCourses);
+        courseInfoDTO.setSubjectId(arr2);
+        return BaseResult.success(courseInfoDTO);
     }
 
     @Override
@@ -95,6 +101,16 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     public BaseResult queryCoursePage(Page page, EduCourseInfoVO courseInfoVO) {
         QueryWrapper queryWrapper = new QueryWrapper();
         return BaseResult.success(courseMapper.queryPage(page,null));
+    }
+
+    @Override
+    public BaseResult queryCourseById(EduCourse id) {
+        return BaseResult.success(getById(id));
+    }
+
+    @Override
+    public BaseResult removeCourse(Integer id) {
+        return BaseResult.success(removeById(id));
     }
 
 }

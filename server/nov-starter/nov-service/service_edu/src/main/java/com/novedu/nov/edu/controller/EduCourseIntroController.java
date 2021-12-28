@@ -1,9 +1,11 @@
 package com.novedu.nov.edu.controller;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.edu.entity.EduCourse;
+import com.novedu.nov.edu.service.EduCourseIntroService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -14,8 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2021-12-23
  */
 @RestController
-@RequestMapping("/edu/edu-course-intro")
+@RequestMapping("/edu/course-intro")
 public class EduCourseIntroController {
 
+    @Autowired
+    EduCourseIntroService courseIntroService;
+
+    @GetMapping("/{id}")
+    public BaseResult queryCourseIntroById(@PathVariable Integer id) {
+        return courseIntroService.queryCourseIntroById(id);
+    }
 }
 

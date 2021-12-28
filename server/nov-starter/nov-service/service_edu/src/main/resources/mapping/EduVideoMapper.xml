@@ -35,6 +35,7 @@
                  left join edu_chapter chapter on video.chapter_id = chapter.id
                  left join edu_course course on chapter.course_id = course.id
                  left join edu_teacher teacher on course.teacher_id = teacher.id
+        where video.is_deleted = 0
         order by course.title,teacher.name,chapter.sort, video.sort
     </select>
 </mapper>

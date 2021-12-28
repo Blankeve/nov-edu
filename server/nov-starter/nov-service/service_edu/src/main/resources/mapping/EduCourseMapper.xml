@@ -25,6 +25,7 @@
         from edu_course course
                  left join edu_teacher teacher on course.teacher_id = teacher.id
                  left join edu_subject subject on course.subject_id = subject.id
+        where course.is_deleted = 0
         order by course.title, course.teacher_id, course.create_time
     </select>
 
@@ -34,6 +35,7 @@
         <result column="subjectId" property="subjectId"></result>
         <result column="title" property="title"></result>
         <result column="price" property="price"></result>
+        <result column="cover" property="cover"></result>
         <result column="lessonNum" property="lessonNum"></result>
         <result column="buyCount" property="buyCount"></result>
         <result column="viewCount" property="viewCount"></result>
@@ -63,6 +65,7 @@
                c1.subject_id  as subjectId,
                c1.title       as title,
                c1.price       as price,
+               c1.cover       as cover,
                c1.lesson_num  as lessonNum,
                c1.buy_count   as buyCount,
                c1.view_count  as viewCount,
@@ -83,5 +86,6 @@
         from edu_course c1
                  left join edu_chapter c2 on c1.id = c2.course_id
                  left join edu_video c3 on c3.chapter_id = c2.id
+        where c1.is_deleted = 0
     </select>
 </mapper>

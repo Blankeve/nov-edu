@@ -118,6 +118,14 @@ export const constantRoutes = [
       component: () => import('@/views/course/form'),
       meta: { title: '添加课程', icon: 'el-icon-s-help' }
     }
+      ,
+    {
+      path: 'edit',
+      name: 'course-edit',
+      component: () => import('@/views/course/form'),
+      meta: { title: '编辑课程', icon: 'el-icon-s-help' },
+      hidden: true
+    }
     ]
   },
   {

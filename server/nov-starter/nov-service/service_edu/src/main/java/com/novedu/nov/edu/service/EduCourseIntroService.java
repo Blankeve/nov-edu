@@ -1,5 +1,6 @@
 package com.novedu.nov.edu.service;
 
+import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduCourseIntro;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface EduCourseIntroService extends IService<EduCourseIntro> {
 
+    BaseResult queryCourseIntroById(Integer id);
 }

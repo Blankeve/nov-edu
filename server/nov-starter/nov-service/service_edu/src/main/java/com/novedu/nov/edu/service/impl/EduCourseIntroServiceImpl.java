@@ -1,5 +1,6 @@
 package com.novedu.nov.edu.service.impl;
 
+import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduCourseIntro;
 import com.novedu.nov.edu.mapper.EduCourseIntroMapper;
 import com.novedu.nov.edu.service.EduCourseIntroService;
@@ -17,4 +18,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class EduCourseIntroServiceImpl extends ServiceImpl<EduCourseIntroMapper, EduCourseIntro> implements EduCourseIntroService {
 
+    @Override
+    public BaseResult queryCourseIntroById(Integer id) {
+        return BaseResult.success(getById(id));
+    }
 }

@@ -3,10 +3,12 @@ package com.novedu.nov.edu.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.edu.entity.EduCourse;
 import com.novedu.nov.edu.entity.dto.EduCourseInfoDTO;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 import com.novedu.nov.edu.service.EduCourseService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,9 +33,20 @@ public class EduCourseController {
         return eduCourseService.saveCourse(courseInfoDTO);
     }
 
-    @PostMapping("/detail")
-    public BaseResult queryCourseDetail(EduCourseInfoVO courseInfoVO) {
-        return eduCourseService.queryCourseDetail(courseInfoVO);
+    @ApiOperation("删除")
+    @DeleteMapping("/remove/{id}")
+    public BaseResult removeCourse(@PathVariable Integer id){
+        return eduCourseService.removeCourse(id);
+    }
+
+    @PostMapping("/detail/{id}")
+    public BaseResult queryCourseDetail(@PathVariable Integer id) {
+        return eduCourseService.queryCourseDetail(id);
+    }
+
+    @PostMapping("/id")
+    public BaseResult queryCourseList(EduCourse id) {
+        return eduCourseService.queryCourseById(id);
     }
 
     @PostMapping("/list")
