@@ -10,7 +10,6 @@
       </el-button>
       <el-tree
         :data="data"
-        show-checkbox
         node-key="id"
         ref="tree"
         default-expand-all
@@ -26,7 +25,9 @@
         :allow-drag="allowDrag"
         :expand-on-click-node="false"
       >
+               
         <span class="custom-tree-node" slot-scope="{ node, data }">
+          <i :class="data.parentId == 0?'top-node-icon':'leaf-node-icon '"></i>
           <span>{{ data.title }}</span>
           <span>
             <el-button type="text" size="mini" @click="() => append(data)">
@@ -214,13 +215,13 @@ export default {
 </script>
 
 <style>
+
 .custom-tree-node {
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   font-size: 14px;
-  padding-right: 8px;
+  padding-right: 28px;
 }
 
 .down-tree {
@@ -242,8 +243,9 @@ export default {
   -webkit-transform: rotate(0deg);
   transform: rotate(0deg);
 }
+
 .el-tree .el-icon-caret-right:before {
-  background: url("../../icons/png/folder.png") no-repeat;
+  background: url("../../icons/png/plus2.png") no-repeat;
   content: "";
   display: block;
   width: 28px;
@@ -253,7 +255,27 @@ export default {
 }
 
 .el-tree-node__expand-icon.is-leaf::before {
-  background: url("../../icons/png/file.png") no-repeat;
+  background: none;
+  content: "";
+  display: block;
+  width: 28px;
+  height: 28px;
+  font-size: 28px;
+  background-size: 25px;
+}
+
+.top-node-icon {
+  background: url("../../icons/png/folder.png") no-repeat;
+  content: "";
+  display: block;
+  width: 28px;
+  height: 28px;
+  font-size: 28px;
+  background-size: 25px;
+}
+
+.leaf-node-icon {
+  background: url("../../icons/png/book.png") no-repeat;
   content: "";
   display: block;
   width: 28px;
