@@ -94,9 +94,9 @@
       </el-table-column>
       <el-table-column align="center" label="操作" width="200">
         <template slot-scope="scope">
-          <el-button @click="handleEdit(scope.row.id)">编辑</el-button>
+          <el-button @click="handleEdit(scope.row.chapterId)">编辑</el-button>
 
-          <el-button type="danger" @click="handleDelete(scope.row.id)"
+          <el-button type="danger" @click="handleDelete(scope.$index,scope.row.chapterId)"
             >删除</el-button
           >
         </template>
@@ -119,7 +119,7 @@
 </template>
 
 <script>
-import { getPage, removeById } from "@/api/chapter";
+import { getPage, removeChapterById } from "@/api/chapter";
 
 export default {
   filters: {
@@ -174,16 +174,19 @@ export default {
       this.form.size = s;
       this.fetchData();
     },
-    handleDelete(id) {
-      removeById(id).then((response) => {
-        this.fetchData();
+      handleDelete(row,id) {
+      removeChapterById(id).then((resp) => {
+          if(resp.code === 200){
+             this.$message.success("删除成功");
+             this.list.splice(row,1)
+          }
       });
     },
     handleEdit(id) {
       this.$router.push({
-        path: "/teacher/edit",
+        path: "/chapter/edit",
         query: {
-          id: id,
+          chapter: id,
         },
       });
     },

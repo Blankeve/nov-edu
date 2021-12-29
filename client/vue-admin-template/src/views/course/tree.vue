@@ -34,11 +34,9 @@
           <span>
             <el-button type="text" size="mini" @click="() => append(data)">
               {{
-                node.data.price
-                  ? ""
-                  : node.data.courseId
+                node.data.subjectId
                   ? "添加章节"
-                  : node.data.chapterId
+                  : node.data.courseId
                   ? "添加小节"
                   : ""
               }}
@@ -74,7 +72,10 @@
 <script>
 let id = 1000;
 
-import { getTree, update ,removeById } from "@/api/course";
+import { getTree, update, removeById } from "@/api/course";
+import { removeChapterById } from "@/api/chapter";
+import {  removeVideoById } from "@/api/video";
+
 export default {
   watch: {
     filterText(val) {
@@ -123,15 +124,17 @@ export default {
     append(data) {
       if (data.subjectId) {
         this.$router.push({
-          path: "/course/save",
+          path: "/chapter/save",
+          query: {
+            course: data.id,
+          },
         });
       } else if (data.courseId) {
         this.$router.push({
-          path: "/chapter/save",
-        });
-      } else if (data.chapterId) {
-        this.$router.push({
           path: "/video/save",
+          query: {
+            chapter: data.id,
+          },
         });
       }
     },
@@ -165,12 +168,28 @@ export default {
       });
     },
     remove(node, data) {
-      removeById(data.id).then(resp=>{
-        if(resp.code === 200){
-        this.$message.success("删除成功!");
-        this.fetchData();
-        }
-      })
+      if (data.subjectId) {
+        removeById(data.id).then((resp) => {
+          if (resp.code === 200) {
+            this.$message.success("删除成功");
+            this.fetchData();
+          }
+        });
+      } else if (data.courseId) {
+        removeChapterById(data.id).then((resp) => {
+          if (resp.code === 200) {
+            this.$message.success("删除成功");
+            this.fetchData();
+          }
+        });
+      } else if (data.chapterId) {
+        removeVideoById(data.id).then((resp) => {
+          if (resp.code === 200) {
+            this.$message.success("删除成功");
+            this.fetchData();
+          }
+        });
+      }
     },
 
     renderContent(h, { node, data, store }) {

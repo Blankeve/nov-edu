@@ -104,7 +104,7 @@ export const constantRoutes = [
       path: 'tree',
       name: 'course-list',
       component: () => import('@/views/course/tree'),
-      meta: { title: '课程结构', icon: 'el-icon-s-help' }
+      meta: { title: '已上架课程', icon: 'el-icon-s-help' }
     },
     {
       path: 'list',

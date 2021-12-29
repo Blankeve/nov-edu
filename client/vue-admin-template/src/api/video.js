@@ -15,3 +15,17 @@ export function save(data) {
       params
     })
   }
+
+  export function getOneByVideoId(params) {
+    return request({
+      url: `/edu/video/detail/${params}`,
+      method: 'post',
+    })
+  }
+
+  export function removeVideoById(params) {
+    return request({
+      url: `/edu/video/remove/${params}`,
+      method: 'delete',
+    })
+  }

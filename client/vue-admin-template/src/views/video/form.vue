@@ -1,13 +1,20 @@
 <template>
   <div class="app-container">
-    <h2>{{this.video.title != ""?"编辑":"添加"}}小节</h2>
+    <h2>
+      {{
+        this.$route.query.video && !this.$route.query.chapter ? "编辑" : "添加"
+      }}小节
+    </h2>
     <div class="myFrm">
       <el-form :label-position="labelPosition" label-width="80px">
         <el-form-item label="小节名称">
           <el-input v-model="video.title"></el-input>
         </el-form-item>
 
-        <el-form-item label="所属讲师">
+        <el-form-item
+          v-show="!this.$route.query.video && !this.$route.query.chapter"
+          label="所属讲师"
+        >
           <el-select
             v-model="teacher"
             placeholder="请选择讲师"
@@ -22,7 +29,10 @@
           </el-select>
         </el-form-item>
 
-        <el-form-item label="所属课程">
+        <el-form-item
+          v-show="!this.$route.query.video && !this.$route.query.chapter"
+          label="所属课程"
+        >
           <el-select
             v-model="courseId"
             placeholder="请选择课程"
@@ -37,7 +47,10 @@
           </el-select>
         </el-form-item>
 
-        <el-form-item label="所属章节">
+        <el-form-item
+          v-show="!this.$route.query.video && !this.$route.query.chapter"
+          label="所属章节"
+        >
           <el-select v-model="video.chapterId" placeholder="请选择章节">
             <el-option
               v-for="(item, index) in chapters"
@@ -58,7 +71,13 @@
         </el-form-item>
       </el-form>
       <br />
-      <el-button type="primary" @click="submitForm">添加小节</el-button>
+      <el-button type="primary" @click="submitForm"
+        >{{
+          this.$route.query.video && !this.$route.query.chapter
+            ? "编辑"
+            : "添加"
+        }}小节</el-button
+      >
     </div>
   </div>
 </template>
@@ -66,7 +85,7 @@
 import { getListByTeacherId } from "@/api/course";
 import { getChaptersByCourseId } from "@/api/chapter";
 import { getAll } from "@/api/teacher";
-import { save } from "@/api/video";
+import { save, getOneByVideoId } from "@/api/video";
 export default {
   data() {
     return {
@@ -91,12 +110,16 @@ export default {
   },
   methods: {
     fetchData() {
-      let params = this.$route.query;
-
-      if (params.video) {
-        this.video = params.video;
+      let videoId = this.$route.query.video;
+      if (videoId) {
+        getOneByVideoId(videoId).then((resp) => {
+          if (resp.code === 200) {
+            this.video = resp.data;
+          }
+        });
         return;
       }
+      this.video.chapterId = this.$route.query.chapter;
 
       getAll().then((resp) => {
         if (resp.code === 200) {
@@ -124,7 +147,10 @@ export default {
         if (resp.code === 200) {
           this.$message({
             type: "success",
-            message: "添加成功!",
+            message:
+              (this.$route.query.video && !this.$route.query.chapter
+                ? "修改"
+                : "添加") + "成功!",
           });
         }
       });
