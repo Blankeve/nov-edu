@@ -182,6 +182,9 @@ export default {
             .then(() => {
               this.$router.push({
                 path: "/chapter/save",
+                query: {
+                  course: this.course.id,
+                },
               });
             })
             .catch(() => {});

@@ -278,7 +278,7 @@ export default {
   transform: rotate(0deg);
 }
 .el-tree .el-icon-caret-right:before {
-  background: url("../../icons/png/folder.png") no-repeat;
+  background: url("../../icons/png/book.png") no-repeat;
   content: "";
   display: block;
   width: 28px;
@@ -288,7 +288,7 @@ export default {
 }
 
 .el-tree-node__expand-icon.is-leaf::before {
-  background: url("../../icons/png/file.png") no-repeat;
+  background: url("../../icons/png/video.png") no-repeat;
   content: "";
   display: block;
   width: 28px;

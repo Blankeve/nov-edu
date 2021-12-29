@@ -142,7 +142,7 @@ export default {
               this.$router.push({
                 path: "/video/save",
                 query: {
-                  chapter: this.chapter.id,
+                  chapter: resp.data,
                 },
               });
             })

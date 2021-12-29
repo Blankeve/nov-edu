@@ -28,7 +28,7 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
     @Override
     public BaseResult saveChapter(EduChapter chapter) {
         saveOrUpdate(chapter);
-        return BaseResult.success();
+        return BaseResult.success(chapter.getId());
     }
 
     @Override
