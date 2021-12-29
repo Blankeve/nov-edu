@@ -54,7 +54,6 @@ public class CRUD {
                 break;
             }
         }
-        System.out.println(nodes.size());
     }
 
     private void addParentSubject(List list, List<EduSubject> eduSubjects, Integer pid) {

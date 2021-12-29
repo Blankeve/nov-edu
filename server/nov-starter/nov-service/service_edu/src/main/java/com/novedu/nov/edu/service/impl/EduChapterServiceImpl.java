@@ -27,7 +27,7 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
 
     @Override
     public BaseResult saveChapter(EduChapter chapter) {
-        save(chapter);
+        saveOrUpdate(chapter);
         return BaseResult.success();
     }
 
@@ -44,6 +44,16 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
     @Override
     public BaseResult updateChapterById(EduChapter id) {
         return BaseResult.successOrError(updateById(id));
+    }
+
+    @Override
+    public BaseResult queryChapterDetail(Integer id) {
+        return BaseResult.success(getById(id));
+    }
+
+    @Override
+    public BaseResult removeChapter(Integer id) {
+        return BaseResult.successOrError(removeById(id));
     }
 
 

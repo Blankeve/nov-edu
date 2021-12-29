@@ -23,7 +23,7 @@
         from edu_chapter chapter
                  left join edu_course course on chapter.course_id = course.id
                  left join edu_teacher teacher on course.teacher_id = teacher.id
-        where course.is_deleted = 0
+        where chapter.is_deleted = 0
         order by course.title,teacher.name,chapter.sort
     </select>
 

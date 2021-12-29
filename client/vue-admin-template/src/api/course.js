@@ -8,6 +8,13 @@ export function save(data) {
     })
   }
 
+  export function removeById(params) {
+    return request({
+      url: `/edu/course/remove/${params}`,
+      method: 'delete',
+    })
+  }
+
   export function getTree(data) {
     return request({
       url: '/edu/course/tree',
@@ -29,6 +36,28 @@ export function save(data) {
       url: '/edu/course/page',
       method: 'post',
       params
+    })
+  }
+
+  export function getOneByCourseId(id) {
+    return request({
+      url: '/edu/course/id',
+      method: 'post',
+      params: {id}
+    })
+  }
+
+  export function getOneDetailByCourseId(params) {
+    return request({
+      url: `/edu/course/detail/${params}`,
+      method: 'post',
+    })
+  }
+
+  export function getIntroByCourseId(params) {
+    return request({
+      url: `/edu/course-intro/${params}`,
+      method: 'get',
     })
   }
 

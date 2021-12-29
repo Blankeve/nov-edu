@@ -35,4 +35,14 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
     public BaseResult queryVideoPage(Page page, EduCourseInfoVO courseInfoVO) {
         return BaseResult.success(videoMapper.queryPage(page,null));
     }
+
+    @Override
+    public BaseResult queryVideoDetail(Long id) {
+        return BaseResult.success(getById(id));
+    }
+
+    @Override
+    public BaseResult removeVideo(Long id) {
+        return BaseResult.successOrError(removeById(id));
+    }
 }

@@ -6,6 +6,7 @@ import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduChapter;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 import com.novedu.nov.edu.service.EduChapterService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,9 +31,20 @@ public class EduChapterController {
         return chapterService.saveChapter(chapter);
     }
 
+    @ApiOperation("删除")
+    @DeleteMapping("/remove/{id}")
+    public BaseResult removeChapter(@PathVariable Integer id){
+        return chapterService.removeChapter(id);
+    }
+
     @PostMapping("/page")
     public BaseResult queryChapterPage(Page page, EduCourseInfoVO courseInfoVO) {
         return chapterService.queryChapterPage(page, courseInfoVO);
+    }
+
+    @PostMapping("/detail/{id}")
+    public BaseResult queryChapterDetail(@PathVariable Integer id) {
+        return chapterService.queryChapterDetail(id);
     }
 
     @PutMapping("/update-id")

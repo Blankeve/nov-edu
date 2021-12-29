@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -110,7 +111,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     @Override
     public BaseResult removeCourse(Integer id) {
-        return BaseResult.success(removeById(id));
+        return BaseResult.successOrError(removeById(id));
     }
 
 }

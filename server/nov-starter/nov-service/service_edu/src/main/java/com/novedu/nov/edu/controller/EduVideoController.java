@@ -7,6 +7,7 @@ import com.novedu.nov.edu.entity.EduChapter;
 import com.novedu.nov.edu.entity.EduVideo;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 import com.novedu.nov.edu.service.EduVideoService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,6 +34,17 @@ public class EduVideoController {
     @PostMapping("/page")
     public BaseResult queryVideoPage(Page page, EduCourseInfoVO courseInfoVO) {
         return videoService.queryVideoPage(page, courseInfoVO);
+    }
+
+    @PostMapping("/detail/{id}")
+    public BaseResult queryVideoDetail(@PathVariable Long id) {
+        return videoService.queryVideoDetail(id);
+    }
+
+    @ApiOperation("删除")
+    @DeleteMapping("/remove/{id}")
+    public BaseResult removeVideo(@PathVariable Long id){
+        return videoService.removeVideo(id);
     }
 }
 

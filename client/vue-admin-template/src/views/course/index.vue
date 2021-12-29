@@ -52,31 +52,31 @@
         </template>
       </el-table-column>
 
-  <el-table-column label="课程讲师" align="center">
+      <el-table-column label="课程讲师" align="center">
         <template slot-scope="scope">
           {{ scope.row.teacherName }}
         </template>
       </el-table-column>
 
-  <el-table-column label="课程分类" align="center">
+      <el-table-column label="课程分类" align="center">
         <template slot-scope="scope">
           {{ scope.row.subjectTitle }}
         </template>
       </el-table-column>
 
-       <el-table-column label="课程价格" align="center">
+      <el-table-column label="课程价格" align="center">
         <template slot-scope="scope">
           {{ scope.row.coursePrice }}
         </template>
       </el-table-column>
 
-       <el-table-column label="课程课时" align="center">
+      <el-table-column label="课程课时" align="center">
         <template slot-scope="scope">
           {{ scope.row.courseLessonNum }}
         </template>
       </el-table-column>
 
-       <el-table-column label="课程封面" width="120" align="center">
+      <el-table-column label="课程封面" width="120" align="center">
         <template slot-scope="scope">
           <div class="demo-image__preview">
             <el-image
@@ -90,56 +90,62 @@
         </template>
       </el-table-column>
 
-       <el-table-column label="销售数量" align="center">
+      <el-table-column label="销售数量" align="center">
         <template slot-scope="scope">
           {{ scope.row.courseBuyCount }}
         </template>
       </el-table-column>
 
-       <el-table-column label="浏览数量" align="center">
+      <el-table-column label="浏览数量" align="center">
         <template slot-scope="scope">
           {{ scope.row.courseViewCount }}
         </template>
       </el-table-column>
 
-       <el-table-column label="level"  align="center">
+      <el-table-column label="课程状态" align="center">
         <template slot-scope="scope">
           {{ scope.row.courseStatus == 1 ? "已上架" : "未上架" }}
         </template>
       </el-table-column>
 
-       <el-table-column label="课程简介" align="center">
+      <el-table-column label="课程简介" align="center">
         <template slot-scope="scope">
-          {{ scope.row.courseId}}
+          {{ scope.row.courseId }}
         </template>
       </el-table-column>
 
-      <el-table-column
-        align="center"
-        prop="created_at"
-        label="创建时间"
-      >
+      <el-table-column align="center" prop="created_at" label="创建时间">
         <template slot-scope="scope">
           <i class="el-icon-time" />
           <span>{{ scope.row.courseCreateTime }}</span>
         </template>
       </el-table-column>
 
-   <el-table-column
-        align="center"
-        prop="created_at"
-        label="更新时间"
-      >
+      <el-table-column align="center" prop="created_at" label="更新时间">
         <template slot-scope="scope">
           <i class="el-icon-time" />
           <span>{{ scope.row.courseUpdateTime }}</span>
         </template>
       </el-table-column>
+      <el-table-column align="center" label="章节列表" width="100">
+        <template slot-scope="scope">
+          <el-badge :value="12" class="item">
+            <el-button
+              plain
+              type="primary"
+              @click="handleEdit(scope.row.courseId)"
+              >查看</el-button
+            >
+          </el-badge>
+        </template>
+      </el-table-column>
       <el-table-column align="center" label="操作" width="200">
         <template slot-scope="scope">
-          <el-button @click="handleEdit(scope.row.id)">编辑</el-button>
+          <el-button @click="handleEdit(scope.row.courseId)">编辑</el-button>
 
-          <el-button type="danger" @click="handleDelete(scope.row.id)"
+          <el-button
+            type="danger"
+            @click="handleDelete(scope.$index, scope.row.courseId)"
             >删除</el-button
           >
         </template>
@@ -217,16 +223,20 @@ export default {
       this.form.size = s;
       this.fetchData();
     },
-    handleDelete(id) {
-      removeById(id).then((response) => {
-        this.fetchData();
+    handleDelete(row, id) {
+      console.log(id);
+      removeById(id).then((resp) => {
+        if (resp.code === 200) {
+          this.$message.success("删除成功");
+          this.list.splice(row, 1);
+        }
       });
     },
-    handleEdit(id) {
+    handleEdit(data) {
       this.$router.push({
-        path: "/teacher/edit",
+        path: "/course/edit",
         query: {
-          id: id,
+          course: data,
         },
       });
     },

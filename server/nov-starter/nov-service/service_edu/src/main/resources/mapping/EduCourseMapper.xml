@@ -3,7 +3,6 @@
 <mapper namespace="com.novedu.nov.edu.mapper.EduCourseMapper">
 
 
-
     <select id="queryPage" parameterType="EduCourseInfoVO" resultType="EduCourseInfoVO">
         select teacher.id          as teacherId,
                teacher.name        as teacherName,
@@ -29,6 +28,25 @@
         order by course.title, course.teacher_id, course.create_time
     </select>
 
+    <select id="queryCourseTree" resultMap="EduCourseMap">
+        select c1.id          as cid,
+               c1.teacher_id  as teacherId,
+               c1.subject_id  as subjectId,
+               c1.title       as title,
+               c1.price       as price,
+               c1.cover       as cover,
+               c1.lesson_num  as lessonNum,
+               c1.buy_count   as buyCount,
+               c1.view_count  as viewCount,
+               c1.version     as version,
+               c1.status      as status,
+               c1.is_deleted  as isDeleted,
+               c1.create_time as createTime,
+               c1.update_time as updateTime
+        from edu_course c1
+        where c1.is_deleted = 0
+    </select>
+
     <resultMap id="EduCourseMap" type="EduCourse">
         <id column="cid" property="id"></id>
         <result column="teacherId" property="teacherId"></result>
@@ -44,48 +62,52 @@
         <result column="isDeleted" property="isDeleted"></result>
         <result column="createTime" property="createTime"></result>
         <result column="updateTime" property="updateTime"></result>
-        <collection property="children" ofType="EduChapter">
-            <id column="ccid" property="id"></id>
-            <result column="ccTitle" property="title"></result>
-            <result column="ccSort" property="sort"></result>
-            <result column="courseId" property="courseId"></result>
-            <result column="ccCreateTime" property="createTime"></result>
-            <result column="ccUpdateTime" property="updateTime"></result>
-            <collection property="children" ofType="EduVideo">
-                <id column="cccId" property="id"></id>
-                <result column="cccTitle" property="title"></result>
-                <result column="chapterId" property="chapterId"></result>
-            </collection>
+        <collection property="children" ofType="EduChapter" column="cid"
+                    select="queryCourseChapters">
         </collection>
     </resultMap>
 
-    <select id="queryCourseTree" resultMap="EduCourseMap">
-        select c1.id          as cid,
-               c1.teacher_id  as teacherId,
-               c1.subject_id  as subjectId,
-               c1.title       as title,
-               c1.price       as price,
-               c1.cover       as cover,
-               c1.lesson_num  as lessonNum,
-               c1.buy_count   as buyCount,
-               c1.view_count  as viewCount,
-               c1.version     as version,
-               c1.status      as status,
-               c1.is_deleted  as isDeleted,
-               c1.create_time as createTime,
-               c1.update_time as updateTime,
-               c2.id          as ccid,
+    <select id="queryCourseChapters" resultType="EduVideo" resultMap="courseChaptersMap">
+        select c2.id          as ccid,
                c2.course_id   as courseId,
                c2.title       as ccTitle,
                c2.sort        as ccSort,
                c2.create_time as ccCreateTime,
                c2.update_time as ccUpdateTime,
-               c3.id          as cccId,
-               c3.chapter_id  as chapterId,
-               c3.title       as cccTitle
-        from edu_course c1
-                 left join edu_chapter c2 on c1.id = c2.course_id
-                 left join edu_video c3 on c3.chapter_id = c2.id
-        where c1.is_deleted = 0
+               c2.is_deleted  as ccIsDeleted
+        from edu_chapter c2
+        where c2.course_id = #{cid}
+          and c2.is_deleted = 0
     </select>
+
+    <resultMap id="courseChaptersMap" type="EduChapter">
+        <id column="ccid" property="id"></id>
+        <result column="ccTitle" property="title"></result>
+        <result column="ccSort" property="sort"></result>
+        <result column="courseId" property="courseId"></result>
+        <result column="ccIsDeleted" property="isDeleted"></result>
+        <result column="ccCreateTime" property="createTime"></result>
+        <result column="ccUpdateTime" property="updateTime"></result>
+        <collection property="children" ofType="EduVideo" column="ccid" select="queryChapterVideos">
+        </collection>
+    </resultMap>
+
+    <select id="queryChapterVideos" resultType="EduChapter" resultMap="chapterVideosMap">
+        select c3.id         as cccId,
+               c3.chapter_id as chapterId,
+               c3.title      as cccTitle,
+               c3.is_deleted as cccIsDeleted
+        from edu_video c3
+        where c3.is_deleted = 0
+          and c3.chapter_id = #{ccid}
+    </select>
+
+    <resultMap id="chapterVideosMap" type="EduVideo">
+        <id column="cccId" property="id"></id>
+        <result column="cccTitle" property="title"></result>
+        <result column="chapterId" property="chapterId"></result>
+        <result column="cccIsDeleted" property="isDeleted"></result>
+    </resultMap>
+
+
 </mapper>
