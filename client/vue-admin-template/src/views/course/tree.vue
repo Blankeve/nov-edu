@@ -3,7 +3,6 @@
     <el-form :inline="true" ref="form" :model="form">
       <el-form-item label="课程名称" prop="title">
         <el-input
-          class="mid-input"
           v-model="form.title"
           placeholder="课程名称"
         ></el-input>
@@ -140,7 +139,7 @@
 <script>
 let id = 1000;
 
-import { getTree, update, removeById } from "@/api/course";
+import { getTree, removeById } from "@/api/course";
 import { removeChapterById } from "@/api/chapter";
 import { removeVideoById } from "@/api/video";
 import { getAll } from "@/api/teacher";

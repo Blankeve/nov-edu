@@ -32,6 +32,8 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("chapter_id", video.getChapterId());
         queryWrapper.eq("sort", video.getSort());
+        if(!ObjectUtils.isEmpty(video.getId()))
+        queryWrapper.ne("id",video.getId());
         if (!CollectionUtils.isEmpty(list(queryWrapper)))
             return BaseResult.error("当前小节已存在!");
         saveOrUpdate(video);

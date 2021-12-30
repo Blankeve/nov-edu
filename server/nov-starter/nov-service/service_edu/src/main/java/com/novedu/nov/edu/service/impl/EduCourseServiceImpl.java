@@ -58,6 +58,8 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("teacher_id", courseInfoDTO.getTeacherId());
         queryWrapper.eq("title", courseInfoDTO.getTitle());
+        if(!ObjectUtils.isEmpty(courseInfoDTO.getId()))
+            queryWrapper.ne("id",courseInfoDTO.getId());
         if (!CollectionUtils.isEmpty(list(queryWrapper)))
             return BaseResult.error("当前课程已存在!");
         EduCourse course = new EduCourse();
@@ -133,12 +135,12 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     public BaseResult removeCourse(Integer id) {
         List<EduChapter> chapters = eduChapterService.list();
         List<EduVideo> videos = videoService.list();
-        List<Integer> chapters1 = chapters.stream().filter(o -> o.getCourseId().equals(id)).map(EduChapter::getCourseId).collect(Collectors.toList());
-        List<Integer> videos1 = new ArrayList<>();
+        List<Integer> chapters1 = chapters.stream().filter(o -> o.getCourseId().equals(id)).map(EduChapter::getId).collect(Collectors.toList());
+        List<Long> videos1 = new ArrayList<>();
         for (Integer eduChapter : chapters1) {
             for (EduVideo video : videos) {
                 if(eduChapter.equals(video.getChapterId()))
-                    videos1.add(video.getChapterId());
+                    videos1.add(video.getId());
             }
         }
         removeById(id);

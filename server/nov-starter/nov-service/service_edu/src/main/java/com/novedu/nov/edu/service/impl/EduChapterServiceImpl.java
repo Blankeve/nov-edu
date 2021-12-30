@@ -44,6 +44,8 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("course_id",chapter.getCourseId());
         queryWrapper.eq("sort",chapter.getSort());
+        if(!ObjectUtils.isEmpty(chapter.getId()))
+            queryWrapper.ne("id",chapter.getId());
         if(!CollectionUtils.isEmpty(list(queryWrapper)))
             return BaseResult.error("当前章节已存在!");
         saveOrUpdate(chapter);
