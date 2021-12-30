@@ -4,14 +4,14 @@
     </el-input>
     <br />
     <br />
-    <div class="down-tree" style="width: 50%">
+    <div id="down-tree" style="width: 50%">
       <el-button type="text" size="mini" @click="() => appendRoot(data)">
         添加一级分类
       </el-button>
       <el-tree
         :data="data"
         node-key="id"
-        ref="tree"
+        ref="tree1"
         default-expand-all
         :filter-node-method="filterNode"
         @node-drag-start="handleDragStart"
@@ -25,23 +25,37 @@
         :allow-drag="allowDrag"
         :expand-on-click-node="false"
       >
-               
         <span class="custom-tree-node" slot-scope="{ node, data }">
-          <i :class="data.parentId == 0?'top-node-icon':'leaf-node-icon '"></i>
-          <span>{{ data.title }}</span>
-          <span>
-            <el-button type="text" size="mini" @click="() => append(data)">
-              添加
-            </el-button>
-            <el-button type="text" size="mini" @click="() => edit(node, data)">
-              编辑
+          <i
+            :class="data.parentId == 0 ? 'top-node-icon' : 'leaf-node-icon '"
+          ></i>
+          <span
+            >{{ data.title }}&nbsp;{{
+              data.children ? `(${data.children.length})` : ""
+            }}</span
+          >
+          <span style="margin-left: 100px">
+            <el-button
+              type="text"
+              size="mini"
+              icon="el-icon-circle-plus-outline"
+              @click="() => append(data)"
+            >
             </el-button>
             <el-button
               type="text"
               size="mini"
+              icon="el-icon-edit"
+              circle
+              @click="() => edit(node, data)"
+            >
+            </el-button>
+            <el-button
+              type="text"
+              size="mini"
+              icon="el-icon-delete"
               @click="() => remove(node, data)"
             >
-              删除
             </el-button>
           </span>
         </span>
@@ -126,8 +140,26 @@ export default {
         });
     },
     appendRoot(data) {
-      const root = { id: id++, title: "未命名", children: [] };
-      data.push(root);
+      this.$prompt("添加的节点名称", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        inputValidator: function (val) {
+          console.log(val);
+          if (val) {
+            return true;
+          } else {
+            return "输入内容不能为空";
+          }
+        },
+      })
+        .then(({ value }) => {
+          const root = { id: id++, title: value, children: [] };
+          data.push(root);
+          this.onsubmit();
+        })
+        .catch(() => {
+          return;
+        });
     },
     remove(node, data) {
       const parent = node.parent;
@@ -215,16 +247,15 @@ export default {
 </script>
 
 <style>
-
 .custom-tree-node {
   flex: 1;
   display: flex;
   align-items: center;
   font-size: 14px;
-  padding-right: 28px;
+  padding-right: 8px;
 }
 
-.down-tree {
+#down-tree {
   flex: 1;
   max-width: 500px;
   height: 678px;
@@ -245,7 +276,7 @@ export default {
 }
 
 .el-tree .el-icon-caret-right:before {
-  background: url("../../icons/png/plus2.png") no-repeat;
+  background: url("../../icons/png/expand.png") no-repeat;
   content: "";
   display: block;
   width: 28px;

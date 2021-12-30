@@ -21,7 +21,7 @@ public interface EduCourseService extends IService<EduCourse> {
 
     BaseResult queryCourseDetail(Integer id);
 
-    BaseResult queryCourseTree(EduCourseInfoVO courseInfoVO);
+    BaseResult queryCourseTree(Page page,EduCourseInfoDTO courseInfoDTO);
 
     BaseResult queryCourseList(EduCourseInfoVO courseInfoVO);
 

@@ -3,23 +3,22 @@ package com.novedu.nov.edu.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
-import com.novedu.nov.edu.entity.EduChapter;
-import com.novedu.nov.edu.entity.EduCourse;
-import com.novedu.nov.edu.entity.EduCourseIntro;
-import com.novedu.nov.edu.entity.EduSubject;
+import com.novedu.nov.edu.entity.*;
 import com.novedu.nov.edu.entity.dto.EduCourseInfoDTO;
 import com.novedu.nov.edu.mapper.EduCourseMapper;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
-import com.novedu.nov.edu.service.EduChapterService;
-import com.novedu.nov.edu.service.EduCourseIntroService;
-import com.novedu.nov.edu.service.EduCourseService;
+import com.novedu.nov.edu.service.*;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.novedu.nov.edu.service.EduSubjectService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,6 +44,9 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     EduChapterService eduChapterService;
 
     @Autowired
+    EduVideoService videoService;
+
+    @Autowired
     EduCourseIntroService introService;
 
     @Autowired
@@ -53,12 +55,17 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public BaseResult saveCourse(EduCourseInfoDTO courseInfoDTO) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("teacher_id", courseInfoDTO.getTeacherId());
+        queryWrapper.eq("title", courseInfoDTO.getTitle());
+        if (!CollectionUtils.isEmpty(list(queryWrapper)))
+            return BaseResult.error("当前课程已存在!");
         EduCourse course = new EduCourse();
         EduCourseIntro courseIntro = new EduCourseIntro();
-        BeanUtils.copyProperties(courseInfoDTO,course);
-        course.setSubjectId(courseInfoDTO.getSubjectId()[courseInfoDTO.getSubjectId().length-1]);
+        BeanUtils.copyProperties(courseInfoDTO, course);
+        course.setSubjectId(courseInfoDTO.getSubjectId()[courseInfoDTO.getSubjectId().length - 1]);
         saveOrUpdate(course);
-        BeanUtils.copyProperties(courseInfoDTO,courseIntro);
+        BeanUtils.copyProperties(courseInfoDTO, courseIntro);
         courseIntro.setId(course.getId());
         courseIntroService.saveOrUpdate(courseIntro);
         return BaseResult.success();
@@ -69,10 +76,10 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         EduCourseInfoDTO courseInfoDTO = new EduCourseInfoDTO();
         EduCourse course = getById(id);
         EduCourseIntro intro = introService.getById(id);
-        BeanUtils.copyProperties(course,courseInfoDTO);
+        BeanUtils.copyProperties(course, courseInfoDTO);
         courseInfoDTO.setDescription(intro.getDescription());
         List<Integer> arr = subjectService.getParentSubjects(course.getSubjectId()).getData();
-        Integer []arr2 = new Integer[arr.size()];
+        Integer[] arr2 = new Integer[arr.size()];
         for (int i = 0; i < arr.size(); i++) {
             arr2[i] = arr.get(i);
         }
@@ -81,8 +88,21 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     }
 
     @Override
-    public BaseResult queryCourseTree(EduCourseInfoVO courseInfoVO) {
-        return BaseResult.success(courseMapper.queryCourseTree());
+    public BaseResult queryCourseTree(Page page, EduCourseInfoDTO courseInfoDTO) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.like("title", courseInfoDTO.getTitle());
+        if (!ObjectUtils.isEmpty(courseInfoDTO.getSubjectId())) {
+            Integer subjectId = courseInfoDTO.getSubjectId()[courseInfoDTO.getSubjectId().length - 1];
+            queryWrapper.eq("subject_id", subjectId);
+        }
+        if (!ObjectUtils.isEmpty(courseInfoDTO.getTeacherId()))
+            queryWrapper.eq("teacher_id", courseInfoDTO.getTeacherId());
+        if (!ObjectUtils.isEmpty(courseInfoDTO.getCreateTime()))
+            queryWrapper.apply("create_time > date_format({0},'%Y-%m-%d')", courseInfoDTO.getCreateTime());
+        queryWrapper.orderByAsc("title");
+        queryWrapper.orderByAsc("teacher_id");
+        queryWrapper.orderByAsc("create_time");
+        return BaseResult.success(courseMapper.queryCourseTree(page, queryWrapper));
     }
 
     @Override
@@ -92,16 +112,15 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     @Override
     public BaseResult queryCoursesByTeacherId(Long eduTeacher) {
-        List<EduCourse> eduCourses = query().eq("teacher_id",eduTeacher).list();
+        List<EduCourse> eduCourses = query().eq("teacher_id", eduTeacher).list();
         return BaseResult.success(eduCourses);
     }
-
 
 
     @Override
     public BaseResult queryCoursePage(Page page, EduCourseInfoVO courseInfoVO) {
         QueryWrapper queryWrapper = new QueryWrapper();
-        return BaseResult.success(courseMapper.queryPage(page,null));
+        return BaseResult.success(courseMapper.queryPage(page, null));
     }
 
     @Override
@@ -109,9 +128,23 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         return BaseResult.success(getById(id));
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public BaseResult removeCourse(Integer id) {
-        return BaseResult.successOrError(removeById(id));
+        List<EduChapter> chapters = eduChapterService.list();
+        List<EduVideo> videos = videoService.list();
+        List<Integer> chapters1 = chapters.stream().filter(o -> o.getCourseId().equals(id)).map(EduChapter::getCourseId).collect(Collectors.toList());
+        List<Integer> videos1 = new ArrayList<>();
+        for (Integer eduChapter : chapters1) {
+            for (EduVideo video : videos) {
+                if(eduChapter.equals(video.getChapterId()))
+                    videos1.add(video.getChapterId());
+            }
+        }
+        removeById(id);
+        eduChapterService.removeByIds(chapters1);
+        videoService.removeByIds(videos1);
+        return BaseResult.success();
     }
 
 }

@@ -15,11 +15,11 @@ export function save(data) {
     })
   }
 
-  export function getTree(data) {
+  export function getTree(params) {
     return request({
       url: '/edu/course/tree',
       method: 'post',
-      data
+      params
     })
   }
 

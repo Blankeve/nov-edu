@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.edu.entity.EduCourse;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.novedu.nov.edu.entity.dto.EduCourseInfoDTO;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -22,7 +23,7 @@ import java.util.List;
 @Repository
 public interface EduCourseMapper extends BaseMapper<EduCourse> {
 
-        List<EduCourse> queryCourseTree();
+        IPage<EduCourse>  queryCourseTree(Page page, @Param("ew") Wrapper<EduCourseInfoDTO> queryWrapper);
 
         List<EduCourse> queryAll();
 

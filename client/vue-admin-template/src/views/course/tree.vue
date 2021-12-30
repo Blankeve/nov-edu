@@ -1,9 +1,48 @@
 <template>
   <div class="app-container">
-    <el-input placeholder="输入课程分类进行过滤" v-model="filterText">
-    </el-input>
-    <br />
-    <br />
+    <el-form :inline="true" ref="form" :model="form">
+      <el-form-item label="课程名称" prop="title">
+        <el-input
+          class="mid-input"
+          v-model="form.title"
+          placeholder="课程名称"
+        ></el-input>
+      </el-form-item>
+
+      <el-form-item label="课程分类">
+        <el-cascader
+          v-model="subjectId"
+          :options="subjects"
+          :props="{ expandTrigger: 'hover', label: 'title', value: 'id' }"
+        ></el-cascader>
+      </el-form-item>
+      <el-form-item label="课程讲师">
+        <el-select v-model="form.teacherId" placeholder="请选择讲师">
+          <el-option
+            v-for="(item, index) in teacher"
+            :label="item.name"
+            :key="item.id"
+            :value="item.id"
+          >
+          </el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="添加时间" prop="createTime">
+        <el-date-picker
+          v-model="form.createTime"
+          type="datetime"
+          placeholder="课程添加时间"
+          value-format="yyyy-MM-dd HH:mm:ss"
+        >
+        </el-date-picker>
+      </el-form-item>
+
+      <el-form-item>
+        <el-button type="primary" @click="searchForm">查询</el-button>
+        <el-button @click="resetForm('form')">重置</el-button>
+      </el-form-item>
+    </el-form>
+
     <div class="down-tree" style="width: 100%">
       <el-button type="text" size="mini" @click="() => appendRoot(data)">
         添加课程
@@ -14,54 +53,83 @@
       <el-button type="text" size="mini" @click="() => (expandAll = false)">
         收缩所有
       </el-button>
-      <el-tree
-        :data="data"
-        show-checkbox
-        node-key="id"
-        ref="tree"
-        default-expand-all
-        :filter-node-method="filterNode"
-        @node-drag-start="handleDragStart"
-        @node-drag-enter="handleDragEnter"
-        @node-drag-leave="handleDragLeave"
-        @node-drag-over="handleDragOver"
-        @node-drag-end="handleDragEnd"
-        @node-drop="handleDrop"
-        :expand-on-click-node="false"
-      >
-        <span class="custom-tree-node" slot-scope="{ node, data }">
-          <span>{{ data.title }}</span>
-          <span>
-            <el-button type="text" size="mini" @click="() => append(data)">
+      <div class="current">
+        <el-tree
+          :data="data"
+          node-key="id"
+          ref="tree"
+          :filter-node-method="filterNode"
+          @node-drag-start="handleDragStart"
+          @node-drag-enter="handleDragEnter"
+          @node-drag-leave="handleDragLeave"
+          @node-drag-over="handleDragOver"
+          @node-drag-end="handleDragEnd"
+          @node-drop="handleDrop"
+          :expand-on-click-node="false"
+        >
+          <span class="custom-tree-node" slot-scope="{ node, data }">
+            <i
+              :class="
+                data.subjectId
+                  ? 'course-node-icon'
+                  : data.courseId
+                  ? 'chapter-node-icon '
+                  : 'video-node-icon'
+              "
+            ></i>
+            <span>
               {{
-                node.data.subjectId
-                  ? "添加章节"
-                  : node.data.courseId
-                  ? "添加小节"
+                data.courseId
+                  ? `第${data.sort}章:`
+                  :(data.chapterId
+                  ? `第${data.sort}节:`
+                  : "") 
+              }}&nbsp; {{ data.title }}&nbsp;{{
+                data.children && data.children.length > 0
+                  ? `(${data.children.length})`
                   : ""
-              }}
-            </el-button>
-            <el-button type="text" size="mini" @click="() => edit(node, data)">
-              编辑{{
-                node.data.price
-                  ? "课程"
-                  : node.data.courseId
-                  ? "章节"
-                  : node.data.chapterId
-                  ? "小节"
-                  : ""
-              }}
-            </el-button>
-            <el-button
-              type="text"
-              size="mini"
-              @click="() => remove(node, data)"
+              }}</span
             >
-              删除
-            </el-button>
+            <span style="margin-left: 100px">
+              <el-button
+                type="text"
+                size="mini"
+                icon="el-icon-circle-plus-outline"
+                @click="() => append(data)"
+              >
+              </el-button>
+              <el-button
+                type="text"
+                size="mini"
+                icon="el-icon-edit"
+                circle
+                @click="() => edit(node, data)"
+              >
+              </el-button>
+              <el-button
+                type="text"
+                size="mini"
+                icon="el-icon-delete"
+                @click="() => remove(node, data)"
+              >
+              </el-button>
+            </span>
           </span>
-        </span>
-      </el-tree>
+        </el-tree>
+      </div>
+      <div class="block">
+        <el-pagination
+          background
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page="form.current"
+          :page-sizes="sizes"
+          :page-size="form.size"
+          layout="total, sizes, prev, pager, next, jumper"
+          :total="form.total"
+        >
+        </el-pagination>
+      </div>
     </div>
     <br />
     <el-button type="primary" @click="onSubmit">保存</el-button>
@@ -74,7 +142,9 @@ let id = 1000;
 
 import { getTree, update, removeById } from "@/api/course";
 import { removeChapterById } from "@/api/chapter";
-import {  removeVideoById } from "@/api/video";
+import { removeVideoById } from "@/api/video";
+import { getAll } from "@/api/teacher";
+import { getList } from "@/api/subject";
 
 export default {
   watch: {
@@ -88,25 +158,76 @@ export default {
       data: [],
       resetData: [],
       expandAll: false,
+      form: {
+        title: "",
+        subjectId: null,
+        courseId: null,
+        createTime: "",
+        current: 1,
+        size: 8,
+        total: 0,
+      },
+      sizes: [],
+      subjectId: [],
+      teacher: [],
+      subjects: [],
     };
   },
   created() {
+    this.getOptions();
     this.fetchData();
   },
   methods: {
-    fetchData() {
-      getTree().then((resp) => {
+    getOptions() {
+      getAll().then((resp) => {
         if (resp.code === 200) {
-          // id = resp.data.lastId;
-          if (resp.data) {
-            this.data = resp.data;
-            this.resetData = JSON.parse(JSON.stringify(resp.data));
+          this.teacher = resp.data;
+        }
+      });
+      getList().then((resp) => {
+        if (resp.code === 200) {
+          this.subjects = resp.data.subjects;
+        }
+      });
+    },
+    fetchData() {
+      this.sizes =
+        this.form.size > 1
+          ? [this.form.size / 2, this.form.size, this.form.size * 2]
+          : [this.form.size, this.form.size * 2];
+      if (this.subjectId && this.subjectId.length > 0)
+        this.form.subjectId = this.subjectId[this.subjectId.length - 1];
+      getTree(this.form).then((resp) => {
+        if (resp.code === 200) {
+          let data = resp.data;
+          if (data) {
+            this.data = data.records;
+            this.resetData = JSON.parse(JSON.stringify(data.records));
+            this.form.current = data.current;
+            this.form.size = data.size;
+            this.form.total = data.total;
           }
         }
       });
     },
     initTree() {
       this.data = JSON.parse(JSON.stringify(this.resetData));
+    },
+    handleCurrentChange(p) {
+      this.form.current = p;
+      this.fetchData();
+    },
+    handleSizeChange(s) {
+      this.form.size = s;
+      this.fetchData();
+    },
+    searchForm() {
+      this.fetchData();
+    },
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
+      this.subjectId = null;
+      this.form.subjectId = null;
     },
     onSubmit() {
       update({ eduSubjects: this.data }).then((resp) => {
@@ -248,12 +369,41 @@ export default {
 };
 </script>
 
-<style>
+<style >
+.course-node-icon {
+  background: url("../../icons/png/book.png") no-repeat;
+  content: "";
+  display: block;
+  width: 28px;
+  height: 28px;
+  font-size: 28px;
+  background-size: 25px;
+}
+
+.chapter-node-icon {
+  background: url("../../icons/png/chapter.png") no-repeat;
+  content: "";
+  display: block;
+  width: 28px;
+  height: 28px;
+  font-size: 28px;
+  background-size: 25px;
+}
+
+.video-node-icon {
+  background: url("../../icons/png/video.png") no-repeat;
+  content: "";
+  display: block;
+  width: 28px;
+  height: 28px;
+  font-size: 28px;
+  background-size: 25px;
+}
+
 .custom-tree-node {
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   font-size: 14px;
   padding-right: 8px;
 }
@@ -277,8 +427,8 @@ export default {
   -webkit-transform: rotate(0deg);
   transform: rotate(0deg);
 }
-.el-tree .el-icon-caret-right:before {
-  background: url("../../icons/png/book.png") no-repeat;
+.current .el-tree .el-icon-caret-right:before {
+  background: url("../../icons/png/expand.png") no-repeat;
   content: "";
   display: block;
   width: 28px;
@@ -287,8 +437,8 @@ export default {
   background-size: 25px;
 }
 
-.el-tree-node__expand-icon.is-leaf::before {
-  background: url("../../icons/png/video.png") no-repeat;
+.current .el-tree-node__expand-icon.is-leaf::before {
+  background: none;
   content: "";
   display: block;
   width: 28px;
@@ -307,4 +457,3 @@ export default {
   color: #333333;
 }
 </style>
-

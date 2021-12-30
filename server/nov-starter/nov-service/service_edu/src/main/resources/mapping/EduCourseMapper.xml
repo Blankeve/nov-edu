@@ -28,7 +28,7 @@
         order by course.title, course.teacher_id, course.create_time
     </select>
 
-    <select id="queryCourseTree" resultMap="EduCourseMap">
+    <select id="queryCourseTree"   resultMap="EduCourseMap">
         select c1.id          as cid,
                c1.teacher_id  as teacherId,
                c1.subject_id  as subjectId,
@@ -45,6 +45,9 @@
                c1.update_time as updateTime
         from edu_course c1
         where c1.is_deleted = 0
+        <if test="ew != null and ew.sqlSegment != null and ew.sqlSegment != ''">
+            and  ${ew.sqlSegment}
+        </if>
     </select>
 
     <resultMap id="EduCourseMap" type="EduCourse">
