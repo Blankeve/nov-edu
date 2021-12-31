@@ -1,33 +1,43 @@
 <template>
   <div class="app-container">
     <el-form :inline="true" ref="form" :model="form">
-      <el-form-item prop="name">
-        <el-input
-          class="mid-input"
-          v-model="form.name"
-          placeholder="姓名"
-        ></el-input>
+      <el-form-item label="课程名称" prop="title">
+        <el-input v-model="form.title" placeholder="课程名称"></el-input>
       </el-form-item>
 
-      <el-form-item prop="level">
-        <el-select v-model="form.level" placeholder="讲师等级">
-          <el-option label="高级讲师" value="1"></el-option>
-          <el-option label="首席讲师" value="2"></el-option>
+      <el-form-item label="所属课程">
+        <el-select v-model="form.courseId" placeholder="请选择讲师">
+          <el-option
+            v-for="(item, index) in courses"
+            :label="item.name"
+            :key="item.id"
+            :value="item.id"
+          >
+          </el-option>
         </el-select>
       </el-form-item>
 
-      <el-form-item prop="createTime">
+      <el-form-item label="第几章节">
+        <el-input-number
+          v-model="form.sort"
+          :min="1"
+          :max="10"
+          label="描述文字"
+        ></el-input-number>
+      </el-form-item>
+
+      <el-form-item label="添加时间" prop="createTime">
         <el-date-picker
           v-model="form.createTime"
           type="datetime"
-          placeholder="入驻时间"
+          placeholder="课程添加时间"
           value-format="yyyy-MM-dd HH:mm:ss"
         >
         </el-date-picker>
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">查询</el-button>
+        <el-button type="primary" @click="searchForm">查询</el-button>
         <el-button @click="resetForm('form')">重置</el-button>
       </el-form-item>
     </el-form>
@@ -58,7 +68,7 @@
         </template>
       </el-table-column>
 
-  <el-table-column label="课程讲师" align="center">
+      <el-table-column label="课程讲师" align="center">
         <template slot-scope="scope">
           {{ scope.row.teacherName }}
         </template>
@@ -66,27 +76,18 @@
 
       <el-table-column label="所属课程" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.courseTitle}}</span>
+          <span>{{ scope.row.courseTitle }}</span>
         </template>
       </el-table-column>
 
-
-      <el-table-column
-        align="center"
-        prop="created_at"
-        label="创建时间"
-      >
+      <el-table-column align="center" prop="created_at" label="创建时间">
         <template slot-scope="scope">
           <i class="el-icon-time" />
           <span>{{ scope.row.chapterCreateTime }}</span>
         </template>
       </el-table-column>
 
-   <el-table-column
-        align="center"
-        prop="created_at"
-        label="更新时间"
-      >
+      <el-table-column align="center" prop="created_at" label="更新时间">
         <template slot-scope="scope">
           <i class="el-icon-time" />
           <span>{{ scope.row.chapterUpdateTime }}</span>
@@ -96,7 +97,9 @@
         <template slot-scope="scope">
           <el-button @click="handleEdit(scope.row.chapterId)">编辑</el-button>
 
-          <el-button type="danger" @click="handleDelete(scope.$index,scope.row.chapterId)"
+          <el-button
+            type="danger"
+            @click="handleDelete(scope.$index, scope.row.chapterId)"
             >删除</el-button
           >
         </template>
@@ -137,14 +140,16 @@ export default {
       list: null,
       listLoading: true,
       form: {
-        name: "",
-        level: "",
+        title: "",
+        sort: 1,
+        courseId: null,
         createTime: "",
         current: 1,
         size: 8,
         total: 0,
       },
       sizes: [],
+      courses: [],
     };
   },
   created() {
@@ -152,6 +157,9 @@ export default {
   },
   methods: {
     fetchData() {
+      let courseId = this.$route.query.course;
+      if(courseId)
+        this.form.courseId = courseId;
       this.listLoading = true;
       this.sizes =
         this.form.size > 1
@@ -174,12 +182,12 @@ export default {
       this.form.size = s;
       this.fetchData();
     },
-      handleDelete(row,id) {
+    handleDelete(row, id) {
       removeChapterById(id).then((resp) => {
-          if(resp.code === 200){
-             this.$message.success("删除成功");
-             this.list.splice(row,1)
-          }
+        if (resp.code === 200) {
+          this.$message.success("删除成功");
+          this.list.splice(row, 1);
+        }
       });
     },
     handleEdit(id) {
@@ -191,6 +199,9 @@ export default {
       });
     },
     onSubmit() {
+      this.fetchData();
+    },
+     searchForm() {
       this.fetchData();
     },
     resetForm(formName) {

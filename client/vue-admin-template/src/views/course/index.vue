@@ -1,33 +1,49 @@
 <template>
   <div class="app-container">
     <el-form :inline="true" ref="form" :model="form">
-      <el-form-item prop="name">
-        <el-input
-          class="mid-input"
-          v-model="form.name"
-          placeholder="姓名"
-        ></el-input>
+      <el-form-item label="课程名称" prop="title">
+        <el-input v-model="form.title" placeholder="课程名称"></el-input>
       </el-form-item>
 
-      <el-form-item prop="level">
-        <el-select v-model="form.level" placeholder="讲师等级">
-          <el-option label="高级讲师" value="1"></el-option>
-          <el-option label="首席讲师" value="2"></el-option>
+      <el-form-item label="课程分类">
+        <el-cascader
+          v-model="subjectId"
+          :options="subjects"
+          :props="{ expandTrigger: 'hover', label: 'title', value: 'id' }"
+        ></el-cascader>
+      </el-form-item>
+      <el-form-item label="课程讲师">
+        <el-select v-model="form.teacherId" placeholder="请选择讲师">
+          <el-option
+            v-for="(item, index) in teacher"
+            :label="item.name"
+            :key="item.id"
+            :value="item.id"
+          >
+          </el-option>
         </el-select>
       </el-form-item>
 
-      <el-form-item prop="createTime">
+      <el-form-item label="课程状态">
+        <el-select v-model="form.status" placeholder="请选择">
+          <el-option label="已上架" key="1" value="1"> </el-option>
+          <el-option label="未上架" key="0" value="0"> </el-option>
+          <el-option label="全部" key="" value=""> </el-option>
+        </el-select>
+      </el-form-item>
+
+      <el-form-item label="添加时间" prop="createTime">
         <el-date-picker
           v-model="form.createTime"
           type="datetime"
-          placeholder="入驻时间"
+          placeholder="课程添加时间"
           value-format="yyyy-MM-dd HH:mm:ss"
         >
         </el-date-picker>
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">查询</el-button>
+        <el-button type="primary" @click="searchForm">查询</el-button>
         <el-button @click="resetForm('form')">重置</el-button>
       </el-form-item>
     </el-form>
@@ -127,18 +143,19 @@
           <span>{{ scope.row.courseUpdateTime }}</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" label="章节列表" width="100">
+
+      <el-table-column align="center" label="章节数量" width="100">
         <template slot-scope="scope">
-          <el-badge :value="12" class="item">
-            <el-button
-              plain
-              type="primary"
-              @click="handleEdit(scope.row.courseId)"
-              >查看</el-button
-            >
-          </el-badge>
+          <span>{{ scope.row.chapterQty }}</span>
         </template>
       </el-table-column>
+
+      <el-table-column align="center" label="视频数量" width="100">
+        <template slot-scope="scope">
+          <span>{{ scope.row.videoQty }}</span>
+        </template>
+      </el-table-column>
+
       <el-table-column align="center" label="操作" width="200">
         <template slot-scope="scope">
           <el-button @click="handleEdit(scope.row.courseId)">编辑</el-button>
@@ -147,6 +164,9 @@
             type="danger"
             @click="handleDelete(scope.$index, scope.row.courseId)"
             >删除</el-button
+          >
+          <el-button type="text" @click="watchChapter(scope.row.courseId)"
+            >查看章节</el-button
           >
         </template>
       </el-table-column>
@@ -186,13 +206,18 @@ export default {
       list: null,
       listLoading: true,
       form: {
-        name: "",
-        level: "",
+        title: "",
+        subjectId: null,
+        courseId: null,
         createTime: "",
+        status: "",
         current: 1,
         size: 8,
         total: 0,
       },
+      subjectId: [],
+      teacher: [],
+      subjects: [],
       sizes: [],
     };
   },
@@ -243,8 +268,21 @@ export default {
     onSubmit() {
       this.fetchData();
     },
+    searchForm() {
+      this.fetchData();
+    },
     resetForm(formName) {
       this.$refs[formName].resetFields();
+      this.subjectId = null;
+      this.form.subjectId = null;
+    },
+    watchChapter(data) {
+      this.$router.push({
+        path: "/chapter/list",
+        query: {
+          course: data,
+        },
+      });
     },
   },
 };

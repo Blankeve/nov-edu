@@ -171,7 +171,7 @@ export default {
         if (resp.code === 200) {
           this.$confirm(
             (this.$route.query.course ? "修改" : "添加") +
-              "课程成功, 是否添加章节?",
+              "课程成功, 是否返回列表?",
             "提示",
             {
               confirmButtonText: "确定",
@@ -180,12 +180,7 @@ export default {
             }
           )
             .then(() => {
-              this.$router.push({
-                path: "/chapter/save",
-                query: {
-                  course: this.course.id,
-                },
-              });
+              this.$router.go(-1);
             })
             .catch(() => {});
         }
