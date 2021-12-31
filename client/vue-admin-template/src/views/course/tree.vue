@@ -2,10 +2,7 @@
   <div class="app-container">
     <el-form :inline="true" ref="form" :model="form">
       <el-form-item label="课程名称" prop="title">
-        <el-input
-          v-model="form.title"
-          placeholder="课程名称"
-        ></el-input>
+        <el-input v-model="form.title" placeholder="课程名称"></el-input>
       </el-form-item>
 
       <el-form-item label="课程分类">
@@ -26,6 +23,15 @@
           </el-option>
         </el-select>
       </el-form-item>
+
+      <el-form-item label="课程状态">
+        <el-select v-model="form.status" placeholder="请选择">
+          <el-option label="已上架" key="1" value="1"> </el-option>
+          <el-option label="未上架" key="0" value="0"> </el-option>
+          <el-option label="全部" key="" value=""> </el-option>
+        </el-select>
+      </el-form-item>
+
       <el-form-item label="添加时间" prop="createTime">
         <el-date-picker
           v-model="form.createTime"
@@ -43,17 +49,16 @@
     </el-form>
 
     <div class="down-tree" style="width: 100%">
-      <el-button type="text" size="mini" @click="() => appendRoot(data)">
+      <el-button
+        icon="el-icon-circle-plus-outline"
+        type="text"
+        @click="() => appendRoot(data)"
+      >
         添加课程
-      </el-button>
-      <el-button type="text" size="mini" @click="() => (expandAll = true)">
-        展开所有
-      </el-button>
-      <el-button type="text" size="mini" @click="() => (expandAll = false)">
-        收缩所有
       </el-button>
       <div class="current">
         <el-tree
+          v-loading="listLoading"
           :data="data"
           node-key="id"
           ref="tree"
@@ -64,6 +69,10 @@
           @node-drag-over="handleDragOver"
           @node-drag-end="handleDragEnd"
           @node-drop="handleDrop"
+          :default-expanded-keys="defaultShowNodes"
+          @node-expand="handleNodeExpand"
+          @node-collapse="handleNodeCollapse"
+          @node-click="handleNodeClick"
           :expand-on-click-node="false"
         >
           <span class="custom-tree-node" slot-scope="{ node, data }">
@@ -80,17 +89,27 @@
               {{
                 data.courseId
                   ? `第${data.sort}章:`
-                  :(data.chapterId
+                  : data.chapterId
                   ? `第${data.sort}节:`
-                  : "") 
+                  : ""
               }}&nbsp; {{ data.title }}&nbsp;{{
                 data.children && data.children.length > 0
                   ? `(${data.children.length})`
                   : ""
-              }}</span
-            >
+              }}
+
+              <el-button
+                v-if="data.teacherId"
+                type="text"
+                size="mini"
+                icon="el-icon-user"
+              >
+                {{ data.teacherName }}
+              </el-button>
+            </span>
             <span style="margin-left: 100px">
               <el-button
+                v-if="!data.chapterId"
                 type="text"
                 size="mini"
                 icon="el-icon-circle-plus-outline"
@@ -116,23 +135,70 @@
           </span>
         </el-tree>
       </div>
-      <div class="block">
-        <el-pagination
-          background
-          @size-change="handleSizeChange"
-          @current-change="handleCurrentChange"
-          :current-page="form.current"
-          :page-sizes="sizes"
-          :page-size="form.size"
-          layout="total, sizes, prev, pager, next, jumper"
-          :total="form.total"
-        >
-        </el-pagination>
-      </div>
     </div>
     <br />
-    <el-button type="primary" @click="onSubmit">保存</el-button>
-    <el-button @click="initTree">重置</el-button>
+    <div class="block">
+      <el-pagination
+        background
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="form.current"
+        :page-sizes="sizes"
+        :page-size="form.size"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="form.total"
+      >
+      </el-pagination>
+    </div>
+    <el-dialog
+      :title="chapterFormTitle"
+      :visible.sync="chapterFormVisible"
+      center=""
+    >
+      <el-form :model="form" :label-width="formLabelWidth">
+        <el-form-item label="章节名称">
+          <el-input v-model="chapter.title"></el-input>
+        </el-form-item>
+
+        <el-form-item label="当前章节">
+          <el-input-number
+            v-model="chapter.sort"
+            :min="1"
+            :max="100"
+            label="总课时"
+          ></el-input-number>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="chapterFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="chapterFormSubmit">确 定</el-button>
+      </div>
+    </el-dialog>
+
+    <el-dialog
+      :title="videoFormTitle"
+      :visible.sync="videoFormVisible"
+      center=""
+    >
+      <el-form :model="form" :label-width="formLabelWidth">
+        <el-form-item label="小节名称">
+          <el-input v-model="video.title"></el-input>
+        </el-form-item>
+
+        <el-form-item label="当前小节">
+          <el-input-number
+            v-model="video.sort"
+            :min="1"
+            :max="100"
+            label="当前小节"
+          ></el-input-number>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="videoFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="videoFormSubmit">确 定</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
@@ -140,8 +206,8 @@
 let id = 1000;
 
 import { getTree, removeById } from "@/api/course";
-import { removeChapterById } from "@/api/chapter";
-import { removeVideoById } from "@/api/video";
+import { save, removeChapterById } from "@/api/chapter";
+import { saveVideo, removeVideoById } from "@/api/video";
 import { getAll } from "@/api/teacher";
 import { getList } from "@/api/subject";
 
@@ -157,19 +223,37 @@ export default {
       data: [],
       resetData: [],
       expandAll: false,
+      defaultShowNodes: [],
+      listLoading: true,
       form: {
         title: "",
         subjectId: null,
         courseId: null,
         createTime: "",
+        status: "",
         current: 1,
         size: 8,
         total: 0,
       },
+      chapter: {
+        title: "",
+        courseId: "",
+        sort: null,
+      },
+      video: {
+        title: "",
+        chapterId: null,
+        sort: null,
+      },
+      chapterFormTitle: "",
+      videoFormTitle: "",
       sizes: [],
       subjectId: [],
       teacher: [],
       subjects: [],
+      chapterFormVisible: false,
+      videoFormVisible: false,
+      formLabelWidth: "120px",
     };
   },
   created() {
@@ -190,6 +274,7 @@ export default {
       });
     },
     fetchData() {
+      this.listLoading = true;
       this.sizes =
         this.form.size > 1
           ? [this.form.size / 2, this.form.size, this.form.size * 2]
@@ -205,9 +290,39 @@ export default {
             this.form.current = data.current;
             this.form.size = data.size;
             this.form.total = data.total;
+            this.listLoading = false;
           }
         }
       });
+    },
+    // 树节点展开
+    handleNodeExpand(data) {
+      // 保存当前展开的节点
+      let flag = false;
+      this.defaultShowNodes.some((item) => {
+        if (item === data.id) {
+          // 判断当前节点是否存在， 存在不做处理
+          flag = true;
+          return true;
+        }
+      });
+      if (!flag) {
+        // 不存在则存到数组里
+        this.defaultShowNodes.push(data.id);
+      }
+    },
+    // 树节点关闭
+    handleNodeCollapse(data) {
+      this.defaultShowNodes.some((item, i) => {
+        if (item === data.id) {
+          // 删除关闭节点
+          this.defaultShowNodes.length = i;
+        }
+      });
+    },
+    handleNodeClick(data) {
+      console.log(data.id);
+      console.log(this.defaultShowNodes);
     },
     initTree() {
       this.data = JSON.parse(JSON.stringify(this.resetData));
@@ -243,19 +358,15 @@ export default {
     },
     append(data) {
       if (data.subjectId) {
-        this.$router.push({
-          path: "/chapter/save",
-          query: {
-            course: data.id,
-          },
-        });
+        this.chapter.id = null;
+        this.chapter.courseId = data.id;
+        this.chapterFormTitle = "添加章节";
+        this.chapterFormVisible = true;
       } else if (data.courseId) {
-        this.$router.push({
-          path: "/video/save",
-          query: {
-            chapter: data.id,
-          },
-        });
+        this.video.id = null;
+        this.video.chapterId = data.id;
+        this.videoFormTitle = "添加小节";
+        this.videoFormVisible = true;
       }
     },
     edit(node, data) {
@@ -267,19 +378,19 @@ export default {
           },
         });
       } else if (data.courseId) {
-        this.$router.push({
-          path: "/chapter/edit",
-          query: {
-            chapter: data.id,
-          },
-        });
+        this.chapter.id = data.id;
+        this.chapter.courseId = data.courseId;
+        this.chapter.title = data.title;
+        this.chapter.sort = data.sort;
+        this.chapterFormTitle = "修改章节";
+        this.chapterFormVisible = true;
       } else if (data.chapterId) {
-        this.$router.push({
-          path: "/video/edit",
-          query: {
-            video: data.id,
-          },
-        });
+        this.video.id = data.id;
+        this.video.chapterId = data.chapterId;
+        this.video.title = data.title;
+        this.video.sort = data.sort;
+        this.videoFormTitle = "修改小节";
+        this.videoFormVisible = true;
       }
     },
     appendRoot(data) {
@@ -335,7 +446,25 @@ export default {
         </span>
       );
     },
-
+    chapterFormSubmit() {
+      save(this.chapter).then((resp) => {
+        if (resp.code === 200) {
+          this.$message.success(`${this.chapterFormTitle}成功`);
+          if (this.chapterFormTitle === "修改章节")
+            this.chapterFormVisible = false;
+        }
+        this.fetchData();
+      });
+    },
+    videoFormSubmit() {
+      saveVideo(this.video).then((resp) => {
+        if (resp.code === 200) {
+          this.$message.success(`${this.videoFormTitle}成功`);
+          if (this.videoFormTitle === "修改小节") this.videoFormVisible = false;
+        }
+        this.fetchData();
+      });
+    },
     handleDragStart(node, ev) {
       console.log("drag start", node);
     },
@@ -410,6 +539,7 @@ export default {
 .down-tree {
   flex: 1;
   max-width: 1200px;
+  min-height: 300px;
   height: 100%;
   background: rgba(245, 248, 250, 1);
   border-radius: 3px;

@@ -85,7 +85,7 @@
 import { getListByTeacherId } from "@/api/course";
 import { getChaptersByCourseId } from "@/api/chapter";
 import { getAll } from "@/api/teacher";
-import { save, getOneByVideoId } from "@/api/video";
+import { saveVideo, getOneByVideoId } from "@/api/video";
 export default {
   data() {
     return {
@@ -143,7 +143,7 @@ export default {
     },
 
     submitForm() {
-      save(this.video).then((resp) => {
+      saveVideo(this.video).then((resp) => {
         if (resp.code === 200) {
           this.$message({
             type: "success",

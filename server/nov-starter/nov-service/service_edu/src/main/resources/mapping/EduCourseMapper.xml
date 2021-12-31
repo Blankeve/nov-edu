@@ -4,27 +4,37 @@
 
 
     <select id="queryPage" parameterType="EduCourseInfoVO" resultType="EduCourseInfoVO">
-        select teacher.id          as teacherId,
-               teacher.name        as teacherName,
-               course.id           as courseId,
-               course.title        as courseTitle,
-               course.lesson_num   as courseLessonNum,
-               course.status       as courseStatus,
-               course.view_count   as courseViewCount,
-               course.buy_count    as courseBuyCount,
-               course.cover        as courseCover,
-               course.price        as coursePrice,
-               course.create_time  as courseCreateTime,
-               course.update_time  as courseUpdateTime,
-               subject.id          as subjectId,
-               subject.title       as subjectTitle,
-               subject.sort        as subjectSort,
-               subject.create_time as subjectCreateTime,
-               subject.update_time as subjectUpdateTime
+        select teacher.id as teacherId,
+        teacher.name as teacherName,
+        course.id as courseId,
+        course.title as courseTitle,
+        course.lesson_num as courseLessonNum,
+        course.status as courseStatus,
+        course.view_count as courseViewCount,
+        course.buy_count as courseBuyCount,
+        course.cover as courseCover,
+        course.price as coursePrice,
+        course.create_time as courseCreateTime,
+        course.update_time as courseUpdateTime,
+        (select count(*) from edu_chapter e where e.course_id = course.id ) as chapterQty,
+        (select count(*) from edu_video v1 left join edu_chapter v2 on
+        v2.id = v1.chapter_id
+        left join edu_course v3
+        on v3.id = v2.course_id
+        where v3.id = course.id
+        ) as videoQty,
+        subject.id as subjectId,
+        subject.title as subjectTitle,
+        subject.sort as subjectSort,
+        subject.create_time as subjectCreateTime,
+        subject.update_time as subjectUpdateTime
         from edu_course course
-                 left join edu_teacher teacher on course.teacher_id = teacher.id
-                 left join edu_subject subject on course.subject_id = subject.id
+        left join edu_teacher teacher on course.teacher_id = teacher.id
+        left join edu_subject subject on course.subject_id = subject.id
         where course.is_deleted = 0
+        <if test="ew != null and ew.sqlSegment != null and ew.sqlSegment != ''">
+            and ${ew.sqlSegment}
+        </if>
         order by course.title, course.teacher_id, course.create_time
     </select>
 
@@ -42,8 +52,12 @@
         c1.status as status,
         c1.is_deleted as isDeleted,
         c1.create_time as createTime,
-        c1.update_time as updateTime
+        c1.update_time as updateTime,
+        t.create_time as tCreateTime,
+        t.update_time as tCpdateTime,
+        t.name as tName
         from edu_course c1
+        left join edu_teacher t on c1.teacher_id = t.id
         where c1.is_deleted = 0
         <if test="ew != null and ew.sqlSegment != null and ew.sqlSegment != ''">
             and ${ew.sqlSegment}
@@ -53,6 +67,7 @@
     <resultMap id="EduCourseMap" type="EduCourse">
         <id column="cid" property="id"></id>
         <result column="teacherId" property="teacherId"></result>
+        <result column="tName" property="teacherName"></result>
         <result column="subjectId" property="subjectId"></result>
         <result column="title" property="title"></result>
         <result column="price" property="price"></result>

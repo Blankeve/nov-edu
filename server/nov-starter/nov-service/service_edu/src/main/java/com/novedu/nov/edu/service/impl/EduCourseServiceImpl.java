@@ -66,6 +66,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         EduCourseIntro courseIntro = new EduCourseIntro();
         BeanUtils.copyProperties(courseInfoDTO, course);
         course.setSubjectId(courseInfoDTO.getSubjectId()[courseInfoDTO.getSubjectId().length - 1]);
+        course.setTitle(course.getTitle().trim());
         saveOrUpdate(course);
         BeanUtils.copyProperties(courseInfoDTO, courseIntro);
         courseIntro.setId(course.getId());
@@ -99,11 +100,13 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         }
         if (!ObjectUtils.isEmpty(courseInfoDTO.getTeacherId()))
             queryWrapper.eq("teacher_id", courseInfoDTO.getTeacherId());
+        if (!ObjectUtils.isEmpty(courseInfoDTO.getStatus()))
+            queryWrapper.eq("status", courseInfoDTO.getStatus());
         if (!ObjectUtils.isEmpty(courseInfoDTO.getCreateTime()))
-            queryWrapper.apply("create_time > date_format({0},'%Y-%m-%d')", courseInfoDTO.getCreateTime());
+            queryWrapper.apply("c1.create_time > date_format({0},'%Y-%m-%d')", courseInfoDTO.getCreateTime());
         queryWrapper.orderByAsc("title");
         queryWrapper.orderByAsc("teacher_id");
-        queryWrapper.orderByAsc("create_time");
+        queryWrapper.orderByAsc("c1.create_time");
         return BaseResult.success(courseMapper.queryCourseTree(page, queryWrapper));
     }
 
@@ -120,9 +123,20 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
 
     @Override
-    public BaseResult queryCoursePage(Page page, EduCourseInfoVO courseInfoVO) {
+    public BaseResult queryCoursePage(Page page, EduCourseInfoDTO courseInfoDTO) {
         QueryWrapper queryWrapper = new QueryWrapper();
-        return BaseResult.success(courseMapper.queryPage(page, null));
+        queryWrapper.like("course.title", courseInfoDTO.getTitle());
+        if (!ObjectUtils.isEmpty(courseInfoDTO.getSubjectId())) {
+            Integer subjectId = courseInfoDTO.getSubjectId()[courseInfoDTO.getSubjectId().length - 1];
+            queryWrapper.eq("subject_id", subjectId);
+        }
+        if (!ObjectUtils.isEmpty(courseInfoDTO.getTeacherId()))
+            queryWrapper.eq("teacher_id", courseInfoDTO.getTeacherId());
+        if (!ObjectUtils.isEmpty(courseInfoDTO.getStatus()))
+            queryWrapper.eq("status", courseInfoDTO.getStatus());
+        if (!ObjectUtils.isEmpty(courseInfoDTO.getCreateTime()))
+            queryWrapper.apply("course.create_time > date_format({0},'%Y-%m-%d')", courseInfoDTO.getCreateTime());
+        return BaseResult.success(courseMapper.queryPage(page, queryWrapper));
     }
 
     @Override
@@ -135,9 +149,9 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     public BaseResult removeCourse(Integer id) {
         List<EduChapter> chapters = eduChapterService.list();
         List<EduVideo> videos = videoService.list();
-        List<Integer> chapters1 = chapters.stream().filter(o -> o.getCourseId().equals(id)).map(EduChapter::getId).collect(Collectors.toList());
+        List<Long> chapters1 = chapters.stream().filter(o -> o.getCourseId().equals(id)).map(EduChapter::getId).collect(Collectors.toList());
         List<Long> videos1 = new ArrayList<>();
-        for (Integer eduChapter : chapters1) {
+        for (Long eduChapter : chapters1) {
             for (EduVideo video : videos) {
                 if(eduChapter.equals(video.getChapterId()))
                     videos1.add(video.getId());

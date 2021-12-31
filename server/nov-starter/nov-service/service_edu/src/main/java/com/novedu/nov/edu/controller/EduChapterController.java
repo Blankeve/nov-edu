@@ -4,6 +4,7 @@ package com.novedu.nov.edu.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduChapter;
+import com.novedu.nov.edu.entity.dto.EduChapterInfoDTO;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 import com.novedu.nov.edu.service.EduChapterService;
 import io.swagger.annotations.ApiOperation;
@@ -33,17 +34,17 @@ public class EduChapterController {
 
     @ApiOperation("删除")
     @DeleteMapping("/remove/{id}")
-    public BaseResult removeChapter(@PathVariable Integer id){
+    public BaseResult removeChapter(@PathVariable Long id){
         return chapterService.removeChapter(id);
     }
 
     @PostMapping("/page")
-    public BaseResult queryChapterPage(Page page, EduCourseInfoVO courseInfoVO) {
-        return chapterService.queryChapterPage(page, courseInfoVO);
+    public BaseResult queryChapterPage(Page page, EduChapterInfoDTO chapterInfoDTO) {
+        return chapterService.queryChapterPage(page, chapterInfoDTO);
     }
 
     @PostMapping("/detail/{id}")
-    public BaseResult queryChapterDetail(@PathVariable Integer id) {
+    public BaseResult queryChapterDetail(@PathVariable Long id) {
         return chapterService.queryChapterDetail(id);
     }
 

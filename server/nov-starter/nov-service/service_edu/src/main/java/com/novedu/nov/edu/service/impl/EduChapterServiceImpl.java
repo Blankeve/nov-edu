@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduChapter;
 import com.novedu.nov.edu.entity.EduVideo;
+import com.novedu.nov.edu.entity.dto.EduChapterInfoDTO;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 import com.novedu.nov.edu.mapper.EduChapterMapper;
 import com.novedu.nov.edu.service.EduChapterService;
@@ -48,6 +49,7 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
             queryWrapper.ne("id",chapter.getId());
         if(!CollectionUtils.isEmpty(list(queryWrapper)))
             return BaseResult.error("当前章节已存在!");
+        chapter.setTitle(chapter.getTitle().trim());
         saveOrUpdate(chapter);
         return BaseResult.success(chapter.getId());
     }
@@ -58,8 +60,11 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
     }
 
     @Override
-    public BaseResult queryChapterPage(Page page, EduCourseInfoVO courseInfoVO) {
-        return BaseResult.success(chapterMapper.queryPage(page,null));
+    public BaseResult queryChapterPage(Page page, EduChapterInfoDTO chapterInfoDTO) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("course_id",chapterInfoDTO.getCourseId());
+        queryWrapper.eq("chapter.sort",chapterInfoDTO.getSort());
+        return BaseResult.success(chapterMapper.queryPage(page,queryWrapper));
     }
 
     @Override
@@ -68,13 +73,13 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
     }
 
     @Override
-    public BaseResult queryChapterDetail(Integer id) {
+    public BaseResult queryChapterDetail(Long id) {
         return BaseResult.success(getById(id));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public BaseResult removeChapter(Integer id) {
+    public BaseResult removeChapter(Long id) {
         List<EduVideo>videos = videoService.list();
         List<Long> videos1 = videos.stream().filter(o -> o.getChapterId().equals(id)).map(EduVideo::getId).collect(Collectors.toList());
         removeById(id);

@@ -27,7 +27,7 @@ public interface EduCourseService extends IService<EduCourse> {
 
     BaseResult queryCoursesByTeacherId(Long eduTeacher);
 
-    BaseResult queryCoursePage(Page page, EduCourseInfoVO courseInfoVO);
+    BaseResult queryCoursePage(Page page, EduCourseInfoDTO courseInfoDTO);
 
     BaseResult queryCourseById(EduCourse id);
 

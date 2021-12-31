@@ -24,6 +24,9 @@
                  left join edu_course course on chapter.course_id = course.id
                  left join edu_teacher teacher on course.teacher_id = teacher.id
         where chapter.is_deleted = 0
+        <if test="ew != null and ew.sqlSegment != null and ew.sqlSegment != ''">
+            and ${ew.sqlSegment}
+        </if>
         order by course.title,teacher.name,chapter.sort
     </select>
 

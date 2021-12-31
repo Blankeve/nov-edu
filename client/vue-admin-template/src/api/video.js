@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-export function save(data) {
+export function saveVideo(data) {
     return request({
       url: '/edu/video/save',
       method: 'post',

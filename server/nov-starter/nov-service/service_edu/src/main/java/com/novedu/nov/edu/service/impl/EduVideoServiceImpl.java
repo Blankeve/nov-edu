@@ -36,6 +36,7 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
         queryWrapper.ne("id",video.getId());
         if (!CollectionUtils.isEmpty(list(queryWrapper)))
             return BaseResult.error("当前小节已存在!");
+        video.setTitle(video.getTitle().trim());
         saveOrUpdate(video);
         return BaseResult.success(video.getId());
     }

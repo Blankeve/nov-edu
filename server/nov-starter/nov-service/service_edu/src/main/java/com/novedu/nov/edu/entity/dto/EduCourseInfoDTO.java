@@ -28,6 +28,7 @@ public class EduCourseInfoDTO {
 
     private static final long serialVersionUID = 1L;
 
+    @JsonSerialize(using = ToStringSerializer.class)
     @ApiModelProperty(value = "课程ID")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;

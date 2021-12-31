@@ -60,8 +60,8 @@ public class EduCourseController {
     }
 
     @PostMapping("/page")
-    public BaseResult queryCoursePage(Page page, EduCourseInfoVO courseInfoVO) {
-        return eduCourseService.queryCoursePage(page, courseInfoVO);
+    public BaseResult queryCoursePage(Page page, EduCourseInfoDTO courseInfoDTO) {
+        return eduCourseService.queryCoursePage(page, courseInfoDTO);
     }
 
     @PostMapping("/tree")

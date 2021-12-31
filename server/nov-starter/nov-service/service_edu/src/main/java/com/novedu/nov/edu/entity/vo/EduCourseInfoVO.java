@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -71,6 +73,11 @@ public class EduCourseInfoVO {
     @ApiModelProperty(value = "课程状态 0未发布  1已发布")
     private Integer courseStatus;
 
+    @ApiModelProperty(value = "章节数量")
+    private Integer chapterQty;
+
+    @ApiModelProperty(value = "视频数量")
+    private Integer videoQty;
 
     @ApiModelProperty(value = "创建时间")
     private Date courseCreateTime;
@@ -85,9 +92,9 @@ public class EduCourseInfoVO {
     @ApiModelProperty(value = "课程简介")
     private String introDescription;
 
+    @JsonSerialize(using = ToStringSerializer.class)
     @ApiModelProperty(value = "章节ID")
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer chapterId;
+    private Long chapterId;
 
     @ApiModelProperty(value = "章节名称")
     private String chapterTitle;
@@ -103,6 +110,7 @@ public class EduCourseInfoVO {
     @ApiModelProperty(value = "更新时间")
     private Date chapterUpdateTime;
 
+    @JsonSerialize(using = ToStringSerializer.class)
     @ApiModelProperty(value = "视频ID")
     @TableId(value = "id", type = IdType.AUTO)
     private Long videoId;
