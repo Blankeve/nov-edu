@@ -28,13 +28,13 @@ public class EduChapterController {
     EduChapterService chapterService;
 
     @PostMapping("/save")
-    public BaseResult saveCourse(@RequestBody EduChapter chapter){
+    public BaseResult saveCourse(@RequestBody EduChapter chapter) {
         return chapterService.saveChapter(chapter);
     }
 
     @ApiOperation("删除")
     @DeleteMapping("/remove/{id}")
-    public BaseResult removeChapter(@PathVariable Long id){
+    public BaseResult removeChapter(@PathVariable Long id) {
         return chapterService.removeChapter(id);
     }
 
@@ -49,12 +49,17 @@ public class EduChapterController {
     }
 
     @PutMapping("/update-id")
-    public BaseResult updateChapterById(@RequestBody EduChapter id){
+    public BaseResult updateChapterById(@RequestBody EduChapter id) {
         return chapterService.updateChapterById(id);
     }
 
+    @GetMapping("/list")
+    public BaseResult queryChapterList() {
+        return chapterService.queryChapterList();
+    }
+
     @PostMapping("/list-course")
-    public BaseResult queryCourseByTeacherId(Long id){
+    public BaseResult queryCourseByTeacherId(Long id) {
         return chapterService.queryChaptersByCourseId(id);
     }
 }

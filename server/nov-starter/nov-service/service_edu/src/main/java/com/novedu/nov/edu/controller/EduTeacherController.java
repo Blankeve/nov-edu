@@ -31,37 +31,38 @@ public class EduTeacherController {
     EduTeacherService eduTeacherService;
 
     @GetMapping("/test")
-    public BaseResult test(){
+    public BaseResult test() {
         return BaseResult.success("操作成功");
     }
 
     @GetMapping("/list")
-    public BaseResult<List<EduTeacher>> list(Page page,EduTeacher teacher){
-        return eduTeacherService.findTeacherList(page,teacher);
+    public BaseResult<List<EduTeacher>> list(Page page, EduTeacher teacher) {
+        return eduTeacherService.findTeacherList(page, teacher);
     }
 
     @GetMapping("/all")
-    public BaseResult<List<EduTeacher>> all(){
+    public BaseResult<List<EduTeacher>> all() {
         return eduTeacherService.findAll();
     }
 
     @GetMapping("/info/{id}")
-    public BaseResult<EduTeacher> info(@PathVariable String id){
+    public BaseResult<EduTeacher> info(@PathVariable String id) {
         return eduTeacherService.findTeacherOne(id);
     }
+
     @ApiOperation("删除")
     @DeleteMapping("/remove/{id}")
-    public BaseResult removeTeacher(@PathVariable String id){
+    public BaseResult removeTeacher(@PathVariable String id) {
         return eduTeacherService.removeTeacher(id);
     }
 
     @PostMapping("/save")
-    public BaseResult saveTeacher(@RequestBody @Validated EduTeacher teacher){
+    public BaseResult saveTeacher(@RequestBody @Validated EduTeacher teacher) {
         return eduTeacherService.saveTeacher(teacher);
     }
 
     @PutMapping("/edit")
-    public BaseResult editTeacher(@RequestBody @Validated EduTeacher teacher){
+    public BaseResult editTeacher(@RequestBody @Validated EduTeacher teacher) {
         return eduTeacherService.editTeacher(teacher);
     }
 }

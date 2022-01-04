@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduVideo;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.novedu.nov.edu.entity.dto.EduVideoInfoDTO;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 
 /**
@@ -19,7 +20,7 @@ public interface EduVideoService extends IService<EduVideo> {
     BaseResult saveVideo(EduVideo video);
 
 
-    BaseResult queryVideoPage(Page page, EduCourseInfoVO courseInfoVO);
+    BaseResult queryVideoPage(Page page, EduVideoInfoDTO videoInfoDTO);
 
     BaseResult queryVideoDetail(Long id);
 

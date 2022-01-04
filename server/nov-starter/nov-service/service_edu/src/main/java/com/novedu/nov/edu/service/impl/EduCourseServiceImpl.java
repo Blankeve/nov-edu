@@ -58,8 +58,8 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("teacher_id", courseInfoDTO.getTeacherId());
         queryWrapper.eq("title", courseInfoDTO.getTitle());
-        if(!ObjectUtils.isEmpty(courseInfoDTO.getId()))
-            queryWrapper.ne("id",courseInfoDTO.getId());
+        if (!ObjectUtils.isEmpty(courseInfoDTO.getId()))
+            queryWrapper.ne("id", courseInfoDTO.getId());
         if (!CollectionUtils.isEmpty(list(queryWrapper)))
             return BaseResult.error("当前课程已存在!");
         EduCourse course = new EduCourse();
@@ -125,7 +125,8 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     @Override
     public BaseResult queryCoursePage(Page page, EduCourseInfoDTO courseInfoDTO) {
         QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.like("course.title", courseInfoDTO.getTitle());
+        if (StringUtils.hasText(courseInfoDTO.getTitle()))
+            queryWrapper.like("course.title", courseInfoDTO.getTitle());
         if (!ObjectUtils.isEmpty(courseInfoDTO.getSubjectId())) {
             Integer subjectId = courseInfoDTO.getSubjectId()[courseInfoDTO.getSubjectId().length - 1];
             queryWrapper.eq("subject_id", subjectId);
@@ -153,7 +154,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         List<Long> videos1 = new ArrayList<>();
         for (Long eduChapter : chapters1) {
             for (EduVideo video : videos) {
-                if(eduChapter.equals(video.getChapterId()))
+                if (eduChapter.equals(video.getChapterId()))
                     videos1.add(video.getId());
             }
         }

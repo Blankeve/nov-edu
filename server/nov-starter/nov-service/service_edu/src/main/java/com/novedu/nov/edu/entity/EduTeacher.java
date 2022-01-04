@@ -28,28 +28,28 @@ import javax.validation.constraints.NotNull;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@ApiModel(value="EduTeacher对象", description="讲师")
+@ApiModel(value = "EduTeacher对象", description = "讲师")
 public class EduTeacher implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Excel(name = "讲师id", height = 20, width = 30, isImportField = "true_st",orderNum = "1")
+    @Excel(name = "讲师id", height = 20, width = 30, isImportField = "true_st", orderNum = "1")
     @ApiModelProperty(value = "讲师ID")
     @TableId(value = "id", type = IdType.NONE)
     @JsonSerialize(using = ToStringSerializer.class)
     private Long id;
 
-    @Excel(name = "讲师姓名", height = 20, width = 30, isImportField = "true_st",orderNum = "2")
+    @Excel(name = "讲师姓名", height = 20, width = 30, isImportField = "true_st", orderNum = "2")
     @NotNull(message = "不能为空")
     @ApiModelProperty(value = "讲师姓名")
     private String name;
 
-    @Excel(name = "讲师简介", height = 20, width = 30, isImportField = "true_st",orderNum = "3")
+    @Excel(name = "讲师简介", height = 20, width = 30, isImportField = "true_st", orderNum = "3")
     @NotNull(message = "不能为空")
     @ApiModelProperty(value = "讲师简介")
     private String intro;
 
-    @Excel(name = "讲师资历", height = 20, width = 30, isImportField = "true_st",orderNum = "4")
+    @Excel(name = "讲师资历", height = 20, width = 30, isImportField = "true_st", orderNum = "4")
     @NotNull(message = "不能为空")
     @ApiModelProperty(value = "讲师资历,一句话说明讲师")
     private String career;
@@ -71,11 +71,11 @@ public class EduTeacher implements Serializable {
     @ApiModelProperty(value = "逻辑删除 1（true）已删除， 0（false）未删除")
     private Integer isDeleted;
 
-    @TableField(value = "create_time",fill = FieldFill.INSERT)
+    @TableField(value = "create_time", fill = FieldFill.INSERT)
     @ApiModelProperty(value = "创建时间")
     private Date createTime;
 
-    @TableField(value = "update_time",fill = FieldFill.INSERT_UPDATE)
+    @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
     @ApiModelProperty(value = "更新时间")
     private Date updateTime;
 

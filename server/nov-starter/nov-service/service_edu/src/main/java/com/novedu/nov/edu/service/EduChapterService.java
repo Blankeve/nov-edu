@@ -28,4 +28,6 @@ public interface EduChapterService extends IService<EduChapter> {
     BaseResult queryChapterDetail(Long id);
 
     BaseResult removeChapter(Long id);
+
+    BaseResult queryChapterList();
 }

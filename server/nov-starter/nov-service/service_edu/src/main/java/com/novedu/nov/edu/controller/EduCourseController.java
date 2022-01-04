@@ -35,7 +35,7 @@ public class EduCourseController {
 
     @ApiOperation("删除")
     @DeleteMapping("/remove/{id}")
-    public BaseResult removeCourse(@PathVariable Integer id){
+    public BaseResult removeCourse(@PathVariable Integer id) {
         return eduCourseService.removeCourse(id);
     }
 
@@ -49,7 +49,7 @@ public class EduCourseController {
         return eduCourseService.queryCourseById(id);
     }
 
-    @PostMapping("/list")
+    @GetMapping("/list")
     public BaseResult queryCourseList(EduCourseInfoVO courseInfoVO) {
         return eduCourseService.queryCourseList(courseInfoVO);
     }
@@ -65,8 +65,8 @@ public class EduCourseController {
     }
 
     @PostMapping("/tree")
-    public BaseResult queryCourseTree(Page page,EduCourseInfoDTO courseInfoDTO) {
-        return eduCourseService.queryCourseTree(page,courseInfoDTO);
+    public BaseResult queryCourseTree(Page page, EduCourseInfoDTO courseInfoDTO) {
+        return eduCourseService.queryCourseTree(page, courseInfoDTO);
     }
 
 

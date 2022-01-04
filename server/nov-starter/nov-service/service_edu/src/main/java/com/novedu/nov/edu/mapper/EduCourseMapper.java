@@ -23,9 +23,9 @@ import java.util.List;
 @Repository
 public interface EduCourseMapper extends BaseMapper<EduCourse> {
 
-        IPage<EduCourse>  queryCourseTree(Page page, @Param("ew") Wrapper<EduCourseInfoDTO> queryWrapper);
+    IPage<EduCourse> queryCourseTree(Page page, @Param("ew") Wrapper<EduCourseInfoDTO> queryWrapper);
 
-        List<EduCourse> queryAll();
+    List<EduCourse> queryAll();
 
-        IPage<EduCourseInfoVO> queryPage(Page page, @Param("ew") Wrapper<EduCourseInfoVO> queryWrapper);
+    IPage<EduCourseInfoVO> queryPage(Page page, @Param("ew") Wrapper<EduCourseInfoVO> queryWrapper);
 }

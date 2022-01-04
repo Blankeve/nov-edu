@@ -2,10 +2,12 @@ package com.novedu.nov.edu.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
+
 import java.util.Date;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -26,7 +28,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@ApiModel(value="EduChapter对象", description="课程")
+@ApiModel(value = "EduChapter对象", description = "课程")
 public class EduChapter implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,11 +48,11 @@ public class EduChapter implements Serializable {
     @ApiModelProperty(value = "显示排序")
     private Integer sort;
 
-    @TableField(value = "create_time",fill = FieldFill.INSERT)
+    @TableField(value = "create_time", fill = FieldFill.INSERT)
     @ApiModelProperty(value = "创建时间")
     private Date createTime;
 
-    @TableField(value = "update_time",fill = FieldFill.INSERT_UPDATE)
+    @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
     @ApiModelProperty(value = "更新时间")
     private Date updateTime;
 
@@ -58,5 +60,5 @@ public class EduChapter implements Serializable {
     private Integer isDeleted;
 
     @TableField(exist = false)
-    private List<EduVideo> children ;
+    private List<EduVideo> children;
 }

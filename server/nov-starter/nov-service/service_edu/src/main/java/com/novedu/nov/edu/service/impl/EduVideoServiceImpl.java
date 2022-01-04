@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduVideo;
+import com.novedu.nov.edu.entity.dto.EduVideoInfoDTO;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 import com.novedu.nov.edu.mapper.EduVideoMapper;
 import com.novedu.nov.edu.service.EduVideoService;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
 
 /**
  * <p>
@@ -32,8 +34,8 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("chapter_id", video.getChapterId());
         queryWrapper.eq("sort", video.getSort());
-        if(!ObjectUtils.isEmpty(video.getId()))
-        queryWrapper.ne("id",video.getId());
+        if (!ObjectUtils.isEmpty(video.getId()))
+            queryWrapper.ne("id", video.getId());
         if (!CollectionUtils.isEmpty(list(queryWrapper)))
             return BaseResult.error("当前小节已存在!");
         video.setTitle(video.getTitle().trim());
@@ -43,8 +45,17 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
 
 
     @Override
-    public BaseResult queryVideoPage(Page page, EduCourseInfoVO courseInfoVO) {
-        return BaseResult.success(videoMapper.queryPage(page, null));
+    public BaseResult queryVideoPage(Page page, EduVideoInfoDTO videoInfoDTO) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        if (StringUtils.hasText(videoInfoDTO.getTitle()))
+            queryWrapper.like("video.title", videoInfoDTO.getTitle());
+        if (videoInfoDTO.getChapterId() != null)
+            queryWrapper.eq("video.chapter_id", videoInfoDTO.getChapterId());
+        if (videoInfoDTO.getSort() != null && videoInfoDTO.getSort() > 0)
+            queryWrapper.eq("video.sort", videoInfoDTO.getSort());
+        if (videoInfoDTO.getCreateTime() != null)
+            queryWrapper.apply("video.create_time > date_format({0},'%Y-%m-%d')", videoInfoDTO.getCreateTime());
+        return BaseResult.success(videoMapper.queryPage(page, queryWrapper));
     }
 
     @Override

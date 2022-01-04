@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
 
 import java.util.Collections;
 import java.util.List;
@@ -43,11 +44,11 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
     @Override
     public BaseResult saveChapter(EduChapter chapter) {
         QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("course_id",chapter.getCourseId());
-        queryWrapper.eq("sort",chapter.getSort());
-        if(!ObjectUtils.isEmpty(chapter.getId()))
-            queryWrapper.ne("id",chapter.getId());
-        if(!CollectionUtils.isEmpty(list(queryWrapper)))
+        queryWrapper.eq("course_id", chapter.getCourseId());
+        queryWrapper.eq("sort", chapter.getSort());
+        if (!ObjectUtils.isEmpty(chapter.getId()))
+            queryWrapper.ne("id", chapter.getId());
+        if (!CollectionUtils.isEmpty(list(queryWrapper)))
             return BaseResult.error("当前章节已存在!");
         chapter.setTitle(chapter.getTitle().trim());
         saveOrUpdate(chapter);
@@ -56,15 +57,21 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
 
     @Override
     public BaseResult queryChaptersByCourseId(Long id) {
-        return BaseResult.success(query().eq("course_id",id).list());
+        return BaseResult.success(query().eq("course_id", id).list());
     }
 
     @Override
     public BaseResult queryChapterPage(Page page, EduChapterInfoDTO chapterInfoDTO) {
         QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("course_id",chapterInfoDTO.getCourseId());
-        queryWrapper.eq("chapter.sort",chapterInfoDTO.getSort());
-        return BaseResult.success(chapterMapper.queryPage(page,queryWrapper));
+        if (StringUtils.hasText(chapterInfoDTO.getTitle()))
+            queryWrapper.like("chapter.title", chapterInfoDTO.getTitle());
+        if (chapterInfoDTO.getCourseId() != null)
+            queryWrapper.eq("course_id", chapterInfoDTO.getCourseId());
+        if (chapterInfoDTO.getSort() != null && chapterInfoDTO.getSort() > 0)
+            queryWrapper.eq("chapter.sort", chapterInfoDTO.getSort());
+        if (chapterInfoDTO.getCreateTime() != null)
+            queryWrapper.apply("chapter.create_time > date_format({0},'%Y-%m-%d')", chapterInfoDTO.getCreateTime());
+        return BaseResult.success(chapterMapper.queryPage(page, queryWrapper));
     }
 
     @Override
@@ -80,11 +87,16 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public BaseResult removeChapter(Long id) {
-        List<EduVideo>videos = videoService.list();
+        List<EduVideo> videos = videoService.list();
         List<Long> videos1 = videos.stream().filter(o -> o.getChapterId().equals(id)).map(EduVideo::getId).collect(Collectors.toList());
         removeById(id);
         videoService.removeByIds(videos1);
         return BaseResult.success();
+    }
+
+    @Override
+    public BaseResult queryChapterList() {
+        return BaseResult.success(list());
     }
 
 

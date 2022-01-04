@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduChapter;
 import com.novedu.nov.edu.entity.EduVideo;
+import com.novedu.nov.edu.entity.dto.EduVideoInfoDTO;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 import com.novedu.nov.edu.service.EduVideoService;
 import io.swagger.annotations.ApiOperation;
@@ -27,13 +28,13 @@ public class EduVideoController {
     EduVideoService videoService;
 
     @PostMapping("/save")
-    public BaseResult saveCourse(@RequestBody EduVideo video){
+    public BaseResult saveCourse(@RequestBody EduVideo video) {
         return videoService.saveVideo(video);
     }
 
     @PostMapping("/page")
-    public BaseResult queryVideoPage(Page page, EduCourseInfoVO courseInfoVO) {
-        return videoService.queryVideoPage(page, courseInfoVO);
+    public BaseResult queryVideoPage(Page page, EduVideoInfoDTO videoInfoDTO) {
+        return videoService.queryVideoPage(page, videoInfoDTO);
     }
 
     @PostMapping("/detail/{id}")
@@ -43,7 +44,7 @@ public class EduVideoController {
 
     @ApiOperation("删除")
     @DeleteMapping("/remove/{id}")
-    public BaseResult removeVideo(@PathVariable Long id){
+    public BaseResult removeVideo(@PathVariable Long id) {
         return videoService.removeVideo(id);
     }
 }

@@ -3,26 +3,32 @@
 <mapper namespace="com.novedu.nov.edu.mapper.EduChapterMapper">
 
     <select id="queryPage" parameterType="EduCourseInfoVO" resultType="EduCourseInfoVO">
-        select teacher.id                as teacherId,
-               teacher.name              as teacherName,
-               course.id                 as courseId,
-               course.title              as courseTitle,
-               course.lesson_num         as courseLessonNum,
-               course.status             as courseStatus,
-               course.view_count         as courseViewCount,
-               course.buy_count          as courseBuyCount,
-               course.cover              as courseCover,
-               course.price              as coursePrice,
-               course.create_time        as courseCreateTime,
-               course.update_time        as courseUpdateTime,
-               chapter.id                as chapterId,
-               chapter.title             as chapterTitle,
-               chapter.sort              as chapterSort,
-               chapter.update_time       as chapterUpdateTime,
-               chapter.create_time       as chapterCreateTime
+        select teacher.id as teacherId,
+        teacher.name as teacherName,
+        course.id as courseId,
+        course.title as courseTitle,
+        course.lesson_num as courseLessonNum,
+        course.status as courseStatus,
+        course.view_count as courseViewCount,
+        course.buy_count as courseBuyCount,
+        course.cover as courseCover,
+        course.price as coursePrice,
+        course.create_time as courseCreateTime,
+        course.update_time as courseUpdateTime,
+        chapter.id as chapterId,
+        chapter.title as chapterTitle,
+        chapter.sort as chapterSort,
+        (select count(*) from edu_video v1
+        where
+        chapter.id = v1.chapter_id
+        and
+        v1.is_deleted = 0
+        ) as videoQty,
+        chapter.update_time as chapterUpdateTime,
+        chapter.create_time as chapterCreateTime
         from edu_chapter chapter
-                 left join edu_course course on chapter.course_id = course.id
-                 left join edu_teacher teacher on course.teacher_id = teacher.id
+        left join edu_course course on chapter.course_id = course.id
+        left join edu_teacher teacher on course.teacher_id = teacher.id
         where chapter.is_deleted = 0
         <if test="ew != null and ew.sqlSegment != null and ew.sqlSegment != ''">
             and ${ew.sqlSegment}

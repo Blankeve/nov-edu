@@ -29,5 +29,5 @@ public interface EduSubjectService extends IService<EduSubject> {
 
     BaseResult exportSubjects(HttpServletResponse response);
 
-    BaseResult updateSubjects(Map<String,List<EduSubject>> eduSubjects);
+    BaseResult updateSubjects(Map<String, List<EduSubject>> eduSubjects);
 }

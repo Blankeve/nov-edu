@@ -26,7 +26,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@ApiModel(value="EduCourse对象", description="课程")
+@ApiModel(value = "EduCourse对象", description = "课程")
 public class EduCourse implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -74,14 +74,14 @@ public class EduCourse implements Serializable {
     @ApiModelProperty(value = "逻辑删除 1删除 0未删除")
     private Integer isDeleted;
 
-    @TableField(value = "create_time",fill = FieldFill.INSERT)
+    @TableField(value = "create_time", fill = FieldFill.INSERT)
     @ApiModelProperty(value = "创建时间")
     private Date createTime;
 
-    @TableField(value = "update_time",fill = FieldFill.INSERT_UPDATE)
+    @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
     @ApiModelProperty(value = "更新时间")
     private Date updateTime;
 
     @TableField(exist = false)
-    private List<EduChapter> children ;
+    private List<EduChapter> children;
 }

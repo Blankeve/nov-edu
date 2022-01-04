@@ -23,12 +23,13 @@ public class AclUserController {
     AclUserService aclUserService;
 
     @PostMapping("/login")
-    public BaseResult login(@RequestBody  AclUser user){
+    public BaseResult login(@RequestBody AclUser user) {
         return aclUserService.login(user);
 
     }
+
     @GetMapping("/info")
-    public BaseResult getInfo(String token){
+    public BaseResult getInfo(String token) {
         return aclUserService.getInfo(token);
     }
 }
