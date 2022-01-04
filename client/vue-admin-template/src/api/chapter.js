@@ -46,3 +46,11 @@ export function save(data) {
       params: {id}
     })
   }
+
+  export function getChapterList(data) {
+    return request({
+      url: '/edu/chapter/list',
+      method: 'get',
+      data
+    })
+  }

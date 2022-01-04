@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-input placeholder="输入课程分类进行过滤" v-model="filterText">
+    <el-input placeholder="输入关键字进行过滤" v-model="filterText">
     </el-input>
     <br />
     <br />

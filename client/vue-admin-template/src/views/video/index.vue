@@ -1,33 +1,43 @@
 <template>
   <div class="app-container">
     <el-form :inline="true" ref="form" :model="form">
-      <el-form-item prop="name">
-        <el-input
-          class="mid-input"
-          v-model="form.name"
-          placeholder="姓名"
-        ></el-input>
+      <el-form-item label="小节名称" prop="title">
+        <el-input v-model="form.title" placeholder="小节名称"></el-input>
       </el-form-item>
 
-      <el-form-item prop="level">
-        <el-select v-model="form.level" placeholder="讲师等级">
-          <el-option label="高级讲师" value="1"></el-option>
-          <el-option label="首席讲师" value="2"></el-option>
+      <el-form-item label="所属章节">
+        <el-select v-model="form.chapterId" placeholder="请选择章节">
+          <el-option
+            v-for="(item, index) in chapters"
+            :label="item.title"
+            :key="item.id"
+            :value="item.id"
+          >
+          </el-option>
         </el-select>
       </el-form-item>
 
-      <el-form-item prop="createTime">
+      <el-form-item label="第几小节">
+        <el-input-number
+          v-model="form.sort"
+          :min="0"
+          :max="10"
+          label="描述文字"
+        ></el-input-number>
+      </el-form-item>
+
+      <el-form-item label="添加时间" prop="createTime">
         <el-date-picker
           v-model="form.createTime"
           type="datetime"
-          placeholder="入驻时间"
+          placeholder="课程添加时间"
           value-format="yyyy-MM-dd HH:mm:ss"
         >
         </el-date-picker>
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">查询</el-button>
+        <el-button type="primary" @click="searchForm">查询</el-button>
         <el-button @click="resetForm('form')">重置</el-button>
       </el-form-item>
     </el-form>
@@ -43,6 +53,12 @@
       <el-table-column align="center" label="#" width="50">
         <template slot-scope="scope">
           {{ scope.$index + 1 }}
+        </template>
+      </el-table-column>
+
+      <el-table-column label="所属章节" align="center">
+        <template slot-scope="scope">
+          <span>{{ scope.row.chapterTitle }}</span>
         </template>
       </el-table-column>
 
@@ -100,7 +116,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="课程讲师" align="center">
+      <!-- <el-table-column label="课程讲师" align="center">
         <template slot-scope="scope">
           {{ scope.row.teacherName }}
         </template>
@@ -110,13 +126,7 @@
         <template slot-scope="scope">
           <span>{{ scope.row.courseTitle }}</span>
         </template>
-      </el-table-column>
-
-      <el-table-column label="所属章节" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.chapterTitle }}</span>
-        </template>
-      </el-table-column>
+      </el-table-column> -->
 
       <el-table-column align="center" prop="created_at" label="创建时间">
         <template slot-scope="scope">
@@ -161,6 +171,7 @@
 
 <script>
 import { getPage, removeVideoById } from "@/api/video";
+import { getChapterList } from "@/api/chapter";
 
 export default {
   filters: {
@@ -178,14 +189,16 @@ export default {
       list: null,
       listLoading: true,
       form: {
-        name: "",
-        level: "",
+        title: "",
+        chapterId: null,
+        sort: null,
         createTime: "",
         current: 1,
         size: 8,
         total: 0,
       },
       sizes: [],
+      chapters: [],
     };
   },
   created() {
@@ -193,6 +206,13 @@ export default {
   },
   methods: {
     fetchData() {
+      getChapterList().then((resp) => {
+        if (resp.code === 200) {
+          this.chapters = resp.data;
+        }
+      });
+      let chapterId = this.$route.query.chapter;
+      if (chapterId) this.form.chapterId = chapterId;
       this.listLoading = true;
       this.sizes =
         this.form.size > 1
@@ -236,6 +256,9 @@ export default {
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
+    },
+    searchForm() {
+      this.fetchData();
     },
   },
 };

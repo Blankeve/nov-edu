@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <h2>{{ this.$route.query.course ? "编辑" : "添加" }}课程</h2>
-    <div class="myFrm">
+    <div class="myCourseFrm">
       <el-form
         v-show="active == 0"
         :label-position="labelPosition"
@@ -215,7 +215,7 @@ export default {
   display: block;
 }
 
-.myFrm {
+.myCourseFrm {
   width: 1200px;
   margin: 0 auto;
 }

@@ -26,7 +26,7 @@ export function save(data) {
   export function getList(data) {
     return request({
       url: '/edu/course/list',
-      method: 'post',
+      method: 'get',
       data
     })
   }

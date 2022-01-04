@@ -59,7 +59,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/teacher/list',
     name: '讲师管理',
-    meta: { title: '讲师管理', icon: 'el-icon-s-help' },
+    meta: { title: '讲师管理', icon: 'el-icon-user' },
     children: [{
       path: 'list',
       name: 'list',
@@ -70,13 +70,13 @@ export const constantRoutes = [
       path: 'save',
       name: 'save',
       component: () => import('@/views/teacher/form'),
-      meta: { title: '添加讲师', icon: 'el-icon-s-help' }
+      meta: { title: '添加讲师', icon: 'el-icon-document-add' }
     },
     {
       path: 'edit',
       name: 'edit',
       component: () => import('@/views/teacher/form'),
-      meta: { title: '编辑讲师', icon: 'el-icon-s-help' },
+      meta: { title: '编辑讲师', icon: 'el-icon-edit-outline' },
       hidden: true
     },
     ]
@@ -99,31 +99,31 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/course/tree',
     name: '课程管理',
-    meta: { title: '课程管理', icon: 'el-icon-s-help' },
+    meta: { title: '课程管理', icon: 'el-icon-reading' },
     children: [{
       path: 'tree',
       name: 'course-list',
       component: () => import('@/views/course/tree'),
-      meta: { title: '课程目录', icon: 'el-icon-s-help' }
+      meta: { title: '课程目录', icon: 'el-icon-notebook-1' }
     },
     {
       path: 'list',
       name: 'course-list',
       component: () => import('@/views/course/index'),
-      meta: { title: '课程列表', icon: 'el-icon-s-help' }
+      meta: { title: '课程列表', icon: 'el-icon-tickets' }
     },
     {
       path: 'save',
       name: 'course-save',
       component: () => import('@/views/course/form'),
-      meta: { title: '添加课程', icon: 'el-icon-s-help' }
+      meta: { title: '添加课程', icon: 'el-icon-document-add' }
     }
       ,
     {
       path: 'edit',
       name: 'course-edit',
       component: () => import('@/views/course/form'),
-      meta: { title: '编辑课程', icon: 'el-icon-s-help' },
+      meta: { title: '编辑课程', icon: 'el-icon-edit-outline' },
       hidden: true
     }
     ]
@@ -139,19 +139,19 @@ export const constantRoutes = [
         path: 'list',
         name: 'chapter-list',
         component: () => import('@/views/chapter/index'),
-        meta: { title: '章节列表', icon: 'el-icon-s-help' }
+        meta: { title: '章节列表', icon: 'el-icon-office-building' }
       },
       {
         path: 'save',
         name: 'chapter-save',
         component: () => import('@/views/chapter/form'),
-        meta: { title: '添加章节', icon: 'el-icon-s-help' }
+        meta: { title: '添加章节', icon: 'el-icon-document-add' }
       },
       {
         path: 'edit',
         name: 'chapter-edit',
         component: () => import('@/views/chapter/form'),
-        meta: { title: '编辑章节', icon: 'el-icon-s-help' },
+        meta: { title: '编辑章节', icon: 'el-icon-edit-outline' },
         hidden: true
       }
     ]
@@ -161,25 +161,25 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/video/list',
     name: '小节管理',
-    meta: { title: '小节管理', icon: 'el-icon-s-help' },
+    meta: { title: '小节管理', icon: 'el-icon-film' },
     children: [
       {
         path: 'list',
         name: 'video-list',
         component: () => import('@/views/video/index'),
-        meta: { title: '小节列表', icon: 'el-icon-s-help' }
+        meta: { title: '小节列表', icon: 'el-icon-film' }
       },
       {
         path: 'save',
         name: 'video-save',
         component: () => import('@/views/video/form'),
-        meta: { title: '添加小节', icon: 'el-icon-s-help' }
+        meta: { title: '添加小节', icon: 'el-icon-document-add' }
       },
       {
         path: 'edit',
         name: 'video-edit',
         component: () => import('@/views/video/form'),
-        meta: { title: '编辑小节', icon: 'el-icon-s-help' },
+        meta: { title: '编辑小节', icon: 'el-icon-edit-outline' },
         hidden: true
       }
     ]

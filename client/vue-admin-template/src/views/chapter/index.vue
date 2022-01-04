@@ -1,15 +1,15 @@
 <template>
   <div class="app-container">
     <el-form :inline="true" ref="form" :model="form">
-      <el-form-item label="课程名称" prop="title">
-        <el-input v-model="form.title" placeholder="课程名称"></el-input>
+      <el-form-item label="章节名称" prop="title">
+        <el-input v-model="form.title" placeholder="章节名称"></el-input>
       </el-form-item>
 
       <el-form-item label="所属课程">
-        <el-select v-model="form.courseId" placeholder="请选择讲师">
+        <el-select v-model="form.courseId" placeholder="请选择课程">
           <el-option
             v-for="(item, index) in courses"
-            :label="item.name"
+            :label="item.title"
             :key="item.id"
             :value="item.id"
           >
@@ -20,7 +20,7 @@
       <el-form-item label="第几章节">
         <el-input-number
           v-model="form.sort"
-          :min="1"
+          :min="0"
           :max="10"
           label="描述文字"
         ></el-input-number>
@@ -56,6 +56,18 @@
         </template>
       </el-table-column>
 
+      <el-table-column label="所属课程" align="center">
+        <template slot-scope="scope">
+          <span>{{ scope.row.courseTitle }}</span>
+        </template>
+      </el-table-column>
+
+      <el-table-column label="课程讲师" align="center">
+        <template slot-scope="scope">
+          {{ scope.row.teacherName }}
+        </template>
+      </el-table-column>
+
       <el-table-column label="章节标题" align="center">
         <template slot-scope="scope">
           {{ scope.row.chapterTitle }}
@@ -68,15 +80,9 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="课程讲师" align="center">
+      <el-table-column align="center" label="视频数量" width="100">
         <template slot-scope="scope">
-          {{ scope.row.teacherName }}
-        </template>
-      </el-table-column>
-
-      <el-table-column label="所属课程" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.courseTitle }}</span>
+          <span>{{ scope.row.videoQty }}</span>
         </template>
       </el-table-column>
 
@@ -102,6 +108,10 @@
             @click="handleDelete(scope.$index, scope.row.chapterId)"
             >删除</el-button
           >
+
+          <el-button type="text" @click="watchVideo(scope.row.chapterId)"
+            >查看小节</el-button
+          >
         </template>
       </el-table-column>
     </el-table>
@@ -123,6 +133,7 @@
 
 <script>
 import { getPage, removeChapterById } from "@/api/chapter";
+import { getList } from "@/api/course";
 
 export default {
   filters: {
@@ -141,7 +152,7 @@ export default {
       listLoading: true,
       form: {
         title: "",
-        sort: 1,
+        sort: null,
         courseId: null,
         createTime: "",
         current: 1,
@@ -157,9 +168,13 @@ export default {
   },
   methods: {
     fetchData() {
+      getList().then((resp) => {
+        if (resp.code === 200) {
+          this.courses = resp.data;
+        }
+      });
       let courseId = this.$route.query.course;
-      if(courseId)
-        this.form.courseId = courseId;
+      if (courseId) this.form.courseId = courseId;
       this.listLoading = true;
       this.sizes =
         this.form.size > 1
@@ -201,11 +216,19 @@ export default {
     onSubmit() {
       this.fetchData();
     },
-     searchForm() {
+    searchForm() {
       this.fetchData();
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
+    },
+    watchVideo(data) {
+      this.$router.push({
+        path: "/video/list",
+        query: {
+          chapter: data,
+        },
+      });
     },
   },
 };

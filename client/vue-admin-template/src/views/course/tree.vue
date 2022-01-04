@@ -1,6 +1,8 @@
 <template>
   <div class="app-container">
+   
     <el-form :inline="true" ref="form" :model="form">
+         
       <el-form-item label="课程名称" prop="title">
         <el-input v-model="form.title" placeholder="课程名称"></el-input>
       </el-form-item>
@@ -45,6 +47,11 @@
       <el-form-item>
         <el-button type="primary" @click="searchForm">查询</el-button>
         <el-button @click="resetForm('form')">重置</el-button>
+      </el-form-item>
+
+              <el-form-item label="关键字过滤" >
+         <el-input placeholder="对查询结果进行过滤" v-model="filterText">
+    </el-input>
       </el-form-item>
     </el-form>
 

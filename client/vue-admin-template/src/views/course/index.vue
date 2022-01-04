@@ -126,7 +126,7 @@
 
       <el-table-column label="课程简介" align="center">
         <template slot-scope="scope">
-          {{ scope.row.courseId }}
+          {{ scope.row.description }}
         </template>
       </el-table-column>
 
