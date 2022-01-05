@@ -1,0 +1,40 @@
+2022-01-05 16:11:35.373 [main] INFO  HttpTest-Starting HttpTest using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 9300 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_upload)
+2022-01-05 16:11:35.377 [main] INFO  HttpTest-No active profile set, falling back to default profiles: default
+2022-01-05 16:11:35.409 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2022-01-05 16:11:42.433 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-01-05 16:11:46.974 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2022-01-05 16:11:47.062 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2022-01-05 16:11:47.162 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2022-01-05 16:11:47.784 [main] INFO  HttpTest-Started HttpTest in 14.159 seconds (JVM running for 21.953)
+2022-01-05 16:12:15.049 [main] INFO  HttpTest-Starting HttpTest using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 8288 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_upload)
+2022-01-05 16:12:15.052 [main] INFO  HttpTest-No active profile set, falling back to default profiles: default
+2022-01-05 16:12:15.067 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2022-01-05 16:12:23.525 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-01-05 16:12:26.246 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2022-01-05 16:12:26.308 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2022-01-05 16:12:26.450 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2022-01-05 16:12:27.211 [main] INFO  HttpTest-Started HttpTest in 14.258 seconds (JVM running for 18.739)
+2022-01-05 16:16:17.570 [main] INFO  HttpTest-Starting HttpTest using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 20080 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_upload)
+2022-01-05 16:16:17.572 [main] INFO  HttpTest-No active profile set, falling back to default profiles: default
+2022-01-05 16:16:17.575 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2022-01-05 16:16:24.409 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-01-05 16:16:27.399 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2022-01-05 16:16:27.489 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2022-01-05 16:16:27.635 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2022-01-05 16:16:28.103 [main] INFO  HttpTest-Started HttpTest in 13.354 seconds (JVM running for 17.887)
+2022-01-05 16:20:05.945 [main] INFO  HttpTest-Starting HttpTest using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 7440 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_upload)
+2022-01-05 16:20:05.954 [main] INFO  HttpTest-No active profile set, falling back to default profiles: default
+2022-01-05 16:20:05.981 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2022-01-05 16:20:12.742 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-01-05 16:20:15.704 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2022-01-05 16:20:15.795 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2022-01-05 16:20:15.892 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2022-01-05 16:20:16.547 [main] INFO  HttpTest-Started HttpTest in 12.249 seconds (JVM running for 16.047)
+2022-01-05 16:22:02.605 [main] INFO  HttpTest-Starting HttpTest using Java 1.8.0_111 on DESKTOP-JVRKBAC with PID 15544 (started by dzyx in E:\juam-workspace\code\git\edu\server\nov-starter\nov-service\service_upload)
+2022-01-05 16:22:02.610 [main] INFO  HttpTest-No active profile set, falling back to default profiles: default
+2022-01-05 16:22:02.633 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.2.0.Final
+2022-01-05 16:22:11.269 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-01-05 16:22:14.127 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2022-01-05 16:22:14.199 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2022-01-05 16:22:14.477 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2022-01-05 16:22:14.896 [main] INFO  HttpTest-Started HttpTest in 14.71 seconds (JVM running for 19.211)
