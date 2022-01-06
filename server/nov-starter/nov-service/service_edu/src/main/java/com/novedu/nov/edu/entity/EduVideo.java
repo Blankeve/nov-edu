@@ -45,7 +45,7 @@ public class EduVideo implements Serializable {
     private String title;
 
     @ApiModelProperty(value = "云端视频资源")
-    private String videoSourceId;
+    private String videoSourcePath;
 
     @ApiModelProperty(value = "原始文件名称")
     private String videoOriginalName;
@@ -66,7 +66,7 @@ public class EduVideo implements Serializable {
     private Integer status;
 
     @ApiModelProperty(value = "视频源文件大小（字节）")
-    private Long size;
+    private Float size;
 
     @ApiModelProperty(value = "乐观锁")
     private Long version;

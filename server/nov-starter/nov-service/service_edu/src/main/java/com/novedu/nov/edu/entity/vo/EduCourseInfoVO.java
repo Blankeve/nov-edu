@@ -122,7 +122,7 @@ public class EduCourseInfoVO {
     private String videoTitle;
 
     @ApiModelProperty(value = "云端视频资源")
-    private String videoSourceId;
+    private String videoSourcePath;
 
     @ApiModelProperty(value = "原始文件名称")
     private String videoOriginalName;

@@ -40,7 +40,7 @@ public class HttpTest {
         //传入参数可以为file或者filePath，在此处做转换
         File file = new File("C:\\Users\\dzyx\\Documents\\nov_log\\2022\\01\\05\\1.png");
         CloseableHttpClient httpClient = HttpClients.createDefault();
-        CloseableHttpResponse httpResponse = null;
+        CloseableHttpResponse httpResponse;
         HttpPost httppost = new HttpPost(url);
         MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         //设置浏览器兼容模式

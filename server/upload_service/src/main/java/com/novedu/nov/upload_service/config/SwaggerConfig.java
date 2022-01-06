@@ -29,7 +29,7 @@ public class SwaggerConfig {
         ApiInfo apiInfo = new ApiInfoBuilder()
                 .title("课程中心API文档")//api标题
                 .description("课程中心相关接口描述")//api描述
-                .version("0.0.5")//版本号
+                .version("0.0.7")//版本号
                 .contact(new Contact("juam", "", ""))//本API负责人的联系信息
                 .build();
         return new Docket(DocumentationType.SWAGGER_2)//文档类型（swagger2）

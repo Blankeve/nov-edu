@@ -2,6 +2,7 @@ package com.novedu.nov.common.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.FileUtils;
 import org.apache.http.Consts;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
@@ -30,8 +31,13 @@ import java.util.Map;
 @Slf4j
 public class HttpUtils {
 
+
+    public static Map doPostFile(String url, MultipartFile file) {
+        return doPostFile(url, file, "");
+    }
+
     public static Map doPostFile(String url, MultipartFile file, String paramsName) {
-        if (!StringUtils.hasText(paramsName))
+        if (paramsName.equals(""))
             paramsName = "file";
         //传入参数可以为file或者filePath，在此处做转换
         CloseableHttpClient httpClient = HttpClients.createDefault();
@@ -43,12 +49,10 @@ public class HttpUtils {
         //设置请求的编码格式
         builder.setCharset(Consts.UTF_8);
         builder.setContentType(ContentType.MULTIPART_FORM_DATA);
-        File file1 = null;
+        String originalFilename = file.getOriginalFilename();
+        File file1 = new File(originalFilename);
         try {
-            String originalFilename = file.getOriginalFilename();
-            String[] filename = originalFilename.split("\\.");
-            file1 = File.createTempFile(filename[0].length()<3?filename[0]+"xxx":filename[0], "."+filename[1]);
-            file.transferTo(file1);
+            FileUtils.copyInputStreamToFile(file.getInputStream(), file1);
             file1.deleteOnExit();
         } catch (IOException e) {
             e.printStackTrace();
@@ -57,7 +61,6 @@ public class HttpUtils {
         builder.addBinaryBody(paramsName, file1);
         HttpEntity reqEntity = builder.build();
         httppost.setEntity(reqEntity);
-
         try {
             httpResponse = httpClient.execute(httppost);
             if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {

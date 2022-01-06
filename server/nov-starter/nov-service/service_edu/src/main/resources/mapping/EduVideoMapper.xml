@@ -27,7 +27,7 @@
         video.duration as videoDuration,
         video.is_free as videoIsFree,
         video.play_count as videoPlayCount,
-        video.video_source_id as videoSourceId,
+        video.video_source_id as videoSourcePath,
         video.video_original_name as videoOriginalName,
         video.create_time as videoCreateTime,
         video.update_time as videoUpdateTime

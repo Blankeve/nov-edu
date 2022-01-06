@@ -33,6 +33,7 @@
         <aliyunOss.version>3.10.2</aliyunOss.version>
         <easypoi.version>3.2.0</easypoi.version>
         <httpmime.version>4.5.5</httpmime.version>
+        <io.version>2.11.0</io.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -141,6 +142,11 @@
                 <version>${httpmime.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${io.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

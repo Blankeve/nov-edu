@@ -7,3 +7,10 @@ aliyun:
     accessKeyId: LTAI5tRgXNSsQE8sunVJTsxm
     accessKeySecret: IaWQw1XwUqyaDCT3ceVB1z3fQkWdC4
     bucketName: edu-nov
+
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 300MB
+      max-request-size: 300MB

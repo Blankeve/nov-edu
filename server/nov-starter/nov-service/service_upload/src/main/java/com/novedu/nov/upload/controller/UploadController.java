@@ -37,4 +37,10 @@ public class UploadController {
         return uploadService.uploadImg(img);
     }
 
+    @PostMapping("/video")
+    public BaseResult<Map> uploadVideo(MultipartFile video) {
+
+        return uploadService.uploadVideo(video);
+    }
+
 }

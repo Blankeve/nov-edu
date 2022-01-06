@@ -1,12 +1,9 @@
 spring:
   servlet:
     multipart:
-      max-request-size: 500MB
-      max-file-size: 500MB
+      max-request-size: 300MB
+      max-file-size: 300MB
+  profiles:
+    active: prod
 
-server:
-  port: 9999
-
-user:
-  filePath: /usr/local/java/storge/
 
