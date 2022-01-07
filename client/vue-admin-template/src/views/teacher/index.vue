@@ -95,7 +95,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column align="center" label="操作" width="200">
+      <el-table-column fixed="right" align="center" label="操作" width="100">
         <template slot-scope="scope">
           <el-button @click="handleEdit(scope.row.id)">编辑</el-button>
 

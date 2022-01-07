@@ -130,7 +130,7 @@ export default {
           this.$confirm(
             (this.$route.query.chapter && !this.$route.query.course
               ? "修改"
-              : "添加") + "章节成功, 是否添加小节?",
+              : "添加") + "章节成功, 是否返回先前页?",
             "提示",
             {
               confirmButtonText: "确定",
@@ -139,12 +139,7 @@ export default {
             }
           )
             .then(() => {
-              this.$router.push({
-                path: "/video/save",
-                query: {
-                  chapter: resp.data,
-                },
-              });
+              this.$router.go(-1);
             })
             .catch(() => {});
         }

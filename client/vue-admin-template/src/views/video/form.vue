@@ -69,6 +69,36 @@
             label="总课时"
           ></el-input-number>
         </el-form-item>
+
+        <el-form-item label="是否收费">
+          <el-radio-group v-model="video.isFree">
+            <el-radio-button label="1">免费</el-radio-button>
+            <el-radio-button label="0">付费</el-radio-button>
+          </el-radio-group>
+        </el-form-item>
+
+        <el-form-item label="上传视频">
+          <el-upload
+            class="upload-demo"
+            :action="baseURL + '/upload/video'"
+            :on-preview="handlePreview"
+            :on-success="handleVideoSuccess"
+            :on-remove="handleRemove"
+            :before-remove="beforeRemove"
+            :before-upload="beforeUpload"
+            name="video"
+            multiple
+            :limit="1"
+          >
+            <el-button size="small" type="primary">点击上传</el-button>
+            <div slot="tip" class="el-upload__tip">
+              只能上传mp4/avi文件，且不超过300MB
+            </div>
+          </el-upload>
+          <span v-show="video.videoOriginalName != ''">{{
+            percentageFlag
+          }}</span>
+        </el-form-item>
       </el-form>
       <br />
       <el-button type="primary" @click="submitForm"
@@ -96,13 +126,20 @@ export default {
       video: {
         title: "",
         chapterId: null,
-        sort: 1,
+        isFree: 1,
+        sort: null,
+        videoSourcePath: "",
+        duration: null,
+        videoOriginalName: "",
+        size: null,
       },
       teachers: [],
       chapters: [],
       teacher: null,
       course: [],
       courseId: null,
+      percentageFlag: "",
+      baseURL: process.env.VUE_APP_BASE_API,
     };
   },
   mounted() {
@@ -154,6 +191,25 @@ export default {
           });
         }
       });
+    },
+    handleRemove(file, fileList) {
+      console.log(file, fileList);
+    },
+    handlePreview(file) {
+      console.log(file);
+    },
+    beforeRemove(file, fileList) {
+      return this.$confirm(`确定移除 ${file.name}？`);
+    },
+    beforeUpload() {
+      this.percentageFlag = "努力上传中..";
+    },
+    handleVideoSuccess(res, file) {
+      this.video.videoSourcePath = res.data.path;
+      this.video.videoOriginalName = res.data.videoOriginalName;
+      this.video.duration = res.data.duration;
+      this.video.size = res.data.size;
+      this.percentageFlag = "";
     },
   },
 };

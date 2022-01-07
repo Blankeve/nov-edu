@@ -7,6 +7,7 @@
 
       <el-form-item label="所属课程">
         <el-select v-model="form.courseId" placeholder="请选择课程">
+          <el-option label="所有课程" key="" value=""> </el-option>
           <el-option
             v-for="(item, index) in courses"
             :label="item.title"
@@ -99,17 +100,26 @@
           <span>{{ scope.row.chapterUpdateTime }}</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" label="操作" width="200">
+      <el-table-column fixed="right" align="center" label="操作" width="170">
         <template slot-scope="scope">
           <el-button @click="handleEdit(scope.row.chapterId)">编辑</el-button>
-
-          <el-button
-            type="danger"
-            @click="handleDelete(scope.$index, scope.row.chapterId)"
-            >删除</el-button
+          <el-popconfirm
+            :title="
+              (scope.row.videoQty > 0 ? '该章节下视频不为空,' : '') +
+              '确定删除吗？'
+            "
+            @onConfirm="handleDelete(scope.$index, scope.row.chapterId)"
           >
+            <el-button slot="reference" type="danger">删除</el-button>
+          </el-popconfirm>
 
-          <el-button type="text" @click="watchVideo(scope.row.chapterId)"
+          <el-button type="text" @click="addVideo(scope.row.chapterId)"
+            >添加小节</el-button
+          >
+          <el-button
+            v-if="scope.row.videoQty > 0"
+            type="text"
+            @click="watchVideo(scope.row.chapterId)"
             >查看小节</el-button
           >
         </template>
@@ -225,6 +235,14 @@ export default {
     watchVideo(data) {
       this.$router.push({
         path: "/video/list",
+        query: {
+          chapter: data,
+        },
+      });
+    },
+    addVideo(data) {
+      this.$router.push({
+        path: "/video/save",
         query: {
           chapter: data,
         },

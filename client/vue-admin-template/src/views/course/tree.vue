@@ -14,8 +14,9 @@
       </el-form-item>
       <el-form-item label="课程讲师">
         <el-select v-model="form.teacherId" placeholder="请选择讲师">
+          <el-option label="所有讲师" key="" value=""> </el-option>
           <el-option
-            v-for="(item, index) in teacher"
+            v-for="(item, index) in teachers"
             :label="item.name"
             :key="item.id"
             :value="item.id"
@@ -27,7 +28,7 @@
       <el-form-item label="课程状态">
         <el-select v-model="form.status" placeholder="请选择">
           <el-option label="已上架" key="1" value="1"> </el-option>
-          <el-option label="未上架" key="0" value="0"> </el-option>
+          <el-option label="已下架" key="0" value="0"> </el-option>
           <el-option label="全部" key="" value=""> </el-option>
         </el-select>
       </el-form-item>
@@ -224,7 +225,9 @@
               只能上传mp4/avi文件，且不超过300MB
             </div>
           </el-upload>
-          <span v-show="video.videoOriginalName!=''">{{percentageFlag}}</span>
+          <span v-show="video.videoOriginalName != ''">{{
+            percentageFlag
+          }}</span>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -287,7 +290,7 @@ export default {
       videoFormTitle: "",
       sizes: [],
       subjectId: [],
-      teacher: [],
+      teachers: [],
       subjects: [],
       chapterFormVisible: false,
       videoFormVisible: false,
@@ -304,7 +307,7 @@ export default {
     getOptions() {
       getAll().then((resp) => {
         if (resp.code === 200) {
-          this.teacher = resp.data;
+          this.teachers = resp.data;
         }
       });
       getList().then((resp) => {
@@ -438,7 +441,7 @@ export default {
         path: "/course/save",
       });
     },
-    remove(node, data) {
+    confirmRemove(data) {
       if (data.subjectId) {
         removeById(data.id).then((resp) => {
           if (resp.code === 200) {
@@ -460,6 +463,23 @@ export default {
             this.fetchData();
           }
         });
+      }
+    },
+    remove(node, data) {
+      if (data.children && data.children.length > 0) {
+        this.$confirm("该节点下的内容不为空，是否继续删除?", "提示", {
+          confirmButtonText: "确定",
+          cancelButtonText: "取消",
+          type: "warning",
+        })
+          .then(() => {
+            this.confirmRemove(data);
+          })
+          .catch(() => {
+            return;
+          });
+      } else {
+        this.confirmRemove(data);
       }
     },
 
@@ -542,8 +562,8 @@ export default {
     beforeRemove(file, fileList) {
       return this.$confirm(`确定移除 ${file.name}？`);
     },
-    beforeUpload(){
-     this.percentageFlag = "努力上传中..";
+    beforeUpload() {
+      this.percentageFlag = "努力上传中..";
     },
     handleVideoSuccess(res, file) {
       this.video.videoSourcePath = res.data.path;

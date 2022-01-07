@@ -7,6 +7,7 @@
 
       <el-form-item label="所属章节">
         <el-select v-model="form.chapterId" placeholder="请选择章节">
+          <el-option label="所有章节" key="" value=""> </el-option>
           <el-option
             v-for="(item, index) in chapters"
             :label="item.title"
@@ -80,19 +81,19 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="视频路径" align="center">
+      <el-table-column width="250px" label="视频路径" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.videoSourceId }}</span>
+          <span>{{ scope.row.videoSourcePath }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column label="视频时长" align="center">
+      <el-table-column label="视频时长/秒" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.videoDuration }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column label="视频大小" align="center">
+      <el-table-column label="视频大小/MB" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.videoSize }}</span>
         </template>
@@ -100,7 +101,7 @@
 
       <el-table-column label="是否试听" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.videoIsFree }}</span>
+          <span>{{ scope.row.videoIsFree == 1 ? "是" : "否" }}</span>
         </template>
       </el-table-column>
 
@@ -141,7 +142,7 @@
           <span>{{ scope.row.videoUpdateTime }}</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" label="操作" width="200">
+      <el-table-column fixed="right" align="center" label="操作" width="100">
         <template slot-scope="scope">
           <el-button @click="handleEdit(scope.row.videoId)">编辑</el-button>
 

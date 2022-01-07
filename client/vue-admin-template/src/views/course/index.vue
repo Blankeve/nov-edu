@@ -14,8 +14,9 @@
       </el-form-item>
       <el-form-item label="课程讲师">
         <el-select v-model="form.teacherId" placeholder="请选择讲师">
+          <el-option label="所有讲师" key="" value=""> </el-option>
           <el-option
-            v-for="(item, index) in teacher"
+            v-for="(item, index) in teachers"
             :label="item.name"
             :key="item.id"
             :value="item.id"
@@ -27,7 +28,7 @@
       <el-form-item label="课程状态">
         <el-select v-model="form.status" placeholder="请选择">
           <el-option label="已上架" key="1" value="1"> </el-option>
-          <el-option label="未上架" key="0" value="0"> </el-option>
+          <el-option label="已下架" key="0" value="0"> </el-option>
           <el-option label="全部" key="" value=""> </el-option>
         </el-select>
       </el-form-item>
@@ -56,7 +57,7 @@
       fit
       highlight-current-row
     >
-      <el-table-column align="center" label="#" width="50">
+      <el-table-column  align="center" label="#" width="50">
         <template slot-scope="scope">
           {{ scope.$index + 1 }}
         </template>
@@ -156,16 +157,26 @@
         </template>
       </el-table-column>
 
-      <el-table-column align="center" label="操作" width="200">
+      <el-table-column fixed="right" align="center" label="操作" width="170">
         <template slot-scope="scope">
           <el-button @click="handleEdit(scope.row.courseId)">编辑</el-button>
-
-          <el-button
-            type="danger"
-            @click="handleDelete(scope.$index, scope.row.courseId)"
-            >删除</el-button
+          <el-popconfirm
+            :title="
+              (scope.row.chapterQty > 0 ? '该课程下章节不为空,' : '') +
+              '确定删除吗？'
+            "
+            @onConfirm="handleDelete(scope.$index, scope.row.courseId)"
           >
-          <el-button type="text" @click="watchChapter(scope.row.courseId)"
+            <el-button slot="reference" type="danger">删除</el-button>
+          </el-popconfirm>
+
+          <el-button type="text" @click="addChapter(scope.row.courseId)"
+            >添加章节</el-button
+          >
+          <el-button
+            v-if="scope.row.chapterQty > 0"
+            type="text"
+            @click="watchChapter(scope.row.courseId)"
             >查看章节</el-button
           >
         </template>
@@ -189,6 +200,8 @@
 
 <script>
 import { getPage, removeById } from "@/api/course";
+import { getAll } from "@/api/teacher";
+import { getList } from "@/api/subject";
 
 export default {
   filters: {
@@ -214,23 +227,39 @@ export default {
         current: 1,
         size: 8,
         total: 0,
+        teacherId: "",
       },
       subjectId: [],
-      teacher: [],
+      teachers: [],
       subjects: [],
       sizes: [],
     };
   },
   created() {
+    this.getOptions();
     this.fetchData();
   },
   methods: {
+    getOptions() {
+      getAll().then((resp) => {
+        if (resp.code === 200) {
+          this.teachers = resp.data;
+        }
+      });
+      getList().then((resp) => {
+        if (resp.code === 200) {
+          this.subjects = resp.data.subjects;
+        }
+      });
+    },
     fetchData() {
       this.listLoading = true;
       this.sizes =
         this.form.size > 1
           ? [this.form.size / 2, this.form.size, this.form.size * 2]
           : [this.form.size, this.form.size * 2];
+      if (this.subjectId && this.subjectId.length > 0)
+        this.form.subjectId = this.subjectId[this.subjectId.length - 1];
       getPage(this.form).then((response) => {
         let data = response.data;
         this.form.current = data.current;
@@ -275,10 +304,20 @@ export default {
       this.$refs[formName].resetFields();
       this.subjectId = null;
       this.form.subjectId = null;
+      this.form.teacherId = "";
+      this.form.status = "";
     },
     watchChapter(data) {
       this.$router.push({
         path: "/chapter/list",
+        query: {
+          course: data,
+        },
+      });
+    },
+    addChapter(data) {
+      this.$router.push({
+        path: "/chapter/save",
         query: {
           course: data,
         },
