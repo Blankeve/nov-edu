@@ -54,8 +54,8 @@ public class CodeGenerator {
 //5、策略配置
         StrategyConfig strategy = new StrategyConfig();
 //数据库中表的名字，表示要对哪些表进行自动生成controllerservice、mapper...
-        strategy.setInclude("edu_chapter");
-        strategy.setInclude("edu_video");
+        strategy.setInclude("sys_config");
+
 //数据库表映射到实体的命名策略,驼峰命名法
         strategy.setNaming(NamingStrategy.underline_to_camel);
 //生成实体时去掉表前缀，比如edu_course，如果不加下面这句，生成的实体类名字就是：EduCourse

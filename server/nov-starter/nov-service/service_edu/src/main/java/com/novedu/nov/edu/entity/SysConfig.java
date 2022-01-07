@@ -1,0 +1,59 @@
+package com.novedu.nov.edu.entity;
+
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.IdType;
+
+import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+
+import java.io.Serializable;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+/**
+ * <p>
+ *
+ * </p>
+ *
+ * @author juam
+ * @since 2022-01-07
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@ApiModel(value = "SysConfig对象", description = "")
+public class SysConfig implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    @ApiModelProperty(value = "配置id")
+    @TableId(value = "id", type = IdType.AUTO)
+    private Integer id;
+
+    @ApiModelProperty(value = "配置键")
+    private String configKey;
+
+    @ApiModelProperty(value = "配置值")
+    private String configValue;
+
+    @ApiModelProperty(value = "配置名称")
+    private String configName;
+
+    @TableField(value = "create_time", fill = FieldFill.INSERT)
+    @ApiModelProperty(value = "创建时间")
+    private Date createTime;
+
+    @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
+    @ApiModelProperty(value = "更新时间")
+    private Date updateTime;
+
+
+    @ApiModelProperty(value = "1已删除 0未删除")
+    private Integer isDeleted;
+
+
+}

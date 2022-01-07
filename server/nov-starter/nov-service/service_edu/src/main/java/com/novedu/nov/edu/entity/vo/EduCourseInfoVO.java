@@ -137,13 +137,13 @@ public class EduCourseInfoVO {
     private Integer videoIsFree;
 
     @ApiModelProperty(value = "视频时长（秒）")
-    private Float videoDuration;
+    private Long videoDuration;
 
     @ApiModelProperty(value = "状态")
     private Integer videoStatus;
 
     @ApiModelProperty(value = "视频源文件大小（字节）")
-    private Long videoSize;
+    private Float videoSize;
 
     @ApiModelProperty(value = "乐观锁")
     private Long videoVersion;

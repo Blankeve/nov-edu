@@ -8,6 +8,7 @@ import com.novedu.nov.edu.entity.EduVideo;
 import com.novedu.nov.edu.entity.dto.EduVideoInfoDTO;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 import com.novedu.nov.edu.service.EduVideoService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
  * @author juam
  * @since 2021-12-23
  */
+@Api("视频管理的接口文档")
 @RestController
 @RequestMapping("/edu/video")
 public class EduVideoController {
