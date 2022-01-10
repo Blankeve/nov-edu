@@ -1,9 +1,10 @@
 package com.novedu.nov.upload;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 
 /**
@@ -14,9 +15,12 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
  * @version:
  */
 @SpringBootApplication(scanBasePackages = "com.novedu.nov",exclude = DataSourceAutoConfiguration.class)
+@EnableDiscoveryClient
+@EnableFeignClients
 public class UploadServiceApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(UploadServiceApplication.class, args);
+        System.out.println("上传服务启动成功");
     }
 }

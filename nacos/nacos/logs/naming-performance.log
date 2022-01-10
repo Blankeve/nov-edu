@@ -1,0 +1,1153 @@
+2022-01-10 15:23:31,983 INFO PERFORMANCE:|serviceCount|ipCount|subscribeCount|maxPushCost|avgPushCost|totalPushCount|failPushCount
+
+2022-01-10 15:23:31,983 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:23:31,985 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:25:52,390 INFO PERFORMANCE:|serviceCount|ipCount|subscribeCount|maxPushCost|avgPushCost|totalPushCount|failPushCount
+
+2022-01-10 15:25:52,390 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:25:52,392 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:26:52,407 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:26:52,408 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:27:52,412 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:27:52,413 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:28:52,420 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:28:52,420 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:29:52,424 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:29:52,424 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:30:52,436 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:30:52,437 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:31:52,448 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:31:52,449 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:32:52,449 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:32:52,450 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:33:52,459 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:33:52,459 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:34:52,474 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:34:52,474 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:35:52,480 INFO PERFORMANCE:|serviceCount|ipCount|subscribeCount|maxPushCost|avgPushCost|totalPushCount|failPushCount
+
+2022-01-10 15:35:52,480 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:35:52,480 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:36:52,493 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:36:52,493 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:37:52,495 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:37:52,496 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:38:52,500 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:38:52,501 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:39:52,508 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:39:52,509 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:40:52,523 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:40:52,523 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:41:52,533 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:41:52,533 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:42:52,545 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:42:52,545 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:43:52,557 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:43:52,557 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:44:52,568 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:44:52,569 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:45:52,575 INFO PERFORMANCE:|serviceCount|ipCount|subscribeCount|maxPushCost|avgPushCost|totalPushCount|failPushCount
+
+2022-01-10 15:45:52,575 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:45:52,575 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:46:52,584 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:46:52,585 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:47:52,585 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:47:52,586 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:48:52,602 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:48:52,602 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:49:52,612 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:49:52,612 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:50:52,614 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:50:52,615 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:51:52,624 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:51:52,624 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:52:52,638 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:52:52,638 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:53:52,640 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:53:52,640 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:54:52,655 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:54:52,655 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:55:52,668 INFO PERFORMANCE:|serviceCount|ipCount|subscribeCount|maxPushCost|avgPushCost|totalPushCount|failPushCount
+
+2022-01-10 15:55:52,669 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:55:52,669 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:56:52,680 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:56:52,681 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:57:52,687 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:57:52,687 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:58:52,699 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:58:52,699 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 15:59:52,712 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 15:59:52,712 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:00:52,713 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:00:52,713 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:01:52,720 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:01:52,721 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:02:52,733 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:02:52,733 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:03:52,742 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:03:52,743 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:04:52,755 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:04:52,755 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:05:52,756 INFO PERFORMANCE:|serviceCount|ipCount|subscribeCount|maxPushCost|avgPushCost|totalPushCount|failPushCount
+
+2022-01-10 16:05:52,757 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:05:52,757 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:06:52,793 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:06:52,793 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:07:52,797 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:07:52,797 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:08:52,799 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:08:52,800 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:09:52,808 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:09:52,808 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:10:52,816 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:10:52,817 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:11:52,838 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:11:52,838 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:12:52,849 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:12:52,849 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:13:52,852 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:13:52,853 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:14:52,861 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:14:52,861 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:15:52,865 INFO PERFORMANCE:|serviceCount|ipCount|subscribeCount|maxPushCost|avgPushCost|totalPushCount|failPushCount
+
+2022-01-10 16:15:52,865 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:15:52,866 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:16:52,871 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:16:52,871 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:17:52,876 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:17:52,876 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:18:52,883 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:18:52,883 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:19:52,889 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:19:52,889 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:20:52,903 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:20:52,904 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:21:52,906 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:21:52,907 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:22:52,929 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:22:52,929 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:23:52,957 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:23:52,958 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:24:52,971 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:24:52,971 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:25:52,975 INFO PERFORMANCE:|serviceCount|ipCount|subscribeCount|maxPushCost|avgPushCost|totalPushCount|failPushCount
+
+2022-01-10 16:25:52,976 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:25:52,976 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:26:52,980 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:26:52,981 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:27:52,989 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:27:52,994 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:28:53,042 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:28:53,042 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:29:53,050 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:29:53,050 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:30:53,064 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:30:53,065 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:31:53,074 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:31:53,075 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:32:53,075 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:32:53,075 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:33:53,085 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:33:53,085 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:34:53,092 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:34:53,092 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:35:53,101 INFO PERFORMANCE:|serviceCount|ipCount|subscribeCount|maxPushCost|avgPushCost|totalPushCount|failPushCount
+
+2022-01-10 16:35:53,101 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:35:53,101 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:36:53,104 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:36:53,104 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:37:53,109 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:37:53,109 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:38:53,113 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:38:53,114 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:39:53,127 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:39:53,127 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:40:53,262 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:40:53,266 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:41:53,281 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:41:53,281 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:42:53,281 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:42:53,285 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:43:53,320 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:43:53,324 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:44:53,329 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:44:53,329 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:45:53,334 INFO PERFORMANCE:|serviceCount|ipCount|subscribeCount|maxPushCost|avgPushCost|totalPushCount|failPushCount
+
+2022-01-10 16:45:53,334 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:45:53,334 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:46:53,349 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:46:53,349 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:47:53,359 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:47:53,359 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:48:53,363 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:48:53,363 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:49:53,364 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:49:53,365 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:50:53,367 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:50:53,367 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:51:53,373 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:51:53,373 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:52:53,389 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:52:53,389 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:53:53,400 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:53:53,400 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:54:53,410 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:54:53,410 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:55:53,410 INFO PERFORMANCE:|serviceCount|ipCount|subscribeCount|maxPushCost|avgPushCost|totalPushCount|failPushCount
+
+2022-01-10 16:55:53,410 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:55:53,411 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:56:53,412 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:56:53,416 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:57:53,428 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:57:53,429 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:58:53,439 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:58:53,439 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 16:59:53,443 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 16:59:53,444 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:00:53,453 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:00:53,454 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:01:53,463 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:01:53,464 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:02:53,472 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:02:53,472 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:03:53,480 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:03:53,480 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:04:53,481 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:04:53,481 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:05:53,486 INFO PERFORMANCE:|serviceCount|ipCount|subscribeCount|maxPushCost|avgPushCost|totalPushCount|failPushCount
+
+2022-01-10 17:05:53,486 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:05:53,486 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:06:53,500 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:06:53,501 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:07:53,516 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:07:53,516 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:08:53,537 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:08:53,537 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:09:53,552 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:09:53,552 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:10:53,572 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:10:53,572 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:11:53,584 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:11:53,584 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:12:53,594 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:12:53,594 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:13:53,598 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:13:53,599 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:14:53,609 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:14:53,609 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:15:53,621 INFO PERFORMANCE:|serviceCount|ipCount|subscribeCount|maxPushCost|avgPushCost|totalPushCount|failPushCount
+
+2022-01-10 17:15:53,626 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:15:53,626 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:16:53,634 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:16:53,634 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:17:53,648 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:17:53,648 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:18:53,653 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:18:53,653 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:19:53,654 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:19:53,654 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:20:53,659 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:20:53,659 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:21:53,670 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:21:53,670 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:22:53,680 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:22:53,680 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:23:53,690 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:23:53,694 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:24:53,708 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:24:53,708 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:25:53,716 INFO PERFORMANCE:|serviceCount|ipCount|subscribeCount|maxPushCost|avgPushCost|totalPushCount|failPushCount
+
+2022-01-10 17:25:53,717 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:25:53,717 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:26:53,723 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:26:53,723 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:27:53,738 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:27:53,738 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+
+2022-01-10 17:28:53,807 INFO PERFORMANCE:|0|0|0|-1|-1|0|0
+
+2022-01-10 17:28:53,807 INFO Task worker status: 
+naming_0%4, pending tasks: 0
+naming_1%4, pending tasks: 0
+naming_2%4, pending tasks: 0
+naming_3%4, pending tasks: 0
+
+

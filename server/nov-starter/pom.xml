@@ -9,7 +9,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.5.7</version>
+        <version>2.6.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.novedu.nov</groupId>
@@ -20,13 +20,13 @@
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
-        <boot.version>2.5.7</boot.version>
+        <boot.version>2.6.0</boot.version>
         <junit.version>4.13.2</junit.version>
         <lombok.version>1.18.22</lombok.version>
         <mysql.version>8.0.27</mysql.version>
         <mbg.version>3.4.1</mbg.version>
         <velocity.version>2.3</velocity.version>
-        <swagger.version>2.8.0</swagger.version>
+        <swagger.version>2.9.2</swagger.version>
         <swagger.annotations.version>1.6.2</swagger.annotations.version>
         <jwt.version>3.8.3</jwt.version>
         <validation.version>2.4.5</validation.version>
@@ -34,6 +34,11 @@
         <easypoi.version>3.2.0</easypoi.version>
         <httpmime.version>4.5.5</httpmime.version>
         <io.version>2.11.0</io.version>
+        <cloud.version>Hoxton.SR12</cloud.version>
+        <alicloud.version>2.2.7.RELEASE</alicloud.version>
+        <nacos.version>2.0.3</nacos.version>
+        <openfeign.version>3.1.0</openfeign.version>
+
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -147,6 +152,39 @@
                 <artifactId>commons-io</artifactId>
                 <version>${io.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${cloud.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba</artifactId>
+                <version>${alicloud.version}}</version>
+            </dependency>
+
+            <!--配置中心pom-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+                <version>${nacos.version}</version>
+            </dependency>
+
+            <!--服务发现pom-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                <version>${nacos.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>${openfeign.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

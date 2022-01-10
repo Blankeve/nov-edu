@@ -1,0 +1,16 @@
+2022-01-10 15:22:55,123 INFO open empty service auto clean job, initialDelay : 50000 ms, period : 30000 ms
+
+2022-01-10 15:22:55,125 INFO listen for service meta change
+
+2022-01-10 15:22:59,684 INFO member change, new members [Member{ip='192.168.10.140', port=8848, state=UP, extendInfo={lastRefreshTime=1641799379682, raftPort=7848, version=2.0.0}}]
+
+2022-01-10 15:22:59,702 INFO [NACOS-DISTRO] healthy server list changed, old: [192.168.10.140:8848], new: [192.168.10.140:8848]
+
+2022-01-10 15:25:17,506 INFO open empty service auto clean job, initialDelay : 50000 ms, period : 30000 ms
+
+2022-01-10 15:25:17,508 INFO listen for service meta change
+
+2022-01-10 15:25:22,231 INFO [NACOS-DISTRO] healthy server list changed, old: [192.168.10.140:8848], new: [192.168.10.140:8848]
+
+2022-01-10 15:25:22,232 INFO member change, new members [Member{ip='192.168.10.140', port=8848, state=UP, extendInfo={lastRefreshTime=1641799522231, raftPort=7848, version=2.0.0}}]
+

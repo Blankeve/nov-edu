@@ -1,0 +1,196 @@
+2022-01-10 15:23:02,503 INFO SPI service [com.alipay.sofa.jraft.JRaftServiceFactory - com.alipay.sofa.jraft.core.DefaultJRaftServiceFactory] loading.
+
+2022-01-10 15:23:02,727 INFO SPI service [com.alipay.sofa.jraft.rpc.RaftRpcFactory - com.alipay.sofa.jraft.rpc.impl.GrpcRaftRpcFactory] loading.
+
+2022-01-10 15:23:03,346 INFO SPI service [com.alipay.sofa.jraft.util.timer.RaftTimerFactory - com.alipay.sofa.jraft.util.timer.DefaultRaftTimerFactory] loading.
+
+2022-01-10 15:23:03,365 INFO The number of active nodes increment to 1.
+
+2022-01-10 15:23:04,301 INFO Starts FSMCaller successfully.
+
+2022-01-10 15:23:04,318 WARN No data for snapshot reader E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_persistent_service_v2\snapshot.
+
+2022-01-10 15:23:04,364 INFO Node <naming_persistent_service_v2/192.168.10.140:7848> init, term=0, lastLogId=LogId [index=0, term=0], conf=192.168.10.140:7848, oldConf=.
+
+2022-01-10 15:23:04,368 INFO Node <naming_persistent_service_v2/192.168.10.140:7848> start vote and grant vote self, term=0.
+
+2022-01-10 15:23:04,398 WARN Unable to fsync directory E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_persistent_service_v2\meta-data on windows.
+
+2022-01-10 15:23:04,410 INFO Save raft meta, path=E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_persistent_service_v2\meta-data, term=1, votedFor=192.168.10.140:7848, cost time=28 ms
+
+2022-01-10 15:23:04,411 INFO Node <naming_persistent_service_v2/192.168.10.140:7848> become leader of group, term=1, conf=192.168.10.140:7848, oldConf=.
+
+2022-01-10 15:23:04,418 INFO -Djraft.recyclers.maxCapacityPerThread: 4096.
+
+2022-01-10 15:23:04,423 WARN RPC server is not started in RaftGroupService.
+
+2022-01-10 15:23:04,423 INFO Start the RaftGroupService successfully.
+
+2022-01-10 15:23:04,441 INFO onLeaderStart: term=1.
+
+2022-01-10 15:23:04,530 INFO The number of active nodes increment to 2.
+
+2022-01-10 15:23:04,614 INFO Starts FSMCaller successfully.
+
+2022-01-10 15:23:04,614 WARN No data for snapshot reader E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_instance_metadata\snapshot.
+
+2022-01-10 15:23:04,616 INFO Node <naming_instance_metadata/192.168.10.140:7848> init, term=0, lastLogId=LogId [index=0, term=0], conf=192.168.10.140:7848, oldConf=.
+
+2022-01-10 15:23:04,617 INFO Node <naming_instance_metadata/192.168.10.140:7848> start vote and grant vote self, term=0.
+
+2022-01-10 15:23:04,621 WARN Unable to fsync directory E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_instance_metadata\meta-data on windows.
+
+2022-01-10 15:23:04,621 INFO Save raft meta, path=E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_instance_metadata\meta-data, term=1, votedFor=192.168.10.140:7848, cost time=3 ms
+
+2022-01-10 15:23:04,621 INFO Node <naming_instance_metadata/192.168.10.140:7848> become leader of group, term=1, conf=192.168.10.140:7848, oldConf=.
+
+2022-01-10 15:23:04,622 WARN RPC server is not started in RaftGroupService.
+
+2022-01-10 15:23:04,622 INFO Start the RaftGroupService successfully.
+
+2022-01-10 15:23:04,623 INFO onLeaderStart: term=1.
+
+2022-01-10 15:23:04,633 INFO The number of active nodes increment to 3.
+
+2022-01-10 15:23:04,699 WARN Channel in TRANSIENT_FAILURE state: 192.168.10.140:7848.
+
+2022-01-10 15:23:04,700 WARN Channel in SHUTDOWN state: 192.168.10.140:7848.
+
+2022-01-10 15:23:04,819 INFO Starts FSMCaller successfully.
+
+2022-01-10 15:23:04,820 WARN No data for snapshot reader E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_service_metadata\snapshot.
+
+2022-01-10 15:23:04,821 INFO Node <naming_service_metadata/192.168.10.140:7848> init, term=0, lastLogId=LogId [index=0, term=0], conf=192.168.10.140:7848, oldConf=.
+
+2022-01-10 15:23:04,822 INFO Node <naming_service_metadata/192.168.10.140:7848> start vote and grant vote self, term=0.
+
+2022-01-10 15:23:04,832 WARN Unable to fsync directory E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_service_metadata\meta-data on windows.
+
+2022-01-10 15:23:04,833 INFO Save raft meta, path=E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_service_metadata\meta-data, term=1, votedFor=192.168.10.140:7848, cost time=10 ms
+
+2022-01-10 15:23:04,833 INFO Node <naming_service_metadata/192.168.10.140:7848> become leader of group, term=1, conf=192.168.10.140:7848, oldConf=.
+
+2022-01-10 15:23:04,833 WARN RPC server is not started in RaftGroupService.
+
+2022-01-10 15:23:04,833 INFO Start the RaftGroupService successfully.
+
+2022-01-10 15:23:04,996 INFO onLeaderStart: term=1.
+
+2022-01-10 15:23:05,724 ERROR Fail to connect 192.168.10.140:7848, remoting exception: java.util.concurrent.ExecutionException: io.grpc.StatusRuntimeException: DEADLINE_EXCEEDED: deadline exceeded after 840826700ns. [buffered_nanos=846506700, waiting_for_connection].
+
+2022-01-10 15:23:05,725 ERROR Fail to connect peer 192.168.10.140:7848 to get leader for group naming_persistent_service_v2.
+
+2022-01-10 15:23:05,730 ERROR Fail to connect 192.168.10.140:7848, remoting exception: java.util.concurrent.ExecutionException: io.grpc.StatusRuntimeException: DEADLINE_EXCEEDED: deadline exceeded after 860403800ns. [buffered_nanos=868213300, waiting_for_connection].
+
+2022-01-10 15:23:05,730 ERROR Fail to connect peer 192.168.10.140:7848 to get leader for group naming_instance_metadata.
+
+2022-01-10 15:25:22,670 INFO SPI service [com.alipay.sofa.jraft.JRaftServiceFactory - com.alipay.sofa.jraft.core.DefaultJRaftServiceFactory] loading.
+
+2022-01-10 15:25:22,798 INFO SPI service [com.alipay.sofa.jraft.rpc.RaftRpcFactory - com.alipay.sofa.jraft.rpc.impl.GrpcRaftRpcFactory] loading.
+
+2022-01-10 15:25:23,106 INFO SPI service [com.alipay.sofa.jraft.util.timer.RaftTimerFactory - com.alipay.sofa.jraft.util.timer.DefaultRaftTimerFactory] loading.
+
+2022-01-10 15:25:23,177 INFO The number of active nodes increment to 1.
+
+2022-01-10 15:25:23,621 INFO Starts FSMCaller successfully.
+
+2022-01-10 15:25:23,640 WARN No data for snapshot reader E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_persistent_service_v2\snapshot.
+
+2022-01-10 15:25:23,640 INFO Node <naming_persistent_service_v2/192.168.10.140:7848> target priority value has changed from: 0, to: -1.
+
+2022-01-10 15:25:23,690 INFO Node <naming_persistent_service_v2/192.168.10.140:7848> init, term=1, lastLogId=LogId [index=1, term=1], conf=192.168.10.140:7848, oldConf=.
+
+2022-01-10 15:25:23,694 INFO Node <naming_persistent_service_v2/192.168.10.140:7848> start vote and grant vote self, term=1.
+
+2022-01-10 15:25:23,809 WARN Unable to fsync directory E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_persistent_service_v2\meta-data on windows.
+
+2022-01-10 15:25:23,827 INFO Save raft meta, path=E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_persistent_service_v2\meta-data, term=2, votedFor=192.168.10.140:7848, cost time=64 ms
+
+2022-01-10 15:25:23,827 INFO Node <naming_persistent_service_v2/192.168.10.140:7848> become leader of group, term=2, conf=192.168.10.140:7848, oldConf=.
+
+2022-01-10 15:25:23,833 INFO -Djraft.recyclers.maxCapacityPerThread: 4096.
+
+2022-01-10 15:25:23,837 WARN RPC server is not started in RaftGroupService.
+
+2022-01-10 15:25:23,838 INFO Start the RaftGroupService successfully.
+
+2022-01-10 15:25:23,899 INFO The number of active nodes increment to 2.
+
+2022-01-10 15:25:23,910 INFO onLeaderStart: term=2.
+
+2022-01-10 15:25:24,074 INFO Starts FSMCaller successfully.
+
+2022-01-10 15:25:24,074 WARN No data for snapshot reader E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_instance_metadata\snapshot.
+
+2022-01-10 15:25:24,075 INFO Node <naming_instance_metadata/192.168.10.140:7848> target priority value has changed from: 0, to: -1.
+
+2022-01-10 15:25:24,077 INFO Node <naming_instance_metadata/192.168.10.140:7848> init, term=1, lastLogId=LogId [index=1, term=1], conf=192.168.10.140:7848, oldConf=.
+
+2022-01-10 15:25:24,077 INFO Node <naming_instance_metadata/192.168.10.140:7848> start vote and grant vote self, term=1.
+
+2022-01-10 15:25:24,097 WARN Unable to fsync directory E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_instance_metadata\meta-data on windows.
+
+2022-01-10 15:25:24,098 INFO Save raft meta, path=E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_instance_metadata\meta-data, term=2, votedFor=192.168.10.140:7848, cost time=4 ms
+
+2022-01-10 15:25:24,098 INFO Node <naming_instance_metadata/192.168.10.140:7848> become leader of group, term=2, conf=192.168.10.140:7848, oldConf=.
+
+2022-01-10 15:25:24,098 WARN RPC server is not started in RaftGroupService.
+
+2022-01-10 15:25:24,098 INFO Start the RaftGroupService successfully.
+
+2022-01-10 15:25:24,127 INFO onLeaderStart: term=2.
+
+2022-01-10 15:25:24,128 INFO The number of active nodes increment to 3.
+
+2022-01-10 15:25:24,201 INFO Starts FSMCaller successfully.
+
+2022-01-10 15:25:24,202 WARN No data for snapshot reader E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_service_metadata\snapshot.
+
+2022-01-10 15:25:24,202 INFO Node <naming_service_metadata/192.168.10.140:7848> target priority value has changed from: 0, to: -1.
+
+2022-01-10 15:25:24,202 WARN Channel in TRANSIENT_FAILURE state: 192.168.10.140:7848.
+
+2022-01-10 15:25:24,203 INFO Node <naming_service_metadata/192.168.10.140:7848> init, term=1, lastLogId=LogId [index=1, term=1], conf=192.168.10.140:7848, oldConf=.
+
+2022-01-10 15:25:24,202 WARN Channel in SHUTDOWN state: 192.168.10.140:7848.
+
+2022-01-10 15:25:24,204 INFO Node <naming_service_metadata/192.168.10.140:7848> start vote and grant vote self, term=1.
+
+2022-01-10 15:25:24,208 WARN Unable to fsync directory E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_service_metadata\meta-data on windows.
+
+2022-01-10 15:25:24,208 INFO Save raft meta, path=E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_service_metadata\meta-data, term=2, votedFor=192.168.10.140:7848, cost time=4 ms
+
+2022-01-10 15:25:24,208 INFO Node <naming_service_metadata/192.168.10.140:7848> become leader of group, term=2, conf=192.168.10.140:7848, oldConf=.
+
+2022-01-10 15:25:24,209 WARN RPC server is not started in RaftGroupService.
+
+2022-01-10 15:25:24,209 INFO Start the RaftGroupService successfully.
+
+2022-01-10 15:25:24,214 INFO onLeaderStart: term=2.
+
+2022-01-10 15:25:25,233 ERROR Fail to connect 192.168.10.140:7848, remoting exception: java.util.concurrent.ExecutionException: io.grpc.StatusRuntimeException: DEADLINE_EXCEEDED: deadline exceeded after 850836200ns. [buffered_nanos=863105200, waiting_for_connection].
+
+2022-01-10 15:25:25,234 ERROR Fail to connect peer 192.168.10.140:7848 to get leader for group naming_persistent_service_v2.
+
+2022-01-10 15:25:25,234 ERROR Fail to connect 192.168.10.140:7848, remoting exception: java.util.concurrent.ExecutionException: io.grpc.StatusRuntimeException: DEADLINE_EXCEEDED: deadline exceeded after 850806600ns. [buffered_nanos=862487000, waiting_for_connection].
+
+2022-01-10 15:25:25,234 ERROR Fail to connect peer 192.168.10.140:7848 to get leader for group naming_instance_metadata.
+
+2022-01-10 15:41:35,406 WARN Unable to fsync directory E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_instance_metadata\snapshot\temp on windows.
+
+2022-01-10 15:41:35,407 INFO Deleting snapshot E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_instance_metadata\snapshot\snapshot_2.
+
+2022-01-10 15:41:35,407 INFO Renaming E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_instance_metadata\snapshot\temp to E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_instance_metadata\snapshot\snapshot_2.
+
+2022-01-10 15:47:41,781 WARN Unable to fsync directory E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_persistent_service_v2\snapshot\temp on windows.
+
+2022-01-10 15:47:41,781 INFO Deleting snapshot E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_persistent_service_v2\snapshot\snapshot_2.
+
+2022-01-10 15:47:41,781 INFO Renaming E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_persistent_service_v2\snapshot\temp to E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_persistent_service_v2\snapshot\snapshot_2.
+
+2022-01-10 15:52:58,034 WARN Unable to fsync directory E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_service_metadata\snapshot\temp on windows.
+
+2022-01-10 15:52:58,035 INFO Deleting snapshot E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_service_metadata\snapshot\snapshot_2.
+
+2022-01-10 15:52:58,035 INFO Renaming E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_service_metadata\snapshot\temp to E:\juam-workspace\code\git\edu\nacos\nacos\data\protocol\raft\naming_service_metadata\snapshot\snapshot_2.
+
