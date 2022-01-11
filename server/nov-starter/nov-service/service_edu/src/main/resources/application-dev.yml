@@ -11,6 +11,8 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+  application:
+    name: service-edu
 #  redis:
 #    host: 127.0.0.1
 #    port: 6379
@@ -21,7 +23,7 @@ spring:
 #        max-idle: 500
 #        min-idle: 0
 #    timeout: 5000
-logging:
+#logging:
 #  config: classpath:logback-spring.xml
 #  config: classpath:properties/log4j2.xml
 #  config: classpath:properties/log4j.properties

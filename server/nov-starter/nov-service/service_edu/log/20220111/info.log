@@ -1,0 +1,181 @@
+2022-01-11 14:26:45.145 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-01-11 14:26:48.592 [main] INFO  org.reflections.Reflections-Reflections took 102 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-01-11 14:26:48.683 [main] INFO  org.reflections.Reflections-Reflections took 49 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-01-11 14:26:48.713 [main] INFO  org.reflections.Reflections-Reflections took 24 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-01-11 14:26:49.045 [main] INFO  org.reflections.Reflections-Reflections took 301 ms to scan 214 urls, producing 0 keys and 0 values 
+2022-01-11 14:26:49.071 [main] INFO  org.reflections.Reflections-Reflections took 24 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-01-11 14:26:49.103 [main] INFO  org.reflections.Reflections-Reflections took 22 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-01-11 14:26:49.118 [main] INFO  org.reflections.Reflections-Reflections took 11 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-01-11 14:26:49.383 [main] INFO  org.reflections.Reflections-Reflections took 257 ms to scan 214 urls, producing 0 keys and 0 values 
+2022-01-11 14:26:52.361 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-edu-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu,DEFAULT_GROUP'}]
+2022-01-11 14:26:52.387 [main] INFO  RestTemplateTest-The following profiles are active: dev
+2022-01-11 14:26:53.871 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=cfebd708-09a6-30d3-8c1e-fed4318dcee9
+2022-01-11 14:26:59.898 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-11 14:26:59.913 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-11 14:27:01.148 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-01-11 14:27:02.527 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-11 14:27:04.841 [main] INFO  RestTemplateTest-Started RestTemplateTest in 21.088 seconds (JVM running for 23.47)
+2022-01-11 14:27:05.102 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-upload' URL not provided. Will try picking an instance via load-balancing.
+2022-01-11 14:27:05.249 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-11 14:27:05.757 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'
+2022-01-11 14:29:33.931 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-01-11 14:29:37.105 [main] INFO  org.reflections.Reflections-Reflections took 168 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-01-11 14:29:37.273 [main] INFO  org.reflections.Reflections-Reflections took 99 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-01-11 14:29:37.325 [main] INFO  org.reflections.Reflections-Reflections took 45 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-01-11 14:29:37.823 [main] INFO  org.reflections.Reflections-Reflections took 461 ms to scan 214 urls, producing 0 keys and 0 values 
+2022-01-11 14:29:37.838 [main] INFO  org.reflections.Reflections-Reflections took 13 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-01-11 14:29:37.865 [main] INFO  org.reflections.Reflections-Reflections took 20 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-01-11 14:29:37.880 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-01-11 14:29:38.099 [main] INFO  org.reflections.Reflections-Reflections took 207 ms to scan 214 urls, producing 0 keys and 0 values 
+2022-01-11 14:29:40.770 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-edu-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu,DEFAULT_GROUP'}]
+2022-01-11 14:29:40.804 [main] INFO  RestTemplateTest-The following profiles are active: dev
+2022-01-11 14:29:42.230 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=cfebd708-09a6-30d3-8c1e-fed4318dcee9
+2022-01-11 14:29:45.921 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-11 14:29:45.932 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-11 14:29:46.805 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-01-11 14:29:48.053 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-11 14:29:50.384 [main] INFO  RestTemplateTest-Started RestTemplateTest in 17.924 seconds (JVM running for 22.148)
+2022-01-11 14:29:50.663 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-upload' URL not provided. Will try picking an instance via load-balancing.
+2022-01-11 14:29:50.777 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-11 14:29:51.295 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'
+2022-01-11 14:30:27.579 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-01-11 14:30:30.627 [main] INFO  org.reflections.Reflections-Reflections took 97 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-01-11 14:30:30.696 [main] INFO  org.reflections.Reflections-Reflections took 31 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-01-11 14:30:30.728 [main] INFO  org.reflections.Reflections-Reflections took 29 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-01-11 14:30:30.994 [main] INFO  org.reflections.Reflections-Reflections took 260 ms to scan 214 urls, producing 0 keys and 0 values 
+2022-01-11 14:30:31.008 [main] INFO  org.reflections.Reflections-Reflections took 14 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-01-11 14:30:31.032 [main] INFO  org.reflections.Reflections-Reflections took 19 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-01-11 14:30:31.053 [main] INFO  org.reflections.Reflections-Reflections took 14 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-01-11 14:30:31.248 [main] INFO  org.reflections.Reflections-Reflections took 189 ms to scan 214 urls, producing 0 keys and 0 values 
+2022-01-11 14:30:33.766 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-edu-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu,DEFAULT_GROUP'}]
+2022-01-11 14:30:33.787 [main] INFO  RestTemplateTest-The following profiles are active: dev
+2022-01-11 14:30:35.646 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=cfebd708-09a6-30d3-8c1e-fed4318dcee9
+2022-01-11 14:30:39.532 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-11 14:30:39.553 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-11 14:30:40.812 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-01-11 14:30:42.189 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-11 14:30:43.979 [main] INFO  RestTemplateTest-Started RestTemplateTest in 18.197 seconds (JVM running for 21.644)
+2022-01-11 14:30:44.212 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-upload' URL not provided. Will try picking an instance via load-balancing.
+2022-01-11 14:30:44.304 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-11 14:30:44.896 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'
+2022-01-11 14:53:15.463 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-01-11 14:53:18.605 [main] INFO  org.reflections.Reflections-Reflections took 83 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-01-11 14:53:18.700 [main] INFO  org.reflections.Reflections-Reflections took 44 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-01-11 14:53:18.729 [main] INFO  org.reflections.Reflections-Reflections took 25 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-01-11 14:53:18.937 [main] INFO  org.reflections.Reflections-Reflections took 203 ms to scan 186 urls, producing 0 keys and 0 values 
+2022-01-11 14:53:18.957 [main] INFO  org.reflections.Reflections-Reflections took 19 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-01-11 14:53:18.981 [main] INFO  org.reflections.Reflections-Reflections took 19 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-01-11 14:53:18.994 [main] INFO  org.reflections.Reflections-Reflections took 8 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-01-11 14:53:19.129 [main] INFO  org.reflections.Reflections-Reflections took 129 ms to scan 186 urls, producing 0 keys and 0 values 
+2022-01-11 14:53:21.959 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-edu-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu,DEFAULT_GROUP'}]
+2022-01-11 14:53:21.980 [main] INFO  RestTemplateTest-The following profiles are active: dev
+2022-01-11 14:53:23.843 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=b7afedac-a450-3b35-9b47-bbc9b5f5d9bc
+2022-01-11 14:53:28.670 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-01-11 14:53:30.367 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-11 14:53:32.137 [main] INFO  RestTemplateTest-Started RestTemplateTest in 18.285 seconds (JVM running for 21.978)
+2022-01-11 14:53:32.443 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-upload' URL not provided. Will try picking an instance via load-balancing.
+2022-01-11 14:53:32.546 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-11 14:53:33.070 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'
+2022-01-11 15:32:52.917 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-01-11 15:32:56.384 [main] INFO  org.reflections.Reflections-Reflections took 85 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-01-11 15:32:56.453 [main] INFO  org.reflections.Reflections-Reflections took 21 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-01-11 15:32:56.477 [main] INFO  org.reflections.Reflections-Reflections took 21 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-01-11 15:32:56.753 [main] INFO  org.reflections.Reflections-Reflections took 270 ms to scan 214 urls, producing 0 keys and 0 values 
+2022-01-11 15:32:56.771 [main] INFO  org.reflections.Reflections-Reflections took 16 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-01-11 15:32:56.795 [main] INFO  org.reflections.Reflections-Reflections took 19 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-01-11 15:32:56.811 [main] INFO  org.reflections.Reflections-Reflections took 11 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-01-11 15:32:57.014 [main] INFO  org.reflections.Reflections-Reflections took 199 ms to scan 214 urls, producing 0 keys and 0 values 
+2022-01-11 15:33:01.363 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-edu-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu,DEFAULT_GROUP'}]
+2022-01-11 15:33:01.401 [main] INFO  RestTemplateTest-The following profiles are active: dev
+2022-01-11 15:33:03.895 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=cfebd708-09a6-30d3-8c1e-fed4318dcee9
+2022-01-11 15:33:09.967 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-11 15:33:09.992 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-11 15:33:12.413 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-01-11 15:33:14.414 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-11 15:33:16.600 [main] INFO  RestTemplateTest-Started RestTemplateTest in 25.511 seconds (JVM running for 29.325)
+2022-01-11 15:33:16.826 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-upload' URL not provided. Will try picking an instance via load-balancing.
+2022-01-11 15:33:16.924 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-11 15:33:17.546 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'
+2022-01-11 15:42:16.247 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-01-11 15:42:18.800 [main] INFO  org.reflections.Reflections-Reflections took 132 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-01-11 15:42:18.900 [main] INFO  org.reflections.Reflections-Reflections took 37 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-01-11 15:42:18.922 [main] INFO  org.reflections.Reflections-Reflections took 20 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-01-11 15:42:19.178 [main] INFO  org.reflections.Reflections-Reflections took 251 ms to scan 215 urls, producing 0 keys and 0 values 
+2022-01-11 15:42:19.193 [main] INFO  org.reflections.Reflections-Reflections took 14 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-01-11 15:42:19.211 [main] INFO  org.reflections.Reflections-Reflections took 14 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-01-11 15:42:19.227 [main] INFO  org.reflections.Reflections-Reflections took 11 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-01-11 15:42:19.426 [main] INFO  org.reflections.Reflections-Reflections took 194 ms to scan 215 urls, producing 0 keys and 0 values 
+2022-01-11 15:42:22.190 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-edu-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu,DEFAULT_GROUP'}]
+2022-01-11 15:42:22.211 [main] INFO  RestTemplateTest-The following profiles are active: dev
+2022-01-11 15:42:23.927 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=5eff12e5-202e-3e43-96b1-ec654f93e057
+2022-01-11 15:42:28.143 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-11 15:42:28.162 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-11 15:42:29.060 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-01-11 15:42:31.650 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-11 15:42:33.752 [main] INFO  RestTemplateTest-Started RestTemplateTest in 19.235 seconds (JVM running for 22.754)
+2022-01-11 15:42:33.982 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-upload' URL not provided. Will try picking an instance via load-balancing.
+2022-01-11 15:42:35.604 [main] INFO  com.netflix.config.ChainedDynamicProperty-Flipping property: service-upload.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2022-01-11 15:42:35.694 [main] INFO  com.netflix.loadbalancer.BaseLoadBalancer-Client: service-upload instantiated a LoadBalancer: DynamicServerListLoadBalancer:{NFLoadBalancer:name=service-upload,current list of Servers=[],Load balancer stats=Zone stats: {},Server stats: []}ServerList:null
+2022-01-11 15:42:35.707 [main] INFO  com.netflix.loadbalancer.DynamicServerListLoadBalancer-Using serverListUpdater PollingServerListUpdater
+2022-01-11 15:42:35.723 [main] INFO  com.netflix.loadbalancer.DynamicServerListLoadBalancer-DynamicServerListLoadBalancer for client service-upload initialized: DynamicServerListLoadBalancer:{NFLoadBalancer:name=service-upload,current list of Servers=[],Load balancer stats=Zone stats: {},Server stats: []}ServerList:com.alibaba.cloud.nacos.ribbon.NacosServerList@5fafd099
+2022-01-11 15:42:35.978 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-11 15:42:35.981 [Thread-20] INFO  com.netflix.loadbalancer.PollingServerListUpdater-Shutting down the Executor Pool for PollingServerListUpdater
+2022-01-11 15:42:36.715 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'
+2022-01-11 15:44:14.201 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-01-11 15:44:16.915 [main] INFO  org.reflections.Reflections-Reflections took 145 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-01-11 15:44:17.059 [main] INFO  org.reflections.Reflections-Reflections took 95 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-01-11 15:44:17.091 [main] INFO  org.reflections.Reflections-Reflections took 27 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-01-11 15:44:17.414 [main] INFO  org.reflections.Reflections-Reflections took 318 ms to scan 215 urls, producing 0 keys and 0 values 
+2022-01-11 15:44:17.424 [main] INFO  org.reflections.Reflections-Reflections took 9 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-01-11 15:44:17.443 [main] INFO  org.reflections.Reflections-Reflections took 13 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-01-11 15:44:17.462 [main] INFO  org.reflections.Reflections-Reflections took 15 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-01-11 15:44:17.617 [main] INFO  org.reflections.Reflections-Reflections took 150 ms to scan 215 urls, producing 0 keys and 0 values 
+2022-01-11 15:44:20.093 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-edu-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu,DEFAULT_GROUP'}]
+2022-01-11 15:44:20.113 [main] INFO  RestTemplateTest-The following profiles are active: dev
+2022-01-11 15:44:21.512 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=d1ddf14f-a553-31a3-bc4c-59de8aeb2635
+2022-01-11 15:44:25.832 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-11 15:44:25.843 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-11 15:44:26.589 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-01-11 15:44:28.333 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-11 15:44:30.159 [main] INFO  RestTemplateTest-Started RestTemplateTest in 17.564 seconds (JVM running for 21.015)
+2022-01-11 15:44:30.404 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'upload-service' URL not provided. Will try picking an instance via load-balancing.
+2022-01-11 15:44:31.597 [main] INFO  com.netflix.config.ChainedDynamicProperty-Flipping property: upload-service.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2022-01-11 15:44:31.673 [main] INFO  com.netflix.loadbalancer.BaseLoadBalancer-Client: upload-service instantiated a LoadBalancer: DynamicServerListLoadBalancer:{NFLoadBalancer:name=upload-service,current list of Servers=[],Load balancer stats=Zone stats: {},Server stats: []}ServerList:null
+2022-01-11 15:44:31.684 [main] INFO  com.netflix.loadbalancer.DynamicServerListLoadBalancer-Using serverListUpdater PollingServerListUpdater
+2022-01-11 15:44:31.784 [main] INFO  com.netflix.config.ChainedDynamicProperty-Flipping property: upload-service.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2022-01-11 15:44:31.787 [main] INFO  com.netflix.loadbalancer.DynamicServerListLoadBalancer-DynamicServerListLoadBalancer for client upload-service initialized: DynamicServerListLoadBalancer:{NFLoadBalancer:name=upload-service,current list of Servers=[192.168.10.140:8888],Load balancer stats=Zone stats: {unknown=[Zone:unknown;	Instance count:1;	Active connections count: 0;	Circuit breaker tripped count: 0;	Active connections per server: 0.0;]
+},Server stats: [[Server:192.168.10.140:8888;	Zone:UNKNOWN;	Total Requests:0;	Successive connection failure:0;	Total blackout seconds:0;	Last connection made:Thu Jan 01 08:00:00 CST 1970;	First connection made: Thu Jan 01 08:00:00 CST 1970;	Active Connections:0;	total failure count in last (1000) msecs:0;	average resp time:0.0;	90 percentile resp time:0.0;	95 percentile resp time:0.0;	min resp time:0.0;	max resp time:0.0;	stddev resp time:0.0]
+]}ServerList:com.alibaba.cloud.nacos.ribbon.NacosServerList@634d56eb
+2022-01-11 15:45:47.032 [Thread-20] INFO  com.netflix.loadbalancer.PollingServerListUpdater-Shutting down the Executor Pool for PollingServerListUpdater
+2022-01-11 15:45:47.038 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-11 15:45:46.972 [PollingServerListUpdater-0] INFO  com.netflix.config.ChainedDynamicProperty-Flipping property: upload-service.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2022-01-11 15:45:47.652 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'
+2022-01-11 17:27:21.644 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-01-11 17:27:25.980 [main] INFO  org.reflections.Reflections-Reflections took 259 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-01-11 17:27:26.180 [main] INFO  org.reflections.Reflections-Reflections took 118 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-01-11 17:27:26.258 [main] INFO  org.reflections.Reflections-Reflections took 66 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-01-11 17:27:26.708 [main] INFO  org.reflections.Reflections-Reflections took 442 ms to scan 219 urls, producing 0 keys and 0 values 
+2022-01-11 17:27:26.732 [main] INFO  org.reflections.Reflections-Reflections took 23 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-01-11 17:27:26.765 [main] INFO  org.reflections.Reflections-Reflections took 21 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-01-11 17:27:26.795 [main] INFO  org.reflections.Reflections-Reflections took 19 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-01-11 17:27:27.064 [main] INFO  org.reflections.Reflections-Reflections took 265 ms to scan 219 urls, producing 0 keys and 0 values 
+2022-01-11 17:27:30.909 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-edu-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu,DEFAULT_GROUP'}]
+2022-01-11 17:27:30.942 [main] INFO  RestTemplateTest-The following profiles are active: dev
+2022-01-11 17:27:34.004 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=d1ddf14f-a553-31a3-bc4c-59de8aeb2635
+2022-01-11 17:27:42.673 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-11 17:27:42.709 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-11 17:27:44.545 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-01-11 17:27:48.279 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-11 17:27:51.338 [main] INFO  RestTemplateTest-Started RestTemplateTest in 32.649 seconds (JVM running for 38.059)
+2022-01-11 17:27:51.906 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'upload-service' URL not provided. Will try picking an instance via load-balancing.
+2022-01-11 17:27:55.584 [main] INFO  com.netflix.config.ChainedDynamicProperty-Flipping property: upload-service.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2022-01-11 17:27:55.713 [main] INFO  com.netflix.loadbalancer.BaseLoadBalancer-Client: upload-service instantiated a LoadBalancer: DynamicServerListLoadBalancer:{NFLoadBalancer:name=upload-service,current list of Servers=[],Load balancer stats=Zone stats: {},Server stats: []}ServerList:null
+2022-01-11 17:27:55.729 [main] INFO  com.netflix.loadbalancer.DynamicServerListLoadBalancer-Using serverListUpdater PollingServerListUpdater
+2022-01-11 17:27:55.819 [main] INFO  com.netflix.config.ChainedDynamicProperty-Flipping property: upload-service.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2022-01-11 17:27:55.827 [main] INFO  com.netflix.loadbalancer.DynamicServerListLoadBalancer-DynamicServerListLoadBalancer for client upload-service initialized: DynamicServerListLoadBalancer:{NFLoadBalancer:name=upload-service,current list of Servers=[192.168.10.140:8888],Load balancer stats=Zone stats: {unknown=[Zone:unknown;	Instance count:1;	Active connections count: 0;	Circuit breaker tripped count: 0;	Active connections per server: 0.0;]
+},Server stats: [[Server:192.168.10.140:8888;	Zone:UNKNOWN;	Total Requests:0;	Successive connection failure:0;	Total blackout seconds:0;	Last connection made:Thu Jan 01 08:00:00 CST 1970;	First connection made: Thu Jan 01 08:00:00 CST 1970;	Active Connections:0;	total failure count in last (1000) msecs:0;	average resp time:0.0;	90 percentile resp time:0.0;	95 percentile resp time:0.0;	min resp time:0.0;	max resp time:0.0;	stddev resp time:0.0]
+]}ServerList:com.alibaba.cloud.nacos.ribbon.NacosServerList@4cf1ec2
+2022-01-11 17:27:56.765 [PollingServerListUpdater-0] INFO  com.netflix.config.ChainedDynamicProperty-Flipping property: upload-service.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2022-01-11 17:29:33.201 [Thread-20] INFO  com.netflix.loadbalancer.PollingServerListUpdater-Shutting down the Executor Pool for PollingServerListUpdater
+2022-01-11 17:29:33.210 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-11 17:29:33.924 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'

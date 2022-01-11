@@ -1,4 +1,4 @@
-package com.novedu.nov.upload.service;
+package com.novedu.nov.edu.service;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @modified By：
  * @version:
  */
-@FeignClient(value = "quickstart-provider")
+@FeignClient(value = "upload-service")
 public interface ProviderClient {
     @GetMapping("/service")
     String service();

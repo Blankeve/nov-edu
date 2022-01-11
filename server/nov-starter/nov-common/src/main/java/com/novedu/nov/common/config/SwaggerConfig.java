@@ -1,5 +1,6 @@
 package com.novedu.nov.common.config;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -21,10 +22,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @modified By：
  * @version:
  */
-//@Configuration
-//@EnableSwagger2
+@Configuration
+@EnableSwagger2
 //是否开启swagger，正式环境一般是需要关闭的（避免不必要的漏洞暴露！），可根据springboot的多环境配置进行设置
-//@ConditionalOnProperty(name = "swagger.enable",  havingValue = "true")
+@ConditionalOnProperty(name = "swagger.enable",  havingValue = "true")
 public class SwaggerConfig {
 
     @Bean
