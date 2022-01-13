@@ -185,13 +185,26 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/banner',
+    component: Layout,
+    redirect: '/banner/list',
+    children: [
+      {
+        path: 'list',
+        name: 'banner-list',
+        component: () => import('@/views/banner/index'),
+        meta: { title: 'banner管理', icon: 'el-icon-menu' }
+      }
+    ]
+  },
+  {
     path: '/config',
     component: Layout,
     redirect: '/config/list',
     children: [
       {
         path: 'list',
-        name: '系统配置',
+        name: 'config-list',
         component: () => import('@/views/config/index'),
         meta: { title: '系统配置', icon: 'el-icon-setting' }
       }
