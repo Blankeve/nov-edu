@@ -164,4 +164,9 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         return BaseResult.success();
     }
 
+    @Override
+    public BaseResult<List<EduCourse>> getClientCourseList() {
+        return BaseResult.success(query().orderByDesc("view_count").last("limit 8").list());
+    }
+
 }

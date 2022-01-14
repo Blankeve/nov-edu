@@ -3,6 +3,7 @@ package com.novedu.nov.edu.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.edu.entity.CrmBanner;
 import com.novedu.nov.edu.entity.EduTeacher;
 import com.novedu.nov.edu.service.EduTeacherService;
 import io.swagger.annotations.Api;
@@ -64,6 +65,11 @@ public class EduTeacherController {
     @PutMapping("/edit")
     public BaseResult editTeacher(@RequestBody @Validated EduTeacher teacher) {
         return eduTeacherService.editTeacher(teacher);
+    }
+
+    @GetMapping("/client-list")
+    public BaseResult<List<EduTeacher>> getClientTeacherList(){
+        return eduTeacherService.getClientTeacherList();
     }
 }
 

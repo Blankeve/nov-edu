@@ -7,6 +7,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.novedu.nov.edu.entity.dto.EduCourseInfoDTO;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 
+import java.util.List;
+
 /**
  * <p>
  * 课程 服务类
@@ -32,4 +34,6 @@ public interface EduCourseService extends IService<EduCourse> {
     BaseResult queryCourseById(EduCourse id);
 
     BaseResult removeCourse(Integer id);
+
+    BaseResult<List<EduCourse>> getClientCourseList();
 }

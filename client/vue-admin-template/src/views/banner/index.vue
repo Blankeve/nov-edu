@@ -1,5 +1,5 @@
 <template>
-  <div class="table-wrapper">
+  <div class="app-container">
     <el-button type="primary" @click="addConfig()">添加轮播图</el-button>
     <el-table
       v-loading="listLoading"
@@ -77,6 +77,7 @@
       :visible.sync="configFormVisible"
       width="500px"
       center=""
+      append-to-body
     >
       <el-form :model="form" label-width="120">
         <el-form-item label="图片标题">
@@ -105,7 +106,7 @@
             :on-success="handleAvatarSuccess"
             :before-upload="beforeAvatarUpload"
           >
-            <img v-if="form.imageUrl" :src="form.imageUrl" class="avatar" />
+            <img width="100%" v-if="form.imageUrl" :src="form.imageUrl" class="avatar" />
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
           </el-upload>
         </el-form-item>
@@ -194,6 +195,7 @@ export default {
       return "background:#3f5c6d2c;";
     },
     handleAvatarSuccess(res, file) {
+      this.$forceUpdate()
       this.form.imageUrl = res.data.path;
     },
     beforeAvatarUpload(file) {

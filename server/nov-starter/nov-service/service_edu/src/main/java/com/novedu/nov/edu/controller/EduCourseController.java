@@ -3,6 +3,7 @@ package com.novedu.nov.edu.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.edu.entity.CrmBanner;
 import com.novedu.nov.edu.entity.EduCourse;
 import com.novedu.nov.edu.entity.dto.EduCourseInfoDTO;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
@@ -11,6 +12,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * <p>
@@ -67,6 +70,11 @@ public class EduCourseController {
     @PostMapping("/tree")
     public BaseResult queryCourseTree(Page page, EduCourseInfoDTO courseInfoDTO) {
         return eduCourseService.queryCourseTree(page, courseInfoDTO);
+    }
+
+    @GetMapping("/client-list")
+    public BaseResult<List<EduCourse>> getClientCourseList(){
+        return eduCourseService.getClientCourseList();
     }
 
 

@@ -63,5 +63,10 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
         return BaseResult.success(list());
     }
 
+    @Override
+    public BaseResult<List<EduTeacher>> getClientTeacherList() {
+        return BaseResult.success(query().orderByDesc("sort").last("limit 4").list());
+    }
+
 
 }

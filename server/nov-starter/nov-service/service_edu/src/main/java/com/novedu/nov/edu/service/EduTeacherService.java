@@ -28,4 +28,6 @@ public interface EduTeacherService extends IService<EduTeacher> {
     BaseResult<EduTeacher> findTeacherOne(String id);
 
     BaseResult<List<EduTeacher>> findAll();
+
+    BaseResult<List<EduTeacher>> getClientTeacherList();
 }
