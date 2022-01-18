@@ -40,6 +40,8 @@ public class EduCourseInfoDTO {
     @ApiModelProperty(value = "课程专业ID")
     private Integer[] subjectId;
 
+    private Integer clientSubjectId;
+
     @ApiModelProperty(value = "课程标题")
     private String title;
 

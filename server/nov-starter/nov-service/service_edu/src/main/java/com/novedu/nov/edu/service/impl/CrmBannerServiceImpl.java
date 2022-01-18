@@ -5,10 +5,14 @@ import com.novedu.nov.edu.entity.CrmBanner;
 import com.novedu.nov.edu.mapper.CrmBannerMapper;
 import com.novedu.nov.edu.service.CrmBannerService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * <p>
@@ -20,6 +24,9 @@ import java.util.List;
  */
 @Service
 public class CrmBannerServiceImpl extends ServiceImpl<CrmBannerMapper, CrmBanner> implements CrmBannerService {
+
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     @Override
     public BaseResult<List<CrmBanner>> getBannerList() {
@@ -36,13 +43,19 @@ public class CrmBannerServiceImpl extends ServiceImpl<CrmBannerMapper, CrmBanner
         return BaseResult.successOrError(removeById(id));
     }
 
-    @Cacheable("client-banners")
-    public List<CrmBanner> getClientBannerListCache(){
-        return query().orderByDesc("create_time").last("limit 2").list();
-    }
 
     @Override
     public BaseResult<List<CrmBanner>> getClientBannerList() {
-        return BaseResult.success(getClientBannerListCache());
+        String key = "clientBanners";
+        boolean hasKey = redisTemplate.hasKey(key);
+        List<CrmBanner> list;
+        if (hasKey) {
+            System.out.println("从缓存中获取...");
+            list = (List<CrmBanner>) redisTemplate.opsForValue().get(key);
+        } else {
+            list = query().orderByDesc("create_time").last("limit 2").list();
+            redisTemplate.opsForValue().set(key, list, 6, TimeUnit.HOURS);
+        }
+        return BaseResult.success(list);
     }
 }

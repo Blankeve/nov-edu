@@ -36,4 +36,6 @@ public interface EduCourseService extends IService<EduCourse> {
     BaseResult removeCourse(Integer id);
 
     BaseResult<List<EduCourse>> getClientCourseList();
+
+    BaseResult queryClientCoursePage(Page page, EduCourseInfoDTO courseInfoDTO);
 }

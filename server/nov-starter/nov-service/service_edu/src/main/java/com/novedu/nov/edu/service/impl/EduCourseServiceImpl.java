@@ -169,4 +169,13 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         return BaseResult.success(query().orderByDesc("view_count").last("limit 8").list());
     }
 
+    @Override
+    public BaseResult queryClientCoursePage(Page page, EduCourseInfoDTO courseInfoDTO) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        Integer subjectId = courseInfoDTO.getClientSubjectId();
+        if (subjectId != null && subjectId > 0)
+            queryWrapper.eq("subject_id",subjectId);
+        return BaseResult.success(page(page,queryWrapper));
+    }
+
 }
