@@ -48,7 +48,7 @@
                       <img
                         :src="course.cover"
                         class="img-responsive"
-                        alt="听力口语"
+                        :alt="course.title"
                       />
                       <div class="cc-mask">
                         <a href="#" title="开始学习" class="comm-btn c-btn-1"
@@ -58,15 +58,17 @@
                     </section>
                     <h3 class="hLh30 txtOf mt10">
                       <a
-                        href="#"
+                        :href="'/course/' + course.id"
                         :title="course.title"
                         class="course-title fsize18 c-333"
-                        >{{course.title}}</a
+                        >{{ course.title }}</a
                       >
                     </h3>
                     <section class="mt10 hLh20 of">
                       <span class="fr jgTag bg-green">
-                        <i class="c-fff fsize12 f-fA">{{course.price > 0?course.price+"元":"免费"}}</i>
+                        <i class="c-fff fsize12 f-fA">{{
+                          course.price > 0 ? course.price + "元" : "免费"
+                        }}</i>
                       </span>
                       <span class="fl jgAttr c-ccc f-fA">
                         <i class="c-999 f-fA">9634人学习</i>
@@ -76,12 +78,13 @@
                     </section>
                   </div>
                 </li>
-              
               </ul>
               <div class="clear"></div>
             </article>
             <section class="tac pt20">
-              <a href="#" title="全部课程" class="comm-btn c-btn-2">全部课程</a>
+              <a href="/course" title="全部课程" class="comm-btn c-btn-2"
+                >全部课程</a
+              >
             </section>
           </div>
         </section>
@@ -101,36 +104,32 @@
                 <li v-for="teacher in teachers" :key="teacher.id">
                   <section class="i-teach-wrap">
                     <div class="i-teach-pic">
-                      <a :href="'/teacher/'+teacher.id" :title="teacher.name">
-                        <img
-                          :alt="teacher.name"
-                          :src="teacher.avatar"
-                        />
+                      <a :href="'/teacher/' + teacher.id" :title="teacher.name">
+                        <img :alt="teacher.name" :src="teacher.avatar" />
                       </a>
                     </div>
                     <div class="mt10 hLh30 txtOf tac">
-                      <a href="/teacher/1" title="姚晨" class="fsize18 c-666"
-                        >{{teacher.name}}</a
-                      >
+                      <a href="/teacher/1" title="姚晨" class="fsize18 c-666">{{
+                        teacher.name
+                      }}</a>
                     </div>
                     <div class="hLh30 txtOf tac">
-                      <span class="fsize14 c-999"
-                        >{{teacher.intro}}</span
-                      >
+                      <span class="fsize14 c-999">{{ teacher.intro }}</span>
                     </div>
                     <div class="mt15 i-q-txt">
                       <p class="c-999 f-fA">
-                        {{teacher.career}}
+                        {{ teacher.career }}
                       </p>
                     </div>
                   </section>
                 </li>
-              
               </ul>
               <div class="clear"></div>
             </article>
             <section class="tac pt20">
-              <a href="#" title="全部讲师" class="comm-btn c-btn-2">全部讲师</a>
+              <a href="/teacher" title="全部讲师" class="comm-btn c-btn-2"
+                >全部讲师</a
+              >
             </section>
           </div>
         </section>

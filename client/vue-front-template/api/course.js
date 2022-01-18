@@ -41,7 +41,7 @@ export function save(data) {
 
   export function getPage(params) {
     return request({
-      url: '/edu/course/page',
+      url: '/edu/course/page-client',
       method: 'post',
       params
     })
