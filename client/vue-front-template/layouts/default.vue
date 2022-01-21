@@ -1,68 +1,80 @@
 <template>
   <div class="in-wrap">
-    <!-- 公共头引入 -->
     <header id="header">
       <section class="container">
         <h1 id="logo">
           <a href="#" title="谷粒学院">
-            <img src="~/assets/img/logo.png" width="100%" alt="谷粒学院">
+            <img src="~/assets/img/logo.png" width="100%" alt="谷粒学院" />
           </a>
         </h1>
         <div class="h-r-nsl">
           <ul class="nav">
-            <router-link to="/" tag="li" active-class="current" exact>
+            <nuxt-link to="/" tag="li" active-class="current" exact>
               <a>首页</a>
-            </router-link>
-            <router-link to="/course" tag="li" active-class="current">
+            </nuxt-link>
+            <nuxt-link to="/course" tag="li" active-class="current">
               <a>课程</a>
-            </router-link>
-            <router-link to="/teacher" tag="li" active-class="current">
+            </nuxt-link>
+            <nuxt-link to="/teacher" tag="li" active-class="current">
               <a>名师</a>
-            </router-link>
-            <router-link to="/article" tag="li" active-class="current">
+            </nuxt-link>
+            <nuxt-link to="/article" tag="li" active-class="current">
               <a>文章</a>
-            </router-link>
-            <router-link to="/qa" tag="li" active-class="current">
+            </nuxt-link>
+            <nuxt-link to="/qa" tag="li" active-class="current">
               <a>问答</a>
-            </router-link>
+            </nuxt-link>
           </ul>
-          <!-- / nav -->
           <ul class="h-r-login">
-            <li id="no-login">
-              <a href="/sing_in" title="登录">
-                <em class="icon18 login-icon">&nbsp;</em>
-                <span class="vam ml5">登录</span>
-              </a>
+            <li v-if="!loginInfo.id" id="no-login">
               |
-              <a href="/sign_up" title="注册">
-                <span class="vam ml5">注册</span>
-              </a>
+              <nuxt-link to="/logIn">
+                <em class="icon18 login-icon">&nbsp;</em>
+                <span class="vam ml5">登录</span></nuxt-link
+              >
+
+              <nuxt-link to="/register">
+                <span class="vam ml5">注册</span></nuxt-link
+              >
             </li>
-            <li class="mr10 undis" id="is-login-one">
-              <a href="#" title="消息" id="headerMsgCountId">
+            <li v-if="loginInfo.id" id="is-login-one" class="mr10">
+              <a id="headerMsgCountId" href="#" title="消息">
                 <em class="icon18 news-icon">&nbsp;</em>
               </a>
               <q class="red-point" style="display: none">&nbsp;</q>
             </li>
-            <li class="h-r-user undis" id="is-login-two">
-              <a href="#" title>
+            <li v-if="loginInfo.id" id="is-login-two" class="h-r-user">
+              <a href="/ucenter" title>
                 <img
-                  src="~/assets/img/avatar-boy.gif"
+                  :src="loginInfo.avatar"
                   width="30"
                   height="30"
                   class="vam picImg"
                   alt
-                >
-                <span class="vam disIb" id="userName"></span>
+                />
+                <span id="userName" class="vam disIb">{{
+                  loginInfo.nickname
+                }}</span>
               </a>
-              <a href="javascript:void(0)" title="退出" onclick="exit();" class="ml5">退出</a>
+              <a
+                href="javascript:void(0);"
+                title="退出"
+                @click="logout()"
+                class="ml5"
+                >退出</a
+              >
             </li>
-            <!-- /未登录显示第1 li；登录后显示第2，3 li -->
           </ul>
+
           <aside class="h-r-search">
             <form action="#" method="post">
               <label class="h-r-s-box">
-                <input type="text" placeholder="输入你想学的课程" name="queryCourse.courseName" value>
+                <input
+                  type="text"
+                  placeholder="输入你想学的课程"
+                  name="queryCourse.courseName"
+                  value
+                />
                 <button type="submit" class="s-btn">
                   <em class="icon18">&nbsp;</em>
                 </button>
@@ -76,11 +88,9 @@
         <div class="clear"></div>
       </section>
     </header>
-    <!-- /公共头引入 -->
-      
-    <nuxt/>
 
-    <!-- 公共底引入 -->
+    <nuxt />
+
     <footer id="footer">
       <section class="container">
         <div class>
@@ -89,7 +99,9 @@
           </h4>
           <ul class="of flink-list">
             <li>
-              <a href="http://www.atguigu.com/" title="NOV" target="_blank">NOV</a>
+              <a href="http://www.atguigu.com/" title="NOV" target="_blank"
+                >NOV</a
+              >
             </li>
           </ul>
           <div class="clear"></div>
@@ -113,12 +125,12 @@
           <aside class="fl col-3 tac mt15">
             <section class="gf-tx">
               <span>
-                <img src="~/assets/img/wx-icon.png" alt>
+                <img src="~/assets/img/wx-icon.png" alt />
               </span>
             </section>
             <section class="gf-tx">
               <span>
-                <img src="~/assets/img/wb-icon.png" alt>
+                <img src="~/assets/img/wb-icon.png" alt />
               </span>
             </section>
           </aside>
@@ -126,7 +138,6 @@
         </div>
       </section>
     </footer>
-    <!-- /公共底引入 -->
   </div>
 </template>
 <script>
@@ -134,6 +145,41 @@ import "~/assets/css/reset.css";
 import "~/assets/css/theme.css";
 import "~/assets/css/global.css";
 import "~/assets/css/web.css";
+import jwtDecode from "jwt-decode";
+import { getToken, removeToken } from "@/utils/auth";
 
-export default {};
+export default {
+  data() {
+    return {
+      loginInfo: {
+        id: "",
+        username: "",
+        nickname: "",
+        avatar: "",
+      },
+    };
+  },
+  created() {
+    this.fetchData();
+  },
+  methods: {
+    fetchData() {
+      const token = getToken();
+      if (token) {
+        const loginInfo = jwtDecode(token);
+        if (loginInfo) {
+          this.loginInfo.id = loginInfo.uid;
+          this.loginInfo.username = loginInfo.username;
+          this.loginInfo.nickname = loginInfo.nickname;
+          this.loginInfo.avatar = loginInfo.avatar;
+        }
+      }
+    },
+    logout() {
+      removeToken();
+      this.loginInfo = {};
+      window.location.href = "/";
+    },
+  },
+};
 </script>

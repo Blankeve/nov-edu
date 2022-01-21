@@ -57,13 +57,16 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="所属章节" align="center">
+      <el-table-column width="320px" label="源视频" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.chapterTitle }}</span>
+          <video width="320" controls>
+            <source :src="scope.row.videoSourcePath" type="video/mp4" />
+            您的浏览器不支持 HTML5 video 标签。
+          </video>
         </template>
       </el-table-column>
 
-      <el-table-column label="小节标题" align="center">
+      <el-table-column width="100px" label="小节标题" align="center">
         <template slot-scope="scope">
           {{ scope.row.videoTitle }}
         </template>
@@ -75,13 +78,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="视频名称" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.videoOriginalName }}</span>
-        </template>
-      </el-table-column>
-
-      <el-table-column width="250px" label="视频路径" align="center">
+      <el-table-column width="200px" label="视频路径" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.videoSourcePath }}</span>
         </template>

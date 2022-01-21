@@ -36,7 +36,7 @@
                       :title="teacher.name"
                       target="_blank"
                     >
-                      <img :src="teacher.avatar" alt />
+                      <img width="250px" height="150px" :src="teacher.avatar" alt />
                     </a>
                   </div>
                   <div class="mt10 hLh30 txtOf tac">
@@ -116,9 +116,9 @@ export default {
   methods: {
     fetchData() {
       getList(this.form).then((resp) => {
-        if (resp.data.code === 200) {
-          this.teachers = resp.data.data.records;
-          this.form.pages = resp.data.data.pages;
+        if (resp.code === 200) {
+          this.teachers = resp.data.records;
+          this.form.pages = resp.data.pages;
         }
       });
     },

@@ -1,5 +1,4 @@
 <template>
- 
   <div id="aCoursesList" class="bg-fa of">
     <!-- /课程列表 开始 -->
     <section class="container">
@@ -16,13 +15,13 @@
             </dt>
             <dd class="c-s-dl-li">
               <ul class="clearfix">
-                <li v-on:mouseover="changeList($event, 0)">
+                <li @click="allSelect()">
                   <a title="全部" href="#">全部</a>
                 </li>
                 <li
                   v-for="subject in subjects"
                   :key="subject.id"
-                  v-on:mouseover="changeList($event, subject.id)"
+                  @click="changeList($event, subject.id)"
                 >
                   <a :title="subject.title" href="#">{{ subject.title }}</a>
                 </li>
@@ -40,11 +39,7 @@
                   :key="children.id"
                   @click="childrenSelect(children.id)"
                 >
-                  <a
-                    :title="children.title"
-                    href="#"
-                    >{{ children.title }}</a
-                  >
+                  <a :title="children.title" href="#">{{ children.title }}</a>
                 </li>
               </ul>
             </dd>
@@ -63,13 +58,13 @@
               <li>
                 <a title="关注度" href="#">关注度</a>
               </li>
-              <li>
-                <a title="最新" href="#">最新</a>
+              <li @click="newestSearch()">
+                <a title="最新" href="#">{{form.orderFieldNewestAsc ?(form.orderFieldNewestAsc == 1?"最新":"最旧"):"最旧"}}</a>
               </li>
-              <li class="current bg-orange">
+              <li @click="priceOrderSearch()" class="current bg-orange">
                 <a title="价格" href="#"
                   >价格&nbsp;
-                  <span>↓</span>
+                  <span>{{form.orderFieldPriceAsc ?(form.orderFieldPriceAsc == 1?"↑":"↓"):"↓"}}</span>
                 </a>
               </li>
             </ol>
@@ -182,7 +177,8 @@ export default {
         size: 8,
         total: 0,
         pages: 1,
-        priceAsc: 1,
+        orderFieldPriceAsc: null,
+        orderFieldNewestAsc: null,
         clientSubjectId: 0,
       },
       liActive: -1,
@@ -194,15 +190,15 @@ export default {
   methods: {
     fetchData() {
       getList().then((resp) => {
-        if (resp.data.code === 200) {
-          this.subjects = resp.data.data.subjects;
+        if (resp.code === 200) {
+          this.subjects = resp.data.subjects;
         }
       });
 
       getPage(this.form).then((resp) => {
-        if (resp.data.code === 200) {
-          this.courses = resp.data.data.records;
-          this.form.pages = resp.data.data.pages;
+        if (resp.code === 200) {
+          this.courses = resp.data.records;
+          this.form.pages = resp.data.pages;
         }
       });
     },
@@ -234,6 +230,20 @@ export default {
     childrenSelect(id) {
       this.liActive = id;
       this.form.clientSubjectId = id;
+      this.fetchData();
+    },
+    allSelect() {
+      this.form.clientSubjectId = 0;
+      this.fetchData();
+    },
+    priceOrderSearch() {
+      this.form.orderFieldNewestAsc = null;
+      this.form.orderFieldPriceAsc = this.form.orderFieldPriceAsc  ? 0 : 1;
+      this.fetchData();
+    },
+    newestSearch() {
+      this.form.orderFieldPriceAsc =null;
+      this.form.orderFieldNewestAsc = this.form.orderFieldNewestAsc  ? 0 : 1;
       this.fetchData();
     },
   },

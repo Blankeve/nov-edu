@@ -8,14 +8,14 @@
         label-width="80px"
       >
         <el-form-item label="课程标题">
-          <el-input v-model="course.title"></el-input>
+          <el-input v-model="courseVO.courseTitle"></el-input>
         </el-form-item>
 
         <el-row>
           <el-col :span="6">
             <el-form-item label="课程分类">
               <el-cascader
-                v-model="course.subjectId"
+                v-model="courseVO.subjectId"
                 :options="subjects"
                 :props="{ expandTrigger: 'hover', label: 'title', value: 'id' }"
                 @change="handleChange"
@@ -25,7 +25,7 @@
 
           <el-col :span="6">
             <el-form-item label="课程讲师">
-              <el-select v-model="course.teacherId" placeholder="请选择讲师">
+              <el-select v-model="courseVO.teacherId" placeholder="请选择讲师">
                 <el-option
                   v-for="(item, index) in teacher"
                   :label="item.name"
@@ -39,7 +39,7 @@
           <el-col :span="6">
             <el-form-item label="总课时">
               <el-input-number
-                v-model="course.lessonNum"
+                v-model="courseVO.courseLessonNum"
                 :min="0"
                 :max="100"
                 label="总课时"
@@ -50,7 +50,7 @@
           <el-col :span="6">
             <el-form-item label="课程价格">
               <el-input-number
-                v-model="course.price"
+                v-model="courseVO.coursePrice"
                 :min="0"
                 :max="100"
                 label="课程价格"
@@ -68,14 +68,18 @@
             :on-success="handleAvatarSuccess"
             :before-upload="beforeAvatarUpload"
           >
-            <img v-if="course.cover" :src="course.cover" class="avatar" />
+            <img
+              v-if="courseVO.courseCover"
+              :src="courseVO.courseCover"
+              class="avatar"
+            />
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
           </el-upload>
         </el-form-item>
 
         <el-form-item label="课程简介">
           <quill-editor
-            v-model="course.description"
+            v-model="courseVO.introDescription"
             ref="VueQuillEditor"
           ></quill-editor>
         </el-form-item>
@@ -86,7 +90,7 @@
         label-width="80px"
       >
         <el-form-item label="课程标题">
-          <el-input v-model="course.title"></el-input>
+          <el-input v-model="courseVO.title"></el-input>
         </el-form-item>
       </el-form>
       <br />
@@ -109,12 +113,21 @@ export default {
       editorOption: {
         /* quill options */
       },
+      courseVO: {
+        courseTitle: "",
+        courseLessonNum: "",
+        coursePrice: 0,
+        teacherId: "",
+        subjectIds: [],
+        courseCover: "",
+        introDescription: "",
+      },
       course: {
         title: "",
         lessonNum: "",
         price: 0,
         teacherId: "",
-        subjectId: [],
+        subjectId: "",
         cover: "",
         description: "",
       },
@@ -142,7 +155,7 @@ export default {
       if (courseId) {
         getOneDetailByCourseId(courseId).then((resp) => {
           if (resp.code === 200) {
-            this.course = resp.data;
+            this.courseVO = resp.data;
           }
         });
       }
@@ -167,6 +180,14 @@ export default {
       this.course.cover = res.data.path;
     },
     submitForm() {
+      this.course.id = this.courseVO.courseId;
+      this.course.title = this.courseVO.courseTitle;
+      this.course.lessonNum = this.courseVO.courseLessonNum;
+      this.course.price = this.courseVO.coursePrice;
+      this.course.teacherId = this.courseVO.teacherId;
+      this.course.subjectId = this.courseVO.subjectIds;
+      this.course.cover = this.courseVO.courseCover;
+      this.course.description = this.courseVO.introDescription;
       save(this.course).then((resp) => {
         if (resp.code === 200) {
           this.$confirm(

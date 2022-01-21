@@ -207,6 +207,14 @@
           </el-radio-group>
         </el-form-item>
 
+        <el-form-item v-if="video.videoSourcePath" label="视频路径">
+          {{ video.videoSourcePath }}
+          <video width="320" controls>
+            <source :src="video.videoSourcePath" type="video/mp4" />
+            您的浏览器不支持 HTML5 video 标签。
+          </video>
+        </el-form-item>
+
         <el-form-item label="上传视频">
           <el-upload
             class="upload-demo"
@@ -220,7 +228,9 @@
             multiple
             :limit="1"
           >
-            <el-button size="small" type="primary">点击上传</el-button>
+            <el-button size="small" type="primary"
+              >{{ video.videoSourcePath ? "重新" : "点击" }}上传</el-button
+            >
             <div slot="tip" class="el-upload__tip">
               只能上传mp4/avi文件，且不超过300MB
             </div>
@@ -421,17 +431,11 @@ export default {
           },
         });
       } else if (data.courseId) {
-        this.chapter.id = data.id;
-        this.chapter.courseId = data.courseId;
-        this.chapter.title = data.title;
-        this.chapter.sort = data.sort;
+        this.chapter = data;
         this.chapterFormTitle = "修改章节";
         this.chapterFormVisible = true;
       } else if (data.chapterId) {
-        this.video.id = data.id;
-        this.video.chapterId = data.chapterId;
-        this.video.title = data.title;
-        this.video.sort = data.sort;
+        this.video = data;
         this.videoFormTitle = "修改小节";
         this.videoFormVisible = true;
       }
