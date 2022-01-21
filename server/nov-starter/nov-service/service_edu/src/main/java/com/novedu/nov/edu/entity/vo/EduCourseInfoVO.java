@@ -11,6 +11,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -24,16 +25,26 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @ApiModel(value = "EduCourseInfoVO对象", description = "课程信息")
-public class EduCourseInfoVO {
+public class EduCourseInfoVO implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
+
+    @JsonSerialize(using = ToStringSerializer.class)
     @ApiModelProperty(value = "课程讲师ID")
     private Long teacherId;
 
     @ApiModelProperty(value = "课程讲师")
     private String teacherName;
 
+    @ApiModelProperty(value = "课程讲师头像")
+    private String teacherAvatar;
+
     @ApiModelProperty(value = "课程类别ID")
     private Integer subjectId;
+
+    @ApiModelProperty(value = "课程类别ID")
+    private Integer[] subjectIds;
 
     @ApiModelProperty(value = "类别名称")
     private String subjectTitle;

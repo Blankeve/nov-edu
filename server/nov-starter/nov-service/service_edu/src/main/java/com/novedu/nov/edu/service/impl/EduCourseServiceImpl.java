@@ -11,6 +11,7 @@ import com.novedu.nov.edu.service.*;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +21,7 @@ import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 /**
@@ -52,6 +54,9 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     @Autowired
     EduSubjectService subjectService;
 
+    @Autowired
+    RedisTemplate redisTemplate;
+
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public BaseResult saveCourse(EduCourseInfoDTO courseInfoDTO) {
@@ -76,24 +81,33 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     @Override
     public BaseResult queryCourseDetail(Integer id) {
-        EduCourseInfoDTO courseInfoDTO = new EduCourseInfoDTO();
-        EduCourse course = getById(id);
-        EduCourseIntro intro = introService.getById(id);
-        BeanUtils.copyProperties(course, courseInfoDTO);
-        courseInfoDTO.setDescription(intro.getDescription());
-        List<Integer> arr = subjectService.getParentSubjects(course.getSubjectId()).getData();
-        Integer[] arr2 = new Integer[arr.size()];
-        for (int i = 0; i < arr.size(); i++) {
-            arr2[i] = arr.get(i);
+        String key = "course_detail_"+id;
+        boolean hasKey = redisTemplate.hasKey(key);
+        EduCourseInfoVO courseInfoVO;
+        if (hasKey) {
+            courseInfoVO = (EduCourseInfoVO) redisTemplate.opsForValue().get(key);
+        } else {
+            courseInfoVO = courseMapper.queryCourseDetail(id);
+            List<Integer> arr = subjectService.getParentSubjects(courseInfoVO.getSubjectId()).getData();
+            Integer[] arr2 = new Integer[arr.size()];
+            for (int i = 0; i < arr.size(); i++) {
+                arr2[i] = arr.get(i);
+            }
+            courseInfoVO.setSubjectIds(arr2);
+            redisTemplate.opsForValue().set(key, courseInfoVO, 1, TimeUnit.HOURS);
         }
-        courseInfoDTO.setSubjectId(arr2);
-        return BaseResult.success(courseInfoDTO);
+        return BaseResult.success(courseInfoVO);
     }
 
     @Override
     public BaseResult queryCourseTree(Page page, EduCourseInfoDTO courseInfoDTO) {
         QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.like("title", courseInfoDTO.getTitle());
+        if (StringUtils.hasText(courseInfoDTO.getTitle())) {
+            queryWrapper.like("title", courseInfoDTO.getTitle());
+        }
+        if (courseInfoDTO.getId() != null) {
+            queryWrapper.eq("c1.id", courseInfoDTO.getId());
+        }
         if (!ObjectUtils.isEmpty(courseInfoDTO.getSubjectId())) {
             Integer subjectId = courseInfoDTO.getSubjectId()[courseInfoDTO.getSubjectId().length - 1];
             queryWrapper.eq("subject_id", subjectId);
@@ -104,9 +118,9 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
             queryWrapper.eq("status", courseInfoDTO.getStatus());
         if (!ObjectUtils.isEmpty(courseInfoDTO.getCreateTime()))
             queryWrapper.apply("c1.create_time > date_format({0},'%Y-%m-%d')", courseInfoDTO.getCreateTime());
-        queryWrapper.orderByAsc("title");
-        queryWrapper.orderByAsc("teacher_id");
-        queryWrapper.orderByAsc("c1.create_time");
+        if (StringUtils.hasText(courseInfoDTO.getTitle()))
+            queryWrapper.orderByAsc("title");
+
         return BaseResult.success(courseMapper.queryCourseTree(page, queryWrapper));
     }
 
@@ -174,8 +188,22 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         QueryWrapper queryWrapper = new QueryWrapper();
         Integer subjectId = courseInfoDTO.getClientSubjectId();
         if (subjectId != null && subjectId > 0)
-            queryWrapper.eq("subject_id",subjectId);
-        return BaseResult.success(page(page,queryWrapper));
+            queryWrapper.eq("subject_id", subjectId);
+        Integer orderFieldPriceAsc = courseInfoDTO.getOrderFieldPriceAsc();
+        if (orderFieldPriceAsc != null) {
+            if (orderFieldPriceAsc.equals(1))
+                queryWrapper.orderByAsc("price");
+            else
+                queryWrapper.orderByDesc("price");
+        }
+        Integer orderFieldNewestAsc = courseInfoDTO.getOrderFieldNewestAsc();
+        if (orderFieldNewestAsc != null) {
+            if (orderFieldNewestAsc.equals(1))
+                queryWrapper.orderByAsc("create_time");
+            else
+                queryWrapper.orderByDesc("create_time");
+        }
+        return BaseResult.success(page(page, queryWrapper));
     }
 
 }

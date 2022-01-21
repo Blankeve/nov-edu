@@ -1,0 +1,22 @@
+2022-01-18 11:10:50.423 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-01-18 11:10:55.551 [main] INFO  org.reflections.Reflections-Reflections took 125 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-01-18 11:10:55.670 [main] INFO  org.reflections.Reflections-Reflections took 54 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-01-18 11:10:55.720 [main] INFO  org.reflections.Reflections-Reflections took 47 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-01-18 11:10:56.154 [main] INFO  org.reflections.Reflections-Reflections took 420 ms to scan 232 urls, producing 0 keys and 0 values 
+2022-01-18 11:10:56.187 [main] INFO  org.reflections.Reflections-Reflections took 32 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-01-18 11:10:56.214 [main] INFO  org.reflections.Reflections-Reflections took 18 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-01-18 11:10:56.232 [main] INFO  org.reflections.Reflections-Reflections took 13 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-01-18 11:10:56.586 [main] INFO  org.reflections.Reflections-Reflections took 349 ms to scan 232 urls, producing 0 keys and 0 values 
+2022-01-18 11:11:00.649 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-edu-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu,DEFAULT_GROUP'}]
+2022-01-18 11:11:00.696 [main] INFO  RedisTest-The following profiles are active: dev
+2022-01-18 11:11:02.696 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-01-18 11:11:02.705 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-01-18 11:11:02.847 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Finished Spring Data repository scanning in 85ms. Found 0 Redis repository interfaces.
+2022-01-18 11:11:03.597 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=517749de-dca6-3110-92f4-01c97877408a
+2022-01-18 11:11:11.336 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-18 11:11:11.389 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-18 11:11:13.672 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-01-18 11:11:15.932 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-18 11:11:25.728 [main] INFO  RedisTest-Started RedisTest in 37.484 seconds (JVM running for 45.225)
+2022-01-18 11:11:29.668 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-18 11:11:30.553 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'

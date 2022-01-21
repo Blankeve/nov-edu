@@ -28,7 +28,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
                 .eq("password", password).one();
         if (user == null)
             return BaseResult.error("用户名或密码不正确");
-        String token = JwtUtils.createToken(user.getId().toString(), user.getUsername());
+        String token = JwtUtils.createToken(user.getId().toString(), user.getUsername(),"","");
         return BaseResult.success("登录成功").mapSet("token", token);
     }
 

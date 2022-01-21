@@ -20,7 +20,7 @@ import java.util.Map;
 public class JwtUtils {
     private static final String SECRET_KEY = "FUCK";
 
-    public static String createToken(String userId, String userName) {
+    public static String createToken(String userId, String username ,String nickname,String avatar) {
 
         Calendar now = Calendar.getInstance();
         now.add(Calendar.DAY_OF_MONTH, 1);
@@ -31,7 +31,9 @@ public class JwtUtils {
                 .withIssuedAt(new Date())
                 .withExpiresAt(expireDate)
                 .withClaim("uid", userId)
-                .withClaim("username", userName)
+                .withClaim("username", username)
+                .withClaim("nickname", nickname)
+                .withClaim("avatar", avatar)
                 .sign(Algorithm.HMAC256(SECRET_KEY));
     }
 

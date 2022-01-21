@@ -22,6 +22,7 @@ import org.springframework.util.StringUtils;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -45,11 +46,17 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
     public BaseResult saveChapter(EduChapter chapter) {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("course_id", chapter.getCourseId());
-        queryWrapper.eq("sort", chapter.getSort());
+        List<EduChapter> eduChapters = list(queryWrapper);
         if (!ObjectUtils.isEmpty(chapter.getId()))
-            queryWrapper.ne("id", chapter.getId());
-        if (!CollectionUtils.isEmpty(list(queryWrapper)))
-            return BaseResult.error("当前章节已存在!");
+            chapter.setSort(null);
+        else {
+            if (eduChapters.stream().filter(o -> o.getSort() < (chapter.getSort())).count() != chapter.getSort() - 1) {
+                return BaseResult.error("请先添加之前章节!");
+            }
+            if (eduChapters.stream().filter(o -> o.getSort().equals(chapter.getSort())).count() > 0)
+                return BaseResult.error("当前章节已存在!");
+        }
+        if(StringUtils.hasText(chapter.getTitle()))
         chapter.setTitle(chapter.getTitle().trim());
         saveOrUpdate(chapter);
         return BaseResult.success(chapter.getId());

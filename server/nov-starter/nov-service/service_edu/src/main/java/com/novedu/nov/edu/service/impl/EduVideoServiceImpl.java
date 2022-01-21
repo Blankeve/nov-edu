@@ -15,6 +15,8 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
+import java.util.List;
+
 /**
  * <p>
  * 课程视频 服务实现类
@@ -33,12 +35,18 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
     public BaseResult saveVideo(EduVideo video) {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("chapter_id", video.getChapterId());
-        queryWrapper.eq("sort", video.getSort());
+        List<EduVideo> eduVideos = list(queryWrapper);
         if (!ObjectUtils.isEmpty(video.getId()))
-            queryWrapper.ne("id", video.getId());
-        if (!CollectionUtils.isEmpty(list(queryWrapper)))
-            return BaseResult.error("当前小节已存在!");
-        video.setTitle(video.getTitle().trim());
+            video.setSort(null);
+        else {
+            if (eduVideos.stream().filter(o -> o.getSort() < (video.getSort())).count() != video.getSort() - 1) {
+                return BaseResult.error("请先添加之前小节!");
+            }
+            if (eduVideos.stream().filter(o -> o.getSort().equals(video.getSort())).count() > 0)
+                return BaseResult.error("当前小节已存在!");
+        }
+        if (StringUtils.hasText(video.getTitle()))
+            video.setTitle(video.getTitle().trim());
         saveOrUpdate(video);
         return BaseResult.success(video.getId());
     }

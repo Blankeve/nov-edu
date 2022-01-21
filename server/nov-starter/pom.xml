@@ -209,6 +209,11 @@
                 <version>${boot.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-validation</artifactId>
+                <version>${boot.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 <repositories>

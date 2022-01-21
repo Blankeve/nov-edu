@@ -11,6 +11,7 @@ import com.novedu.nov.edu.service.EduVideoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -30,7 +31,7 @@ public class EduVideoController {
     EduVideoService videoService;
 
     @PostMapping("/save")
-    public BaseResult saveCourse(@RequestBody EduVideo video) {
+    public BaseResult saveCourse(@Validated @RequestBody EduVideo video) {
         return videoService.saveVideo(video);
     }
 

@@ -50,7 +50,6 @@ public class CrmBannerServiceImpl extends ServiceImpl<CrmBannerMapper, CrmBanner
         boolean hasKey = redisTemplate.hasKey(key);
         List<CrmBanner> list;
         if (hasKey) {
-            System.out.println("从缓存中获取...");
             list = (List<CrmBanner>) redisTemplate.opsForValue().get(key);
         } else {
             list = query().orderByDesc("create_time").last("limit 2").list();

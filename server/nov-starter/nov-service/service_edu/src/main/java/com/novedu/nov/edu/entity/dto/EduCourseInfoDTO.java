@@ -42,6 +42,10 @@ public class EduCourseInfoDTO {
 
     private Integer clientSubjectId;
 
+    private Integer orderFieldPriceAsc;
+
+    private Integer orderFieldNewestAsc;
+
     @ApiModelProperty(value = "课程标题")
     private String title;
 
