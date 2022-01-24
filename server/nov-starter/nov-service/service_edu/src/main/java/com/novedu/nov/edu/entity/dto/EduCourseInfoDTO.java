@@ -30,8 +30,8 @@ public class EduCourseInfoDTO {
 
     @JsonSerialize(using = ToStringSerializer.class)
     @ApiModelProperty(value = "课程ID")
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    @TableId(value = "id", type = IdType.NONE)
+    private Long id;
 
     @JsonSerialize(using = ToStringSerializer.class)
     @ApiModelProperty(value = "课程讲师ID")

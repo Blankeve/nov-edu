@@ -18,6 +18,9 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 /**
  * <p>
  * 课程
@@ -39,12 +42,17 @@ public class EduChapter implements Serializable {
     @TableId(value = "id", type = IdType.NONE)
     private Long id;
 
+    @NotNull(message = "所属课程不能为空")
+    @Min(value = 999999999,message = "所属课程格式不正确")
     @ApiModelProperty(value = "课程ID")
-    private Integer courseId;
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long courseId;
 
+    @NotNull(message = "章节名称不能为空")
     @ApiModelProperty(value = "章节名称")
     private String title;
 
+    @NotNull(message = "当前章节不能为空")
     @ApiModelProperty(value = "显示排序")
     private Integer sort;
 

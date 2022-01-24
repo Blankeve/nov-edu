@@ -18,6 +18,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -41,42 +42,43 @@ public class EduVideo implements Serializable {
     @TableId(value = "id", type = IdType.NONE)
     private Long id;
 
-    @Min(value = 999999999,message = "格式不正确")
+    @NotNull(message = "所属章节不能为空")
+    @Min(value = 999999999,message = "所属章节格式不正确")
     @JsonSerialize(using = ToStringSerializer.class)
     @ApiModelProperty(value = "章节ID")
     private Long chapterId;
 
-    @NotNull(message = "不能为空")
+    @NotNull(message = "小节标题不能为空")
     @ApiModelProperty(value = "节点名称")
     private String title;
 
-    @Pattern(regexp = "\\s*\\.[mp4|rmvb|flv|mpeg|avi]",message = "格式不正确")
+    @NotNull(message = "云端视频资源不能为空")
+    @Pattern(regexp = ".*[.mp4|.rmvb|.flv|.mpeg|.avi]",message = "请先上传视频")
     @ApiModelProperty(value = "云端视频资源")
     private String videoSourcePath;
 
-    @Pattern(regexp = "\\s*\\.[mp4|rmvb|flv|mpeg|avi]",message = "格式不正确")
     @ApiModelProperty(value = "原始文件名称")
     private String videoOriginalName;
 
-    @Min(value = 1,message = "格式不正确")
+    @NotNull(message = "当前小节不能为空")
     @ApiModelProperty(value = "排序字段")
     private Integer sort;
 
     @ApiModelProperty(value = "播放次数")
     private Long playCount;
 
-    @Min(value = 0,message = "格式不正确")
+    @Min(value = 0,message = "是否收费格式不正确")
     @ApiModelProperty(value = "是否可以试听：0收费 1免费")
     private Integer isFree;
 
-    @Min(value = 0,message = "格式不正确")
+    @Min(value = 0,message = "视频时长格式不正确")
     @ApiModelProperty(value = "视频时长（秒）")
     private Float duration;
 
     @ApiModelProperty(value = "状态")
     private Integer status;
 
-    @Min(value = 0,message = "格式不正确")
+    @Min(value = 0,message = "视频源文件大小格式不正确")
     @ApiModelProperty(value = "视频源文件大小（字节）")
     private Float size;
 

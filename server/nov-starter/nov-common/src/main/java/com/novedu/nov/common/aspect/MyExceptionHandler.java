@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -28,8 +29,22 @@ public class MyExceptionHandler {
         for (FieldError fieldError : bindingResult.getFieldErrors()
         ) {
             sb.append("<<")
-                    .append(fieldError.getField())
-                    .append(":")
+                    .append(fieldError.getDefaultMessage())
+                    .append(">>")
+            ;
+        }
+        log.error(sb.toString());
+        //4.返回字段校验异常信息给接口调用方
+        return BaseResult.error("字段格式错误:" + sb.toString());
+    }
+
+    @ExceptionHandler(value = MethodArgumentNotValidException.class)
+    public BaseResult exceptionHandler(MethodArgumentNotValidException e) {
+        BindingResult bindingResult = e.getBindingResult();
+        StringBuilder sb = new StringBuilder();
+        for (FieldError fieldError : bindingResult.getFieldErrors()
+        ) {
+            sb.append("<<")
                     .append(fieldError.getDefaultMessage())
                     .append(">>")
             ;

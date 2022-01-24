@@ -3,9 +3,13 @@
     <!-- /课程详情 开始 -->
     <section class="container">
       <section class="path-wrap txtOf hLh30">
-        <a href="#" title class="c-999 fsize14">首页</a>
+        <nuxt-link to="/" >
+          <a title class="c-999 fsize14">首页</a>
+        </nuxt-link>
         \
-        <a href="#" title class="c-999 fsize14">课程列表</a>
+        <nuxt-link to="/course" >
+          <a title class="c-999 fsize14">课程列表</a>
+        </nuxt-link>
         \
         <span class="c-333 fsize14">{{ course.courseTitle }}</span>
       </section>
@@ -97,22 +101,45 @@
                       <menu id="lh-menu" class="lh-menu mt10 mr10">
                         <ul>
                           <!-- 文件目录 -->
-                          <li class="lh-menu-stair" v-for="chapter in tree.children" :key="chapter.id">
+                          <li
+                            class="lh-menu-stair"
+                            v-for="chapter in tree.children"
+                            :key="chapter.id"
+                          >
                             <a
                               href="javascript: void(0)"
                               :title="chapter.title"
                               class="current-1"
                             >
-                              <em class="lh-menu-i-1 icon18 mr10"></em>第{{chapter.sort}}章 {{chapter.title}}
+                              <em class="lh-menu-i-1 icon18 mr10"></em>第{{
+                                chapter.sort
+                              }}章 {{ chapter.title }}
                             </a>
                             <ol class="lh-menu-ol" style="display: block">
-                              <li class="lh-menu-second ml30" v-for="video in chapter.children" :key="video.id">
-                                <a :href="'/video/' + video.id" target="_blank" title>
+                              <li
+                                class="lh-menu-second ml30"
+                                v-for="video in chapter.children"
+                                :key="video.id"
+                              >
+                                <a
+                                  :href="'/video/' + video.id"
+                                  target="_blank"
+                                  title
+                                >
                                   <span class="fr">
-                                    <i class="vam mr10" :class="{ 'pay-icon': video.isFree == 0,'free-icon': video.isFree == 1 }">{{video.isFree == 1?"免费":"付费"}}</i>
+                                    <i
+                                      class="vam mr10"
+                                      :class="{
+                                        'pay-icon': video.isFree == 0,
+                                        'free-icon': video.isFree == 1,
+                                      }"
+                                      >{{
+                                        video.isFree == 1 ? "免费" : "付费"
+                                      }}</i
+                                    >
                                   </span>
                                   <em class="lh-menu-i-2 icon16 mr5">&nbsp;</em
-                                  >第{{video.sort}}节 {{video.title}}
+                                  >第{{ video.sort }}节 {{ video.title }}
                                 </a>
                               </li>
                             </ol>
@@ -199,7 +226,7 @@ export default {
           this.course = resp.data;
         }
       });
-      getTree({ "id": id }).then((resp) => {
+      getTree({ id: id }).then((resp) => {
         if (resp.code === 200) {
           this.tree = resp.data.records[0];
         }

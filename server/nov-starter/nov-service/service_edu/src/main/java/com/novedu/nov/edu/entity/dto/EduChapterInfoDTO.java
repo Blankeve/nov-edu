@@ -38,7 +38,8 @@ public class EduChapterInfoDTO implements Serializable {
     private Long id;
 
     @ApiModelProperty(value = "课程ID")
-    private Integer courseId;
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long courseId;
 
     @ApiModelProperty(value = "章节名称")
     private String title;

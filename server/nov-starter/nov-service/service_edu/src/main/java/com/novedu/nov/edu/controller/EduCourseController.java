@@ -38,12 +38,12 @@ public class EduCourseController {
 
     @ApiOperation("删除")
     @DeleteMapping("/remove/{id}")
-    public BaseResult removeCourse(@PathVariable Integer id) {
+    public BaseResult removeCourse(@PathVariable Long id) {
         return eduCourseService.removeCourse(id);
     }
 
     @PostMapping("/detail/{id}")
-    public BaseResult queryCourseDetail(@PathVariable Integer id) {
+    public BaseResult queryCourseDetail(@PathVariable Long id) {
         return eduCourseService.queryCourseDetail(id);
     }
 

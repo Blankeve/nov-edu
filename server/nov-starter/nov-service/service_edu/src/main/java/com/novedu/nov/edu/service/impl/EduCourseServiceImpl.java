@@ -80,7 +80,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     }
 
     @Override
-    public BaseResult queryCourseDetail(Integer id) {
+    public BaseResult queryCourseDetail(Long id) {
         String key = "course_detail_"+id;
         boolean hasKey = redisTemplate.hasKey(key);
         EduCourseInfoVO courseInfoVO;
@@ -161,7 +161,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public BaseResult removeCourse(Integer id) {
+    public BaseResult removeCourse(Long id) {
         List<EduChapter> chapters = eduChapterService.list();
         List<EduVideo> videos = videoService.list();
         List<Long> chapters1 = chapters.stream().filter(o -> o.getCourseId().equals(id)).map(EduChapter::getId).collect(Collectors.toList());

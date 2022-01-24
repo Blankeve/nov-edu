@@ -61,7 +61,8 @@ public class EduCourseInfoVO implements Serializable {
     private Date subjectUpdateTime;
 
     @ApiModelProperty(value = "课程ID")
-    private Integer courseId;
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long courseId;
 
     @ApiModelProperty(value = "课程标题")
     private String courseTitle;

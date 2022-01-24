@@ -9,6 +9,7 @@ import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 import com.novedu.nov.edu.service.EduChapterService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -28,7 +29,7 @@ public class EduChapterController {
     EduChapterService chapterService;
 
     @PostMapping("/save")
-    public BaseResult saveCourse(@RequestBody EduChapter chapter) {
+    public BaseResult saveCourse(@Validated @RequestBody EduChapter chapter) {
         return chapterService.saveChapter(chapter);
     }
 
