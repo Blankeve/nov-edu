@@ -3,11 +3,11 @@
     <!-- /课程详情 开始 -->
     <section class="container">
       <section class="path-wrap txtOf hLh30">
-        <nuxt-link to="/" >
+        <nuxt-link to="/">
           <a title class="c-999 fsize14">首页</a>
         </nuxt-link>
         \
-        <nuxt-link to="/course" >
+        <nuxt-link to="/course">
           <a title class="c-999 fsize14">课程列表</a>
         </nuxt-link>
         \
@@ -88,10 +88,29 @@
             <div class="i-box">
               <div>
                 <section id="c-i-tabTitle" class="c-infor-tabTitle c-tab-title">
-                  <a name="c-i" class="current" title="课程详情">课程详情</a>
+                  <a
+                    name="c-i"
+                    href="javascript:void(0)"
+                    @click="courseDetailClick"
+                    :class="{
+                      current: clickState == 1,
+                    }"
+                    title="课程详情"
+                    >课程详情</a
+                  >
+                  <a
+                    name="c-i"
+                    href="javascript:void(0)"
+                    title="课程评价"
+                    @click="commentClick"
+                    :class="{
+                      current: clickState == 2,
+                    }"
+                    >课程评价</a
+                  >
                 </section>
               </div>
-              <article class="ml10 mr10">
+              <article v-show="clickState == 1" class="ml10 mr10">
                 <div>
                   <h6 class="c-g-content c-infor-title">
                     <span>课程大纲</span>
@@ -162,6 +181,61 @@
                 </div>
                 <!-- /课程介绍 -->
               </article>
+                    <article v-show="clickState == 2" class="ml10 mr10">
+                        <h6 class="c-g-content c-infor-title">
+                    <span>当前评价</span>
+                  </h6>
+               <section class="stud-act-list">
+                <ul >
+                  <li>
+                    <div class="u-face">
+                        <img
+                          :alt="course.teacherName"
+                          :src="course.teacherAvatar"
+                        />
+                    </div>
+                    <section class="hLh30 txtOf">
+                      <a class="c-333 fsize16 fl" href="#">{{
+                        course.teacherName
+                      }}</a>
+                    </section>
+                    <section class="hLh20 txtOf">
+                      <span class="c-999">{{ course.teacherCareer }}</span>
+                    </section>
+                  </li>
+                </ul>
+              </section>
+              </article>
+                                    <div>
+          <div class="paging">
+            <!-- undisable这个class是否存在，取决于数据属性hasPrevious -->
+            <a
+              v-if="form.pages > 1 && form.current != 1"
+              @click="firstPage"
+              title="首页"
+              >首</a
+            >
+            <a
+              v-if="form.pages > 1 && form.current > 1"
+              title="前一页"
+              @click="prevPage"
+              >&lt;</a
+            >
+            <a
+              v-if="form.pages > 1 && form.current < form.pages"
+              title="后一页"
+              @click="nextPage"
+              >&gt;</a
+            >
+            <a
+              v-if="form.pages > 1 && form.current != form.pages"
+              title="末页"
+              @click="lastPage"
+              >末</a
+            >
+            <div class="clear"></div>
+          </div>
+        </div>
             </div>
           </section>
         </article>
@@ -172,7 +246,7 @@
                 <a title href="javascript:void(0)">主讲讲师</a>
               </section>
               <section class="stud-act-list">
-                <ul style="height: auto">
+                <ul style="height: 80px">
                   <li>
                     <div class="u-face">
                       <nuxt-link :to="'/teacher/' + course.teacherId">
@@ -213,6 +287,13 @@ export default {
         courseTitle: "",
       },
       tree: {},
+      clickState: 1,
+        form: {
+        current: 1,
+        size: 8,
+        total: 0,
+        pages: 1,
+      },
     };
   },
   created() {
@@ -231,6 +312,12 @@ export default {
           this.tree = resp.data.records[0];
         }
       });
+    },
+    commentClick() {
+      this.clickState = 2;
+    },
+    courseDetailClick() {
+      this.clickState = 1;
     },
   },
 };
