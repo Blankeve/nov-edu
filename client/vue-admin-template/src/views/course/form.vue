@@ -161,7 +161,7 @@ export default {
       }
     },
     handleChange(value) {
-      this.course.subjectId = value;
+      this.courseVO.subjectIds = value;
     },
     beforeAvatarUpload(file) {
       const isJPG = file.type === "image/jpeg";
@@ -177,7 +177,7 @@ export default {
       return (isJPG || isPNG) && isLt2M;
     },
     handleAvatarSuccess(res, file) {
-      this.course.cover = res.data.path;
+      this.courseVO.courseCover = res.data.path;
     },
     submitForm() {
       this.course.id = this.courseVO.courseId;

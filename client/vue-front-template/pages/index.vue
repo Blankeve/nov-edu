@@ -18,7 +18,7 @@
                 style="background: #040b1b"
               >
                 <a target="" href="/">
-                  <img :src="banner.imageUrl" :alt="banner.title" />
+                  <img width="100%" :src="banner.imageUrl" :alt="banner.title" />
                 </a>
               </div>
             </div>

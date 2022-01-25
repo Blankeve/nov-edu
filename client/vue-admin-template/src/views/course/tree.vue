@@ -191,7 +191,7 @@
           <el-input v-model="video.title"></el-input>
         </el-form-item>
 
-        <el-form-item label="当前小节">
+        <el-form-item v-show="video != {}" label="当前小节">
           <el-input-number
             v-model="video.sort"
             :min="1"

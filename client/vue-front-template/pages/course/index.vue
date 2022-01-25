@@ -59,12 +59,24 @@
                 <a title="关注度" href="#">关注度</a>
               </li>
               <li @click="newestSearch()">
-                <a title="最新" href="#">{{form.orderFieldNewestAsc ?(form.orderFieldNewestAsc == 1?"最新":"最旧"):"最旧"}}</a>
+                <a title="最新" href="#">{{
+                  form.orderFieldNewestAsc
+                    ? form.orderFieldNewestAsc == 1
+                      ? "最新"
+                      : "最旧"
+                    : "最旧"
+                }}</a>
               </li>
               <li @click="priceOrderSearch()" class="current bg-orange">
                 <a title="价格" href="#"
                   >价格&nbsp;
-                  <span>{{form.orderFieldPriceAsc ?(form.orderFieldPriceAsc == 1?"↑":"↓"):"↓"}}</span>
+                  <span>{{
+                    form.orderFieldPriceAsc
+                      ? form.orderFieldPriceAsc == 1
+                        ? "↑"
+                        : "↓"
+                      : "↓"
+                  }}</span>
                 </a>
               </li>
             </ol>
@@ -131,27 +143,28 @@
         <div>
           <div class="paging">
             <!-- undisable这个class是否存在，取决于数据属性hasPrevious -->
-            <a v-if="form.pages > 1 && form.current != 1" href="#" title="首页"
+            <a
+              v-if="form.pages > 1 && form.current != 1"
+              @click="firstPage"
+              title="首页"
               >首</a
             >
             <a
               v-if="form.pages > 1 && form.current > 1"
-              href="#"
               title="前一页"
-              @click="nextPage"
+              @click="prevPage"
               >&lt;</a
             >
             <a
               v-if="form.pages > 1 && form.current < form.pages"
-              href="#"
               title="后一页"
-              @click="prevPage"
+              @click="nextPage"
               >&gt;</a
             >
             <a
               v-if="form.pages > 1 && form.current != form.pages"
-              href="#"
               title="末页"
+              @click="lastPage"
               >末</a
             >
             <div class="clear"></div>
@@ -204,9 +217,19 @@ export default {
     },
     nextPage() {
       this.form.current++;
+      this.fetchData();
     },
     prevPage() {
       this.form.current--;
+      this.fetchData();
+    },
+    firstPage() {
+      this.form.current = 1;
+      this.fetchData();
+    },
+    lastPage() {
+      this.form.current = this.form.pages;
+      this.fetchData();
     },
     changeList($event, id) {
       if (id === 0) {
@@ -238,12 +261,12 @@ export default {
     },
     priceOrderSearch() {
       this.form.orderFieldNewestAsc = null;
-      this.form.orderFieldPriceAsc = this.form.orderFieldPriceAsc  ? 0 : 1;
+      this.form.orderFieldPriceAsc = this.form.orderFieldPriceAsc ? 0 : 1;
       this.fetchData();
     },
     newestSearch() {
-      this.form.orderFieldPriceAsc =null;
-      this.form.orderFieldNewestAsc = this.form.orderFieldNewestAsc  ? 0 : 1;
+      this.form.orderFieldPriceAsc = null;
+      this.form.orderFieldNewestAsc = this.form.orderFieldNewestAsc ? 0 : 1;
       this.fetchData();
     },
   },

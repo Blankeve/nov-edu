@@ -44,6 +44,10 @@ public class EduCourse implements Serializable {
     @ApiModelProperty(value = "课程讲师")
     private String teacherName;
 
+    @TableField(exist = false)
+    @ApiModelProperty(value = "讲师生涯")
+    private String teacherCareer;
+
     @JsonSerialize(using = ToStringSerializer.class)
     @ApiModelProperty(value = "课程专业ID")
     private Integer subjectId;

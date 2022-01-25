@@ -40,6 +40,9 @@ public class EduCourseInfoVO implements Serializable {
     @ApiModelProperty(value = "课程讲师头像")
     private String teacherAvatar;
 
+    @ApiModelProperty(value = "课程讲师头像")
+    private String teacherCareer;
+
     @ApiModelProperty(value = "课程类别ID")
     private Integer subjectId;
 
