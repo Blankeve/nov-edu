@@ -75,18 +75,24 @@
                       >{{ course.title }}</a
                     >
                   </h3>
-                  <section class="mt10 hLh20 of">
-                    <span class="fr jgTag bg-green">
-                      <i class="c-fff fsize12 f-fA">{{
-                        course.price > 0 ? course.price + "元" : "免费"
-                      }}</i>
-                    </span>
-                    <span class="fl jgAttr c-ccc f-fA">
-                      <i class="c-999 f-fA">9634人学习</i>
-                      |
-                      <i class="c-999 f-fA">9634评论</i>
-                    </span>
-                  </section>
+                <section class="mt10 hLh20 of">
+                      <span
+                      class="fr jgTag "
+                        :class="{
+                          'bg-green': course.price == 0,
+                           'bg-red': course.price > 0,
+                        }"
+                      >
+                        <i class="c-fff fsize18 f-fA">{{
+                          course.price > 0 ? "¥" + course.price : "免费"
+                        }}</i>
+                      </span>
+                      <span class="fl jgAttr c-ccc f-fA">
+                        <i class="c-999 f-fA">9634人学习</i>
+                        |
+                        <i class="c-999 f-fA">9634评论</i>
+                      </span>
+                    </section>
                 </div>
               </li>
             
