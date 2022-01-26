@@ -101,12 +101,12 @@
                   <a
                     name="c-i"
                     href="javascript:void(0)"
-                    title="课程评价"
+                    title="课程评论"
                     @click="commentClick"
                     :class="{
                       current: clickState == 2,
                     }"
-                    >课程评价</a
+                    >课程评论</a
                   >
                 </section>
               </div>
@@ -141,8 +141,8 @@
                                 :key="video.id"
                               >
                                 <a
-                                  :href="'/video/' + video.id"
-                                  target="_blank"
+                                  href="javascript: void(0)"
+                                  @click="openVideo(video.isFree)"
                                   title
                                 >
                                   <span class="fr">
@@ -181,61 +181,131 @@
                 </div>
                 <!-- /课程介绍 -->
               </article>
-                    <article v-show="clickState == 2" class="ml10 mr10">
-                        <h6 class="c-g-content c-infor-title">
-                    <span>当前评价</span>
+              <article v-show="clickState == 2" class="ml10 mr10">
+                <div>
+                  <div class="mt5">
+                    <el-form
+                      :inline="true"
+                      :model="comment"
+                      class="demo-form-inline"
+                    >
+                      <el-form-item label="我要评价">
+                        <el-rate
+                          class="mt5"
+                          v-model="comment.mark"
+                          :colors="colors"
+                        >
+                        </el-rate>
+                      </el-form-item>
+                      <el-form-item>
+                        <el-input
+                          placeholder="请输入内容"
+                          prefix-icon="el-icon-chat-dot-square"
+                          v-model="comment.content"
+                        >
+                        </el-input>
+                      </el-form-item>
+
+                      <el-form-item>
+                        <el-button type="primary" @click="submitComment"
+                          >评价</el-button
+                        >
+                      </el-form-item>
+                    </el-form>
+                  </div>
+
+                  <h6 class="c-g-content c-infor-title mt2">
+                    <span>所有评论</span>
                   </h6>
-               <section class="stud-act-list">
-                <ul >
-                  <li>
-                    <div class="u-face">
-                        <img
-                          :alt="course.teacherName"
-                          :src="course.teacherAvatar"
-                        />
+                  <!-- /无数据提示 开始-->
+                  <section
+                    v-if="clickState == 2 && comments.length == 0"
+                    class="no-data-wrap"
+                  >
+                    <em class="icon30 no-data-ico">&nbsp;</em>
+                    <span class="c-666 fsize14 ml10 vam"
+                      >没有相关评论，抢占沙发吧...</span
+                    >
+                  </section>
+                  <!-- /无数据提示 结束-->
+                  <section class="stud-act-list">
+                    <div class="comment-list grid-row-2">
+                      <div
+                        class="comment-item"
+                        v-for="comment in comments"
+                        :key="comment.id"
+                      >
+                        <div class="item-left">
+                          <img
+                            class="user-avatar"
+                            :src="comment.avatar"
+                            width="40"
+                            height="40"
+                          />
+                          <p class="user-name">{{ comment.nickname }}</p>
+                        </div>
+                        <div class="item-right">
+                          <div class="star-list">
+                            <i
+                              v-for="count in comment.mark"
+                              :key="count"
+                              class="iconfont icon--Star"
+                            ></i>
+                          </div>
+                          <div class="comment-bd">
+                            {{ comment.content }}
+                          </div>
+                          <div class="comment-ft">
+                            <span class="comment-where"
+                              >已上课34小时52分钟时评价</span
+                            >
+                            <span class="comment-time">{{
+                              comment.createTime
+                            }}</span>
+                            <span
+                              class="comment-report"
+                              data-id="144115261255602258"
+                              >举报</span
+                            >
+                          </div>
+                          <div class="comment-reply"></div>
+                        </div>
+                      </div>
                     </div>
-                    <section class="hLh30 txtOf">
-                      <a class="c-333 fsize16 fl" href="#">{{
-                        course.teacherName
-                      }}</a>
-                    </section>
-                    <section class="hLh20 txtOf">
-                      <span class="c-999">{{ course.teacherCareer }}</span>
-                    </section>
-                  </li>
-                </ul>
-              </section>
+
+                    <div>
+                      <div class="paging">
+                        <!-- undisable这个class是否存在，取决于数据属性hasPrevious -->
+                        <a
+                          v-if="form.pages > 1 && form.current != 1"
+                          @click="firstPage"
+                          title="首页"
+                          >首</a
+                        >
+                        <a
+                          v-if="form.pages > 1 && form.current > 1"
+                          title="前一页"
+                          @click="prevPage"
+                          >&lt;</a
+                        >
+                        <a
+                          v-if="form.pages > 1 && form.current < form.pages"
+                          title="后一页"
+                          @click="nextPage"
+                          >&gt;</a
+                        >
+                        <a
+                          v-if="form.pages > 1 && form.current != form.pages"
+                          title="末页"
+                          @click="lastPage"
+                          >末</a
+                        >
+                        <div class="clear"></div>
+                      </div>
+                    </div>
+                  </section>
+                </div>
               </article>
-                                    <div>
-          <div class="paging">
-            <!-- undisable这个class是否存在，取决于数据属性hasPrevious -->
-            <a
-              v-if="form.pages > 1 && form.current != 1"
-              @click="firstPage"
-              title="首页"
-              >首</a
-            >
-            <a
-              v-if="form.pages > 1 && form.current > 1"
-              title="前一页"
-              @click="prevPage"
-              >&lt;</a
-            >
-            <a
-              v-if="form.pages > 1 && form.current < form.pages"
-              title="后一页"
-              @click="nextPage"
-              >&gt;</a
-            >
-            <a
-              v-if="form.pages > 1 && form.current != form.pages"
-              title="末页"
-              @click="lastPage"
-              >末</a
-            >
-            <div class="clear"></div>
-          </div>
-        </div>
             </div>
           </section>
         </article>
@@ -279,24 +349,34 @@
 
 <script>
 import { getTree, getOneDetailByCourseId } from "@/api/course";
+import { save, getCommentPage } from "@/api/comment";
+import { getToken, removeToken } from "@/utils/auth";
 
 export default {
   data() {
     return {
+      token: null,
       course: {
         courseTitle: "",
       },
       tree: {},
       clickState: 1,
-        form: {
+      form: {
         current: 1,
         size: 8,
         total: 0,
         pages: 1,
       },
+      comment: {
+        content: "",
+        mark: 5,
+      },
+      comments: [],
+      colors: ["#99A9BF", "#F7BA2A", "#FF9900"], // 等同于 { 2: '#99A9BF', 4: { value: '#F7BA2A', excluded: true }, 5: '#FF9900' }
     };
   },
   created() {
+    this.token = getToken();
     this.fetchData();
   },
   methods: {
@@ -315,10 +395,183 @@ export default {
     },
     commentClick() {
       this.clickState = 2;
+      this.form.courseId = this.course.courseId;
+      getCommentPage(this.form).then((resp) => {
+        if (resp.code === 200) {
+          this.comments = resp.data.records;
+          this.form.pages = resp.data.pages;
+        }
+      });
     },
     courseDetailClick() {
       this.clickState = 1;
     },
+    submitComment() {
+      if (!this.token) {
+        this.$notify({
+          title: "NOV课堂提示",
+          message: "登录后才可以评论该课程!",
+          type: "warning",
+        });
+        //跳转登录页面
+        this.$router.push({
+          path: "/login",
+        });
+        return;
+      }
+      this.comment.courseId = this.course.courseId;
+      this.comment.teacherId = this.course.teacherId;
+      this.comment.teacherId = this.course.teacherId;
+      save(this.comment).then((resp) => {
+        if (resp.code === 200) {
+          this.$message({
+            type: "success",
+            message: "评论成功",
+          });
+          this.commentClick();
+        }
+      });
+    },
+    nextPage() {
+      this.form.current++;
+      this.commentClick();
+    },
+    prevPage() {
+      this.form.current--;
+      this.commentClick();
+    },
+    firstPage() {
+      this.form.current = 1;
+      this.commentClick();
+    },
+    lastPage() {
+      this.form.current = this.form.pages;
+      this.commentClick();
+    },
+    openVideo(isFree) {
+      if (!this.token) {
+        this.$notify({
+          title: "NOV课堂提示",
+          message: "登录后才可以观看该课程!",
+          type: "warning",
+        });
+        //跳转登录页面
+        this.$router.push({
+          path: "/login",
+        });
+        return;
+      }
+      if (isFree != 1) {
+        this.$confirm("您还未购买该课程, 是否现在下单?", "提示", {
+          confirmButtonText: "确定",
+          cancelButtonText: "取消",
+          type: "warning",
+        })
+          .then(() => {
+            this.$message({
+              type: "success",
+              message: "删除成功!",
+            });
+          })
+          .catch(() => {
+            this.$message({
+              type: "info",
+              message: "已取消删除",
+            });
+          });
+      }
+    },
   },
 };
 </script>
+<style >
+.comment-list .comment-item {
+  position: relative;
+  padding: 20px 20px 20px 80px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.comment-list .comment-item:first-child {
+  border-top: 0;
+}
+
+.comment-list .comment-item .item-good {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+}
+
+.comment-list .comment-item .item-good:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 25px solid #23b8ff;
+  border-right: 25px solid #23b8ff;
+  border-left: 25px solid transparent;
+  border-bottom: 25px solid transparent;
+  position: absolute;
+  top: 0;
+  left: -25px;
+}
+
+.comment-list .comment-item .item-good span {
+  position: relative;
+  font-size: 16px;
+  color: #fff;
+  top: 1px;
+}
+
+.comment-list .comment-item .item-left {
+  position: absolute;
+  width: 80px;
+  text-align: center;
+  top: 20px;
+  left: 0;
+}
+
+.comment-list .comment-item .user-avatar {
+  border-radius: 50%;
+}
+
+.comment-list .comment-item .item-right {
+  position: relative;
+}
+
+.comment-list .comment-item .star-list {
+  margin-top: -4px;
+}
+
+.comment-list .comment-item .comment-bd {
+  margin-bottom: 10px;
+}
+
+.comment-list .comment-ft + .comment-reply {
+  margin-top: 20px;
+  margin-bottom: -20px;
+}
+
+.comment-ft {
+  color: #999;
+}
+
+.comment-ft .comment-where {
+  margin-right: 10px;
+}
+
+.comment-ft .comment-report {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+
+.comment-ft .comment-report:hover {
+  color: #23b8ff;
+}
+
+.comment-ft.comment-ft--first {
+  margin-bottom: 20px;
+}
+</style>

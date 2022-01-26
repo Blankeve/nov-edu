@@ -1,0 +1,23 @@
+package com.novedu.nov.edu.service;
+
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.edu.entity.EduComment;
+import com.baomidou.mybatisplus.extension.service.IService;
+
+import javax.servlet.http.HttpServletRequest;
+
+/**
+ * <p>
+ * 评论 服务类
+ * </p>
+ *
+ * @author juam
+ * @since 2022-01-26
+ */
+public interface EduCommentService extends IService<EduComment> {
+
+    BaseResult saveComment(EduComment eduComment , HttpServletRequest request);
+
+    BaseResult queryCommentPage(Page page, EduComment eduComment);
+}

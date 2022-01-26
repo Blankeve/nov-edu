@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.novedu.nov.edu.mapper.EduCommentMapper">
+
+
+    <select id="queryPage" parameterType="EduComment" resultType="EduUserCommentVO">
+        select comment.id as id,
+        comment.course_id as courseId,
+        comment.teacher_id as teacherId,
+        comment.uid as uid,
+        comment.content as content,
+        comment.mark as mark,
+        comment.create_time as createTime,
+        comment.update_time as updateTime,
+        u.nickname as nickname,
+        u.avatar as avatar
+        from edu_comment comment
+        left join ucenter_member u on comment.uid = u.id
+        where comment.is_deleted = 0
+        <if test="ew != null and ew.sqlSegment != null and ew.sqlSegment != ''">
+            and ${ew.sqlSegment}
+        </if>
+    </select>
+
+</mapper>
