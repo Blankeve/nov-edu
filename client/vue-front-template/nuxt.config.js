@@ -38,11 +38,13 @@ module.exports = {
   },
 
   plugins: [
-    { src: '~/plugins/nuxt-swiper-plugin.js', ssr: false }
+    { src: '~/plugins/nuxt-swiper-plugin.js', ssr: false },
+    { src: '@/assets/icon/iconfont.js', ssr: false },
   ],
 
   css: [
-    'swiper/dist/css/swiper.css'
+    'swiper/dist/css/swiper.css',
+    '@/assets/icon/iconfont.css'
   ],
 }
 

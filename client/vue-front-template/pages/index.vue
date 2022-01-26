@@ -18,7 +18,11 @@
                 style="background: #040b1b"
               >
                 <a target="" href="/">
-                  <img width="100%" :src="banner.imageUrl" :alt="banner.title" />
+                  <img
+                    width="100%"
+                    :src="banner.imageUrl"
+                    :alt="banner.title"
+                  />
                 </a>
               </div>
             </div>
@@ -62,15 +66,21 @@
                       <nuxt-link :to="'/course/' + course.id">
                         <a
                           :title="course.title"
-                          class="course-title fsize18 c-333"
+                          class="course-title fsize16 c-333"
                           >{{ course.title }}</a
                         >
                       </nuxt-link>
                     </h3>
                     <section class="mt10 hLh20 of">
-                      <span class="fr jgTag bg-green">
-                        <i class="c-fff fsize12 f-fA">{{
-                          course.price > 0 ? course.price + "元" : "免费"
+                      <span
+                      class="fr jgTag "
+                        :class="{
+                          'bg-green': course.price == 0,
+                           'bg-red': course.price > 0,
+                        }"
+                      >
+                        <i class="c-fff fsize18 f-fA">{{
+                          course.price > 0 ? "¥" + course.price : "免费"
                         }}</i>
                       </span>
                       <span class="fl jgAttr c-ccc f-fA">
@@ -108,7 +118,12 @@
                   <section class="i-teach-wrap">
                     <div class="i-teach-pic">
                       <nuxt-link :to="'/teacher/' + teacher.id">
-                        <img width="250px" height="150px" :alt="teacher.name" :src="teacher.avatar" />
+                        <img
+                          width="250px"
+                          height="150px"
+                          :alt="teacher.name"
+                          :src="teacher.avatar"
+                        />
                       </nuxt-link>
                     </div>
                     <div class="mt10 hLh30 txtOf tac">

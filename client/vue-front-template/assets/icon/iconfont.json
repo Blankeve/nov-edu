@@ -1,0 +1,16 @@
+{
+  "id": "3162400",
+  "name": "nov",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "10344720",
+      "name": "1434 - Star",
+      "font_class": "-Star",
+      "unicode": "e775",
+      "unicode_decimal": 59253
+    }
+  ]
+}

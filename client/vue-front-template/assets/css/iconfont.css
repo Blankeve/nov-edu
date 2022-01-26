@@ -35,3 +35,7 @@
   content: "\e601";
 }
 
+.icon--Star:before {
+  content: "\e775";
+}
+
