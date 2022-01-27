@@ -160,26 +160,26 @@ export const constantRoutes = [
     path: '/video',
     component: Layout,
     redirect: '/video/list',
-    name: '小节管理',
-    meta: { title: '小节管理', icon: 'el-icon-film' },
+    name: '视频管理',
+    meta: { title: '视频管理', icon: 'el-icon-film' },
     children: [
       {
         path: 'list',
         name: 'video-list',
         component: () => import('@/views/video/index'),
-        meta: { title: '小节列表', icon: 'el-icon-film' }
+        meta: { title: '视频列表', icon: 'el-icon-film' }
       },
       {
         path: 'save',
         name: 'video-save',
         component: () => import('@/views/video/form'),
-        meta: { title: '添加小节', icon: 'el-icon-document-add' }
+        meta: { title: '添加视频', icon: 'el-icon-document-add' }
       },
       {
         path: 'edit',
         name: 'video-edit',
         component: () => import('@/views/video/form'),
-        meta: { title: '编辑小节', icon: 'el-icon-edit-outline' },
+        meta: { title: '编辑视频', icon: 'el-icon-edit-outline' },
         hidden: true
       }
     ]
