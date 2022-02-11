@@ -167,7 +167,7 @@
             <article class="comm-course-list">
               <ul class="of" id="bna">
                 <li v-for="course in courses3" :key="course.id">
-                  <div class="cc-l-wrap">
+                  <div  class="cc-l-wrap">
                     <section class="course-img">
                       <img
                         :src="course.cover"

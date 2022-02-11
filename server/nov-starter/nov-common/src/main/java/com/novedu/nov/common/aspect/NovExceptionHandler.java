@@ -35,7 +35,7 @@ public class NovExceptionHandler {
         }
         log.error(sb.toString());
         //4.返回字段校验异常信息给接口调用方
-        return BaseResult.error("字段格式错误:" + sb.toString());
+        return BaseResult.error("格式错误:" + sb.toString());
     }
 
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
@@ -51,7 +51,7 @@ public class NovExceptionHandler {
         }
         log.error(sb.toString());
         //4.返回字段校验异常信息给接口调用方
-        return BaseResult.error("字段格式错误:" + sb.toString());
+        return BaseResult.error("格式错误:" + sb.toString());
     }
 
     @ExceptionHandler(value = Exception.class)

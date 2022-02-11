@@ -520,9 +520,16 @@ export default {
           type: "warning",
         })
           .then(() => {
+            const loading = this.$loading({
+              lock: true,
+              text: "正在跳转订单页",
+              spinner: "el-icon-loading",
+              background: "rgba(0, 0, 0, 0.7)",
+            });
             createOrder(data).then((resp) => {
               if (resp.code === 200) {
                 let orderId = resp.data.order;
+                loading.close();
                 //跳转订单页面
                 this.$router.push({
                   path: "/order/" + orderId,

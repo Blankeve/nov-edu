@@ -53,6 +53,7 @@
         course.status as courseStatus,
         course.view_count as courseViewCount,
         course.buy_count as courseBuyCount,
+        course.apply_count as courseApplyCount,
         course.cover as courseCover,
         course.price as coursePrice,
         course.create_time as courseCreateTime,

@@ -63,9 +63,6 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     @Autowired
     EduCommentService commentService;
 
-    @Autowired
-    EduCourseApplyMapper courseApplyMapper;
-
     private String courseViewCountRedisKey = "course_play_count";
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -105,7 +102,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
                 arr2[i] = arr.get(i);
             }
             courseInfoVO.setSubjectIds(arr2);
-            redisTemplate.opsForValue().set(key, courseInfoVO, 10, TimeUnit.MINUTES);
+            redisTemplate.opsForValue().set(key, courseInfoVO, 5, TimeUnit.MINUTES);
         }
         return BaseResult.success(courseInfoVO);
     }
@@ -303,7 +300,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     @Override
     public BaseResult<List<EduCourse>> getClientBoughtCourseList() {
-        List<EduCourse> courses = query().orderByDesc("buy_count").last("limit 8").list();
+        List<EduCourse> courses = query().gt("price",0).orderByDesc("buy_count").last("limit 8").list();
         setCourseCommentCountAndViewCount(courses);
         return BaseResult.success(courses);
     }

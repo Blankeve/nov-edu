@@ -6,6 +6,7 @@ import com.novedu.nov.ucenter.entity.UcenterMember;
 import com.novedu.nov.ucenter.entity.dto.UcenterMemberDto;
 import com.novedu.nov.ucenter.service.UcenterMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,7 +34,7 @@ public class UcenterMemberController {
     }
 
     @PostMapping("/register")
-    public BaseResult register(UcenterMember ucenterMemberDto){
+    public BaseResult register(@Validated UcenterMember ucenterMemberDto){
         return ucenterMemberService.register(ucenterMemberDto);
     }
 
@@ -41,5 +42,7 @@ public class UcenterMemberController {
     public BaseResult getMemberInfo(@PathVariable Long id){
         return ucenterMemberService.getMemberInfo(id);
     }
+
+
 }
 

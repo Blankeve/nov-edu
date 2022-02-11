@@ -15,6 +15,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.validation.constraints.Pattern;
+
 /**
  * <p>
  * 会员表
@@ -36,12 +38,15 @@ public class UcenterMember implements Serializable {
     @ApiModelProperty(value = "微信openid")
     private String openid;
 
+    @Pattern(regexp = "^\\w{6,18}$",message = "用户名格式不正确")
     @ApiModelProperty(value = "用户名")
     private String username;
 
+    @Pattern(regexp = "^\\w{6,18}$",message = "密码格式不正确")
     @ApiModelProperty(value = "密码")
     private String password;
 
+    @Pattern(regexp = "^1[3|4|5|7|8]\\d{9}$",message = "手机号码格式不正确")
     @ApiModelProperty(value = "手机号")
     private String mobile;
 
