@@ -134,9 +134,9 @@
                         }}</i>
                       </span>
                       <span class="fl jgAttr c-ccc f-fA">
-                        <i class="c-999 f-fA">9634人学习</i>
+                        <i class="c-999 f-fA">{{course.viewCount}}次播放</i>
                         |
-                        <i class="c-999 f-fA">9634评论</i>
+                        <i class="c-999 f-fA">{{course.commentCount}}人评论</i>
                       </span>
                     </section>
                 </div>
@@ -220,6 +220,7 @@ export default {
           this.form.pages = resp.data.pages;
         }
       });
+      
     },
     nextPage() {
       this.form.current++;

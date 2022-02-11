@@ -1,9 +1,9 @@
 <template>
   <div class="main">
     <div class="title">
-       <nuxt-link to="/logIn">登录</nuxt-link>
+      <nuxt-link to="/logIn">登录</nuxt-link>
       <span>·</span>
-       <nuxt-link to="/register">注册</nuxt-link>
+      <nuxt-link to="/register">注册</nuxt-link>
     </div>
 
     <div class="sign-up-container">
@@ -39,7 +39,7 @@
               placeholder="用户名"
               v-model="form.username"
             />
-            <i class="iconfont icon-phone" />
+            <i class="iconfont icon-user" />
           </div>
         </el-form-item>
 
@@ -58,6 +58,24 @@
               v-model="form.password"
             />
             <i class="iconfont icon-password" />
+          </div>
+        </el-form-item>
+
+        <el-form-item
+          class="input-prepend"
+          prop="mobile"
+          :rules="[
+            { required: false, message: '请输入手机号码', trigger: 'blur' },
+            { validator: checkPhone, trigger: 'blur' },
+          ]"
+        >
+          <div>
+            <el-input
+              type="phone"
+              placeholder="设置手机号"
+              v-model="form.mobile"
+            />
+            <i class="iconfont icon-phone" />
           </div>
         </el-form-item>
 
@@ -162,8 +180,9 @@ export default {
     },
 
     checkPhone(rule, value, callback) {
+      console.log(value)
       //debugger
-      if (!/^1[34578]\d{9}$/.test(value)) {
+      if (!/^1[3|4|5|7|8]\d{9}$/.test(value)) {
         return callback(new Error("手机号码格式不正确"));
       }
       return callback();

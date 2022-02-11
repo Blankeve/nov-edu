@@ -37,9 +37,15 @@ public class EduUserCommentVO implements Serializable {
     @ApiModelProperty(value = "课程id")
     private Long courseId;
 
+    @ApiModelProperty(value = "课程标题")
+    private String courseTitle;
+
     @JsonSerialize(using = ToStringSerializer.class)
     @ApiModelProperty(value = "讲师id")
     private Long teacherId;
+
+    @ApiModelProperty(value = "课程标题")
+    private String teacherName;
 
     @JsonSerialize(using = ToStringSerializer.class)
     @ApiModelProperty(value = "会员id")
@@ -65,4 +71,6 @@ public class EduUserCommentVO implements Serializable {
     private Integer isDeleted;
 
     private Integer mark;
+
+    private Integer reported;
 }

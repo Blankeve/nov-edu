@@ -17,7 +17,7 @@ public class CodeGenerator {
 //2、全局配置
         GlobalConfig gc = new GlobalConfig();
 //此处建议写项目/src/main/java源代码的绝对路径
-        gc.setOutputDir("E:\\juam-workspace\\code\\git\\edu\\server\\nov-starter\\nov-service\\service_ucenter" + "/src/main/java");
+        gc.setOutputDir("E:\\juam-workspace\\code\\git\\edu\\server\\nov-starter\\nov-service\\service_order" + "/src/main/java");
 //生成注释时的作者
         gc.setAuthor("juam");
 //生成后是否打开资源管理器
@@ -44,7 +44,7 @@ public class CodeGenerator {
         PackageConfig pc = new PackageConfig();
 //此处要注意：parent+moduleName为包的名字，在这个包下，创建对应的controller...
         pc.setParent("com.novedu.nov");
-        pc.setModuleName("ucenter");//模块名
+        pc.setModuleName("order");//模块名
         pc.setController("controller");
         pc.setEntity("entity");
         pc.setService("service");
@@ -54,7 +54,7 @@ public class CodeGenerator {
 //5、策略配置
         StrategyConfig strategy = new StrategyConfig();
 //数据库中表的名字，表示要对哪些表进行自动生成controllerservice、mapper...
-        strategy.setInclude("ucenter_member");
+        strategy.setInclude("trade_order");
 
 //数据库表映射到实体的命名策略,驼峰命名法
         strategy.setNaming(NamingStrategy.underline_to_camel);

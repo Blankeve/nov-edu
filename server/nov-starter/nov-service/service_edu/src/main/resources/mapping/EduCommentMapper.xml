@@ -13,9 +13,13 @@
         comment.create_time as createTime,
         comment.update_time as updateTime,
         u.nickname as nickname,
-        u.avatar as avatar
+        u.avatar as avatar,
+        c.title as courseTitle,
+        t.name as teacherName
         from edu_comment comment
         left join ucenter_member u on comment.uid = u.id
+        left join edu_course c on comment.course_id = c.id
+        left join edu_teacher t on comment.teacher_id = t.id
         where comment.is_deleted = 0
         <if test="ew != null and ew.sqlSegment != null and ew.sqlSegment != ''">
             and ${ew.sqlSegment}

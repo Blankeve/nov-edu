@@ -1,5 +1,6 @@
 package com.novedu.nov.upload;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -14,9 +15,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @modified By：
  * @version:
  */
-@SpringBootApplication(scanBasePackages = "com.novedu.nov",exclude = DataSourceAutoConfiguration.class)
+@SpringBootApplication(scanBasePackages = "com.novedu.nov")
 @EnableDiscoveryClient
 @EnableFeignClients
+@MapperScan(basePackages = {"com.novedu.nov.common.module.mapper"})
 public class UploadServiceApplication {
 
     public static void main(String[] args) {

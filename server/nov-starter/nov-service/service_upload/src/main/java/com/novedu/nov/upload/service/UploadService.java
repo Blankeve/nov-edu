@@ -1,6 +1,7 @@
 package com.novedu.nov.upload.service;
 
 import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.common.config.SysConfigCache;
 import com.novedu.nov.common.util.HttpUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,10 +18,13 @@ import java.util.Map;
 @Service
 public class UploadService {
 
-    private String baseUrl = "http://42.193.169.224:8888";
-//    private String baseUrl = "http://localhost:9999";
+
+    String getServerAddress() {
+        return SysConfigCache.getConfigByKey("media_server_address").getConfigValue();
+    }
 
     public BaseResult uploadImg(MultipartFile img) {
+        String baseUrl = getServerAddress();
         Map result = HttpUtils.doPostFile(baseUrl + "/upload/img", img, "img");
         String path;
         if (result != null) {
@@ -35,6 +39,7 @@ public class UploadService {
     }
 
     public BaseResult<Map> uploadVideo(MultipartFile video) {
+        String baseUrl = getServerAddress();
         Map result = HttpUtils.doPostFile(baseUrl + "/upload/video", video, "video");
         String path;
         if (result != null) {

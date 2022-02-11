@@ -59,7 +59,7 @@ public class EduCourseInfoDTO {
     private String cover;
 
     @ApiModelProperty(value = "销售数量")
-    private Long buyCount;
+    private Integer buyCount;
 
     @ApiModelProperty(value = "浏览数量")
     private Long viewCount;

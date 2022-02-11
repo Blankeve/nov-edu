@@ -5,11 +5,13 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.common.util.JwtUtils;
 import com.novedu.nov.edu.entity.EduComment;
+import com.novedu.nov.edu.entity.vo.EduUserCommentVO;
 import com.novedu.nov.edu.mapper.EduCommentMapper;
 import com.novedu.nov.edu.service.EduCommentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -38,8 +40,36 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
     @Override
     public BaseResult queryCommentPage(Page page, EduComment eduComment) {
         QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("course_id",eduComment.getCourseId());
-        return BaseResult.success(commentMapper.queryPage(page,queryWrapper));
+        queryWrapper.eq("course_id", eduComment.getCourseId());
+        return BaseResult.success(commentMapper.queryPage(page, queryWrapper));
+    }
+
+    @Override
+    public BaseResult queryCommentPage(Page page, EduUserCommentVO eduComment) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        if (StringUtils.hasText(eduComment.getNickname()))
+            queryWrapper.like("u.nickname", eduComment.getNickname());
+        if (eduComment.getReported() != null)
+            queryWrapper.eq("comment.reported", eduComment.getReported());
+        if (eduComment.getCourseId() != null)
+            queryWrapper.eq("comment.course_id", eduComment.getCourseId());
+        if (eduComment.getUid() != null)
+            queryWrapper.eq("comment.uid", eduComment.getUid());
+        if (eduComment.getTeacherId() != null)
+            queryWrapper.eq("comment.teacher_id", eduComment.getTeacherId());
+        return BaseResult.success(commentMapper.queryPage(page, queryWrapper));
+    }
+
+    @Override
+    public BaseResult removeComment(Long id) {
+        return BaseResult.successOrError(removeById(id));
+    }
+
+    @Override
+    public BaseResult reportComment(Long id) {
+        EduComment comment = getById(id);
+        comment.setReported(1);
+        return BaseResult.successOrError(updateById(comment));
     }
 
 }

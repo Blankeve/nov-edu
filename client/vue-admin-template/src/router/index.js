@@ -145,7 +145,8 @@ export const constantRoutes = [
         path: 'save',
         name: 'chapter-save',
         component: () => import('@/views/chapter/form'),
-        meta: { title: '添加章节', icon: 'el-icon-document-add' }
+        meta: { title: '添加章节', icon: 'el-icon-document-add' },
+        hidden: true
       },
       {
         path: 'edit',
@@ -173,7 +174,8 @@ export const constantRoutes = [
         path: 'save',
         name: 'video-save',
         component: () => import('@/views/video/form'),
-        meta: { title: '添加视频', icon: 'el-icon-document-add' }
+        meta: { title: '添加视频', icon: 'el-icon-document-add' },
+        hidden: true
       },
       {
         path: 'edit',
@@ -182,6 +184,48 @@ export const constantRoutes = [
         meta: { title: '编辑视频', icon: 'el-icon-edit-outline' },
         hidden: true
       }
+    ]
+  },
+  {
+    path: '/comment',
+    component: Layout,
+    redirect: '/comment/list',
+    name: '评论管理',
+    meta: { title: '评论管理', icon: 'el-icon-chat-dot-square' },
+    children: [
+      {
+        path: 'list',
+        name: 'comment-list',
+        component: () => import('@/views/comment/index'),
+        meta: { title: '评论列表', icon: 'el-icon-chat-dot-square' }
+      },
+      {
+        path: 'save',
+        name: 'comment-report',
+        component: () => import('@/views/comment/index2'),
+        meta: { title: '举报处理', icon: 'el-icon-phone-outline' }
+      },
+    ]
+  },
+  {
+    path: '/order',
+    component: Layout,
+    redirect: '/order/list',
+    name: '订单管理',
+    meta: { title: '订单管理', icon: 'el-icon-bank-card' },
+    children: [
+      {
+        path: 'list',
+        name: 'order-unpaid',
+        component: () => import('@/views/order/unpaid'),
+        meta: { title: '未支付', icon: 'el-icon-shopping-cart-2' }
+      },
+      {
+        path: 'save',
+        name: 'order-paid',
+        component: () => import('@/views/order/paid'),
+        meta: { title: '已支付', icon: 'el-icon-sold-out' }
+      },
     ]
   },
   {

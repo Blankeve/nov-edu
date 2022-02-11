@@ -1,12 +1,6 @@
 import request from '@/utils/request'
 
-export function saveVideo(data) {
-    return request({
-      url: '/edu/video/save',
-      method: 'post',
-      data
-    })
-  }
+
 
   export function getPage(params) {
     return request({
@@ -18,14 +12,8 @@ export function saveVideo(data) {
 
   export function getOneByVideoId(params) {
     return request({
-      url: `/edu/video/detail/${params}`,
+      url: `/edu/video/detail-client/${params}`,
       method: 'post',
     })
   }
 
-  export function removeVideoById(params) {
-    return request({
-      url: `/edu/video/remove/${params}`,
-      method: 'delete',
-    })
-  }

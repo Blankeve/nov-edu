@@ -65,10 +65,17 @@ public class EduCourse implements Serializable {
     private String cover;
 
     @ApiModelProperty(value = "销售数量")
-    private Long buyCount;
+    private Integer buyCount;
 
-    @ApiModelProperty(value = "浏览数量")
+    @ApiModelProperty(value = "报名数量")
+    private Integer applyCount;
+
+    @ApiModelProperty(value = "播放数量")
     private Long viewCount;
+
+    @TableField(exist = false)
+    @ApiModelProperty(value = "评价数量")
+    private Long commentCount;
 
     @ApiModelProperty(value = "乐观锁")
     private Long version;

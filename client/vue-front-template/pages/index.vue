@@ -9,7 +9,7 @@
       <div>
         <section class="container">
           <!-- 幻灯片 开始 -->
-          <div v-swiper:mySwiper="swiperOption">
+          <div v-if="banners.length" v-swiper:mySwiper="swiperOption">
             <div class="swiper-wrapper">
               <div
                 v-for="banner in banners"
@@ -73,10 +73,10 @@
                     </h3>
                     <section class="mt10 hLh20 of">
                       <span
-                      class="fr jgTag "
+                        class="fr jgTag"
                         :class="{
                           'bg-green': course.price == 0,
-                           'bg-red': course.price > 0,
+                          'bg-red': course.price > 0,
                         }"
                       >
                         <i class="c-fff fsize18 f-fA">{{
@@ -84,9 +84,131 @@
                         }}</i>
                       </span>
                       <span class="fl jgAttr c-ccc f-fA">
-                        <i class="c-999 f-fA">9634人学习</i>
+                        <i class="c-999 f-fA">{{ course.viewCount }}次播放</i>
                         |
-                        <i class="c-999 f-fA">9634评论</i>
+                        <i class="c-999 f-fA"
+                          >{{ course.commentCount }}人评论</i
+                        >
+                      </span>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+              <div class="clear"></div>
+            </article>
+          </div>
+
+          <header class="comm-title">
+            <h2 class="tac">
+              <span class="c-333">最多人学习课程</span>
+            </h2>
+          </header>
+          <div>
+            <article class="comm-course-list">
+              <ul class="of" id="bna">
+                <li v-for="course in courses2" :key="course.id">
+                  <div class="cc-l-wrap">
+                    <section class="course-img">
+                      <img
+                        :src="course.cover"
+                        class="img-responsive"
+                        :alt="course.title"
+                      />
+                      <div class="cc-mask">
+                        <nuxt-link :to="'/course/' + course.id">
+                          <a title="开始学习" class="comm-btn c-btn-1"
+                            >开始学习</a
+                          >
+                        </nuxt-link>
+                      </div>
+                    </section>
+                    <h3 class="hLh30 txtOf mt10">
+                      <nuxt-link :to="'/course/' + course.id">
+                        <a
+                          :title="course.title"
+                          class="course-title fsize16 c-333"
+                          >{{ course.title }}</a
+                        >
+                      </nuxt-link>
+                    </h3>
+                    <section class="mt10 hLh20 of">
+                      <span
+                        class="fr jgTag"
+                        :class="{
+                          'bg-green': course.price == 0,
+                          'bg-red': course.price > 0,
+                        }"
+                      >
+                        <i class="c-fff fsize18 f-fA">{{
+                          course.price > 0 ? "¥" + course.price : "免费"
+                        }}</i>
+                      </span>
+                      <span class="fl jgAttr c-ccc f-fA">
+                        <i class="c-999 f-fA">{{ course.applyCount }}人学习</i>
+                        |
+                        <i class="c-999 f-fA"
+                          >{{ course.commentCount }}人评论</i
+                        >
+                      </span>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+              <div class="clear"></div>
+            </article>
+          </div>
+
+            <header class="comm-title">
+            <h2 class="tac">
+              <span class="c-333">最多人购买课程</span>
+            </h2>
+          </header>
+          <div>
+            <article class="comm-course-list">
+              <ul class="of" id="bna">
+                <li v-for="course in courses3" :key="course.id">
+                  <div class="cc-l-wrap">
+                    <section class="course-img">
+                      <img
+                        :src="course.cover"
+                        class="img-responsive"
+                        :alt="course.title"
+                      />
+                      <div class="cc-mask">
+                        <nuxt-link :to="'/course/' + course.id">
+                          <a title="开始学习" class="comm-btn c-btn-1"
+                            >开始学习</a
+                          >
+                        </nuxt-link>
+                      </div>
+                    </section>
+                    <h3 class="hLh30 txtOf mt10">
+                      <nuxt-link :to="'/course/' + course.id">
+                        <a
+                          :title="course.title"
+                          class="course-title fsize16 c-333"
+                          >{{ course.title }}</a
+                        >
+                      </nuxt-link>
+                    </h3>
+                    <section class="mt10 hLh20 of">
+                      <span
+                        class="fr jgTag"
+                        :class="{
+                          'bg-green': course.price == 0,
+                          'bg-red': course.price > 0,
+                        }"
+                      >
+                        <i class="c-fff fsize18 f-fA">{{
+                          course.price > 0 ? "¥" + course.price : "免费"
+                        }}</i>
+                      </span>
+                      <span class="fl jgAttr c-ccc f-fA">
+                        <i class="c-999 f-fA">{{ course.buyCount }}人购买</i>
+                        |
+                        <i class="c-999 f-fA"
+                          >{{ course.commentCount }}人评论</i
+                        >
                       </span>
                     </section>
                   </div>
@@ -100,6 +222,7 @@
               </nuxt-link>
             </section>
           </div>
+
         </section>
       </div>
       <!-- /网校课程 结束 -->
@@ -161,7 +284,7 @@
 
 <script>
 import { getBannerList } from "@/api/banner";
-import { getClientCourseList } from "@/api/course";
+import { getClientCourseList, getClientCourseApplyList, getClientCourseBoughtList} from "@/api/course";
 import { getClientTeacherList } from "@/api/teacher";
 
 export default {
@@ -177,9 +300,18 @@ export default {
           nextEl: ".swiper-button-next", //下一页dom节点
           prevEl: ".swiper-button-prev", //前一页dom节点
         },
+        observer: true, //修改swiper自己或子元素时，自动初始化swiper
+        observeParents: true, //修改swiper的父元素时，自动初始化swiper
+        loop: true,
+        autoplay: {
+          delay: 2000,
+          disableOnInteraction: false,
+        },
       },
       banners: [],
       courses: [],
+      courses2: [],
+      courses3: [],
       teachers: [],
     };
   },
@@ -197,6 +329,18 @@ export default {
       getClientCourseList().then((resp) => {
         if (resp.code === 200) {
           this.courses = resp.data;
+        }
+      });
+
+       getClientCourseApplyList().then((resp) => {
+        if (resp.code === 200) {
+          this.courses2 = resp.data;
+        }
+      });
+
+       getClientCourseBoughtList().then((resp) => {
+        if (resp.code === 200) {
+          this.courses3 = resp.data;
         }
       });
 

@@ -18,4 +18,6 @@ public interface UcenterMemberService extends IService<UcenterMember> {
     BaseResult login(UcenterMember ucenterMemberDt);
 
     BaseResult register(UcenterMember ucenterMemberDto);
+
+    BaseResult getMemberInfo(Long id);
 }

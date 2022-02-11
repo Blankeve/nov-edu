@@ -48,7 +48,7 @@ public class EduCourseController {
     }
 
     @PostMapping("/id")
-    public BaseResult queryCourseList(EduCourse id) {
+    public BaseResult queryCourseById(EduCourse id) {
         return eduCourseService.queryCourseById(id);
     }
 
@@ -77,11 +77,40 @@ public class EduCourseController {
         return eduCourseService.queryCourseTree(page, courseInfoDTO);
     }
 
+    @ApiOperation("前台热门课程列表")
     @GetMapping("/client-list")
     public BaseResult<List<EduCourse>> getClientCourseList(){
         return eduCourseService.getClientCourseList();
     }
 
+    @ApiOperation("前台最多人学习课程列表")
+    @GetMapping("/client-apply")
+    public BaseResult<List<EduCourse>> getClientApplyCourseList(){
+        return eduCourseService.getClientApplyCourseList();
+    }
 
+    @ApiOperation("前台最多人购买课程列表")
+    @GetMapping("/client-bought")
+    public BaseResult<List<EduCourse>> getClientBoughtCourseList(){
+        return eduCourseService.getClientBoughtCourseList();
+    }
+
+    @ApiOperation("统计课程播放量")
+    @GetMapping("/statistics/course/playCount")
+    public BaseResult statisticsCoursePlayCount(){
+        return eduCourseService.statisticsCoursePlayCount();
+    }
+
+    @ApiOperation("统计课程报名人数")
+    @GetMapping("/statistics/course/applyCount")
+    public BaseResult statisticsCourseApplyCount(){
+        return eduCourseService.statisticsCourseApplyCount();
+    }
+
+    @ApiOperation("统计课程购买量")
+    @GetMapping("/statistics/course/buyCount")
+    public BaseResult statisticsCourseBuyCount(){
+        return eduCourseService.statisticsCourseBuyCount();
+    }
 }
 

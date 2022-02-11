@@ -15,3 +15,10 @@ export function getCommentPage(params) {
     params
   })
 }
+
+export function reportComment(params) {
+  return request({
+    url: `/edu/comment/report/${params}`,
+    method: 'put',
+  })
+}

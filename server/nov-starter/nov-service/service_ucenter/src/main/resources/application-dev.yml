@@ -24,12 +24,12 @@ spring:
 #        min-idle: 0
 #    timeout: 5000
 #logging:
-#  config: classpath:logback-spring.xml
-#  config: classpath:properties/log4j2.xml
+#  config: classpath:logback-spring.mapping
+#  config: classpath:properties/log4j2.mapping
 #  config: classpath:properties/log4j.properties
 
 mybatis-plus:
-  mapper-locations: classpath*:/mapping/*.xml
+  mapper-locations: classpath*:/mapping/*.mapping
   global-config:
     db-config:
       logic-delete-field: isDeleted  # 全局逻辑删除的实体字段名(since 3.3.0,配置后可以忽略不配置步骤2)

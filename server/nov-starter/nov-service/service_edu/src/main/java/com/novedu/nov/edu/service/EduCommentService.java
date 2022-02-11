@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduComment;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.novedu.nov.edu.entity.vo.EduUserCommentVO;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,4 +21,10 @@ public interface EduCommentService extends IService<EduComment> {
     BaseResult saveComment(EduComment eduComment , HttpServletRequest request);
 
     BaseResult queryCommentPage(Page page, EduComment eduComment);
+
+    BaseResult queryCommentPage(Page page, EduUserCommentVO eduComment);
+
+    BaseResult removeComment(Long id);
+
+    BaseResult reportComment(Long id);
 }

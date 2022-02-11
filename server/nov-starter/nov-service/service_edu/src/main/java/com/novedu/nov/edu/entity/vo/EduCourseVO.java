@@ -64,10 +64,13 @@ public class EduCourseVO {
     private String cover;
 
     @ApiModelProperty(value = "销售数量")
-    private Long buyCount;
+    private Integer buyCount;
 
-    @ApiModelProperty(value = "浏览数量")
+    @ApiModelProperty(value = "播放数量")
     private Long viewCount;
+
+    @ApiModelProperty(value = "评论数量")
+    private Long commentCount;
 
     @ApiModelProperty(value = "乐观锁")
     private Long version;

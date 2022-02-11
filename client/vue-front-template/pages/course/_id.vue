@@ -43,11 +43,28 @@
             <section class="c-attr-mt of">
               <span class="ml10 vam">
                 <em class="icon18 scIcon"></em>
-                <a class="c-fff vam" title="收藏" href="#">收藏</a>
+                <span class="c-fff vam" title="收藏"
+                  >{{ course.courseApplyCount }}人正在学习该门课程</span
+                >
               </span>
             </section>
             <section class="c-attr-mt">
-              <a href="#" title="立即观看" class="comm-btn c-btn-3">立即观看</a>
+              <a
+                v-if="course.coursePrice == 0"
+                href="javascript:void(0)"
+                @click="viewOrBuy"
+                title="立即观看"
+                class="comm-btn c-btn-3"
+                >{{ hasBuy ? "已报名" : "立即报名" }}</a
+              >
+              <a
+                v-if="course.coursePrice > 0"
+                href="javascript:void(0)"
+                @click="viewOrBuy"
+                title="立即观看"
+                class="comm-btn c-btn-3"
+                >{{ hasBuy ? "已购买" : "立即购买" }}</a
+              >
             </section>
           </section>
         </aside>
@@ -142,7 +159,7 @@
                               >
                                 <a
                                   href="javascript: void(0)"
-                                  @click="openVideo(video.isFree)"
+                                  @click="openVideo(video.isFree, video.id)"
                                   title
                                 >
                                   <span class="fr">
@@ -153,7 +170,11 @@
                                         'free-icon': video.isFree == 1,
                                       }"
                                       >{{
-                                        video.isFree == 1 ? "免费" : "付费"
+                                        video.isFree == 1
+                                          ? "免费"
+                                          : hasBuy
+                                          ? "已付费"
+                                          : "付费"
                                       }}</i
                                     >
                                   </span>
@@ -263,6 +284,7 @@
                               comment.createTime
                             }}</span>
                             <span
+                              @click="handleReport(comment.id)"
                               class="comment-report"
                               data-id="144115261255602258"
                               >举报</span
@@ -348,14 +370,21 @@
 </template>
 
 <script>
-import { getTree, getOneDetailByCourseId } from "@/api/course";
-import { save, getCommentPage } from "@/api/comment";
+import { getTree, getOneDetailByCourseId, applyCourse } from "@/api/course";
+import { save, getCommentPage, reportComment } from "@/api/comment";
+import {
+  createOrder,
+  getOrderById,
+  getOrderByUidAndCourseId,
+} from "@/api/order";
 import { getToken, removeToken } from "@/utils/auth";
+import jwtDecode from "jwt-decode";
 
 export default {
   data() {
     return {
       token: null,
+      hasBuy: false,
       course: {
         courseTitle: "",
       },
@@ -385,6 +414,11 @@ export default {
       getOneDetailByCourseId(id).then((resp) => {
         if (resp.code === 200) {
           this.course = resp.data;
+        }
+      });
+      getOrderByUidAndCourseId(id).then((resp) => {
+        if (resp.code === 200 && resp.data && resp.data.hasBuy) {
+          this.hasBuy = true;
         }
       });
       getTree({ id: id }).then((resp) => {
@@ -448,11 +482,11 @@ export default {
       this.form.current = this.form.pages;
       this.commentClick();
     },
-    openVideo(isFree) {
+    viewOrBuy() {
       if (!this.token) {
         this.$notify({
           title: "NOV课堂提示",
-          message: "登录后才可以观看该课程!",
+          message: "请先登录!",
           type: "warning",
         });
         //跳转登录页面
@@ -461,25 +495,62 @@ export default {
         });
         return;
       }
-      if (isFree != 1) {
-        this.$confirm("您还未购买该课程, 是否现在下单?", "提示", {
+      const loginInfo = jwtDecode(this.token);
+      let uid = loginInfo.uid;
+      let data = {
+        courseId: this.course.courseId,
+        uid: uid,
+        teacherId: this.course.teacherId,
+      };
+      if (this.course.coursePrice == 0) {
+        applyCourse(data).then((resp) => {
+          if (resp.code === 200) {
+            this.$message({
+              type: "success",
+              message: "报名成功",
+            });
+            this.hasBuy = true;
+          }
+        });
+      }
+      if (this.course.coursePrice > 0 && !this.hasBuy) {
+        this.$confirm("您还未拥有该课程, 是否立即购买?", "提示", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning",
         })
           .then(() => {
-            this.$message({
-              type: "success",
-              message: "删除成功!",
+            createOrder(data).then((resp) => {
+              if (resp.code === 200) {
+                let orderId = resp.data.order;
+                //跳转订单页面
+                this.$router.push({
+                  path: "/order/" + orderId,
+                });
+              }
             });
           })
-          .catch(() => {
-            this.$message({
-              type: "info",
-              message: "已取消删除",
-            });
-          });
+          .catch(() => {});
       }
+    },
+    openVideo(isFree, id) {
+      if (isFree != 1 && !this.hasBuy) {
+        this.viewOrBuy();
+      } else {
+        this.$router.push({
+          path: "/video/" + id,
+        });
+      }
+    },
+    handleReport(id) {
+      reportComment(id).then((resp) => {
+        if (resp.code === 200) {
+          this.$message({
+            type: "success",
+            message: "举报留言成功",
+          });
+        }
+      });
     },
   },
 };

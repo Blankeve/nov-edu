@@ -8,6 +8,14 @@ export function save(data) {
     })
   }
 
+  export function applyCourse(data) {
+    return request({
+      url: '/edu/course-apply/save',
+      method: 'post',
+      data
+    })
+  }
+
   export function removeById(params) {
     return request({
       url: `/edu/course/remove/${params}`,
@@ -34,6 +42,22 @@ export function save(data) {
   export function getClientCourseList(data) {
     return request({
       url: '/edu/course/client-list',
+      method: 'get',
+      data
+    })
+  }
+
+  export function getClientCourseApplyList(data) {
+    return request({
+      url: '/edu/course/client-apply',
+      method: 'get',
+      data
+    })
+  }
+
+  export function getClientCourseBoughtList(data) {
+    return request({
+      url: '/edu/course/client-bought',
       method: 'get',
       data
     })

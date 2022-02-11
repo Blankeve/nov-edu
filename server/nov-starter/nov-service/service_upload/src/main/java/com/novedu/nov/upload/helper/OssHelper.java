@@ -198,8 +198,8 @@ public class OssHelper {
                 FilenameExtension.equalsIgnoreCase(".doc")) {
             return "application/msword";
         }
-        if (FilenameExtension.equalsIgnoreCase(".xml")) {
-            return "text/xml";
+        if (FilenameExtension.equalsIgnoreCase(".mapping")) {
+            return "text/mapping";
         }
         //PDF
         if (FilenameExtension.equalsIgnoreCase(".pdf")) {

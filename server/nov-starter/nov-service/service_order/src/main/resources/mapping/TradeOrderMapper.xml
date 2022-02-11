@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.novedu.nov.order.mapper.TradeOrderMapper">
+
+    <select id="queryOrderPage" parameterType="TradeOrder" resultType="TradeOrder">
+        select o.id as id,
+        o.course_id as courseId,
+        o.teacher_id as teacherId,
+        o.uid as uid,
+        o.total_fee as totalFee,
+        o.pay_type as payType,
+        o.status as status,
+        o.create_time as createTime,
+        o.paid_time as paidTime,
+        u.nickname as nickname,
+        u.mobile as mobile,
+        c.title as courseTitle,
+        c.cover as courseCover,
+        t.name as teacherName
+        from trade_order o
+        left join ucenter_member u on o.uid = u.id
+        left join edu_course c on o.course_id = c.id
+        left join edu_teacher t on o.teacher_id = t.id
+        where o.is_deleted = 0
+        <if test="ew != null and ew.sqlSegment != null and ew.sqlSegment != ''">
+            and ${ew.sqlSegment}
+        </if>
+    </select>
+
+</mapper>

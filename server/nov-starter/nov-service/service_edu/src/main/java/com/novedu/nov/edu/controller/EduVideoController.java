@@ -45,6 +45,11 @@ public class EduVideoController {
         return videoService.queryVideoDetail(id);
     }
 
+    @PostMapping("/detail-client/{id}")
+    public BaseResult queryClientVideo(@PathVariable Long id) {
+        return videoService.queryClientVideo(id);
+    }
+
     @ApiOperation("删除")
     @DeleteMapping("/remove/{id}")
     public BaseResult removeVideo(@PathVariable Long id) {

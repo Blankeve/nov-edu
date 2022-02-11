@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.*;
 import com.novedu.nov.edu.entity.dto.EduCourseInfoDTO;
+import com.novedu.nov.edu.mapper.EduCourseApplyMapper;
 import com.novedu.nov.edu.mapper.EduCourseMapper;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 import com.novedu.nov.edu.service.*;
@@ -20,7 +21,9 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -57,6 +60,14 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     @Autowired
     RedisTemplate redisTemplate;
 
+    @Autowired
+    EduCommentService commentService;
+
+    @Autowired
+    EduCourseApplyMapper courseApplyMapper;
+
+    private String courseViewCountRedisKey = "course_play_count";
+
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public BaseResult saveCourse(EduCourseInfoDTO courseInfoDTO) {
@@ -81,7 +92,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     @Override
     public BaseResult queryCourseDetail(Long id) {
-        String key = "course_detail_"+id;
+        String key = "course_detail_" + id;
         boolean hasKey = redisTemplate.hasKey(key);
         EduCourseInfoVO courseInfoVO;
         if (hasKey) {
@@ -94,7 +105,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
                 arr2[i] = arr.get(i);
             }
             courseInfoVO.setSubjectIds(arr2);
-            redisTemplate.opsForValue().set(key, courseInfoVO, 1, TimeUnit.HOURS);
+            redisTemplate.opsForValue().set(key, courseInfoVO, 10, TimeUnit.MINUTES);
         }
         return BaseResult.success(courseInfoVO);
     }
@@ -151,7 +162,10 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
             queryWrapper.eq("status", courseInfoDTO.getStatus());
         if (!ObjectUtils.isEmpty(courseInfoDTO.getCreateTime()))
             queryWrapper.apply("course.create_time > date_format({0},'%Y-%m-%d')", courseInfoDTO.getCreateTime());
-        return BaseResult.success(courseMapper.queryPage(page, queryWrapper));
+        Page page1 = (Page) courseMapper.queryPage(page, queryWrapper);
+        List<EduCourseInfoVO> courses = page1.getRecords();
+        setCourseCommentCountAndViewCount2(courses);
+        return BaseResult.success(page1);
     }
 
     @Override
@@ -180,7 +194,9 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     @Override
     public BaseResult<List<EduCourse>> getClientCourseList() {
-        return BaseResult.success(query().orderByDesc("view_count").last("limit 8").list());
+        List<EduCourse> courses = query().orderByDesc("view_count").last("limit 8").list();
+        setCourseCommentCountAndViewCount(courses);
+        return BaseResult.success(courses);
     }
 
     @Override
@@ -203,7 +219,105 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
             else
                 queryWrapper.orderByDesc("create_time");
         }
-        return BaseResult.success(page(page, queryWrapper));
+        Page page1 = page(page, queryWrapper);
+        List<EduCourse> courses = page1.getRecords();
+        setCourseCommentCountAndViewCount(courses);
+        return BaseResult.success(page1);
+    }
+
+    private void setCourseCommentCountAndViewCount(List<EduCourse> courses) {
+        boolean hasKey = redisTemplate.hasKey(courseViewCountRedisKey);
+        if (!hasKey) {
+            return;
+        }
+        Map coursePlayCount = (Map) redisTemplate.opsForValue().get(courseViewCountRedisKey);
+        Map finalCoursePlayCount = coursePlayCount;
+        courses.forEach(o -> {
+                    QueryWrapper queryWrapper1 = new QueryWrapper();
+                    queryWrapper1.eq("course_id", o.getId());
+                    o.setCommentCount((long) commentService.count(queryWrapper1));
+                    if (finalCoursePlayCount != null) {
+                        o.setViewCount((Long) finalCoursePlayCount.get(o.getId()));
+                    }
+                }
+        );
+    }
+
+    private void setCourseCommentCountAndViewCount2(List<EduCourseInfoVO> courses) {
+        boolean hasKey = redisTemplate.hasKey(courseViewCountRedisKey);
+        if (!hasKey) {
+            return;
+        }
+        Map coursePlayCount = (Map) redisTemplate.opsForValue().get(courseViewCountRedisKey);
+        Map finalCoursePlayCount = coursePlayCount;
+        courses.forEach(o -> {
+                    QueryWrapper queryWrapper1 = new QueryWrapper();
+                    queryWrapper1.eq("course_id", o.getCourseId());
+                    o.setCourseCommentCount((long) commentService.count(queryWrapper1));
+                    if (finalCoursePlayCount != null) {
+                        o.setCourseViewCount((Long) finalCoursePlayCount.get(o.getCourseId()));
+                    }
+                }
+        );
+    }
+
+    /*统计各个课程的播放量*/
+    @Override
+    public BaseResult statisticsCoursePlayCount() {
+        Page page = (Page) queryCourseTree(new Page(1, count()), new EduCourseInfoDTO()).getData();
+        List<EduCourse> courses = page.getRecords();
+        String key = "video_play_count";
+        boolean hasKey = redisTemplate.hasKey(key);
+        Map videoPlayCounts = null;
+        Map coursePlayCounts = new HashMap();
+        if (hasKey)
+            videoPlayCounts = (Map) redisTemplate.opsForValue().get(key);
+        if (videoPlayCounts != null) {
+            Map finalVideoPlayCounts = videoPlayCounts;
+            for (EduCourse course : courses) {
+                Long courseViewCount = 0l;
+                List<EduChapter> chapters = course.getChildren();
+                if (!CollectionUtils.isEmpty(chapters))
+                    for (EduChapter chapter : chapters) {
+                        List<EduVideo> videos = chapter.getChildren();
+                        if (!CollectionUtils.isEmpty(videos))
+                            for (EduVideo video : videos) {
+                                Long playCount = (Long) finalVideoPlayCounts.get(video.getId());
+                                if (playCount != null)
+                                    courseViewCount += playCount;
+                            }
+                    }
+                coursePlayCounts.put(course.getId(), courseViewCount);
+            }
+        }
+        redisTemplate.opsForValue().set(courseViewCountRedisKey, coursePlayCounts);
+        return BaseResult.success();
+    }
+
+    @Override
+    public BaseResult<List<EduCourse>> getClientApplyCourseList() {
+        List<EduCourse> courses = query().orderByDesc("apply_count").last("limit 8").list();
+        setCourseCommentCountAndViewCount(courses);
+        return BaseResult.success(courses);
+    }
+
+    @Override
+    public BaseResult<List<EduCourse>> getClientBoughtCourseList() {
+        List<EduCourse> courses = query().orderByDesc("buy_count").last("limit 8").list();
+        setCourseCommentCountAndViewCount(courses);
+        return BaseResult.success(courses);
+    }
+
+    @Override
+    public BaseResult statisticsCourseApplyCount() {
+        courseMapper.statisticsCourseApplyCount();
+        return BaseResult.success();
+    }
+
+    @Override
+    public BaseResult statisticsCourseBuyCount() {
+        courseMapper.statisticsCourseBuyCount();
+        return BaseResult.success();
     }
 
 }

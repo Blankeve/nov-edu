@@ -57,7 +57,7 @@
       fit
       highlight-current-row
     >
-      <el-table-column  align="center" label="#" width="50">
+      <el-table-column align="center" label="#" width="50">
         <template slot-scope="scope">
           {{ scope.$index + 1 }}
         </template>
@@ -113,9 +113,15 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="浏览数量" align="center">
+      <el-table-column label="播放数量" align="center">
         <template slot-scope="scope">
           {{ scope.row.courseViewCount }}
+        </template>
+      </el-table-column>
+
+      <el-table-column label="评论数量" align="center">
+        <template slot-scope="scope">
+          {{ scope.row.courseCommentCount }}
         </template>
       </el-table-column>
 

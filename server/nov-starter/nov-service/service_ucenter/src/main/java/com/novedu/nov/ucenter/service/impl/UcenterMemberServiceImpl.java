@@ -39,6 +39,10 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
 
     @Override
     public BaseResult register(UcenterMember ucenterMemberDto) {
+        String username = ucenterMemberDto.getUsername();
+        int count = query().eq("username",username).count();
+        if(count>0)
+            return BaseResult.error("用户名存在!");
         String password = DigestUtils.md5DigestAsHex(ucenterMemberDto.getPassword().getBytes());
         ucenterMemberDto.setPassword(password);
         if(!StringUtils.hasText(ucenterMemberDto.getNickname())){
@@ -50,5 +54,10 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
             ucenterMemberDto.setNickname("学员"+sb.toString());
         }
         return BaseResult.successOrError(save(ucenterMemberDto));
+    }
+
+    @Override
+    public BaseResult getMemberInfo(Long id) {
+        return BaseResult.success(getById(id));
     }
 }

@@ -28,8 +28,8 @@ spring:
     password: ju2009jedis
     database: 0     #Redis提供了 16 个索引库，但是每个数据库之间是隔离互不共享的，客户端默认连接使用的是 0 号数据库
 #logging:
-#  config: classpath:logback-spring.xml
-#  config: classpath:properties/log4j2.xml
+#  config: classpath:logback-spring.mapping
+#  config: classpath:properties/log4j2.mapping
 #  config: classpath:properties/log4j.properties
 
 mybatis-plus:

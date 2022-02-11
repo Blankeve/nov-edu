@@ -82,8 +82,14 @@ public class EduCourseInfoVO implements Serializable {
     @ApiModelProperty(value = "销售数量")
     private Long courseBuyCount;
 
-    @ApiModelProperty(value = "浏览数量")
+    @ApiModelProperty(value = "播放数量")
     private Long courseViewCount;
+
+    @ApiModelProperty(value = "浏览数量")
+    private Long courseCommentCount;
+
+    @ApiModelProperty(value = "报名数量")
+    private Integer courseApplyCount;
 
     @ApiModelProperty(value = "课程状态 0未发布  1已发布")
     private Integer courseStatus;

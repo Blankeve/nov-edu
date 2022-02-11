@@ -1,0 +1,54 @@
+package com.novedu.nov.order.controller;
+
+
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.order.entity.TradeOrder;
+import com.novedu.nov.order.service.TradeOrderService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+
+/**
+ * <p>
+ * 订单 前端控制器
+ * </p>
+ *
+ * @author juam
+ * @since 2022-02-08
+ */
+@RestController
+@RequestMapping("/order/trade")
+@Api("订单管理的接口文档")
+public class TradeOrderController {
+
+    @Autowired
+    TradeOrderService tradeOrderService;
+
+    @ApiOperation("创建订单")
+    @PostMapping("/create")
+    public BaseResult createOrder(@RequestBody TradeOrder tradeOrder) {
+        return tradeOrderService.createOrder(tradeOrder);
+    }
+
+    @ApiOperation("查询订单")
+    @PostMapping("/detail/{id}")
+    public BaseResult queryOrderById(@PathVariable Long id) {
+        return tradeOrderService.queryOrderById(id);
+    }
+
+    @ApiOperation("查询用户是否已经下单")
+    @PostMapping("/hasbuy/{id}")
+    public BaseResult queryOrderByUidAndCourseId(HttpServletRequest request, @PathVariable Long id) {
+        return tradeOrderService.queryOrderByUidAndCourseId(request,id);
+    }
+
+    @PostMapping("/page")
+    public BaseResult queryOrderPage(Page page, TradeOrder order) {
+        return tradeOrderService.queryOrderPage(page, order);
+    }
+}
+

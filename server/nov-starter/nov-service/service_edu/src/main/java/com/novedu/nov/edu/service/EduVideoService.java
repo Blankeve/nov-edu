@@ -25,4 +25,6 @@ public interface EduVideoService extends IService<EduVideo> {
     BaseResult queryVideoDetail(Long id);
 
     BaseResult removeVideo(Long id);
+
+    BaseResult queryClientVideo(Long id);
 }

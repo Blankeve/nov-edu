@@ -2,6 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.novedu.nov.edu.mapper.EduCourseMapper">
 
+    <update id="statisticsCourseApplyCount">
+       UPDATE
+        edu_course course
+        SET course.apply_count = (SELECT count(*) FROM edu_course_apply a where  a.course_id = course.id)
+    </update>
+
+    <update id="statisticsCourseBuyCount">
+       UPDATE
+        edu_course course
+        SET course.buy_count = (SELECT count(*) FROM trade_order o where  o.course_id = course.id and o.status = 1)
+    </update>
+
     <select id="queryCourseDetail" parameterType="java.lang.Long" resultType="EduCourseInfoVO">
            select teacher.id as teacherId,
         teacher.name as teacherName,
@@ -16,6 +28,7 @@
         course.status as courseStatus,
         course.view_count as courseViewCount,
         course.buy_count as courseBuyCount,
+        course.apply_count as courseApplyCount,
         course.cover as courseCover,
         course.price as coursePrice,
         course.create_time as courseCreateTime,

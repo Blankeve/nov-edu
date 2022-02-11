@@ -52,7 +52,7 @@ public class CrmBannerServiceImpl extends ServiceImpl<CrmBannerMapper, CrmBanner
         if (hasKey) {
             list = (List<CrmBanner>) redisTemplate.opsForValue().get(key);
         } else {
-            list = query().orderByDesc("create_time").last("limit 2").list();
+            list = query().orderByDesc("create_time").last("limit 5").list();
             redisTemplate.opsForValue().set(key, list, 6, TimeUnit.HOURS);
         }
         return BaseResult.success(list);

@@ -61,4 +61,6 @@ public class EduComment implements Serializable {
     private Integer isDeleted;
 
     private Integer mark;
+
+    private Integer reported;
 }

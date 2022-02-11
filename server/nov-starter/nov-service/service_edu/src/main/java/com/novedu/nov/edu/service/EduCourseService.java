@@ -38,4 +38,14 @@ public interface EduCourseService extends IService<EduCourse> {
     BaseResult<List<EduCourse>> getClientCourseList();
 
     BaseResult queryClientCoursePage(Page page, EduCourseInfoDTO courseInfoDTO);
+
+    BaseResult statisticsCoursePlayCount();
+
+    BaseResult<List<EduCourse>> getClientApplyCourseList();
+
+    BaseResult<List<EduCourse>> getClientBoughtCourseList();
+
+    BaseResult statisticsCourseApplyCount();
+
+    BaseResult statisticsCourseBuyCount();
 }

@@ -417,6 +417,7 @@ export default {
         this.chapterFormVisible = true;
       } else if (data.courseId) {
         this.video = {};
+        this.video.isFree = 1;
         this.video.chapterId = data.id;
         this.videoFormTitle = "添加小节";
         this.videoFormVisible = true;
