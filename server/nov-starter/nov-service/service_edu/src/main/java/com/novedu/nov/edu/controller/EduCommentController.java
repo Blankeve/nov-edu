@@ -51,8 +51,8 @@ public class EduCommentController {
 
     @ApiOperation("举报")
     @PutMapping("/report/{id}")
-    public BaseResult reportComment(@PathVariable Long id) {
-        return eduCommentService.reportComment(id);
+    public BaseResult reportComment(@PathVariable Long id,HttpServletRequest request) {
+        return eduCommentService.reportComment(id,request);
     }
 }
 

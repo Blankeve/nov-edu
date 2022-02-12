@@ -159,6 +159,7 @@
     <el-dialog
       :title="chapterFormTitle"
       :visible.sync="chapterFormVisible"
+      :close-on-click-modal="false"
       center=""
     >
       <el-form :model="form" :label-width="formLabelWidth">
@@ -184,6 +185,7 @@
     <el-dialog
       :title="videoFormTitle"
       :visible.sync="videoFormVisible"
+      :close-on-click-modal="false"
       center=""
     >
       <el-form :model="form" :label-width="formLabelWidth">
@@ -289,7 +291,7 @@ export default {
       video: {
         title: "",
         chapterId: null,
-        isFree: 1,
+        isFree: "1",
         sort: null,
         videoSourcePath: "",
         duration: null,
@@ -417,7 +419,6 @@ export default {
         this.chapterFormVisible = true;
       } else if (data.courseId) {
         this.video = {};
-        this.video.isFree = 1;
         this.video.chapterId = data.id;
         this.videoFormTitle = "添加小节";
         this.videoFormVisible = true;

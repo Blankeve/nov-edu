@@ -42,9 +42,7 @@ public class EduCourseInfoDTO {
 
     private Integer clientSubjectId;
 
-    private Integer orderFieldPriceAsc;
-
-    private Integer orderFieldNewestAsc;
+    private Integer orderFieldValue;
 
     @ApiModelProperty(value = "课程标题")
     private String title;
@@ -83,4 +81,6 @@ public class EduCourseInfoDTO {
     @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
     @ApiModelProperty(value = "更新时间")
     private Date updateTime;
+
+    public enum ORDER_BY{NONE,NEWEST_ASC,NEWEST_DESC,PRICE_ASC,PRICE_DESC}
 }

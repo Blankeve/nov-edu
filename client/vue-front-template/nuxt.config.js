@@ -30,23 +30,11 @@ module.exports = {
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
+          // loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
       }
     }
-  },
-
-  render: {
-    resourceHints: false,
-  },
-
-  router: {
-    prefetchPayloads: false
-  },
-
-  router: {
-    prefetchLinks: false
   },
 
   plugins: [
@@ -56,7 +44,14 @@ module.exports = {
 
   css: [
     'swiper/dist/css/swiper.css',
-    '@/assets/icon/iconfont.css'
+    '@/assets/icon/iconfont.css',
+    '@/assets/main.css',
   ],
+
+  axios: {
+    // 超时设置
+    timeout: 10000,
+    retry: { retries: 3 }
+  },
 }
 

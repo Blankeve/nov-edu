@@ -1,0 +1,710 @@
+2022-02-11 19:04:55.210 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu] & group[DEFAULT_GROUP]
+2022-02-11 19:04:55.218 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu.properties] & group[DEFAULT_GROUP]
+2022-02-11 19:04:55.225 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 19:04:59.477 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 19:04:59.482 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 19:05:00.752 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-ucenter] & group[DEFAULT_GROUP]
+2022-02-11 19:05:00.761 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-ucenter.properties] & group[DEFAULT_GROUP]
+2022-02-11 19:05:00.767 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-ucenter-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 19:05:03.571 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 19:05:03.575 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 19:05:08.237 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-statistics] & group[DEFAULT_GROUP]
+2022-02-11 19:05:08.245 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-statistics.properties] & group[DEFAULT_GROUP]
+2022-02-11 19:05:08.252 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-statistics-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 19:05:11.933 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 19:05:11.940 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 19:05:16.255 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-order] & group[DEFAULT_GROUP]
+2022-02-11 19:05:16.263 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-order.properties] & group[DEFAULT_GROUP]
+2022-02-11 19:05:16.268 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-order-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 19:05:19.899 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 19:05:19.902 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 19:18:15.792 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 19:18:15.792 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 19:18:15.793 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 19:18:15.793 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 19:18:20.809 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 19:18:20.810 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 19:18:43.939 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 19:18:43.939 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 19:19:06.076 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-order] & group[DEFAULT_GROUP]
+2022-02-11 19:19:06.080 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-order.properties] & group[DEFAULT_GROUP]
+2022-02-11 19:19:06.083 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-order-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 19:19:09.523 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 19:19:09.526 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 19:22:59.804 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 19:22:59.804 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 19:22:59.804 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 19:22:59.805 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 19:23:05.142 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-order] & group[DEFAULT_GROUP]
+2022-02-11 19:23:05.147 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-order.properties] & group[DEFAULT_GROUP]
+2022-02-11 19:23:05.150 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-order-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 19:23:08.752 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 19:23:08.756 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 19:23:22.345 [http-nio-8085-exec-2] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@271540c6 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 19:23:27.356 [http-nio-8085-exec-2] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@2db74b8b (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 19:23:32.360 [http-nio-8085-exec-2] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@73ea4913 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 19:23:37.363 [http-nio-8085-exec-2] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@7429ce3 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 19:23:42.372 [http-nio-8085-exec-2] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@4f6d42fa (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 19:23:47.386 [http-nio-8085-exec-2] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@3f35748a (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 19:24:59.697 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 19:24:59.697 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 19:24:59.697 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 19:24:59.698 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 19:25:04.958 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-order] & group[DEFAULT_GROUP]
+2022-02-11 19:25:04.962 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-order.properties] & group[DEFAULT_GROUP]
+2022-02-11 19:25:04.965 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-order-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 19:25:08.436 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 19:25:08.439 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 19:25:34.608 [http-nio-8085-exec-4] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@67c1a225 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 19:25:39.626 [http-nio-8085-exec-4] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@6d39c955 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 19:25:44.636 [http-nio-8085-exec-4] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@4201153e (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 19:25:49.651 [http-nio-8085-exec-4] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@3a8927e4 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 19:25:51.173 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 19:25:51.174 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 19:25:51.174 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 19:25:51.174 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 19:25:56.565 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-ucenter] & group[DEFAULT_GROUP]
+2022-02-11 19:25:56.569 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-ucenter.properties] & group[DEFAULT_GROUP]
+2022-02-11 19:25:56.572 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-ucenter-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 19:25:59.368 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 19:25:59.373 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 19:30:31.448 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 19:30:31.449 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 19:30:31.449 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 19:30:31.449 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 19:30:39.767 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu] & group[DEFAULT_GROUP]
+2022-02-11 19:30:39.773 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu.properties] & group[DEFAULT_GROUP]
+2022-02-11 19:30:39.775 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 19:30:43.604 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 19:30:43.608 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 19:54:50.893 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-upload] & group[DEFAULT_GROUP]
+2022-02-11 19:54:50.897 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-upload.properties] & group[DEFAULT_GROUP]
+2022-02-11 19:54:54.627 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 19:54:54.747 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 19:57:23.747 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 19:57:23.747 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 19:57:23.748 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 19:57:23.748 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 19:57:30.550 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-ucenter] & group[DEFAULT_GROUP]
+2022-02-11 19:57:30.554 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-ucenter.properties] & group[DEFAULT_GROUP]
+2022-02-11 19:57:30.557 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-ucenter-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 19:57:33.221 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 19:57:33.225 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 19:59:16.111 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 19:59:16.112 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 19:59:16.112 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 19:59:16.113 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 19:59:22.897 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-ucenter] & group[DEFAULT_GROUP]
+2022-02-11 19:59:22.902 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-ucenter.properties] & group[DEFAULT_GROUP]
+2022-02-11 19:59:22.905 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-ucenter-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 19:59:25.738 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 19:59:25.741 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 20:00:30.856 [http-nio-8081-exec-8] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@2704428e (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:00:35.014 [http-nio-8081-exec-5] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@113cde23 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:00:45.644 [http-nio-8086-exec-1] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@2b544c03 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:00:50.650 [http-nio-8086-exec-1] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@129e320e (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:00:55.664 [http-nio-8086-exec-1] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@79a8db65 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:03:30.639 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 20:03:30.639 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 20:03:30.640 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 20:03:30.641 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 20:03:35.926 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-order] & group[DEFAULT_GROUP]
+2022-02-11 20:03:35.929 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-order.properties] & group[DEFAULT_GROUP]
+2022-02-11 20:03:35.932 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-order-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 20:03:39.499 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 20:03:39.506 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 20:06:56.758 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 20:06:56.758 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 20:06:56.758 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 20:06:56.759 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 20:07:04.074 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu] & group[DEFAULT_GROUP]
+2022-02-11 20:07:04.078 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu.properties] & group[DEFAULT_GROUP]
+2022-02-11 20:07:04.080 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 20:07:07.856 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 20:07:07.860 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 20:13:35.979 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 20:13:35.979 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 20:13:35.979 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 20:13:35.980 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 20:13:44.285 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu] & group[DEFAULT_GROUP]
+2022-02-11 20:13:44.289 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu.properties] & group[DEFAULT_GROUP]
+2022-02-11 20:13:44.291 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 20:13:49.122 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 20:13:49.126 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 20:14:05.125 [http-nio-8081-exec-2] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@21778c9 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:14:35.024 [http-nio-8081-exec-5] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@15647eb1 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:14:36.228 [http-nio-8081-exec-6] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@226c8b9 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:14:37.371 [http-nio-8081-exec-1] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@234ccb3d (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:14:53.340 [http-nio-8081-exec-8] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@eaecba5 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:15:06.012 [http-nio-8081-exec-7] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@6a8f9af5 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:15:07.049 [http-nio-8081-exec-8] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@31c97f06 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:15:27.904 [http-nio-8085-exec-5] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@727d325e (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:15:30.486 [http-nio-8085-exec-6] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@3d547040 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:15:32.919 [http-nio-8085-exec-5] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@775f9aad (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:15:35.494 [http-nio-8085-exec-6] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@7856e98e (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:15:37.929 [http-nio-8085-exec-5] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@6caba9da (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:15:40.503 [http-nio-8085-exec-6] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@2f74182f (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:15:42.940 [http-nio-8085-exec-5] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@6ee8c3a2 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:15:45.517 [http-nio-8085-exec-6] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@49e4303f (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:15:47.955 [http-nio-8085-exec-5] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@15aff936 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:15:50.522 [http-nio-8085-exec-6] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@572c9f33 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:15:52.960 [http-nio-8085-exec-5] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@1e2e93dc (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:15:55.525 [http-nio-8085-exec-6] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@187916c1 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:16:01.870 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 20:16:01.871 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 20:16:01.871 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 20:16:01.871 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 20:16:07.073 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-ucenter] & group[DEFAULT_GROUP]
+2022-02-11 20:16:07.079 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-ucenter.properties] & group[DEFAULT_GROUP]
+2022-02-11 20:16:07.082 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-ucenter-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 20:16:09.831 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 20:16:09.836 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 20:44:05.015 [http-nio-8081-exec-3] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@5d4c1329 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:44:35.025 [http-nio-8081-exec-8] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@11dd508b (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:44:35.025 [http-nio-8081-exec-10] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@79749ec6 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:46:36.941 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 20:46:36.941 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 20:46:36.941 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 20:46:36.942 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 20:46:45.356 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu] & group[DEFAULT_GROUP]
+2022-02-11 20:46:45.360 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu.properties] & group[DEFAULT_GROUP]
+2022-02-11 20:46:45.362 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 20:46:49.346 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 20:46:49.349 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 20:47:35.005 [http-nio-8081-exec-4] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@2d9a3aba (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:47:40.024 [Thread-9] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 20:47:40.024 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 20:47:40.024 [Thread-9] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 20:47:40.025 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 20:47:48.508 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu] & group[DEFAULT_GROUP]
+2022-02-11 20:47:48.512 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu.properties] & group[DEFAULT_GROUP]
+2022-02-11 20:47:48.515 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 20:47:52.517 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 20:47:52.521 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 20:52:09.798 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool-HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m45s683ms179µs400ns).
+2022-02-11 20:52:09.809 [http-nio-8081-exec-2] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
+	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
+	at org.apache.catalina.connector.CoyoteOutputStream.flush(CoyoteOutputStream.java:118)
+	at java.io.FilterOutputStream.flush(FilterOutputStream.java:140)
+	at com.fasterxml.jackson.core.json.UTF8JsonGenerator.flush(UTF8JsonGenerator.java:1178)
+	at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:1008)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:346)
+	at org.springframework.http.converter.AbstractGenericHttpMessageConverter.write(AbstractGenericHttpMessageConverter.java:104)
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:277)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.handleReturnValue(RequestResponseBodyMethodProcessor.java:181)
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:82)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:123)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:403)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:61)
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:141)
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80)
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1300)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1111)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1057)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1707)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
+	at sun.nio.ch.SocketDispatcher.write0(Native Method)
+	at sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:51)
+	at sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:93)
+	at sun.nio.ch.IOUtil.write(IOUtil.java:65)
+	at sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:469)
+	at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:135)
+	at org.apache.tomcat.util.net.NioBlockingSelector.write(NioBlockingSelector.java:118)
+	at org.apache.tomcat.util.net.NioSelectorPool.write(NioSelectorPool.java:151)
+	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1367)
+	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:766)
+	at org.apache.tomcat.util.net.SocketWrapperBase.flushBlocking(SocketWrapperBase.java:719)
+	at org.apache.tomcat.util.net.SocketWrapperBase.flush(SocketWrapperBase.java:709)
+	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.flush(Http11OutputBuffer.java:572)
+	at org.apache.coyote.http11.filters.IdentityOutputFilter.flush(IdentityOutputFilter.java:117)
+	at org.apache.coyote.http11.Http11OutputBuffer.flush(Http11OutputBuffer.java:220)
+	at org.apache.coyote.http11.Http11Processor.flush(Http11Processor.java:1196)
+	at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:402)
+	at org.apache.coyote.Response.action(Response.java:209)
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
+	... 61 common frames omitted
+2022-02-11 20:52:09.830 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 20:52:09.830 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 20:52:09.830 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 20:52:09.830 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 20:52:10.038 [http-nio-8081-exec-10] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
+	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
+	at org.apache.catalina.connector.CoyoteOutputStream.flush(CoyoteOutputStream.java:118)
+	at java.io.FilterOutputStream.flush(FilterOutputStream.java:140)
+	at com.fasterxml.jackson.core.json.UTF8JsonGenerator.flush(UTF8JsonGenerator.java:1178)
+	at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:1008)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:346)
+	at org.springframework.http.converter.AbstractGenericHttpMessageConverter.write(AbstractGenericHttpMessageConverter.java:104)
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:277)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.handleReturnValue(RequestResponseBodyMethodProcessor.java:181)
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:82)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:123)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:403)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:61)
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:141)
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80)
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1300)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1111)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1057)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:626)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1707)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
+	at sun.nio.ch.SocketDispatcher.write0(Native Method)
+	at sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:51)
+	at sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:93)
+	at sun.nio.ch.IOUtil.write(IOUtil.java:65)
+	at sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:469)
+	at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:135)
+	at org.apache.tomcat.util.net.NioBlockingSelector.write(NioBlockingSelector.java:118)
+	at org.apache.tomcat.util.net.NioSelectorPool.write(NioSelectorPool.java:151)
+	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1367)
+	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:766)
+	at org.apache.tomcat.util.net.SocketWrapperBase.flushBlocking(SocketWrapperBase.java:719)
+	at org.apache.tomcat.util.net.SocketWrapperBase.flush(SocketWrapperBase.java:709)
+	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.flush(Http11OutputBuffer.java:572)
+	at org.apache.coyote.http11.filters.ChunkedOutputFilter.flush(ChunkedOutputFilter.java:157)
+	at org.apache.coyote.http11.Http11OutputBuffer.flush(Http11OutputBuffer.java:220)
+	at org.apache.coyote.http11.Http11Processor.flush(Http11Processor.java:1196)
+	at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:402)
+	at org.apache.coyote.Response.action(Response.java:209)
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
+	... 61 common frames omitted
+2022-02-11 20:52:19.170 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu] & group[DEFAULT_GROUP]
+2022-02-11 20:52:19.174 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu.properties] & group[DEFAULT_GROUP]
+2022-02-11 20:52:19.176 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 20:52:23.274 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 20:52:23.277 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 20:53:32.471 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 20:53:32.471 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 20:53:32.471 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 20:53:32.472 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 20:53:39.661 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu] & group[DEFAULT_GROUP]
+2022-02-11 20:53:39.666 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu.properties] & group[DEFAULT_GROUP]
+2022-02-11 20:53:39.668 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 20:53:43.734 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 20:53:43.738 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 20:54:15.307 [http-nio-8081-exec-5] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@9808727 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:54:15.307 [http-nio-8081-exec-6] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@76e53532 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:54:19.042 [http-nio-8081-exec-9] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@12fb7d2a (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:54:35.028 [http-nio-8081-exec-3] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@7da6d94e (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:55:05.028 [http-nio-8081-exec-1] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@9653cea (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:55:12.053 [http-nio-8081-exec-4] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@5fd79332 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:55:12.053 [http-nio-8081-exec-9] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@47222749 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:55:12.053 [http-nio-8081-exec-7] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@223084d (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:55:17.068 [http-nio-8081-exec-4] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@4eb26da1 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:57:06.193 [http-nio-8085-exec-2] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@3710403 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:57:11.210 [http-nio-8085-exec-2] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@348f7cd2 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:57:16.215 [http-nio-8085-exec-2] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@40acb683 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:57:21.232 [http-nio-8085-exec-2] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@15a13920 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:57:26.236 [http-nio-8085-exec-2] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@4c01131e (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:57:31.253 [http-nio-8085-exec-2] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@372fb4e5 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:57:48.842 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 20:57:48.842 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 20:57:48.842 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 20:57:48.843 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 20:57:54.254 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu] & group[DEFAULT_GROUP]
+2022-02-11 20:57:54.259 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu.properties] & group[DEFAULT_GROUP]
+2022-02-11 20:57:54.262 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 20:57:59.447 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 20:57:59.451 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 20:58:25.032 [http-nio-8081-exec-1] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@42cbe5a5 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:58:30.038 [http-nio-8081-exec-1] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@7c2968fc (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:58:35.746 [http-nio-8081-exec-1] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@de87116 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:58:35.746 [http-nio-8081-exec-3] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@3bd091fb (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:58:35.746 [http-nio-8081-exec-9] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@47ac7542 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:58:47.962 [http-nio-8081-exec-9] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@32266ee2 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 20:58:47.962 [http-nio-8081-exec-1] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@e600ca9 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:09:01.853 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 21:09:01.853 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 21:09:01.853 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 21:09:01.854 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 21:09:19.950 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu] & group[DEFAULT_GROUP]
+2022-02-11 21:09:19.954 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu.properties] & group[DEFAULT_GROUP]
+2022-02-11 21:09:19.957 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 21:09:24.055 [main] WARN  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext-Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sysConfigCache' defined in file [F:\my space\nov-edu\server\nov-starter\nov-common\target\classes\com\novedu\nov\common\config\SysConfigCache.class]: Invocation of init method failed; nested exception is org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
+### The error may exist in com/novedu/nov/common/module/mapper/SysConfigMapper.java (best guess)
+### The error may involve com.novedu.nov.common.module.mapper.SysConfigMapper.selectList
+### The error occurred while executing a query
+### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
+2022-02-11 21:09:25.084 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 21:09:25.084 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 21:09:25.084 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 21:09:25.084 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 21:09:35.674 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu] & group[DEFAULT_GROUP]
+2022-02-11 21:09:35.678 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu.properties] & group[DEFAULT_GROUP]
+2022-02-11 21:09:35.681 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 21:09:39.623 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 21:09:39.626 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 21:10:29.789 [http-nio-8085-exec-5] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@1278484 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:10:34.805 [http-nio-8085-exec-5] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@bdfeff4 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:10:39.808 [http-nio-8085-exec-5] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@73e3ce10 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:10:44.820 [http-nio-8085-exec-5] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@7f591c46 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:10:49.821 [http-nio-8085-exec-5] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@2ef28fa4 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:10:54.822 [http-nio-8085-exec-5] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@7480d83f (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:11:22.631 [http-nio-8085-exec-3] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@2ff88502 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:11:27.637 [http-nio-8085-exec-3] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@2500ee72 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:11:32.638 [http-nio-8085-exec-3] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@bb92d21 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:11:37.654 [http-nio-8085-exec-3] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@423f7ef8 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:11:42.666 [http-nio-8085-exec-3] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@687ddbd8 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:11:47.674 [http-nio-8085-exec-3] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@3d1211b7 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:13:36.277 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 21:13:36.277 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 21:13:36.278 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 21:13:36.278 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 21:13:41.507 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-ucenter] & group[DEFAULT_GROUP]
+2022-02-11 21:13:41.513 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-ucenter.properties] & group[DEFAULT_GROUP]
+2022-02-11 21:13:41.515 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-ucenter-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 21:13:44.161 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 21:13:44.165 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 21:14:53.790 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool-HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m9s299ms399µs).
+2022-02-11 21:14:53.813 [http-nio-8086-exec-2] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
+	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
+	at org.apache.catalina.connector.CoyoteOutputStream.flush(CoyoteOutputStream.java:118)
+	at java.io.FilterOutputStream.flush(FilterOutputStream.java:140)
+	at com.fasterxml.jackson.core.json.UTF8JsonGenerator.flush(UTF8JsonGenerator.java:1178)
+	at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:1008)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:346)
+	at org.springframework.http.converter.AbstractGenericHttpMessageConverter.write(AbstractGenericHttpMessageConverter.java:104)
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:277)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.handleReturnValue(RequestResponseBodyMethodProcessor.java:181)
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:82)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:123)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:407)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:61)
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:141)
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80)
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1300)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1111)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1057)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1707)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
+	at sun.nio.ch.SocketDispatcher.write0(Native Method)
+	at sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:51)
+	at sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:93)
+	at sun.nio.ch.IOUtil.write(IOUtil.java:65)
+	at sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:469)
+	at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:135)
+	at org.apache.tomcat.util.net.NioBlockingSelector.write(NioBlockingSelector.java:118)
+	at org.apache.tomcat.util.net.NioSelectorPool.write(NioSelectorPool.java:151)
+	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1367)
+	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:766)
+	at org.apache.tomcat.util.net.SocketWrapperBase.flushBlocking(SocketWrapperBase.java:719)
+	at org.apache.tomcat.util.net.SocketWrapperBase.flush(SocketWrapperBase.java:709)
+	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.flush(Http11OutputBuffer.java:572)
+	at org.apache.coyote.http11.filters.IdentityOutputFilter.flush(IdentityOutputFilter.java:117)
+	at org.apache.coyote.http11.Http11OutputBuffer.flush(Http11OutputBuffer.java:220)
+	at org.apache.coyote.http11.Http11Processor.flush(Http11Processor.java:1196)
+	at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:402)
+	at org.apache.coyote.Response.action(Response.java:209)
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
+	... 61 common frames omitted
+2022-02-11 21:14:53.822 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 21:14:53.822 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 21:14:53.822 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 21:14:53.823 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 21:14:56.114 [http-nio-8086-exec-4] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+java.lang.NullPointerException: null
+	at org.springframework.web.util.UrlPathHelper.getSanitizedPath(UrlPathHelper.java:355)
+	at org.springframework.web.util.UrlPathHelper.decodeAndCleanUriString(UrlPathHelper.java:495)
+	at org.springframework.web.util.UrlPathHelper.getOriginatingRequestUri(UrlPathHelper.java:440)
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.addContentDispositionHeader(AbstractMessageConverterMethodProcessor.java:423)
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:275)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.handleReturnValue(RequestResponseBodyMethodProcessor.java:181)
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:82)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:123)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:403)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:61)
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:141)
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80)
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1300)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1111)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1057)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1707)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2022-02-11 21:15:03.765 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-order] & group[DEFAULT_GROUP]
+2022-02-11 21:15:03.770 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-order.properties] & group[DEFAULT_GROUP]
+2022-02-11 21:15:03.773 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-order-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 21:15:08.432 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 21:15:08.436 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 21:22:10.215 [http-nio-8086-exec-4] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@42931722 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:31:34.552 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 21:31:34.552 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 21:31:34.552 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 21:31:34.552 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 21:31:41.904 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu] & group[DEFAULT_GROUP]
+2022-02-11 21:31:41.908 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu.properties] & group[DEFAULT_GROUP]
+2022-02-11 21:31:41.910 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 21:31:46.019 [main] WARN  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext-Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sysConfigCache' defined in file [F:\my space\nov-edu\server\nov-starter\nov-common\target\classes\com\novedu\nov\common\config\SysConfigCache.class]: Invocation of init method failed; nested exception is org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
+### The error may exist in com/novedu/nov/common/module/mapper/SysConfigMapper.java (best guess)
+### The error may involve com.novedu.nov.common.module.mapper.SysConfigMapper.selectList
+### The error occurred while executing a query
+### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
+2022-02-11 21:31:47.041 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 21:31:47.041 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 21:31:47.041 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 21:31:47.042 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 21:31:54.023 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu] & group[DEFAULT_GROUP]
+2022-02-11 21:31:54.027 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu.properties] & group[DEFAULT_GROUP]
+2022-02-11 21:31:54.029 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 21:31:58.132 [main] WARN  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext-Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sysConfigCache' defined in file [F:\my space\nov-edu\server\nov-starter\nov-common\target\classes\com\novedu\nov\common\config\SysConfigCache.class]: Invocation of init method failed; nested exception is org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
+### The error may exist in com/novedu/nov/common/module/mapper/SysConfigMapper.java (best guess)
+### The error may involve com.novedu.nov.common.module.mapper.SysConfigMapper.selectList
+### The error occurred while executing a query
+### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
+2022-02-11 21:31:59.155 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 21:31:59.155 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 21:31:59.156 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 21:31:59.156 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 21:32:23.990 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu] & group[DEFAULT_GROUP]
+2022-02-11 21:32:23.994 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu.properties] & group[DEFAULT_GROUP]
+2022-02-11 21:32:23.997 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 21:32:28.122 [main] WARN  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext-Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sysConfigCache' defined in file [F:\my space\nov-edu\server\nov-starter\nov-common\target\classes\com\novedu\nov\common\config\SysConfigCache.class]: Invocation of init method failed; nested exception is org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
+### The error may exist in com/novedu/nov/common/module/mapper/SysConfigMapper.java (best guess)
+### The error may involve com.novedu.nov.common.module.mapper.SysConfigMapper.selectList
+### The error occurred while executing a query
+### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
+2022-02-11 21:32:29.147 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 21:32:29.147 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 21:32:29.148 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 21:32:29.148 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 21:32:55.222 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu] & group[DEFAULT_GROUP]
+2022-02-11 21:32:55.228 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu.properties] & group[DEFAULT_GROUP]
+2022-02-11 21:32:55.231 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 21:33:00.053 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 21:33:00.057 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 21:33:35.011 [http-nio-8081-exec-7] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@14a5275e (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:33:35.011 [http-nio-8081-exec-4] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@3d54e934 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:33:40.022 [http-nio-8081-exec-4] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@45bbf676 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:34:05.012 [http-nio-8081-exec-3] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@80da349 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:34:05.027 [http-nio-8081-exec-2] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@532b3dbb (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:34:10.032 [http-nio-8081-exec-2] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@2b74d765 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:34:35.025 [http-nio-8081-exec-6] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@170dd7a0 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:34:35.025 [http-nio-8081-exec-8] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@24dd4b5e (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:34:40.031 [http-nio-8081-exec-6] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@3dbb9f6a (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:38:23.726 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 21:38:23.726 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 21:38:23.726 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 21:38:23.727 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 21:38:31.031 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu] & group[DEFAULT_GROUP]
+2022-02-11 21:38:31.036 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu.properties] & group[DEFAULT_GROUP]
+2022-02-11 21:38:31.039 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 21:38:36.095 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 21:38:36.100 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 21:39:35.017 [http-nio-8081-exec-3] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@61769547 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:40:52.437 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool-HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=46s538ms728µs500ns).
+2022-02-11 21:41:49.056 [Thread-9] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 21:41:49.056 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 21:41:49.056 [Thread-9] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 21:41:49.057 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 21:41:56.594 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu] & group[DEFAULT_GROUP]
+2022-02-11 21:41:56.598 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu.properties] & group[DEFAULT_GROUP]
+2022-02-11 21:41:56.600 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu-dev.properties] & group[DEFAULT_GROUP]
+2022-02-11 21:42:01.727 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 21:42:01.732 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-02-11 21:42:35.024 [http-nio-8081-exec-6] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@376b1d6a (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:42:35.024 [http-nio-8081-exec-5] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@7fe41d22 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:42:35.024 [http-nio-8081-exec-7] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@27cf4e6b (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:42:38.276 [http-nio-8081-exec-8] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@1e4f92bb (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:42:38.307 [http-nio-8081-exec-9] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@3390e57c (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:42:40.033 [http-nio-8081-exec-5] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@1790d061 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:42:40.033 [http-nio-8081-exec-6] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@59c97d9b (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:42:40.033 [http-nio-8081-exec-7] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@536eed9b (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:42:43.280 [http-nio-8081-exec-8] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@3015cffd (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:43:00.981 [http-nio-8086-exec-8] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@52b0545e (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:43:05.984 [http-nio-8086-exec-8] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@48544e8f (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-02-11 21:43:06.340 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 21:43:06.340 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 21:43:06.340 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 21:43:06.341 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 21:43:06.372 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 21:43:06.372 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 21:43:06.372 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 21:43:06.373 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 21:43:06.405 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 21:43:06.405 [Thread-9] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 21:43:06.405 [Thread-9] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 21:43:06.407 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 21:43:06.450 [Thread-9] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 21:43:06.450 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 21:43:06.450 [Thread-9] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 21:43:06.451 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-02-11 21:43:06.487 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-02-11 21:43:06.487 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-02-11 21:43:06.487 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-02-11 21:43:06.488 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end

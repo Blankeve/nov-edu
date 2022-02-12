@@ -64,6 +64,7 @@
     <el-dialog
       :title="configFormTitle"
       :visible.sync="configFormVisible"
+      :close-on-click-modal="false"
       width="500px"
       center=""
     >

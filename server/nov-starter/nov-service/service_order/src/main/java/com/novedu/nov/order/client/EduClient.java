@@ -31,4 +31,12 @@ public interface EduClient {
     @PostMapping("/edu/course-apply/already")
     BaseResult queryCourseApplyByCourseIdAndUid(@RequestBody EduCourseApply courseApply);
 
+    @ApiOperation("统计课程报名人数")
+    @GetMapping("/edu/course/statistics/course/applyCount")
+     BaseResult statisticsCourseApplyCount();
+
+    @ApiOperation("统计课程购买量")
+    @GetMapping("/edu/course/statistics/course/buyCount")
+     BaseResult statisticsCourseBuyCount();
+
 }

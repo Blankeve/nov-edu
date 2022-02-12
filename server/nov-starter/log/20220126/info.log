@@ -1,0 +1,254 @@
+2022-01-26 20:37:48.381 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-01-26 20:37:48.951 [main] INFO  org.reflections.Reflections-Reflections took 30 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-01-26 20:37:48.981 [main] INFO  org.reflections.Reflections-Reflections took 20 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-01-26 20:37:48.996 [main] INFO  org.reflections.Reflections-Reflections took 15 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-01-26 20:37:49.152 [main] INFO  org.reflections.Reflections-Reflections took 156 ms to scan 195 urls, producing 0 keys and 0 values 
+2022-01-26 20:37:49.161 [main] INFO  org.reflections.Reflections-Reflections took 9 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-01-26 20:37:49.171 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-01-26 20:37:49.191 [main] INFO  org.reflections.Reflections-Reflections took 20 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-01-26 20:37:49.316 [main] INFO  org.reflections.Reflections-Reflections took 125 ms to scan 195 urls, producing 0 keys and 0 values 
+2022-01-26 20:37:51.357 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-edu-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu,DEFAULT_GROUP'}]
+2022-01-26 20:37:51.362 [main] INFO  com.novedu.nov.EduServiceApplication-The following profiles are active: dev
+2022-01-26 20:37:51.852 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-01-26 20:37:51.861 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-01-26 20:37:51.892 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Finished Spring Data repository scanning in 18ms. Found 0 Redis repository interfaces.
+2022-01-26 20:37:52.057 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=b5f446e7-90e4-3844-901d-abb4ea7ae9b8
+2022-01-26 20:37:52.472 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat initialized with port(s): 8081 (http)
+2022-01-26 20:37:52.481 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Initializing ProtocolHandler ["http-nio-8081"]
+2022-01-26 20:37:52.481 [main] INFO  org.apache.catalina.core.StandardService-Starting service [Tomcat]
+2022-01-26 20:37:52.481 [main] INFO  org.apache.catalina.core.StandardEngine-Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-01-26 20:37:52.612 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring embedded WebApplicationContext
+2022-01-26 20:37:52.612 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext-Root WebApplicationContext: initialization completed in 1230 ms
+2022-01-26 20:37:53.642 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-26 20:37:53.642 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-26 20:37:53.837 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-01-26 20:37:54.162 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-26 20:37:54.957 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Starting ProtocolHandler ["http-nio-8081"]
+2022-01-26 20:37:54.962 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat started on port(s): 8081 (http) with context path ''
+2022-01-26 20:37:55.982 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-26 20:37:56.342 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'
+2022-01-26 20:37:56.417 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Pausing ProtocolHandler ["http-nio-8081"]
+2022-01-26 20:37:56.417 [main] INFO  org.apache.catalina.core.StandardService-Stopping service [Tomcat]
+2022-01-26 20:37:56.417 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Stopping ProtocolHandler ["http-nio-8081"]
+2022-01-26 20:37:56.422 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Destroying ProtocolHandler ["http-nio-8081"]
+2022-01-26 20:37:56.422 [main] INFO  org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener-
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-01-26 20:51:48.272 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-01-26 20:51:48.823 [main] INFO  org.reflections.Reflections-Reflections took 30 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-01-26 20:51:48.852 [main] INFO  org.reflections.Reflections-Reflections took 15 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-01-26 20:51:48.867 [main] INFO  org.reflections.Reflections-Reflections took 15 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-01-26 20:51:49.022 [main] INFO  org.reflections.Reflections-Reflections took 155 ms to scan 195 urls, producing 0 keys and 0 values 
+2022-01-26 20:51:49.033 [main] INFO  org.reflections.Reflections-Reflections took 11 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-01-26 20:51:49.042 [main] INFO  org.reflections.Reflections-Reflections took 9 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-01-26 20:51:49.062 [main] INFO  org.reflections.Reflections-Reflections took 20 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-01-26 20:51:49.187 [main] INFO  org.reflections.Reflections-Reflections took 125 ms to scan 195 urls, producing 0 keys and 0 values 
+2022-01-26 20:51:50.145 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-edu-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu,DEFAULT_GROUP'}]
+2022-01-26 20:51:50.153 [main] INFO  com.novedu.nov.EduServiceApplication-The following profiles are active: dev
+2022-01-26 20:51:50.652 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-01-26 20:51:50.652 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-01-26 20:51:50.683 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Finished Spring Data repository scanning in 20ms. Found 0 Redis repository interfaces.
+2022-01-26 20:51:50.853 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=b5f446e7-90e4-3844-901d-abb4ea7ae9b8
+2022-01-26 20:51:51.283 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat initialized with port(s): 8081 (http)
+2022-01-26 20:51:51.288 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Initializing ProtocolHandler ["http-nio-8081"]
+2022-01-26 20:51:51.288 [main] INFO  org.apache.catalina.core.StandardService-Starting service [Tomcat]
+2022-01-26 20:51:51.288 [main] INFO  org.apache.catalina.core.StandardEngine-Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-01-26 20:51:51.423 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring embedded WebApplicationContext
+2022-01-26 20:51:51.423 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext-Root WebApplicationContext: initialization completed in 1251 ms
+2022-01-26 20:51:52.475 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-26 20:51:52.486 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-26 20:51:52.655 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-01-26 20:51:53.027 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-26 20:51:53.633 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Starting ProtocolHandler ["http-nio-8081"]
+2022-01-26 20:51:53.648 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat started on port(s): 8081 (http) with context path ''
+2022-01-26 20:51:53.663 [main] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-nacos registry, DEFAULT_GROUP service-edu 192.168.31.136:8081 register finished
+2022-01-26 20:51:53.734 [main] INFO  com.novedu.nov.EduServiceApplication-Started EduServiceApplication in 5.939 seconds (JVM running for 6.63)
+2022-01-26 20:51:57.463 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-01-26 20:51:57.973 [main] INFO  org.reflections.Reflections-Reflections took 30 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-01-26 20:51:58.001 [main] INFO  org.reflections.Reflections-Reflections took 13 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-01-26 20:51:58.013 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-01-26 20:51:58.165 [main] INFO  org.reflections.Reflections-Reflections took 147 ms to scan 195 urls, producing 0 keys and 0 values 
+2022-01-26 20:51:58.175 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-01-26 20:51:58.185 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-01-26 20:51:58.205 [main] INFO  org.reflections.Reflections-Reflections took 11 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-01-26 20:51:58.326 [main] INFO  org.reflections.Reflections-Reflections took 121 ms to scan 195 urls, producing 0 keys and 0 values 
+2022-01-26 20:51:59.253 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-upload.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-upload,DEFAULT_GROUP'}]
+2022-01-26 20:51:59.264 [main] INFO  com.novedu.nov.upload.UploadServiceApplication-No active profile set, falling back to default profiles: default
+2022-01-26 20:51:59.673 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-01-26 20:51:59.673 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-01-26 20:51:59.693 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Finished Spring Data repository scanning in 9ms. Found 0 Redis repository interfaces.
+2022-01-26 20:51:59.833 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=220ec8fa-b73a-358f-9f30-f43b1ad44a98
+2022-01-26 20:52:00.164 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat initialized with port(s): 8888 (http)
+2022-01-26 20:52:00.173 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Initializing ProtocolHandler ["http-nio-8888"]
+2022-01-26 20:52:00.173 [main] INFO  org.apache.catalina.core.StandardService-Starting service [Tomcat]
+2022-01-26 20:52:00.173 [main] INFO  org.apache.catalina.core.StandardEngine-Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-01-26 20:52:00.284 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring embedded WebApplicationContext
+2022-01-26 20:52:00.284 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext-Root WebApplicationContext: initialization completed in 1011 ms
+2022-01-26 20:52:00.394 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-26 20:52:00.404 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-26 20:52:00.599 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-01-26 20:52:00.793 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-26 20:52:01.597 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Starting ProtocolHandler ["http-nio-8888"]
+2022-01-26 20:52:01.614 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat started on port(s): 8888 (http) with context path ''
+2022-01-26 20:52:01.614 [main] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-nacos registry, DEFAULT_GROUP service-upload 192.168.31.136:8888 register finished
+2022-01-26 20:52:01.699 [main] INFO  com.novedu.nov.upload.UploadServiceApplication-Started UploadServiceApplication in 4.739 seconds (JVM running for 5.867)
+2022-01-26 20:52:06.744 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-01-26 20:52:07.313 [main] INFO  org.reflections.Reflections-Reflections took 27 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-01-26 20:52:07.340 [main] INFO  org.reflections.Reflections-Reflections took 14 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-01-26 20:52:07.355 [main] INFO  org.reflections.Reflections-Reflections took 12 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-01-26 20:52:07.511 [main] INFO  org.reflections.Reflections-Reflections took 153 ms to scan 195 urls, producing 0 keys and 0 values 
+2022-01-26 20:52:07.521 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-01-26 20:52:07.533 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-01-26 20:52:07.549 [main] INFO  org.reflections.Reflections-Reflections took 13 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-01-26 20:52:07.676 [main] INFO  org.reflections.Reflections-Reflections took 125 ms to scan 195 urls, producing 0 keys and 0 values 
+2022-01-26 20:52:08.609 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-ucenter-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-ucenter.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-ucenter,DEFAULT_GROUP'}]
+2022-01-26 20:52:08.613 [main] INFO  com.novedu.nov.UCenterServiceApplication-The following profiles are active: dev
+2022-01-26 20:52:09.064 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-01-26 20:52:09.066 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-01-26 20:52:09.090 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Finished Spring Data repository scanning in 14ms. Found 0 Redis repository interfaces.
+2022-01-26 20:52:09.249 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=df26ced3-50d0-3545-b07f-e4f5c28d51c9
+2022-01-26 20:52:09.627 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat initialized with port(s): 8085 (http)
+2022-01-26 20:52:09.635 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Initializing ProtocolHandler ["http-nio-8085"]
+2022-01-26 20:52:09.635 [main] INFO  org.apache.catalina.core.StandardService-Starting service [Tomcat]
+2022-01-26 20:52:09.635 [main] INFO  org.apache.catalina.core.StandardEngine-Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-01-26 20:52:09.749 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring embedded WebApplicationContext
+2022-01-26 20:52:09.749 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext-Root WebApplicationContext: initialization completed in 1119 ms
+2022-01-26 20:52:10.197 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-26 20:52:10.201 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-26 20:52:10.366 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-01-26 20:52:10.558 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-26 20:52:11.463 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Starting ProtocolHandler ["http-nio-8085"]
+2022-01-26 20:52:11.477 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat started on port(s): 8085 (http) with context path ''
+2022-01-26 20:52:11.487 [main] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-nacos registry, DEFAULT_GROUP service-ucenter 192.168.31.136:8085 register finished
+2022-01-26 20:52:11.566 [main] INFO  com.novedu.nov.UCenterServiceApplication-Started UCenterServiceApplication in 5.286 seconds (JVM running for 6.279)
+2022-01-26 20:52:41.260 [http-nio-8081-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-01-26 20:52:41.260 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Initializing Servlet 'dispatcherServlet'
+2022-01-26 20:52:41.268 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Completed initialization in 8 ms
+2022-01-26 20:54:54.791 [http-nio-8085-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-01-26 20:54:54.791 [http-nio-8085-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Initializing Servlet 'dispatcherServlet'
+2022-01-26 20:54:54.798 [http-nio-8085-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Completed initialization in 7 ms
+2022-01-26 20:54:54.886 [http-nio-8085-exec-1] INFO  com.novedu.nov.common.config.MyMetaObjectHandler-start insert fill ....
+2022-01-26 20:55:21.497 [http-nio-8081-exec-3] INFO  com.novedu.nov.common.config.MyMetaObjectHandler-start insert fill ....
+2022-01-26 20:56:03.300 [http-nio-8081-exec-10] INFO  com.novedu.nov.common.config.MyMetaObjectHandler-start insert fill ....
+2022-01-26 21:39:00.218 [http-nio-8888-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-01-26 21:39:00.218 [http-nio-8888-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Initializing Servlet 'dispatcherServlet'
+2022-01-26 21:39:00.223 [http-nio-8888-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Completed initialization in 5 ms
+2022-01-26 21:39:00.828 [http-nio-8888-exec-2] INFO  com.novedu.nov.common.util.HttpUtils-==========Remote return============
+2022-01-26 21:39:00.828 [http-nio-8888-exec-2] INFO  com.novedu.nov.common.util.HttpUtils-{"code":200,"msg":"success","data":{"path":"/img/2022/01/26/1597732620240818179.jpg"}}
+2022-01-26 21:39:00.828 [http-nio-8888-exec-2] INFO  com.novedu.nov.common.util.HttpUtils-===================================
+2022-01-26 21:39:01.709 [http-nio-8081-exec-3] INFO  com.novedu.nov.common.config.MyMetaObjectHandler-start update fill ....
+2022-01-26 21:41:11.981 [http-nio-8888-exec-3] INFO  com.novedu.nov.common.util.HttpUtils-==========Remote return============
+2022-01-26 21:41:11.982 [http-nio-8888-exec-3] INFO  com.novedu.nov.common.util.HttpUtils-{"code":200,"msg":"success","data":{"path":"/img/2022/01/26/1597733170361536513.jpg"}}
+2022-01-26 21:41:11.982 [http-nio-8888-exec-3] INFO  com.novedu.nov.common.util.HttpUtils-===================================
+2022-01-26 21:41:12.767 [http-nio-8081-exec-3] INFO  com.novedu.nov.common.config.MyMetaObjectHandler-start update fill ....
+2022-01-26 21:41:22.983 [http-nio-8888-exec-4] INFO  com.novedu.nov.common.util.HttpUtils-==========Remote return============
+2022-01-26 21:41:22.983 [http-nio-8888-exec-4] INFO  com.novedu.nov.common.util.HttpUtils-{"code":200,"msg":"success","data":{"path":"/img/2022/01/26/1597733216515657739.jpg"}}
+2022-01-26 21:41:22.984 [http-nio-8888-exec-4] INFO  com.novedu.nov.common.util.HttpUtils-===================================
+2022-01-26 21:41:24.240 [http-nio-8081-exec-4] INFO  com.novedu.nov.common.config.MyMetaObjectHandler-start update fill ....
+2022-01-26 21:41:31.003 [http-nio-8888-exec-5] INFO  com.novedu.nov.common.util.HttpUtils-==========Remote return============
+2022-01-26 21:41:31.003 [http-nio-8888-exec-5] INFO  com.novedu.nov.common.util.HttpUtils-{"code":200,"msg":"success","data":{"path":"/img/2022/01/26/1597733250170753030.jpg"}}
+2022-01-26 21:41:31.003 [http-nio-8888-exec-5] INFO  com.novedu.nov.common.util.HttpUtils-===================================
+2022-01-26 21:41:31.759 [http-nio-8081-exec-1] INFO  com.novedu.nov.common.config.MyMetaObjectHandler-start update fill ....
+2022-01-26 21:41:39.379 [http-nio-8888-exec-6] INFO  com.novedu.nov.common.util.HttpUtils-==========Remote return============
+2022-01-26 21:41:39.379 [http-nio-8888-exec-6] INFO  com.novedu.nov.common.util.HttpUtils-{"code":200,"msg":"success","data":{"path":"/img/2022/01/26/1597733285310631947.jpg"}}
+2022-01-26 21:41:39.379 [http-nio-8888-exec-6] INFO  com.novedu.nov.common.util.HttpUtils-===================================
+2022-01-26 21:41:40.059 [http-nio-8081-exec-7] INFO  com.novedu.nov.common.config.MyMetaObjectHandler-start update fill ....
+2022-01-26 21:48:02.313 [http-nio-8888-exec-8] INFO  com.novedu.nov.common.util.HttpUtils-==========Remote return============
+2022-01-26 21:48:02.313 [http-nio-8888-exec-8] INFO  com.novedu.nov.common.util.HttpUtils-{"code":200,"msg":"success","data":{"path":"/img/2022/01/26/1597734891477405700.jpg"}}
+2022-01-26 21:48:02.313 [http-nio-8888-exec-8] INFO  com.novedu.nov.common.util.HttpUtils-===================================
+2022-01-26 21:48:03.001 [http-nio-8081-exec-10] INFO  com.novedu.nov.common.config.MyMetaObjectHandler-start insert fill ....
+2022-01-26 21:48:52.700 [http-nio-8081-exec-3] INFO  com.novedu.nov.common.config.MyMetaObjectHandler-start update fill ....
+2022-01-26 21:48:52.815 [http-nio-8081-exec-3] INFO  com.novedu.nov.common.config.MyMetaObjectHandler-start update fill ....
+2022-01-26 21:49:25.833 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-26 21:49:25.837 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registering from Nacos Server now...
+2022-01-26 21:49:25.839 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registration finished.
+2022-01-26 21:49:26.173 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'
+2022-01-26 21:49:30.561 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-01-26 21:49:31.105 [main] INFO  org.reflections.Reflections-Reflections took 28 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-01-26 21:49:31.132 [main] INFO  org.reflections.Reflections-Reflections took 14 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-01-26 21:49:31.147 [main] INFO  org.reflections.Reflections-Reflections took 12 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-01-26 21:49:31.304 [main] INFO  org.reflections.Reflections-Reflections took 154 ms to scan 195 urls, producing 0 keys and 0 values 
+2022-01-26 21:49:31.314 [main] INFO  org.reflections.Reflections-Reflections took 9 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-01-26 21:49:31.327 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-01-26 21:49:31.342 [main] INFO  org.reflections.Reflections-Reflections took 13 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-01-26 21:49:31.471 [main] INFO  org.reflections.Reflections-Reflections took 127 ms to scan 195 urls, producing 0 keys and 0 values 
+2022-01-26 21:49:32.415 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-edu-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu,DEFAULT_GROUP'}]
+2022-01-26 21:49:32.418 [main] INFO  com.novedu.nov.EduServiceApplication-The following profiles are active: dev
+2022-01-26 21:49:32.940 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-01-26 21:49:32.942 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-01-26 21:49:32.973 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Finished Spring Data repository scanning in 20ms. Found 0 Redis repository interfaces.
+2022-01-26 21:49:33.140 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=b5f446e7-90e4-3844-901d-abb4ea7ae9b8
+2022-01-26 21:49:33.557 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat initialized with port(s): 8081 (http)
+2022-01-26 21:49:33.566 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Initializing ProtocolHandler ["http-nio-8081"]
+2022-01-26 21:49:33.566 [main] INFO  org.apache.catalina.core.StandardService-Starting service [Tomcat]
+2022-01-26 21:49:33.566 [main] INFO  org.apache.catalina.core.StandardEngine-Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-01-26 21:49:33.691 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring embedded WebApplicationContext
+2022-01-26 21:49:33.691 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext-Root WebApplicationContext: initialization completed in 1252 ms
+2022-01-26 21:49:34.761 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-26 21:49:34.765 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-26 21:49:34.944 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-01-26 21:49:35.276 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-26 21:49:35.858 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Starting ProtocolHandler ["http-nio-8081"]
+2022-01-26 21:49:35.870 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat started on port(s): 8081 (http) with context path ''
+2022-01-26 21:49:35.879 [main] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-nacos registry, DEFAULT_GROUP service-edu 192.168.31.136:8081 register finished
+2022-01-26 21:49:35.956 [main] INFO  com.novedu.nov.EduServiceApplication-Started EduServiceApplication in 5.878 seconds (JVM running for 6.603)
+2022-01-26 21:49:46.269 [http-nio-8081-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-01-26 21:49:46.269 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Initializing Servlet 'dispatcherServlet'
+2022-01-26 21:49:46.275 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Completed initialization in 6 ms
+2022-01-26 21:50:00.050 [http-nio-8081-exec-8] INFO  com.novedu.nov.common.config.MyMetaObjectHandler-start update fill ....
+2022-01-26 21:50:00.130 [http-nio-8081-exec-8] INFO  com.novedu.nov.common.config.MyMetaObjectHandler-start update fill ....
+2022-01-26 21:50:11.627 [http-nio-8081-exec-6] INFO  com.novedu.nov.common.config.MyMetaObjectHandler-start update fill ....
+2022-01-26 21:50:11.698 [http-nio-8081-exec-6] INFO  com.novedu.nov.common.config.MyMetaObjectHandler-start update fill ....
+2022-01-26 21:50:53.408 [http-nio-8081-exec-8] INFO  com.novedu.nov.common.config.MyMetaObjectHandler-start update fill ....
+2022-01-26 21:50:53.480 [http-nio-8081-exec-8] INFO  com.novedu.nov.common.config.MyMetaObjectHandler-start update fill ....
+2022-01-26 21:51:48.247 [http-nio-8081-exec-6] INFO  com.novedu.nov.common.config.MyMetaObjectHandler-start update fill ....
+2022-01-26 21:53:33.651 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-26 21:53:33.656 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registering from Nacos Server now...
+2022-01-26 21:53:33.658 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registration finished.
+2022-01-26 21:53:33.992 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'
+2022-01-26 21:53:36.950 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-01-26 21:53:37.497 [main] INFO  org.reflections.Reflections-Reflections took 27 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-01-26 21:53:37.525 [main] INFO  org.reflections.Reflections-Reflections took 13 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-01-26 21:53:37.539 [main] INFO  org.reflections.Reflections-Reflections took 12 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-01-26 21:53:37.694 [main] INFO  org.reflections.Reflections-Reflections took 151 ms to scan 195 urls, producing 0 keys and 0 values 
+2022-01-26 21:53:37.704 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-01-26 21:53:37.716 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-01-26 21:53:37.731 [main] INFO  org.reflections.Reflections-Reflections took 12 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-01-26 21:53:37.857 [main] INFO  org.reflections.Reflections-Reflections took 124 ms to scan 195 urls, producing 0 keys and 0 values 
+2022-01-26 21:53:38.786 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-edu-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu,DEFAULT_GROUP'}]
+2022-01-26 21:53:38.790 [main] INFO  com.novedu.nov.EduServiceApplication-The following profiles are active: dev
+2022-01-26 21:53:39.289 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-01-26 21:53:39.291 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-01-26 21:53:39.322 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Finished Spring Data repository scanning in 19ms. Found 0 Redis repository interfaces.
+2022-01-26 21:53:39.490 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=b5f446e7-90e4-3844-901d-abb4ea7ae9b8
+2022-01-26 21:53:39.917 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat initialized with port(s): 8081 (http)
+2022-01-26 21:53:39.925 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Initializing ProtocolHandler ["http-nio-8081"]
+2022-01-26 21:53:39.926 [main] INFO  org.apache.catalina.core.StandardService-Starting service [Tomcat]
+2022-01-26 21:53:39.926 [main] INFO  org.apache.catalina.core.StandardEngine-Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-01-26 21:53:40.051 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring embedded WebApplicationContext
+2022-01-26 21:53:40.051 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext-Root WebApplicationContext: initialization completed in 1242 ms
+2022-01-26 21:53:41.080 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-26 21:53:41.084 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-26 21:53:41.253 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-01-26 21:53:41.569 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-26 21:53:42.141 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Starting ProtocolHandler ["http-nio-8081"]
+2022-01-26 21:53:42.152 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat started on port(s): 8081 (http) with context path ''
+2022-01-26 21:53:42.160 [main] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-nacos registry, DEFAULT_GROUP service-edu 192.168.31.136:8081 register finished
+2022-01-26 21:53:42.237 [main] INFO  com.novedu.nov.EduServiceApplication-Started EduServiceApplication in 5.776 seconds (JVM running for 6.465)
+2022-01-26 21:53:44.107 [http-nio-8081-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-01-26 21:53:44.107 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Initializing Servlet 'dispatcherServlet'
+2022-01-26 21:53:44.113 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Completed initialization in 6 ms
+2022-01-26 21:56:12.887 [http-nio-8081-exec-1] INFO  com.novedu.nov.common.config.MyMetaObjectHandler-start update fill ....
+2022-01-26 21:56:12.971 [http-nio-8081-exec-1] INFO  com.novedu.nov.common.config.MyMetaObjectHandler-start update fill ....
+2022-01-26 22:02:37.968 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-26 22:02:37.973 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registering from Nacos Server now...
+2022-01-26 22:02:37.976 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registration finished.
+2022-01-26 22:02:38.013 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-26 22:02:38.035 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registering from Nacos Server now...
+2022-01-26 22:02:38.037 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registration finished.
+2022-01-26 22:02:38.047 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-01-26 22:02:38.071 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registering from Nacos Server now...
+2022-01-26 22:02:38.073 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registration finished.
+2022-01-26 22:02:38.307 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'
+2022-01-26 22:02:38.367 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'
+2022-01-26 22:02:38.412 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'

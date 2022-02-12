@@ -11,8 +11,6 @@
     <modules>
         <module>service_edu</module>
         <module>service_upload</module>
-        <module>service_cms</module>
-        <module>service_msm</module>
         <module>service_ucenter</module>
         <module>service_order</module>
         <module>service_statistics</module>
@@ -51,6 +49,10 @@
 <!--            <artifactId>spring-cloud-alibaba-dependencies</artifactId>-->
 <!--        </dependency>-->
 
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+        </dependency>
 
         <!--配置中心pom-->
         <dependency>
@@ -68,6 +70,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-bootstrap -->
         <dependency>

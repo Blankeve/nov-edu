@@ -5,6 +5,9 @@ import com.novedu.nov.edu.entity.EduCourseApply;
 import com.novedu.nov.edu.mapper.EduCourseApplyMapper;
 import com.novedu.nov.edu.service.EduCourseApplyService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.novedu.nov.edu.service.EduCourseService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,11 +19,26 @@ import org.springframework.stereotype.Service;
  * @since 2022-02-11
  */
 @Service
+@Slf4j
 public class EduCourseApplyServiceImpl extends ServiceImpl<EduCourseApplyMapper, EduCourseApply> implements EduCourseApplyService {
+
+    @Autowired
+    EduCourseService courseService;
 
     @Override
     public BaseResult saveApply(EduCourseApply courseApply) {
-        return BaseResult.successOrError(save(courseApply));
+        BaseResult baseResult =queryCourseApplyByCourseIdAndUid(courseApply);
+        if( BaseResult.success().getCode().equals(baseResult.getCode()))
+            return BaseResult.error("已经报名过该课程");
+        if(save(courseApply)){
+            BaseResult baseResult2 = courseService.statisticsCourseApplyCount();
+            if (BaseResult.success().getCode().equals(baseResult2.getCode()))
+                log.info("同步课程学习人数成功");
+            else
+                log.info("同步课程学习人数失败");
+            return BaseResult.success();
+        }
+        return BaseResult.error();
     }
 
     @Override

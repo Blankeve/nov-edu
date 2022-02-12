@@ -46,27 +46,9 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="name" align="center">
+      <el-table-column width="100" label="name" align="center">
         <template slot-scope="scope">
           {{ scope.row.name }}
-        </template>
-      </el-table-column>
-
-      <el-table-column label="intro" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.intro }}</span>
-        </template>
-      </el-table-column>
-
-      <el-table-column label="career" width="400" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.career }}
-        </template>
-      </el-table-column>
-
-      <el-table-column label="level"  align="center">
-        <template slot-scope="scope">
-          {{ scope.row.level == 1 ? "高级讲师" : "首席讲师" }}
         </template>
       </el-table-column>
 
@@ -84,10 +66,35 @@
         </template>
       </el-table-column>
 
+      <el-table-column label="career" width="150" align="center">
+        <template slot-scope="scope">
+          {{ scope.row.career }}
+        </template>
+      </el-table-column>
+
+      <el-table-column label="intro" align="center">
+        <template slot-scope="scope">
+          <span>{{ scope.row.intro }}</span>
+        </template>
+      </el-table-column>
+
+      <el-table-column width="100" label="level" align="center">
+        <template slot-scope="scope">
+          {{ scope.row.level == 1 ? "高级讲师" : "首席讲师" }}
+        </template>
+      </el-table-column>
+
+      <el-table-column width="50" label="显示级别" align="center">
+        <template slot-scope="scope">
+          {{ scope.row.sort }}
+        </template>
+      </el-table-column>
+
       <el-table-column
         align="center"
         prop="created_at"
         label="joinDate"
+        width="100"
       >
         <template slot-scope="scope">
           <i class="el-icon-time" />

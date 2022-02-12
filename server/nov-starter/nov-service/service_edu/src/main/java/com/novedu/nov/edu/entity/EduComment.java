@@ -63,4 +63,7 @@ public class EduComment implements Serializable {
     private Integer mark;
 
     private Integer reported;
+
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long reportUid;
 }

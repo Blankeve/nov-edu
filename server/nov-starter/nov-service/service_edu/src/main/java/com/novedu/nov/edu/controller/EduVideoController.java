@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * <p>
  * 课程视频 前端控制器
@@ -46,8 +48,8 @@ public class EduVideoController {
     }
 
     @PostMapping("/detail-client/{id}")
-    public BaseResult queryClientVideo(@PathVariable Long id) {
-        return videoService.queryClientVideo(id);
+    public BaseResult queryClientVideo(@PathVariable Long id, HttpServletRequest request) {
+        return videoService.queryClientVideo(id,request);
     }
 
     @ApiOperation("删除")

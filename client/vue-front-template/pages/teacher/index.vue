@@ -62,29 +62,30 @@
         </div>
         <!-- 公共分页 开始 -->
         <div>
-          <div class="paging">
+        <div class="paging">
             <!-- undisable这个class是否存在，取决于数据属性hasPrevious -->
-            <a v-if="form.pages > 1 && form.current != 1" href="#" title="首页"
+            <a
+              v-if="form.pages > 1 && form.current != 1"
+              @click="firstPage"
+              title="首页"
               >首</a
             >
             <a
               v-if="form.pages > 1 && form.current > 1"
-              href="#"
               title="前一页"
-              @click="nextPage"
+              @click="prevPage"
               >&lt;</a
             >
             <a
               v-if="form.pages > 1 && form.current < form.pages"
-              href="#"
               title="后一页"
-              @click="prevPage"
+              @click="nextPage"
               >&gt;</a
             >
             <a
               v-if="form.pages > 1 && form.current != form.pages"
-              href="#"
               title="末页"
+              @click="lastPage"
               >末</a
             >
             <div class="clear"></div>
@@ -122,11 +123,21 @@ export default {
         }
       });
     },
-    nextPage() {
+   nextPage() {
       this.form.current++;
+      this.fetchData();
     },
     prevPage() {
       this.form.current--;
+      this.fetchData();
+    },
+    firstPage() {
+      this.form.current = 1;
+      this.fetchData();
+    },
+    lastPage() {
+      this.form.current = this.form.pages;
+      this.fetchData();
     },
   },
 };

@@ -277,9 +277,9 @@
                             {{ comment.content }}
                           </div>
                           <div class="comment-ft">
-                            <span class="comment-where"
+                            <!-- <span class="comment-where"
                               >已上课34小时52分钟时评价</span
-                            >
+                            > -->
                             <span class="comment-time">{{
                               comment.createTime
                             }}</span>
@@ -510,6 +510,7 @@ export default {
               message: "报名成功",
             });
             this.hasBuy = true;
+            this.course.courseApplyCount++;
           }
         });
       }
@@ -550,6 +551,18 @@ export default {
       }
     },
     handleReport(id) {
+      if (!this.token) {
+        this.$notify({
+          title: "NOV课堂提示",
+          message: "请先登录!",
+          type: "warning",
+        });
+        //跳转登录页面
+        this.$router.push({
+          path: "/login",
+        });
+        return;
+      }
       reportComment(id).then((resp) => {
         if (resp.code === 200) {
           this.$message({

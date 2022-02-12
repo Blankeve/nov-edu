@@ -134,6 +134,19 @@ a{
     background-color: #42c02c;
     cursor: pointer;
 }
+
+.sign .back-home-button{
+    margin-top: 20px;
+    width: 100%;
+    padding: 9px 18px;
+    font-size: 18px;
+    border: none;
+    border-radius: 25px;
+    color: #FFFFFF;
+    background-color: rgb(144, 182, 233);
+    cursor: pointer;
+}
+
 .sign .sign-up-button:hover{
     background-color: #3db922;
 }

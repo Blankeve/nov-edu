@@ -15,20 +15,14 @@
             <nuxt-link to="/course" tag="li" active-class="current">
               <a>课程</a>
             </nuxt-link>
-            <nuxt-link to="/teacher" tag="li" active-class="current">
-              <a>名师</a>
-            </nuxt-link>
             <nuxt-link to="/article" tag="li" active-class="current">
-              <a>文章</a>
-            </nuxt-link>
-            <nuxt-link to="/qa" tag="li" active-class="current">
-              <a>问答</a>
+              <a>公告</a>
             </nuxt-link>
           </ul>
           <ul class="h-r-login">
             <li v-if="!loginInfo.id" id="no-login">
               |
-              <nuxt-link to="/logIn">
+              <nuxt-link to="/login">
                 <em class="icon18 login-icon">&nbsp;</em>
                 <span class="vam ml5">登录</span></nuxt-link
               >
@@ -52,34 +46,26 @@
                   class="vam picImg"
                   alt
                 />
-                <span id="userName" class="vam disIb">{{
-                  loginInfo.nickname
-                }}</span>
+                <span id="userName">{{ loginInfo.nickname }}</span>
               </a>
-              <a
-                href="javascript:void(0);"
-                title="退出"
-                @click="logout()"
-                class="ml5"
-                >退出</a
-              >
+              <nuxt-link to="/">
+                <span title="退出" @click="logout()" class="ml5">退出</span>
+              </nuxt-link>
             </li>
           </ul>
 
           <aside class="h-r-search">
-            <form action="#" method="post">
-              <label class="h-r-s-box">
-                <input
-                  type="text"
-                  placeholder="输入你想学的课程"
-                  name="queryCourse.courseName"
-                  value
-                />
-                <button type="submit" class="s-btn">
-                  <em class="icon18">&nbsp;</em>
-                </button>
-              </label>
-            </form>
+            <label class="h-r-s-box">
+              <input
+                type="text"
+                placeholder="输入你想学的课程"
+                v-model="queryTitle"
+                value
+              />
+              <button @click="queryCourse" class="s-btn">
+                <em class="icon18">&nbsp;</em>
+              </button>
+            </label>
           </aside>
         </div>
         <aside class="mw-nav-btn">
@@ -141,17 +127,17 @@
   </div>
 </template>
 <script>
-import '~/assets/css/reset.css'
-import '~/assets/css/theme.css'
-import '~/assets/css/global.css'
-import '~/assets/css/web.css'
-import '~/assets/css/base.css'
-import '~/assets/css/activity_tab.css'
-import '~/assets/css/bottom_rec.css'
-import '~/assets/css/nice_select.css'
-import '~/assets/css/order.css'
-import '~/assets/css/swiper-3.3.1.min.css'
-import "~/assets/css/pages-weixinpay.css"
+import "~/assets/css/reset.css";
+import "~/assets/css/theme.css";
+import "~/assets/css/global.css";
+import "~/assets/css/web.css";
+import "~/assets/css/base.css";
+import "~/assets/css/activity_tab.css";
+import "~/assets/css/bottom_rec.css";
+import "~/assets/css/nice_select.css";
+import "~/assets/css/order.css";
+import "~/assets/css/swiper-3.3.1.min.css";
+import "~/assets/css/pages-weixinpay.css";
 
 import jwtDecode from "jwt-decode";
 import { getToken, removeToken } from "@/utils/auth";
@@ -165,12 +151,26 @@ export default {
         nickname: "",
         avatar: "",
       },
+      queryTitle: "",
     };
   },
   created() {
     this.fetchData();
   },
+  watch: {
+    $route(to, from) {
+      this.$router.go(0);
+    },
+  },
   methods: {
+    queryCourse() {
+      this.$router.push({
+        path: "/course",
+        query: {
+          title: this.queryTitle,
+        },
+      });
+    },
     fetchData() {
       const token = getToken();
       if (token) {
@@ -186,7 +186,6 @@ export default {
     logout() {
       removeToken();
       this.loginInfo = {};
-      window.location.href = "/";
     },
   },
 };

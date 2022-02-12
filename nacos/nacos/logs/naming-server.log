@@ -1,16 +1,248 @@
-2022-01-10 15:22:55,123 INFO open empty service auto clean job, initialDelay : 50000 ms, period : 30000 ms
+2022-02-12 11:48:31,345 INFO open empty service auto clean job, initialDelay : 50000 ms, period : 30000 ms
 
-2022-01-10 15:22:55,125 INFO listen for service meta change
+2022-02-12 11:48:31,346 INFO listen for service meta change
 
-2022-01-10 15:22:59,684 INFO member change, new members [Member{ip='192.168.10.140', port=8848, state=UP, extendInfo={lastRefreshTime=1641799379682, raftPort=7848, version=2.0.0}}]
+2022-02-12 11:48:33,880 INFO [NACOS-DISTRO] healthy server list changed, old: [192.168.31.136:8848], new: [192.168.31.136:8848]
 
-2022-01-10 15:22:59,702 INFO [NACOS-DISTRO] healthy server list changed, old: [192.168.10.140:8848], new: [192.168.10.140:8848]
+2022-02-12 11:48:33,880 INFO member change, new members [Member{ip='192.168.31.136', port=8848, state=UP, extendInfo={lastRefreshTime=1644637713879, raftMetaData=com.alibaba.nacos.consistency.ProtocolMetaData@6ac175a2, raftPort=7848, version=2.0.0}}]
 
-2022-01-10 15:25:17,506 INFO open empty service auto clean job, initialDelay : 50000 ms, period : 30000 ms
+2022-02-12 11:49:58,295 INFO Client connection 1644637798287_127.0.0.1_65091 connect
 
-2022-01-10 15:25:17,508 INFO listen for service meta change
+2022-02-12 11:49:58,484 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=0}, 1644637798287_127.0.0.1_65091
 
-2022-01-10 15:25:22,231 INFO [NACOS-DISTRO] healthy server list changed, old: [192.168.10.140:8848], new: [192.168.10.140:8848]
+2022-02-12 11:50:02,260 INFO Client connection 1644637802254_127.0.0.1_65232 connect
 
-2022-01-10 15:25:22,232 INFO member change, new members [Member{ip='192.168.10.140', port=8848, state=UP, extendInfo={lastRefreshTime=1641799522231, raftPort=7848, version=2.0.0}}]
+2022-02-12 11:50:02,430 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='service-order', ephemeral=true, revision=0}, 1644637802254_127.0.0.1_65232
+
+2022-02-12 11:50:06,285 INFO Client connection 1644637806279_127.0.0.1_65386 connect
+
+2022-02-12 11:50:06,460 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='service-statistics', ephemeral=true, revision=0}, 1644637806279_127.0.0.1_65386
+
+2022-02-12 11:50:10,093 INFO Client connection 1644637810088_127.0.0.1_65523 connect
+
+2022-02-12 11:50:10,250 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='service-ucenter', ephemeral=true, revision=0}, 1644637810088_127.0.0.1_65523
+
+2022-02-12 11:50:13,054 INFO Client connection 1644637813050_127.0.0.1_49165 connect
+
+2022-02-12 11:50:13,210 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='service-upload', ephemeral=true, revision=0}, 1644637813050_127.0.0.1_49165
+
+2022-02-12 12:05:02,643 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=1}, 1644637798287_127.0.0.1_65091
+
+2022-02-12 12:05:02,976 INFO Client connection 1644637798287_127.0.0.1_65091 disconnect, remove instances and subscribers
+
+2022-02-12 12:05:03,703 INFO Client connection 1644637792462_127.0.0.1_64958 disconnect, remove instances and subscribers
+
+2022-02-12 12:05:09,161 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='service-order', ephemeral=true, revision=1}, 1644637802254_127.0.0.1_65232
+
+2022-02-12 12:05:09,491 INFO Client connection 1644637802254_127.0.0.1_65232 disconnect, remove instances and subscribers
+
+2022-02-12 12:05:10,024 INFO Client connection 1644637797347_127.0.0.1_65078 disconnect, remove instances and subscribers
+
+2022-02-12 12:05:14,167 INFO Client connection 1644638714162_127.0.0.1_63951 connect
+
+2022-02-12 12:05:14,332 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=2}, 1644638714162_127.0.0.1_63951
+
+2022-02-12 12:05:18,456 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='service-statistics', ephemeral=true, revision=1}, 1644637806279_127.0.0.1_65386
+
+2022-02-12 12:05:18,787 INFO Client connection 1644637806279_127.0.0.1_65386 disconnect, remove instances and subscribers
+
+2022-02-12 12:05:19,303 INFO Client connection 1644637801079_127.0.0.1_65219 disconnect, remove instances and subscribers
+
+2022-02-12 12:05:21,027 INFO Client connection 1644638721023_127.0.0.1_64075 connect
+
+2022-02-12 12:05:21,191 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='service-order', ephemeral=true, revision=2}, 1644638721023_127.0.0.1_64075
+
+2022-02-12 12:05:30,138 INFO Client connection 1644638730134_127.0.0.1_64200 connect
+
+2022-02-12 12:05:30,303 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='service-statistics', ephemeral=true, revision=2}, 1644638730134_127.0.0.1_64200
+
+2022-02-12 12:07:47,556 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='service-ucenter', ephemeral=true, revision=1}, 1644637810088_127.0.0.1_65523
+
+2022-02-12 12:07:47,884 INFO Client connection 1644637810088_127.0.0.1_65523 disconnect, remove instances and subscribers
+
+2022-02-12 12:07:48,381 INFO Client connection 1644637805659_127.0.0.1_65375 disconnect, remove instances and subscribers
+
+2022-02-12 12:07:55,860 INFO Client connection 1644638875857_127.0.0.1_65199 connect
+
+2022-02-12 12:07:56,023 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='service-ucenter', ephemeral=true, revision=2}, 1644638875857_127.0.0.1_65199
+
+2022-02-12 12:35:07,009 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=3}, 1644638714162_127.0.0.1_63951
+
+2022-02-12 12:35:07,351 INFO Client connection 1644638714162_127.0.0.1_63951 disconnect, remove instances and subscribers
+
+2022-02-12 12:35:07,971 INFO Client connection 1644638709173_127.0.0.1_63936 disconnect, remove instances and subscribers
+
+2022-02-12 12:35:19,728 INFO Client connection 1644640519726_127.0.0.1_58457 connect
+
+2022-02-12 12:35:19,893 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=4}, 1644640519726_127.0.0.1_58457
+
+2022-02-12 13:35:22,634 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=5}, 1644640519726_127.0.0.1_58457
+
+2022-02-12 13:35:22,948 INFO Client connection 1644640519726_127.0.0.1_58457 disconnect, remove instances and subscribers
+
+2022-02-12 13:35:24,187 INFO Client connection 1644640514925_127.0.0.1_58451 disconnect, remove instances and subscribers
+
+2022-02-12 13:35:34,719 INFO Client connection 1644644134715_127.0.0.1_57915 connect
+
+2022-02-12 13:35:34,871 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=6}, 1644644134715_127.0.0.1_57915
+
+2022-02-12 13:49:38,668 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='service-order', ephemeral=true, revision=3}, 1644638721023_127.0.0.1_64075
+
+2022-02-12 13:49:39,005 INFO Client connection 1644638721023_127.0.0.1_64075 disconnect, remove instances and subscribers
+
+2022-02-12 13:49:40,870 INFO Client connection 1644638715619_127.0.0.1_64055 disconnect, remove instances and subscribers
+
+2022-02-12 13:49:51,732 INFO Client connection 1644644991729_127.0.0.1_54933 connect
+
+2022-02-12 13:49:51,900 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='service-order', ephemeral=true, revision=4}, 1644644991729_127.0.0.1_54933
+
+2022-02-12 14:07:04,554 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='service-order', ephemeral=true, revision=5}, 1644644991729_127.0.0.1_54933
+
+2022-02-12 14:07:04,865 INFO Client connection 1644644991729_127.0.0.1_54933 disconnect, remove instances and subscribers
+
+2022-02-12 14:07:09,628 INFO Client connection 1644644986303_127.0.0.1_54920 disconnect, remove instances and subscribers
+
+2022-02-12 14:07:24,532 INFO Client connection 1644646044525_127.0.0.1_61042 connect
+
+2022-02-12 14:07:24,687 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='service-order', ephemeral=true, revision=6}, 1644646044525_127.0.0.1_61042
+
+2022-02-12 14:08:24,252 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=7}, 1644644134715_127.0.0.1_57915
+
+2022-02-12 14:08:24,584 INFO Client connection 1644644134715_127.0.0.1_57915 disconnect, remove instances and subscribers
+
+2022-02-12 14:08:25,309 INFO Client connection 1644644129824_127.0.0.1_57901 disconnect, remove instances and subscribers
+
+2022-02-12 14:08:39,462 INFO Client connection 1644646119459_127.0.0.1_61251 connect
+
+2022-02-12 14:08:39,617 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=8}, 1644646119459_127.0.0.1_61251
+
+2022-02-12 14:08:45,547 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='service-ucenter', ephemeral=true, revision=3}, 1644638875857_127.0.0.1_65199
+
+2022-02-12 14:08:45,886 INFO Client connection 1644638875857_127.0.0.1_65199 disconnect, remove instances and subscribers
+
+2022-02-12 14:08:46,379 INFO Client connection 1644638872139_127.0.0.1_65188 disconnect, remove instances and subscribers
+
+2022-02-12 14:08:58,020 INFO Client connection 1644646138018_127.0.0.1_61383 connect
+
+2022-02-12 14:08:58,178 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='service-ucenter', ephemeral=true, revision=4}, 1644646138018_127.0.0.1_61383
+
+2022-02-12 14:28:41,789 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=9}, 1644646119459_127.0.0.1_61251
+
+2022-02-12 14:28:42,132 INFO Client connection 1644646119459_127.0.0.1_61251 disconnect, remove instances and subscribers
+
+2022-02-12 14:28:42,758 INFO Client connection 1644646113399_127.0.0.1_61247 disconnect, remove instances and subscribers
+
+2022-02-12 14:28:52,705 INFO Client connection 1644647332702_127.0.0.1_53324 connect
+
+2022-02-12 14:28:52,861 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=10}, 1644647332702_127.0.0.1_53324
+
+2022-02-12 14:33:33,823 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=11}, 1644647332702_127.0.0.1_53324
+
+2022-02-12 14:33:34,160 INFO Client connection 1644647332702_127.0.0.1_53324 disconnect, remove instances and subscribers
+
+2022-02-12 14:33:34,787 INFO Client connection 1644647328040_127.0.0.1_53320 disconnect, remove instances and subscribers
+
+2022-02-12 14:33:44,876 INFO Client connection 1644647624873_127.0.0.1_53815 connect
+
+2022-02-12 14:33:45,038 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=12}, 1644647624873_127.0.0.1_53815
+
+2022-02-12 14:42:24,651 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=13}, 1644647624873_127.0.0.1_53815
+
+2022-02-12 14:42:24,986 INFO Client connection 1644647624873_127.0.0.1_53815 disconnect, remove instances and subscribers
+
+2022-02-12 14:42:25,620 INFO Client connection 1644647620064_127.0.0.1_53810 disconnect, remove instances and subscribers
+
+2022-02-12 14:42:37,090 INFO Client connection 1644648157087_127.0.0.1_54884 connect
+
+2022-02-12 14:42:37,250 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=14}, 1644648157087_127.0.0.1_54884
+
+2022-02-12 19:54:33,322 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=15}, 1644648157087_127.0.0.1_54884
+
+2022-02-12 19:54:33,657 INFO Client connection 1644648157087_127.0.0.1_54884 disconnect, remove instances and subscribers
+
+2022-02-12 19:54:34,298 INFO Client connection 1644648151049_127.0.0.1_54879 disconnect, remove instances and subscribers
+
+2022-02-12 19:54:45,382 INFO Client connection 1644666885379_127.0.0.1_61788 connect
+
+2022-02-12 19:54:45,548 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=16}, 1644666885379_127.0.0.1_61788
+
+2022-02-12 20:27:38,500 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='service-order', ephemeral=true, revision=7}, 1644646044525_127.0.0.1_61042
+
+2022-02-12 20:27:38,846 INFO Client connection 1644646044525_127.0.0.1_61042 disconnect, remove instances and subscribers
+
+2022-02-12 20:27:39,597 INFO Client connection 1644646036923_127.0.0.1_60992 disconnect, remove instances and subscribers
+
+2022-02-12 20:27:53,044 INFO Client connection 1644668873041_127.0.0.1_52793 connect
+
+2022-02-12 20:27:53,197 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='service-order', ephemeral=true, revision=8}, 1644668873041_127.0.0.1_52793
+
+2022-02-12 21:14:10,168 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=17}, 1644666885379_127.0.0.1_61788
+
+2022-02-12 21:14:10,516 INFO Client connection 1644666885379_127.0.0.1_61788 disconnect, remove instances and subscribers
+
+2022-02-12 21:14:11,249 INFO Client connection 1644666880223_127.0.0.1_61776 disconnect, remove instances and subscribers
+
+2022-02-12 21:14:23,103 INFO Client connection 1644671663099_127.0.0.1_58845 connect
+
+2022-02-12 21:14:23,256 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=18}, 1644671663099_127.0.0.1_58845
+
+2022-02-12 21:14:25,696 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=19}, 1644671663099_127.0.0.1_58845
+
+2022-02-12 21:14:26,386 INFO Client connection 1644671663099_127.0.0.1_58845 disconnect, remove instances and subscribers
+
+2022-02-12 21:14:26,915 INFO Client connection 1644671658064_127.0.0.1_58826 disconnect, remove instances and subscribers
+
+2022-02-12 21:14:37,365 INFO Client connection 1644671677362_127.0.0.1_58969 connect
+
+2022-02-12 21:14:37,530 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=20}, 1644671677362_127.0.0.1_58969
+
+2022-02-12 21:15:59,209 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=21}, 1644671677362_127.0.0.1_58969
+
+2022-02-12 21:15:59,548 INFO Client connection 1644671677362_127.0.0.1_58969 disconnect, remove instances and subscribers
+
+2022-02-12 21:16:00,186 INFO Client connection 1644671672322_127.0.0.1_58964 disconnect, remove instances and subscribers
+
+2022-02-12 21:16:10,946 INFO Client connection 1644671770941_127.0.0.1_59216 connect
+
+2022-02-12 21:16:11,106 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=22}, 1644671770941_127.0.0.1_59216
+
+2022-02-12 21:26:14,060 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=23}, 1644671770941_127.0.0.1_59216
+
+2022-02-12 21:26:14,396 INFO Client connection 1644671770941_127.0.0.1_59216 disconnect, remove instances and subscribers
+
+2022-02-12 21:26:15,038 INFO Client connection 1644671765903_127.0.0.1_59210 disconnect, remove instances and subscribers
+
+2022-02-12 21:26:25,513 INFO Client connection 1644672385510_127.0.0.1_51918 connect
+
+2022-02-12 21:26:25,669 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=24}, 1644672385510_127.0.0.1_51918
+
+2022-02-12 21:31:44,647 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=25}, 1644672385510_127.0.0.1_51918
+
+2022-02-12 21:31:44,985 INFO Client connection 1644672385510_127.0.0.1_51918 disconnect, remove instances and subscribers
+
+2022-02-12 21:31:45,622 INFO Client connection 1644672380563_127.0.0.1_51911 disconnect, remove instances and subscribers
+
+2022-02-12 21:31:56,306 INFO Client connection 1644672716303_127.0.0.1_52510 connect
+
+2022-02-12 21:31:56,468 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=26}, 1644672716303_127.0.0.1_52510
+
+2022-02-12 21:33:01,672 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='service-ucenter', ephemeral=true, revision=5}, 1644646138018_127.0.0.1_61383
+
+2022-02-12 21:33:02,008 INFO Client connection 1644646138018_127.0.0.1_61383 disconnect, remove instances and subscribers
+
+2022-02-12 21:33:02,509 INFO Client connection 1644646133208_127.0.0.1_61377 disconnect, remove instances and subscribers
+
+2022-02-12 21:33:12,262 INFO Client connection 1644672792257_127.0.0.1_52872 connect
+
+2022-02-12 21:33:12,423 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='service-ucenter', ephemeral=true, revision=6}, 1644672792257_127.0.0.1_52872
+
+2022-02-12 21:38:16,872 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=27}, 1644672716303_127.0.0.1_52510
+
+2022-02-12 21:38:17,199 INFO Client connection 1644672716303_127.0.0.1_52510 disconnect, remove instances and subscribers
+
+2022-02-12 21:38:17,832 INFO Client connection 1644672711258_127.0.0.1_52505 disconnect, remove instances and subscribers
+
+2022-02-12 21:38:29,389 INFO Client connection 1644673109386_127.0.0.1_53549 connect
+
+2022-02-12 21:38:29,548 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=28}, 1644673109386_127.0.0.1_53549
 

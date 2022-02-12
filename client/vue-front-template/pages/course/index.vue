@@ -4,7 +4,7 @@
     <section class="container">
       <header class="comm-title">
         <h2 class="fl tac">
-          <span class="c-333">全部课程</span>
+          <span class="c-333">{{changeTitle}}课程</span>
         </h2>
       </header>
       <section class="c-sort-box">
@@ -37,7 +37,7 @@
                 <li
                   v-for="children in subjectChildren"
                   :key="children.id"
-                  @click="childrenSelect(children.id)"
+                  @click="childrenSelect(children.id,children.title)"
                 >
                   <a :title="children.title" href="#">{{ children.title }}</a>
                 </li>
@@ -55,28 +55,15 @@
           </section>
           <section class="fl">
             <ol class="js-tap clearfix">
-              <li>
-                <a title="关注度" href="#">关注度</a>
-              </li>
               <li @click="newestSearch()">
                 <a title="最新" href="#">{{
-                  form.orderFieldNewestAsc
-                    ? form.orderFieldNewestAsc == 1
-                      ? "最新"
-                      : "最旧"
-                    : "最旧"
+                  form.orderFieldValue == 2 ? "最新" : "最旧"
                 }}</a>
               </li>
               <li @click="priceOrderSearch()" class="current bg-orange">
                 <a title="价格" href="#"
                   >价格&nbsp;
-                  <span>{{
-                    form.orderFieldPriceAsc
-                      ? form.orderFieldPriceAsc == 1
-                        ? "↑"
-                        : "↓"
-                      : "↓"
-                  }}</span>
+                  <span>{{ form.orderFieldValue == 3 ? "↑" : "↓" }}</span>
                 </a>
               </li>
             </ol>
@@ -121,24 +108,24 @@
                       >{{ course.title }}</a
                     >
                   </h3>
-                    <section class="mt10 hLh20 of">
-                      <span
-                      class="fr jgTag "
-                        :class="{
-                          'bg-green': course.price == 0,
-                           'bg-red': course.price > 0,
-                        }"
-                      >
-                        <i class="c-fff fsize18 f-fA">{{
-                          course.price > 0 ? "¥" + course.price : "免费"
-                        }}</i>
-                      </span>
-                      <span class="fl jgAttr c-ccc f-fA">
-                        <i class="c-999 f-fA">{{course.viewCount}}次播放</i>
-                        |
-                        <i class="c-999 f-fA">{{course.commentCount}}人评论</i>
-                      </span>
-                    </section>
+                  <section class="mt10 hLh20 of">
+                    <span
+                      class="fr jgTag"
+                      :class="{
+                        'bg-green': course.price == 0,
+                        'bg-red': course.price > 0,
+                      }"
+                    >
+                      <i class="c-fff fsize18 f-fA">{{
+                        course.price > 0 ? "¥" + course.price : "免费"
+                      }}</i>
+                    </span>
+                    <span class="fl jgAttr c-ccc f-fA">
+                      <i class="c-999 f-fA">{{ course.viewCount }}次播放</i>
+                      |
+                      <i class="c-999 f-fA">{{ course.commentCount }}人评论</i>
+                    </span>
+                  </section>
                 </div>
               </li>
             </ul>
@@ -191,19 +178,22 @@ export default {
       subjects: [],
       subjectChildren: [],
       courses: [],
+      changeTitle: "全部",
       form: {
+        title: "",
         current: 1,
         size: 8,
         total: 0,
         pages: 1,
-        orderFieldPriceAsc: null,
-        orderFieldNewestAsc: null,
+        orderFieldValue: 0,
         clientSubjectId: 0,
       },
       liActive: -1,
     };
   },
   created() {
+    let title = this.$route.query.title;
+    if (title) this.form.title = title;
     this.fetchData();
   },
   methods: {
@@ -220,7 +210,6 @@ export default {
           this.form.pages = resp.data.pages;
         }
       });
-      
     },
     nextPage() {
       this.form.current++;
@@ -257,26 +246,27 @@ export default {
         }
       }
     },
-    childrenSelect(id) {
+    childrenSelect(id,title) {
       this.liActive = id;
       this.form.clientSubjectId = id;
+      this.changeTitle = title;
       this.fetchData();
     },
     allSelect() {
       this.form.clientSubjectId = 0;
+      this.changeTitle = "全部";
       this.fetchData();
     },
     priceOrderSearch() {
-      this.form.orderFieldNewestAsc = null;
-      this.form.orderFieldPriceAsc = this.form.orderFieldPriceAsc ? 0 : 1;
+      this.form.orderFieldValue = this.form.orderFieldValue == 3 ? 4 : 3;
       this.fetchData();
     },
     newestSearch() {
-      this.form.orderFieldPriceAsc = null;
-      this.form.orderFieldNewestAsc = this.form.orderFieldNewestAsc ? 0 : 1;
+      this.form.orderFieldValue = this.form.orderFieldValue == 2 ? 1 : 2;
       this.fetchData();
     },
   },
 };
 </script>
+
 

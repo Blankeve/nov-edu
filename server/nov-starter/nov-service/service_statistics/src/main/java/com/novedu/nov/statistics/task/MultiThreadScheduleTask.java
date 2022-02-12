@@ -34,21 +34,6 @@ public class MultiThreadScheduleTask {
         log.info("---------------课程播放次数同步" + (baseResult.getCode().equals(200) ? "完成" : "失败"));
     }
 
-    @Async
-    @Scheduled(cron = "0/30 * * * * ?")  //间隔30秒
-    public void statisticsCourseApplyCount() {
-        log.info("---------------正在同步课程报名人数...");
-        BaseResult baseResult = eduClient.statisticsCourseApplyCount();
-        log.info("---------------课程报名人数同步" + (baseResult.getCode().equals(200) ? "完成" : "失败"));
-    }
-
-    @Async
-    @Scheduled(cron = "0/30 * * * * ?")  //间隔30秒
-    public void statisticsCourseBuyCount() {
-        log.info("---------------正在同步课程购买量...");
-        BaseResult baseResult = eduClient.statisticsCourseBuyCount();
-        log.info("---------------课程购买量同步" + (baseResult.getCode().equals(200) ? "完成" : "失败"));
-    }
 
 
 }

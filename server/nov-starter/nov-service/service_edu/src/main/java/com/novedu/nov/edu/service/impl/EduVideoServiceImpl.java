@@ -3,11 +3,19 @@ package com.novedu.nov.edu.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.common.api.ResultCode;
+import com.novedu.nov.common.util.JwtUtils;
+import com.novedu.nov.edu.client.OrderClient;
+import com.novedu.nov.edu.entity.EduChapter;
 import com.novedu.nov.edu.entity.EduCourse;
+import com.novedu.nov.edu.entity.EduCourseApply;
 import com.novedu.nov.edu.entity.EduVideo;
 import com.novedu.nov.edu.entity.dto.EduVideoInfoDTO;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 import com.novedu.nov.edu.mapper.EduVideoMapper;
+import com.novedu.nov.edu.service.EduChapterService;
+import com.novedu.nov.edu.service.EduCourseApplyService;
+import com.novedu.nov.edu.service.EduCourseService;
 import com.novedu.nov.edu.service.EduVideoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +25,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -39,6 +48,18 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
 
     @Autowired
     RedisTemplate redisTemplate;
+
+    @Autowired
+    EduChapterService chapterService;
+
+    @Autowired
+    EduCourseService courseService;
+
+    @Autowired
+    OrderClient orderClient;
+
+    @Autowired
+    EduCourseApplyService courseApplyService;
 
     @Override
     public BaseResult saveVideo(EduVideo video) {
@@ -102,8 +123,29 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
         return BaseResult.successOrError(removeById(id));
     }
 
+    public boolean queryOrderByUidAndCourseId(Long id,Long uid){
+        EduVideo video =getById(id);
+        if(video.getIsFree().equals(0)){
+            EduChapter chapter = chapterService.getById(video.getChapterId());
+            EduCourse course = courseService.getById(chapter.getCourseId());
+            EduCourseApply courseApply = new EduCourseApply();
+            courseApply.setCourseId(course.getId());
+            courseApply.setUid(uid);
+           BaseResult baseResult = courseApplyService.queryCourseApplyByCourseIdAndUid(courseApply);
+           if(baseResult == null || baseResult.getCode().equals(BaseResult.error().getCode()))
+                return false;
+        }
+        return true;
+    }
+
     @Override
-    public BaseResult queryClientVideo(Long id) {
+    public BaseResult queryClientVideo(Long id, HttpServletRequest request) {
+        String token = request.getHeader("X-Token");
+        if (!StringUtils.hasText(token))
+            return BaseResult.success("未登录");
+        Long uid = Long.valueOf(JwtUtils.getAudience(token).get("uid"));
+        if(!queryOrderByUidAndCourseId(id,uid))
+            return BaseResult.error("请先购买该课程");
         String key = "video_play_count";
         boolean hasKey = redisTemplate.hasKey(key);
         Long playCount = 1l;

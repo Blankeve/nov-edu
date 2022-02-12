@@ -7,6 +7,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.novedu.nov.edu.entity.dto.EduVideoInfoDTO;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * <p>
  * 课程视频 服务类
@@ -26,5 +28,5 @@ public interface EduVideoService extends IService<EduVideo> {
 
     BaseResult removeVideo(Long id);
 
-    BaseResult queryClientVideo(Long id);
+    BaseResult queryClientVideo(Long id, HttpServletRequest request);
 }

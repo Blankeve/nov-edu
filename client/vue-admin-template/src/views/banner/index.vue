@@ -41,7 +41,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="显示顺序" align="center">
+      <el-table-column label="显示级别" align="center">
         <template slot-scope="scope">
           {{ scope.row.sort }}
         </template>
@@ -78,6 +78,7 @@
       width="500px"
       center=""
       append-to-body
+      :close-on-click-modal="false"
     >
       <el-form :model="form" label-width="120">
         <el-form-item label="图片标题">
@@ -92,7 +93,7 @@
           <el-input-number
             v-model="form.sort"
             :min="0"
-            :max="10"
+            :max="1000"
             label="描述文字"
           ></el-input-number>
         </el-form-item>
@@ -139,7 +140,11 @@ export default {
     return {
       list: null,
       listLoading: true,
-      form: {},
+      form: {
+        linkUrl: "/",
+        title: "",
+        sort: 0,
+      },
       baseURL: process.env.VUE_APP_BASE_API,
       configFormTitle: "",
       configFormVisible: false,

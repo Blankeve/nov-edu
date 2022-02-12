@@ -144,7 +144,7 @@ a.current-2 .lh-p-icon{background-position:0 -254px}
 .lt-ie9 #header,.lt-ie9.lt-ie8 #header{border-bottom:1px solid #f2f2f2}
 #logo{float:left;width:220px;height:72px;overflow:hidden;margin:0 auto}
 #logo a{display:table-cell;vertical-align:middle;height:72px}
-#logo a img{display:block;max-width:100%;height:auto;vertical-align:middle}
+#logo a img{display:block;max-width:100%;height:auto;}
 .nav{padding:15px 0 0 50px}
 .nav,.nav li,.nav li a{float:left}
 .nav li a{border-bottom:2px solid transparent;color:#666;display:block;font-size:20px;line-height:50px;padding:0 10px;margin:0 10px;transition:.3s;-webkit-transition:.3s}
@@ -157,9 +157,9 @@ a.current-2 .lh-p-icon{background-position:0 -254px}
 .red-point{position:absolute;right:-4px;top:8px;display:block;width:8px;height:8px;border-radius:50%;background:#cb2020;text-indent:-9999px}
 .h-r-search{margin:10px 20px 0 0}
 .h-r-s-box{display:block;position:relative}
-.h-r-s-box input{border:1px solid #e8e8e8;border-radius:20px;color:#aaa;padding:0 15px;font-family:'Microsoft YaHei';width:140px;height:30px;line-height:30px;transition:.3s;-webkit-transition:.3s}
+.h-r-s-box input{border:1px solid #e8e8e8;border-radius:20px;color:#aaa;padding:0 15px;font-family:'Microsoft YaHei';width:240px;height:30px;line-height:30px;transition:.3s;-webkit-transition:.3s}
 .h-r-s-box .s-btn{background:0 0;border:none;position:absolute;right:3px;top:0;width:30px;height:30px;cursor:pointer}
-.h-r-s-box input:focus{border-color:#ddd;color:#666;width:150px}
+.h-r-s-box input:focus{border-color:#ddd;color:#666;width:250px}
 .h-mobile-mask,.head-mobile,.mw-nav,.mw-nav-btn{display:none}
 .lh-menu{margin:0 10px;padding:0}
 .lh-menu ul li.lh-menu-stair{padding-bottom:5px;margin-bottom:10px}
@@ -433,7 +433,7 @@ a.current-2 .lh-p-icon{background-position:0 -254px}
 .b-f-link a:hover,.flink-list li a:hover{color:#888;text-decoration:none;transition:.3s;-webkit-transition:.3s}
 .b-foot{border-top:1px solid #393939;padding:20px 0 40px 0;margin-top:30px}
 .b-f-link{color:#444;line-height:12px;margin-left:-10px;line-height:20px}
-.b-f-link a,.b-f-link span{color:#666;display:block;margin:0 10px 5px;display:inline-block;vertical-align:middle}
+.b-f-link a,.b-f-link span{color:#666;display:block;margin:0 10px 5px;display:inline-block;}
 .gf-tx{display:inline-block;margin:0 10px;position:relative}
 .gf-tx-ewm{position:absolute;left:50%;top:0;margin-left:-80px;opacity:0;-moz-opacity:0;filter:alpha(opacity=0);z-index:3;transition:.3s}
 .gf-tx-ewm img{display:block;width:160px;height:160px}

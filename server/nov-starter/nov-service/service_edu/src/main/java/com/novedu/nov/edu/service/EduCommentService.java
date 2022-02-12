@@ -26,5 +26,5 @@ public interface EduCommentService extends IService<EduComment> {
 
     BaseResult removeComment(Long id);
 
-    BaseResult reportComment(Long id);
+    BaseResult reportComment(Long id,HttpServletRequest request);
 }

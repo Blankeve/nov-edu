@@ -1,0 +1,238 @@
+2022-02-12 11:49:58,484 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=1}
+
+2022-02-12 11:49:59,109 INFO [PUSH-SUCC] 126ms, all delay time 690ms, SLA 624ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=1}, DataSize=1, target=192.168.31.136
+
+2022-02-12 11:50:02,431 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='service-order', ephemeral=true, revision=1}
+
+2022-02-12 11:50:02,906 INFO [PUSH-SUCC] 19ms, all delay time 530ms, SLA 476ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-order', ephemeral=true, revision=1}, DataSize=1, target=192.168.31.136
+
+2022-02-12 11:50:06,460 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='service-statistics', ephemeral=true, revision=1}
+
+2022-02-12 11:50:06,929 INFO [PUSH-SUCC] 22ms, all delay time 530ms, SLA 469ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-statistics', ephemeral=true, revision=1}, DataSize=1, target=192.168.31.136
+
+2022-02-12 11:50:10,251 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='service-ucenter', ephemeral=true, revision=1}
+
+2022-02-12 11:50:10,800 INFO [PUSH-SUCC] 17ms, all delay time 601ms, SLA 550ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-ucenter', ephemeral=true, revision=1}, DataSize=1, target=192.168.31.136
+
+2022-02-12 11:50:13,210 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='service-upload', ephemeral=true, revision=1}
+
+2022-02-12 11:50:13,723 INFO [PUSH-SUCC] 16ms, all delay time 563ms, SLA 513ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-upload', ephemeral=true, revision=1}, DataSize=1, target=192.168.31.136
+
+2022-02-12 11:50:30,776 INFO [PUSH-SUCC] 3ms, all delay time 523ms, SLA 32292ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=1}, DataSize=1, target=192.168.31.136
+
+2022-02-12 12:05:03,235 INFO [PUSH-SUCC] 3ms, all delay time 592ms, SLA 592ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=2}, DataSize=0, target=192.168.31.136
+
+2022-02-12 12:05:14,333 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=3}
+
+2022-02-12 12:05:14,851 INFO [PUSH-SUCC] 3ms, all delay time 569ms, SLA 518ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=3}, DataSize=1, target=192.168.31.136
+
+2022-02-12 12:05:14,865 INFO [PUSH-SUCC] 17ms, all delay time 583ms, SLA 532ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=3}, DataSize=1, target=192.168.31.136
+
+2022-02-12 12:05:21,191 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='service-order', ephemeral=true, revision=3}
+
+2022-02-12 12:05:21,762 INFO [PUSH-SUCC] 15ms, all delay time 617ms, SLA 571ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-order', ephemeral=true, revision=3}, DataSize=1, target=192.168.31.136
+
+2022-02-12 12:05:30,303 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='service-statistics', ephemeral=true, revision=3}
+
+2022-02-12 12:05:30,873 INFO [PUSH-SUCC] 15ms, all delay time 617ms, SLA 570ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-statistics', ephemeral=true, revision=3}, DataSize=1, target=192.168.31.136
+
+2022-02-12 12:06:00,726 INFO [PUSH-SUCC] 3ms, all delay time 508ms, SLA 46393ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=3}, DataSize=1, target=192.168.31.136
+
+2022-02-12 12:07:56,023 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='service-ucenter', ephemeral=true, revision=3}
+
+2022-02-12 12:07:56,558 INFO [PUSH-SUCC] 15ms, all delay time 580ms, SLA 535ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-ucenter', ephemeral=true, revision=3}, DataSize=1, target=192.168.31.136
+
+2022-02-12 12:08:17,957 INFO [PUSH-SUCC] 2ms, all delay time 510ms, SLA 183624ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=3}, DataSize=1, target=192.168.31.136
+
+2022-02-12 12:08:35,395 INFO [PUSH-SUCC] 2ms, all delay time 607ms, SLA 39372ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-ucenter', ephemeral=true, revision=3}, DataSize=1, target=192.168.31.136
+
+2022-02-12 12:35:07,519 INFO [PUSH-SUCC] 3ms, all delay time 510ms, SLA 510ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=4}, DataSize=0, target=192.168.31.136
+
+2022-02-12 12:35:07,519 INFO [PUSH-SUCC] 4ms, all delay time 510ms, SLA 510ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=4}, DataSize=0, target=192.168.31.136
+
+2022-02-12 12:35:19,893 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=5}
+
+2022-02-12 12:35:20,448 INFO [PUSH-SUCC] 2ms, all delay time 601ms, SLA 555ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=5}, DataSize=1, target=192.168.31.136
+
+2022-02-12 12:35:20,448 INFO [PUSH-SUCC] 2ms, all delay time 601ms, SLA 555ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=5}, DataSize=1, target=192.168.31.136
+
+2022-02-12 12:35:20,463 INFO [PUSH-SUCC] 18ms, all delay time 616ms, SLA 570ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=5}, DataSize=1, target=192.168.31.136
+
+2022-02-12 13:35:23,138 INFO [PUSH-SUCC] 2ms, all delay time 504ms, SLA 504ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=6}, DataSize=0, target=192.168.31.136
+
+2022-02-12 13:35:23,139 INFO [PUSH-SUCC] 3ms, all delay time 505ms, SLA 505ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=6}, DataSize=0, target=192.168.31.136
+
+2022-02-12 13:35:34,872 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=7}
+
+2022-02-12 13:35:35,358 INFO [PUSH-SUCC] 3ms, all delay time 535ms, SLA 486ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=7}, DataSize=1, target=192.168.31.136
+
+2022-02-12 13:35:35,358 INFO [PUSH-SUCC] 3ms, all delay time 535ms, SLA 486ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=7}, DataSize=1, target=192.168.31.136
+
+2022-02-12 13:35:35,371 INFO [PUSH-SUCC] 16ms, all delay time 548ms, SLA 499ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=7}, DataSize=1, target=192.168.31.136
+
+2022-02-12 13:49:51,900 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='service-order', ephemeral=true, revision=5}
+
+2022-02-12 13:49:52,466 INFO [PUSH-SUCC] 15ms, all delay time 615ms, SLA 566ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-order', ephemeral=true, revision=5}, DataSize=1, target=192.168.31.136
+
+2022-02-12 13:50:05,805 INFO [PUSH-SUCC] 3ms, all delay time 603ms, SLA 870933ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=7}, DataSize=1, target=192.168.31.136
+
+2022-02-12 13:50:09,375 INFO [PUSH-SUCC] 4ms, all delay time 608ms, SLA 6133352ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-ucenter', ephemeral=true, revision=3}, DataSize=1, target=192.168.31.136
+
+2022-02-12 14:07:24,688 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='service-order', ephemeral=true, revision=7}
+
+2022-02-12 14:07:25,181 INFO [PUSH-SUCC] 16ms, all delay time 542ms, SLA 493ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-order', ephemeral=true, revision=7}, DataSize=1, target=192.168.31.136
+
+2022-02-12 14:08:24,778 INFO [PUSH-SUCC] 2ms, all delay time 526ms, SLA 526ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=8}, DataSize=0, target=192.168.31.136
+
+2022-02-12 14:08:39,617 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=9}
+
+2022-02-12 14:08:40,082 INFO [PUSH-SUCC] 3ms, all delay time 510ms, SLA 465ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=9}, DataSize=1, target=192.168.31.136
+
+2022-02-12 14:08:40,095 INFO [PUSH-SUCC] 16ms, all delay time 523ms, SLA 478ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=9}, DataSize=1, target=192.168.31.136
+
+2022-02-12 14:08:58,178 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='service-ucenter', ephemeral=true, revision=5}
+
+2022-02-12 14:08:58,745 INFO [PUSH-SUCC] 17ms, all delay time 617ms, SLA 567ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-ucenter', ephemeral=true, revision=5}, DataSize=1, target=192.168.31.136
+
+2022-02-12 14:09:12,799 INFO [PUSH-SUCC] 3ms, all delay time 541ms, SLA 33182ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=9}, DataSize=1, target=192.168.31.136
+
+2022-02-12 14:28:42,332 INFO [PUSH-SUCC] 3ms, all delay time 543ms, SLA 543ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=10}, DataSize=0, target=192.168.31.136
+
+2022-02-12 14:28:42,332 INFO [PUSH-SUCC] 3ms, all delay time 543ms, SLA 543ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=10}, DataSize=0, target=192.168.31.136
+
+2022-02-12 14:28:52,861 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=11}
+
+2022-02-12 14:28:53,387 INFO [PUSH-SUCC] 3ms, all delay time 572ms, SLA 526ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=11}, DataSize=1, target=192.168.31.136
+
+2022-02-12 14:28:53,388 INFO [PUSH-SUCC] 4ms, all delay time 573ms, SLA 527ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=11}, DataSize=1, target=192.168.31.136
+
+2022-02-12 14:28:53,400 INFO [PUSH-SUCC] 16ms, all delay time 585ms, SLA 539ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=11}, DataSize=1, target=192.168.31.136
+
+2022-02-12 14:33:34,348 INFO [PUSH-SUCC] 5ms, all delay time 524ms, SLA 524ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=12}, DataSize=0, target=192.168.31.136
+
+2022-02-12 14:33:34,348 INFO [PUSH-SUCC] 5ms, all delay time 524ms, SLA 524ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=12}, DataSize=0, target=192.168.31.136
+
+2022-02-12 14:33:45,038 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=13}
+
+2022-02-12 14:33:45,535 INFO [PUSH-SUCC] 2ms, all delay time 542ms, SLA 497ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=13}, DataSize=1, target=192.168.31.136
+
+2022-02-12 14:33:45,535 INFO [PUSH-SUCC] 2ms, all delay time 542ms, SLA 497ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=13}, DataSize=1, target=192.168.31.136
+
+2022-02-12 14:33:45,548 INFO [PUSH-SUCC] 15ms, all delay time 555ms, SLA 510ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=13}, DataSize=1, target=192.168.31.136
+
+2022-02-12 14:42:25,259 INFO [PUSH-SUCC] 3ms, all delay time 608ms, SLA 608ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=14}, DataSize=0, target=192.168.31.136
+
+2022-02-12 14:42:25,259 INFO [PUSH-SUCC] 3ms, all delay time 608ms, SLA 608ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=14}, DataSize=0, target=192.168.31.136
+
+2022-02-12 14:42:37,250 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=15}
+
+2022-02-12 14:42:37,724 INFO [PUSH-SUCC] 2ms, all delay time 520ms, SLA 473ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=15}, DataSize=1, target=192.168.31.136
+
+2022-02-12 14:42:37,724 INFO [PUSH-SUCC] 3ms, all delay time 521ms, SLA 474ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=15}, DataSize=1, target=192.168.31.136
+
+2022-02-12 14:42:37,737 INFO [PUSH-SUCC] 15ms, all delay time 533ms, SLA 486ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=15}, DataSize=1, target=192.168.31.136
+
+2022-02-12 14:45:21,654 INFO [PUSH-SUCC] 2ms, all delay time 553ms, SLA 2183476ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-ucenter', ephemeral=true, revision=5}, DataSize=1, target=192.168.31.136
+
+2022-02-12 19:54:33,931 INFO [PUSH-SUCC] 6ms, all delay time 608ms, SLA 609ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=16}, DataSize=0, target=192.168.31.136
+
+2022-02-12 19:54:33,931 INFO [PUSH-SUCC] 5ms, all delay time 608ms, SLA 609ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=16}, DataSize=0, target=192.168.31.136
+
+2022-02-12 19:54:45,548 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=17}
+
+2022-02-12 19:54:46,031 INFO [PUSH-SUCC] 3ms, all delay time 531ms, SLA 483ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=17}, DataSize=1, target=192.168.31.136
+
+2022-02-12 19:54:46,034 INFO [PUSH-SUCC] 6ms, all delay time 534ms, SLA 486ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=17}, DataSize=1, target=192.168.31.136
+
+2022-02-12 19:54:46,044 INFO [PUSH-SUCC] 16ms, all delay time 544ms, SLA 496ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=17}, DataSize=1, target=192.168.31.136
+
+2022-02-12 20:27:53,197 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='service-order', ephemeral=true, revision=9}
+
+2022-02-12 20:27:53,671 INFO [PUSH-SUCC] 17ms, all delay time 520ms, SLA 474ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-order', ephemeral=true, revision=9}, DataSize=1, target=192.168.31.136
+
+2022-02-12 20:28:14,838 INFO [PUSH-SUCC] 3ms, all delay time 532ms, SLA 2009290ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=17}, DataSize=1, target=192.168.31.136
+
+2022-02-12 20:28:18,089 INFO [PUSH-SUCC] 5ms, all delay time 546ms, SLA 22759911ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-ucenter', ephemeral=true, revision=5}, DataSize=1, target=192.168.31.136
+
+2022-02-12 21:14:10,774 INFO [PUSH-SUCC] 3ms, all delay time 606ms, SLA 606ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=18}, DataSize=0, target=192.168.31.136
+
+2022-02-12 21:14:10,774 INFO [PUSH-SUCC] 3ms, all delay time 606ms, SLA 606ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=18}, DataSize=0, target=192.168.31.136
+
+2022-02-12 21:14:23,256 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=19}
+
+2022-02-12 21:14:23,783 INFO [PUSH-SUCC] 3ms, all delay time 574ms, SLA 527ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=19}, DataSize=1, target=192.168.31.136
+
+2022-02-12 21:14:23,783 INFO [PUSH-SUCC] 3ms, all delay time 574ms, SLA 527ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=19}, DataSize=1, target=192.168.31.136
+
+2022-02-12 21:14:23,796 INFO [PUSH-SUCC] 16ms, all delay time 587ms, SLA 540ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=19}, DataSize=1, target=192.168.31.136
+
+2022-02-12 21:14:26,299 INFO [PUSH-SUCC] 5ms, all delay time 603ms, SLA 603ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=20}, DataSize=0, target=192.168.31.136
+
+2022-02-12 21:14:26,299 INFO [PUSH-SUCC] 5ms, all delay time 603ms, SLA 603ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=20}, DataSize=0, target=192.168.31.136
+
+2022-02-12 21:14:26,299 INFO [PUSH-SUCC] 5ms, all delay time 603ms, SLA 603ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=20}, DataSize=0, target=192.168.31.136
+
+2022-02-12 21:14:37,530 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=21}
+
+2022-02-12 21:14:38,040 INFO [PUSH-SUCC] 3ms, all delay time 555ms, SLA 510ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=21}, DataSize=1, target=192.168.31.136
+
+2022-02-12 21:14:38,040 INFO [PUSH-SUCC] 3ms, all delay time 555ms, SLA 510ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=21}, DataSize=1, target=192.168.31.136
+
+2022-02-12 21:14:38,052 INFO [PUSH-SUCC] 15ms, all delay time 567ms, SLA 522ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=21}, DataSize=1, target=192.168.31.136
+
+2022-02-12 21:15:59,799 INFO [PUSH-SUCC] 3ms, all delay time 590ms, SLA 590ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=22}, DataSize=0, target=192.168.31.136
+
+2022-02-12 21:15:59,799 INFO [PUSH-SUCC] 3ms, all delay time 590ms, SLA 590ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=22}, DataSize=0, target=192.168.31.136
+
+2022-02-12 21:16:11,106 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=23}
+
+2022-02-12 21:16:11,567 INFO [PUSH-SUCC] 3ms, all delay time 509ms, SLA 461ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=23}, DataSize=1, target=192.168.31.136
+
+2022-02-12 21:16:11,567 INFO [PUSH-SUCC] 3ms, all delay time 509ms, SLA 461ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=23}, DataSize=1, target=192.168.31.136
+
+2022-02-12 21:16:11,580 INFO [PUSH-SUCC] 16ms, all delay time 522ms, SLA 474ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=23}, DataSize=1, target=192.168.31.136
+
+2022-02-12 21:26:14,593 INFO [PUSH-SUCC] 3ms, all delay time 533ms, SLA 533ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=24}, DataSize=0, target=192.168.31.136
+
+2022-02-12 21:26:14,594 INFO [PUSH-SUCC] 4ms, all delay time 534ms, SLA 534ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=24}, DataSize=0, target=192.168.31.136
+
+2022-02-12 21:26:25,669 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=25}
+
+2022-02-12 21:26:26,150 INFO [PUSH-SUCC] 3ms, all delay time 527ms, SLA 481ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=25}, DataSize=1, target=192.168.31.136
+
+2022-02-12 21:26:26,150 INFO [PUSH-SUCC] 3ms, all delay time 527ms, SLA 481ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=25}, DataSize=1, target=192.168.31.136
+
+2022-02-12 21:26:26,162 INFO [PUSH-SUCC] 15ms, all delay time 539ms, SLA 493ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=25}, DataSize=1, target=192.168.31.136
+
+2022-02-12 21:31:45,188 INFO [PUSH-SUCC] 3ms, all delay time 541ms, SLA 541ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=26}, DataSize=0, target=192.168.31.136
+
+2022-02-12 21:31:45,188 INFO [PUSH-SUCC] 3ms, all delay time 541ms, SLA 541ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=26}, DataSize=0, target=192.168.31.136
+
+2022-02-12 21:31:56,468 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=27}
+
+2022-02-12 21:31:56,971 INFO [PUSH-SUCC] 4ms, all delay time 549ms, SLA 503ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=27}, DataSize=1, target=192.168.31.136
+
+2022-02-12 21:31:56,971 INFO [PUSH-SUCC] 4ms, all delay time 549ms, SLA 503ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=27}, DataSize=1, target=192.168.31.136
+
+2022-02-12 21:31:56,984 INFO [PUSH-SUCC] 17ms, all delay time 562ms, SLA 516ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=27}, DataSize=1, target=192.168.31.136
+
+2022-02-12 21:33:02,218 INFO [PUSH-SUCC] 3ms, all delay time 546ms, SLA 546ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-ucenter', ephemeral=true, revision=6}, DataSize=0, target=192.168.31.136
+
+2022-02-12 21:33:12,423 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='service-ucenter', ephemeral=true, revision=7}
+
+2022-02-12 21:33:12,897 INFO [PUSH-SUCC] 3ms, all delay time 520ms, SLA 474ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-ucenter', ephemeral=true, revision=7}, DataSize=1, target=192.168.31.136
+
+2022-02-12 21:33:12,910 INFO [PUSH-SUCC] 16ms, all delay time 533ms, SLA 487ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-ucenter', ephemeral=true, revision=7}, DataSize=1, target=192.168.31.136
+
+2022-02-12 21:38:17,483 INFO [PUSH-SUCC] 3ms, all delay time 611ms, SLA 611ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=28}, DataSize=0, target=192.168.31.136
+
+2022-02-12 21:38:17,486 INFO [PUSH-SUCC] 6ms, all delay time 614ms, SLA 614ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=28}, DataSize=0, target=192.168.31.136
+
+2022-02-12 21:38:29,548 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=29}
+
+2022-02-12 21:38:30,074 INFO [PUSH-SUCC] 3ms, all delay time 573ms, SLA 526ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=29}, DataSize=1, target=192.168.31.136
+
+2022-02-12 21:38:30,074 INFO [PUSH-SUCC] 3ms, all delay time 573ms, SLA 526ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=29}, DataSize=1, target=192.168.31.136
+
+2022-02-12 21:38:30,088 INFO [PUSH-SUCC] 17ms, all delay time 587ms, SLA 540ms, Service{namespace='public', group='DEFAULT_GROUP', name='service-edu', ephemeral=true, revision=29}, DataSize=1, target=192.168.31.136
+

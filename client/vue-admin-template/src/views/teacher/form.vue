@@ -97,6 +97,7 @@ export default {
         getById(params.id).then((resp) => {
           if (resp.code == 200) {
             this.teacher = resp.data;
+            this.teacher.level+="";
           }
         });
       }

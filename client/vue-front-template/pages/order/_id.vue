@@ -95,10 +95,15 @@
         </div>
         <input name="score" value="0" type="hidden" id="usedScore" />
 
-        <button class="fr redb" type="button" id="submitPay" @click="toPay($event)">
+        <button
+          class="fr redb"
+          type="button"
+          id="submitPay"
+          @click="toPay($event)"
+        >
           去支 付
         </button>
-
+        <a id="tagOpenWin" target="_blank"></a>
         <div class="clear"></div>
       </div>
     </form>
@@ -154,7 +159,17 @@ export default {
       });
     },
     toPay() {
-      window.location.href = this.formUrl;
+      var obj = document.getElementById("tagOpenWin");
+      obj.href = this.formUrl;
+      obj.click();
+       this.$confirm("是否已经成功支付?", "订单提示", {
+          confirmButtonText: "我已经完成支付",
+          cancelButtonText: "取消",
+          type: "warning",
+        })
+          .then(()=>{
+              this.$router.go(-1);
+          })
     },
   },
 };

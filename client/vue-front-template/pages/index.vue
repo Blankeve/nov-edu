@@ -17,7 +17,7 @@
                 class="swiper-slide"
                 style="background: #040b1b"
               >
-                <a target="" href="/">
+                <a target="" :href="banner.linkUrl">
                   <img
                     width="100%"
                     :src="banner.imageUrl"
@@ -257,11 +257,11 @@
                       </nuxt-link>
                     </div>
                     <div class="hLh30 txtOf tac">
-                      <span class="fsize14 c-999">{{ teacher.intro }}</span>
+                      <span class="fsize14 c-999">{{ teacher.career }}</span>
                     </div>
                     <div class="mt15 i-q-txt">
                       <p class="c-999 f-fA">
-                        {{ teacher.career }}
+                        {{ teacher.intro }}
                       </p>
                     </div>
                   </section>

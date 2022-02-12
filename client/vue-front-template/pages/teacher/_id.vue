@@ -12,17 +12,21 @@
         <section class="fl t-infor-box c-desc-content">
           <div class="mt20 ml20">
             <section class="t-infor-pic">
-              <img :src="teacher.avatar" width="500px" height="500px" />
+              <img :src="teacher.avatar" width="400px" height="400px" />
             </section>
             <h3 class="hLh30">
-              <span class="fsize24 c-333">{{teacher.name}}&nbsp;{{teacher.name == 1?"1高级讲师":"首席讲师"}}</span>
+              <span class="fsize24 c-333"
+                >{{ teacher.name }}&nbsp;{{
+                  teacher.name == 1 ? "1高级讲师" : "首席讲师"
+                }}</span
+              >
             </h3>
             <section class="mt10">
-              <span class="t-tag-bg">{{teacher.intro}}</span>
+              <span class="t-tag-bg">{{ teacher.career }}</span>
             </section>
             <section class="t-infor-txt">
               <p class="mt20">
-               {{teacher.career}}
+                {{ teacher.intro }}
               </p>
             </section>
             <div class="clear"></div>
@@ -48,9 +52,12 @@
             >
           </section>
           <!-- /无数据提示 结束-->
-          <article  v-if="courses || courses.length > 0" class="comm-course-list">
+          <article
+            v-if="courses || courses.length > 0"
+            class="comm-course-list"
+          >
             <ul class="of">
-             <li v-for="course in courses" :key="course.id">
+              <li v-for="course in courses" :key="course.id">
                 <div class="cc-l-wrap">
                   <section class="course-img">
                     <img
@@ -59,12 +66,11 @@
                       :alt="course.title"
                     />
                     <div class="cc-mask">
-                      <a
-                        :href="'/course/' + course.id"
-                        title="开始学习"
-                        class="comm-btn c-btn-1"
-                        >开始学习</a
-                      >
+                      <nuxt-link :to="'/course/' + course.id">
+                        <a title="开始学习" class="comm-btn c-btn-1"
+                          >开始学习</a
+                        >
+                      </nuxt-link>
                     </div>
                   </section>
                   <h3 class="hLh30 txtOf mt10">
@@ -75,27 +81,26 @@
                       >{{ course.title }}</a
                     >
                   </h3>
-                <section class="mt10 hLh20 of">
-                      <span
-                      class="fr jgTag "
-                        :class="{
-                          'bg-green': course.price == 0,
-                           'bg-red': course.price > 0,
-                        }"
-                      >
-                        <i class="c-fff fsize18 f-fA">{{
-                          course.price > 0 ? "¥" + course.price : "免费"
-                        }}</i>
-                      </span>
-                      <span class="fl jgAttr c-ccc f-fA">
-                        <i class="c-999 f-fA">9634人学习</i>
-                        |
-                        <i class="c-999 f-fA">9634评论</i>
-                      </span>
-                    </section>
+                  <section class="mt10 hLh20 of">
+                    <span
+                      class="fr jgTag"
+                      :class="{
+                        'bg-green': course.price == 0,
+                        'bg-red': course.price > 0,
+                      }"
+                    >
+                      <i class="c-fff fsize18 f-fA">{{
+                        course.price > 0 ? "¥" + course.price : "免费"
+                      }}</i>
+                    </span>
+                    <span class="fl jgAttr c-ccc f-fA">
+                      <i class="c-999 f-fA">{{ course.applyCount }}人学习</i>
+                      |
+                      <i class="c-999 f-fA">{{ course.commentCount }}人评论</i>
+                    </span>
+                  </section>
                 </div>
               </li>
-            
             </ul>
             <div class="clear"></div>
           </article>

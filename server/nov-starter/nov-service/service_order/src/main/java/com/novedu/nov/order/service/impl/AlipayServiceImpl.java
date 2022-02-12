@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.alipay.api.internal.util.AlipaySignature;
+import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.order.client.EduClient;
 import com.novedu.nov.order.config.AlipayConfig;
 import com.novedu.nov.order.entity.EduCourseApply;
@@ -50,7 +51,7 @@ public class AlipayServiceImpl implements AlipayService {
     TradeOrderService orderService;
 
     @Override
-    public void webPagePay(HttpServletRequest httpRequest, HttpServletResponse httpResponse,Long orderId) throws Exception {
+    public void webPagePay(HttpServletRequest httpRequest, HttpServletResponse httpResponse, Long orderId) throws Exception {
         TradeOrder order = orderService.getById(orderId);
         Map courseInfo = (Map) eduClient.queryCourseDetail(order.getCourseId()).getData();
         String courseTitle = courseInfo.get("courseTitle").toString();
@@ -58,14 +59,14 @@ public class AlipayServiceImpl implements AlipayService {
         BigDecimal totalFee = order.getTotalFee();
         AlipayClient alipayClient = new DefaultAlipayClient(AlipayConfig.GATEWAYURL, AlipayConfig.APP_ID, AlipayConfig.RSA_PRIVATE_KEY, AlipayConfig.FORMAT, AlipayConfig.CHARSET, AlipayConfig.ALIPAY_PUBLIC_KEY, AlipayConfig.SIGN_TYPE);  //获得初始化的AlipayClient
         AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest(); //创建API对应的request
-        alipayRequest.setReturnUrl(AlipayConfig.return_url+"/"+courseId);
+        alipayRequest.setReturnUrl(AlipayConfig.return_url + "/" + courseId);
         alipayRequest.setNotifyUrl(AlipayConfig.notify_url); //在公共参数中设置回跳和通知地址
         alipayRequest.setBizContent("{" +
-                "    \"out_trade_no\":\""+orderId+"\"," +
+                "    \"out_trade_no\":\"" + orderId + "\"," +
                 "    \"product_code\":\"FAST_INSTANT_TRADE_PAY\"," +
-                "    \"total_amount\":"+totalFee+"," +
-                "    \"subject\":\""+courseTitle+"\"," +
-                "    \"body\":\""+courseTitle+"\"," +
+                "    \"total_amount\":" + totalFee + "," +
+                "    \"subject\":\"" + courseTitle + "\"," +
+                "    \"body\":\"" + courseTitle + "\"," +
                 "    \"passback_params\":\"merchantBizType%3d3C%26merchantBizNo%3d2016010101111\"," +
                 "    \"extend_params\":{" +
                 "    \"sys_service_provider_id\":\"2088511833207846\"" +
@@ -80,11 +81,27 @@ public class AlipayServiceImpl implements AlipayService {
         order.setPaidTime(new Date());
         order.setPayType(2);
         order.setStatus(1);
-        orderService.updateById(order);
-        EduCourseApply courseApply = new EduCourseApply();
-        courseApply.setCourseId(order.getCourseId());
-        courseApply.setUid(order.getUid());
-        eduClient.saveApply(courseApply);
+        if (orderService.updateById(order)) {
+            log.info("同步订单:" + orderId + "成功");
+            EduCourseApply courseApply = new EduCourseApply();
+            courseApply.setCourseId(order.getCourseId());
+            courseApply.setUid(order.getUid());
+            BaseResult baseResult1 = eduClient.saveApply(courseApply);
+            if (BaseResult.success().getCode().equals(baseResult1.getCode()))
+                log.info("saveApply success");
+            else
+                log.info("saveApply fail");
+            BaseResult baseResult2 = eduClient.statisticsCourseApplyCount();
+            if (BaseResult.success().getCode().equals(baseResult2.getCode()))
+                log.info("同步课程学习人数成功");
+            else
+                log.info("同步课程学习人数失败");
+            BaseResult baseResult3 = eduClient.statisticsCourseBuyCount();
+            if (BaseResult.success().getCode().equals(baseResult3.getCode()))
+                log.info("同步课程购买数成功");
+            else
+                log.info("同步课程购买数失败");
+        }
         httpResponse.setContentType("text/html;charset=utf-8");
         httpResponse.getWriter().write(form); //直接将完整的表单html输出到页面
         httpResponse.getWriter().flush();
@@ -125,9 +142,9 @@ public class AlipayServiceImpl implements AlipayService {
             BigDecimal totalAmount = new BigDecimal(request.getParameter("total_amount"));
 //                实收金额
             BigDecimal receiptAmount = new BigDecimal(request.getParameter("receipt_amount"));
-            log.info("交易状态:{},支付金额为：{},实付金额为：{}", payState, totalAmount,receiptAmount);
+            log.info("交易状态:{},支付金额为：{},实付金额为：{}", payState, totalAmount, receiptAmount);
             //验证签名
-            boolean signVerified = AlipaySignature.rsaCheckV1(parameters, AlipayConfig.ALIPAY_PUBLIC_KEY , "UTF-8", AlipayConfig.SIGN_TYPE);
+            boolean signVerified = AlipaySignature.rsaCheckV1(parameters, AlipayConfig.ALIPAY_PUBLIC_KEY, "UTF-8", AlipayConfig.SIGN_TYPE);
 //                验签  验证商户id  验证支付宝返回状态
             if (signVerified && AlipayConfig.APP_ID.equals(appId) && "TRADE_SUCCESS".equals(payState)) {
                 //你的业务参数    判断成功后给支付宝返回7个字符的success

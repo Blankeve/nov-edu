@@ -1,6 +1,7 @@
 package com.novedu.nov.ucenter.service.impl;
 
 import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.common.config.SysConfigCache;
 import com.novedu.nov.common.util.JwtUtils;
 import com.novedu.nov.ucenter.entity.UcenterMember;
 import com.novedu.nov.ucenter.mapper.UcenterMemberMapper;
@@ -30,29 +31,34 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
         String password = DigestUtils.md5DigestAsHex(ucenterMemberDto.getPassword().getBytes());
         UcenterMember ucenterMember = query().eq("username", ucenterMemberDto.getUsername())
                 .eq("password", password).one();
-        if(ucenterMember == null){
+        if (ucenterMember == null) {
             return BaseResult.error();
         }
-        String token = JwtUtils.createToken(ucenterMember.getId().toString(), ucenterMember.getUsername(),ucenterMember.getNickname(),ucenterMember.getAvatar());
-        return BaseResult.success().mapSet("access_token",token);
+        String token = JwtUtils.createToken(ucenterMember.getId().toString(), ucenterMember.getUsername(), ucenterMember.getNickname(), ucenterMember.getAvatar());
+        return BaseResult.success().mapSet("access_token", token);
     }
 
     @Override
     public BaseResult register(UcenterMember ucenterMemberDto) {
         String username = ucenterMemberDto.getUsername();
-        int count = query().eq("username",username).count();
-        if(count>0)
+        int count = query().eq("username", username).count();
+        if (count > 0)
             return BaseResult.error("用户名存在!");
         String password = DigestUtils.md5DigestAsHex(ucenterMemberDto.getPassword().getBytes());
         ucenterMemberDto.setPassword(password);
-        if(!StringUtils.hasText(ucenterMemberDto.getNickname())){
+        String nickname = ucenterMemberDto.getNickname();
+        if (!StringUtils.hasText(nickname)) {
             StringBuilder sb = new StringBuilder();
             String str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             for (int i = 0; i < 6; i++) {
                 sb.append(str.charAt(new Random().nextInt(str.length() - 1)));
             }
-            ucenterMemberDto.setNickname("学员"+sb.toString());
+            ucenterMemberDto.setNickname("学员" + sb);
+        }else {
+            if(nickname.length() > 15)
+                return BaseResult.error("您的昵称太过个性，请换个简短点的吧,15个字符以内");
         }
+        ucenterMemberDto.setAvatar(SysConfigCache.getConfigByKey("stu_def_avatar").getConfigValue());
         return BaseResult.successOrError(save(ucenterMemberDto));
     }
 
