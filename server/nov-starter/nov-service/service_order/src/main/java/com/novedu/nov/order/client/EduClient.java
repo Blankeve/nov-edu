@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @version:
  */
 @Component
-@FeignClient(name = "service-edu")
+@FeignClient(name = "service-edu",fallback = EduClientImpl.class)
 public interface EduClient {
 
     @ApiOperation("根据id获取course")

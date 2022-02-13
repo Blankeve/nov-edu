@@ -53,7 +53,13 @@ public class AlipayServiceImpl implements AlipayService {
     @Override
     public void webPagePay(HttpServletRequest httpRequest, HttpServletResponse httpResponse, Long orderId) throws Exception {
         TradeOrder order = orderService.getById(orderId);
-        Map courseInfo = (Map) eduClient.queryCourseDetail(order.getCourseId()).getData();
+        BaseResult baseResult = eduClient.queryCourseDetail(order.getCourseId());
+        httpResponse.setContentType("text/html;charset=UTF-8");
+        if (BaseResult.serviceInvokeFailure().getCode().equals(baseResult.getCode())) {
+            httpResponse.getWriter().write(baseResult.getMsg());
+            return;
+        }
+        Map courseInfo = (Map) baseResult.getData();
         String courseTitle = courseInfo.get("courseTitle").toString();
         String courseId = courseInfo.get("courseId").toString();
         BigDecimal totalFee = order.getTotalFee();
@@ -86,21 +92,21 @@ public class AlipayServiceImpl implements AlipayService {
             EduCourseApply courseApply = new EduCourseApply();
             courseApply.setCourseId(order.getCourseId());
             courseApply.setUid(order.getUid());
-            BaseResult baseResult1 = eduClient.saveApply(courseApply);
-            if (BaseResult.success().getCode().equals(baseResult1.getCode()))
-                log.info("saveApply success");
-            else
-                log.info("saveApply fail");
-            BaseResult baseResult2 = eduClient.statisticsCourseApplyCount();
-            if (BaseResult.success().getCode().equals(baseResult2.getCode()))
-                log.info("同步课程学习人数成功");
-            else
-                log.info("同步课程学习人数失败");
-            BaseResult baseResult3 = eduClient.statisticsCourseBuyCount();
-            if (BaseResult.success().getCode().equals(baseResult3.getCode()))
-                log.info("同步课程购买数成功");
-            else
-                log.info("同步课程购买数失败");
+            baseResult = eduClient.saveApply(courseApply);
+            if (BaseResult.serviceInvokeFailure().getCode().equals(baseResult.getCode())) {
+                httpResponse.getWriter().write(baseResult.getMsg());
+                return;
+            }
+            baseResult = eduClient.statisticsCourseApplyCount();
+            if (BaseResult.serviceInvokeFailure().getCode().equals(baseResult.getCode())) {
+                httpResponse.getWriter().write(baseResult.getMsg());
+                return;
+            }
+            baseResult = eduClient.statisticsCourseBuyCount();
+            if (BaseResult.serviceInvokeFailure().getCode().equals(baseResult.getCode())) {
+                httpResponse.getWriter().write(baseResult.getMsg());
+                return;
+            }
         }
         httpResponse.setContentType("text/html;charset=utf-8");
         httpResponse.getWriter().write(form); //直接将完整的表单html输出到页面

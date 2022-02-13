@@ -3,9 +3,9 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-.log
-.nacos
-.nginx
+.log/
+.nacos/
+.nginx/
 
 ### STS ###
 .apt_generated
@@ -21,6 +21,7 @@ target/
 *.iws
 *.iml
 *.ipr
+*.jpg
 
 ### NetBeans ###
 /nbproject/private/

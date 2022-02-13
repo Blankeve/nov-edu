@@ -109,8 +109,10 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
         courseApply.setUid(uid);
         courseApply.setCourseId(id);
         BaseResult baseResult = eduClient.queryCourseApplyByCourseIdAndUid(courseApply);
-        if (baseResult.getCode().equals(200))
+        if (BaseResult.success().getCode().equals(baseResult.getCode()))
             return BaseResult.success("已报名该课程").mapSet("hasBuy", "1");
+        else if(BaseResult.serviceInvokeFailure().getCode().equals(baseResult.getCode()))
+            return BaseResult.serviceInvokeFailure();
         return BaseResult.success("暂未购买该课程");
     }
 
