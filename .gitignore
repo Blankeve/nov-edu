@@ -1,7 +1,6 @@
 ##ignore this file##
 /target/
 /ngink/
-/nacos/
 .classpath
 .project
 .settings     
