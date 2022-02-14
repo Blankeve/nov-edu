@@ -7,15 +7,10 @@ import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
-
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import javax.validation.constraints.Pattern;
 
 /**
  * <p>
@@ -23,14 +18,15 @@ import javax.validation.constraints.Pattern;
  * </p>
  *
  * @author juam
- * @since 2022-01-19
+ * @since 2022-02-14
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@ApiModel(value="UcenterMember对象", description="会员表")
-public class UcenterMember implements Serializable {
+@ApiModel(value="AclUser对象", description="会员表")
+public class AclUser implements Serializable {
 
-    @JsonSerialize(using = ToStringSerializer.class)
+    private static final long serialVersionUID = 1L;
+
     @ApiModelProperty(value = "会员id")
     @TableId(value = "id", type = IdType.NONE)
     private Long id;
@@ -38,15 +34,12 @@ public class UcenterMember implements Serializable {
     @ApiModelProperty(value = "微信openid")
     private String openid;
 
-    @Pattern(regexp = "^\\w{6,18}$",message = "用户名格式不正确")
     @ApiModelProperty(value = "用户名")
     private String username;
 
-    @Pattern(regexp = "^\\w{6,18}$",message = "密码格式不正确")
     @ApiModelProperty(value = "密码")
     private String password;
 
-    @Pattern(regexp = "^1[3|4|5|7|8]\\d{9}$",message = "手机号码格式不正确")
     @ApiModelProperty(value = "手机号")
     private String mobile;
 
@@ -78,6 +71,5 @@ public class UcenterMember implements Serializable {
     @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
     @ApiModelProperty(value = "更新时间")
     private Date updateTime;
-
 
 }

@@ -229,6 +229,27 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/statistics',
+    component: Layout,
+    redirect: '/statistics/register',
+    name: '统计分析',
+    meta: { title: '统计分析', icon: 'el-icon-s-data' },
+    children: [
+      {
+        path: 'register',
+        name: 'statistics-register',
+        component: () => import('@/views/statistics/user-register'),
+        meta: { title: '注册人数', icon: 'el-icon-s-custom' }
+      },
+      {
+        path: 'course',
+        name: 'statistics-course',
+        component: () => import('@/views/statistics/new-course'),
+        meta: { title: '新增课程', icon: 'el-icon-data-analysis' }
+      },
+    ]
+  },
+  {
     path: '/banner',
     component: Layout,
     redirect: '/banner/list',

@@ -7,6 +7,7 @@ import com.novedu.nov.common.util.JwtUtils;
 import com.novedu.nov.edu.entity.EduComment;
 import com.novedu.nov.edu.entity.EduCourse;
 import com.novedu.nov.edu.entity.EduCourseApply;
+import com.novedu.nov.edu.entity.dto.EduUserCommentDTO;
 import com.novedu.nov.edu.entity.vo.EduUserCommentVO;
 import com.novedu.nov.edu.mapper.EduCommentMapper;
 import com.novedu.nov.edu.service.EduCommentService;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 /**
  * <p>
@@ -79,7 +81,7 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
     }
 
     @Override
-    public BaseResult queryCommentPage(Page page, EduUserCommentVO eduComment) {
+    public BaseResult queryCommentPage(Page page, EduUserCommentDTO eduComment) {
         QueryWrapper queryWrapper = new QueryWrapper();
         if (StringUtils.hasText(eduComment.getNickname()))
             queryWrapper.like("u.nickname", eduComment.getNickname());
@@ -91,6 +93,10 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
             queryWrapper.eq("comment.uid", eduComment.getUid());
         if (eduComment.getTeacherId() != null)
             queryWrapper.eq("comment.teacher_id", eduComment.getTeacherId());
+        Date start = eduComment.getStartTime();
+        Date end = eduComment.getEndTime();
+        if (start != null && end != null && end.getTime() > start.getTime())
+            queryWrapper.apply("comment.create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and comment.create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start,end);
         return BaseResult.success(commentMapper.queryPage(page, queryWrapper));
     }
 

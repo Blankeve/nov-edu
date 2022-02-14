@@ -1,6 +1,6 @@
 package com.novedu.nov.ucenter.mapper;
 
-import com.novedu.nov.ucenter.entity.UcenterMember;
+import com.novedu.nov.ucenter.entity.AclUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author juam
- * @since 2022-01-19
+ * @since 2022-02-14
  */
-public interface UcenterMemberMapper extends BaseMapper<UcenterMember> {
+public interface AclUserMapper extends BaseMapper<AclUser> {
 
 }

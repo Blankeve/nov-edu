@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.novedu.nov.edu.mapper.EduVideoMapper">
 
-    <select id="queryPage" parameterType="EduVideoInfoDTO" resultType="EduCourseInfoVO">
+    <select id="queryPage" parameterType="EduVideoInfoDTO" resultType="EduVideoInfoVO">
         select teacher.id as teacherId,
         teacher.name as teacherName,
         course.id as courseId,

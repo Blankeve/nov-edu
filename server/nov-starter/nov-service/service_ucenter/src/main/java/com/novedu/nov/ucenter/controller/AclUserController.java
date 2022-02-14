@@ -2,9 +2,8 @@ package com.novedu.nov.ucenter.controller;
 
 
 import com.novedu.nov.common.api.BaseResult;
-import com.novedu.nov.ucenter.entity.UcenterMember;
-import com.novedu.nov.ucenter.entity.dto.UcenterMemberDto;
-import com.novedu.nov.ucenter.service.UcenterMemberService;
+import com.novedu.nov.ucenter.entity.AclUser;
+import com.novedu.nov.ucenter.service.AclUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,30 +18,28 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author juam
- * @since 2022-01-19
+ * @since 2022-02-14
  */
 @RestController
 @RequestMapping("/ucenter/member/")
-public class UcenterMemberController {
+public class AclUserController {
 
     @Autowired
-    UcenterMemberService ucenterMemberService;
+    AclUserService aclUserService;
 
     @PostMapping("/login")
-    public BaseResult login(UcenterMember ucenterMemberDto){
-        return ucenterMemberService.login(ucenterMemberDto);
+    public BaseResult login(AclUser aclUser){
+        return aclUserService.login(aclUser);
     }
 
     @PostMapping("/register")
-    public BaseResult register(@Validated UcenterMember ucenterMemberDto){
-        return ucenterMemberService.register(ucenterMemberDto);
+    public BaseResult register(@Validated AclUser aclUser){
+        return aclUserService.register(aclUser);
     }
 
     @PostMapping("/info/{id}")
     public BaseResult getMemberInfo(@PathVariable Long id){
-        return ucenterMemberService.getMemberInfo(id);
+        return aclUserService.getMemberInfo(id);
     }
-
-
 }
 

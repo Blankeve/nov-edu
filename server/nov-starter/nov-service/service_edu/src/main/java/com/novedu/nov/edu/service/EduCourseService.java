@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.novedu.nov.edu.entity.dto.EduCourseInfoDTO;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -48,4 +49,8 @@ public interface EduCourseService extends IService<EduCourse> {
     BaseResult statisticsCourseApplyCount();
 
     BaseResult statisticsCourseBuyCount();
+
+    void exportCoursePage(HttpServletResponse response, Page page, EduCourseInfoDTO courseInfoDTO);
+
+    void exportAll(HttpServletResponse response);
 }

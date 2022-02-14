@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduTeacher;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.novedu.nov.edu.entity.dto.EduTeacherDTO;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ import java.util.List;
  */
 public interface EduTeacherService extends IService<EduTeacher> {
 
-    BaseResult<List<EduTeacher>> findTeacherList(Page page, EduTeacher teacher);
+    BaseResult<List<EduTeacher>> findTeacherList(Page page, EduTeacherDTO teacher);
 
     BaseResult removeTeacher(String id);
 

@@ -1,7 +1,10 @@
 package com.novedu.nov.statistics.entity;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
 import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -43,11 +46,13 @@ public class StatisticsDaily implements Serializable {
     @ApiModelProperty(value = "每日新增课程数")
     private Integer courseNum;
 
+    @TableField(value = "create_time", fill = FieldFill.INSERT)
     @ApiModelProperty(value = "创建时间")
-    private Date gmtCreate;
+    private Date createTime;
 
+    @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
     @ApiModelProperty(value = "更新时间")
-    private Date gmtModified;
+    private Date updateTime;
 
 
 }

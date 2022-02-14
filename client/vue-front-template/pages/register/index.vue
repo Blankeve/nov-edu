@@ -87,13 +87,6 @@
             @click="submitRegister()"
           />
         </div>
-
-         <nuxt-link to="/">
-          <div class="btn">
-            <input type="button" class="back-home-button" value="返回主页" />
-          </div>
-        </nuxt-link>
-        
         <p class="sign-up-msg">
           点击 “注册” 即表示您同意并愿意遵守简书
           <br />
@@ -150,27 +143,31 @@ export default {
       sending: true, //是否发送验证码
       second: 60, //倒计时间
       codeTest: "获取验证码",
+      userValidated: false,
+      pwdValidated: false,
+      phoneValidated: false,
     };
   },
   methods: {
     //注册提交的方法
     submitRegister() {
-      registerMember(this.form).then((resp) => {
-        if (resp.code === 200) {
-          //提示注册成功
-          this.$message({
-            type: "success",
-            message: "注册成功",
-          });
-          //跳转登录页面
-          this.$router.push({
-            path: "/login",
-            query: {
-              form: this.form,
-            },
-          });
-        }
-      });
+      if (this.userValidated && this.pwdValidated && this.phoneValidated)
+        registerMember(this.form).then((resp) => {
+          if (resp.code === 200) {
+            //提示注册成功
+            this.$message({
+              type: "success",
+              message: "注册成功",
+            });
+            //跳转登录页面
+            this.$router.push({
+              path: "/login",
+              query: {
+                form: this.form,
+              },
+            });
+          }
+        });
     },
     timeDown() {
       let result = setInterval(() => {
@@ -187,27 +184,33 @@ export default {
     },
 
     checkPhone(rule, value, callback) {
-      console.log(value)
+      console.log(value);
       //debugger
       if (!/^1[3|4|5|7|8]\d{9}$/.test(value)) {
+        this.phoneValidated = false;
         return callback(new Error("手机号码格式不正确"));
       }
+      this.phoneValidated = true;
       return callback();
     },
 
     checkUsername(rule, value, callback) {
       //debugger
       if (!/^\w{6,18}$/.test(value)) {
+        this.userValidated = false;
         return callback(new Error("用户名格式不正确"));
       }
+      this.userValidated = true;
       return callback();
     },
 
     checkPassword(rule, value, callback) {
       //debugger
       if (!/^\w{6,18}$/.test(value)) {
+        this.pwdValidated = false;
         return callback(new Error("密码格式不正确"));
       }
+      this.pwdValidated = true;
       return callback();
     },
   },

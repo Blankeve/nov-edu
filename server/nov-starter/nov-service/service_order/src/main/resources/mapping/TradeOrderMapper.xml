@@ -18,7 +18,7 @@
         c.cover as courseCover,
         t.name as teacherName
         from trade_order o
-        left join ucenter_member u on o.uid = u.id
+        left join acl_user u on o.uid = u.id
         left join edu_course c on o.course_id = c.id
         left join edu_teacher t on o.teacher_id = t.id
         where o.is_deleted = 0
@@ -26,5 +26,6 @@
             and ${ew.sqlSegment}
         </if>
     </select>
+
 
 </mapper>

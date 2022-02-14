@@ -29,10 +29,13 @@
 
       <el-form-item label="添加时间" prop="createTime">
         <el-date-picker
-          v-model="form.createTime"
-          type="datetime"
-          placeholder="课程添加时间"
-          value-format="yyyy-MM-dd HH:mm:ss"
+          v-model="dateRange"
+          type="datetimerange"
+          :picker-options="pickerOptions"
+          range-separator="至"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
+          align="right"
         >
         </el-date-picker>
       </el-form-item>
@@ -169,6 +172,38 @@ export default {
         size: 8,
         total: 0,
       },
+      pickerOptions: {
+        shortcuts: [
+          {
+            text: "最近一周",
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
+              picker.$emit("pick", [start, end]);
+            },
+          },
+          {
+            text: "最近一个月",
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+              picker.$emit("pick", [start, end]);
+            },
+          },
+          {
+            text: "最近三个月",
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
+              picker.$emit("pick", [start, end]);
+            },
+          },
+        ],
+      },
+      dateRange: [],
       sizes: [],
       courses: [],
     };
@@ -178,6 +213,8 @@ export default {
   },
   methods: {
     fetchData() {
+      this.listLoading = true;
+      this.handleDateRange();
       getList().then((resp) => {
         if (resp.code === 200) {
           this.courses = resp.data;
@@ -185,7 +222,7 @@ export default {
       });
       let courseId = this.$route.query.course;
       if (courseId) this.form.courseId = courseId;
-      this.listLoading = true;
+
       this.sizes =
         this.form.size > 1
           ? [this.form.size / 2, this.form.size, this.form.size * 2]
@@ -198,6 +235,34 @@ export default {
         this.list = data.records;
         this.listLoading = false;
       });
+    },
+    handleDateLength(str) {
+      str += "";
+      if (str.length < 2) return "0" + str;
+      return str;
+    },
+    handleDateFormat(time) {
+      let formatDate =
+        time.getFullYear() +
+        "-" +
+        this.handleDateLength(time.getMonth() + 1) +
+        "-" +
+        this.handleDateLength(time.getDate()) +
+        " " +
+        this.handleDateLength(time.getHours()) +
+        ":" +
+        this.handleDateLength(time.getMinutes()) +
+        ":" +
+        this.handleDateLength(time.getSeconds());
+      return formatDate;
+    },
+    handleDateRange() {
+      if (this.dateRange && this.dateRange.length > 0) {
+        this.form.startTime = this.handleDateFormat(
+          new Date(this.dateRange[0])
+        );
+        this.form.endTime = this.handleDateFormat(new Date(this.dateRange[1]));
+      }
     },
     handleCurrentChange(p) {
       this.form.current = p;
@@ -231,6 +296,7 @@ export default {
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
+      this.dateRange = [];
     },
     watchVideo(data) {
       this.$router.push({
