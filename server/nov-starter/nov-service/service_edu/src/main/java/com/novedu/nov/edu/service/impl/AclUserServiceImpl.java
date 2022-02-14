@@ -36,6 +36,8 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
     public BaseResult getInfo(String token) {
         String uid = JwtUtils.getAudience(token).get("uid");
         AclUser user = getById(uid);
+        if(user == null)
+            return BaseResult.error();
         return BaseResult.success()
                 .mapSet("username", user.getUsername())
                 .mapSet("avatar", user.getAvatar());

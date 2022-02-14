@@ -17,7 +17,7 @@
         c.title as courseTitle,
         t.name as teacherName
         from edu_comment comment
-        left join ucenter_member u on comment.uid = u.id
+        left join acl_user u on comment.uid = u.id
         left join edu_course c on comment.course_id = c.id
         left join edu_teacher t on comment.teacher_id = t.id
         where comment.is_deleted = 0

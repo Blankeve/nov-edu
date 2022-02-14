@@ -3,16 +3,14 @@ package com.novedu.nov.ucenter.service.impl;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.common.config.SysConfigCache;
 import com.novedu.nov.common.util.JwtUtils;
-import com.novedu.nov.ucenter.entity.UcenterMember;
-import com.novedu.nov.ucenter.mapper.UcenterMemberMapper;
-import com.novedu.nov.ucenter.service.UcenterMemberService;
+import com.novedu.nov.ucenter.entity.AclUser;
+import com.novedu.nov.ucenter.mapper.AclUserMapper;
+import com.novedu.nov.ucenter.service.AclUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.StringUtils;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 /**
@@ -21,15 +19,15 @@ import java.util.Random;
  * </p>
  *
  * @author juam
- * @since 2022-01-19
+ * @since 2022-02-14
  */
 @Service
-public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, UcenterMember> implements UcenterMemberService {
+public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> implements AclUserService {
 
     @Override
-    public BaseResult login(UcenterMember ucenterMemberDto) {
+    public BaseResult login(AclUser ucenterMemberDto) {
         String password = DigestUtils.md5DigestAsHex(ucenterMemberDto.getPassword().getBytes());
-        UcenterMember ucenterMember = query().eq("username", ucenterMemberDto.getUsername())
+        AclUser ucenterMember = query().eq("username", ucenterMemberDto.getUsername())
                 .eq("password", password).one();
         if (ucenterMember == null) {
             return BaseResult.error();
@@ -39,7 +37,7 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
     }
 
     @Override
-    public BaseResult register(UcenterMember ucenterMemberDto) {
+    public BaseResult register(AclUser ucenterMemberDto) {
         String username = ucenterMemberDto.getUsername();
         int count = query().eq("username", username).count();
         if (count > 0)

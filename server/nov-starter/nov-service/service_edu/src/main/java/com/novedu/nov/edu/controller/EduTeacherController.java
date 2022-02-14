@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.CrmBanner;
 import com.novedu.nov.edu.entity.EduTeacher;
+import com.novedu.nov.edu.entity.dto.EduTeacherDTO;
 import com.novedu.nov.edu.service.EduTeacherService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -37,7 +38,7 @@ public class EduTeacherController {
     }
 
     @GetMapping("/list")
-    public BaseResult<List<EduTeacher>> list(Page page, EduTeacher teacher) {
+    public BaseResult<List<EduTeacher>> list(Page page, EduTeacherDTO teacher) {
         return eduTeacherService.findTeacherList(page, teacher);
     }
 

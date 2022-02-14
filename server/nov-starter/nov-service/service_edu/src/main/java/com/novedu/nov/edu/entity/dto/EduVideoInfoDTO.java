@@ -74,4 +74,11 @@ public class EduVideoInfoDTO {
 
     @ApiModelProperty(value = "是否删除：1删除 2未删除")
     private Integer isDeleted;
+
+    @TableField(exist = false)
+    private Date startTime;
+
+    @TableField(exist = false)
+    private Date endTime;
+
 }

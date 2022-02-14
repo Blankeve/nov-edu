@@ -82,5 +82,11 @@ public class EduCourseInfoDTO {
     @ApiModelProperty(value = "更新时间")
     private Date updateTime;
 
+    @TableField(exist = false)
+    private Date startTime;
+
+    @TableField(exist = false)
+    private Date endTime;
+
     public enum ORDER_BY{NONE,NEWEST_ASC,NEWEST_DESC,PRICE_ASC,PRICE_DESC}
 }

@@ -20,6 +20,7 @@ import org.springframework.util.StringUtils;
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -96,6 +97,10 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
             queryWrapper.eq("o.pay_type", order.getPayType());
         if (order.getStatus() != null)
             queryWrapper.eq("o.status", order.getStatus());
+        Date start = order.getStartTime();
+        Date end = order.getEndTime();
+        if (start != null && end != null && end.getTime() > start.getTime())
+            queryWrapper.apply("o.create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and o.create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start,end);
         return BaseResult.success(orderMapper.queryOrderPage(page, queryWrapper));
     }
 

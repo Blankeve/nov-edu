@@ -39,6 +39,21 @@ export function save(data) {
     })
   }
 
+  export function exportAll() {
+    return request({
+      url: '/edu/course/export-all',
+      method: 'get',
+    })
+  }
+
+  export function exportPage(params) {
+    return request({
+      url: '/edu/course/export',
+      method: 'post',
+      params
+    })
+  }
+
   export function getOneByCourseId(id) {
     return request({
       url: '/edu/course/id',

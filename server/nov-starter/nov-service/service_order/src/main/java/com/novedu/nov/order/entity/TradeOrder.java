@@ -86,4 +86,11 @@ public class TradeOrder implements Serializable {
 
     @ApiModelProperty(value = "支付时间")
     private Date paidTime;
+
+    @TableField(exist = false)
+    private Date startTime;
+
+    @TableField(exist = false)
+    private Date endTime;
+
 }

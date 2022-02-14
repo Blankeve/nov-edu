@@ -60,4 +60,11 @@ public class EduChapterInfoDTO implements Serializable {
 
     @TableField(exist = false)
     private List<EduVideo> children;
+
+    @TableField(exist = false)
+    private Date startTime;
+
+    @TableField(exist = false)
+    private Date endTime;
+
 }

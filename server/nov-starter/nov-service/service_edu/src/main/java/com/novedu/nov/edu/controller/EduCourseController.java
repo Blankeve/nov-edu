@@ -13,6 +13,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -60,6 +61,16 @@ public class EduCourseController {
     @PostMapping("/list-teacher")
     public BaseResult queryCourseByTeacherId(Long id) {
         return eduCourseService.queryCoursesByTeacherId(id);
+    }
+
+    @PostMapping("/export")
+    public void exportCoursePage(HttpServletResponse response, Page page, EduCourseInfoDTO courseInfoDTO) {
+         eduCourseService.exportCoursePage(response,page, courseInfoDTO);
+    }
+
+    @GetMapping("/export-all")
+    public void exportAll(HttpServletResponse response) {
+         eduCourseService.exportAll(response);
     }
 
     @PostMapping("/page")

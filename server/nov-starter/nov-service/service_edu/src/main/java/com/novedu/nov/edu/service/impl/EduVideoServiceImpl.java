@@ -12,6 +12,7 @@ import com.novedu.nov.edu.entity.EduCourseApply;
 import com.novedu.nov.edu.entity.EduVideo;
 import com.novedu.nov.edu.entity.dto.EduVideoInfoDTO;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
+import com.novedu.nov.edu.entity.vo.EduVideoInfoVO;
 import com.novedu.nov.edu.mapper.EduVideoMapper;
 import com.novedu.nov.edu.service.EduChapterService;
 import com.novedu.nov.edu.service.EduCourseApplyService;
@@ -26,10 +27,7 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -91,10 +89,12 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
             queryWrapper.eq("video.chapter_id", videoInfoDTO.getChapterId());
         if (videoInfoDTO.getSort() != null && videoInfoDTO.getSort() > 0)
             queryWrapper.eq("video.sort", videoInfoDTO.getSort());
-        if (videoInfoDTO.getCreateTime() != null)
-            queryWrapper.apply("video.create_time > date_format({0},'%Y-%m-%d')", videoInfoDTO.getCreateTime());
+        Date start = videoInfoDTO.getStartTime();
+        Date end = videoInfoDTO.getEndTime();
+        if (start != null && end != null && end.getTime() > start.getTime())
+            queryWrapper.apply("video.create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and video.create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start,end);
         Page page1 = (Page) videoMapper.queryPage(page, queryWrapper);
-        List<EduCourseInfoVO> courses = page1.getRecords();
+        List<EduVideoInfoVO> courses = page1.getRecords();
         String key = "video_play_count";
         boolean hasKey = redisTemplate.hasKey(key);
         Map videoPlayCounts = null;

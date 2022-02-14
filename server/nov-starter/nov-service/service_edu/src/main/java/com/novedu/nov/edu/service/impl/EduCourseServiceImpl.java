@@ -1,9 +1,11 @@
 package com.novedu.nov.edu.service.impl;
 
+import cn.afterturn.easypoi.excel.ExcelExportUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.edu.entity.*;
 import com.novedu.nov.edu.entity.dto.EduCourseInfoDTO;
 import com.novedu.nov.edu.mapper.EduCourseApplyMapper;
@@ -21,6 +23,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
@@ -122,8 +125,10 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
             queryWrapper.eq("teacher_id", courseInfoDTO.getTeacherId());
         if (!ObjectUtils.isEmpty(courseInfoDTO.getStatus()))
             queryWrapper.eq("status", courseInfoDTO.getStatus());
-        if (!ObjectUtils.isEmpty(courseInfoDTO.getCreateTime()))
-            queryWrapper.apply("c1.create_time > date_format({0},'%Y-%m-%d')", courseInfoDTO.getCreateTime());
+        Date start = courseInfoDTO.getStartTime();
+        Date end = courseInfoDTO.getEndTime();
+        if (start != null && end != null && end.getTime() > start.getTime())
+            queryWrapper.apply("c1.create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and c1.create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start,end);
         if (StringUtils.hasText(courseInfoDTO.getTitle()))
             queryWrapper.orderByAsc("title");
 
@@ -156,8 +161,10 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
             queryWrapper.eq("teacher_id", courseInfoDTO.getTeacherId());
         if (!ObjectUtils.isEmpty(courseInfoDTO.getStatus()))
             queryWrapper.eq("status", courseInfoDTO.getStatus());
-        if (!ObjectUtils.isEmpty(courseInfoDTO.getCreateTime()))
-            queryWrapper.apply("course.create_time > date_format({0},'%Y-%m-%d')", courseInfoDTO.getCreateTime());
+        Date start = courseInfoDTO.getStartTime();
+        Date end = courseInfoDTO.getEndTime();
+        if (start != null && end != null && end.getTime() > start.getTime())
+            queryWrapper.apply("course.create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and course.create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start,end);
         Page page1 = (Page) courseMapper.queryPage(page, queryWrapper);
         List<EduCourseInfoVO> courses = page1.getRecords();
         setCourseCommentCount2(courses);
@@ -298,6 +305,24 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     public BaseResult statisticsCourseBuyCount() {
         courseMapper.statisticsCourseBuyCount();
         return BaseResult.success();
+    }
+
+    @Override
+    public void exportCoursePage(HttpServletResponse response,Page page, EduCourseInfoDTO courseInfoDTO) {
+       BaseResult baseResult = queryCoursePage(page,courseInfoDTO);
+       if(baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())){
+           Page page1 = (Page) baseResult.getData();
+           ExcelUtils.exportExcel(page1.getRecords(),"所有课程","所有课程",EduCourseInfoVO.class,"所有课程",response);
+       }
+    }
+
+    @Override
+    public void exportAll(HttpServletResponse response) {
+        BaseResult baseResult = queryCoursePage(new Page(1,count()),new EduCourseInfoDTO());
+        if(baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())){
+            Page page1 = (Page) baseResult.getData();
+            ExcelUtils.exportExcel(page1.getRecords(),"所有课程","所有课程",EduCourseInfoVO.class,"所有课程",response);
+        }
     }
 
 }

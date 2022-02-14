@@ -53,7 +53,9 @@ public class ExcelUtils {
     private static void downLoadExcel(String fileName, HttpServletResponse response, Workbook workbook) {
         try {
             response.setCharacterEncoding("UTF-8");
-            response.setHeader("content-Type", "application/vnd.ms-excel");
+            response.setContentType("application/vnd.ms-excel; charset=utf-8");
+            //响应时在响应头里添加 Access-Control-Expose-Headers
+            response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
             response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(fileName, "UTF-8"));
             workbook.write(response.getOutputStream());
         } catch (IOException e) {

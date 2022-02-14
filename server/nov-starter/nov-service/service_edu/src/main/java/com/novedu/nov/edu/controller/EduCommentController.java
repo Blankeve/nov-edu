@@ -4,6 +4,7 @@ package com.novedu.nov.edu.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduComment;
+import com.novedu.nov.edu.entity.dto.EduUserCommentDTO;
 import com.novedu.nov.edu.entity.vo.EduUserCommentVO;
 import com.novedu.nov.edu.service.EduCommentService;
 import com.novedu.nov.edu.service.impl.EduCommentServiceImpl;
@@ -34,7 +35,7 @@ public class EduCommentController {
     }
 
     @PostMapping("/page")
-    public BaseResult queryCommentPage(Page page, EduUserCommentVO eduComment) {
+    public BaseResult queryCommentPage(Page page, EduUserCommentDTO eduComment) {
         return eduCommentService.queryCommentPage(page, eduComment);
     }
 

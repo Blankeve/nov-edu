@@ -4,12 +4,14 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduTeacher;
+import com.novedu.nov.edu.entity.dto.EduTeacherDTO;
 import com.novedu.nov.edu.mapper.EduTeacherMapper;
 import com.novedu.nov.edu.service.EduTeacherService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,14 +27,16 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
 
 
     @Override
-    public BaseResult<List<EduTeacher>> findTeacherList(Page page, EduTeacher teacher) {
+    public BaseResult<List<EduTeacher>> findTeacherList(Page page, EduTeacherDTO teacher) {
         QueryWrapper queryWrapper = new QueryWrapper();
         if (StringUtils.hasText(teacher.getName()))
             queryWrapper.like("name", teacher.getName());
         if (teacher.getLevel() != null)
             queryWrapper.eq("level", teacher.getLevel());
-        if (teacher.getCreateTime() != null)
-            queryWrapper.apply("create_time > date_format({0},'%Y-%m-%d')", teacher.getCreateTime());
+        Date start = teacher.getStartTime();
+        Date end = teacher.getEndTime();
+        if (start != null && end != null && end.getTime() > start.getTime())
+            queryWrapper.apply("create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start,end);
         queryWrapper.orderByDesc("sort");
         queryWrapper.orderByDesc("create_time");
         return BaseResult.success(page(page, queryWrapper));
