@@ -1,0 +1,1308 @@
+2022-02-14 19:23:56.212 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-02-14 19:23:56.833 [main] INFO  org.reflections.Reflections-Reflections took 33 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-02-14 19:23:56.864 [main] INFO  org.reflections.Reflections-Reflections took 15 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-02-14 19:23:56.879 [main] INFO  org.reflections.Reflections-Reflections took 13 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-02-14 19:23:57.053 [main] INFO  org.reflections.Reflections-Reflections took 170 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 19:23:57.064 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-02-14 19:23:57.078 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-02-14 19:23:57.093 [main] INFO  org.reflections.Reflections-Reflections took 13 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-02-14 19:23:57.230 [main] INFO  org.reflections.Reflections-Reflections took 135 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 19:23:58.494 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-edu-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu,DEFAULT_GROUP'}]
+2022-02-14 19:23:58.498 [main] INFO  com.novedu.nov.EduServiceApplication-The following profiles are active: dev
+2022-02-14 19:23:59.339 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-14 19:23:59.342 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-02-14 19:23:59.383 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Finished Spring Data repository scanning in 25ms. Found 0 Redis repository interfaces.
+2022-02-14 19:23:59.643 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=e472dcd6-c0d0-31dd-96b5-87000ad36a10
+2022-02-14 19:24:00.192 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat initialized with port(s): 8081 (http)
+2022-02-14 19:24:00.201 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Initializing ProtocolHandler ["http-nio-8081"]
+2022-02-14 19:24:00.201 [main] INFO  org.apache.catalina.core.StandardService-Starting service [Tomcat]
+2022-02-14 19:24:00.201 [main] INFO  org.apache.catalina.core.StandardEngine-Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-02-14 19:24:00.332 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring embedded WebApplicationContext
+2022-02-14 19:24:00.332 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext-Root WebApplicationContext: initialization completed in 1812 ms
+2022-02-14 19:24:00.465 [main] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure-Init DruidDataSource
+2022-02-14 19:24:00.599 [main] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} inited
+2022-02-14 19:24:02.081 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-order' URL not provided. Will try picking an instance via load-balancing.
+2022-02-14 19:24:03.274 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-02-14 19:24:03.311 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 19:24:03.316 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 19:24:03.444 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-02-14 19:24:03.627 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-02-14 19:24:04.231 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Starting ProtocolHandler ["http-nio-8081"]
+2022-02-14 19:24:04.243 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat started on port(s): 8081 (http) with context path ''
+2022-02-14 19:24:04.260 [main] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-nacos registry, DEFAULT_GROUP service-edu 192.168.31.136:8081 register finished
+2022-02-14 19:24:04.330 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2022-02-14 19:24:04.342 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2022-02-14 19:24:04.373 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2022-02-14 19:24:04.411 [http-nio-8081-exec-2] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-14 19:24:04.412 [http-nio-8081-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet-Initializing Servlet 'dispatcherServlet'
+2022-02-14 19:24:04.421 [http-nio-8081-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet-Completed initialization in 9 ms
+2022-02-14 19:24:04.548 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: queryCommentPageUsingPOST_1
+2022-02-14 19:24:04.588 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: queryCourseByTeacherIdUsingPOST_1
+2022-02-14 19:24:04.605 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: saveCourseUsingPOST_1
+2022-02-14 19:24:04.638 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: saveCourseUsingPOST_2
+2022-02-14 19:24:04.663 [main] INFO  com.novedu.nov.EduServiceApplication-Started EduServiceApplication in 8.992 seconds (JVM running for 10.418)
+2022-02-14 19:24:15.920 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-02-14 19:24:16.527 [main] INFO  org.reflections.Reflections-Reflections took 28 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-02-14 19:24:16.557 [main] INFO  org.reflections.Reflections-Reflections took 15 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-02-14 19:24:16.574 [main] INFO  org.reflections.Reflections-Reflections took 14 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-02-14 19:24:16.741 [main] INFO  org.reflections.Reflections-Reflections took 164 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 19:24:16.752 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-02-14 19:24:16.771 [main] INFO  org.reflections.Reflections-Reflections took 16 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-02-14 19:24:16.785 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-02-14 19:24:16.928 [main] INFO  org.reflections.Reflections-Reflections took 140 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 19:24:17.903 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-order-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-order.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-order,DEFAULT_GROUP'}]
+2022-02-14 19:24:17.907 [main] INFO  com.novedu.nov.order.OrderServiceApplication-The following profiles are active: dev
+2022-02-14 19:24:18.615 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-14 19:24:18.617 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-02-14 19:24:18.645 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Finished Spring Data repository scanning in 13ms. Found 0 Redis repository interfaces.
+2022-02-14 19:24:18.861 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=8a981f1f-adbf-37ba-bf65-5d00c36f2920
+2022-02-14 19:24:19.300 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat initialized with port(s): 8086 (http)
+2022-02-14 19:24:19.308 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Initializing ProtocolHandler ["http-nio-8086"]
+2022-02-14 19:24:19.309 [main] INFO  org.apache.catalina.core.StandardService-Starting service [Tomcat]
+2022-02-14 19:24:19.309 [main] INFO  org.apache.catalina.core.StandardEngine-Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-02-14 19:24:19.422 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring embedded WebApplicationContext
+2022-02-14 19:24:19.423 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext-Root WebApplicationContext: initialization completed in 1496 ms
+2022-02-14 19:24:19.701 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-edu' URL not provided. Will try picking an instance via load-balancing.
+2022-02-14 19:24:19.785 [main] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure-Init DruidDataSource
+2022-02-14 19:24:21.024 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-02-14 19:24:21.599 [main] INFO  org.reflections.Reflections-Reflections took 28 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-02-14 19:24:21.628 [main] INFO  org.reflections.Reflections-Reflections took 15 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-02-14 19:24:21.643 [main] INFO  org.reflections.Reflections-Reflections took 13 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-02-14 19:24:21.807 [main] INFO  org.reflections.Reflections-Reflections took 161 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 19:24:21.817 [main] INFO  org.reflections.Reflections-Reflections took 9 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-02-14 19:24:21.833 [main] INFO  org.reflections.Reflections-Reflections took 12 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-02-14 19:24:21.846 [main] INFO  org.reflections.Reflections-Reflections took 11 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-02-14 19:24:21.982 [main] INFO  org.reflections.Reflections-Reflections took 134 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 19:24:22.256 [main] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} inited
+2022-02-14 19:24:22.719 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-ucenter' URL not provided. Will try picking an instance via load-balancing.
+2022-02-14 19:24:22.951 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-statistics-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-statistics.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-statistics,DEFAULT_GROUP'}]
+2022-02-14 19:24:22.955 [main] INFO  com.novedu.nov.StatisticsServiceApplication-The following profiles are active: dev
+2022-02-14 19:24:23.425 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-02-14 19:24:23.436 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 19:24:23.439 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 19:24:23.566 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-02-14 19:24:23.630 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-14 19:24:23.632 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-02-14 19:24:23.661 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Finished Spring Data repository scanning in 17ms. Found 0 Redis repository interfaces.
+2022-02-14 19:24:23.751 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-02-14 19:24:23.879 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=71f6b3d1-88b1-3752-9c21-93d45ba033e8
+2022-02-14 19:24:24.343 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Starting ProtocolHandler ["http-nio-8086"]
+2022-02-14 19:24:24.358 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat started on port(s): 8086 (http) with context path ''
+2022-02-14 19:24:24.370 [main] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-nacos registry, DEFAULT_GROUP service-order 192.168.31.136:8086 register finished
+2022-02-14 19:24:24.373 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat initialized with port(s): 8087 (http)
+2022-02-14 19:24:24.383 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Initializing ProtocolHandler ["http-nio-8087"]
+2022-02-14 19:24:24.384 [main] INFO  org.apache.catalina.core.StandardService-Starting service [Tomcat]
+2022-02-14 19:24:24.384 [main] INFO  org.apache.catalina.core.StandardEngine-Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-02-14 19:24:24.443 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2022-02-14 19:24:24.455 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2022-02-14 19:24:24.487 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2022-02-14 19:24:24.512 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring embedded WebApplicationContext
+2022-02-14 19:24:24.512 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext-Root WebApplicationContext: initialization completed in 1538 ms
+2022-02-14 19:24:24.622 [main] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure-Init DruidDataSource
+2022-02-14 19:24:24.655 [main] INFO  com.novedu.nov.order.OrderServiceApplication-Started OrderServiceApplication in 9.253 seconds (JVM running for 9.967)
+2022-02-14 19:24:24.709 [main] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} inited
+2022-02-14 19:24:25.214 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-edu' URL not provided. Will try picking an instance via load-balancing.
+2022-02-14 19:24:26.599 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-02-14 19:24:26.619 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 19:24:26.625 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 19:24:26.769 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-02-14 19:24:26.973 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-02-14 19:24:27.450 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'taskScheduler'
+2022-02-14 19:24:27.863 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Starting ProtocolHandler ["http-nio-8087"]
+2022-02-14 19:24:27.878 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat started on port(s): 8087 (http) with context path ''
+2022-02-14 19:24:27.892 [main] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-nacos registry, DEFAULT_GROUP service-statistics 192.168.31.136:8087 register finished
+2022-02-14 19:24:27.966 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2022-02-14 19:24:27.979 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2022-02-14 19:24:28.013 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2022-02-14 19:24:28.157 [main] INFO  com.novedu.nov.StatisticsServiceApplication-Started StatisticsServiceApplication in 7.617 seconds (JVM running for 8.306)
+2022-02-14 19:24:29.479 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-02-14 19:24:30.020 [task-1] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:24:30.081 [main] INFO  org.reflections.Reflections-Reflections took 30 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-02-14 19:24:30.110 [main] INFO  org.reflections.Reflections-Reflections took 15 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-02-14 19:24:30.126 [main] INFO  org.reflections.Reflections-Reflections took 13 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-02-14 19:24:30.230 [task-1] INFO  com.netflix.config.ChainedDynamicProperty-Flipping property: service-edu.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2022-02-14 19:24:30.245 [task-1] INFO  com.netflix.loadbalancer.BaseLoadBalancer-Client: service-edu instantiated a LoadBalancer: DynamicServerListLoadBalancer:{NFLoadBalancer:name=service-edu,current list of Servers=[],Load balancer stats=Zone stats: {},Server stats: []}ServerList:null
+2022-02-14 19:24:30.250 [task-1] INFO  com.netflix.loadbalancer.DynamicServerListLoadBalancer-Using serverListUpdater PollingServerListUpdater
+2022-02-14 19:24:30.270 [task-1] INFO  com.netflix.config.ChainedDynamicProperty-Flipping property: service-edu.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2022-02-14 19:24:30.272 [task-1] INFO  com.netflix.loadbalancer.DynamicServerListLoadBalancer-DynamicServerListLoadBalancer for client service-edu initialized: DynamicServerListLoadBalancer:{NFLoadBalancer:name=service-edu,current list of Servers=[192.168.31.136:8081],Load balancer stats=Zone stats: {unknown=[Zone:unknown;	Instance count:1;	Active connections count: 0;	Circuit breaker tripped count: 0;	Active connections per server: 0.0;]
+},Server stats: [[Server:192.168.31.136:8081;	Zone:UNKNOWN;	Total Requests:0;	Successive connection failure:0;	Total blackout seconds:0;	Last connection made:Thu Jan 01 08:00:00 CST 1970;	First connection made: Thu Jan 01 08:00:00 CST 1970;	Active Connections:0;	total failure count in last (1000) msecs:0;	average resp time:0.0;	90 percentile resp time:0.0;	95 percentile resp time:0.0;	min resp time:0.0;	max resp time:0.0;	stddev resp time:0.0]
+]}ServerList:com.alibaba.cloud.nacos.ribbon.NacosServerList@38b06d99
+2022-02-14 19:24:30.296 [main] INFO  org.reflections.Reflections-Reflections took 166 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 19:24:30.307 [main] INFO  org.reflections.Reflections-Reflections took 9 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-02-14 19:24:30.323 [main] INFO  org.reflections.Reflections-Reflections took 14 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-02-14 19:24:30.336 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-02-14 19:24:30.473 [main] INFO  org.reflections.Reflections-Reflections took 135 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 19:24:31.255 [PollingServerListUpdater-0] INFO  com.netflix.config.ChainedDynamicProperty-Flipping property: service-edu.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2022-02-14 19:24:31.434 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-ucenter-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-ucenter.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-ucenter,DEFAULT_GROUP'}]
+2022-02-14 19:24:31.437 [main] INFO  com.novedu.nov.UCenterServiceApplication-The following profiles are active: dev
+2022-02-14 19:24:32.024 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-14 19:24:32.026 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-02-14 19:24:32.060 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Finished Spring Data repository scanning in 20ms. Found 0 Redis repository interfaces.
+2022-02-14 19:24:32.269 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=672095dd-260a-319f-b281-d78c33b4cb42
+2022-02-14 19:24:32.710 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat initialized with port(s): 8085 (http)
+2022-02-14 19:24:32.720 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Initializing ProtocolHandler ["http-nio-8085"]
+2022-02-14 19:24:32.720 [main] INFO  org.apache.catalina.core.StandardService-Starting service [Tomcat]
+2022-02-14 19:24:32.721 [main] INFO  org.apache.catalina.core.StandardEngine-Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-02-14 19:24:32.873 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring embedded WebApplicationContext
+2022-02-14 19:24:32.873 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext-Root WebApplicationContext: initialization completed in 1418 ms
+2022-02-14 19:24:32.991 [main] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure-Init DruidDataSource
+2022-02-14 19:24:33.078 [main] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} inited
+2022-02-14 19:24:33.542 [task-1] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:24:34.336 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 19:24:34.339 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 19:24:34.518 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-02-14 19:24:34.735 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-02-14 19:24:35.653 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Starting ProtocolHandler ["http-nio-8085"]
+2022-02-14 19:24:35.668 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat started on port(s): 8085 (http) with context path ''
+2022-02-14 19:24:35.678 [main] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-nacos registry, DEFAULT_GROUP service-ucenter 192.168.31.136:8085 register finished
+2022-02-14 19:24:35.756 [main] INFO  com.novedu.nov.UCenterServiceApplication-Started UCenterServiceApplication in 6.833 seconds (JVM running for 7.566)
+2022-02-14 19:24:38.349 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-02-14 19:24:38.892 [main] INFO  org.reflections.Reflections-Reflections took 30 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-02-14 19:24:38.921 [main] INFO  org.reflections.Reflections-Reflections took 14 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-02-14 19:24:38.936 [main] INFO  org.reflections.Reflections-Reflections took 13 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-02-14 19:24:39.100 [main] INFO  org.reflections.Reflections-Reflections took 160 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 19:24:39.110 [main] INFO  org.reflections.Reflections-Reflections took 9 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-02-14 19:24:39.128 [main] INFO  org.reflections.Reflections-Reflections took 15 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-02-14 19:24:39.141 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-02-14 19:24:39.277 [main] INFO  org.reflections.Reflections-Reflections took 134 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 19:24:40.258 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-upload.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-upload,DEFAULT_GROUP'}]
+2022-02-14 19:24:40.262 [main] INFO  com.novedu.nov.upload.UploadServiceApplication-No active profile set, falling back to default profiles: default
+2022-02-14 19:24:40.791 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-14 19:24:40.793 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-02-14 19:24:40.815 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Finished Spring Data repository scanning in 10ms. Found 0 Redis repository interfaces.
+2022-02-14 19:24:41.002 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=d2f4391a-eadd-39b0-b5b8-2adfa6709124
+2022-02-14 19:24:41.415 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat initialized with port(s): 8888 (http)
+2022-02-14 19:24:41.424 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Initializing ProtocolHandler ["http-nio-8888"]
+2022-02-14 19:24:41.424 [main] INFO  org.apache.catalina.core.StandardService-Starting service [Tomcat]
+2022-02-14 19:24:41.424 [main] INFO  org.apache.catalina.core.StandardEngine-Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-02-14 19:24:41.566 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring embedded WebApplicationContext
+2022-02-14 19:24:41.566 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext-Root WebApplicationContext: initialization completed in 1287 ms
+2022-02-14 19:24:41.705 [main] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure-Init DruidDataSource
+2022-02-14 19:24:41.784 [main] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} inited
+2022-02-14 19:24:43.080 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 19:24:43.084 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 19:24:43.257 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-02-14 19:24:43.459 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-02-14 19:24:44.290 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Starting ProtocolHandler ["http-nio-8888"]
+2022-02-14 19:24:44.304 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat started on port(s): 8888 (http) with context path ''
+2022-02-14 19:24:44.314 [main] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-nacos registry, DEFAULT_GROUP service-upload 192.168.31.136:8888 register finished
+2022-02-14 19:24:44.392 [main] INFO  com.novedu.nov.upload.UploadServiceApplication-Started UploadServiceApplication in 6.599 seconds (JVM running for 7.401)
+2022-02-14 19:25:00.003 [task-2] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:25:02.617 [task-2] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:25:30.014 [task-3] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:25:32.597 [task-3] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:26:00.002 [task-4] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:26:02.592 [task-4] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:26:30.009 [task-5] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:26:32.587 [task-5] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:27:00.004 [task-6] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:27:02.591 [task-6] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:27:30.005 [task-7] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:27:32.591 [task-7] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:28:00.015 [task-8] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:28:03.658 [task-8] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:28:30.013 [task-9] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:28:33.627 [task-9] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:29:00.009 [task-10] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:29:03.796 [task-10] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:29:30.010 [task-11] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:29:33.733 [task-11] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:30:00.011 [task-12] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:30:03.649 [task-12] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:30:30.001 [task-13] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:30:33.604 [task-13] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:31:00.003 [task-14] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:31:03.705 [task-14] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:31:30.016 [task-15] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:31:33.635 [task-15] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:32:00.008 [task-16] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:32:03.807 [task-16] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:32:30.011 [task-17] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:32:33.644 [task-17] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:32:51.542 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-02-14 19:32:51.546 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registering from Nacos Server now...
+2022-02-14 19:32:51.549 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registration finished.
+2022-02-14 19:32:51.883 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'
+2022-02-14 19:32:52.116 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closing ...
+2022-02-14 19:32:52.118 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closed
+2022-02-14 19:32:56.748 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-02-14 19:32:57.306 [main] INFO  org.reflections.Reflections-Reflections took 28 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-02-14 19:32:57.333 [main] INFO  org.reflections.Reflections-Reflections took 14 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-02-14 19:32:57.348 [main] INFO  org.reflections.Reflections-Reflections took 12 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-02-14 19:32:57.512 [main] INFO  org.reflections.Reflections-Reflections took 160 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 19:32:57.522 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-02-14 19:32:57.535 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-02-14 19:32:57.550 [main] INFO  org.reflections.Reflections-Reflections took 13 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-02-14 19:32:57.686 [main] INFO  org.reflections.Reflections-Reflections took 134 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 19:32:58.622 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-edu-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu,DEFAULT_GROUP'}]
+2022-02-14 19:32:58.625 [main] INFO  com.novedu.nov.EduServiceApplication-The following profiles are active: dev
+2022-02-14 19:32:59.286 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-14 19:32:59.288 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-02-14 19:32:59.323 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Finished Spring Data repository scanning in 23ms. Found 0 Redis repository interfaces.
+2022-02-14 19:32:59.515 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=e472dcd6-c0d0-31dd-96b5-87000ad36a10
+2022-02-14 19:32:59.950 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat initialized with port(s): 8081 (http)
+2022-02-14 19:32:59.959 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Initializing ProtocolHandler ["http-nio-8081"]
+2022-02-14 19:32:59.959 [main] INFO  org.apache.catalina.core.StandardService-Starting service [Tomcat]
+2022-02-14 19:32:59.959 [main] INFO  org.apache.catalina.core.StandardEngine-Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-02-14 19:33:00.014 [task-18] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:33:00.067 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring embedded WebApplicationContext
+2022-02-14 19:33:00.067 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext-Root WebApplicationContext: initialization completed in 1422 ms
+2022-02-14 19:33:00.163 [main] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure-Init DruidDataSource
+2022-02-14 19:33:00.245 [main] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} inited
+2022-02-14 19:33:01.436 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-order' URL not provided. Will try picking an instance via load-balancing.
+2022-02-14 19:33:02.586 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-02-14 19:33:02.598 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 19:33:02.602 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 19:33:02.722 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-02-14 19:33:02.897 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-02-14 19:33:03.446 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Starting ProtocolHandler ["http-nio-8081"]
+2022-02-14 19:33:03.458 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat started on port(s): 8081 (http) with context path ''
+2022-02-14 19:33:03.467 [main] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-nacos registry, DEFAULT_GROUP service-edu 192.168.31.136:8081 register finished
+2022-02-14 19:33:03.535 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2022-02-14 19:33:03.546 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2022-02-14 19:33:03.575 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2022-02-14 19:33:03.730 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: queryCommentPageUsingPOST_1
+2022-02-14 19:33:03.769 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: queryCourseByTeacherIdUsingPOST_1
+2022-02-14 19:33:03.785 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: saveCourseUsingPOST_1
+2022-02-14 19:33:03.815 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: saveCourseUsingPOST_2
+2022-02-14 19:33:03.838 [main] INFO  com.novedu.nov.EduServiceApplication-Started EduServiceApplication in 7.558 seconds (JVM running for 8.236)
+2022-02-14 19:33:07.931 [http-nio-8081-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-14 19:33:07.931 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Initializing Servlet 'dispatcherServlet'
+2022-02-14 19:33:07.938 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Completed initialization in 6 ms
+2022-02-14 19:33:30.005 [task-19] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:34:00.008 [task-20] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:34:03.519 [task-20] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:34:30.006 [task-21] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:34:33.113 [task-21] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:35:00.016 [task-22] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:35:03.114 [task-22] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:35:30.006 [task-23] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:35:33.145 [task-23] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:35:36.341 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-02-14 19:35:36.344 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registering from Nacos Server now...
+2022-02-14 19:35:36.346 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registration finished.
+2022-02-14 19:35:36.684 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'
+2022-02-14 19:35:36.916 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closing ...
+2022-02-14 19:35:36.919 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closed
+2022-02-14 19:35:41.883 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-02-14 19:35:42.456 [main] INFO  org.reflections.Reflections-Reflections took 28 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-02-14 19:35:42.483 [main] INFO  org.reflections.Reflections-Reflections took 14 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-02-14 19:35:42.498 [main] INFO  org.reflections.Reflections-Reflections took 13 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-02-14 19:35:42.668 [main] INFO  org.reflections.Reflections-Reflections took 166 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 19:35:42.678 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-02-14 19:35:42.691 [main] INFO  org.reflections.Reflections-Reflections took 11 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-02-14 19:35:42.705 [main] INFO  org.reflections.Reflections-Reflections took 12 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-02-14 19:35:42.845 [main] INFO  org.reflections.Reflections-Reflections took 137 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 19:35:43.839 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-edu-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu,DEFAULT_GROUP'}]
+2022-02-14 19:35:43.842 [main] INFO  com.novedu.nov.EduServiceApplication-The following profiles are active: dev
+2022-02-14 19:35:44.518 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-14 19:35:44.520 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-02-14 19:35:44.556 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Finished Spring Data repository scanning in 24ms. Found 0 Redis repository interfaces.
+2022-02-14 19:35:44.748 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=e472dcd6-c0d0-31dd-96b5-87000ad36a10
+2022-02-14 19:35:45.190 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat initialized with port(s): 8081 (http)
+2022-02-14 19:35:45.198 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Initializing ProtocolHandler ["http-nio-8081"]
+2022-02-14 19:35:45.199 [main] INFO  org.apache.catalina.core.StandardService-Starting service [Tomcat]
+2022-02-14 19:35:45.199 [main] INFO  org.apache.catalina.core.StandardEngine-Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-02-14 19:35:45.311 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring embedded WebApplicationContext
+2022-02-14 19:35:45.311 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext-Root WebApplicationContext: initialization completed in 1449 ms
+2022-02-14 19:35:45.409 [main] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure-Init DruidDataSource
+2022-02-14 19:35:45.489 [main] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} inited
+2022-02-14 19:35:46.765 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-order' URL not provided. Will try picking an instance via load-balancing.
+2022-02-14 19:35:47.767 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-02-14 19:35:47.779 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 19:35:47.782 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 19:35:47.901 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-02-14 19:35:48.111 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-02-14 19:35:48.693 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Starting ProtocolHandler ["http-nio-8081"]
+2022-02-14 19:35:48.706 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat started on port(s): 8081 (http) with context path ''
+2022-02-14 19:35:48.715 [main] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-nacos registry, DEFAULT_GROUP service-edu 192.168.31.136:8081 register finished
+2022-02-14 19:35:48.783 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2022-02-14 19:35:48.795 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2022-02-14 19:35:48.828 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2022-02-14 19:35:48.981 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: queryCommentPageUsingPOST_1
+2022-02-14 19:35:49.019 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: queryCourseByTeacherIdUsingPOST_1
+2022-02-14 19:35:49.035 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: saveCourseUsingPOST_1
+2022-02-14 19:35:49.065 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: saveCourseUsingPOST_2
+2022-02-14 19:35:49.089 [main] INFO  com.novedu.nov.EduServiceApplication-Started EduServiceApplication in 7.672 seconds (JVM running for 8.333)
+2022-02-14 19:36:00.013 [task-24] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:36:00.064 [http-nio-8081-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-14 19:36:00.064 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Initializing Servlet 'dispatcherServlet'
+2022-02-14 19:36:00.071 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Completed initialization in 7 ms
+2022-02-14 19:36:02.691 [task-24] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:36:30.016 [task-25] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:36:32.172 [task-25] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:36:43.131 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-02-14 19:36:43.135 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registering from Nacos Server now...
+2022-02-14 19:36:43.138 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registration finished.
+2022-02-14 19:36:43.465 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'
+2022-02-14 19:36:43.604 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closing ...
+2022-02-14 19:36:43.607 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closed
+2022-02-14 19:36:48.270 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-02-14 19:36:48.839 [main] INFO  org.reflections.Reflections-Reflections took 28 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-02-14 19:36:48.866 [main] INFO  org.reflections.Reflections-Reflections took 14 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-02-14 19:36:48.881 [main] INFO  org.reflections.Reflections-Reflections took 12 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-02-14 19:36:49.048 [main] INFO  org.reflections.Reflections-Reflections took 164 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 19:36:49.059 [main] INFO  org.reflections.Reflections-Reflections took 9 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-02-14 19:36:49.071 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-02-14 19:36:49.085 [main] INFO  org.reflections.Reflections-Reflections took 12 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-02-14 19:36:49.223 [main] INFO  org.reflections.Reflections-Reflections took 135 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 19:36:50.155 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-edu-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu,DEFAULT_GROUP'}]
+2022-02-14 19:36:50.159 [main] INFO  com.novedu.nov.EduServiceApplication-The following profiles are active: dev
+2022-02-14 19:36:50.828 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-14 19:36:50.830 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-02-14 19:36:50.865 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Finished Spring Data repository scanning in 23ms. Found 0 Redis repository interfaces.
+2022-02-14 19:36:51.067 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=e472dcd6-c0d0-31dd-96b5-87000ad36a10
+2022-02-14 19:36:51.504 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat initialized with port(s): 8081 (http)
+2022-02-14 19:36:51.512 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Initializing ProtocolHandler ["http-nio-8081"]
+2022-02-14 19:36:51.513 [main] INFO  org.apache.catalina.core.StandardService-Starting service [Tomcat]
+2022-02-14 19:36:51.513 [main] INFO  org.apache.catalina.core.StandardEngine-Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-02-14 19:36:51.619 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring embedded WebApplicationContext
+2022-02-14 19:36:51.620 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext-Root WebApplicationContext: initialization completed in 1441 ms
+2022-02-14 19:36:51.722 [main] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure-Init DruidDataSource
+2022-02-14 19:36:51.800 [main] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} inited
+2022-02-14 19:36:52.998 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-order' URL not provided. Will try picking an instance via load-balancing.
+2022-02-14 19:36:53.994 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-02-14 19:36:54.005 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 19:36:54.009 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 19:36:54.130 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-02-14 19:36:54.308 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-02-14 19:36:54.877 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Starting ProtocolHandler ["http-nio-8081"]
+2022-02-14 19:36:54.890 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat started on port(s): 8081 (http) with context path ''
+2022-02-14 19:36:54.899 [main] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-nacos registry, DEFAULT_GROUP service-edu 192.168.31.136:8081 register finished
+2022-02-14 19:36:54.969 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2022-02-14 19:36:54.981 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2022-02-14 19:36:55.012 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2022-02-14 19:36:55.174 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: queryCommentPageUsingPOST_1
+2022-02-14 19:36:55.214 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: queryCourseByTeacherIdUsingPOST_1
+2022-02-14 19:36:55.231 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: saveCourseUsingPOST_1
+2022-02-14 19:36:55.263 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: saveCourseUsingPOST_2
+2022-02-14 19:36:55.287 [main] INFO  com.novedu.nov.EduServiceApplication-Started EduServiceApplication in 7.487 seconds (JVM running for 8.155)
+2022-02-14 19:37:00.001 [task-26] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:37:00.051 [http-nio-8081-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-14 19:37:00.051 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Initializing Servlet 'dispatcherServlet'
+2022-02-14 19:37:00.058 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Completed initialization in 7 ms
+2022-02-14 19:37:02.615 [task-26] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:37:30.002 [task-27] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:37:32.098 [task-27] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:38:00.014 [task-28] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:38:02.116 [task-28] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:38:30.003 [task-29] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:38:32.101 [task-29] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:39:00.003 [task-30] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:39:02.109 [task-30] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:39:30.002 [task-31] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:39:32.094 [task-31] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:40:00.013 [task-32] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:40:02.901 [task-32] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:40:30.006 [task-33] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:40:32.915 [task-33] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:41:00.002 [task-34] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:41:02.911 [task-34] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:41:30.015 [task-35] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:41:32.896 [task-35] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:42:00.013 [task-36] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:42:02.934 [task-36] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:42:30.001 [task-37] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:42:32.869 [task-37] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:43:00.000 [task-38] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:43:02.921 [task-38] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:43:30.011 [task-39] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:43:32.899 [task-39] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:44:00.007 [task-40] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:44:02.933 [task-40] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:44:30.005 [task-41] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:44:32.915 [task-41] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:45:00.006 [task-42] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:45:30.006 [task-43] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:46:00.003 [task-44] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:46:30.001 [task-45] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:47:00.003 [task-46] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:47:30.008 [task-47] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:48:00.005 [task-48] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:48:30.004 [task-49] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:49:00.004 [task-50] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:49:30.016 [task-51] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:49:41.905 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-02-14 19:49:41.908 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registering from Nacos Server now...
+2022-02-14 19:49:41.911 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registration finished.
+2022-02-14 19:49:42.241 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'
+2022-02-14 19:49:42.367 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closing ...
+2022-02-14 19:49:42.371 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closed
+2022-02-14 19:49:46.711 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-02-14 19:49:47.275 [main] INFO  org.reflections.Reflections-Reflections took 27 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-02-14 19:49:47.302 [main] INFO  org.reflections.Reflections-Reflections took 13 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-02-14 19:49:47.318 [main] INFO  org.reflections.Reflections-Reflections took 13 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-02-14 19:49:47.483 [main] INFO  org.reflections.Reflections-Reflections took 162 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 19:49:47.493 [main] INFO  org.reflections.Reflections-Reflections took 9 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-02-14 19:49:47.506 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-02-14 19:49:47.521 [main] INFO  org.reflections.Reflections-Reflections took 12 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-02-14 19:49:47.660 [main] INFO  org.reflections.Reflections-Reflections took 136 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 19:49:48.581 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-edu-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu,DEFAULT_GROUP'}]
+2022-02-14 19:49:48.585 [main] INFO  com.novedu.nov.EduServiceApplication-The following profiles are active: dev
+2022-02-14 19:49:49.243 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-14 19:49:49.246 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-02-14 19:49:49.281 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Finished Spring Data repository scanning in 23ms. Found 0 Redis repository interfaces.
+2022-02-14 19:49:49.473 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=e472dcd6-c0d0-31dd-96b5-87000ad36a10
+2022-02-14 19:49:49.910 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat initialized with port(s): 8081 (http)
+2022-02-14 19:49:49.918 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Initializing ProtocolHandler ["http-nio-8081"]
+2022-02-14 19:49:49.919 [main] INFO  org.apache.catalina.core.StandardService-Starting service [Tomcat]
+2022-02-14 19:49:49.919 [main] INFO  org.apache.catalina.core.StandardEngine-Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-02-14 19:49:50.036 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring embedded WebApplicationContext
+2022-02-14 19:49:50.036 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext-Root WebApplicationContext: initialization completed in 1431 ms
+2022-02-14 19:49:50.136 [main] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure-Init DruidDataSource
+2022-02-14 19:49:50.215 [main] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} inited
+2022-02-14 19:49:51.401 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-order' URL not provided. Will try picking an instance via load-balancing.
+2022-02-14 19:49:52.489 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-02-14 19:49:52.500 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 19:49:52.504 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 19:49:52.625 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-02-14 19:49:52.799 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-02-14 19:49:53.387 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Starting ProtocolHandler ["http-nio-8081"]
+2022-02-14 19:49:53.399 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat started on port(s): 8081 (http) with context path ''
+2022-02-14 19:49:53.409 [main] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-nacos registry, DEFAULT_GROUP service-edu 192.168.31.136:8081 register finished
+2022-02-14 19:49:53.496 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2022-02-14 19:49:53.509 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2022-02-14 19:49:53.524 [http-nio-8081-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-14 19:49:53.524 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Initializing Servlet 'dispatcherServlet'
+2022-02-14 19:49:53.533 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Completed initialization in 9 ms
+2022-02-14 19:49:53.545 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2022-02-14 19:49:53.708 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: queryCommentPageUsingPOST_1
+2022-02-14 19:49:53.749 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: queryCourseByTeacherIdUsingPOST_1
+2022-02-14 19:49:53.787 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: saveCourseUsingPOST_1
+2022-02-14 19:49:53.818 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: saveCourseUsingPOST_2
+2022-02-14 19:49:53.840 [main] INFO  com.novedu.nov.EduServiceApplication-Started EduServiceApplication in 7.602 seconds (JVM running for 8.271)
+2022-02-14 19:50:00.008 [task-52] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:50:30.017 [task-53] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:50:33.167 [task-53] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:51:00.012 [task-54] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:51:02.913 [task-54] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:51:30.005 [task-55] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:51:32.936 [task-55] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:52:00.011 [task-56] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:52:02.754 [task-56] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:52:30.014 [task-57] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:52:32.757 [task-57] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:53:00.014 [task-58] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:53:02.777 [task-58] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:53:30.014 [task-59] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:53:32.697 [task-59] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:54:00.010 [task-60] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:54:02.506 [task-60] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:54:30.012 [task-61] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:54:32.437 [task-61] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:55:00.009 [task-62] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:55:02.418 [task-62] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:55:30.004 [task-63] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:55:32.734 [task-63] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:56:00.011 [task-64] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:56:02.741 [task-64] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:56:30.002 [task-65] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:56:32.728 [task-65] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:57:00.007 [task-66] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:57:02.740 [task-66] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:57:30.011 [task-67] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:57:32.742 [task-67] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:58:00.006 [task-68] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:58:02.754 [task-68] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:58:30.011 [task-69] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:58:32.739 [task-69] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:59:00.001 [task-70] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:59:04.081 [task-70] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:59:30.010 [task-71] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 19:59:34.083 [task-71] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 19:59:58.945 [http-nio-8085-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-14 19:59:58.945 [http-nio-8085-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Initializing Servlet 'dispatcherServlet'
+2022-02-14 19:59:58.951 [http-nio-8085-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Completed initialization in 6 ms
+2022-02-14 19:59:59.570 [http-nio-8085-exec-1] INFO  com.novedu.nov.common.config.NovMetaObjectHandler-start insert fill ....
+2022-02-14 20:00:00.002 [task-72] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:00:04.101 [task-72] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:00:30.007 [task-73] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:00:32.067 [task-73] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:01:00.001 [task-74] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:01:02.427 [task-74] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:01:30.004 [task-75] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:01:32.067 [task-75] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:02:00.011 [task-76] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:02:02.086 [task-76] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:02:30.015 [task-77] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:02:32.070 [task-77] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:03:00.015 [task-78] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:03:02.578 [task-78] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:03:30.006 [task-79] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:03:33.741 [task-79] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:04:00.007 [task-80] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:04:03.731 [task-80] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:04:30.011 [task-81] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:04:33.750 [task-81] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:05:00.012 [task-82] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:05:03.744 [task-82] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:05:30.001 [task-83] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:05:33.735 [task-83] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:06:00.008 [task-84] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:06:03.748 [task-84] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:06:30.010 [task-85] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:06:33.754 [task-85] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:07:00.000 [task-86] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:07:03.735 [task-86] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:07:30.009 [task-87] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:07:33.750 [task-87] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:08:00.002 [task-88] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:08:03.738 [task-88] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:08:30.010 [task-89] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:08:33.756 [task-89] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:09:00.002 [task-90] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:09:03.747 [task-90] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:09:30.010 [task-91] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:09:33.763 [task-91] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:10:00.016 [task-92] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:10:03.761 [task-92] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:10:30.002 [task-93] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:10:33.758 [task-93] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:11:00.015 [task-94] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:11:03.762 [task-94] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:11:30.016 [task-95] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:11:33.764 [task-95] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:12:00.001 [task-96] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:12:03.745 [task-96] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:12:30.014 [task-97] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:12:33.750 [task-97] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:13:00.011 [task-98] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:13:03.757 [task-98] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:13:30.006 [task-99] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:13:33.739 [task-99] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:14:00.010 [task-100] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:14:03.749 [task-100] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:14:30.004 [task-101] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:14:33.745 [task-101] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:15:00.012 [task-102] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:15:03.754 [task-102] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:15:30.003 [task-103] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:15:33.739 [task-103] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:16:00.003 [task-104] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:16:03.744 [task-104] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:16:30.002 [task-105] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:16:33.738 [task-105] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:17:00.016 [task-106] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:17:03.761 [task-106] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:17:30.011 [task-107] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:17:33.750 [task-107] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:18:00.011 [task-108] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:18:03.749 [task-108] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:18:30.006 [task-109] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:18:33.741 [task-109] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:19:00.002 [task-110] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:19:03.739 [task-110] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:19:30.007 [task-111] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:19:33.775 [task-111] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:20:00.013 [task-112] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:20:03.765 [task-112] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:20:30.015 [task-113] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:20:33.747 [task-113] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:21:00.012 [task-114] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:21:03.754 [task-114] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:21:30.004 [task-115] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:21:33.738 [task-115] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:22:00.001 [task-116] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:22:03.735 [task-116] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:22:30.013 [task-117] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:22:33.757 [task-117] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:23:00.010 [task-118] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:23:03.752 [task-118] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:23:30.006 [task-119] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:23:33.743 [task-119] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:24:00.011 [task-120] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:24:03.756 [task-120] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:24:30.004 [task-121] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:24:33.745 [task-121] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:25:00.011 [task-122] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:25:03.747 [task-122] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:25:30.010 [task-123] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:25:33.771 [task-123] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:26:00.006 [task-124] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:26:03.761 [task-124] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:26:30.002 [task-125] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:26:33.742 [task-125] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:27:00.012 [task-126] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:27:03.751 [task-126] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:27:30.002 [task-127] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:27:33.742 [task-127] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:28:00.006 [task-128] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:28:03.763 [task-128] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:28:30.012 [task-129] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:28:33.762 [task-129] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:29:00.016 [task-130] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:29:03.757 [task-130] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:29:30.011 [task-131] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:29:33.762 [task-131] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:30:00.015 [task-132] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:30:03.749 [task-132] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:30:30.001 [task-133] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:30:33.736 [task-133] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:31:00.005 [task-134] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:31:03.749 [task-134] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:31:30.002 [task-135] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:31:33.748 [task-135] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:32:00.005 [task-136] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:32:03.757 [task-136] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:32:30.002 [task-137] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:32:33.747 [task-137] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:33:00.004 [task-138] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:33:03.745 [task-138] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:33:30.002 [task-139] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:33:33.739 [task-139] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:34:00.014 [task-140] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:34:03.758 [task-140] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:34:30.002 [task-141] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:34:33.747 [task-141] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:35:00.004 [task-142] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:35:03.745 [task-142] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:35:30.008 [task-143] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:35:33.751 [task-143] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:36:00.001 [task-144] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:36:03.734 [task-144] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:36:30.001 [task-145] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:36:33.745 [task-145] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:37:00.004 [task-146] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:37:03.750 [task-146] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:37:30.010 [task-147] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:37:33.749 [task-147] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:38:00.000 [task-148] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:38:03.742 [task-148] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:38:30.012 [task-149] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:38:33.750 [task-149] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:39:00.001 [task-150] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:39:03.750 [task-150] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:39:30.005 [task-151] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:39:33.751 [task-151] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:40:00.006 [task-152] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:40:03.755 [task-152] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:40:30.008 [task-153] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:40:33.750 [task-153] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:41:00.004 [task-154] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:41:03.743 [task-154] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:41:30.006 [task-155] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:41:33.739 [task-155] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:42:00.009 [task-156] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:42:03.765 [task-156] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:42:30.010 [task-157] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:42:33.763 [task-157] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:43:00.000 [task-158] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:43:03.749 [task-158] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:43:30.011 [task-159] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:43:33.749 [task-159] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:44:00.011 [task-160] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:44:03.758 [task-160] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:44:30.007 [task-161] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:44:33.749 [task-161] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:45:00.010 [task-162] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:45:03.758 [task-162] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:45:30.002 [task-163] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:45:33.750 [task-163] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:46:00.007 [task-164] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:46:03.756 [task-164] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:46:30.010 [task-165] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:46:33.751 [task-165] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:47:00.014 [task-166] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:47:03.750 [task-166] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:47:30.002 [task-167] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:47:33.751 [task-167] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:48:00.008 [task-168] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:48:03.748 [task-168] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:48:30.007 [task-169] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:48:33.747 [task-169] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:49:00.002 [task-170] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:49:03.748 [task-170] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:49:30.001 [task-171] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:49:33.736 [task-171] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:50:00.002 [task-172] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:50:02.271 [task-172] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:50:30.002 [task-173] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:50:32.271 [task-173] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:51:00.001 [task-174] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:51:03.744 [task-174] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:51:30.016 [task-175] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:51:33.756 [task-175] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:52:00.013 [task-176] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:52:03.747 [task-176] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:52:30.008 [task-177] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:52:33.741 [task-177] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:53:00.002 [task-178] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:53:03.735 [task-178] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:53:30.006 [task-179] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:53:33.737 [task-179] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:54:00.008 [task-180] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:54:03.768 [task-180] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:54:30.006 [task-181] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:54:33.779 [task-181] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:55:00.012 [task-182] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:55:03.750 [task-182] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:55:30.002 [task-183] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:55:33.744 [task-183] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:56:00.001 [task-184] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:56:03.736 [task-184] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:56:30.008 [task-185] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:56:33.754 [task-185] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:57:00.007 [task-186] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:57:03.752 [task-186] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:57:30.009 [task-187] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:57:33.756 [task-187] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:58:00.009 [task-188] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:58:03.755 [task-188] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:58:30.003 [task-189] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:58:33.771 [task-189] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:59:00.003 [task-190] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:59:03.739 [task-190] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 20:59:30.001 [task-191] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 20:59:33.743 [task-191] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:00:00.003 [task-192] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:00:03.748 [task-192] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:00:30.011 [task-193] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:00:33.746 [task-193] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:01:00.010 [task-194] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:01:03.749 [task-194] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:01:30.000 [task-195] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:01:33.734 [task-195] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:02:00.001 [task-196] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:02:03.858 [task-196] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:02:30.009 [task-197] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:02:33.753 [task-197] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:03:00.001 [task-198] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:03:03.754 [task-198] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:03:30.015 [task-199] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:03:33.765 [task-199] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:04:00.015 [task-200] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:04:03.753 [task-200] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:04:30.012 [task-201] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:04:33.752 [task-201] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:05:00.010 [task-202] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:05:03.753 [task-202] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:05:30.015 [task-203] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:05:33.755 [task-203] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:06:00.007 [task-204] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:06:03.753 [task-204] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:06:30.010 [task-205] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:06:33.768 [task-205] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:07:00.011 [task-206] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:07:03.742 [task-206] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:07:30.009 [task-207] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:07:33.752 [task-207] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:08:00.006 [task-208] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:08:03.742 [task-208] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:08:30.003 [task-209] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:08:33.740 [task-209] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:09:00.002 [task-210] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:09:03.734 [task-210] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:09:18.207 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-02-14 21:09:18.210 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registering from Nacos Server now...
+2022-02-14 21:09:18.211 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registration finished.
+2022-02-14 21:09:18.553 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'
+2022-02-14 21:09:18.682 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closing ...
+2022-02-14 21:09:18.685 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closed
+2022-02-14 21:09:24.330 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-02-14 21:09:24.875 [main] INFO  org.reflections.Reflections-Reflections took 27 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-02-14 21:09:24.902 [main] INFO  org.reflections.Reflections-Reflections took 14 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-02-14 21:09:24.917 [main] INFO  org.reflections.Reflections-Reflections took 13 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-02-14 21:09:25.085 [main] INFO  org.reflections.Reflections-Reflections took 165 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 21:09:25.095 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-02-14 21:09:25.108 [main] INFO  org.reflections.Reflections-Reflections took 11 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-02-14 21:09:25.123 [main] INFO  org.reflections.Reflections-Reflections took 12 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-02-14 21:09:25.262 [main] INFO  org.reflections.Reflections-Reflections took 137 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 21:09:26.147 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-edu-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu,DEFAULT_GROUP'}]
+2022-02-14 21:09:26.150 [main] INFO  com.novedu.nov.EduServiceApplication-The following profiles are active: dev
+2022-02-14 21:09:26.804 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-14 21:09:26.806 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-02-14 21:09:26.841 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Finished Spring Data repository scanning in 23ms. Found 0 Redis repository interfaces.
+2022-02-14 21:09:27.031 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=e472dcd6-c0d0-31dd-96b5-87000ad36a10
+2022-02-14 21:09:27.461 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat initialized with port(s): 8081 (http)
+2022-02-14 21:09:27.469 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Initializing ProtocolHandler ["http-nio-8081"]
+2022-02-14 21:09:27.469 [main] INFO  org.apache.catalina.core.StandardService-Starting service [Tomcat]
+2022-02-14 21:09:27.469 [main] INFO  org.apache.catalina.core.StandardEngine-Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-02-14 21:09:27.575 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring embedded WebApplicationContext
+2022-02-14 21:09:27.575 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext-Root WebApplicationContext: initialization completed in 1405 ms
+2022-02-14 21:09:27.670 [main] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure-Init DruidDataSource
+2022-02-14 21:09:27.747 [main] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} inited
+2022-02-14 21:09:28.925 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-order' URL not provided. Will try picking an instance via load-balancing.
+2022-02-14 21:09:29.989 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-02-14 21:09:30.000 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 21:09:30.003 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 21:09:30.009 [task-211] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:09:30.123 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-02-14 21:09:30.298 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-02-14 21:09:30.861 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Starting ProtocolHandler ["http-nio-8081"]
+2022-02-14 21:09:30.874 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat started on port(s): 8081 (http) with context path ''
+2022-02-14 21:09:30.883 [main] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-nacos registry, DEFAULT_GROUP service-edu 192.168.31.136:8081 register finished
+2022-02-14 21:09:30.951 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2022-02-14 21:09:30.963 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2022-02-14 21:09:30.992 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2022-02-14 21:09:31.071 [http-nio-8081-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-14 21:09:31.071 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Initializing Servlet 'dispatcherServlet'
+2022-02-14 21:09:31.079 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Completed initialization in 8 ms
+2022-02-14 21:09:31.154 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: queryCommentPageUsingPOST_1
+2022-02-14 21:09:31.193 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: queryCourseByTeacherIdUsingPOST_1
+2022-02-14 21:09:31.209 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: saveCourseUsingPOST_1
+2022-02-14 21:09:31.239 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: saveCourseUsingPOST_2
+2022-02-14 21:09:31.263 [main] INFO  com.novedu.nov.EduServiceApplication-Started EduServiceApplication in 7.393 seconds (JVM running for 8.051)
+2022-02-14 21:09:34.275 [task-211] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:10:00.008 [task-212] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:10:02.683 [task-212] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:10:19.469 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-02-14 21:10:19.473 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registering from Nacos Server now...
+2022-02-14 21:10:19.476 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registration finished.
+2022-02-14 21:10:19.816 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'
+2022-02-14 21:10:19.948 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closing ...
+2022-02-14 21:10:19.952 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closed
+2022-02-14 21:10:24.437 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-02-14 21:10:24.996 [main] INFO  org.reflections.Reflections-Reflections took 27 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-02-14 21:10:25.023 [main] INFO  org.reflections.Reflections-Reflections took 14 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-02-14 21:10:25.038 [main] INFO  org.reflections.Reflections-Reflections took 12 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-02-14 21:10:25.200 [main] INFO  org.reflections.Reflections-Reflections took 159 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 21:10:25.211 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-02-14 21:10:25.222 [main] INFO  org.reflections.Reflections-Reflections took 9 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-02-14 21:10:25.238 [main] INFO  org.reflections.Reflections-Reflections took 13 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-02-14 21:10:25.374 [main] INFO  org.reflections.Reflections-Reflections took 133 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 21:10:26.318 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-edu-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu,DEFAULT_GROUP'}]
+2022-02-14 21:10:26.321 [main] INFO  com.novedu.nov.EduServiceApplication-The following profiles are active: dev
+2022-02-14 21:10:26.983 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-14 21:10:26.985 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-02-14 21:10:27.019 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Finished Spring Data repository scanning in 22ms. Found 0 Redis repository interfaces.
+2022-02-14 21:10:27.208 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=e472dcd6-c0d0-31dd-96b5-87000ad36a10
+2022-02-14 21:10:27.641 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat initialized with port(s): 8081 (http)
+2022-02-14 21:10:27.648 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Initializing ProtocolHandler ["http-nio-8081"]
+2022-02-14 21:10:27.649 [main] INFO  org.apache.catalina.core.StandardService-Starting service [Tomcat]
+2022-02-14 21:10:27.649 [main] INFO  org.apache.catalina.core.StandardEngine-Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-02-14 21:10:27.754 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring embedded WebApplicationContext
+2022-02-14 21:10:27.754 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext-Root WebApplicationContext: initialization completed in 1412 ms
+2022-02-14 21:10:27.850 [main] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure-Init DruidDataSource
+2022-02-14 21:10:27.928 [main] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} inited
+2022-02-14 21:10:29.104 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-order' URL not provided. Will try picking an instance via load-balancing.
+2022-02-14 21:10:30.003 [task-213] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:10:30.206 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-02-14 21:10:30.218 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 21:10:30.221 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 21:10:30.342 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-02-14 21:10:30.517 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-02-14 21:10:31.080 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Starting ProtocolHandler ["http-nio-8081"]
+2022-02-14 21:10:31.092 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat started on port(s): 8081 (http) with context path ''
+2022-02-14 21:10:31.101 [main] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-nacos registry, DEFAULT_GROUP service-edu 192.168.31.136:8081 register finished
+2022-02-14 21:10:31.169 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2022-02-14 21:10:31.181 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2022-02-14 21:10:31.210 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2022-02-14 21:10:31.362 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: queryCommentPageUsingPOST_1
+2022-02-14 21:10:31.400 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: queryCourseByTeacherIdUsingPOST_1
+2022-02-14 21:10:31.416 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: saveCourseUsingPOST_1
+2022-02-14 21:10:31.446 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: saveCourseUsingPOST_2
+2022-02-14 21:10:31.469 [main] INFO  com.novedu.nov.EduServiceApplication-Started EduServiceApplication in 7.5 seconds (JVM running for 8.148)
+2022-02-14 21:10:31.571 [http-nio-8081-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-14 21:10:31.571 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Initializing Servlet 'dispatcherServlet'
+2022-02-14 21:10:31.579 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Completed initialization in 8 ms
+2022-02-14 21:10:35.139 [task-213] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:11:00.001 [task-214] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:11:02.919 [task-214] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:11:30.014 [task-215] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:11:32.928 [task-215] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:12:00.002 [task-216] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:12:02.912 [task-216] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:12:30.009 [task-217] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:12:32.917 [task-217] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:13:00.003 [task-218] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:13:02.910 [task-218] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:13:07.392 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-02-14 21:13:07.395 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registering from Nacos Server now...
+2022-02-14 21:13:07.397 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registration finished.
+2022-02-14 21:13:07.730 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'
+2022-02-14 21:13:07.868 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closing ...
+2022-02-14 21:13:07.871 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closed
+2022-02-14 21:13:13.757 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-02-14 21:13:14.321 [main] INFO  org.reflections.Reflections-Reflections took 28 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-02-14 21:13:14.349 [main] INFO  org.reflections.Reflections-Reflections took 13 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-02-14 21:13:14.364 [main] INFO  org.reflections.Reflections-Reflections took 13 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-02-14 21:13:14.530 [main] INFO  org.reflections.Reflections-Reflections took 163 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 21:13:14.541 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-02-14 21:13:14.553 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-02-14 21:13:14.568 [main] INFO  org.reflections.Reflections-Reflections took 12 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-02-14 21:13:14.705 [main] INFO  org.reflections.Reflections-Reflections took 134 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 21:13:15.644 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-edu-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu,DEFAULT_GROUP'}]
+2022-02-14 21:13:15.647 [main] INFO  com.novedu.nov.EduServiceApplication-The following profiles are active: dev
+2022-02-14 21:13:16.324 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-14 21:13:16.326 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-02-14 21:13:16.361 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Finished Spring Data repository scanning in 23ms. Found 0 Redis repository interfaces.
+2022-02-14 21:13:16.555 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=e472dcd6-c0d0-31dd-96b5-87000ad36a10
+2022-02-14 21:13:16.994 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat initialized with port(s): 8081 (http)
+2022-02-14 21:13:17.002 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Initializing ProtocolHandler ["http-nio-8081"]
+2022-02-14 21:13:17.002 [main] INFO  org.apache.catalina.core.StandardService-Starting service [Tomcat]
+2022-02-14 21:13:17.003 [main] INFO  org.apache.catalina.core.StandardEngine-Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-02-14 21:13:17.109 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring embedded WebApplicationContext
+2022-02-14 21:13:17.109 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext-Root WebApplicationContext: initialization completed in 1439 ms
+2022-02-14 21:13:17.207 [main] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure-Init DruidDataSource
+2022-02-14 21:13:17.287 [main] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} inited
+2022-02-14 21:13:18.503 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-order' URL not provided. Will try picking an instance via load-balancing.
+2022-02-14 21:13:19.591 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-02-14 21:13:19.603 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 21:13:19.607 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 21:13:19.732 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-02-14 21:13:19.913 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-02-14 21:13:20.481 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Starting ProtocolHandler ["http-nio-8081"]
+2022-02-14 21:13:20.494 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat started on port(s): 8081 (http) with context path ''
+2022-02-14 21:13:20.502 [main] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-nacos registry, DEFAULT_GROUP service-edu 192.168.31.136:8081 register finished
+2022-02-14 21:13:20.571 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2022-02-14 21:13:20.583 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2022-02-14 21:13:20.613 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2022-02-14 21:13:20.769 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: queryCommentPageUsingPOST_1
+2022-02-14 21:13:20.808 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: queryCourseByTeacherIdUsingPOST_1
+2022-02-14 21:13:20.824 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: saveCourseUsingPOST_1
+2022-02-14 21:13:20.854 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: saveCourseUsingPOST_2
+2022-02-14 21:13:20.877 [main] INFO  com.novedu.nov.EduServiceApplication-Started EduServiceApplication in 7.598 seconds (JVM running for 8.251)
+2022-02-14 21:13:30.011 [task-219] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:13:30.063 [http-nio-8081-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-14 21:13:30.063 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Initializing Servlet 'dispatcherServlet'
+2022-02-14 21:13:30.071 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Completed initialization in 8 ms
+2022-02-14 21:13:34.379 [task-219] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:14:00.008 [task-220] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:14:03.633 [task-220] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:14:30.009 [task-221] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:14:33.604 [task-221] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:15:00.003 [task-222] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:15:03.598 [task-222] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:15:30.009 [task-223] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:15:33.345 [task-223] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:16:00.008 [task-224] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:16:03.319 [task-224] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:16:30.002 [task-225] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:16:33.310 [task-225] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:17:00.009 [task-226] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:17:03.307 [task-226] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:17:30.009 [task-227] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:17:33.294 [task-227] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:18:00.004 [task-228] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:18:03.288 [task-228] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:18:30.015 [task-229] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:18:33.296 [task-229] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:19:00.005 [task-230] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:19:03.330 [task-230] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:19:30.006 [task-231] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:19:33.286 [task-231] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:20:00.000 [task-232] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:20:03.305 [task-232] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:20:30.014 [task-233] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:20:33.345 [task-233] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:21:00.001 [task-234] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:21:03.291 [task-234] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:21:30.009 [task-235] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:21:33.307 [task-235] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:22:00.005 [task-236] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:22:03.311 [task-236] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:22:30.006 [task-237] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:22:32.928 [task-237] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:23:00.006 [task-238] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:23:30.003 [task-239] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:23:32.921 [task-239] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:24:00.011 [task-240] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:24:02.932 [task-240] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:24:30.015 [task-241] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:24:31.934 [task-241] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:25:00.005 [task-242] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:25:01.929 [task-242] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:25:30.007 [task-243] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:25:31.922 [task-243] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:26:00.006 [task-244] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:26:01.938 [task-244] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:26:30.007 [task-245] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:26:31.931 [task-245] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:27:00.013 [task-246] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:27:03.350 [task-246] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:27:30.010 [task-247] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:27:33.401 [task-247] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:28:00.012 [task-248] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:28:03.355 [task-248] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:28:30.011 [task-249] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:28:33.323 [task-249] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:29:00.002 [task-250] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:29:03.341 [task-250] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:29:30.011 [task-251] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:29:33.297 [task-251] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:30:00.008 [task-252] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:30:02.924 [task-252] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:30:30.004 [task-253] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:30:33.315 [task-253] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:31:00.012 [task-254] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:31:03.324 [task-254] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:31:30.011 [task-255] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:31:33.343 [task-255] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:32:00.005 [task-256] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:32:03.310 [task-256] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:32:30.007 [task-257] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:32:33.329 [task-257] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:33:00.014 [task-258] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:33:03.304 [task-258] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:33:30.006 [task-259] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:33:33.326 [task-259] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:34:00.005 [task-260] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:34:03.351 [task-260] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:34:30.005 [task-261] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:34:33.296 [task-261] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:35:00.010 [task-262] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:35:03.356 [task-262] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:35:30.010 [task-263] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:35:33.321 [task-263] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:36:00.003 [task-264] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:36:03.365 [task-264] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:36:30.008 [task-265] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:36:33.301 [task-265] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:37:00.007 [task-266] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:37:03.296 [task-266] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:37:30.004 [task-267] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:37:33.306 [task-267] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:38:00.002 [task-268] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:38:03.327 [task-268] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:38:12.375 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-02-14 21:38:12.378 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registering from Nacos Server now...
+2022-02-14 21:38:12.379 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registration finished.
+2022-02-14 21:38:12.716 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'
+2022-02-14 21:38:12.853 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closing ...
+2022-02-14 21:38:12.856 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closed
+2022-02-14 21:38:18.771 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-02-14 21:38:19.335 [main] INFO  org.reflections.Reflections-Reflections took 28 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-02-14 21:38:19.362 [main] INFO  org.reflections.Reflections-Reflections took 14 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-02-14 21:38:19.378 [main] INFO  org.reflections.Reflections-Reflections took 13 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-02-14 21:38:19.544 [main] INFO  org.reflections.Reflections-Reflections took 163 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 21:38:19.555 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-02-14 21:38:19.568 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-02-14 21:38:19.583 [main] INFO  org.reflections.Reflections-Reflections took 12 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-02-14 21:38:19.721 [main] INFO  org.reflections.Reflections-Reflections took 136 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 21:38:20.635 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-edu-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu,DEFAULT_GROUP'}]
+2022-02-14 21:38:20.639 [main] INFO  com.novedu.nov.EduServiceApplication-The following profiles are active: dev
+2022-02-14 21:38:21.302 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-14 21:38:21.304 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-02-14 21:38:21.338 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Finished Spring Data repository scanning in 23ms. Found 0 Redis repository interfaces.
+2022-02-14 21:38:21.535 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=e472dcd6-c0d0-31dd-96b5-87000ad36a10
+2022-02-14 21:38:21.974 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat initialized with port(s): 8081 (http)
+2022-02-14 21:38:21.982 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Initializing ProtocolHandler ["http-nio-8081"]
+2022-02-14 21:38:21.982 [main] INFO  org.apache.catalina.core.StandardService-Starting service [Tomcat]
+2022-02-14 21:38:21.983 [main] INFO  org.apache.catalina.core.StandardEngine-Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-02-14 21:38:22.089 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring embedded WebApplicationContext
+2022-02-14 21:38:22.089 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext-Root WebApplicationContext: initialization completed in 1430 ms
+2022-02-14 21:38:22.188 [main] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure-Init DruidDataSource
+2022-02-14 21:38:22.265 [main] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} inited
+2022-02-14 21:38:23.460 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-order' URL not provided. Will try picking an instance via load-balancing.
+2022-02-14 21:38:24.462 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-02-14 21:38:24.473 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 21:38:24.477 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 21:38:24.595 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-02-14 21:38:24.769 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-02-14 21:38:25.328 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Starting ProtocolHandler ["http-nio-8081"]
+2022-02-14 21:38:25.341 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat started on port(s): 8081 (http) with context path ''
+2022-02-14 21:38:25.349 [main] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-nacos registry, DEFAULT_GROUP service-edu 192.168.31.136:8081 register finished
+2022-02-14 21:38:25.417 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2022-02-14 21:38:25.428 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2022-02-14 21:38:25.457 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2022-02-14 21:38:25.610 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: queryCommentPageUsingPOST_1
+2022-02-14 21:38:25.649 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: queryCourseByTeacherIdUsingPOST_1
+2022-02-14 21:38:25.665 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: saveCourseUsingPOST_1
+2022-02-14 21:38:25.694 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: saveCourseUsingPOST_2
+2022-02-14 21:38:25.718 [main] INFO  com.novedu.nov.EduServiceApplication-Started EduServiceApplication in 7.425 seconds (JVM running for 8.092)
+2022-02-14 21:38:30.008 [task-269] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:38:30.059 [http-nio-8081-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-14 21:38:30.059 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Initializing Servlet 'dispatcherServlet'
+2022-02-14 21:38:30.066 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Completed initialization in 7 ms
+2022-02-14 21:38:32.682 [task-269] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:39:00.013 [task-270] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:39:02.836 [task-270] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:39:30.003 [task-271] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:39:32.786 [task-271] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:40:00.014 [task-272] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:40:02.784 [task-272] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:40:30.005 [task-273] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:40:32.957 [task-273] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:41:00.015 [task-274] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:41:02.936 [task-274] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:41:30.005 [task-275] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:41:33.442 [task-275] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:42:00.008 [task-276] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:42:03.454 [task-276] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:42:30.010 [task-277] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:42:33.474 [task-277] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:43:00.014 [task-278] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:43:03.563 [task-278] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:43:30.008 [task-279] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:44:00.009 [task-280] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:44:03.529 [task-280] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:44:30.013 [task-281] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:44:32.599 [task-281] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:45:00.011 [task-282] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:45:02.626 [task-282] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:45:11.060 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-02-14 21:45:11.063 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registering from Nacos Server now...
+2022-02-14 21:45:11.064 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registration finished.
+2022-02-14 21:45:11.409 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'
+2022-02-14 21:45:11.642 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closing ...
+2022-02-14 21:45:11.644 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closed
+2022-02-14 21:45:16.380 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-02-14 21:45:16.932 [main] INFO  org.reflections.Reflections-Reflections took 27 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-02-14 21:45:16.959 [main] INFO  org.reflections.Reflections-Reflections took 14 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-02-14 21:45:16.974 [main] INFO  org.reflections.Reflections-Reflections took 13 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-02-14 21:45:17.140 [main] INFO  org.reflections.Reflections-Reflections took 161 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 21:45:17.150 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-02-14 21:45:17.162 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-02-14 21:45:17.177 [main] INFO  org.reflections.Reflections-Reflections took 12 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-02-14 21:45:17.313 [main] INFO  org.reflections.Reflections-Reflections took 133 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 21:45:18.236 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-edu-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu,DEFAULT_GROUP'}]
+2022-02-14 21:45:18.240 [main] INFO  com.novedu.nov.EduServiceApplication-The following profiles are active: dev
+2022-02-14 21:45:18.928 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-14 21:45:18.931 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-02-14 21:45:18.967 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Finished Spring Data repository scanning in 24ms. Found 0 Redis repository interfaces.
+2022-02-14 21:45:19.167 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=e472dcd6-c0d0-31dd-96b5-87000ad36a10
+2022-02-14 21:45:19.620 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat initialized with port(s): 8081 (http)
+2022-02-14 21:45:19.628 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Initializing ProtocolHandler ["http-nio-8081"]
+2022-02-14 21:45:19.628 [main] INFO  org.apache.catalina.core.StandardService-Starting service [Tomcat]
+2022-02-14 21:45:19.629 [main] INFO  org.apache.catalina.core.StandardEngine-Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-02-14 21:45:19.738 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring embedded WebApplicationContext
+2022-02-14 21:45:19.738 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext-Root WebApplicationContext: initialization completed in 1478 ms
+2022-02-14 21:45:19.840 [main] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure-Init DruidDataSource
+2022-02-14 21:45:19.919 [main] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} inited
+2022-02-14 21:45:21.086 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-order' URL not provided. Will try picking an instance via load-balancing.
+2022-02-14 21:45:22.268 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-02-14 21:45:22.279 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 21:45:22.283 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 21:45:22.401 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-02-14 21:45:22.572 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-02-14 21:45:23.122 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Starting ProtocolHandler ["http-nio-8081"]
+2022-02-14 21:45:23.135 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat started on port(s): 8081 (http) with context path ''
+2022-02-14 21:45:23.144 [main] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-nacos registry, DEFAULT_GROUP service-edu 192.168.31.136:8081 register finished
+2022-02-14 21:45:23.212 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2022-02-14 21:45:23.224 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2022-02-14 21:45:23.253 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2022-02-14 21:45:23.411 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: queryCommentPageUsingPOST_1
+2022-02-14 21:45:23.451 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: queryCourseByTeacherIdUsingPOST_1
+2022-02-14 21:45:23.467 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: saveCourseUsingPOST_1
+2022-02-14 21:45:23.498 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: saveCourseUsingPOST_2
+2022-02-14 21:45:23.522 [main] INFO  com.novedu.nov.EduServiceApplication-Started EduServiceApplication in 7.611 seconds (JVM running for 8.3)
+2022-02-14 21:45:26.541 [http-nio-8081-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-14 21:45:26.541 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Initializing Servlet 'dispatcherServlet'
+2022-02-14 21:45:26.548 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Completed initialization in 7 ms
+2022-02-14 21:45:30.005 [task-283] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:45:33.798 [task-283] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:46:00.014 [task-284] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:46:03.454 [task-284] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:46:30.006 [task-285] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:46:33.423 [task-285] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:47:00.013 [task-286] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:47:03.451 [task-286] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:47:30.006 [task-287] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:47:33.465 [task-287] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:48:00.006 [task-288] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:48:03.496 [task-288] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:48:30.007 [task-289] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:48:33.450 [task-289] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:48:35.484 [http-nio-8086-exec-5] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-14 21:48:35.484 [http-nio-8086-exec-5] INFO  org.springframework.web.servlet.DispatcherServlet-Initializing Servlet 'dispatcherServlet'
+2022-02-14 21:48:35.491 [http-nio-8086-exec-5] INFO  org.springframework.web.servlet.DispatcherServlet-Completed initialization in 7 ms
+2022-02-14 21:48:36.314 [hystrix-service-edu-1] INFO  com.netflix.config.ChainedDynamicProperty-Flipping property: service-edu.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2022-02-14 21:48:36.326 [hystrix-service-edu-1] INFO  com.netflix.loadbalancer.BaseLoadBalancer-Client: service-edu instantiated a LoadBalancer: DynamicServerListLoadBalancer:{NFLoadBalancer:name=service-edu,current list of Servers=[],Load balancer stats=Zone stats: {},Server stats: []}ServerList:null
+2022-02-14 21:48:36.331 [hystrix-service-edu-1] INFO  com.netflix.loadbalancer.DynamicServerListLoadBalancer-Using serverListUpdater PollingServerListUpdater
+2022-02-14 21:48:36.343 [hystrix-service-edu-1] INFO  com.netflix.config.ChainedDynamicProperty-Flipping property: service-edu.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2022-02-14 21:48:36.345 [hystrix-service-edu-1] INFO  com.netflix.loadbalancer.DynamicServerListLoadBalancer-DynamicServerListLoadBalancer for client service-edu initialized: DynamicServerListLoadBalancer:{NFLoadBalancer:name=service-edu,current list of Servers=[192.168.31.136:8081],Load balancer stats=Zone stats: {unknown=[Zone:unknown;	Instance count:1;	Active connections count: 0;	Circuit breaker tripped count: 0;	Active connections per server: 0.0;]
+},Server stats: [[Server:192.168.31.136:8081;	Zone:UNKNOWN;	Total Requests:0;	Successive connection failure:0;	Total blackout seconds:0;	Last connection made:Thu Jan 01 08:00:00 CST 1970;	First connection made: Thu Jan 01 08:00:00 CST 1970;	Active Connections:0;	total failure count in last (1000) msecs:0;	average resp time:0.0;	90 percentile resp time:0.0;	95 percentile resp time:0.0;	min resp time:0.0;	max resp time:0.0;	stddev resp time:0.0]
+]}ServerList:com.alibaba.cloud.nacos.ribbon.NacosServerList@3af19b55
+2022-02-14 21:48:37.345 [PollingServerListUpdater-0] INFO  com.netflix.config.ChainedDynamicProperty-Flipping property: service-edu.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2022-02-14 21:49:00.016 [task-290] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:49:02.411 [task-290] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:49:30.007 [task-291] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:49:32.389 [task-291] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:49:41.817 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-02-14 21:49:41.820 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registering from Nacos Server now...
+2022-02-14 21:49:41.822 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registration finished.
+2022-02-14 21:49:42.157 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'
+2022-02-14 21:49:42.295 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closing ...
+2022-02-14 21:49:42.298 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closed
+2022-02-14 21:49:46.913 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-02-14 21:49:47.470 [main] INFO  org.reflections.Reflections-Reflections took 29 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-02-14 21:49:47.500 [main] INFO  org.reflections.Reflections-Reflections took 16 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-02-14 21:49:47.515 [main] INFO  org.reflections.Reflections-Reflections took 13 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-02-14 21:49:47.686 [main] INFO  org.reflections.Reflections-Reflections took 167 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 21:49:47.696 [main] INFO  org.reflections.Reflections-Reflections took 9 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-02-14 21:49:47.709 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-02-14 21:49:47.725 [main] INFO  org.reflections.Reflections-Reflections took 13 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-02-14 21:49:47.866 [main] INFO  org.reflections.Reflections-Reflections took 139 ms to scan 208 urls, producing 0 keys and 0 values 
+2022-02-14 21:49:48.796 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-edu-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu,DEFAULT_GROUP'}]
+2022-02-14 21:49:48.800 [main] INFO  com.novedu.nov.EduServiceApplication-The following profiles are active: dev
+2022-02-14 21:49:49.456 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-14 21:49:49.458 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-02-14 21:49:49.492 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Finished Spring Data repository scanning in 23ms. Found 0 Redis repository interfaces.
+2022-02-14 21:49:49.685 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=e472dcd6-c0d0-31dd-96b5-87000ad36a10
+2022-02-14 21:49:50.117 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat initialized with port(s): 8081 (http)
+2022-02-14 21:49:50.124 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Initializing ProtocolHandler ["http-nio-8081"]
+2022-02-14 21:49:50.125 [main] INFO  org.apache.catalina.core.StandardService-Starting service [Tomcat]
+2022-02-14 21:49:50.125 [main] INFO  org.apache.catalina.core.StandardEngine-Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-02-14 21:49:50.232 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring embedded WebApplicationContext
+2022-02-14 21:49:50.232 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext-Root WebApplicationContext: initialization completed in 1412 ms
+2022-02-14 21:49:50.328 [main] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure-Init DruidDataSource
+2022-02-14 21:49:50.408 [main] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} inited
+2022-02-14 21:49:51.592 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-order' URL not provided. Will try picking an instance via load-balancing.
+2022-02-14 21:49:52.828 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-02-14 21:49:52.840 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 21:49:52.844 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-02-14 21:49:52.964 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-02-14 21:49:53.136 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-02-14 21:49:53.689 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Starting ProtocolHandler ["http-nio-8081"]
+2022-02-14 21:49:53.702 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat started on port(s): 8081 (http) with context path ''
+2022-02-14 21:49:53.711 [main] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-nacos registry, DEFAULT_GROUP service-edu 192.168.31.136:8081 register finished
+2022-02-14 21:49:53.779 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2022-02-14 21:49:53.791 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2022-02-14 21:49:53.821 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2022-02-14 21:49:53.973 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: queryCommentPageUsingPOST_1
+2022-02-14 21:49:54.011 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: queryCourseByTeacherIdUsingPOST_1
+2022-02-14 21:49:54.028 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: saveCourseUsingPOST_1
+2022-02-14 21:49:54.057 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: saveCourseUsingPOST_2
+2022-02-14 21:49:54.080 [main] INFO  com.novedu.nov.EduServiceApplication-Started EduServiceApplication in 7.634 seconds (JVM running for 8.29)
+2022-02-14 21:50:00.006 [task-292] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:50:00.056 [http-nio-8081-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-14 21:50:00.056 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Initializing Servlet 'dispatcherServlet'
+2022-02-14 21:50:00.063 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Completed initialization in 7 ms
+2022-02-14 21:50:03.865 [task-292] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:50:30.002 [task-293] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:50:32.078 [task-293] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:51:00.005 [task-294] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:51:03.745 [task-294] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:51:30.013 [task-295] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:51:33.769 [task-295] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:52:00.002 [task-296] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:52:01.978 [task-296] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:52:30.001 [task-297] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:52:31.971 [task-297] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:53:00.008 [task-298] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:53:02.744 [task-298] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:53:30.013 [task-299] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:53:32.094 [task-299] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:54:00.015 [task-300] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:54:02.748 [task-300] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:54:30.003 [task-301] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:54:32.748 [task-301] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:55:00.007 [task-302] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:55:02.790 [task-302] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:55:30.015 [task-303] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:55:32.747 [task-303] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:56:00.007 [task-304] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:56:02.780 [task-304] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:56:30.014 [task-305] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:57:00.007 [task-306] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:57:02.918 [task-306] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:57:30.010 [task-307] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:57:32.913 [task-307] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:58:00.016 [task-308] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:58:02.942 [task-308] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:58:30.002 [task-309] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:58:32.938 [task-309] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:59:00.001 [task-310] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:59:02.915 [task-310] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 21:59:30.002 [task-311] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 21:59:32.933 [task-311] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 22:00:00.000 [task-312] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 22:00:02.901 [task-312] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 22:00:30.009 [task-313] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 22:00:32.925 [task-313] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 22:01:00.007 [task-314] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 22:01:02.075 [task-314] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 22:01:30.013 [task-315] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 22:01:32.080 [task-315] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成
+2022-02-14 22:02:00.009 [task-316] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------正在同步课程播放次数...
+2022-02-14 22:02:02.100 [task-316] INFO  com.novedu.nov.statistics.task.MultiThreadScheduleTask----------------课程播放次数同步完成

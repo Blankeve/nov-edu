@@ -7,6 +7,7 @@ import com.novedu.nov.edu.entity.EduVideo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.novedu.nov.edu.entity.dto.EduVideoInfoDTO;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
+import com.novedu.nov.edu.entity.vo.EduVideoInfoVO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -21,6 +22,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EduVideoMapper extends BaseMapper<EduVideo> {
 
-    IPage<EduCourseInfoVO> queryPage(Page page, @Param("ew") Wrapper<EduVideoInfoDTO> queryWrapper);
+    IPage<EduVideoInfoVO> queryPage(Page page, @Param("ew") Wrapper<EduVideoInfoDTO> queryWrapper);
 
 }

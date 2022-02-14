@@ -128,7 +128,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         Date start = courseInfoDTO.getStartTime();
         Date end = courseInfoDTO.getEndTime();
         if (start != null && end != null && end.getTime() > start.getTime())
-            queryWrapper.apply("c1.create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and c1.create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start,end);
+            queryWrapper.apply("c1.create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and c1.create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start, end);
         if (StringUtils.hasText(courseInfoDTO.getTitle()))
             queryWrapper.orderByAsc("title");
 
@@ -142,7 +142,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     @Override
     public BaseResult queryCoursesByTeacherId(Long eduTeacher) {
-        List<EduCourse> eduCourses = query().eq("teacher_id", eduTeacher).list();
+        List<EduCourse> eduCourses = query().eq("status", 1).eq("teacher_id", eduTeacher).list();
         setCourseCommentCount(eduCourses);
         return BaseResult.success(eduCourses);
     }
@@ -164,7 +164,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         Date start = courseInfoDTO.getStartTime();
         Date end = courseInfoDTO.getEndTime();
         if (start != null && end != null && end.getTime() > start.getTime())
-            queryWrapper.apply("course.create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and course.create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start,end);
+            queryWrapper.apply("course.create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and course.create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start, end);
         Page page1 = (Page) courseMapper.queryPage(page, queryWrapper);
         List<EduCourseInfoVO> courses = page1.getRecords();
         setCourseCommentCount2(courses);
@@ -197,7 +197,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     @Override
     public BaseResult<List<EduCourse>> getClientCourseList() {
-        List<EduCourse> courses = query().orderByDesc("view_count").last("limit 8").list();
+        List<EduCourse> courses = query().eq("status", 1).orderByDesc("view_count").last("limit 8").list();
         setCourseCommentCount(courses);
         return BaseResult.success(courses);
     }
@@ -209,8 +209,8 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         if (subjectId != null && subjectId > 0)
             queryWrapper.eq("subject_id", subjectId);
         String title = courseInfoDTO.getTitle();
-        if(StringUtils.hasText(title))
-            queryWrapper.like("title",title);
+        if (StringUtils.hasText(title))
+            queryWrapper.like("title", title);
         Integer orderFieldValue = courseInfoDTO.getOrderFieldValue();
         if (orderFieldValue != null && !orderFieldValue.equals(EduCourseInfoDTO.ORDER_BY.NONE.ordinal())) {
             if (orderFieldValue.equals(EduCourseInfoDTO.ORDER_BY.NEWEST_ASC.ordinal()))
@@ -222,7 +222,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
             else if (orderFieldValue.equals(EduCourseInfoDTO.ORDER_BY.PRICE_DESC.ordinal()))
                 queryWrapper.orderByDesc("price");
         }
-
+        queryWrapper.eq("status", 1);
         Page page1 = page(page, queryWrapper);
         List<EduCourse> courses = page1.getRecords();
         setCourseCommentCount(courses);
@@ -283,14 +283,14 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     @Override
     public BaseResult<List<EduCourse>> getClientApplyCourseList() {
-        List<EduCourse> courses = query().orderByDesc("apply_count").last("limit 8").list();
+        List<EduCourse> courses = query().eq("status", 1).orderByDesc("apply_count").last("limit 8").list();
         setCourseCommentCount(courses);
         return BaseResult.success(courses);
     }
 
     @Override
     public BaseResult<List<EduCourse>> getClientBoughtCourseList() {
-        List<EduCourse> courses = query().gt("price", 0).orderByDesc("buy_count").last("limit 8").list();
+        List<EduCourse> courses = query().eq("status", 1).gt("price", 0).orderByDesc("buy_count").last("limit 8").list();
         setCourseCommentCount(courses);
         return BaseResult.success(courses);
     }
@@ -308,21 +308,30 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     }
 
     @Override
-    public void exportCoursePage(HttpServletResponse response,Page page, EduCourseInfoDTO courseInfoDTO) {
-       BaseResult baseResult = queryCoursePage(page,courseInfoDTO);
-       if(baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())){
-           Page page1 = (Page) baseResult.getData();
-           ExcelUtils.exportExcel(page1.getRecords(),"所有课程","所有课程",EduCourseInfoVO.class,"所有课程",response);
-       }
+    public void exportCoursePage(HttpServletResponse response, Page page, EduCourseInfoDTO courseInfoDTO) {
+        BaseResult baseResult = queryCoursePage(page, courseInfoDTO);
+        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
+            Page page1 = (Page) baseResult.getData();
+            ExcelUtils.exportExcel(page1.getRecords(), "课程信息", "课程信息", EduCourseInfoVO.class, "课程信息", response);
+        }
     }
 
     @Override
     public void exportAll(HttpServletResponse response) {
-        BaseResult baseResult = queryCoursePage(new Page(1,count()),new EduCourseInfoDTO());
-        if(baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())){
+        BaseResult baseResult = queryCoursePage(new Page(1, count()), new EduCourseInfoDTO());
+        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
             Page page1 = (Page) baseResult.getData();
-            ExcelUtils.exportExcel(page1.getRecords(),"所有课程","所有课程",EduCourseInfoVO.class,"所有课程",response);
+            ExcelUtils.exportExcel(page1.getRecords(), "课程信息", "课程信息", EduCourseInfoVO.class, "课程信息", response);
         }
+    }
+
+    @Override
+    public BaseResult releaseCourse(EduCourseInfoDTO courseInfoDTO) {
+        UpdateWrapper updateWrapper = new UpdateWrapper();
+        updateWrapper.eq("id", courseInfoDTO.getId());
+        updateWrapper.set("status", courseInfoDTO.getStatus());
+        update(updateWrapper);
+        return BaseResult.success();
     }
 
 }

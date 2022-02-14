@@ -69,13 +69,13 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="career" width="150" align="center">
+      <el-table-column label="career"  align="center">
         <template slot-scope="scope">
           {{ scope.row.career }}
         </template>
       </el-table-column>
 
-      <el-table-column label="intro" width="300" align="center">
+      <el-table-column label="intro" width="500"  align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.intro }}</span>
         </template>
@@ -101,11 +101,11 @@
       >
         <template slot-scope="scope">
           <i class="el-icon-time" />
-          <span>{{ scope.row.joinDate }}</span>
+          <span>{{ scope.row.createTime }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column fixed="right" align="center" label="操作" width="100">
+      <el-table-column fixed="right" align="center" label="操作" width="200">
         <template slot-scope="scope">
           <el-button @click="handleEdit(scope.row.id)">编辑</el-button>
 

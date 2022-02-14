@@ -113,7 +113,7 @@
 
       <el-table-column label="视频状态" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.videoStatus }}</span>
+          <span>{{ scope.row.videoStatus == 1 ? "正常" : "异常" }}</span>
         </template>
       </el-table-column>
 

@@ -53,4 +53,6 @@ public interface EduCourseService extends IService<EduCourse> {
     void exportCoursePage(HttpServletResponse response, Page page, EduCourseInfoDTO courseInfoDTO);
 
     void exportAll(HttpServletResponse response);
+
+    BaseResult releaseCourse(EduCourseInfoDTO courseInfoDTO);
 }

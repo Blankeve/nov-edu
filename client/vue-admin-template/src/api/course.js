@@ -8,6 +8,14 @@ export function save(data) {
     })
   }
 
+  export function release(data) {
+    return request({
+      url: '/edu/course/release',
+      method: 'post',
+      data
+    })
+  }
+
   export function removeById(params) {
     return request({
       url: `/edu/course/remove/${params}`,
@@ -43,6 +51,7 @@ export function save(data) {
     return request({
       url: '/edu/course/export-all',
       method: 'get',
+      responseType: 'blob'
     })
   }
 
@@ -50,6 +59,7 @@ export function save(data) {
     return request({
       url: '/edu/course/export',
       method: 'post',
+      responseType: 'blob',
       params
     })
   }

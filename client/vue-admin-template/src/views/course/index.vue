@@ -49,7 +49,7 @@
       <el-form-item>
         <el-button type="primary" @click="searchForm">查询</el-button>
         <el-button @click="resetForm('form')">重置</el-button>
-        <el-button type="success" @click="exportCoursePage">导出</el-button>
+        <el-button type="success" @click="exportCoursePage">导出当前</el-button>
         <el-button type="success" @click="exportAllCourse">导出所有</el-button>
       </el-form-item>
     </el-form>
@@ -68,7 +68,13 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="课程标题" align="center">
+      <el-table-column label="课程类别" align="center">
+        <template slot-scope="scope">
+          {{ scope.row.subjectTitle }}
+        </template>
+      </el-table-column>
+
+      <el-table-column label="课程标题" width="200" align="center">
         <template slot-scope="scope">
           {{ scope.row.courseTitle }}
         </template>
@@ -77,12 +83,6 @@
       <el-table-column label="课程讲师" align="center">
         <template slot-scope="scope">
           {{ scope.row.teacherName }}
-        </template>
-      </el-table-column>
-
-      <el-table-column label="课程分类" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.subjectTitle }}
         </template>
       </el-table-column>
 
@@ -136,12 +136,6 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="课程状态" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.courseStatus == 1 ? "已上架" : "未上架" }}
-        </template>
-      </el-table-column>
-
       <el-table-column label="课程简介" align="center">
         <template slot-scope="scope">
           {{ scope.row.description }}
@@ -171,6 +165,24 @@
       <el-table-column align="center" label="视频数量" width="100">
         <template slot-scope="scope">
           <span>{{ scope.row.videoQty }}</span>
+        </template>
+      </el-table-column>
+
+      <el-table-column label="课程发布" width="150" align="center">
+        <template slot-scope="scope">
+          <el-button
+            size="small"
+            :type="scope.row.courseStatus == 1 ? 'danger' : 'primary'"
+            :icon="
+              'el-icon-circle-' +
+              (scope.row.courseStatus == 1 ? 'close' : 'check')
+            "
+            @click="handleRelease(scope.row.courseId, scope.row.courseStatus)"
+          >
+            {{
+              scope.row.courseStatus == 1 ? "下架该课程" : "上架该课程"
+            }}</el-button
+          >
         </template>
       </el-table-column>
 
@@ -216,7 +228,13 @@
 </template>
 
 <script>
-import { getPage, removeById, exportAll, exportPage } from "@/api/course";
+import {
+  getPage,
+  removeById,
+  exportAll,
+  exportPage,
+  release,
+} from "@/api/course";
 import { getAll } from "@/api/teacher";
 import { getList } from "@/api/subject";
 
@@ -397,6 +415,15 @@ export default {
         query: {
           course: data,
         },
+      });
+    },
+    handleRelease(id, status) {
+      status = status == 1 ? 0 : 1;
+      release({ id: id, status: status }).then((resp) => {
+        if (resp.code === 200) {
+          this.$message.success((status == 1 ? "上架" : "下架") + "成功");
+          this.fetchData();
+        }
       });
     },
     onSubmit() {

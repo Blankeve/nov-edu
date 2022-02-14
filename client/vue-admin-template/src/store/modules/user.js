@@ -50,7 +50,7 @@ const actions = {
         const { data } = response
 
         if (!data) {
-          return reject('Verification failed, please Login again.')
+          return reject('登录失效，请重新登录')
         }
 
         const { username, avatar } = data
@@ -59,7 +59,8 @@ const actions = {
         commit('SET_AVATAR', avatar)
         resolve(data)
       }).catch(error => {
-        reject(error)
+        removeToken()
+        return reject('登录失效，请重新登录')
       })
     })
   },
@@ -67,14 +68,10 @@ const actions = {
   // user logout
   logout({ commit, state }) {
     return new Promise((resolve, reject) => {
-      logout(state.token).then(() => {
         removeToken() // must remove  token  first
         resetRouter()
         commit('RESET_STATE')
         resolve()
-      }).catch(error => {
-        reject(error)
-      })
     })
   },
 

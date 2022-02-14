@@ -37,6 +37,11 @@ public class EduCourseController {
         return eduCourseService.saveCourse(courseInfoDTO);
     }
 
+    @PostMapping("/release")
+    public BaseResult releaseCourse(@RequestBody EduCourseInfoDTO courseInfoDTO) {
+        return eduCourseService.releaseCourse(courseInfoDTO);
+    }
+
     @ApiOperation("删除")
     @DeleteMapping("/remove/{id}")
     public BaseResult removeCourse(@PathVariable Long id) {

@@ -29,107 +29,12 @@ public class EduVideoInfoVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-
-    @JsonSerialize(using = ToStringSerializer.class)
-    @ApiModelProperty(value = "课程讲师ID")
-    private Long teacherId;
-
-    @ApiModelProperty(value = "课程讲师")
-    private String teacherName;
-
-    @ApiModelProperty(value = "课程讲师头像")
-    private String teacherAvatar;
-
-    @ApiModelProperty(value = "课程讲师头像")
-    private String teacherCareer;
-
-    @ApiModelProperty(value = "课程类别ID")
-    private Integer subjectId;
-
-    @ApiModelProperty(value = "课程类别ID")
-    private Integer[] subjectIds;
-
-    @ApiModelProperty(value = "类别名称")
-    private String subjectTitle;
-
-    @ApiModelProperty(value = "排序字段")
-    private Integer subjectSort;
-
-    @TableField(value = "create_time", fill = FieldFill.INSERT)
-    @ApiModelProperty(value = "创建时间")
-    private Date subjectCreateTime;
-
-    @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
-    @ApiModelProperty(value = "更新时间")
-    private Date subjectUpdateTime;
-
-    @ApiModelProperty(value = "课程ID")
-    @JsonSerialize(using = ToStringSerializer.class)
-    private Long courseId;
-
-    @ApiModelProperty(value = "课程标题")
-    private String courseTitle;
-
-    @ApiModelProperty(value = "课程销售价格，设置为0则可免费观看")
-    private BigDecimal coursePrice;
-
-    @ApiModelProperty(value = "总课时")
-    private Integer courseLessonNum;
-
-    @ApiModelProperty(value = "课程封面图片路径")
-    private String courseCover;
-
-    @ApiModelProperty(value = "销售数量")
-    private Long courseBuyCount;
-
-    @ApiModelProperty(value = "播放数量")
-    private Long courseViewCount;
-
-    @ApiModelProperty(value = "浏览数量")
-    private Long courseCommentCount;
-
-    @ApiModelProperty(value = "报名数量")
-    private Integer courseApplyCount;
-
-    @ApiModelProperty(value = "课程状态 0未发布  1已发布")
-    private Integer courseStatus;
-
-    @ApiModelProperty(value = "章节数量")
-    private Integer chapterQty;
-
-    @ApiModelProperty(value = "视频数量")
-    private Integer videoQty;
-
-    @ApiModelProperty(value = "创建时间")
-    private Date courseCreateTime;
-
-
-    @ApiModelProperty(value = "更新时间")
-    private Date courseUpdateTime;
-
-    @ApiModelProperty(value = "课程简介")
-    private String introId;
-
-    @ApiModelProperty(value = "课程简介")
-    private String introDescription;
-
     @JsonSerialize(using = ToStringSerializer.class)
     @ApiModelProperty(value = "章节ID")
     private Long chapterId;
 
     @ApiModelProperty(value = "章节名称")
     private String chapterTitle;
-
-    @ApiModelProperty(value = "显示排序")
-    private Integer chapterSort;
-
-
-    @ApiModelProperty(value = "创建时间")
-    private Date chapterCreateTime;
-
-
-    @ApiModelProperty(value = "更新时间")
-    private Date chapterUpdateTime;
 
     @JsonSerialize(using = ToStringSerializer.class)
     @ApiModelProperty(value = "视频ID")
