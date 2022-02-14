@@ -113,6 +113,12 @@
         </template>
       </el-table-column>
 
+      <el-table-column label="学习人数" align="center">
+        <template slot-scope="scope">
+          {{ scope.row.courseApplyCount }}
+        </template>
+      </el-table-column>
+
       <el-table-column label="播放数量" align="center">
         <template slot-scope="scope">
           {{ scope.row.courseViewCount }}
