@@ -7,6 +7,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.novedu.nov.edu.entity.dto.EduChapterInfoDTO;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * <p>
  * 课程 服务类
@@ -30,4 +32,8 @@ public interface EduChapterService extends IService<EduChapter> {
     BaseResult removeChapter(Long id);
 
     BaseResult queryChapterList();
+
+    void exportChapterPage(HttpServletResponse response, Page page, EduChapterInfoDTO chapterInfoDTO);
+
+    void exportAll(HttpServletResponse response);
 }

@@ -15,6 +15,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * <p>
@@ -35,6 +36,16 @@ public class EduVideoController {
     @PostMapping("/save")
     public BaseResult saveCourse(@Validated @RequestBody EduVideo video) {
         return videoService.saveVideo(video);
+    }
+
+    @PostMapping("/export")
+    public void exportCoursePage(HttpServletResponse response, Page page, EduVideoInfoDTO videoInfoDTO) {
+        videoService.exportVideoPage(response,page, videoInfoDTO);
+    }
+
+    @GetMapping("/export-all")
+    public void exportAll(HttpServletResponse response) {
+        videoService.exportAll(response);
     }
 
     @PostMapping("/page")

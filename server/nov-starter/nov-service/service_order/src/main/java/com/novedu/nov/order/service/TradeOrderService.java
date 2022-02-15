@@ -6,6 +6,7 @@ import com.novedu.nov.order.entity.TradeOrder;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * <p>
@@ -24,4 +25,8 @@ public interface TradeOrderService extends IService<TradeOrder> {
     BaseResult queryOrderPage(Page page, TradeOrder order);
 
     BaseResult queryOrderByUidAndCourseId(HttpServletRequest request, Long id);
+
+    void exportOrderPage(HttpServletResponse response, Page page, TradeOrder order);
+
+    void exportAll(HttpServletResponse response,TradeOrder order);
 }

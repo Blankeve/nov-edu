@@ -8,6 +8,7 @@ import com.novedu.nov.edu.entity.dto.EduUserCommentDTO;
 import com.novedu.nov.edu.entity.vo.EduUserCommentVO;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * <p>
@@ -19,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 public interface EduCommentService extends IService<EduComment> {
 
-    BaseResult saveComment(EduComment eduComment , HttpServletRequest request);
+    BaseResult saveComment(EduComment eduComment, HttpServletRequest request);
 
     BaseResult queryCommentPage(Page page, EduComment eduComment);
 
@@ -27,5 +28,9 @@ public interface EduCommentService extends IService<EduComment> {
 
     BaseResult removeComment(Long id);
 
-    BaseResult reportComment(Long id,HttpServletRequest request);
+    BaseResult reportComment(Long id, HttpServletRequest request);
+
+    void exportCommentPage(HttpServletResponse response, Page page, EduUserCommentDTO eduComment);
+
+    void exportAll(HttpServletResponse response, EduUserCommentDTO eduComment);
 }

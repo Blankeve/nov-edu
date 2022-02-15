@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.common.api.ResultCode;
+import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.common.util.JwtUtils;
 import com.novedu.nov.edu.client.OrderClient;
 import com.novedu.nov.edu.entity.EduChapter;
@@ -27,6 +28,7 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -92,7 +94,7 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
         Date start = videoInfoDTO.getStartTime();
         Date end = videoInfoDTO.getEndTime();
         if (start != null && end != null && end.getTime() > start.getTime())
-            queryWrapper.apply("video.create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and video.create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start,end);
+            queryWrapper.apply("video.create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and video.create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start, end);
         Page page1 = (Page) videoMapper.queryPage(page, queryWrapper);
         List<EduVideoInfoVO> courses = page1.getRecords();
         String key = "video_play_count";
@@ -123,16 +125,16 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
         return BaseResult.successOrError(removeById(id));
     }
 
-    public boolean queryOrderByUidAndCourseId(Long id,Long uid){
-        EduVideo video =getById(id);
-        if(video.getIsFree().equals(0)){
+    public boolean queryOrderByUidAndCourseId(Long id, Long uid) {
+        EduVideo video = getById(id);
+        if (video.getIsFree().equals(0)) {
             EduChapter chapter = chapterService.getById(video.getChapterId());
             EduCourse course = courseService.getById(chapter.getCourseId());
             EduCourseApply courseApply = new EduCourseApply();
             courseApply.setCourseId(course.getId());
             courseApply.setUid(uid);
-           BaseResult baseResult = courseApplyService.queryCourseApplyByCourseIdAndUid(courseApply);
-           if(baseResult == null || baseResult.getCode().equals(BaseResult.error().getCode()))
+            BaseResult baseResult = courseApplyService.queryCourseApplyByCourseIdAndUid(courseApply);
+            if (baseResult == null || baseResult.getCode().equals(BaseResult.error().getCode()))
                 return false;
         }
         return true;
@@ -144,7 +146,7 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
         if (!StringUtils.hasText(token))
             return BaseResult.success("未登录");
         Long uid = Long.valueOf(JwtUtils.getAudience(token).get("uid"));
-        if(!queryOrderByUidAndCourseId(id,uid))
+        if (!queryOrderByUidAndCourseId(id, uid))
             return BaseResult.error("请先购买该课程");
         String key = "video_play_count";
         boolean hasKey = redisTemplate.hasKey(key);
@@ -155,13 +157,31 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
             playCount = (Long) videoPlayCounts.get(id);
             if (playCount != null) {
                 playCount++;
-            }else
-                playCount =1l;
+            } else
+                playCount = 1l;
         } else {
             videoPlayCounts = new HashMap();
         }
         videoPlayCounts.put(id, playCount);
         redisTemplate.opsForValue().set(key, videoPlayCounts);
         return BaseResult.success(getById(id));
+    }
+
+    @Override
+    public void exportVideoPage(HttpServletResponse response, Page page, EduVideoInfoDTO videoInfoDTO) {
+        BaseResult baseResult = queryVideoPage(page, videoInfoDTO);
+        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
+            Page page1 = (Page) baseResult.getData();
+            ExcelUtils.exportExcel(page1.getRecords(), "视频信息", "视频信息", EduVideoInfoVO.class, "视频信息", response);
+        }
+    }
+
+    @Override
+    public void exportAll(HttpServletResponse response) {
+        BaseResult baseResult = queryVideoPage(new Page(1, count()), new EduVideoInfoDTO());
+        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
+            Page page1 = (Page) baseResult.getData();
+            ExcelUtils.exportExcel(page1.getRecords(), "视频信息", "视频信息", EduVideoInfoVO.class, "视频信息", response);
+        }
     }
 }

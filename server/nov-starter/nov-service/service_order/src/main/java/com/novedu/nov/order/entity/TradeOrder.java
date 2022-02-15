@@ -2,6 +2,7 @@ package com.novedu.nov.order.entity;
 
 import java.math.BigDecimal;
 
+import cn.afterturn.easypoi.excel.annotation.Excel;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
 import java.util.Date;
@@ -32,6 +33,7 @@ public class TradeOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Excel(name = "订单号", height = 20, width = 30, isImportField = "true_st",orderNum = "1")
     @JsonSerialize(using = ToStringSerializer.class)
     @ApiModelProperty(value = "订单号")
     @TableId(value = "id", type = IdType.NONE)
@@ -41,7 +43,8 @@ public class TradeOrder implements Serializable {
     @ApiModelProperty(value = "课程id")
     private Long courseId;
 
-    @ApiModelProperty(value = "课程名称")
+    @Excel(name = "购买课程", height = 20, width = 30, isImportField = "true_st",orderNum = "4")
+    @ApiModelProperty(value = "购买课程")
     private String courseTitle;
 
     @ApiModelProperty(value = "课程封面")
@@ -51,33 +54,40 @@ public class TradeOrder implements Serializable {
     @ApiModelProperty(value = "讲师id")
     private Long teacherId;
 
-    @ApiModelProperty(value = "讲师名称")
+    @Excel(name = "课程讲师", height = 20, width = 30, isImportField = "true_st",orderNum = "4")
+    @ApiModelProperty(value = "课程讲师")
     private String teacherName;
 
     @JsonSerialize(using = ToStringSerializer.class)
     @ApiModelProperty(value = "会员id")
     private Long uid;
 
-    @ApiModelProperty(value = "会员昵称")
+    @Excel(name = "用户昵称", height = 20, width = 30, isImportField = "true_st",orderNum = "2")
+    @ApiModelProperty(value = "用户昵称")
     private String nickname;
 
-    @ApiModelProperty(value = "会员手机")
+    @Excel(name = "用户手机", height = 20, width = 30, isImportField = "true_st",orderNum = "3")
+    @ApiModelProperty(value = "用户手机")
     private String mobile;
 
+    @Excel(name = "订单金额", height = 20, width = 30, isImportField = "true_st",orderNum = "5")
     @ApiModelProperty(value = "订单金额（分）")
     private BigDecimal totalFee;
 
-    @ApiModelProperty(value = "支付类型（1：微信 2：支付宝）")
+    @Excel(name = "支付方式", height = 20, width = 30,replace = {"支付宝_2", "微信_1"}, isImportField = "true_st",orderNum = "7")
+    @ApiModelProperty(value = "支付方式（1：微信 2：支付宝）")
     private Integer payType;
 
+    @Excel(name = "课程状态", height = 20, width = 30,replace = {"未支付_0", "已支付_1"}, isImportField = "true_st",orderNum = "6")
     @ApiModelProperty(value = "订单状态（0：未支付 1：已支付）")
     private Integer status;
 
     @ApiModelProperty(value = "逻辑删除 1（true）已删除， 0（false）未删除")
     private Integer isDeleted;
 
+    @Excel(name = "下单时间", height = 20, width = 30, isImportField = "true_st",exportFormat = "yyyy-MM-dd HH:mm:ss",orderNum = "8")
     @TableField(value = "create_time", fill = FieldFill.INSERT)
-    @ApiModelProperty(value = "创建时间")
+    @ApiModelProperty(value = "下单时间")
     private Date createTime;
 
     @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)

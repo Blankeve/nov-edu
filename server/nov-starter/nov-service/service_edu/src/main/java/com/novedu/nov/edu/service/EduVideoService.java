@@ -8,6 +8,7 @@ import com.novedu.nov.edu.entity.dto.EduVideoInfoDTO;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * <p>
@@ -29,4 +30,8 @@ public interface EduVideoService extends IService<EduVideo> {
     BaseResult removeVideo(Long id);
 
     BaseResult queryClientVideo(Long id, HttpServletRequest request);
+
+    void exportVideoPage(HttpServletResponse response, Page page, EduVideoInfoDTO videoInfoDTO);
+
+    void exportAll(HttpServletResponse response);
 }

@@ -100,7 +100,7 @@ public class EduCourseInfoVO implements Serializable {
     @ApiModelProperty(value = "学习人数")
     private Integer courseApplyCount;
 
-    @Excel(name = "课程状态", height = 20, width = 30, isImportField = "true_st",orderNum = "11")
+    @Excel(name = "课程状态", height = 20, width = 30,replace = {"已下架_0", "上架中_1"}, isImportField = "true_st",orderNum = "11")
     @ApiModelProperty(value = "课程状态 0未发布  1已发布")
     private Integer courseStatus;
 
@@ -112,11 +112,11 @@ public class EduCourseInfoVO implements Serializable {
     @ApiModelProperty(value = "视频数量")
     private Integer videoQty;
 
-    @Excel(name = "创建时间", height = 20, width = 30, isImportField = "true_st",exportFormat = "yyyy-mm-dd hh:mm:ss",orderNum = "14")
+    @Excel(name = "创建时间", height = 20, width = 30, isImportField = "true_st",exportFormat = "yyyy-MM-dd HH:mm:ss",orderNum = "14")
     @ApiModelProperty(value = "创建时间")
     private Date courseCreateTime;
 
-    @Excel(name = "更新时间", height = 20, width = 30, isImportField = "true_st",exportFormat = "yyyy-mm-dd hh:mm:ss",orderNum = "15")
+    @Excel(name = "更新时间", height = 20, width = 30, isImportField = "true_st",exportFormat = "yyyy-MM-dd HH:mm:ss",orderNum = "15")
     @ApiModelProperty(value = "更新时间")
     private Date courseUpdateTime;
 

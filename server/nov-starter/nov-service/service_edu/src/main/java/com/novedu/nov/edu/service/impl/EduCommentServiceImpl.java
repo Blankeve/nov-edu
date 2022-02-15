@@ -3,6 +3,7 @@ package com.novedu.nov.edu.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.common.util.JwtUtils;
 import com.novedu.nov.edu.entity.EduComment;
 import com.novedu.nov.edu.entity.EduCourse;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
 /**
@@ -96,7 +98,7 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
         Date start = eduComment.getStartTime();
         Date end = eduComment.getEndTime();
         if (start != null && end != null && end.getTime() > start.getTime())
-            queryWrapper.apply("comment.create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and comment.create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start,end);
+            queryWrapper.apply("comment.create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and comment.create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start, end);
         return BaseResult.success(commentMapper.queryPage(page, queryWrapper));
     }
 
@@ -118,6 +120,24 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
         comment.setReported(1);
         comment.setReportUid(uid);
         return BaseResult.successOrError(updateById(comment));
+    }
+
+    @Override
+    public void exportCommentPage(HttpServletResponse response, Page page, EduUserCommentDTO eduComment) {
+        BaseResult baseResult = queryCommentPage(page, eduComment);
+        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
+            Page page1 = (Page) baseResult.getData();
+            ExcelUtils.exportExcel(page1.getRecords(), "评论信息", "评论信息", EduUserCommentVO.class, "评论信息", response);
+        }
+    }
+
+    @Override
+    public void exportAll(HttpServletResponse response, EduUserCommentDTO eduComment) {
+        BaseResult baseResult = queryCommentPage(new Page(1, count()), eduComment);
+        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
+            Page page1 = (Page) baseResult.getData();
+            ExcelUtils.exportExcel(page1.getRecords(), "评论信息", "评论信息", EduUserCommentVO.class, "评论信息", response);
+        }
     }
 
 }
