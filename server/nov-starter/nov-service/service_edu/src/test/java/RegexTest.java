@@ -1,12 +1,6 @@
 import com.novedu.nov.EduServiceApplication;
-import com.novedu.nov.edu.entity.AclUser;
-import com.novedu.nov.edu.entity.EduCourse;
-import com.novedu.nov.edu.entity.EduTeacher;
-import com.novedu.nov.edu.entity.EduVideo;
-import com.novedu.nov.edu.service.AclUserService;
-import com.novedu.nov.edu.service.EduCourseService;
-import com.novedu.nov.edu.service.EduTeacherService;
-import com.novedu.nov.edu.service.EduVideoService;
+import com.novedu.nov.edu.entity.*;
+import com.novedu.nov.edu.service.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +34,9 @@ public class RegexTest {
     @Autowired
     AclUserService userService;
 
+    @Autowired
+    CrmBannerService bannerService;
+
     private String url = "http://42.193.169.224:8888/img/2022/01/24/1596929522266148864.jpg";
 
     @Test
@@ -50,12 +47,12 @@ public class RegexTest {
 //        List<EduCourse> teachers= courseService.list();
 //        teachers.forEach(t->t.setCover(t.getCover().replaceFirst("http://.*?:","http://159.75.234.20:")));
 //        courseService.updateBatchById(teachers);
-        List<AclUser> videos= userService.list();
+        List<CrmBanner> videos= bannerService.list();
         videos.forEach(t->{
-            if(StringUtils.hasText(t.getAvatar())){
-                t.setAvatar(t.getAvatar().replaceFirst("http://.*?:","http://159.75.234.20:"));
+            if(StringUtils.hasText(t.getImageUrl())){
+                t.setImageUrl(t.getImageUrl().replaceFirst("http://.*?:","http://159.75.234.20:"));
             }
         });
-        userService.updateBatchById(videos);
+        bannerService.updateBatchById(videos);
     }
 }

@@ -46,15 +46,7 @@ public class CrmBannerServiceImpl extends ServiceImpl<CrmBannerMapper, CrmBanner
 
     @Override
     public BaseResult<List<CrmBanner>> getClientBannerList() {
-        String key = "clientBanners";
-        boolean hasKey = redisTemplate.hasKey(key);
-        List<CrmBanner> list;
-        if (hasKey) {
-            list = (List<CrmBanner>) redisTemplate.opsForValue().get(key);
-        } else {
-            list = query().orderByDesc("sort").orderByDesc("create_time").last("limit 5").list();
-            redisTemplate.opsForValue().set(key, list, 6, TimeUnit.HOURS);
-        }
+        List<CrmBanner> list = query().orderByDesc("sort").orderByDesc("create_time").last("limit 5").list();
         return BaseResult.success(list);
     }
 }
