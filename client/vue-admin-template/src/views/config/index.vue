@@ -107,7 +107,7 @@ export default {
     return {
       list: null,
       listLoading: true,
-      form: {},
+      form: {configName:"",configKey:"",configValue:""},
       configFormTitle: "",
       configFormVisible: false,
     };
