@@ -32,6 +32,10 @@
       <el-form-item>
         <el-button type="primary" @click="onSubmit">查询</el-button>
         <el-button @click="resetForm('form')">重置</el-button>
+        <el-button type="success" @click="exportTeacherPage"
+          >导出当前</el-button
+        >
+        <el-button type="success" @click="exportAllTeacher">导出所有</el-button>
       </el-form-item>
     </el-form>
 
@@ -69,13 +73,13 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="career"  align="center">
+      <el-table-column label="career" align="center">
         <template slot-scope="scope">
           {{ scope.row.career }}
         </template>
       </el-table-column>
 
-      <el-table-column label="intro" width="500"  align="center">
+      <el-table-column label="intro" width="500" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.intro }}</span>
         </template>
@@ -132,8 +136,8 @@
 </template>
 
 <script>
-import { getList, removeById } from "@/api/teacher";
-
+import { getList, removeById, exportAll, exportPage } from "@/api/teacher";
+import { exportExcel } from "@/utils/excel";
 export default {
   filters: {
     statusFilter(status) {
@@ -211,6 +215,16 @@ export default {
         this.form.total = data.total;
         this.list = data.records;
         this.listLoading = false;
+      });
+    },
+    exportTeacherPage() {
+      exportPage(this.form).then((resp) => {
+        exportExcel(resp);
+      });
+    },
+    exportAllTeacher() {
+      exportAll().then((resp) => {
+        exportExcel(resp);
       });
     },
     handleDateLength(str) {

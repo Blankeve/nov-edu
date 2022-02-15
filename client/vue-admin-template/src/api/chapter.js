@@ -24,6 +24,23 @@ export function save(data) {
     })
   }
 
+  export function exportAll() {
+    return request({
+      url: '/edu/chapter/export-all',
+      method: 'get',
+      responseType: 'blob'
+    })
+  }
+
+  export function exportPage(params) {
+    return request({
+      url: '/edu/chapter/export',
+      method: 'post',
+      responseType: 'blob',
+      params
+    })
+  }
+
   export function getPage(params) {
     return request({
       url: '/edu/chapter/page',

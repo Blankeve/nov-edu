@@ -47,6 +47,10 @@
       <el-form-item>
         <el-button type="primary" @click="searchForm">查询</el-button>
         <el-button @click="resetForm('form')">重置</el-button>
+        <el-button type="success" @click="exportCommentPage"
+          >导出当前</el-button
+        >
+        <el-button type="success" @click="exportAllComment">导出所有</el-button>
       </el-form-item>
     </el-form>
 
@@ -137,7 +141,14 @@
 <script>
 import { getList } from "@/api/course";
 import { getAll } from "@/api/teacher";
-import { getCommentPage, removeCommentById } from "@/api/comment";
+import { exportExcel } from "@/utils/excel";
+
+import {
+  getCommentPage,
+  removeCommentById,
+  exportAll,
+  exportPage,
+} from "@/api/comment";
 
 export default {
   filters: {
@@ -233,6 +244,16 @@ export default {
         this.form.total = data.total;
         this.list = data.records;
         this.listLoading = false;
+      });
+    },
+    exportCommentPage() {
+      exportPage(this.form).then((resp) => {
+        exportExcel(resp);
+      });
+    },
+    exportAllComment() {
+      exportAll(this.form).then((resp) => {
+        exportExcel(resp);
       });
     },
     handleDateLength(str) {
