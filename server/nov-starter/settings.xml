@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+ 
+  <servers>
+   <server>
+      <id>nexus</id>
+      <username>admin</username>
+      <password>ju2009</password>
+    </server>
+    <server>
+      <id>releases</id>
+      <username>admin</username>
+      <password>ju2009</password>
+    </server>
+    <server>
+      <id>snapshots</id>
+      <username>admin</username>
+      <password>ju2009</password>
+    </server> 
+  </servers>
+ 
+  <mirrors>
+
+	   <mirror>
+      <id>nexus</id>
+      <name>nexus maven</name>
+      <url>http://159.75.234.20:7999/repository/maven-public/</url>
+      <mirrorOf>*</mirrorOf>        
+     </mirror> 
+
+  </mirrors>
+ 
+    <repositories>
+        <repository>
+            <id>nexus</id>
+            <name>nexus</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+  <profiles>
+ 
+  </profiles>
+  <activeProfiles>
+  </activeProfiles>
+</settings>
