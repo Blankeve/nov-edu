@@ -542,7 +542,15 @@ export default {
       }
     },
     openVideo(isFree, id) {
-      if (isFree != 1 && !this.hasBuy) {
+      if (this.hasBuy) {
+        if (isFree == 1) {
+          this.$notify({
+            title: "NOV课堂提示",
+            message: "请先报名该课程!",
+            type: "warning",
+          });
+          return;
+        }
         this.viewOrBuy();
       } else {
         this.$router.push({

@@ -14,6 +14,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -38,8 +39,18 @@ public class EduTeacherController {
     }
 
     @GetMapping("/list")
-    public BaseResult<List<EduTeacher>> list(Page page, EduTeacherDTO teacher) {
-        return eduTeacherService.findTeacherList(page, teacher);
+    public BaseResult<List<EduTeacher>> queryTeacherPage(Page page, EduTeacherDTO teacher) {
+        return eduTeacherService.queryTeacherPage(page, teacher);
+    }
+
+    @PostMapping("/export")
+    public void exportTeacherPage(HttpServletResponse response, Page page, EduTeacherDTO teacher) {
+        eduTeacherService.exportTeacherPage(response,page, teacher);
+    }
+
+    @GetMapping("/export-all")
+    public void exportAll(HttpServletResponse response) {
+        eduTeacherService.exportAll(response);
     }
 
     @GetMapping("/all")

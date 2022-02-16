@@ -55,6 +55,32 @@ export const constantRoutes = [
     }]
   },
   {
+    path: '/permission',
+    component: Layout,
+    redirect: '/permission/user',
+    name: '讲师管理',
+    meta: { title: '权限管理', icon: 'el-icon-view' },
+    children: [{
+      path: 'user',
+      name: 'user',
+      component: () => import('@/views/permission/user'),
+      meta: { title: '用户管理', icon: 'el-icon-user' }
+    },
+    {
+      path: 'save',
+      name: 'save',
+      component: () => import('@/views/teacher/form'),
+      meta: { title: '角色管理', icon: 'el-icon-s-custom' }
+    },
+    {
+      path: 'edit',
+      name: 'edit',
+      component: () => import('@/views/teacher/form'),
+      meta: { title: '菜单管理', icon: 'el-icon-menu' },
+    },
+    ]
+  },
+  {
     path: '/teacher',
     component: Layout,
     redirect: '/teacher/list',

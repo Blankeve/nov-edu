@@ -43,6 +43,8 @@
       <el-form-item>
         <el-button type="primary" @click="searchForm">查询</el-button>
         <el-button @click="resetForm('form')">重置</el-button>
+        <el-button type="success" @click="exportVideoPage">导出当前</el-button>
+        <el-button type="success" @click="exportAllVideo">导出所有</el-button>
       </el-form-item>
     </el-form>
 
@@ -171,9 +173,9 @@
 </template>
 
 <script>
-import { getPage, removeVideoById } from "@/api/video";
+import { getPage, removeVideoById, exportAll, exportPage } from "@/api/video";
 import { getChapterList } from "@/api/chapter";
-
+import { exportExcel } from "@/utils/excel";
 export default {
   filters: {
     statusFilter(status) {
@@ -260,6 +262,16 @@ export default {
         this.form.total = data.total;
         this.list = data.records;
         this.listLoading = false;
+      });
+    },
+    exportVideoPage() {
+      exportPage(this.form).then((resp) => {
+        exportExcel(resp);
+      });
+    },
+    exportAllVideo() {
+      exportAll().then((resp) => {
+        exportExcel(resp);
       });
     },
     handleDateLength(str) {

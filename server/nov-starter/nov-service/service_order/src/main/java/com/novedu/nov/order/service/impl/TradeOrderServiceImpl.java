@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.common.api.ResultCode;
+import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.common.util.JwtUtils;
 import com.novedu.nov.order.client.EduClient;
 import com.novedu.nov.order.client.UcenterClient;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
@@ -100,7 +102,7 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
         Date start = order.getStartTime();
         Date end = order.getEndTime();
         if (start != null && end != null && end.getTime() > start.getTime())
-            queryWrapper.apply("o.create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and o.create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start,end);
+            queryWrapper.apply("o.create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and o.create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start, end);
         return BaseResult.success(orderMapper.queryOrderPage(page, queryWrapper));
     }
 
@@ -116,9 +118,27 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
         BaseResult baseResult = eduClient.queryCourseApplyByCourseIdAndUid(courseApply);
         if (BaseResult.success().getCode().equals(baseResult.getCode()))
             return BaseResult.success("已报名该课程").mapSet("hasBuy", "1");
-        else if(BaseResult.serviceInvokeFailure().getCode().equals(baseResult.getCode()))
+        else if (BaseResult.serviceInvokeFailure().getCode().equals(baseResult.getCode()))
             return BaseResult.serviceInvokeFailure();
         return BaseResult.success("暂未购买该课程");
+    }
+
+    @Override
+    public void exportOrderPage(HttpServletResponse response, Page page, TradeOrder order) {
+        BaseResult baseResult = queryOrderPage(page, order);
+        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
+            Page page1 = (Page) baseResult.getData();
+            ExcelUtils.exportExcel(page1.getRecords(), "订单信息", "订单信息", TradeOrder.class, "订单信息", response);
+        }
+    }
+
+    @Override
+    public void exportAll(HttpServletResponse response,TradeOrder order) {
+        BaseResult baseResult = queryOrderPage(new Page(1, count()),order);
+        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
+            Page page1 = (Page) baseResult.getData();
+            ExcelUtils.exportExcel(page1.getRecords(), "订单信息", "订单信息", TradeOrder.class, "订单信息", response);
+        }
     }
 
 }

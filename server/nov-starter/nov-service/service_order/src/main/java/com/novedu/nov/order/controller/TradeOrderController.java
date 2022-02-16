@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * <p>
@@ -32,6 +33,16 @@ public class TradeOrderController {
     @PostMapping("/create")
     public BaseResult createOrder(@RequestBody TradeOrder tradeOrder) {
         return tradeOrderService.createOrder(tradeOrder);
+    }
+
+    @PostMapping("/export")
+    public void exportCoursePage(HttpServletResponse response, Page page, TradeOrder order) {
+        tradeOrderService.exportOrderPage(response,page, order);
+    }
+
+    @GetMapping("/export-all")
+    public void exportAll(HttpServletResponse response,TradeOrder order) {
+        tradeOrderService.exportAll(response,order);
     }
 
     @ApiOperation("查询订单")

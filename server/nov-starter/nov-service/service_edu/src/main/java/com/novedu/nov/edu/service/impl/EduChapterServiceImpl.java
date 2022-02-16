@@ -3,9 +3,11 @@ package com.novedu.nov.edu.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.edu.entity.EduChapter;
 import com.novedu.nov.edu.entity.EduVideo;
 import com.novedu.nov.edu.entity.dto.EduChapterInfoDTO;
+import com.novedu.nov.edu.entity.vo.EduChapterInfoVO;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 import com.novedu.nov.edu.mapper.EduChapterMapper;
 import com.novedu.nov.edu.service.EduChapterService;
@@ -20,6 +22,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -107,6 +110,24 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
     @Override
     public BaseResult queryChapterList() {
         return BaseResult.success(list());
+    }
+
+    @Override
+    public void exportChapterPage(HttpServletResponse response, Page page, EduChapterInfoDTO chapterInfoDTO) {
+        BaseResult baseResult = queryChapterPage(page, chapterInfoDTO);
+        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
+            Page page1 = (Page) baseResult.getData();
+            ExcelUtils.exportExcel(page1.getRecords(), "章节信息", "章节信息", EduChapterInfoVO.class, "章节信息", response);
+        }
+    }
+
+    @Override
+    public void exportAll(HttpServletResponse response) {
+        BaseResult baseResult = queryChapterPage(new Page(1, count()), new EduChapterInfoDTO());
+        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
+            Page page1 = (Page) baseResult.getData();
+            ExcelUtils.exportExcel(page1.getRecords(), "章节信息", "章节信息", EduChapterInfoVO.class, "章节信息", response);
+        }
     }
 
 

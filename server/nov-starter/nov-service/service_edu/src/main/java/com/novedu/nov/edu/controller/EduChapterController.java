@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * <p>
  * 课程 前端控制器
@@ -31,6 +33,16 @@ public class EduChapterController {
     @PostMapping("/save")
     public BaseResult saveCourse(@Validated @RequestBody EduChapter chapter) {
         return chapterService.saveChapter(chapter);
+    }
+
+    @PostMapping("/export")
+    public void exportCoursePage(HttpServletResponse response, Page page, EduChapterInfoDTO chapterInfoDTO) {
+        chapterService.exportChapterPage(response,page, chapterInfoDTO);
+    }
+
+    @GetMapping("/export-all")
+    public void exportAll(HttpServletResponse response) {
+        chapterService.exportAll(response);
     }
 
     @ApiOperation("删除")

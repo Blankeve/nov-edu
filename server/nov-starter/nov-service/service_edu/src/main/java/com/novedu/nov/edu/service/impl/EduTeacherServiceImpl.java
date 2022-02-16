@@ -3,6 +3,7 @@ package com.novedu.nov.edu.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.edu.entity.EduTeacher;
 import com.novedu.nov.edu.entity.dto.EduTeacherDTO;
 import com.novedu.nov.edu.mapper.EduTeacherMapper;
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +29,7 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
 
 
     @Override
-    public BaseResult<List<EduTeacher>> findTeacherList(Page page, EduTeacherDTO teacher) {
+    public BaseResult<List<EduTeacher>> queryTeacherPage(Page page, EduTeacherDTO teacher) {
         QueryWrapper queryWrapper = new QueryWrapper();
         if (StringUtils.hasText(teacher.getName()))
             queryWrapper.like("name", teacher.getName());
@@ -36,7 +38,7 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
         Date start = teacher.getStartTime();
         Date end = teacher.getEndTime();
         if (start != null && end != null && end.getTime() > start.getTime())
-            queryWrapper.apply("create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start,end);
+            queryWrapper.apply("create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start, end);
         queryWrapper.orderByDesc("sort");
         queryWrapper.orderByDesc("create_time");
         return BaseResult.success(page(page, queryWrapper));
@@ -70,6 +72,25 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
     @Override
     public BaseResult<List<EduTeacher>> getClientTeacherList() {
         return BaseResult.success(query().orderByDesc("sort").last("limit 4").list());
+    }
+
+    @Override
+    public void exportTeacherPage(HttpServletResponse response, Page page, EduTeacherDTO teacher) {
+        BaseResult baseResult = queryTeacherPage(page, teacher);
+        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
+            Page page1 = (Page) baseResult.getData();
+            ExcelUtils.exportExcel(page1.getRecords(), "讲师信息", "讲师信息", EduTeacher.class, "讲师信息", response);
+        }
+    }
+
+    @Override
+    public void exportAll(HttpServletResponse response) {
+        BaseResult baseResult = queryTeacherPage(new Page(1, count()), new EduTeacherDTO());
+        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
+            Page page1 = (Page) baseResult.getData();
+            ExcelUtils.exportExcel(page1.getRecords(), "讲师信息", "讲师信息", EduTeacher.class, "讲师信息", response);
+        }
+
     }
 
 

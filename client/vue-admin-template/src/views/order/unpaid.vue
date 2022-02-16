@@ -47,8 +47,8 @@
       <el-form-item>
         <el-button type="primary" @click="searchForm">查询</el-button>
         <el-button @click="resetForm('form')">重置</el-button>
-    
-  
+        <el-button type="success" @click="exportOrderPage">导出当前</el-button>
+        <el-button type="success" @click="exportAllOrder">导出所有</el-button>
       </el-form-item>
     </el-form>
 
@@ -147,8 +147,13 @@
 <script>
 import { getList } from "@/api/course";
 import { getAll } from "@/api/teacher";
-import { getOrderPage, removeOrderById } from "@/api/order";
-
+import {
+  getOrderPage,
+  removeOrderById,
+  exportAll,
+  exportPage,
+} from "@/api/order";
+import { exportExcel } from "@/utils/excel";
 export default {
   filters: {
     statusFilter(status) {
@@ -243,6 +248,16 @@ export default {
         this.form.total = data.total;
         this.list = data.records;
         this.listLoading = false;
+      });
+    },
+    exportOrderPage() {
+      exportPage(this.form).then((resp) => {
+        exportExcel(resp);
+      });
+    },
+    exportAllOrder() {
+      exportAll(this.form).then((resp) => {
+        exportExcel(resp);
       });
     },
     handleDateLength(str) {

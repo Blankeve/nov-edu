@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * <p>
@@ -32,6 +33,16 @@ public class EduCommentController {
     @PostMapping("/save")
     public BaseResult saveComment(@RequestBody EduComment eduComment , HttpServletRequest request) {
         return eduCommentService.saveComment(eduComment,request);
+    }
+
+    @PostMapping("/export")
+    public void exportCoursePage(HttpServletResponse response, Page page, EduUserCommentDTO eduComment) {
+        eduCommentService.exportCommentPage(response,page, eduComment);
+    }
+
+    @GetMapping("/export-all")
+    public void exportAll(HttpServletResponse response, EduUserCommentDTO eduComment) {
+        eduCommentService.exportAll(response,eduComment);
     }
 
     @PostMapping("/page")
