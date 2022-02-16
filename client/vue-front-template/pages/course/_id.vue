@@ -482,7 +482,7 @@ export default {
       this.form.current = this.form.pages;
       this.commentClick();
     },
-    viewOrBuy() {
+    checkLogin() {
       if (!this.token) {
         this.$notify({
           title: "NOV课堂提示",
@@ -493,8 +493,12 @@ export default {
         this.$router.push({
           path: "/login",
         });
-        return;
+        return false;
       }
+      return true;
+    },
+    viewOrBuy() {
+      if (!this.checkLogin()) return;
       const loginInfo = jwtDecode(this.token);
       let uid = loginInfo.uid;
       let data = {
@@ -542,19 +546,19 @@ export default {
       }
     },
     openVideo(isFree, id) {
-      if (this.hasBuy) {
-        if (isFree == 1) {
-          this.$notify({
-            title: "NOV课堂提示",
-            message: "请先报名该课程!",
-            type: "warning",
-          });
-          return;
-        }
-        this.viewOrBuy();
-      } else {
+      if (
+        (this.course.coursePrice > 0 && isFree == 1) ||
+         this.hasBuy
+      ) {
+        if (!this.checkLogin()) return;
         this.$router.push({
           path: "/video/" + id,
+        });
+      } else {
+        this.$message({
+          type: "error",
+          message:
+            "请先" + (this.course.coursePrice > 0 ? "购买" : "报名") + "该课程",
         });
       }
     },
