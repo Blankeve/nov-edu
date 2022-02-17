@@ -24,7 +24,7 @@
         <dependency>
             <groupId>com.novedu.nov</groupId>
             <artifactId>nov-common</artifactId>
-            <version>0.0.2-RELEASE</version>
+            <version>0.0.4-RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

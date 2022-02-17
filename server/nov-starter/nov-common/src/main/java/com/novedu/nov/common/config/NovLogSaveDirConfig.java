@@ -11,25 +11,24 @@ import org.springframework.stereotype.Component;
  * @version:
  */
 @Component
-public class NovLogSaveDirConfig extends PropertyDefinerBase  {
+public class NovLogSaveDirConfig extends PropertyDefinerBase {
 
     @Override
     public String getPropertyValue() {
         System.out.println("PropertyDefiner Start...");
-        String logDir="";
+        String logDir = "";
         String os = System.getProperty("os.name").toLowerCase();
-        System.out.println("os:"+os);
-        if(os.indexOf("win")!=-1){
+        System.out.println("os:" + os);
+        if (os.indexOf("win") != -1) {
             String projDir = System.getProperty("user.dir");
-            String user = System.getenv("USERNAME");
-            logDir = String.format("%s/log",projDir);
-        }
-        else if(os.indexOf("lin")!=-1){
-           // logDir = "/usr/local/java/nov_log";
+            //   String user = System.getenv("USERNAME");
+            logDir = String.format("%s/log", projDir);
+        } else if (os.indexOf("lin") != -1) {
+            //logDir = "/usr/local/java/m_service/nov_log";
             String projDir = System.getProperty("user.dir");
-            logDir = String.format("%s/log",projDir);
+            logDir = String.format("%s/log", projDir);
         }
-        System.out.println("logDir:"+logDir);
+        System.out.println("logDir:" + logDir);
         return logDir;
     }
 

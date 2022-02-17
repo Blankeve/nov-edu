@@ -1,11 +1,9 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.novedu.nov.common.util.HttpUtils;
 import com.novedu.nov.upload.UploadServiceApplication;
 import org.apache.http.Consts;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.HttpMultipartMode;
@@ -17,7 +15,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import sun.net.www.http.HttpClient;
 
 import java.io.File;
 import java.io.IOException;

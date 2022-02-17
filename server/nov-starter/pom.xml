@@ -256,6 +256,7 @@
         </snapshotRepository>
     </distributionManagement>
 
+    <!--当打包common组件时(没有启动类的工具包)，注释以下代码-->
     <build>
         <plugins>
             <plugin>
