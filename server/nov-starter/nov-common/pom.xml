@@ -5,11 +5,12 @@
     <parent>
         <artifactId>nov-starter</artifactId>
         <groupId>com.novedu.nov</groupId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.1-RELEASE</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>nov-common</artifactId>
+    <version>0.0.2-RELEASE</version>
 
     <dependencies>
         <dependency>
@@ -28,13 +29,11 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>${swagger.version}</version>
         </dependency>
 
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>${swagger.version}</version>
         </dependency>
 
         <dependency>
@@ -44,32 +43,27 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql.version}</version>
         </dependency>
         <!--启动器-->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>${mbg.version}</version>
         </dependency>
         <!--MyBatisPlus所使用的模板引擎-->
         <dependency>
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity-engine-core</artifactId>
-            <version>${velocity.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-generator</artifactId>
-            <version>${mbg.version}</version>
         </dependency>
 
 
         <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>
-            <version>${swagger.annotations.version}</version>
         </dependency>
 
         <dependency>
@@ -95,4 +89,18 @@
             <artifactId>commons-io</artifactId>
         </dependency>
     </dependencies>
+
+
+    <!-- 远程nexus仓库 -->
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <url>http://159.75.234.20:7999/repository/maven-releases/</url>
+        </repository>
+
+        <snapshotRepository>
+            <id>snapshots</id>
+            <url>http://159.75.234.20:7999/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>

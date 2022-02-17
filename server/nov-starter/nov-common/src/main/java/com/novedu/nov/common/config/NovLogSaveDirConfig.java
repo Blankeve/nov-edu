@@ -25,7 +25,9 @@ public class NovLogSaveDirConfig extends PropertyDefinerBase  {
             logDir = String.format("%s/log",projDir);
         }
         else if(os.indexOf("lin")!=-1){
-            logDir = "/usr/local/java/nov_log";
+           // logDir = "/usr/local/java/nov_log";
+            String projDir = System.getProperty("user.dir");
+            logDir = String.format("%s/log",projDir);
         }
         System.out.println("logDir:"+logDir);
         return logDir;

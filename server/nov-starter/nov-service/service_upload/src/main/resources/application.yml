@@ -1,27 +1,9 @@
-server:
-  port: 8888
-
-aliyun:
-  oss:
-    endpoint: oss-cn-beijing.aliyuncs.com
-    accessKeyId: LTAI5tRgXNSsQE8sunVJTsxm
-    accessKeySecret: IaWQw1XwUqyaDCT3ceVB1z3fQkWdC4
-    bucketName: edu-nov
-
-
 spring:
   servlet:
     multipart:
-      max-file-size: 300MB
       max-request-size: 300MB
-  cloud:
-    nacos:
-      discovery:
-        server-addr: 127.0.0.1:8848
-  application:
-    name: service-upload
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8
-    username: judb
-    password: ju2009
+      max-file-size: 300MB
+  profiles:
+    active: prod
+
+
