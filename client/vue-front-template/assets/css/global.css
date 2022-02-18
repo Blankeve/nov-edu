@@ -462,7 +462,8 @@ a.current-2 .lh-p-icon{background-position:0 -254px}
 	.col-3{width:25%}
 	.c-v-pic-wrap{width:640px;height:357px}
 	.thr-attr-box{width:120px;height:357px}
-	.c-attr-wrap{width:400px;height:357px}
+	.c-attr-wrap{width:520px;height:357px}
+	.c-attr-img{width:100%;height:357px}
 	.u-course-list .comm-course-list li{width:33.33%}
 }
 @media (min-width:1200px) and (max-width:1299px){
@@ -470,14 +471,15 @@ a.current-2 .lh-p-icon{background-position:0 -254px}
 	.c-v-pic-wrap{width:620px;height:346px}
 	.u-order-list .u-o-right {width: 25%!important;}
 	.thr-attr-box{width:120px;height:346px}
-	.c-attr-wrap{width:380px;height:346px}
+	.c-attr-wrap{width:500px;height:346px}
+	.c-attr-img{width:100%;height:346px}
 	.u-course-list .comm-course-list li{width:33.33%}
 	#cou-shopcar {width: 120px; height: 28px;font-size: 14px;line-height: 28px;}
 }
 @media (min-width:992px) and (max-width:1199px){
 	.container{width:970px}.nav li a{margin:0 12px}.order-step {background-size: 100% ;height: 111px;}
 	.u-order-list .u-o-right {width: 25%!important;}.order-step-bg-2 { background-position: 0 -141px;}
-	.h-r-search{display:none}.i-slide{height:auto}.c-v-pic-wrap{width:470px;height:262px}.thr-attr-box{width:120px;height:262px}.c-attr-wrap{width:380px;height:262px}
+	.h-r-search{display:none}.i-slide{height:auto}.c-v-pic-wrap{width:470px;height:262px}.thr-attr-box{width:120px;height:262px}.c-attr-wrap{width:500px;height:262px}.c-attr-img{width:100%;height:262px}
 	.u-course-list .comm-course-list li{width:33.33%}
 	#cou-shopcar {width: 120px; height: 28px;font-size: 14px;line-height: 28px;}
 }
@@ -491,7 +493,8 @@ a.current-2 .lh-p-icon{background-position:0 -254px}
 	.order-step-bg-2 { background-position: 0 -101px;}
 	.comm-course-list li{width:50%}.c-v-pic-wrap{width:370px;height:206px}
 	.thr-attr-box{float:none;width:750px;height:80px}
-	.c-attr-wrap{width:380px;height:206px}
+	.c-attr-wrap{width:500px;height:206px}
+	.c-attr-img{width:100%;height:206px}
 	.c-infor-box .col-3,.c-infor-box .col-7{width:100%}
 	.c-infor-box .col-7{margin:0 0 20px 0}
 	.c-infor-box .col-7 .mr30{margin:0}

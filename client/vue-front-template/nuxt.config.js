@@ -53,5 +53,8 @@ module.exports = {
     timeout: 10000,
     retry: { retries: 3 }
   },
+
+  link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+
 }
 

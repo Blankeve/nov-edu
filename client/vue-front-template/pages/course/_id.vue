@@ -3,24 +3,26 @@
     <!-- /课程详情 开始 -->
     <section class="container">
       <section class="path-wrap txtOf hLh30">
-        <nuxt-link to="/">
-          <a title class="c-999 fsize14">首页</a>
-        </nuxt-link>
-        \
-        <nuxt-link to="/course">
-          <a title class="c-999 fsize14">课程列表</a>
-        </nuxt-link>
+        <client-only>
+          <nuxt-link to="/">
+            <a title class="c-999 fsize14">首页</a>
+          </nuxt-link>
+          \
+          <nuxt-link to="/course">
+            <a title class="c-999 fsize14">课程列表</a>
+          </nuxt-link>
+        </client-only>
         \
         <span class="c-333 fsize14">{{ course.courseTitle }}</span>
       </section>
       <div>
-        <article class="c-v-pic-wrap" style="height: 357px">
-          <section class="p-h-video-box" id="videoPlay">
+        <article class="c-v-pic-wrap" >
+          <section  id="videoPlay">
             <img
-              width="100%"
               :src="course.courseCover"
               :alt="course.courseCover"
-              class="dis c-v-pic"
+              class="c-attr-img"
+              height="308"
             />
           </section>
         </article>
@@ -50,7 +52,7 @@
             </section>
             <section class="c-attr-mt">
               <a
-                v-if="course.coursePrice == 0"
+                v-show="course.coursePrice == 0"
                 href="javascript:void(0)"
                 @click="viewOrBuy"
                 title="立即观看"
@@ -58,7 +60,7 @@
                 >{{ hasBuy ? "已报名" : "立即报名" }}</a
               >
               <a
-                v-if="course.coursePrice > 0"
+                v-show="course.coursePrice > 0"
                 href="javascript:void(0)"
                 @click="viewOrBuy"
                 title="立即观看"
@@ -68,34 +70,7 @@
             </section>
           </section>
         </aside>
-        <aside class="thr-attr-box">
-          <ol class="thr-attr-ol clearfix">
-            <li>
-              <p>&nbsp;</p>
-              <aside>
-                <span class="c-fff f-fM">购买数</span>
-                <br />
-                <h6 class="c-fff f-fM mt10">{{ course.courseBuyCount }}</h6>
-              </aside>
-            </li>
-            <li>
-              <p>&nbsp;</p>
-              <aside>
-                <span class="c-fff f-fM">课时数</span>
-                <br />
-                <h6 class="c-fff f-fM mt10">{{ course.courseLessonNum }}</h6>
-              </aside>
-            </li>
-            <li>
-              <p>&nbsp;</p>
-              <aside>
-                <span class="c-fff f-fM">浏览数</span>
-                <br />
-                <h6 class="c-fff f-fM mt10">{{ course.courseViewCount }}</h6>
-              </aside>
-            </li>
-          </ol>
-        </aside>
+
         <div class="clear"></div>
       </div>
       <!-- /课程封面介绍 -->
@@ -204,43 +179,45 @@
               </article>
               <article v-show="clickState == 2" class="ml10 mr10">
                 <div>
-                  <div class="mt5">
-                    <el-form
-                      :inline="true"
-                      :model="comment"
-                      class="demo-form-inline"
-                    >
-                      <el-form-item label="我要评价">
-                        <el-rate
-                          class="mt5"
-                          v-model="comment.mark"
-                          :colors="colors"
-                        >
-                        </el-rate>
-                      </el-form-item>
-                      <el-form-item>
-                        <el-input
-                          placeholder="请输入内容"
-                          prefix-icon="el-icon-chat-dot-square"
-                          v-model="comment.content"
-                        >
-                        </el-input>
-                      </el-form-item>
+                  <client-only>
+                    <div class="mt5">
+                      <el-form
+                        :inline="true"
+                        :model="comment"
+                        class="demo-form-inline"
+                      >
+                        <el-form-item label="我要评价">
+                          <el-rate
+                            class="mt5"
+                            v-model="comment.mark"
+                            :colors="colors"
+                          >
+                          </el-rate>
+                        </el-form-item>
+                        <el-form-item>
+                          <el-input
+                            placeholder="请输入内容"
+                            prefix-icon="el-icon-chat-dot-square"
+                            v-model="comment.content"
+                          >
+                          </el-input>
+                        </el-form-item>
 
-                      <el-form-item>
-                        <el-button type="primary" @click="submitComment"
-                          >评价</el-button
-                        >
-                      </el-form-item>
-                    </el-form>
-                  </div>
+                        <el-form-item>
+                          <el-button type="primary" @click="submitComment"
+                            >评价</el-button
+                          >
+                        </el-form-item>
+                      </el-form>
+                    </div>
+                  </client-only>
 
                   <h6 class="c-g-content c-infor-title mt2">
                     <span>所有评论</span>
                   </h6>
                   <!-- /无数据提示 开始-->
                   <section
-                    v-if="clickState == 2 && comments.length == 0"
+                    v-show="clickState == 2 && comments.length == 0"
                     class="no-data-wrap"
                   >
                     <em class="icon30 no-data-ico">&nbsp;</em>
@@ -299,25 +276,25 @@
                       <div class="paging">
                         <!-- undisable这个class是否存在，取决于数据属性hasPrevious -->
                         <a
-                          v-if="form.pages > 1 && form.current != 1"
+                          v-show="form.pages > 1 && form.current != 1"
                           @click="firstPage"
                           title="首页"
                           >首</a
                         >
                         <a
-                          v-if="form.pages > 1 && form.current > 1"
+                          v-show="form.pages > 1 && form.current > 1"
                           title="前一页"
                           @click="prevPage"
                           >&lt;</a
                         >
                         <a
-                          v-if="form.pages > 1 && form.current < form.pages"
+                          v-show="form.pages > 1 && form.current < form.pages"
                           title="后一页"
                           @click="nextPage"
                           >&gt;</a
                         >
                         <a
-                          v-if="form.pages > 1 && form.current != form.pages"
+                          v-show="form.pages > 1 && form.current != form.pages"
                           title="末页"
                           @click="lastPage"
                           >末</a
@@ -546,10 +523,7 @@ export default {
       }
     },
     openVideo(isFree, id) {
-      if (
-        (this.course.coursePrice > 0 && isFree == 1) ||
-         this.hasBuy
-      ) {
+      if ((this.course.coursePrice > 0 && isFree == 1) || this.hasBuy) {
         if (!this.checkLogin()) return;
         this.$router.push({
           path: "/video/" + id,

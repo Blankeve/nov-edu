@@ -1,15 +1,13 @@
 <template>
-  <div>
-    <!-- 幻灯片 开始 -->
-
-    <!-- 幻灯片 结束 -->
+  
     
-    <div id="aCoursesList">
+    <client-only>
+      <div id="aCoursesList">
       <!-- 网校课程 开始 -->
       <div>
         <section class="container">
           <!-- 幻灯片 开始 -->
-          <div v-if="banners.length" v-swiper:mySwiper="swiperOption">
+          <div v-show="banners.length" v-swiper:mySwiper="swiperOption">
             <div class="swiper-wrapper">
               <div
                 v-for="banner in banners"
@@ -279,7 +277,9 @@
       </div>
       <!-- /网校名师 结束 -->
     </div>
-  </div>
+    </client-only>
+    
+
 </template>
 
 <script>

@@ -45,7 +45,7 @@
             </section>
           </header>
           <!-- /无数据提示 开始-->
-          <section v-if="!courses || courses.length == 0" class="no-data-wrap">
+          <section v-show="!courses || courses.length == 0" class="no-data-wrap">
             <em class="icon30 no-data-ico">&nbsp;</em>
             <span class="c-666 fsize14 ml10 vam"
               >没有相关数据，小编正在努力整理中...</span
@@ -53,7 +53,7 @@
           </section>
           <!-- /无数据提示 结束-->
           <article
-            v-if="courses || courses.length > 0"
+            v-show="courses || courses.length > 0"
             class="comm-course-list"
           >
             <ul class="of">

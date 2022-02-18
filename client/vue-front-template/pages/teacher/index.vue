@@ -17,7 +17,7 @@
         <div>
           <!-- /无数据提示 开始-->
           <section
-            v-if="teachers == null || teachers.length == 0"
+            v-show="teachers == null || teachers.length == 0"
             class="no-data-wrap"
           >
             <em class="icon30 no-data-ico">&nbsp;</em>
@@ -65,25 +65,25 @@
         <div class="paging">
             <!-- undisable这个class是否存在，取决于数据属性hasPrevious -->
             <a
-              v-if="form.pages > 1 && form.current != 1"
+              v-show="form.pages > 1 && form.current != 1"
               @click="firstPage"
               title="首页"
               >首</a
             >
             <a
-              v-if="form.pages > 1 && form.current > 1"
+              v-show="form.pages > 1 && form.current > 1"
               title="前一页"
               @click="prevPage"
               >&lt;</a
             >
             <a
-              v-if="form.pages > 1 && form.current < form.pages"
+              v-show="form.pages > 1 && form.current < form.pages"
               title="后一页"
               @click="nextPage"
               >&gt;</a
             >
             <a
-              v-if="form.pages > 1 && form.current != form.pages"
+              v-show="form.pages > 1 && form.current != form.pages"
               title="末页"
               @click="lastPage"
               >末</a
