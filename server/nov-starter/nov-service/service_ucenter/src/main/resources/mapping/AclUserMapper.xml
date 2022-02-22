@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.novedu.nov.ucenter.mapper.AclUserMapper">
+
+
+    <select id="queryPage" parameterType="AclUserRoleDTO" resultType="AclUserRoleVO">
+        select u.id as id,
+        u.username as username,
+        u.mobile as mobile,
+        u.nickname as nickname,
+        u.gender as gender,
+        u.age as age,
+        u.avatar as avatar,
+        u.is_disabled as isDisabled,
+        u.create_time as createTime,
+        u.update_time as updateTime,
+        r.id as roleId,
+        r.name as roleName,
+        from acl_user u
+        left join acl_user_role ur on u.id = ur.uid
+        left join acl_role r on ur.role_id = r.id
+        <if test="ew != null and ew.sqlSegment != null and ew.sqlSegment != ''">
+            and ${ew.sqlSegment}
+        </if>
+        where u.is_deleted = 0
+    </select>
+</mapper>

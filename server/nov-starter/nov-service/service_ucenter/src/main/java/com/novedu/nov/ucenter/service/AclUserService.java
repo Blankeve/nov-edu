@@ -1,8 +1,13 @@
 package com.novedu.nov.ucenter.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.ucenter.entity.AclUser;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.novedu.nov.ucenter.entity.dto.AclUserRoleDTO;
+import com.novedu.nov.ucenter.entity.vo.AclUserRoleVO;
+
+import java.util.List;
 
 /**
  * <p>
@@ -18,4 +23,6 @@ public interface AclUserService extends IService<AclUser> {
     BaseResult register(AclUser user);
 
     BaseResult getMemberInfo(Long id);
+
+    BaseResult<List<AclUserRoleVO>> queryUserPage(Page page, AclUserRoleDTO user);
 }

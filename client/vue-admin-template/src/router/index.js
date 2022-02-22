@@ -69,13 +69,13 @@ export const constantRoutes = [
     {
       path: 'save',
       name: 'save',
-      component: () => import('@/views/teacher/form'),
+      component: () => import('@/views/permission/role'),
       meta: { title: '角色管理', icon: 'el-icon-s-custom' }
     },
     {
       path: 'edit',
       name: 'edit',
-      component: () => import('@/views/teacher/form'),
+      component: () => import('@/views/permission/menu'),
       meta: { title: '菜单管理', icon: 'el-icon-menu' },
     },
     ]
@@ -276,15 +276,23 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/banner',
+    path: '/home',
     component: Layout,
-    redirect: '/banner/list',
+    redirect: '/home/banner',
+    name: '首页管理',
+    meta: { title: '首页管理', icon: 'el-icon-menu' },
     children: [
       {
-        path: 'list',
-        name: 'banner-list',
+        path: 'banner',
+        name: 'home-banner',
         component: () => import('@/views/banner/index'),
-        meta: { title: 'banner管理', icon: 'el-icon-menu' }
+        meta: { title: '轮播图', icon: 'el-icon-menu' }
+      },
+      {
+        path: 'notice',
+        name: 'home-notice',
+        component: () => import('@/views/banner/index'),
+        meta: { title: '公告列表', icon: 'el-icon-menu' }
       }
     ]
   },

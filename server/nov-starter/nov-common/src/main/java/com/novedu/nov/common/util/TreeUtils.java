@@ -123,6 +123,8 @@ public class TreeUtils {
             flag = true;
         } else if (parentId instanceof Integer && Integer.valueOf(0).equals(parentId)) {
             flag = true;
+        } else if (parentId instanceof Long && Long.valueOf(0).equals(parentId)) {
+            flag = true;
         }
         return flag;
     }
@@ -229,10 +231,11 @@ public class TreeUtils {
     /**
      * 检查变更节点
      * 该方法可能有BUG，谨慎使用
-     * @param raw 初始集合
-     * @param ripe 变更集合
-     * @param clazz  集合元素类型
-     * titleField 对应节点名，如名字不一样需手动修改
+     *
+     * @param raw   初始集合
+     * @param ripe  变更集合
+     * @param clazz 集合元素类型
+     *              titleField 对应节点名，如名字不一样需手动修改
      * @return 变更节点
      */
     public static <T> Map<String, Collection<T>> checkChangedNodes(Collection<T> raw, Collection<T> ripe, @NotNull Class<T> clazz) {
@@ -251,67 +254,65 @@ public class TreeUtils {
                 removeNodes = new ArrayList<>();
             }
             initContext(clazz, null, null, null, raw);
-                titleField = clazz.getDeclaredField(title);
-                titleField.setAccessible(true);
+            titleField = clazz.getDeclaredField(title);
+            titleField.setAccessible(true);
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         }
-        if(ripe == null || ripe.size() == 0){
-            for (T rr: raw
-                 ) {
+        if (ripe == null || ripe.size() == 0) {
+            for (T rr : raw
+            ) {
                 removeNodes.add(rr);
             }
-        }
-        else {
+        } else {
             for (T r : ripe
             ) {
                 try {
                     Object rId = idField.get(r);
                     Object rPid = parentField.get(r);
-                    Object rTitle= titleField.get(r);
+                    Object rTitle = titleField.get(r);
                     boolean hasNode = false;
-                    boolean beModified =false;
+                    boolean beModified = false;
                     for (T rr : raw
                     ) {
                         Object rrId = idField.get(rr);
                         Object rrPid = parentField.get(rr);
-                        Object rrTitle= titleField.get(rr);
+                        Object rrTitle = titleField.get(rr);
                         if (rrId.equals(rId)) {
                             hasNode = true;
-                            if(!rrPid.equals(rPid)||!rrTitle.equals(rTitle))
+                            if (!rrPid.equals(rPid) || !rrTitle.equals(rTitle))
                                 beModified = true;
                         }
                     }
                     if (!hasNode) {
                         insertNodes.add(r);
-                    }
-                    else if (beModified)
+                    } else if (beModified)
                         updateNodes.add(r);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                 }
             }
-            for (T r: raw
+            for (T r : raw
             ) {
                 boolean hasRemove = true;
-                for (T rr: ripe
+                for (T rr : ripe
                 ) {
                     try {
                         Object rId = idField.get(r);
                         Object rrId = idField.get(rr);
-                        if(rrId.equals(rId))
+                        if (rrId.equals(rId))
                             hasRemove = false;
                     } catch (IllegalAccessException e) {
                         e.printStackTrace();
                     }
                 }
-                if(hasRemove)
+                if (hasRemove)
                     removeNodes.add(r);
             }
         }
-        result.put("insertNodes",insertNodes);
-        result.put("updateNodes",updateNodes);
-        result.put("removeNodes",removeNodes);
+        result.put("insertNodes", insertNodes);
+        result.put("updateNodes", updateNodes);
+        result.put("removeNodes", removeNodes);
         return result;
     }
 }

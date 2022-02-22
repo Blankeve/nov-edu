@@ -63,9 +63,9 @@
 
       <el-table-column fixed="right" align="center" label="操作" width="180">
         <template slot-scope="scope">
-          <el-button type="info" @click="handleEdit(scope.row)">编辑</el-button>
+          <el-button type="info" @click="handleEdit(scope.row)"  icon="el-icon-edit">编辑</el-button>
 
-          <el-button type="danger" @click="handleDelete(scope.row.id)"
+          <el-button type="danger" @click="handleDelete(scope.row.id)" icon="el-icon-delete"
             >删除</el-button
           >
         </template>

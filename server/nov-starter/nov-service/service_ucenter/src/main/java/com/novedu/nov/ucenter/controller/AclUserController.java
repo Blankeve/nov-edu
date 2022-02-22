@@ -1,16 +1,17 @@
 package com.novedu.nov.ucenter.controller;
 
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.ucenter.entity.AclUser;
+import com.novedu.nov.ucenter.entity.dto.AclUserRoleDTO;
+import com.novedu.nov.ucenter.entity.vo.AclUserRoleVO;
 import com.novedu.nov.ucenter.service.AclUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
 
 /**
  * <p>
@@ -40,6 +41,11 @@ public class AclUserController {
     @PostMapping("/info/{id}")
     public BaseResult getMemberInfo(@PathVariable Long id){
         return aclUserService.getMemberInfo(id);
+    }
+
+    @GetMapping("/page")
+    public BaseResult<List<AclUserRoleVO>> queryUserPage(Page page, AclUserRoleDTO user) {
+        return aclUserService.queryUserPage(page, user);
     }
 }
 

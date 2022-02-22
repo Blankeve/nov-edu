@@ -1,5 +1,8 @@
 package com.novedu.nov;
 
+import org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration;
+import org.apache.shiro.spring.boot.autoconfigure.ShiroAutoConfiguration;
+import org.apache.shiro.spring.boot.autoconfigure.ShiroBeanAutoConfiguration;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,7 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @EnableTransactionManagement
 @MapperScan(basePackages = {"com.novedu.nov.ucenter.mapper","com.novedu.nov.common.module.mapper"})
-@SpringBootApplication(scanBasePackages = "com.novedu.nov")
+@SpringBootApplication(scanBasePackages = "com.novedu.nov",exclude = {ShiroAnnotationProcessorAutoConfiguration.class, ShiroAutoConfiguration.class, ShiroBeanAutoConfiguration.class})
 @EnableDiscoveryClient
 @EnableFeignClients
 public class UCenterServiceApplication {

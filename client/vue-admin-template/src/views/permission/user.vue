@@ -1,22 +1,35 @@
 <template>
   <div class="app-container">
     <el-form :inline="true" ref="form" :model="form">
-      <el-form-item prop="name">
+      <el-form-item prop="nickname">
         <el-input
           class="mid-input"
-          v-model="form.name"
-          placeholder="姓名"
+          v-model="form.nickname"
+          placeholder="用户昵称"
         ></el-input>
       </el-form-item>
 
-      <el-form-item prop="level">
-        <el-select v-model="form.level" placeholder="讲师等级">
-          <el-option label="高级讲师" value="1"></el-option>
-          <el-option label="首席讲师" value="2"></el-option>
+      <el-form-item prop="username">
+        <el-input
+          class="mid-input"
+          v-model="form.username"
+          placeholder="用户名"
+        ></el-input>
+      </el-form-item>
+
+      <el-form-item label="所属角色">
+        <el-select v-model="role.name" placeholder="请选择角色">
+          <el-option
+            v-for="(item, index) in roles"
+            :label="item.name"
+            :key="item.id"
+            :value="item.id"
+          >
+          </el-option>
         </el-select>
       </el-form-item>
 
-      <el-form-item label="入驻日期" prop="createTime">
+      <el-form-item label="注册时间" prop="createTime">
         <el-date-picker
           v-model="dateRange"
           type="datetimerange"
@@ -53,13 +66,13 @@
         </template>
       </el-table-column>
 
-      <el-table-column width="100" label="name" align="center">
+      <el-table-column width="100" label="昵称" align="center">
         <template slot-scope="scope">
           {{ scope.row.name }}
         </template>
       </el-table-column>
 
-      <el-table-column label="avatar" width="120" align="center">
+      <el-table-column label="头像" width="120" align="center">
         <template slot-scope="scope">
           <div class="demo-image__preview">
             <el-image
@@ -73,27 +86,25 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="career" align="center">
+      <el-table-column label="用户名" align="center">
         <template slot-scope="scope">
-          {{ scope.row.career }}
+          {{ scope.row.username }}
         </template>
       </el-table-column>
 
-      <el-table-column label="intro" width="500" align="center">
+      <el-table-column label="用户状态" width="150" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.intro }}</span>
-        </template>
-      </el-table-column>
-
-      <el-table-column width="100" label="level" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.level == 1 ? "高级讲师" : "首席讲师" }}
-        </template>
-      </el-table-column>
-
-      <el-table-column width="50" label="显示级别" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.sort }}
+          <el-button
+            size="small"
+            :type="scope.row.isDisabled == 1 ? 'danger' : 'primary'"
+            :icon="
+              'el-icon-circle-' +
+              (scope.row.isDisabled == 1 ? 'close' : 'check')
+            "
+            @click="handleRelease(scope.row.id, scope.row.isDisabled)"
+          >
+            {{ scope.row.isDisabled == 1 ? "恢复正常" : "屏蔽此人" }}</el-button
+          >
         </template>
       </el-table-column>
 
@@ -109,11 +120,11 @@
         </template>
       </el-table-column>
 
-      <el-table-column fixed="right" align="center" label="操作" width="200">
+      <el-table-column fixed="right" align="center" label="操作" width="250">
         <template slot-scope="scope">
-          <el-button @click="handleEdit(scope.row.id)">编辑</el-button>
+          <el-button @click="handleEdit(scope.row.id)" icon="el-icon-edit">编辑</el-button>
 
-          <el-button type="danger" @click="handleDelete(scope.row.id)"
+          <el-button type="danger" @click="handleDelete(scope.row.id)" icon="el-icon-delete"
             >删除</el-button
           >
         </template>
@@ -269,12 +280,7 @@ export default {
       });
     },
     handleEdit(id) {
-      this.$router.push({
-        path: "/teacher/edit",
-        query: {
-          id: id,
-        },
-      });
+
     },
     onSubmit() {
       this.fetchData();
