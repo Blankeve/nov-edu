@@ -66,12 +66,12 @@
         width="500px"
         center=""
       >
-        <el-form :model="form" label-width="120">
+        <el-form :model="form" :rules="formRules" label-width="120">
           <el-form-item v-if="this.form.parentName != '无'" label="父级名称">
             <el-input v-model="form.parentName"></el-input>
           </el-form-item>
 
-          <el-form-item label="权限名称">
+          <el-form-item label="权限名称" prop="name">
             <el-input v-model="form.name"></el-input>
           </el-form-item>
 
@@ -82,7 +82,7 @@
             </el-radio-group>
           </el-form-item>
 
-          <el-form-item label="权限值">
+          <el-form-item label="权限值" prop="value">
             <el-input v-model="form.value"></el-input>
           </el-form-item>
 
@@ -95,23 +95,14 @@
           </el-form-item>
 
           <el-form-item label="图标">
-            <el-upload
-              class="avatar-uploader"
-              name="img"
-              :action="baseURL + '/upload/img'"
-              :show-file-list="false"
-              :on-success="handleAvatarSuccess"
-              :before-upload="beforeAvatarUpload"
-            >
-              <img v-if="form.icon" :src="form.icon" class="avatar" />
-              <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-            </el-upload>
+            <el-input v-model="form.icon"></el-input>
           </el-form-item>
 
           <el-form-item label="权限状态">
             <el-radio-group v-model="form.status">
-              <el-radio-button label="1">启用</el-radio-button>
               <el-radio-button label="0">停用</el-radio-button>
+              <el-radio-button label="1">启用</el-radio-button>
+              <el-radio-button label="2">隐藏</el-radio-button>
             </el-radio-group>
           </el-form-item>
         </el-form>
@@ -152,6 +143,26 @@ export default {
         component: "",
         icon: "",
         status: 1,
+      },
+      formRules: {
+        name: [
+          { required: true, message: "请输入权限名称", trigger: "blur" },
+          {
+            min: 1,
+            max: 10,
+            message: "长度在 2 到 10 个字符",
+            trigger: "blur",
+          },
+        ],
+        value: [
+          { required: true, message: "请输入权限值", trigger: "blur" },
+          {
+            min: 1,
+            max: 10,
+            message: "长度在 2 到 10 个字符",
+            trigger: "blur",
+          },
+        ],
       },
       menuFormTitle: "",
       menuFormVisible: false,
@@ -303,22 +314,6 @@ export default {
     },
     allowDrag(draggingNode) {
       return draggingNode.data.title != undefined;
-    },
-    handleAvatarSuccess(res, file) {
-      this.form.icon = res.data.path;
-    },
-    beforeAvatarUpload(file) {
-      const isJPG = file.type === "image/jpeg";
-      const isPNG = file.type === "image/png";
-      const isLt2M = file.size / 1024 / 1024 < 2;
-
-      if (!(isJPG || isPNG)) {
-        this.$message.error("上传图片只能是 JPG，PNG 格式!");
-      }
-      if (!isLt2M) {
-        this.$message.error("上传图片大小不能超过 2MB!");
-      }
-      return (isJPG || isPNG) && isLt2M;
     },
   },
 };

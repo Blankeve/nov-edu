@@ -70,7 +70,12 @@
             >删除</el-button
           >
 
-          <el-button type="warning" icon="el-icon-setting">分配权限</el-button>
+          <el-button
+            type="warning"
+            icon="el-icon-setting"
+            @click="handleSelectMenu(scope.row.id)"
+            >分配权限</el-button
+          >
         </template>
       </el-table-column>
     </el-table>
@@ -113,6 +118,24 @@
         <el-button type="primary" @click="onSubmit">确 定</el-button>
       </div>
     </el-dialog>
+
+    <!--分配菜单-->
+    <el-dialog title="分配菜单" :visible.sync="dialogVisibleMenu" width="30%">
+      <el-tree
+        :data="menuTreeList"
+        show-checkbox
+        default-expand-all
+        node-key="id"
+        ref="tree"
+        highlight-current
+        :props="defaultProps"
+      >
+      </el-tree>
+      <div style="margin-top: 20px" align="center">
+        <el-button type="primary" @click="handleSaveMenu()">保存</el-button>
+        <el-button @click="handleClearMenu()">清空</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
@@ -125,6 +148,7 @@ import {
   exportPage,
 } from "@/api/role";
 import { exportExcel } from "@/utils/excel";
+import { getTree, queryMenuByRoleId} from "@/api/menu";
 export default {
   filters: {
     statusFilter(status) {
@@ -140,6 +164,14 @@ export default {
     return {
       list: null,
       listLoading: true,
+      //菜单相关
+      dialogVisibleMenu: false,
+      menuTreeList: [],
+      defaultProps: {
+        children: "children",
+        label: "name",
+      },
+      roleId: null,
       form: {
         name: "",
         code: null,
@@ -171,6 +203,27 @@ export default {
         this.form.total = data.total;
         this.list = data.records;
         this.listLoading = false;
+      });
+    },
+    handleSelectMenu(roleId) {
+      this.dialogVisibleMenu = true;
+      this.roleId = roleId;
+       getTree().then((resp) => {
+        if (resp.code === 200) {
+          this.menuTreeList = resp.data;
+            //回显菜单数据
+            queryMenuByRoleId(roleId).then(result=>{
+                let roleMenu=result.data.data;
+                let checkedMenuIds=[];
+                for(let i=0;i<roleMenu.length;i++){
+                    if(roleMenu!=null && roleMenu.length>0){
+                        checkedMenuIds.push(roleMenu[i].menuId);
+                    }
+                }
+                this.$refs.tree.setCheckedKeys(checkedMenuIds);
+            })
+
+        }
       });
     },
     addRole() {

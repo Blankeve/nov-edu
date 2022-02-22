@@ -15,6 +15,13 @@ export function getTree() {
   })
 }
 
+export function queryMenuByRoleId(params) {
+  return request({
+    url: `/ucenter/permission/role/${params}`,
+    method: 'get',
+  })
+}
+
 export function removeById(params) {
   return request({
     url: `/ucenter/permission/remove/${params}`,
