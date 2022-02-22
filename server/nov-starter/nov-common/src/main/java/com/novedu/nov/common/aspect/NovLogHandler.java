@@ -60,7 +60,7 @@ public class NovLogHandler {
         webLog.append("\nresult:" + json);
         webLog.append("\nspend:" + spendTime + "ms");
         webLog.append("\n------------->request end<-------------\n");
-        log.debug(webLog.toString());
+        log.info(webLog.toString());
         return obj;
     }
 

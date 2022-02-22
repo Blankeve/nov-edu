@@ -1,0 +1,406 @@
+<template>
+  <div class="app-container">
+    <el-input placeholder="输入关键字进行过滤" v-model="filterText"> </el-input>
+    <br />
+    <br />
+    <div id="down-tree" style="width: 50%">
+      <el-button type="text" size="mini" @click="() => appendRoot(data)">
+        添加一级菜单
+      </el-button>
+      <el-tree
+        :data="data"
+        node-key="id"
+        ref="tree"
+        :filter-node-method="filterNode"
+        @node-drag-start="handleDragStart"
+        @node-drag-enter="handleDragEnter"
+        @node-drag-leave="handleDragLeave"
+        @node-drag-over="handleDragOver"
+        @node-drag-end="handleDragEnd"
+        @node-drop="handleDrop"
+        :expand-on-click-node="false"
+        :default-expanded-keys="defaultShowNodes"
+        @node-expand="handleNodeExpand"
+        @node-collapse="handleNodeCollapse"
+      >
+        <span class="custom-tree-node" slot-scope="{ node, data }">
+          <i
+            :class="data.parentId == 0 ? 'top-node-icon' : 'leaf-node-icon '"
+          ></i>
+          <span
+            >{{ data.name }}&nbsp;{{
+              data.children ? `(${data.children.length})` : ""
+            }}</span
+          >
+          <span style="margin-left: 100px">
+            <el-button
+              type="text"
+              size="mini"
+              icon="el-icon-circle-plus-outline"
+              @click="() => append(data)"
+            >
+            </el-button>
+            <el-button
+              type="text"
+              size="mini"
+              icon="el-icon-edit"
+              circle
+              @click="() => edit(node, data)"
+            >
+            </el-button>
+            <el-button
+              type="text"
+              size="mini"
+              icon="el-icon-delete"
+              @click="() => remove(node, data)"
+            >
+            </el-button>
+          </span>
+        </span>
+      </el-tree>
+
+      <el-dialog
+        :title="menuFormTitle"
+        :visible.sync="menuFormVisible"
+        :close-on-click-modal="false"
+        width="500px"
+        center=""
+      >
+        <el-form :model="form" label-width="120">
+          <el-form-item v-if="this.form.parentName != '无'" label="父级名称">
+            <el-input v-model="form.parentName"></el-input>
+          </el-form-item>
+
+          <el-form-item label="权限名称">
+            <el-input v-model="form.name"></el-input>
+          </el-form-item>
+
+          <el-form-item label="权限类型">
+            <el-radio-group v-model="form.type">
+              <el-radio-button label="1">菜单</el-radio-button>
+              <el-radio-button label="2">按钮</el-radio-button>
+            </el-radio-group>
+          </el-form-item>
+
+          <el-form-item label="权限值">
+            <el-input v-model="form.value"></el-input>
+          </el-form-item>
+
+          <el-form-item label="访问路径">
+            <el-input v-model="form.path"></el-input>
+          </el-form-item>
+
+          <el-form-item label="组件路径">
+            <el-input v-model="form.component"></el-input>
+          </el-form-item>
+
+          <el-form-item label="图标">
+            <el-upload
+              class="avatar-uploader"
+              name="img"
+              :action="baseURL + '/upload/img'"
+              :show-file-list="false"
+              :on-success="handleAvatarSuccess"
+              :before-upload="beforeAvatarUpload"
+            >
+              <img v-if="form.icon" :src="form.icon" class="avatar" />
+              <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+            </el-upload>
+          </el-form-item>
+
+          <el-form-item label="权限状态">
+            <el-radio-group v-model="form.status">
+              <el-radio-button label="1">启用</el-radio-button>
+              <el-radio-button label="0">停用</el-radio-button>
+            </el-radio-group>
+          </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="menuFormVisible = false">取 消</el-button>
+          <el-button type="primary" @click="onSubmit">确 定</el-button>
+        </div>
+      </el-dialog>
+    </div>
+  </div>
+</template>
+
+<script>
+let id = 1000;
+
+import { getTree, saveOrUpdate, removeById } from "@/api/menu";
+export default {
+  watch: {
+    filterText(val) {
+      this.$refs.tree.filter(val);
+    },
+  },
+  data() {
+    return {
+      filterText: "",
+      defaultShowNodes: [],
+      data: [],
+      resetData: [],
+      baseURL: process.env.VUE_APP_BASE_API,
+      form: {
+        id: null,
+        parentName: "无",
+        parentId: 0,
+        name: "",
+        type: 1,
+        value: "",
+        path: "",
+        component: "",
+        icon: "",
+        status: 1,
+      },
+      menuFormTitle: "",
+      menuFormVisible: false,
+    };
+  },
+  created() {
+    this.fetchData();
+  },
+  methods: {
+    fetchData() {
+      getTree().then((resp) => {
+        if (resp.code === 200) {
+          this.data = resp.data;
+        }
+      });
+    },
+    filterNode(value, data) {
+      if (!value) return true;
+      return data.title.indexOf(value) !== -1;
+    },
+    resetForm() {
+      this.form.id = null;
+      this.form.name = "";
+      this.form.type = "";
+      this.form.value = "";
+      this.form.path = "";
+      this.form.component = "";
+      this.form.icon = "";
+      this.form.status = 1;
+    },
+    onSubmit() {
+      saveOrUpdate(this.form).then((resp) => {
+        if (resp.code === 200) {
+          this.$message.success((this.form.id ? "更新" : "添加") + "成功");
+          this.fetchData();
+        }
+      });
+    },
+    append(data) {
+      this.resetForm();
+      this.form.parentId = data.id;
+      this.form.parentName = data.name;
+      this.menuFormTitle = "添加菜单";
+      this.menuFormVisible = true;
+    },
+    appendRoot(data) {
+      this.resetForm();
+      this.form.parentId = 0;
+      this.form.parentName = "无";
+      this.menuFormTitle = "添加菜单";
+      this.menuFormVisible = true;
+    },
+    remove(node, data) {
+      removeById(data.id).then((resp) => {
+        if (resp.code === 200) {
+          this.$message.success("删除成功");
+          this.fetchData();
+        }
+      });
+    },
+    edit(node, data) {
+      if (data.id) {
+        this.form.id = data.id;
+        this.form.parentId = data.parentId;
+        this.form.parentName = "无";
+        this.form.name = data.name;
+        this.form.type = data.type;
+        this.form.value = data.value;
+        this.form.path = data.path;
+        this.form.component = data.component;
+        this.form.icon = data.icon;
+        this.form.status = data.status;
+        this.menuFormTitle = "更新菜单";
+        this.menuFormVisible = true;
+      }
+    },
+    renderContent(h, { node, data, store }) {
+      return (
+        <span class="custom-tree-node">
+          <span>{node.title}</span>
+          <span>
+            <el-button
+              size="mini"
+              type="text"
+              on-click={() => this.append(data)}
+            >
+              Append
+            </el-button>
+            <el-button
+              size="mini"
+              type="text"
+              on-click={() => this.remove(node, data)}
+            >
+              Delete
+            </el-button>
+          </span>
+        </span>
+      );
+    },
+    // 树节点展开
+    handleNodeExpand(data) {
+      // 保存当前展开的节点
+      let flag = false;
+      this.defaultShowNodes.some((item) => {
+        if (item === data.id) {
+          // 判断当前节点是否存在， 存在不做处理
+          flag = true;
+          return true;
+        }
+      });
+      if (!flag) {
+        // 不存在则存到数组里
+        this.defaultShowNodes.push(data.id);
+      }
+    },
+    // 树节点关闭
+    handleNodeCollapse(data) {
+      this.defaultShowNodes.some((item, i) => {
+        if (item === data.id) {
+          // 删除关闭节点
+          this.defaultShowNodes.length = i;
+        }
+      });
+    },
+    handleDragStart(node, ev) {
+      console.log("drag start", node);
+    },
+    handleDragEnter(draggingNode, dropNode, ev) {
+      console.log("tree drag enter: ", dropNode.title);
+    },
+    handleDragLeave(draggingNode, dropNode, ev) {
+      console.log("tree drag leave: ", dropNode.title);
+    },
+    handleDragOver(draggingNode, dropNode, ev) {
+      console.log("tree drag over: ", dropNode.title);
+    },
+    handleDragEnd(draggingNode, dropNode, dropType, ev) {
+      console.log("tree drag end: ", dropNode && dropNode.title, dropType);
+    },
+    handleDrop(draggingNode, dropNode, dropType, ev) {
+      console.log("tree drop: ", dropNode.title, dropType);
+    },
+    allowDrop(draggingNode, dropNode, type) {
+      if (!dropNode.data.title) {
+        return type !== "inner";
+      } else {
+        return true;
+      }
+    },
+    allowDrag(draggingNode) {
+      return draggingNode.data.title != undefined;
+    },
+    handleAvatarSuccess(res, file) {
+      this.form.icon = res.data.path;
+    },
+    beforeAvatarUpload(file) {
+      const isJPG = file.type === "image/jpeg";
+      const isPNG = file.type === "image/png";
+      const isLt2M = file.size / 1024 / 1024 < 2;
+
+      if (!(isJPG || isPNG)) {
+        this.$message.error("上传图片只能是 JPG，PNG 格式!");
+      }
+      if (!isLt2M) {
+        this.$message.error("上传图片大小不能超过 2MB!");
+      }
+      return (isJPG || isPNG) && isLt2M;
+    },
+  },
+};
+</script>
+
+<style>
+.custom-tree-node {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  padding-right: 8px;
+}
+
+#down-tree {
+  flex: 1;
+  max-width: 500px;
+  height: 678px;
+  background: rgba(245, 248, 250, 1);
+  border-radius: 3px;
+  border: 1px solid rgba(211, 219, 222, 1);
+  margin-left: 12px;
+  padding: 14px;
+}
+
+.el-tree-node__label {
+  font-size: 12px;
+}
+
+.el-tree .el-tree-node__expand-icon.expanded {
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+.el-tree .el-icon-caret-right:before {
+  background: url("../../icons/png/expand.png") no-repeat;
+  content: "";
+  display: block;
+  width: 28px;
+  height: 28px;
+  font-size: 28px;
+  background-size: 25px;
+}
+
+.el-tree-node__expand-icon.is-leaf::before {
+  background: none;
+  content: "";
+  display: block;
+  width: 28px;
+  height: 28px;
+  font-size: 28px;
+  background-size: 25px;
+}
+
+.top-node-icon {
+  background: url("../../icons/png/folder.png") no-repeat;
+  content: "";
+  display: block;
+  width: 28px;
+  height: 28px;
+  font-size: 28px;
+  background-size: 25px;
+}
+
+.leaf-node-icon {
+  background: url("../../icons/png/book.png") no-repeat;
+  content: "";
+  display: block;
+  width: 28px;
+  height: 28px;
+  font-size: 28px;
+  background-size: 25px;
+}
+
+.el-tree-node__content {
+  background: #f5f8fa;
+  height: 36px;
+}
+
+.el-tree-node.is-current > .el-tree-node__content {
+  background-color: #fde9be !important;
+  color: #333333;
+}
+</style>
+
