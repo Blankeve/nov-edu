@@ -1,0 +1,22 @@
+package com.novedu.nov.ucenter.service;
+
+import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.ucenter.entity.AclPermission;
+import com.baomidou.mybatisplus.extension.service.IService;
+
+/**
+ * <p>
+ * 权限 服务类
+ * </p>
+ *
+ * @author juam
+ * @since 2022-02-22
+ */
+public interface AclPermissionService extends IService<AclPermission> {
+
+    BaseResult saveOrUpdatePermission(AclPermission permission);
+
+    BaseResult removePermission(Long id);
+
+    BaseResult queryTree();
+}
