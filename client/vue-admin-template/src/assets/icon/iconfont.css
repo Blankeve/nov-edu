@@ -1,0 +1,25 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 3162400 */
+  /* Color fonts */
+  src: 
+       url('iconfont.woff2?t=1645600300183') format('woff2'),
+       url('iconfont.woff?t=1645600300183') format('woff'),
+       url('iconfont.ttf?t=1645600300183') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-dictionary:before {
+  content: "\e6ff";
+}
+
+.icon--Star:before {
+  content: "\e775";
+}
+
