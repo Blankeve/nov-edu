@@ -39,6 +39,7 @@ public class AclPermission implements Serializable {
     @TableId(value = "id", type = IdType.NONE)
     private Long id;
 
+    @JsonSerialize(using = ToStringSerializer.class)
     @ApiModelProperty(value = "所属上级")
     private Long parentId;
 
