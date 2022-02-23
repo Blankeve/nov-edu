@@ -15,6 +15,11 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 /**
  * <p>
  * 
@@ -35,20 +40,22 @@ public class AclRole implements Serializable {
     @TableId(value = "id", type = IdType.NONE)
     private Long id;
 
+    @Pattern(regexp = "^\\S{1,10}$",message = "角色名称格式不正确")
     @ApiModelProperty(value = "角色名称")
     private String name;
 
+    @NotNull(message = "角色编码不能为空")
+    @Min(value = 0,message = "角色编码格式不正确")
+    @Max(value = 20,message = "角色编码格式不正确")
     @ApiModelProperty(value = "角色编码")
     private Integer code;
 
+    @Pattern(regexp = "^.{1,50}$",message = "备注格式不正确")
     @ApiModelProperty(value = "备注")
     private String remark;
 
     @ApiModelProperty(value = "1:有效 0:无效")
     private Integer status;
-
-    @ApiModelProperty(value = "逻辑删除 1（true）已删除， 0（false）未删除")
-    private Integer isDeleted;
 
     @TableField(value = "create_time", fill = FieldFill.INSERT)
     @ApiModelProperty(value = "创建时间")

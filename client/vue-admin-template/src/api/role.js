@@ -27,6 +27,13 @@ export function exportPage(params) {
   })
 }
 
+export function getList() {
+  return request({
+    url: '/ucenter/role/list',
+    method: 'get',
+  })
+}
+
 export function getPage(params) {
   return request({
     url: '/ucenter/role/page',
@@ -39,5 +46,13 @@ export function removeById(params) {
   return request({
     url: `/ucenter/role/remove/${params}`,
     method: 'delete',
+  })
+}
+
+export function saveRoleByUid(data) {
+  return request({
+    url: '/ucenter/role/assign-role-uid',
+    method: 'post',
+    data
   })
 }

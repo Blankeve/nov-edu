@@ -39,6 +39,11 @@ public class EduTeacher implements Serializable {
     @JsonSerialize(using = ToStringSerializer.class)
     private Long id;
 
+    @Excel(name = "账号id", height = 20, width = 30, isImportField = "true_st", orderNum = "1")
+    @ApiModelProperty(value = "账号ID")
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long uid;
+
     @Excel(name = "讲师姓名", height = 20, width = 30, isImportField = "true_st", orderNum = "2")
     @NotNull(message = "不能为空")
     @ApiModelProperty(value = "讲师姓名")

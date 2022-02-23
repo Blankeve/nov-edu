@@ -59,6 +59,13 @@
 
       <el-table-column fixed="right" align="center" width="400" label="操作">
         <template slot-scope="scope">
+          <el-button
+            type="warning"
+            icon="el-icon-setting"
+            @click="handleSelectMenu(scope.row.id)"
+            >分配权限</el-button
+          >
+
           <el-button @click="handleEdit(scope.row)" icon="el-icon-edit"
             >编辑</el-button
           >
@@ -68,13 +75,6 @@
             @click="handleDelete(scope.row.id)"
             icon="el-icon-delete"
             >删除</el-button
-          >
-
-          <el-button
-            type="warning"
-            icon="el-icon-setting"
-            @click="handleSelectMenu(scope.row.id)"
-            >分配权限</el-button
           >
         </template>
       </el-table-column>
@@ -120,7 +120,7 @@
     </el-dialog>
 
     <!--分配菜单-->
-    <el-dialog title="分配菜单" :visible.sync="dialogVisibleMenu" width="30%">
+    <el-dialog title="分配权限" :visible.sync="dialogVisibleMenu" width="30%">
       <el-tree
         :data="menuTreeList"
         show-checkbox
@@ -148,7 +148,7 @@ import {
   exportPage,
 } from "@/api/role";
 import { exportExcel } from "@/utils/excel";
-import { getTree, queryMenuByRoleId} from "@/api/menu";
+import { getTree, queryMenuByRoleId, saveRoleSelMenu } from "@/api/menu";
 export default {
   filters: {
     statusFilter(status) {
@@ -205,24 +205,49 @@ export default {
         this.listLoading = false;
       });
     },
+    handleClearMenu() {
+      this.$nextTick(() => {
+        this.$refs.tree.setCheckedKeys([]);
+      });
+    },
+    //新增分配菜单
+    handleSaveMenu() {
+      let checkedMenu = this.$refs.tree.getCheckedNodes();
+      let checkedMenuIds = [];
+      for (let i = 0; i < checkedMenu.length; i++) {
+        checkedMenuIds.push(checkedMenu[i].id);
+      }
+      this.$confirm("是否要分配该菜单?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      }).then(() => {
+        let obj = { id: this.roleId, checkMenu: checkedMenuIds };
+        saveRoleSelMenu(obj).then((resp) => {
+          if (resp.code === 200) {
+            this.$message.success("分配权限成功");
+            this.roleFormVisible = false;
+          }
+        });
+      });
+    },
     handleSelectMenu(roleId) {
       this.dialogVisibleMenu = true;
       this.roleId = roleId;
-       getTree().then((resp) => {
+      getTree().then((resp) => {
         if (resp.code === 200) {
           this.menuTreeList = resp.data;
-            //回显菜单数据
-            queryMenuByRoleId(roleId).then(result=>{
-                let roleMenu=result.data.data;
-                let checkedMenuIds=[];
-                for(let i=0;i<roleMenu.length;i++){
-                    if(roleMenu!=null && roleMenu.length>0){
-                        checkedMenuIds.push(roleMenu[i].menuId);
-                    }
-                }
-                this.$refs.tree.setCheckedKeys(checkedMenuIds);
-            })
-
+          //回显菜单数据
+          queryMenuByRoleId(roleId).then((result) => {
+            let roleMenu = result.data;
+            let checkedMenuIds = [];
+            for (let i = 0; i < roleMenu.length; i++) {
+              if (roleMenu != null && roleMenu.length > 0) {
+                checkedMenuIds.push(roleMenu[i].id);
+              }
+            }
+            this.$refs.tree.setCheckedKeys(checkedMenuIds);
+          });
         }
       });
     },
@@ -265,9 +290,9 @@ export default {
       this.roleFormVisible = true;
     },
     onSubmit() {
-      this.roleFormVisible = false;
       saveOrUpdate(this.form).then((resp) => {
         if (resp.code === 200) {
+          this.roleFormVisible = false;
           this.$message.success((this.form.id ? "修改" : "添加") + "角色成功");
           this.fetchData();
         }

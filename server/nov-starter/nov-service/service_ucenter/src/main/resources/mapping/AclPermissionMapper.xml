@@ -2,4 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.novedu.nov.ucenter.mapper.AclPermissionMapper">
 
+
+    <select id="queryPermissionByRoleId" parameterType="java.lang.Long" resultType="AclPermission">
+        select p.id as id,
+        p.name as name,
+        p.parent_id as parentId
+        from acl_permission p
+        where p.is_deleted = 0
+        and p.id
+        in
+        (select ar.permission_id from acl_role_permission ar where ar.role_id = #{id})
+    </select>
+
 </mapper>

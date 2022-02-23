@@ -6,10 +6,13 @@ import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.edu.entity.EduTeacher;
 import com.novedu.nov.edu.entity.dto.EduTeacherDTO;
+import com.novedu.nov.edu.entity.dto.UserBindTeacherForm;
 import com.novedu.nov.edu.mapper.EduTeacherMapper;
 import com.novedu.nov.edu.service.EduTeacherService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletResponse;
@@ -91,6 +94,27 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
             ExcelUtils.exportExcel(page1.getRecords(), "讲师信息", "讲师信息", EduTeacher.class, "讲师信息", response);
         }
 
+    }
+
+    @Override
+    public BaseResult queryAllAndHadBind(String uid) {
+        List<EduTeacher> teachers = list();
+        String id = "";
+        for (EduTeacher teacher : teachers) {
+            if (uid.equals(teacher.getUid()+"")) {
+                id = teacher.getId() + "";
+                break;
+            }
+        }
+        return BaseResult.success().mapSet("list", teachers).mapSet("bind", id);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public BaseResult updateBindTeacher(UserBindTeacherForm bindTeacherForm) {
+        EduTeacher teacher = query().eq("id", bindTeacherForm.getId()).one();
+        teacher.setUid(bindTeacherForm.getUid());
+        return BaseResult.successOrError(updateById(teacher));
     }
 
 

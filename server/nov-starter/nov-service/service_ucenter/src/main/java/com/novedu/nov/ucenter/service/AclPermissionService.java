@@ -3,6 +3,7 @@ package com.novedu.nov.ucenter.service;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.ucenter.entity.AclPermission;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.novedu.nov.ucenter.entity.dto.AssignRolePermissionForm;
 
 /**
  * <p>
@@ -19,4 +20,8 @@ public interface AclPermissionService extends IService<AclPermission> {
     BaseResult removePermission(Long id);
 
     BaseResult queryTree();
+
+    BaseResult queryPermissionByRoleId(Long id);
+
+    BaseResult assignRolePermission(AssignRolePermissionForm params);
 }

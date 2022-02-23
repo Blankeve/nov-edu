@@ -58,8 +58,8 @@ export const constantRoutes = [
     path: '/permission',
     component: Layout,
     redirect: '/permission/user',
-    name: '讲师管理',
-    meta: { title: '权限管理', icon: 'el-icon-view' },
+    name: '系统管理',
+    meta: { title: '系统管理', icon: 'el-icon-setting' },
     children: [{
       path: 'user',
       name: 'user',
@@ -78,6 +78,12 @@ export const constantRoutes = [
       component: () => import('@/views/permission/menu'),
       meta: { title: '菜单管理', icon: 'el-icon-menu' },
     },
+    {
+      path: 'config',
+      name: 'config',
+      component: () => import('@/views/config/index'),
+      meta: { title: '数据字典', icon: 'el-icon-collection' }
+    }
     ]
   },
   {
@@ -296,20 +302,7 @@ export const constantRoutes = [
       }
     ]
   },
-  {
-    path: '/config',
-    component: Layout,
-    redirect: '/config/list',
-    children: [
-      {
-        path: 'list',
-        name: 'config-list',
-        component: () => import('@/views/config/index'),
-        meta: { title: '系统配置', icon: 'el-icon-setting' }
-      }
-    ]
-  },
- 
+
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]

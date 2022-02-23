@@ -18,7 +18,7 @@
       </el-form-item>
 
       <el-form-item label="所属角色">
-        <el-select v-model="role.name" placeholder="请选择角色">
+        <el-select v-model="form.roleId" placeholder="请选择角色">
           <el-option
             v-for="(item, index) in roles"
             :label="item.name"
@@ -66,12 +66,6 @@
         </template>
       </el-table-column>
 
-      <el-table-column width="100" label="昵称" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.name }}
-        </template>
-      </el-table-column>
-
       <el-table-column label="头像" width="120" align="center">
         <template slot-scope="scope">
           <div class="demo-image__preview">
@@ -86,33 +80,35 @@
         </template>
       </el-table-column>
 
+      <el-table-column width="100" label="昵称" align="center">
+        <template slot-scope="scope">
+          {{ scope.row.nickname }}
+        </template>
+      </el-table-column>
+
       <el-table-column label="用户名" align="center">
         <template slot-scope="scope">
           {{ scope.row.username }}
         </template>
       </el-table-column>
 
+      <el-table-column width="100" label="角色类型" align="center">
+        <template slot-scope="scope">
+          {{ scope.row.roleName }}
+        </template>
+      </el-table-column>
+
       <el-table-column label="用户状态" width="150" align="center">
         <template slot-scope="scope">
-          <el-button
-            size="small"
-            :type="scope.row.isDisabled == 1 ? 'danger' : 'primary'"
-            :icon="
-              'el-icon-circle-' +
-              (scope.row.isDisabled == 1 ? 'close' : 'check')
-            "
-            @click="handleRelease(scope.row.id, scope.row.isDisabled)"
-          >
-            {{ scope.row.isDisabled == 1 ? "恢复正常" : "屏蔽此人" }}</el-button
-          >
+          {{ scope.row.isDisabled == 1 ? "禁言中" : "正常" }}
         </template>
       </el-table-column>
 
       <el-table-column
         align="center"
         prop="created_at"
-        label="joinDate"
-        width="100"
+        label="注册时间"
+        width="200"
       >
         <template slot-scope="scope">
           <i class="el-icon-time" />
@@ -120,11 +116,38 @@
         </template>
       </el-table-column>
 
-      <el-table-column fixed="right" align="center" label="操作" width="250">
+      <el-table-column fixed="right" align="center" label="操作" >
         <template slot-scope="scope">
-          <el-button @click="handleEdit(scope.row.id)" icon="el-icon-edit">编辑</el-button>
-
-          <el-button type="danger" @click="handleDelete(scope.row.id)" icon="el-icon-delete"
+          <!-- <el-button @click="handleEdit(scope.row.id)" icon="el-icon-edit"
+            >编辑</el-button
+          > -->
+          <el-button
+            type="warning"
+            icon="el-icon-setting"
+            @click="handleSelectRole(scope.row.id)"
+            >分配角色</el-button
+          >
+          <el-button
+            v-if="scope.row.roleCode == 5"
+            type="primary"
+            icon="el-icon-setting"
+            @click="handleBindTeacher(scope.row.id)"
+            >绑定讲师</el-button
+          >
+          <!-- <el-button
+            :type="scope.row.isDisabled == 1 ? 'danger' : 'primary'"
+            :icon="
+              'el-icon-circle-' +
+              (scope.row.isDisabled == 1 ? 'close' : 'check')
+            "
+            @click="handleRelease(scope.row.id, scope.row.isDisabled)"
+          >
+            {{ scope.row.isDisabled == 1 ? "恢复" : "禁言" }}</el-button
+          > -->
+          <el-button
+            type="danger"
+            @click="handleDelete(scope.row.id)"
+            icon="el-icon-delete"
             >删除</el-button
           >
         </template>
@@ -143,12 +166,60 @@
       >
       </el-pagination>
     </div>
+    <!--分配菜单-->
+    <el-dialog title="分配角色" :visible.sync="dialogVisibleRole" width="30%">
+      <div align="center">
+        <el-form :inline="true" ref="form" :model="form">
+          <el-form-item label="所属角色">
+            <el-select v-model="roleId" placeholder="请选择角色">
+              <el-option
+                v-for="(item, index) in roles"
+                :label="item.name"
+                :key="item.id"
+                :value="item.id"
+              >
+              </el-option>
+            </el-select>
+          </el-form-item>
+        </el-form>
+        <el-button type="primary" @click="handleSaveRole()">确认</el-button>
+        <el-button @click="handleCancel">取消</el-button>
+      </div>
+    </el-dialog>
+
+    <!--绑定讲师-->
+    <el-dialog
+      title="绑定讲师"
+      :visible.sync="dialogVisibleTeacher"
+      width="30%"
+    >
+      <div align="center">
+        <el-form :inline="true" ref="form" :model="tForm">
+          <el-form-item label="绑定讲师">
+            <el-select v-model="tForm.id" placeholder="请选择讲师">
+              <el-option
+                v-for="(item, index) in teachers"
+                :label="item.name"
+                :key="item.id"
+                :value="item.id"
+              >
+              </el-option>
+            </el-select>
+          </el-form-item>
+        </el-form>
+        <el-button type="primary" @click="handleSaveBind()">确认</el-button>
+        <el-button @click="handleCancel2">取消</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
 <script>
-import { getList, removeById, exportAll, exportPage } from "@/api/teacher";
+import { getList, saveRoleByUid } from "@/api/role";
+import { getPage } from "@/api/user";
 import { exportExcel } from "@/utils/excel";
+import { getAllAndBindId, updateBindByUidAndId } from "@/api/teacher";
+
 export default {
   filters: {
     statusFilter(status) {
@@ -165,14 +236,28 @@ export default {
       list: null,
       listLoading: true,
       form: {
-        name: "",
-        level: "",
+        username: "",
+        nickname: "",
+        mobile: "",
+        avatar: "",
+        roleId: null,
         current: 1,
         size: 8,
         total: 0,
         startTime: null,
         endTime: null,
       },
+      uid: null,
+      roleId: null,
+      //菜单相关
+      dialogVisibleRole: false,
+      dialogVisibleTeacher: false,
+      roles: [],
+      tForm: {
+        id: "",
+        uid: "",
+      },
+      teachers: [],
       dateRange: [],
       pickerOptions: {
         shortcuts: [
@@ -219,13 +304,54 @@ export default {
         this.form.size > 1
           ? [this.form.size / 2, this.form.size, this.form.size * 2]
           : [this.form.size, this.form.size * 2];
-      getList(this.form).then((response) => {
+      getPage(this.form).then((response) => {
         let data = response.data;
         this.form.current = data.current;
         this.form.size = data.size;
         this.form.total = data.total;
         this.list = data.records;
         this.listLoading = false;
+      });
+
+      getList().then((resp) => {
+        this.roles = resp.data;
+      });
+    },
+    handleBindTeacher(uid) {
+      this.tForm.uid = uid;
+      this.dialogVisibleTeacher = true;
+      getAllAndBindId(uid).then((resp) => {
+        if (resp.code === 200) {
+          this.teachers = resp.data.list;
+          this.tForm.id = resp.data.bind;
+        }
+      });
+    },
+    handleSelectRole(uid) {
+      this.uid = uid;
+      this.dialogVisibleRole = true;
+    },
+    handleSaveBind() {
+        updateBindByUidAndId(this.tForm).then(resp=>{
+           if (resp.code === 200) {
+          this.$message.success("绑定讲师成功");
+          this.dialogVisibleTeacher = false;
+        }
+        })
+    },
+    handleCancel() {
+      this.dialogVisibleRole = false;
+    },
+    handleCancel2() {
+      this.dialogVisibleTeacher = false;
+    },
+    handleSaveRole() {
+      saveRoleByUid({ uid: this.uid, roleId: this.roleId }).then((resp) => {
+        if (resp.code === 200) {
+          this.$message.success("分配角色成功");
+          this.dialogVisibleRole = false;
+          this.fetchData();
+        }
       });
     },
     exportTeacherPage() {
@@ -279,15 +405,15 @@ export default {
         this.fetchData();
       });
     },
-    handleEdit(id) {
-
-    },
+    handleEdit(id) {},
     onSubmit() {
       this.fetchData();
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
       this.dateRange = [];
+      this.form.roleId = null;
+      this.form.username = "";
     },
   },
 };

@@ -22,6 +22,14 @@ export function queryMenuByRoleId(params) {
   })
 }
 
+export function saveRoleSelMenu(data) {
+  return request({
+    url: '/ucenter/permission/save-role-sel',
+    method: 'post',
+    data
+  })
+}
+
 export function removeById(params) {
   return request({
     url: `/ucenter/permission/remove/${params}`,

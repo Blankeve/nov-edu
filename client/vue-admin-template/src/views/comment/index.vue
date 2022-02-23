@@ -97,7 +97,7 @@
           <i
             v-for="count in scope.row.mark"
             :key="count"
-            class="el-icon-star-on"
+            class="iconfont icon--Star"
           ></i>
         </template>
       </el-table-column>

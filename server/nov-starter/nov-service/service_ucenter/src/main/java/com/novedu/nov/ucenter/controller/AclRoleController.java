@@ -4,9 +4,11 @@ package com.novedu.nov.ucenter.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.ucenter.entity.AclRole;
+import com.novedu.nov.ucenter.entity.dto.AssignUserRoleForm;
 import com.novedu.nov.ucenter.service.AclRoleService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -25,7 +27,7 @@ public class AclRoleController {
     AclRoleService roleService;
 
     @PostMapping("/save")
-    public BaseResult saveOrUpdateRole(@RequestBody AclRole role) {
+    public BaseResult saveOrUpdateRole(@Validated @RequestBody AclRole role) {
         return roleService.saveOrUpdateRole(role);
     }
 
@@ -35,14 +37,20 @@ public class AclRoleController {
         return roleService.removeRole(id);
     }
 
+    @ApiOperation("分配用户角色")
+    @PostMapping("/assign-role-uid")
+    public BaseResult assignRoleByUid(@RequestBody AssignUserRoleForm params) {
+        return roleService.assignRoleByUid(params);
+    }
+
     @GetMapping("/list")
     public BaseResult queryRoleList() {
         return roleService.queryRoleList();
     }
 
     @PostMapping("/page")
-    public BaseResult queryRolePage(Page page, AclRole role) {
-        return roleService.queryRolePage(page, role);
+    public BaseResult queryRolePage(Page page) {
+        return roleService.queryRolePage(page);
     }
 }
 

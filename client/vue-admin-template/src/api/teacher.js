@@ -32,6 +32,13 @@ export function getAll() {
   })
 }
 
+export function getAllAndBindId(params) {
+  return request({
+    url: `/edu/edu-teacher/all-bind/${params}`,
+    method: 'get',
+  })
+}
+
 export function removeById(params) {
   return request({
     url: `/edu/edu-teacher/remove/${params}`,
@@ -49,6 +56,14 @@ export function getById(params) {
 export function updateById(data) {
   return request({
     url: '/edu/edu-teacher/edit',
+    method: 'put',
+    data
+  })
+}
+
+export function updateBindByUidAndId(data) {
+  return request({
+    url: '/edu/edu-teacher/update-bind',
     method: 'put',
     data
   })

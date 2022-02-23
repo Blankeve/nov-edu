@@ -5,6 +5,7 @@ import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduTeacher;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.novedu.nov.edu.entity.dto.EduTeacherDTO;
+import com.novedu.nov.edu.entity.dto.UserBindTeacherForm;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -36,4 +37,8 @@ public interface EduTeacherService extends IService<EduTeacher> {
     void exportTeacherPage(HttpServletResponse response, Page page, EduTeacherDTO teacher);
 
     void exportAll(HttpServletResponse response);
+
+    BaseResult queryAllAndHadBind(String id);
+
+    BaseResult updateBindTeacher(UserBindTeacherForm bindTeacherForm);
 }

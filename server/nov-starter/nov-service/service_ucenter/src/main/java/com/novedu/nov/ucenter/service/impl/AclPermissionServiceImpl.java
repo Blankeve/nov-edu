@@ -1,13 +1,21 @@
 package com.novedu.nov.ucenter.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.common.util.TreeUtils;
 import com.novedu.nov.ucenter.entity.AclPermission;
+import com.novedu.nov.ucenter.entity.AclRolePermission;
+import com.novedu.nov.ucenter.entity.dto.AssignRolePermissionForm;
 import com.novedu.nov.ucenter.mapper.AclPermissionMapper;
 import com.novedu.nov.ucenter.service.AclPermissionService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.novedu.nov.ucenter.service.AclRolePermissionService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,6 +28,12 @@ import java.util.List;
  */
 @Service
 public class AclPermissionServiceImpl extends ServiceImpl<AclPermissionMapper, AclPermission> implements AclPermissionService {
+
+    @Autowired
+    AclPermissionMapper aclPermissionMapper;
+
+    @Autowired
+    AclRolePermissionService rolePermissionService;
 
     @Override
     public BaseResult saveOrUpdatePermission(AclPermission permission) {
@@ -34,6 +48,31 @@ public class AclPermissionServiceImpl extends ServiceImpl<AclPermissionMapper, A
     @Override
     public BaseResult<List<AclPermission>> queryTree() {
         List permissions = list();
-        return BaseResult.success(TreeUtils.toTree(permissions,AclPermission.class));
+        return BaseResult.success(TreeUtils.toTree(permissions, AclPermission.class));
     }
+
+    @Override
+    public BaseResult queryPermissionByRoleId(Long id) {
+        return BaseResult.success(aclPermissionMapper.queryPermissionByRoleId(id));
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public BaseResult assignRolePermission(AssignRolePermissionForm params) {
+        Long id = params.getId();
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("role_id", id);
+        rolePermissionService.remove(queryWrapper);
+        List<AclRolePermission> rolePermissions = new ArrayList<>();
+        Long[] checkMenuIds = params.getCheckMenu();
+        for (int i = 0; i < checkMenuIds.length; i++) {
+            AclRolePermission rolePermission = new AclRolePermission();
+            rolePermission.setRoleId(id);
+            rolePermission.setPermissionId(checkMenuIds[i]);
+            rolePermissions.add(rolePermission);
+        }
+        return BaseResult.successOrError(rolePermissionService.saveBatch(rolePermissions));
+    }
+
+
 }

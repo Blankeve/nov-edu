@@ -5,12 +5,15 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.ucenter.entity.AclPermission;
 import com.novedu.nov.ucenter.entity.AclRole;
+import com.novedu.nov.ucenter.entity.dto.AssignRolePermissionForm;
 import com.novedu.nov.ucenter.service.AclPermissionService;
 import com.novedu.nov.ucenter.service.AclRoleService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  * <p>
@@ -30,6 +33,18 @@ public class AclPermissionController {
     @PostMapping("/save")
     public BaseResult saveOrUpdate(@Validated @RequestBody AclPermission permission) {
         return permissionService.saveOrUpdatePermission(permission);
+    }
+
+    @ApiOperation("查询角色权限")
+    @GetMapping("/role/{id}")
+    public BaseResult queryPermissionByRoleId(@PathVariable Long id) {
+        return permissionService.queryPermissionByRoleId(id);
+    }
+
+    @ApiOperation("分配角色权限")
+    @PostMapping("/save-role-sel")
+    public BaseResult assignRolePermission(@RequestBody AssignRolePermissionForm params) {
+        return permissionService.assignRolePermission(params);
     }
 
     @ApiOperation("删除")

@@ -21,7 +21,8 @@ import 'quill/dist/quill.bubble.css'
 
 import VueQuillEditor from 'vue-quill-editor'
 
-
+import './assets/icon/iconfont.css' // icon
+import './assets/icon/iconfont.js' // icon
 
 Vue.use(VueQuillEditor,  )
 /**

@@ -22,3 +22,11 @@ export function logout() {
     method: 'post'
   })
 }
+
+export function getPage(params) {
+  return request({
+    url: '/ucenter/member/page',
+    method: 'get',
+    params
+  })
+}

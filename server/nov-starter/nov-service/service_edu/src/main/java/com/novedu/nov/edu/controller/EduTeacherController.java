@@ -6,6 +6,7 @@ import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.CrmBanner;
 import com.novedu.nov.edu.entity.EduTeacher;
 import com.novedu.nov.edu.entity.dto.EduTeacherDTO;
+import com.novedu.nov.edu.entity.dto.UserBindTeacherForm;
 import com.novedu.nov.edu.service.EduTeacherService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -58,6 +59,11 @@ public class EduTeacherController {
         return eduTeacherService.findAll();
     }
 
+    @GetMapping("/all-bind/{id}")
+    public BaseResult queryAllAndHadBind(@PathVariable String id) {
+        return eduTeacherService.queryAllAndHadBind(id);
+    }
+
     @GetMapping("/info/{id}")
     public BaseResult<EduTeacher> info(@PathVariable String id) {
         return eduTeacherService.findTeacherOne(id);
@@ -77,6 +83,11 @@ public class EduTeacherController {
     @PutMapping("/edit")
     public BaseResult editTeacher(@RequestBody @Validated EduTeacher teacher) {
         return eduTeacherService.editTeacher(teacher);
+    }
+
+    @PutMapping("/update-bind")
+    public BaseResult updateBindTeacher(@RequestBody UserBindTeacherForm bindTeacherForm) {
+        return eduTeacherService.updateBindTeacher(bindTeacherForm);
     }
 
     @GetMapping("/client-list")
