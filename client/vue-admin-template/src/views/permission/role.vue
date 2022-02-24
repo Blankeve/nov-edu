@@ -169,7 +169,7 @@ export default {
       menuTreeList: [],
       defaultProps: {
         children: "children",
-        label: "name",
+        label: "title",
       },
       roleId: null,
       form: {

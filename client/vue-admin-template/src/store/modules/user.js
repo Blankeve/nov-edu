@@ -1,6 +1,7 @@
 import { login, logout, getInfo } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { resetRouter } from '@/router'
+import Layout from '@/layout'
 
 const getDefaultState = () => {
   return {
@@ -11,6 +12,37 @@ const getDefaultState = () => {
 }
 
 const state = getDefaultState()
+
+
+function importComponent(file) {
+  return ()=>import(file+'.vue')
+}
+
+/**
+ * 递归过滤异步路由表，返回符合用户角色权限的路由表
+ * @param routes asyncRouterMap
+ * @param roles
+ */
+function filterAsyncRouter(asyncRouterMap) {
+  
+  let accessedRouters = asyncRouterMap.filter(route => {
+
+     
+    if (route.component) {
+      if (route.component === 'Layout') {//Layout组件特殊处理
+        route.component = Layout
+      } else {
+        route.component = importComponent(route.component)
+      }
+    }
+    if (route.children && route.children.length) {
+      route.children = filterAsyncRouter(route.children)
+    }
+    return true
+  })
+
+  return accessedRouters
+}
 
 const mutations = {
   RESET_STATE: (state) => {
@@ -24,6 +56,9 @@ const mutations = {
   },
   SET_AVATAR: (state, avatar) => {
     state.avatar = avatar
+  },
+  SET_ROUTES: (state, routes) => {
+    state.routes = routes
   }
 }
 
@@ -53,10 +88,15 @@ const actions = {
           return reject('登录失效，请重新登录')
         }
 
-        const { username, avatar } = data
+        const { username, avatar, menus } = data
 
         commit('SET_NAME', username)
         commit('SET_AVATAR', avatar)
+        let accessedRoutes = []
+        accessedRoutes = filterAsyncRouter(menus)
+        console.log(accessedRoutes)
+        commit('SET_ROUTES', accessedRoutes)
+
         resolve(data)
       }).catch(error => {
         removeToken()
@@ -68,10 +108,10 @@ const actions = {
   // user logout
   logout({ commit, state }) {
     return new Promise((resolve, reject) => {
-        removeToken() // must remove  token  first
-        resetRouter()
-        commit('RESET_STATE')
-        resolve()
+      removeToken() // must remove  token  first
+      resetRouter()
+      commit('RESET_STATE')
+      resolve()
     })
   },
 
@@ -83,6 +123,7 @@ const actions = {
       resolve()
     })
   }
+
 }
 
 export default {

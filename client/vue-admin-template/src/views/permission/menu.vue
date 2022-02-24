@@ -7,7 +7,8 @@
       <el-button type="text" size="mini" @click="() => appendRoot(data)">
         添加一级菜单
       </el-button>
-      <el-tree
+    <div class="menu-tree">
+        <el-tree
         :data="data"
         node-key="id"
         ref="tree"
@@ -25,10 +26,10 @@
       >
         <span class="custom-tree-node" slot-scope="{ node, data }">
           <i
-            :class="data.parentId == 0 ? 'top-node-icon' : 'leaf-node-icon '"
+            :class="data.type == 1 ? 'top-node-icon' : 'leaf-node-icon '"
           ></i>
           <span
-            >{{ data.name }}&nbsp;{{
+            >{{ data.title }}&nbsp;{{
               data.children ? `(${data.children.length})` : ""
             }}</span
           >
@@ -58,6 +59,7 @@
           </span>
         </span>
       </el-tree>
+    </div>
 
       <el-dialog
         :title="menuFormTitle"
@@ -71,8 +73,8 @@
             <el-input v-model="form.parentName"></el-input>
           </el-form-item>
 
-          <el-form-item label="权限名称" prop="name">
-            <el-input v-model="form.name"></el-input>
+          <el-form-item label="权限名称" prop="title">
+            <el-input v-model="form.title"></el-input>
           </el-form-item>
 
           <el-form-item label="权限类型">
@@ -82,15 +84,19 @@
             </el-radio-group>
           </el-form-item>
 
-          <el-form-item label="权限值" prop="value">
+          <el-form-item label="权限值">
             <el-input v-model="form.value"></el-input>
+          </el-form-item>
+
+          <el-form-item label="访问名称">
+            <el-input v-model="form.name"></el-input>
           </el-form-item>
 
           <el-form-item label="访问路径">
             <el-input v-model="form.path"></el-input>
           </el-form-item>
 
-          <el-form-item label="组件路径">
+          <el-form-item label="组件路径" prop="component">
             <el-input v-model="form.component"></el-input>
           </el-form-item>
 
@@ -136,6 +142,7 @@ export default {
         id: null,
         parentName: "无",
         parentId: 0,
+        title: "",
         name: "",
         type: 1,
         value: "",
@@ -145,7 +152,7 @@ export default {
         status: 1,
       },
       formRules: {
-        name: [
+        title: [
           { required: true, message: "请输入权限名称", trigger: "blur" },
           {
             min: 1,
@@ -154,12 +161,12 @@ export default {
             trigger: "blur",
           },
         ],
-        value: [
-          { required: true, message: "请输入权限值", trigger: "blur" },
+        component: [
+          { required: true, message: "请输入组件路径", trigger: "blur" },
           {
             min: 1,
-            max: 10,
-            message: "长度在 2 到 10 个字符",
+            max: 100,
+            message: "长度在 2 到 100 个字符",
             trigger: "blur",
           },
         ],
@@ -185,6 +192,7 @@ export default {
     },
     resetForm() {
       this.form.id = null;
+      this.form.title = "";
       this.form.name = "";
       this.form.type = "";
       this.form.value = "";
@@ -198,13 +206,14 @@ export default {
         if (resp.code === 200) {
           this.$message.success((this.form.id ? "更新" : "添加") + "成功");
           this.fetchData();
+          this.menuFormVisible = false;
         }
       });
     },
     append(data) {
       this.resetForm();
       this.form.parentId = data.id;
-      this.form.parentName = data.name;
+      this.form.parentName = data.title;
       this.menuFormTitle = "添加菜单";
       this.menuFormVisible = true;
     },
@@ -228,6 +237,7 @@ export default {
         this.form.id = data.id;
         this.form.parentId = data.parentId;
         this.form.parentName = "无";
+        this.form.title = data.title;
         this.form.name = data.name;
         this.form.type = data.type;
         this.form.value = data.value;
@@ -331,7 +341,7 @@ export default {
 #down-tree {
   flex: 1;
   max-width: 500px;
-  height: 678px;
+  height: 900px;
   background: rgba(245, 248, 250, 1);
   border-radius: 3px;
   border: 1px solid rgba(211, 219, 222, 1);
@@ -369,7 +379,7 @@ export default {
 }
 
 .top-node-icon {
-  background: url("../../icons/png/folder.png") no-repeat;
+  background: url("../../icons/png/html.png") no-repeat;
   content: "";
   display: block;
   width: 28px;
@@ -379,7 +389,7 @@ export default {
 }
 
 .leaf-node-icon {
-  background: url("../../icons/png/book.png") no-repeat;
+  background: url("../../icons/png/hand.png") no-repeat;
   content: "";
   display: block;
   width: 28px;

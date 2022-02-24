@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function login(data) {
   return request({
-    url: '/edu/user/login',
+    url: '/ucenter/member/login-bg',
     method: 'post',
     data
   })
@@ -10,7 +10,7 @@ export function login(data) {
 
 export function getInfo(token) {
   return request({
-    url: '/edu/user/info',
+    url: '/ucenter/member/info-bg',
     method: 'get',
     params: { token }
   })
