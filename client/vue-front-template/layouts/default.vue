@@ -15,8 +15,8 @@
             <nuxt-link to="/course" tag="li" active-class="current">
               <a>课程</a>
             </nuxt-link>
-            <nuxt-link to="/article" tag="li" active-class="current">
-              <a>公告</a>
+            <nuxt-link to="/" tag="li">
+              <a @click="openTip">公告</a>
             </nuxt-link>
           </ul>
           <ul class="h-r-login">
@@ -38,14 +38,16 @@
               <q class="red-point" style="display: none">&nbsp;</q>
             </li>
             <li v-show="loginInfo.id" id="is-login-two" class="h-r-user">
-              <a href="/ucenter" title>
-                <img
-                  :src="loginInfo.avatar"
-                  width="30"
-                  height="30"
-                  class="vam picImg"
-                  alt
-                />
+              <a title>
+                <client-only>
+                  <img
+                    :src="loginInfo.avatar"
+                    width="30"
+                    height="30"
+                    class="vam picImg"
+                    alt
+                  />
+                </client-only>
                 <span id="userName">{{ loginInfo.nickname }}</span>
               </a>
               <nuxt-link to="/">
@@ -144,7 +146,6 @@ import "~/assets/css/pages-weixinpay.css";
 
 import jwtDecode from "jwt-decode";
 import { getToken, removeToken } from "@/utils/auth";
-
 export default {
   data() {
     return {
@@ -166,6 +167,11 @@ export default {
     },
   },
   methods: {
+    openTip() {
+      this.$alert("该功能敬请期待", "nov在线课堂提示", {
+        confirmButtonText: "确定",
+      });
+    },
     queryCourse() {
       this.$router.push({
         path: "/course",

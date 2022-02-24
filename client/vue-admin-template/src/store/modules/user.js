@@ -7,7 +7,8 @@ const getDefaultState = () => {
   return {
     token: getToken(),
     name: '',
-    avatar: ''
+    avatar: '',
+    routes: ''
   }
 }
 
@@ -15,7 +16,7 @@ const state = getDefaultState()
 
 
 function importComponent(file) {
-  return ()=>import(file+'.vue')
+  return () => Promise.resolve(require(`${file}`).default)
 }
 
 /**
@@ -35,6 +36,10 @@ function filterAsyncRouter(asyncRouterMap) {
         route.component = importComponent(route.component)
       }
     }
+    if(route.title){
+        route.meta = {title: route.title,icon: route.icon}
+    }
+   
     if (route.children && route.children.length) {
       route.children = filterAsyncRouter(route.children)
     }
@@ -94,7 +99,6 @@ const actions = {
         commit('SET_AVATAR', avatar)
         let accessedRoutes = []
         accessedRoutes = filterAsyncRouter(menus)
-        console.log(accessedRoutes)
         commit('SET_ROUTES', accessedRoutes)
 
         resolve(data)

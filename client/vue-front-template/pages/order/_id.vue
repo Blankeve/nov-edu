@@ -30,7 +30,7 @@
             <td class="name First">
               <a
                 target="_blank"
-                :href="'https://localhost:3000/course/' + order.courseId"
+                :href="'/course/' + order.courseId"
               >
                 <img :src="order.courseCover"
               /></a>
@@ -38,7 +38,7 @@
                 <input type="hidden" class="ids ids_14502" value="14502" />
                 <a
                   target="_blank"
-                  :href="'https://localhost:3000/course/' + order.courseId"
+                  :href="'/course/' + order.courseId"
                   >{{ order.courseTitle }}</a
                 >
               </div>
@@ -108,7 +108,7 @@
       </div>
     </form>
   </div>
-</template>      
+</template>
 
 <script>
 import { createOrder, getOrderById } from "@/api/order";
@@ -119,7 +119,7 @@ export default {
       token: null,
       order: {},
       leftTime: "",
-      formUrl: "http://localhost:8086/order/alipay/web?id=",
+      formUrl: "http://159.75.234.20:8086/order/alipay/web?id=",
     };
   },
   created() {

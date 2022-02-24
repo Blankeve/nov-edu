@@ -1,8 +1,6 @@
 <template>
-  
-    
-    <client-only>
-      <div id="aCoursesList">
+  <client-only>
+    <div id="aCoursesList">
       <!-- 网校课程 开始 -->
       <div>
         <section class="container">
@@ -156,7 +154,7 @@
             </article>
           </div>
 
-            <header class="comm-title">
+          <header class="comm-title">
             <h2 class="tac">
               <span class="c-333">最多人购买课程</span>
             </h2>
@@ -165,7 +163,7 @@
             <article class="comm-course-list">
               <ul class="of" id="bna">
                 <li v-for="course in courses3" :key="course.id">
-                  <div  class="cc-l-wrap">
+                  <div class="cc-l-wrap">
                     <section class="course-img">
                       <img
                         :src="course.cover"
@@ -220,7 +218,6 @@
               </nuxt-link>
             </section>
           </div>
-
         </section>
       </div>
       <!-- /网校课程 结束 -->
@@ -277,14 +274,16 @@
       </div>
       <!-- /网校名师 结束 -->
     </div>
-    </client-only>
-    
-
+  </client-only>
 </template>
 
 <script>
 import { getBannerList } from "@/api/banner";
-import { getClientCourseList, getClientCourseApplyList, getClientCourseBoughtList} from "@/api/course";
+import {
+  getClientCourseList,
+  getClientCourseApplyList,
+  getClientCourseBoughtList,
+} from "@/api/course";
 import { getClientTeacherList } from "@/api/teacher";
 
 export default {
@@ -332,13 +331,13 @@ export default {
         }
       });
 
-       getClientCourseApplyList().then((resp) => {
+      getClientCourseApplyList().then((resp) => {
         if (resp.code === 200) {
           this.courses2 = resp.data;
         }
       });
 
-       getClientCourseBoughtList().then((resp) => {
+      getClientCourseBoughtList().then((resp) => {
         if (resp.code === 200) {
           this.courses3 = resp.data;
         }

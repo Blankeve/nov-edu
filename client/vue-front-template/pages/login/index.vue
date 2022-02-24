@@ -64,16 +64,12 @@
         <h6>社交帐号登录</h6>
         <ul>
           <li>
-            <a
-              id="weixin"
-              class="weixin"
-              target="_blank"
-              href="http://qy.free.idcfengye.com/api/ucenter/weixinLogin/login"
+            <a id="weixin" class="weixin" href="#" @click="openTip"
               ><i class="iconfont icon-weixin"
             /></a>
           </li>
           <li>
-            <a id="qq" class="qq" target="_blank" href="#"
+            <a id="qq" class="qq" href="#" @click="openTip"
               ><i class="iconfont icon-qq"
             /></a>
           </li>
@@ -105,6 +101,11 @@ export default {
     this.fetchData();
   },
   methods: {
+    openTip() {
+      this.$alert("该功能敬请期待", "nov在线课堂提示", {
+        confirmButtonText: "确定",
+      });
+    },
     fetchData() {
       let form = this.$route.query.form;
       if (form) {
