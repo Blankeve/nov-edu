@@ -47,5 +47,16 @@ public class AclUserController {
     public BaseResult<List<AclUserRoleVO>> queryUserPage(Page page, AclUserRoleDTO user) {
         return aclUserService.queryUserPage(page, user);
     }
+
+    @PostMapping("/login-bg")
+    public BaseResult loginBg(@RequestBody AclUser user) {
+        return aclUserService.loginBg(user);
+
+    }
+
+    @GetMapping("/info-bg")
+    public BaseResult getInfoBg(String token) {
+        return aclUserService.getInfoBg(token);
+    }
 }
 

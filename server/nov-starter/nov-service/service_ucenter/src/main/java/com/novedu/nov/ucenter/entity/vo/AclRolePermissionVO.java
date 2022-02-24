@@ -41,6 +41,9 @@ public class AclRolePermissionVO implements Serializable {
 
     @NotBlank(message = "权限名称不能为空")
     @ApiModelProperty(value = "权限名称")
+    private String title;
+
+    @ApiModelProperty(value = "权限组件访问名称")
     private String name;
 
     @ApiModelProperty(value = "类型(1:菜单,2:按钮)")

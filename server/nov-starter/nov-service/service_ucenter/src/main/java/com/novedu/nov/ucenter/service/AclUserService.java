@@ -25,4 +25,8 @@ public interface AclUserService extends IService<AclUser> {
     BaseResult getMemberInfo(Long id);
 
     BaseResult<List<AclUserRoleVO>> queryUserPage(Page page, AclUserRoleDTO user);
+
+    BaseResult loginBg(AclUser user);
+
+    BaseResult getInfoBg(String token);
 }

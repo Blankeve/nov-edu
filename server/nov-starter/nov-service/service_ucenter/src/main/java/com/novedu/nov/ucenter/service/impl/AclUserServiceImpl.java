@@ -5,12 +5,12 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.common.config.SysConfigCache;
 import com.novedu.nov.common.util.JwtUtils;
-import com.novedu.nov.ucenter.entity.AclRole;
-import com.novedu.nov.ucenter.entity.AclUser;
-import com.novedu.nov.ucenter.entity.AclUserRole;
+import com.novedu.nov.common.util.TreeUtils;
+import com.novedu.nov.ucenter.entity.*;
 import com.novedu.nov.ucenter.entity.dto.AclUserRoleDTO;
 import com.novedu.nov.ucenter.entity.vo.AclUserRoleVO;
 import com.novedu.nov.ucenter.mapper.AclUserMapper;
+import com.novedu.nov.ucenter.service.AclPermissionService;
 import com.novedu.nov.ucenter.service.AclRoleService;
 import com.novedu.nov.ucenter.service.AclUserRoleService;
 import com.novedu.nov.ucenter.service.AclUserService;
@@ -25,6 +25,7 @@ import org.springframework.util.StringUtils;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -45,6 +46,9 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
 
     @Autowired
     AclRoleService roleService;
+
+    @Autowired
+    AclPermissionService permissionService;
 
     @Override
     public BaseResult login(AclUser ucenterMemberDto) {
@@ -83,7 +87,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         save(ucenterMemberDto);
         AclUserRole userRole = new AclUserRole();
         userRole.setUid(ucenterMemberDto.getId());
-        AclRole role = roleService.query().eq("code", 9).select("id").one();
+        AclRole role = roleService.query().eq("code", RoleType.STUDENT.ordinal()).select("id").one();
         userRole.setRoleId(role.getId());
         userRoleService.save(userRole);
         return BaseResult.success();
@@ -108,5 +112,48 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         if (start != null && end != null && end.getTime() > start.getTime())
             queryWrapper.apply("u.create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and u.create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start, end);
         return BaseResult.success(userMapper.queryPage(page, queryWrapper));
+    }
+
+    @Override
+    public BaseResult loginBg(AclUser user) {
+        String password = DigestUtils.md5DigestAsHex(user.getPassword().getBytes());
+        user = query()
+                .eq("username", user.getUsername())
+                .eq("password", password).one();
+        if (user == null)
+            return BaseResult.error("用户名或密码不正确");
+        AclUserRole userRole = userRoleService.query().eq("uid", user.getId()).one();
+        if (userRole == null) {
+            log.error("uid:" + user.getId() + " 未分配角色");
+            return BaseResult.error("用户名或密码不正确");
+        }
+        Integer code = roleService.query().eq("id", userRole.getRoleId()).one().getCode();
+        if (code != RoleType.ADMIN.ordinal() && code != RoleType.TEACHER.ordinal()) {
+            log.error("uid:" + user.getId() + " 当前无权限登录,code:" + code);
+            return BaseResult.error("用户名或密码不正确");
+        }
+
+        String token = JwtUtils.createToken(user.getId().toString(), user.getUsername(), "", "");
+        return BaseResult.success("登录成功")
+                .mapSet("token", token)
+               ;
+    }
+
+    @Override
+    public BaseResult getInfoBg(String token) {
+        String uid = JwtUtils.getAudience(token).get("uid");
+        AclUser user = getById(uid);
+        if (user == null)
+            return BaseResult.error();
+        AclUserRole userRole = userRoleService.query().eq("uid", user.getId()).one();
+        BaseResult baseResult = permissionService.queryPermissionByRoleId(userRole.getRoleId());
+        List<AclPermission> permissions = null;
+        if (baseResult != null)
+            permissions = (List<AclPermission>) baseResult.getData();
+        permissions= (List<AclPermission>) TreeUtils.toTree(permissions.stream().filter(p->p.getType() == 1).collect(Collectors.toList()),AclPermission.class);
+        return BaseResult.success()
+                .mapSet("username", user.getUsername())
+                .mapSet("avatar", user.getAvatar())
+                .mapSet("menus", permissions);
     }
 }

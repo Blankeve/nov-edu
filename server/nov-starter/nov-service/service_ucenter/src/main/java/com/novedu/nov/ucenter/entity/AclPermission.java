@@ -16,6 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -45,18 +46,22 @@ public class AclPermission implements Serializable {
 
     @NotBlank(message = "权限名称不能为空")
     @ApiModelProperty(value = "权限名称")
+    private String title;
+
+    @ApiModelProperty(value = "权限组件访问名称")
     private String name;
 
+    @NotNull(message = "权限类型不能为空")
     @ApiModelProperty(value = "类型(1:菜单,2:按钮)")
     private Integer type;
 
-    @NotBlank(message = "权限值不能为空")
     @ApiModelProperty(value = "权限值")
     private String value;
 
     @ApiModelProperty(value = "访问路径")
     private String path;
 
+    @NotBlank(message = "组件路径不能为空")
     @ApiModelProperty(value = "组件路径")
     private String component;
 

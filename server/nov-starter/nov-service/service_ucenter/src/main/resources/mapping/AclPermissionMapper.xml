@@ -5,7 +5,13 @@
 
     <select id="queryPermissionByRoleId" parameterType="java.lang.Long" resultType="AclPermission">
         select p.id as id,
+        p.title as title,
         p.name as name,
+        p.component as component,
+        p.path as path,
+        p.icon as icon,
+        p.status  as status,
+        p.type as type,
         p.parent_id as parentId
         from acl_permission p
         where p.is_deleted = 0
