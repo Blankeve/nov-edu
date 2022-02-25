@@ -5,7 +5,10 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.common.api.RoleType;
 import com.novedu.nov.common.util.ExcelUtils;
+import com.novedu.nov.common.util.JwtUtils;
+import com.novedu.nov.edu.client.UserRoleClient;
 import com.novedu.nov.edu.entity.*;
 import com.novedu.nov.edu.entity.dto.EduCourseInfoDTO;
 import com.novedu.nov.edu.mapper.EduCourseApplyMapper;
@@ -23,6 +26,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -63,6 +67,12 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     @Autowired
     EduCommentService commentService;
+
+    @Autowired
+    EduTeacherService teacherService;
+
+    @Autowired
+    UserRoleClient userRoleClient;
 
     private String courseViewCountRedisKey = "course_play_count";
 
@@ -109,7 +119,19 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     }
 
     @Override
-    public BaseResult queryCourseTree(Page page, EduCourseInfoDTO courseInfoDTO) {
+    public BaseResult queryCourseTree(HttpServletRequest request, Page page, EduCourseInfoDTO courseInfoDTO) {
+        String token = request.getHeader("X-Token");
+        String uid = JwtUtils.getAudience(token).get("uid");
+        BaseResult baseResult = userRoleClient.queryUserRole(Long.valueOf(uid));
+        if (baseResult == null) {
+            return BaseResult.success();
+        }
+        Map role = (Map) baseResult.getData();
+        Integer code = (Integer) role.get("code");
+        if (code == RoleType.TEACHER.getCode()) {
+            Long teacherId = teacherService.query().eq("uid", uid).one().getId();
+            courseInfoDTO.setTeacherId(teacherId);
+        }
         QueryWrapper queryWrapper = new QueryWrapper();
         if (StringUtils.hasText(courseInfoDTO.getTitle())) {
             queryWrapper.like("title", courseInfoDTO.getTitle());
@@ -250,7 +272,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     /*统计各个课程的播放量*/
     @Override
     public BaseResult statisticsCoursePlayCount() {
-        Page page = (Page) queryCourseTree(new Page(1, count()), new EduCourseInfoDTO()).getData();
+        Page page = (Page) queryCourseTree(null, new Page(1, count()), new EduCourseInfoDTO()).getData();
         List<EduCourse> courses = page.getRecords();
         String key = "video_play_count";
         boolean hasKey = redisTemplate.hasKey(key);

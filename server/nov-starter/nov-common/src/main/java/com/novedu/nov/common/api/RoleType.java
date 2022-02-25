@@ -1,4 +1,4 @@
-package com.novedu.nov.ucenter.entity;
+package com.novedu.nov.common.api;
 
 /**
  * @author ：juam

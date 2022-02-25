@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author juam
@@ -37,7 +37,7 @@ public class AclRoleServiceImpl extends ServiceImpl<AclRoleMapper, AclRole> impl
 
     @Override
     public BaseResult queryRolePage(Page page) {
-        return BaseResult.success(page(page,null));
+        return BaseResult.success(page(page, null));
     }
 
     @Override
@@ -55,10 +55,18 @@ public class AclRoleServiceImpl extends ServiceImpl<AclRoleMapper, AclRole> impl
     public BaseResult assignRoleByUid(AssignUserRoleForm params) {
         Long uid = params.getUid();
         QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("uid",uid);
+        queryWrapper.eq("uid", uid);
         userRoleService.remove(queryWrapper);
         AclUserRole userRole = new AclUserRole();
-        BeanUtils.copyProperties(params,userRole);
+        BeanUtils.copyProperties(params, userRole);
         return BaseResult.successOrError(userRoleService.save(userRole));
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public BaseResult queryUserRole(Long uid) {
+        AclUserRole userRole = userRoleService.query().eq("uid", uid).one();
+        AclRole role = query().eq("id", userRole.getRoleId()).one();
+        return BaseResult.success(role);
     }
 }

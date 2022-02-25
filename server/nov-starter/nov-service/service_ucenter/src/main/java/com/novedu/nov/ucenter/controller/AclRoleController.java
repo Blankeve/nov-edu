@@ -37,6 +37,13 @@ public class AclRoleController {
         return roleService.removeRole(id);
     }
 
+
+    @ApiOperation("删除")
+    @PostMapping("/by-uid/{uid}")
+    public BaseResult queryUserRole(@PathVariable Long uid) {
+        return roleService.queryUserRole(uid);
+    }
+
     @ApiOperation("分配用户角色")
     @PostMapping("/assign-role-uid")
     public BaseResult assignRoleByUid(@RequestBody AssignUserRoleForm params) {

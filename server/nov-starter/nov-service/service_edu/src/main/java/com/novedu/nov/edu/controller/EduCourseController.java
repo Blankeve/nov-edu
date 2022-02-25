@@ -13,6 +13,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
@@ -89,8 +90,8 @@ public class EduCourseController {
     }
 
     @PostMapping("/tree")
-    public BaseResult queryCourseTree(Page page, EduCourseInfoDTO courseInfoDTO) {
-        return eduCourseService.queryCourseTree(page, courseInfoDTO);
+    public BaseResult queryCourseTree(HttpServletRequest request, Page page, EduCourseInfoDTO courseInfoDTO) {
+        return eduCourseService.queryCourseTree(request,page, courseInfoDTO);
     }
 
     @ApiOperation("前台热门课程列表")

@@ -1,5 +1,6 @@
 package com.novedu.nov.ucenter.service;
 
+import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.ucenter.entity.AclUserRole;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -12,5 +13,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2022-02-22
  */
 public interface AclUserRoleService extends IService<AclUserRole> {
+
 
 }

@@ -3,6 +3,7 @@ package com.novedu.nov.ucenter.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.common.api.RoleType;
 import com.novedu.nov.common.config.SysConfigCache;
 import com.novedu.nov.common.util.JwtUtils;
 import com.novedu.nov.common.util.TreeUtils;
@@ -24,9 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.StringUtils;
 
-import java.security.Permission;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * <p>

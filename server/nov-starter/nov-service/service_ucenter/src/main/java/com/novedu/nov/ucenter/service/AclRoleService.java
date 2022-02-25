@@ -25,4 +25,6 @@ public interface AclRoleService extends IService<AclRole> {
     BaseResult removeRole(Long id);
 
     BaseResult assignRoleByUid(AssignUserRoleForm params);
+
+    BaseResult queryUserRole(Long uid);
 }

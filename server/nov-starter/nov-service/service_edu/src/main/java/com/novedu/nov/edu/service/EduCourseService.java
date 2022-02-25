@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.novedu.nov.edu.entity.dto.EduCourseInfoDTO;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public interface EduCourseService extends IService<EduCourse> {
 
     BaseResult queryCourseDetail(Long id);
 
-    BaseResult queryCourseTree(Page page, EduCourseInfoDTO courseInfoDTO);
+    BaseResult queryCourseTree(HttpServletRequest request,Page page, EduCourseInfoDTO courseInfoDTO);
 
     BaseResult queryCourseList(EduCourseInfoVO courseInfoVO);
 
