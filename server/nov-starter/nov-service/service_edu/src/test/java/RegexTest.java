@@ -31,8 +31,7 @@ public class RegexTest {
     @Autowired
     EduVideoService videoService;
 
-    @Autowired
-    AclUserService userService;
+
 
     @Autowired
     CrmBannerService bannerService;

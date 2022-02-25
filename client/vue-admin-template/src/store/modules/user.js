@@ -2,6 +2,7 @@ import { login, logout, getInfo } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { resetRouter } from '@/router'
 import Layout from '@/layout'
+import { constantRoutes, theLastRoute } from '@/router'
 
 const getDefaultState = () => {
   return {
@@ -15,8 +16,8 @@ const getDefaultState = () => {
 const state = getDefaultState()
 
 
-function importComponent(file) {
-  return () => Promise.resolve(require(`${file}`).default)
+export const importComponent = (view) => {
+  return (resolve) => require([`@/views/${view}`], resolve)   //大坑
 }
 
 /**
@@ -25,29 +26,34 @@ function importComponent(file) {
  * @param roles
  */
 function filterAsyncRouter(asyncRouterMap) {
-  
-  let accessedRouters = asyncRouterMap.filter(route => {
 
-     
-    if (route.component) {
-      if (route.component === 'Layout') {//Layout组件特殊处理
-        route.component = Layout
-      } else {
-        route.component = importComponent(route.component)
+  let accessedRouters = asyncRouterMap.filter(route => {
+    if (route) {
+      if (route.component) {
+        if (route.component === 'Layout') {//Layout组件特殊处理
+          route.component = Layout
+        } else {
+          route.component = importComponent(route.component)
+        }
       }
+      if (route.title) {
+        route.meta = { title: route.title, icon: route.icon }
+      }
+
+      if (route.children && route.children.length) {
+        route.children = filterAsyncRouter(route.children)
+      }
+      else
+        delete route.children;   //大坑
     }
-    if(route.title){
-        route.meta = {title: route.title,icon: route.icon}
-    }
-   
-    if (route.children && route.children.length) {
-      route.children = filterAsyncRouter(route.children)
-    }
+    delete route.id;
+    delete route.parentId;
     return true
   })
 
   return accessedRouters
 }
+
 
 const mutations = {
   RESET_STATE: (state) => {
@@ -63,7 +69,7 @@ const mutations = {
     state.avatar = avatar
   },
   SET_ROUTES: (state, routes) => {
-    state.routes = routes
+    state.routes = constantRoutes.concat(routes).concat(theLastRoute)
   }
 }
 
@@ -97,8 +103,7 @@ const actions = {
 
         commit('SET_NAME', username)
         commit('SET_AVATAR', avatar)
-        let accessedRoutes = []
-        accessedRoutes = filterAsyncRouter(menus)
+        let accessedRoutes = filterAsyncRouter(menus)
         commit('SET_ROUTES', accessedRoutes)
 
         resolve(data)

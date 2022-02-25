@@ -8,6 +8,7 @@ import com.novedu.nov.common.util.JwtUtils;
 import com.novedu.nov.common.util.TreeUtils;
 import com.novedu.nov.ucenter.entity.*;
 import com.novedu.nov.ucenter.entity.dto.AclUserRoleDTO;
+import com.novedu.nov.ucenter.entity.vo.AclPermissionVO;
 import com.novedu.nov.ucenter.entity.vo.AclUserRoleVO;
 import com.novedu.nov.ucenter.mapper.AclUserMapper;
 import com.novedu.nov.ucenter.service.AclPermissionService;
@@ -15,6 +16,7 @@ import com.novedu.nov.ucenter.service.AclRoleService;
 import com.novedu.nov.ucenter.service.AclUserRoleService;
 import com.novedu.nov.ucenter.service.AclUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -22,9 +24,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.StringUtils;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.security.Permission;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -56,7 +57,13 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         AclUser ucenterMember = query().eq("username", ucenterMemberDto.getUsername())
                 .eq("password", password).one();
         if (ucenterMember == null) {
-            return BaseResult.error();
+            return BaseResult.error("用户名或密码不正确");
+        }
+        AclUserRole userRole = userRoleService.query().eq("uid", ucenterMember.getId()).one();
+        AclRole role = roleService.query().eq("id",userRole.getRoleId()).one();
+        if(role == null || role.getCode() != RoleType.STUDENT.getCode()){
+            log.error("uid:" + ucenterMember.getId() + " 当前无权限登录,code:" + role.getCode());
+            return BaseResult.error("用户名或密码不正确");
         }
         String token = JwtUtils.createToken(ucenterMember.getId().toString(), ucenterMember.getUsername(), ucenterMember.getNickname(), ucenterMember.getAvatar());
         return BaseResult.success().mapSet("access_token", token);
@@ -87,7 +94,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         save(ucenterMemberDto);
         AclUserRole userRole = new AclUserRole();
         userRole.setUid(ucenterMemberDto.getId());
-        AclRole role = roleService.query().eq("code", RoleType.STUDENT.ordinal()).select("id").one();
+        AclRole role = roleService.query().eq("code", RoleType.STUDENT.getCode()).select("id").one();
         userRole.setRoleId(role.getId());
         userRoleService.save(userRole);
         return BaseResult.success();
@@ -128,7 +135,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
             return BaseResult.error("用户名或密码不正确");
         }
         Integer code = roleService.query().eq("id", userRole.getRoleId()).one().getCode();
-        if (code != RoleType.ADMIN.ordinal() && code != RoleType.TEACHER.ordinal()) {
+        if (code != RoleType.ADMIN.getCode() && code != RoleType.TEACHER.getCode()) {
             log.error("uid:" + user.getId() + " 当前无权限登录,code:" + code);
             return BaseResult.error("用户名或密码不正确");
         }
@@ -150,10 +157,26 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         List<AclPermission> permissions = null;
         if (baseResult != null)
             permissions = (List<AclPermission>) baseResult.getData();
-        permissions= (List<AclPermission>) TreeUtils.toTree(permissions.stream().filter(p->p.getType() == 1).collect(Collectors.toList()),AclPermission.class);
+        List<AclPermissionVO> permissionVOS = new ArrayList<>();
+        for (AclPermission permission : permissions) {
+            if(permission.getType() != 1)
+                continue;
+            AclPermissionVO aclPermissionVO = new AclPermissionVO();
+            BeanUtils.copyProperties(permission,aclPermissionVO);
+            if(permission.getStatus() == 2)
+                aclPermissionVO.setHidden(true);
+            if(StringUtils.hasText(permission.getTitle())){
+                Map map = new HashMap<>();
+                map.put("title",permission.getTitle());
+                map.put("icon",permission.getIcon());
+                aclPermissionVO.setMeta(map);
+            }
+            permissionVOS.add(aclPermissionVO);
+        }
+        permissionVOS= (List<AclPermissionVO>) TreeUtils.toTree(permissionVOS,AclPermissionVO.class);
         return BaseResult.success()
                 .mapSet("username", user.getUsername())
                 .mapSet("avatar", user.getAvatar())
-                .mapSet("menus", permissions);
+                .mapSet("menus", permissionVOS);
     }
 }

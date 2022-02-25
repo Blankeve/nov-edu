@@ -197,7 +197,7 @@ export default {
   },
    methods: {
      handleToDo(){
-        this.todoList = reactive([
+        this.todoList = ([
             {
                 title: "今天要修复100个bug",
                 status: false,

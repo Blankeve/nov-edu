@@ -60,11 +60,13 @@ public class AclPermissionServiceImpl extends ServiceImpl<AclPermissionMapper, A
     @Override
     public BaseResult assignRolePermission(AssignRolePermissionForm params) {
         Long id = params.getId();
+        Long[] checkMenuIds = params.getCheckMenu();
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("role_id", id);
         rolePermissionService.remove(queryWrapper);
+        if(checkMenuIds.length == 0)
+            return BaseResult.success();
         List<AclRolePermission> rolePermissions = new ArrayList<>();
-        Long[] checkMenuIds = params.getCheckMenu();
         for (int i = 0; i < checkMenuIds.length; i++) {
             AclRolePermission rolePermission = new AclRolePermission();
             rolePermission.setRoleId(id);

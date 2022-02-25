@@ -212,11 +212,9 @@ export default {
     },
     //新增分配菜单
     handleSaveMenu() {
-      let checkedMenu = this.$refs.tree.getCheckedNodes();
-      let checkedMenuIds = [];
-      for (let i = 0; i < checkedMenu.length; i++) {
-        checkedMenuIds.push(checkedMenu[i].id);
-      }
+      let checkedMenuIds = this.$refs.tree
+        .getCheckedKeys()
+        .concat(this.$refs.tree.getHalfCheckedKeys());
       this.$confirm("是否要分配该菜单?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
@@ -226,7 +224,7 @@ export default {
         saveRoleSelMenu(obj).then((resp) => {
           if (resp.code === 200) {
             this.$message.success("分配权限成功");
-            this.roleFormVisible = false;
+            this.dialogVisibleMenu = false;
           }
         });
       });
@@ -246,7 +244,16 @@ export default {
                 checkedMenuIds.push(roleMenu[i].id);
               }
             }
-            this.$refs.tree.setCheckedKeys(checkedMenuIds);
+            const arr = [];
+            for (let i = 0; i < checkedMenuIds.length; i++) {
+              if (
+                !this.$refs.tree.getNode(checkedMenuIds[i]).childNodes ||
+                !this.$refs.tree.getNode(checkedMenuIds[i]).childNodes.length
+              ) {
+                arr.push(checkedMenuIds[i]);
+              }
+            }
+            this.$refs.tree.setCheckedKeys(arr);
           });
         }
       });

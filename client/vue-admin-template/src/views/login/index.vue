@@ -66,13 +66,13 @@
 </template>
 
 <script>
-import { validUsername } from "@/utils/validate";
+
 
 export default {
   name: "Login",
   data() {
     const validateUsername = (rule, value, callback) => {
-      if (!validUsername(value)) {
+      if (!(/^\w{5,18}$/.test(value))) {
         callback(new Error("Please enter the correct user name"));
       } else {
         callback();

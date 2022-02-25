@@ -18,4 +18,8 @@ public enum RoleType {
     RoleType(int code) {
         this.code = code;
     }
+
+    public int getCode() {
+        return code;
+    }
 }
