@@ -19,6 +19,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -48,7 +49,7 @@ public class EduChapter implements Serializable {
     @JsonSerialize(using = ToStringSerializer.class)
     private Long courseId;
 
-    @NotNull(message = "章节名称不能为空")
+    @NotEmpty(message = "章节名称不能为空")
     @ApiModelProperty(value = "章节名称")
     private String title;
 

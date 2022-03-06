@@ -15,6 +15,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.validation.constraints.NotEmpty;
+
 /**
  * <p>
  *
@@ -34,12 +36,15 @@ public class SysConfig implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
+    @NotEmpty(message = "配置键不能为空")
     @ApiModelProperty(value = "配置键")
     private String configKey;
 
+    @NotEmpty(message = "配置值不能为空")
     @ApiModelProperty(value = "配置值")
     private String configValue;
 
+    @NotEmpty(message = "配置名称不能为空")
     @ApiModelProperty(value = "配置名称")
     private String configName;
 

@@ -48,7 +48,7 @@ public class EduVideo implements Serializable {
     @ApiModelProperty(value = "章节ID")
     private Long chapterId;
 
-    @NotNull(message = "小节标题不能为空")
+    @NotEmpty(message = "小节标题不能为空")
     @ApiModelProperty(value = "节点名称")
     private String title;
 

@@ -5,7 +5,7 @@
         <el-input v-model="form.nickname" placeholder="用户昵称"></el-input>
       </el-form-item>
 
-      <el-form-item label="课程讲师">
+      <el-form-item v-if="code !== 5" label="课程讲师">
         <el-select v-model="form.teacherId" placeholder="请选择讲师">
           <el-option label="所有讲师" key="" value=""> </el-option>
           <el-option
@@ -44,11 +44,13 @@
         </el-date-picker>
       </el-form-item>
 
-      <el-form-item>
-        <el-button type="primary" @click="searchForm">查询</el-button>
-        <el-button @click="resetForm('form')">重置</el-button>
-        <el-button type="success" @click="exportOrderPage">导出当前</el-button>
-        <el-button type="success" @click="exportAllOrder">导出所有</el-button>
+<el-form-item>
+        <el-button type="primary" icon="el-icon-search" @click="searchForm">查询</el-button>
+        <el-button type="danger" icon="el-icon-refresh-left" @click="resetForm('form')">重置</el-button>
+        <el-button type="success" icon="el-icon-download" @click="exportOrderPage"
+          >导出当前</el-button
+        >
+        <el-button type="success" icon="el-icon-download" @click="exportAllOrder">导出所有</el-button>
       </el-form-item>
     </el-form>
 
@@ -72,6 +74,12 @@
         </template>
       </el-table-column>
 
+      <el-table-column v-if="code !== 5" label="用户名" align="center">
+        <template slot-scope="scope">
+          {{ scope.row.username }}
+        </template>
+      </el-table-column>
+
       <el-table-column label="用户手机" align="center">
         <template slot-scope="scope">
           {{ scope.row.mobile }}
@@ -90,21 +98,15 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="课程价格" width="200px" align="center">
+      <el-table-column label="课程价格" align="center">
         <template slot-scope="scope">
           {{ scope.row.totalFee }}
         </template>
       </el-table-column>
 
-      <el-table-column label="支付状态" width="200px" align="center">
+      <el-table-column label="支付状态" align="center">
         <template slot-scope="scope">
           {{ scope.row.status === 1 ? "已支付" : "未支付" }}
-        </template>
-      </el-table-column>
-
-      <el-table-column label="支付方式" width="200px" align="center">
-        <template slot-scope="scope" v-if="scope.row.status === 1">
-          {{ scope.row.payType === 1 ? "微信支付" : "支付宝" }}
         </template>
       </el-table-column>
 
@@ -123,7 +125,7 @@
             "
             @onConfirm="handleDelete(scope.$index, scope.row.id)"
           >
-            <el-button slot="reference" type="danger">删除</el-button>
+            <el-button icon="el-icon-delete" slot="reference" type="danger">删除</el-button>
           </el-popconfirm>
         </template>
       </el-table-column>
@@ -154,7 +156,12 @@ import {
   exportPage,
 } from "@/api/order";
 import { exportExcel } from "@/utils/excel";
+import { mapGetters } from "vuex";
+
 export default {
+  computed: {
+    ...mapGetters(["sidebar", "avatar", "name", "role", "code"]),
+  },
   filters: {
     statusFilter(status) {
       const statusMap = {

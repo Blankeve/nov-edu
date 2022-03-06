@@ -1,6 +1,7 @@
 package com.novedu.nov.order.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.order.entity.TradeOrder;
@@ -37,12 +38,12 @@ public class TradeOrderController {
 
     @PostMapping("/export")
     public void exportCoursePage(HttpServletResponse response, Page page, TradeOrder order) {
-        tradeOrderService.exportOrderPage(response,page, order);
+        tradeOrderService.exportOrderPage(response, page, order);
     }
 
     @GetMapping("/export-all")
-    public void exportAll(HttpServletResponse response,TradeOrder order) {
-        tradeOrderService.exportAll(response,order);
+    public void exportAll(HttpServletResponse response, TradeOrder order) {
+        tradeOrderService.exportAll(response, order);
     }
 
     @ApiOperation("查询订单")
@@ -51,10 +52,20 @@ public class TradeOrderController {
         return tradeOrderService.queryOrderById(id);
     }
 
+    @ApiOperation("查询成交订单数量")
+    @PostMapping("/count/{teacherId}")
+    public BaseResult queryOrderCount(@PathVariable Long teacherId) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        if (teacherId != null && teacherId != 0)
+            queryWrapper.eq("id", teacherId);
+        queryWrapper.eq("status", 1);
+        return BaseResult.success(tradeOrderService.count(queryWrapper));
+    }
+
     @ApiOperation("查询用户是否已经下单")
     @PostMapping("/hasbuy/{id}")
     public BaseResult queryOrderByUidAndCourseId(HttpServletRequest request, @PathVariable Long id) {
-        return tradeOrderService.queryOrderByUidAndCourseId(request,id);
+        return tradeOrderService.queryOrderByUidAndCourseId(request, id);
     }
 
     @PostMapping("/page")

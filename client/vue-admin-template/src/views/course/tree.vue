@@ -12,7 +12,7 @@
           :props="{ expandTrigger: 'hover', label: 'title', value: 'id' }"
         ></el-cascader>
       </el-form-item>
-      <el-form-item label="课程讲师">
+      <el-form-item v-if="code !== 5" label="课程讲师">
         <el-select v-model="form.teacherId" placeholder="请选择讲师">
           <el-option label="所有讲师" key="" value=""> </el-option>
           <el-option
@@ -47,8 +47,15 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="searchForm">查询</el-button>
-        <el-button @click="resetForm('form')">重置</el-button>
+        <el-button type="primary" icon="el-icon-search" @click="searchForm"
+          >查询</el-button
+        >
+        <el-button
+          type="danger"
+          icon="el-icon-refresh-left"
+          @click="resetForm('form')"
+          >重置</el-button
+        >
       </el-form-item>
 
       <el-form-item label="关键字过滤">
@@ -165,12 +172,16 @@
       :close-on-click-modal="false"
       center=""
     >
-      <el-form :model="form" :label-width="formLabelWidth">
-        <el-form-item label="章节名称">
+      <el-form
+        :model="chapter"
+        :rules="chapterFormRules"
+        :label-width="formLabelWidth"
+      >
+        <el-form-item prop="title" label="章节名称">
           <el-input v-model="chapter.title"></el-input>
         </el-form-item>
 
-        <el-form-item label="当前章节">
+        <el-form-item prop="sort" label="当前章节">
           <el-input-number
             v-model="chapter.sort"
             :min="1"
@@ -191,12 +202,16 @@
       :close-on-click-modal="false"
       center=""
     >
-      <el-form :model="form" :label-width="formLabelWidth">
-        <el-form-item label="小节名称">
+      <el-form
+        :model="video"
+        :rules="videoFormRules"
+        :label-width="formLabelWidth"
+      >
+        <el-form-item prop="title" label="小节名称">
           <el-input v-model="video.title"></el-input>
         </el-form-item>
 
-        <el-form-item v-show="video != {}" label="当前小节">
+        <el-form-item prop="sort" v-show="video != {}" label="当前小节">
           <el-input-number
             v-model="video.sort"
             :min="1"
@@ -205,7 +220,7 @@
           ></el-input-number>
         </el-form-item>
 
-        <el-form-item label="是否收费">
+        <el-form-item prop="isFree" label="是否收费">
           <el-radio-group v-model="video.isFree">
             <el-radio-button label="1">免费</el-radio-button>
             <el-radio-button label="0">付费</el-radio-button>
@@ -261,8 +276,12 @@ import { save, removeChapterById } from "@/api/chapter";
 import { saveVideo, removeVideoById } from "@/api/video";
 import { getAll } from "@/api/teacher";
 import { getList } from "@/api/subject";
+import { mapGetters } from "vuex";
 
 export default {
+  computed: {
+    ...mapGetters(["sidebar", "avatar", "name", "role", "code"]),
+  },
   watch: {
     filterText(val) {
       this.$refs.tree.filter(val);
@@ -294,12 +313,48 @@ export default {
       video: {
         title: "",
         chapterId: null,
-        isFree: "1",
+        isFree: 1,
         sort: null,
         videoSourcePath: "",
         duration: null,
         videoOriginalName: "",
         size: null,
+      },
+      videoFormRules: {
+        title: [
+          { required: true, message: "请输入小节名称", trigger: "blur" },
+          { min: 1, max: 50, message: "长度在 1 到 5 个字符", trigger: "blur" },
+        ],
+        sort: [
+          { required: true, message: "请选择当前小节", trigger: "blur" },
+          {
+            type: "number",
+            message: "长度在 1 到 3 个字符",
+            trigger: "blur",
+          },
+        ],
+        isFree: [
+          { required: true, message: "请设置小节是否收费", trigger: "blur" },
+          {
+            type: "number",
+            message: "长度在 1 到 3 个字符",
+            trigger: "blur",
+          },
+        ],
+      },
+      chapterFormRules: {
+        title: [
+          { required: true, message: "请输入章节名称", trigger: "blur" },
+          { min: 1, max: 50, message: "长度在 1 到 5 个字符", trigger: "blur" },
+        ],
+        sort: [
+          { required: true, message: "请选择当前章节", trigger: "blur" },
+          {
+            type: "number",
+            message: "长度在 1 到 3 个字符",
+            trigger: "blur",
+          },
+        ],
       },
       pickerOptions: {
         shortcuts: [
@@ -484,6 +539,7 @@ export default {
         this.chapterFormVisible = true;
       } else if (data.courseId) {
         this.video = {};
+        this.video.isFree = 1;
         this.video.chapterId = data.id;
         this.videoFormTitle = "添加小节";
         this.videoFormVisible = true;

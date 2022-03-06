@@ -25,6 +25,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -76,9 +78,14 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     private String courseViewCountRedisKey = "course_play_count";
 
+    private boolean needToken = true;
+
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public BaseResult saveCourse(EduCourseInfoDTO courseInfoDTO) {
+        if(courseInfoDTO.getSubjectId() == null || courseInfoDTO.getSubjectId().length < 2){
+            return BaseResult.error("课程分类不能为空");
+        }
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("teacher_id", courseInfoDTO.getTeacherId());
         queryWrapper.eq("title", courseInfoDTO.getTitle());
@@ -118,20 +125,26 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         return BaseResult.success(courseInfoVO);
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public BaseResult queryCourseTree(HttpServletRequest request, Page page, EduCourseInfoDTO courseInfoDTO) {
-        String token = request.getHeader("X-Token");
-        String uid = JwtUtils.getAudience(token).get("uid");
-        BaseResult baseResult = userRoleClient.queryUserRole(Long.valueOf(uid));
-        if (baseResult == null) {
-            return BaseResult.success();
+    public BaseResult queryCourseTree(Page page, EduCourseInfoDTO courseInfoDTO) {
+
+        if(needToken){
+            HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
+            String token = request.getHeader("X-Token");
+            String uid = JwtUtils.getAudience(token).get("uid");
+            BaseResult baseResult = userRoleClient.queryUserRole(Long.valueOf(uid));
+            if (baseResult == null) {
+                return BaseResult.success();
+            }
+            Map role = (Map) baseResult.getData();
+            Integer code = (Integer) role.get("code");
+            if (code == RoleType.TEACHER.getCode()) {
+                Long teacherId = teacherService.query().eq("uid", uid).one().getId();
+                courseInfoDTO.setTeacherId(teacherId);
+            }
         }
-        Map role = (Map) baseResult.getData();
-        Integer code = (Integer) role.get("code");
-        if (code == RoleType.TEACHER.getCode()) {
-            Long teacherId = teacherService.query().eq("uid", uid).one().getId();
-            courseInfoDTO.setTeacherId(teacherId);
-        }
+        needToken = true;
         QueryWrapper queryWrapper = new QueryWrapper();
         if (StringUtils.hasText(courseInfoDTO.getTitle())) {
             queryWrapper.like("title", courseInfoDTO.getTitle());
@@ -157,8 +170,32 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         return BaseResult.success(courseMapper.queryCourseTree(page, queryWrapper));
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public BaseResult queryClientCourseTree(EduCourseInfoDTO courseInfoDTO) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        if (courseInfoDTO.getId() != null) {
+            queryWrapper.eq("c1.id", courseInfoDTO.getId());
+        }
+        return BaseResult.success(courseMapper.queryCourseTree(new Page(1,1), queryWrapper));
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public BaseResult queryCourseList(EduCourseInfoVO courseInfoVO) {
+        HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
+        String token = request.getHeader("X-Token");
+        String uid = JwtUtils.getAudience(token).get("uid");
+        BaseResult baseResult = userRoleClient.queryUserRole(Long.valueOf(uid));
+        if (baseResult == null) {
+            return BaseResult.success();
+        }
+        Map role = (Map) baseResult.getData();
+        Integer code = (Integer) role.get("code");
+        if (code == RoleType.TEACHER.getCode()) {
+            Long teacherId = teacherService.query().eq("uid", uid).one().getId();
+            return BaseResult.success(query().eq("teacher_id", teacherId).list());
+        }
         return BaseResult.success(list());
     }
 
@@ -219,10 +256,32 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     @Override
     public BaseResult<List<EduCourse>> getClientCourseList() {
-        List<EduCourse> courses = query().eq("status", 1).orderByDesc("view_count").last("limit 8").list();
+        List<EduCourse> courses1 = query().eq("status", 1).orderByDesc("view_count").last("limit 8").list();
+        setCourseCommentCount(courses1);
+        List<EduCourse> courses2 = query().eq("status", 1).orderByDesc("apply_count").last("limit 8").list();
+        setCourseCommentCount(courses2);
+        List<EduCourse> courses3 = query().eq("status", 1).gt("price", 0).orderByDesc("buy_count").last("limit 8").list();
+        setCourseCommentCount(courses3);
+        return BaseResult.success()
+                .mapSet("c1", courses1)
+                .mapSet("c2", courses2)
+                .mapSet("c3", courses3);
+    }
+
+    @Override
+    public BaseResult<List<EduCourse>> getClientApplyCourseList() {
+        List<EduCourse> courses = query().eq("status", 1).orderByDesc("apply_count").last("limit 8").list();
         setCourseCommentCount(courses);
         return BaseResult.success(courses);
     }
+
+    @Override
+    public BaseResult<List<EduCourse>> getClientBoughtCourseList() {
+        List<EduCourse> courses = query().eq("status", 1).gt("price", 0).orderByDesc("buy_count").last("limit 8").list();
+        setCourseCommentCount(courses);
+        return BaseResult.success(courses);
+    }
+
 
     @Override
     public BaseResult queryClientCoursePage(Page page, EduCourseInfoDTO courseInfoDTO) {
@@ -272,7 +331,8 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     /*统计各个课程的播放量*/
     @Override
     public BaseResult statisticsCoursePlayCount() {
-        Page page = (Page) queryCourseTree(null, new Page(1, count()), new EduCourseInfoDTO()).getData();
+        needToken = false;
+        Page page = (Page) queryCourseTree(new Page(1, count()), new EduCourseInfoDTO()).getData();
         List<EduCourse> courses = page.getRecords();
         String key = "video_play_count";
         boolean hasKey = redisTemplate.hasKey(key);
@@ -301,20 +361,6 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
             }
         }
         return BaseResult.success();
-    }
-
-    @Override
-    public BaseResult<List<EduCourse>> getClientApplyCourseList() {
-        List<EduCourse> courses = query().eq("status", 1).orderByDesc("apply_count").last("limit 8").list();
-        setCourseCommentCount(courses);
-        return BaseResult.success(courses);
-    }
-
-    @Override
-    public BaseResult<List<EduCourse>> getClientBoughtCourseList() {
-        List<EduCourse> courses = query().eq("status", 1).gt("price", 0).orderByDesc("buy_count").last("limit 8").list();
-        setCourseCommentCount(courses);
-        return BaseResult.success(courses);
     }
 
     @Override

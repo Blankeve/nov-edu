@@ -6,8 +6,13 @@
       }}小节
     </h2>
     <div class="myFrm">
-      <el-form :label-position="labelPosition" label-width="80px">
-        <el-form-item label="小节名称">
+      <el-form
+        :model="video"
+        :rules="videoFormRules"
+        :label-position="labelPosition"
+        label-width="80px"
+      >
+        <el-form-item prop="title" label="小节名称">
           <el-input v-model="video.title"></el-input>
         </el-form-item>
 
@@ -61,7 +66,7 @@
           </el-select>
         </el-form-item>
 
-        <el-form-item label="当前小节">
+        <el-form-item prop="sort" label="当前小节">
           <el-input-number
             v-model="video.sort"
             :min="1"
@@ -70,7 +75,7 @@
           ></el-input-number>
         </el-form-item>
 
-        <el-form-item label="是否收费">
+        <el-form-item prop="isFree" label="是否收费">
           <el-radio-group v-model="video.isFree">
             <el-radio-button label="1">免费</el-radio-button>
             <el-radio-button label="0">付费</el-radio-button>
@@ -111,7 +116,7 @@
         </el-form-item>
       </el-form>
       <br />
-      <el-button type="primary" @click="submitForm"
+      <el-button icon="el-icon-check" type="primary" @click="submitForm"
         >{{
           this.$route.query.video && !this.$route.query.chapter
             ? "编辑"
@@ -142,6 +147,28 @@ export default {
         duration: null,
         videoOriginalName: "",
         size: null,
+      },
+      videoFormRules: {
+        title: [
+          { required: true, message: "请输入小节名称", trigger: "blur" },
+          { min: 1, max: 50, message: "长度在 1 到 5 个字符", trigger: "blur" },
+        ],
+        sort: [
+          { required: true, message: "请选择当前小节", trigger: "blur" },
+          {
+            type: "number",
+            message: "长度在 1 到 3 个字符",
+            trigger: "blur",
+          },
+        ],
+        isFree: [
+          { required: true, message: "请设置小节是否收费", trigger: "blur" },
+          {
+            type: "number",
+            message: "长度在 1 到 3 个字符",
+            trigger: "blur",
+          },
+        ],
       },
       teachers: [],
       chapters: [],

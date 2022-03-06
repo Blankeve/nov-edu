@@ -15,12 +15,12 @@
             <nuxt-link to="/course" tag="li" active-class="current">
               <a>课程</a>
             </nuxt-link>
-            <nuxt-link to="/" tag="li">
+            <!-- <nuxt-link to="/" tag="li">
               <a @click="openTip">公告</a>
-            </nuxt-link>
+            </nuxt-link> -->
           </ul>
           <ul class="h-r-login">
-            <li v-show="!loginInfo.id" id="no-login">
+            <li v-show="!loginInfo.nickname" id="no-login">
               |
               <nuxt-link to="/login">
                 <em class="icon18 login-icon">&nbsp;</em>
@@ -31,13 +31,13 @@
                 <span class="vam ml5">注册</span></nuxt-link
               >
             </li>
-            <li v-show="loginInfo.id" id="is-login-one" class="mr10">
+            <li v-show="loginInfo.nickname" id="is-login-one" class="mr10">
               <a id="headerMsgCountId" href="#" title="消息">
                 <em class="icon18 news-icon">&nbsp;</em>
               </a>
               <q class="red-point" style="display: none">&nbsp;</q>
             </li>
-            <li v-show="loginInfo.id" id="is-login-two" class="h-r-user">
+            <li v-show="loginInfo.nickname" id="is-login-two" class="h-r-user">
               <a title>
                 <client-only>
                   <img
@@ -145,7 +145,7 @@ import "~/assets/css/swiper-3.3.1.min.css";
 import "~/assets/css/pages-weixinpay.css";
 
 import jwtDecode from "jwt-decode";
-import { getToken, removeToken } from "@/utils/auth";
+import { getInfo, removeInfo, removeToken } from "@/utils/auth";
 export default {
   data() {
     return {
@@ -181,20 +181,18 @@ export default {
       });
     },
     fetchData() {
-      const token = getToken();
-      if (token) {
-        const loginInfo = jwtDecode(token);
-        if (loginInfo) {
-          this.loginInfo.id = loginInfo.uid;
-          this.loginInfo.username = loginInfo.username;
-          this.loginInfo.nickname = loginInfo.nickname;
-          this.loginInfo.avatar = loginInfo.avatar;
-        }
+      let loginInfo = getInfo();
+      if (typeof loginInfo == "string" && loginInfo.length > 0) {
+        loginInfo = JSON.parse(loginInfo);
+      }
+      if (loginInfo) {
+        this.loginInfo.nickname = loginInfo.nickname;
+        this.loginInfo.avatar = loginInfo.avatar;
       }
     },
     logout() {
       removeToken();
-      this.loginInfo = {};
+      removeInfo();
     },
   },
 };

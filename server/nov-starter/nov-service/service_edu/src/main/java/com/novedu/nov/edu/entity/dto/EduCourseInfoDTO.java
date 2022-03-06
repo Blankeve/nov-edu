@@ -11,6 +11,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -33,6 +35,7 @@ public class EduCourseInfoDTO {
     @TableId(value = "id", type = IdType.NONE)
     private Long id;
 
+    @NotNull(message = "课程讲师不能为空")
     @JsonSerialize(using = ToStringSerializer.class)
     @ApiModelProperty(value = "课程讲师ID")
     private Long teacherId;
@@ -44,15 +47,19 @@ public class EduCourseInfoDTO {
 
     private Integer orderFieldValue;
 
+    @NotEmpty(message = "课程标题不能为空")
     @ApiModelProperty(value = "课程标题")
     private String title;
 
+    @NotNull(message = "课程销售价格不能为空")
     @ApiModelProperty(value = "课程销售价格，设置为0则可免费观看")
     private BigDecimal price;
 
+    @NotNull(message = "总课时不能为空")
     @ApiModelProperty(value = "总课时")
     private Integer lessonNum;
 
+    @NotEmpty(message = "课程封面图片路径不能为空")
     @ApiModelProperty(value = "课程封面图片路径")
     private String cover;
 
@@ -71,6 +78,7 @@ public class EduCourseInfoDTO {
     @ApiModelProperty(value = "逻辑删除 1删除 0未删除")
     private Integer isDeleted;
 
+    @NotEmpty(message = "课程简介不能为空")
     @ApiModelProperty(value = "课程简介")
     private String description;
 

@@ -5,6 +5,7 @@ import com.novedu.nov.edu.entity.EduSubject;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Map;
@@ -30,4 +31,10 @@ public interface EduSubjectService extends IService<EduSubject> {
     BaseResult exportSubjects(HttpServletResponse response);
 
     BaseResult updateSubjects(Map<String, List<EduSubject>> eduSubjects);
+
+    BaseResult getDashBoardInfo(HttpServletRequest request);
+
+    BaseResult saveOrUpdateSubject(EduSubject subject);
+
+    BaseResult removeSubject(Integer id);
 }

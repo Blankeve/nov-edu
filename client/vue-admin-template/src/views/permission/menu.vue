@@ -106,8 +106,7 @@
 
           <el-form-item label="权限状态">
             <el-radio-group v-model="form.status">
-              <el-radio-button label="0">停用</el-radio-button>
-              <el-radio-button label="1">启用</el-radio-button>
+              <el-radio-button label="1">显示</el-radio-button>
               <el-radio-button label="2">隐藏</el-radio-button>
             </el-radio-group>
           </el-form-item>
@@ -368,7 +367,7 @@ export default {
   background-size: 25px;
 }
 
-.el-tree-node__expand-icon.is-leaf::before {
+.menu-tree .el-tree-node__expand-icon.is-leaf::before {
   background: none;
   content: "";
   display: block;
@@ -378,7 +377,7 @@ export default {
   background-size: 25px;
 }
 
-.top-node-icon {
+.menu-tree .top-node-icon {
   background: url("../../icons/png/html.png") no-repeat;
   content: "";
   display: block;
@@ -388,7 +387,7 @@ export default {
   background-size: 25px;
 }
 
-.leaf-node-icon {
+.menu-tree .leaf-node-icon {
   background: url("../../icons/png/hand.png") no-repeat;
   content: "";
   display: block;

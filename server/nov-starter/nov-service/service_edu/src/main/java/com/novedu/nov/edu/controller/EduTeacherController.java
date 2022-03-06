@@ -1,6 +1,7 @@
 package com.novedu.nov.edu.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.CrmBanner;
@@ -73,6 +74,16 @@ public class EduTeacherController {
     @DeleteMapping("/remove/{id}")
     public BaseResult removeTeacher(@PathVariable String id) {
         return eduTeacherService.removeTeacher(id);
+    }
+
+    @PostMapping("/bind/{uid}")
+    public BaseResult queryTeacherIdByUid(@PathVariable String uid) {
+        return BaseResult.success(eduTeacherService.query().eq("uid", uid).one().getId());
+    }
+
+    @PostMapping("/clear-bind/{uid}")
+    public BaseResult clearBind(@PathVariable String uid) {
+        return eduTeacherService.clearBind(uid);
     }
 
     @PostMapping("/save")

@@ -7,6 +7,13 @@ export function getList() {
   })
 }
 
+export function getDashboardInfo() {
+  return request({
+    url: '/edu/subject/dashboard-info',
+    method: 'get',
+  })
+}
+
 export function getParentList(params) {
   return request({
     url: `/edu/subject/list-parent/${params}`,
@@ -19,5 +26,20 @@ export function update(data) {
     url: '/edu/subject/update',
     method: 'put',
     data
+  })
+}
+
+export function saveOrUpdate(data) {
+  return request({
+    url: '/edu/subject/save-update',
+    method: 'post',
+    data
+  })
+}
+
+export function removeSubjectById(params) {
+  return request({
+    url: `/edu/subject/remove/${params}`,
+    method: 'delete',
   })
 }

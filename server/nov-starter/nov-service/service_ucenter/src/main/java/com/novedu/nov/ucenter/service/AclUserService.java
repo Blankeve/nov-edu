@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.novedu.nov.ucenter.entity.dto.AclUserRoleDTO;
 import com.novedu.nov.ucenter.entity.vo.AclUserRoleVO;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -29,4 +30,14 @@ public interface AclUserService extends IService<AclUser> {
     BaseResult loginBg(AclUser user);
 
     BaseResult getInfoBg(String token);
+
+    BaseResult resetPwd(Long uid);
+
+    void exportUserPage(HttpServletResponse response, Page page, AclUserRoleDTO user);
+
+    void exportAll(HttpServletResponse response);
+
+    BaseResult getDashBoardInfo();
+
+    BaseResult syncRegisterLoginCount();
 }

@@ -47,10 +47,27 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="searchForm">查询</el-button>
-        <el-button @click="resetForm('form')">重置</el-button>
-        <el-button type="success" @click="exportCoursePage">导出当前</el-button>
-        <el-button type="success" @click="exportAllCourse">导出所有</el-button>
+        <el-button type="primary" icon="el-icon-search" @click="searchForm"
+          >查询</el-button
+        >
+        <el-button
+          type="danger"
+          icon="el-icon-refresh-left"
+          @click="resetForm('form')"
+          >重置</el-button
+        >
+        <el-button
+          type="success"
+          icon="el-icon-download"
+          @click="exportCoursePage"
+          >导出当前</el-button
+        >
+        <el-button
+          type="success"
+          icon="el-icon-download"
+          @click="exportAllCourse"
+          >导出所有</el-button
+        >
       </el-form-item>
     </el-form>
 
@@ -186,9 +203,9 @@
         </template>
       </el-table-column>
 
-      <el-table-column fixed="right" align="center" label="操作" width="170">
+      <el-table-column fixed="right" align="center" label="操作" width="250">
         <template slot-scope="scope">
-          <el-button @click="handleEdit(scope.row.courseId)">编辑</el-button>
+          <el-button @click="handleEdit(scope.row.courseId)" icon="el-icon-edit">编辑</el-button>
           <el-popconfirm
             :title="
               (scope.row.chapterQty > 0 ? '该课程下章节不为空,' : '') +
@@ -196,7 +213,7 @@
             "
             @onConfirm="handleDelete(scope.$index, scope.row.courseId)"
           >
-            <el-button slot="reference" type="danger">删除</el-button>
+            <el-button slot="reference" type="danger" icon="el-icon-delete">删除</el-button>
           </el-popconfirm>
 
           <el-button type="text" @click="addChapter(scope.row.courseId)"

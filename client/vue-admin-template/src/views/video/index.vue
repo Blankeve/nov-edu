@@ -41,10 +41,27 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="searchForm">查询</el-button>
-        <el-button @click="resetForm('form')">重置</el-button>
-        <el-button type="success" @click="exportVideoPage">导出当前</el-button>
-        <el-button type="success" @click="exportAllVideo">导出所有</el-button>
+        <el-button type="primary" icon="el-icon-search" @click="searchForm"
+          >查询</el-button
+        >
+        <el-button
+          type="danger"
+          icon="el-icon-refresh-left"
+          @click="resetForm('form')"
+          >重置</el-button
+        >
+        <el-button
+          type="success"
+          icon="el-icon-download"
+          @click="exportVideoPage"
+          >导出当前</el-button
+        >
+        <el-button
+          type="success"
+          icon="el-icon-download"
+          @click="exportAllVideo"
+          >导出所有</el-button
+        >
       </el-form-item>
     </el-form>
 
@@ -144,12 +161,15 @@
           <span>{{ scope.row.videoUpdateTime }}</span>
         </template>
       </el-table-column>
-      <el-table-column fixed="right" align="center" label="操作" width="100">
+      <el-table-column fixed="right" align="center" label="操作" width="220">
         <template slot-scope="scope">
-          <el-button @click="handleEdit(scope.row.videoId)">编辑</el-button>
+          <el-button icon="el-icon-edit" @click="handleEdit(scope.row.videoId)"
+            >编辑</el-button
+          >
 
           <el-button
             type="danger"
+            icon="el-icon-delete"
             @click="handleDelete(scope.$index, scope.row.videoId)"
             >删除</el-button
           >
@@ -332,6 +352,8 @@ export default {
     resetForm(formName) {
       this.$refs[formName].resetFields();
       this.dateRange = [];
+      this.form.chapterId = null;
+      this.form.sort = null;
     },
     searchForm() {
       this.fetchData();

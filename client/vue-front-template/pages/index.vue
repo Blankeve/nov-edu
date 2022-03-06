@@ -273,18 +273,29 @@
         </section>
       </div>
       <!-- /网校名师 结束 -->
+      <el-dialog
+        :title="notice.title"
+        :visible.sync="noticeFormVisible"
+        :close-on-click-modal="false"
+        width="500px"
+        center=""
+      >
+        <span>{{ notice.content }}</span>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="noticeFormVisible = false">我知道了</el-button>
+        </div>
+      </el-dialog>
     </div>
   </client-only>
 </template>
 
 <script>
 import { getBannerList } from "@/api/banner";
-import {
-  getClientCourseList,
-  getClientCourseApplyList,
-  getClientCourseBoughtList,
-} from "@/api/course";
+import { getClientCourseList } from "@/api/course";
 import { getClientTeacherList } from "@/api/teacher";
+import { receiveNotice } from "@/api/notice";
+import jwtDecode from "jwt-decode";
+import { getToken, removeToken } from "@/utils/auth";
 
 export default {
   data() {
@@ -312,10 +323,29 @@ export default {
       courses2: [],
       courses3: [],
       teachers: [],
+      notice: { id: "", title: "", content: "", sendUser: "" },
+      noticeFormVisible: false,
     };
   },
   created() {
     this.fetchData();
+  },
+  mounted() {
+    const token = getToken();
+    let adId = "n_";
+    if (token) {
+      adId += jwtDecode(token).uid;
+    }
+    receiveNotice().then((resp) => {
+      if (resp.code === 200) {
+        this.notice = resp.data;
+        let adValue = localStorage.getItem(adId);
+        if (!adValue || adValue != this.notice.id) {
+          this.noticeFormVisible = true;
+          localStorage.setItem(adId, this.notice.id);
+        }
+      }
+    });
   },
   methods: {
     fetchData() {
@@ -327,19 +357,9 @@ export default {
 
       getClientCourseList().then((resp) => {
         if (resp.code === 200) {
-          this.courses = resp.data;
-        }
-      });
-
-      getClientCourseApplyList().then((resp) => {
-        if (resp.code === 200) {
-          this.courses2 = resp.data;
-        }
-      });
-
-      getClientCourseBoughtList().then((resp) => {
-        if (resp.code === 200) {
-          this.courses3 = resp.data;
+          this.courses = resp.data.c1;
+          this.courses2 = resp.data.c2;
+          this.courses3 = resp.data.c3;
         }
       });
 

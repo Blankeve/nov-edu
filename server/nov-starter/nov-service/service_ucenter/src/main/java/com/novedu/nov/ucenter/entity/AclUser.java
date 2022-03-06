@@ -1,5 +1,6 @@
 package com.novedu.nov.ucenter.entity;
 
+import cn.afterturn.easypoi.excel.annotation.Excel;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
 import java.util.Date;
@@ -75,5 +76,11 @@ public class AclUser implements Serializable {
     @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
     @ApiModelProperty(value = "更新时间")
     private Date updateTime;
+
+    @ApiModelProperty(value = "最后登录时间")
+    private Date lastLoginTime;
+
+    @ApiModelProperty(value = "最后登录ip")
+    private String lastLoginIp;
 
 }

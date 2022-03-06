@@ -3,7 +3,7 @@ package com.novedu.nov.order.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
-import com.novedu.nov.common.api.ResultCode;
+import com.novedu.nov.common.api.RoleType;
 import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.common.util.JwtUtils;
 import com.novedu.nov.order.client.EduClient;
@@ -17,13 +17,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -49,6 +49,8 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
 
     @Autowired
     RedisTemplate redisTemplate;
+
+
 
     @Override
     public BaseResult createOrder(TradeOrder tradeOrder) {
@@ -86,6 +88,21 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
 
     @Override
     public BaseResult queryOrderPage(Page page, TradeOrder order) {
+        HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
+        String token = request.getHeader("X-Token");
+        String uid = JwtUtils.getAudience(token).get("uid");
+        BaseResult baseResult = ucenterClient.queryUserRole(Long.valueOf(uid));
+        if (baseResult == null) {
+            return BaseResult.success();
+        }
+        Map role = (Map) baseResult.getData();
+        Integer code = (Integer) role.get("code");
+        if (code == RoleType.TEACHER.getCode()) {
+            BaseResult baseResult1 = eduClient.queryTeacherIdByUid(uid);
+            if (baseResult1 == null)
+                return BaseResult.success();
+            order.setTeacherId(Long.valueOf(baseResult1.getData().toString()));
+        }
         QueryWrapper queryWrapper = new QueryWrapper();
         if (StringUtils.hasText(order.getNickname()))
             queryWrapper.like("u.nickname", order.getNickname());
@@ -133,8 +150,8 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
     }
 
     @Override
-    public void exportAll(HttpServletResponse response,TradeOrder order) {
-        BaseResult baseResult = queryOrderPage(new Page(1, count()),order);
+    public void exportAll(HttpServletResponse response, TradeOrder order) {
+        BaseResult baseResult = queryOrderPage(new Page(1, count()), order);
         if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
             Page page1 = (Page) baseResult.getData();
             ExcelUtils.exportExcel(page1.getRecords(), "订单信息", "订单信息", TradeOrder.class, "订单信息", response);

@@ -25,7 +25,7 @@ export function save(data) {
 
   export function getTree(params) {
     return request({
-      url: '/edu/course/tree',
+      url: '/edu/course/client-tree',
       method: 'post',
       params
     })

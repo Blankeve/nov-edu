@@ -84,7 +84,7 @@ import "~/assets/css/sign.css";
 import "~/assets/css/iconfont.css";
 import cookie from "js-cookie";
 import { loginMember } from "@/api/login";
-import { setToken } from "@/utils/auth";
+import { setToken, setInfo } from "@/utils/auth";
 export default {
   layout: "sign",
 
@@ -147,6 +147,7 @@ export default {
           let token = resp.data.access_token;
           setToken(token);
           let loginInfo = resp.data.loginInfo;
+          setInfo(JSON.stringify(loginInfo))
           //跳转登录页面
           this.$router.push({
             path: "/",

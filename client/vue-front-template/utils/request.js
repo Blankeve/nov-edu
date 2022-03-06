@@ -2,9 +2,10 @@ import axios from 'axios'
 import { MessageBox, Message } from 'element-ui'
 import { getToken } from '@/utils/auth'
 
+
 // create an axios instance
 const service = axios.create({
-  baseURL: 'http://127.0.0.1:8000', // url = base url + request url
+  baseURL: 'http://159.75.234.20:8000', // url = base url + request url
   // withCredentials: true, // send cookies when cross-domain requests
   timeout: 10000 // request timeout
 })
@@ -52,11 +53,10 @@ service.interceptors.response.use(
       // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
       if (res.code === 403 || res.code === 4031 || res.code === 4032) {
         // to re-login
-        MessageBox.confirm('You have been logged out, you can cancel to stay on this page, or log in again', 'Confirm logout', {
-          confirmButtonText: 'Re-Login',
-          cancelButtonText: 'Cancel',
+        MessageBox.confirm(res.msg, '登录确认', {
           type: 'warning'
         }).then(() => {
+
         })
       }
       return Promise.reject(new Error(res.message || 'Error'))

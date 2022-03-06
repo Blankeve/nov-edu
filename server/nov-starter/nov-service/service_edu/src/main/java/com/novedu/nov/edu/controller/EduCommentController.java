@@ -46,8 +46,8 @@ public class EduCommentController {
     }
 
     @PostMapping("/page")
-    public BaseResult queryCommentPage(Page page, EduUserCommentDTO eduComment) {
-        return eduCommentService.queryCommentPage(page, eduComment);
+    public BaseResult queryCommentPage(HttpServletRequest request,Page page, EduUserCommentDTO eduComment) {
+        return eduCommentService.queryCommentPage(request,page, eduComment);
     }
 
     @PostMapping("/page-client")

@@ -16,6 +16,9 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 /**
  * <p>
  * 课程科目
@@ -32,12 +35,14 @@ public class EduSubject implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "课程类别ID")
-    @TableId(value = "id", type = IdType.INPUT)
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
+    @NotEmpty(message = "类别名称不能为空")
     @ApiModelProperty(value = "类别名称")
     private String title;
 
+    @NotNull(message = "parentId不能为空")
     @ApiModelProperty(value = "父ID")
     private Integer parentId;
 
@@ -51,6 +56,9 @@ public class EduSubject implements Serializable {
     @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
     @ApiModelProperty(value = "更新时间")
     private Date updateTime;
+
+    @ApiModelProperty(value = "逻辑删除 1（true）已删除， 0（false）未删除")
+    private Integer isDeleted;
 
     @TableField(exist = false)
     private List<EduSubject> children;

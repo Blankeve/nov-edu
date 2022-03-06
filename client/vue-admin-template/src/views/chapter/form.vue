@@ -8,8 +8,13 @@
       }}章节
     </h2>
     <div class="myFrm">
-      <el-form :label-position="labelPosition" label-width="80px">
-        <el-form-item label="章节名称">
+      <el-form
+        :model="chapter"
+        :rules="chapterFormRules"
+        :label-position="labelPosition"
+        label-width="80px"
+      >
+        <el-form-item prop="title" label="章节名称">
           <el-input v-model="chapter.title"></el-input>
         </el-form-item>
 
@@ -46,7 +51,7 @@
           </el-select>
         </el-form-item>
 
-        <el-form-item label="当前章节">
+        <el-form-item prop="sort" label="当前章节">
           <el-input-number
             v-model="chapter.sort"
             :min="1"
@@ -56,12 +61,8 @@
         </el-form-item>
       </el-form>
       <br />
-      <el-button type="primary" @click="submitForm"
-        >{{
-          this.$route.query.chapter && !this.$route.query.course
-            ? "编辑"
-            : "添加"
-        }}章节</el-button
+      <el-button icon="el-icon-check" type="primary" @click="submitForm"
+        >保存章节</el-button
       >
     </div>
   </div>
@@ -85,6 +86,20 @@ export default {
       teachers: [],
       teacher: null,
       course: [],
+      chapterFormRules: {
+        title: [
+          { required: true, message: "请输入章节名称", trigger: "blur" },
+          { min: 1, max: 50, message: "长度在 1 到 5 个字符", trigger: "blur" },
+        ],
+        sort: [
+          { required: true, message: "请选择当前章节", trigger: "blur" },
+          {
+            type: "number",
+            message: "长度在 1 到 3 个字符",
+            trigger: "blur",
+          },
+        ],
+      },
     };
   },
   created() {

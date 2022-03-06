@@ -1,20 +1,31 @@
 package com.novedu.nov.edu.service.impl;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.novedu.nov.common.api.BaseResult;
-import com.novedu.nov.common.util.ExcelUtils;
+import com.novedu.nov.common.api.RoleType;
+import com.novedu.nov.common.util.JwtUtils;
 import com.novedu.nov.common.util.TreeUtils;
+import com.novedu.nov.edu.client.OrderClient;
+import com.novedu.nov.edu.client.StatisticsClient;
+import com.novedu.nov.edu.client.UserRoleClient;
+import com.novedu.nov.edu.entity.EduCourse;
 import com.novedu.nov.edu.entity.EduSubject;
+import com.novedu.nov.edu.entity.EduTeacher;
+import com.novedu.nov.edu.entity.vo.DashBoardInfoVO;
 import com.novedu.nov.edu.mapper.EduSubjectMapper;
+import com.novedu.nov.edu.service.EduCourseService;
 import com.novedu.nov.edu.service.EduSubjectService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.novedu.nov.edu.service.EduTeacherService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -28,6 +39,18 @@ import java.util.stream.Collectors;
  */
 @Service
 public class EduSubjectServiceImpl extends ServiceImpl<EduSubjectMapper, EduSubject> implements EduSubjectService {
+
+    @Autowired
+    EduCourseService courseService;
+    @Autowired
+    UserRoleClient userRoleClient;
+    @Autowired
+    EduTeacherService teacherService;
+    @Autowired
+    OrderClient orderClient;
+    @Autowired
+    StatisticsClient statisticsClient;
+
 
     @Override
     public BaseResult<Map> getSubjects() {
@@ -113,5 +136,127 @@ public class EduSubjectServiceImpl extends ServiceImpl<EduSubjectMapper, EduSubj
         return BaseResult.success();
     }
 
+    @Override
+    public BaseResult getDashBoardInfo(HttpServletRequest request) {
+        String token = request.getHeader("X-Token");
+        Map userInfo = JwtUtils.getAudience(token);
+        Long uid = Long.valueOf(userInfo.get("uid").toString());
+        Integer rolecode = Integer.valueOf(userInfo.get("rolecode").toString());
+        DashBoardInfoVO dashBoardInfoVO = new DashBoardInfoVO();
+        Long teacherId = 0l;
+        if (rolecode.equals(RoleType.TEACHER.getCode())) {
+            EduTeacher teacher = teacherService.query().eq("uid", uid).one();
+            teacherId = teacher.getId();
+            dashBoardInfoVO.setTeacherName(teacher.getName());
+        }
+        BaseResult baseResult = orderClient.queryOrderCount(teacherId);
+        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
+            dashBoardInfoVO.setOrderCount((Integer) baseResult.getData());
+        }
+        //1.课程分类详情     当前分类课程数量/所以分类课程数
+        QueryWrapper queryWrapper = new QueryWrapper();
+        if (teacherId != 0) {
+            queryWrapper.eq("teacher_id", teacherId);
+        }
+        queryWrapper.eq("status", 1);
+        queryWrapper.orderByDesc("create_time");
+        List<EduCourse> courses = courseService.list(queryWrapper);
+        dashBoardInfoVO.setCourseCount(courses.size());
+        if (rolecode.equals(RoleType.TEACHER.getCode())) {
+            if (courses.size() > 4)
+                courses = courses.subList(0, 4);
+            dashBoardInfoVO.setRecentAddCourses(courses);
+            return BaseResult.success(dashBoardInfoVO);
+        }
+
+        List<EduSubject> subjects = list();
+        Map subjectRatios = new HashMap();
+        for (EduSubject subject : subjects) {
+            if (subject.getParentId() != null && subject.getParentId() != 0) {
+                int count = 0;
+                for (EduCourse course : courses) {
+                    if (course.getSubjectId().equals(subject.getId())) {
+                        count++;
+                    }
+                }
+                subjectRatios.put(subject.getTitle(), new BigDecimal((float) count / courses.size() * 100).setScale(2, BigDecimal.ROUND_HALF_UP).floatValue());
+            }
+        }
+        List<Map.Entry<String, Float>> list = new ArrayList<Map.Entry<String, Float>>(subjectRatios.entrySet());
+        //根据value排序
+        Collections.sort(list, (o1, o2) -> (int) (o2.getValue() - o1.getValue()));
+
+        if (list.size() > 6)
+            list = list.subList(0, 6);
+        List<Map> mapList = new ArrayList<>();
+        for (Map.Entry<String, Float> stringFloatEntry : list) {
+            Map map = new HashMap();
+            map.put("title", stringFloatEntry.getKey());
+            map.put("value", stringFloatEntry.getValue());
+            mapList.add(map);
+        }
+        dashBoardInfoVO.setSubjectRatios(mapList);
+        if (courses.size() > 4)
+            courses = courses.subList(0, 4);
+        dashBoardInfoVO.setRecentAddCourses(courses);
+
+        return BaseResult.success(dashBoardInfoVO);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public BaseResult saveOrUpdateSubject(EduSubject subject) {
+        List<EduSubject> eduSubjectList = list();
+        List<EduSubject> parents = new ArrayList<>();
+        parents = findParents(eduSubjectList, parents, subject.getParentId());
+        if (parents.size() > 1) {
+            return BaseResult.error("暂时不支持二级以上分类");
+        }
+        return BaseResult.successOrError(saveOrUpdate(subject));
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public BaseResult removeSubject(Integer id) {
+        List<EduSubject> eduSubjectList = list();
+        List<EduSubject> children = new ArrayList<>();
+        List<EduCourse> courses = courseService.list();
+        children = findChildren(eduSubjectList, children, id);
+        if (children.size() > 0) {
+            for (EduSubject child : children) {
+                for (EduCourse course : courses) {
+                    if (course.getSubjectId().equals(child.getId())) {
+                        courseService.removeCourse(course.getId());
+                    }
+                }
+                removeById(child);
+            }
+        }
+        removeById(id);
+        return BaseResult.success();
+    }
+
+    public List<EduSubject> findChildren(List<EduSubject> all, List<EduSubject> children, Integer id) {
+        for (EduSubject eduSubject : all) {
+            if (eduSubject.getParentId().equals(id)) {
+                children.add(eduSubject);
+            }
+        }
+        return children;
+    }
+
+    public List<EduSubject> findParents(List<EduSubject> all, List<EduSubject> parents, Integer id) {
+        for (EduSubject eduSubject : all) {
+            if (eduSubject.getId().equals(id)) {
+                Integer parentId = eduSubject.getParentId();
+                parents.add(eduSubject);
+                if (parentId != null && parentId != 0) {
+                    findParents(all, parents, parentId);
+                } else
+                    return parents;
+            }
+        }
+        return parents;
+    }
 
 }

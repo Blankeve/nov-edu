@@ -2,11 +2,11 @@
   <div class="app-container">
     <el-form :inline="true" ref="form" :model="form">
       <el-form-item>
-        <el-button type="primary" @click="addRole">添加角色</el-button>
-        <el-button type="success" @click="exportTeacherPage"
+        <el-button icon="el-icon-plus" type="primary" @click="addRole">添加角色</el-button>
+        <!-- <el-button type="success" @click="exportTeacherPage"
           >导出当前</el-button
         >
-        <el-button type="success" @click="exportAllTeacher">导出所有</el-button>
+        <el-button type="success" @click="exportAllTeacher">导出所有</el-button> -->
       </el-form-item>
     </el-form>
 
@@ -27,13 +27,13 @@
         </template>
       </el-table-column>
 
-      <el-table-column width="100" label="角色名称" align="center">
+      <el-table-column label="角色名称" align="center">
         <template slot-scope="scope">
           {{ scope.row.name }}
         </template>
       </el-table-column>
 
-      <el-table-column label="角色代码" align="center">
+      <el-table-column width="100"  label="角色编码" align="center">
         <template slot-scope="scope">
           {{ scope.row.code }}
         </template>
@@ -100,16 +100,16 @@
       width="500px"
       center=""
     >
-      <el-form :model="form" label-width="120">
-        <el-form-item label="角色名称">
+      <el-form :model="form" :rules="formRules" label-width="120">
+        <el-form-item prop="name" label="角色名称">
           <el-input v-model="form.name"></el-input>
         </el-form-item>
 
-        <el-form-item label="角色代码">
+        <el-form-item prop="code" label="角色编码">
           <el-input v-model="form.code"></el-input>
         </el-form-item>
 
-        <el-form-item label="角色描述">
+        <el-form-item prop="remark" label="角色描述">
           <el-input v-model="form.remark"></el-input>
         </el-form-item>
       </el-form>
@@ -180,6 +180,20 @@ export default {
         size: 8,
         total: 0,
       },
+         formRules: {
+        name: [
+          { required: true, message: "请输入角色名称", trigger: "blur" },
+          { min: 1, max: 20, message: "长度在 1 到 20 个字符", trigger: "blur" },
+        ],
+        code: [
+          { required: true, message: "请输入角色编码", trigger: "blur" },
+          { min: 1, max: 10, message: "长度在 1 到 10 个字符", trigger: "blur" },
+        ],
+        remark: [
+          { required: true, message: "请输入角色描述", trigger: "blur" },
+          { min: 1, max: 50, message: "长度在 1 到 50 个字符", trigger: "blur" },
+        ],
+      },
       roleFormTitle: "",
       roleFormVisible: false,
       dateRange: [],
@@ -223,7 +237,7 @@ export default {
         let obj = { id: this.roleId, checkMenu: checkedMenuIds };
         saveRoleSelMenu(obj).then((resp) => {
           if (resp.code === 200) {
-            this.$message.success("分配权限成功");
+            this.$message.success("分配成功，刷新网页后生效");
             this.dialogVisibleMenu = false;
           }
         });
@@ -259,6 +273,7 @@ export default {
       });
     },
     addRole() {
+      this.form.id = null;
       this.form.name = "";
       this.form.code = null;
       this.form.remark = "";

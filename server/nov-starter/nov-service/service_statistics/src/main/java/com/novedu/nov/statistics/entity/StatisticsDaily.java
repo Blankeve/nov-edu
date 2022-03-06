@@ -31,9 +31,6 @@ public class StatisticsDaily implements Serializable {
     @TableId(value = "id", type = IdType.NONE)
     private String id;
 
-    @ApiModelProperty(value = "统计日期")
-    private String dateCalculated;
-
     @ApiModelProperty(value = "注册人数")
     private Integer registerNum;
 

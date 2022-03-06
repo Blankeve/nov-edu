@@ -16,6 +16,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -45,31 +46,32 @@ public class EduTeacher implements Serializable {
     private Long uid;
 
     @Excel(name = "讲师姓名", height = 20, width = 30, isImportField = "true_st", orderNum = "2")
-    @NotNull(message = "不能为空")
+    @NotEmpty(message = "讲师姓名不能为空")
     @ApiModelProperty(value = "讲师姓名")
     private String name;
 
     @Excel(name = "讲师简介", height = 20, width = 30, isImportField = "true_st", orderNum = "4")
-    @NotNull(message = "不能为空")
+    @NotEmpty(message = "讲师简介不能为空")
     @ApiModelProperty(value = "讲师简介")
     private String intro;
 
     @Excel(name = "讲师资历", height = 20, width = 30, isImportField = "true_st", orderNum = "3")
-    @NotNull(message = "不能为空")
+    @NotEmpty(message = "讲师资历为空")
     @ApiModelProperty(value = "讲师资历,一句话说明讲师")
     private String career;
 
     @Excel(name = "课程状态", height = 20, width = 30, replace = {"首席讲师_2", "高级讲师_1"}, isImportField = "true_st", orderNum = "5")
-    @NotNull(message = "不能为空")
+    @NotNull(message = "讲师头衔不能为空")
     @ApiModelProperty(value = "头衔 1高级讲师 2首席讲师")
     private Integer level;
 
     @Excel(name = "讲师头像", height = 20, width = 30, isImportField = "true_st", orderNum = "2")
+    @NotEmpty(message = "讲师头像不能为空")
     @ApiModelProperty(value = "讲师头像")
     private String avatar;
 
     @Excel(name = "显示级别", height = 20, width = 30, isImportField = "true_st", orderNum = "6")
-    @NotNull(message = "不能为空")
+    @NotNull(message = "讲师排序不能为空")
     @ApiModelProperty(value = "排序")
     private Integer sort;
 

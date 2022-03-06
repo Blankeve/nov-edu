@@ -1,5 +1,6 @@
 package com.novedu.nov.statistics.service;
 
+import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.statistics.entity.StatisticsDaily;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface StatisticsDailyService extends IService<StatisticsDaily> {
 
+    BaseResult statisticsAWeekUserRegisterAndLoginCount();
 }

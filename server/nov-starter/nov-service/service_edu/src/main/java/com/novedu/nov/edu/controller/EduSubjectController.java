@@ -6,15 +6,19 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduSubject;
+import com.novedu.nov.edu.entity.EduVideo;
 import com.novedu.nov.edu.service.EduSubjectService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -33,6 +37,17 @@ public class EduSubjectController {
     @Autowired
     EduSubjectService eduSubjectService;
 
+    @PostMapping("/save-update")
+    public BaseResult saveOrUpdate(@Validated @RequestBody EduSubject subject) {
+        return eduSubjectService.saveOrUpdateSubject(subject);
+    }
+
+    @ApiOperation("删除")
+    @DeleteMapping("/remove/{id}")
+    public BaseResult removeSubject(@PathVariable Integer id) {
+        return eduSubjectService.removeSubject(id);
+    }
+
     @GetMapping("/list")
     public BaseResult<Map> getSubjects() {
         return eduSubjectService.getSubjects();
@@ -43,6 +58,7 @@ public class EduSubjectController {
         return eduSubjectService.getParentSubjects(id);
     }
 
+    /*该方法有bug，已舍弃*/
     @PutMapping("/update")
     public BaseResult updateSubjects(@RequestBody Map<String, List<EduSubject>> eduSubjects) {
         return eduSubjectService.updateSubjects(eduSubjects);
@@ -52,6 +68,12 @@ public class EduSubjectController {
     @GetMapping("/export")
     public BaseResult exportSubjects(HttpServletResponse response) {
         return eduSubjectService.exportSubjects(response);
+    }
+
+    @ApiOperation("获取仪表盘数据")
+    @GetMapping("/dashboard-info")
+    public BaseResult getDashBoardInfo(HttpServletRequest request ) {
+        return eduSubjectService.getDashBoardInfo(request);
     }
 }
 

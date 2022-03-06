@@ -41,4 +41,6 @@ public interface EduTeacherService extends IService<EduTeacher> {
     BaseResult queryAllAndHadBind(String id);
 
     BaseResult updateBindTeacher(UserBindTeacherForm bindTeacherForm);
+
+    BaseResult clearBind(String uid);
 }

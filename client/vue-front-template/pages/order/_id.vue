@@ -119,7 +119,7 @@ export default {
       token: null,
       order: {},
       leftTime: "",
-      formUrl: "http://159.75.234.20:8086/order/alipay/web?id=",
+      formUrl: "http://159.75.234.20:8000/order/alipay/web?id=",
     };
   },
   created() {

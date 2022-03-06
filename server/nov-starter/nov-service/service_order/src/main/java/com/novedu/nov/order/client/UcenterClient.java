@@ -21,4 +21,8 @@ public interface UcenterClient {
     @ApiOperation("根据id获取member")
     @PostMapping("/ucenter/member/info/{id}")
     BaseResult getMemberInfo(@PathVariable("id")Long id);
+
+    @ApiOperation("删除")
+    @PostMapping("/ucenter/role/by-uid/{uid}")
+    BaseResult queryUserRole(@PathVariable Long uid) ;
 }

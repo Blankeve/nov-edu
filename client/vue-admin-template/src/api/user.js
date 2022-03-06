@@ -16,6 +16,13 @@ export function getInfo(token) {
   })
 }
 
+export function getUserDashBoardInfo() {
+  return request({
+    url: '/ucenter/member/info-dashboard',
+    method: 'get',
+  })
+}
+
 export function logout() {
   return request({
     url: '/vue-admin-template/user/logout',
@@ -27,6 +34,30 @@ export function getPage(params) {
   return request({
     url: '/ucenter/member/page',
     method: 'get',
+    params
+  })
+}
+
+export function resetPwd(params) {
+  return request({
+    url: `/ucenter/member/reset-pwd/${params}`,
+    method: 'put',
+  })
+}
+
+export function exportAll() {
+  return request({
+    url: '/ucenter/member/export-all',
+    method: 'get',
+    responseType: 'blob'
+  })
+}
+
+export function exportPage(params) {
+  return request({
+    url: '/ucenter/member/export',
+    method: 'post',
+    responseType: 'blob',
     params
   })
 }

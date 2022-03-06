@@ -11,6 +11,7 @@ import com.novedu.nov.edu.service.EduCourseService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,7 +35,7 @@ public class EduCourseController {
     EduCourseService eduCourseService;
 
     @PostMapping("/save")
-    public BaseResult saveCourse(@RequestBody EduCourseInfoDTO courseInfoDTO) {
+    public BaseResult saveCourse(@Validated @RequestBody EduCourseInfoDTO courseInfoDTO) {
         return eduCourseService.saveCourse(courseInfoDTO);
     }
 
@@ -90,11 +91,17 @@ public class EduCourseController {
     }
 
     @PostMapping("/tree")
-    public BaseResult queryCourseTree(HttpServletRequest request, Page page, EduCourseInfoDTO courseInfoDTO) {
-        return eduCourseService.queryCourseTree(request,page, courseInfoDTO);
+    public BaseResult queryCourseTree(Page page, EduCourseInfoDTO courseInfoDTO) {
+        return eduCourseService.queryCourseTree(page, courseInfoDTO);
     }
 
-    @ApiOperation("前台热门课程列表")
+    @PostMapping("/client-tree")
+    public BaseResult queryClientCourseTree(EduCourseInfoDTO courseInfoDTO) {
+        return eduCourseService.queryClientCourseTree(courseInfoDTO);
+    }
+
+
+    @ApiOperation("前台首页课程列表")
     @GetMapping("/client-list")
     public BaseResult<List<EduCourse>> getClientCourseList(){
         return eduCourseService.getClientCourseList();

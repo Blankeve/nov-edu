@@ -1,0 +1,53 @@
+package com.novedu.nov.edu.controller;
+
+
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.edu.entity.CmsNotice;
+import com.novedu.nov.edu.entity.EduTeacher;
+import com.novedu.nov.edu.entity.dto.EduTeacherDTO;
+import com.novedu.nov.edu.service.CmsNoticeService;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+/**
+ * <p>
+ * 广告推荐 前端控制器
+ * </p>
+ *
+ * @author juam
+ * @since 2022-02-28
+ */
+@RestController
+@RequestMapping("/edu/notice")
+public class CmsNoticeController {
+
+    @Autowired
+    private CmsNoticeService cmsNoticeService;
+
+    @PostMapping("/save")
+    public BaseResult saveOrUpdateNotice(@Validated CmsNotice cmsNotice) {
+        return cmsNoticeService.saveOrUpdateNotice(cmsNotice);
+    }
+
+    @ApiOperation("删除")
+    @DeleteMapping("/remove/{id}")
+    public BaseResult removeNotice(@PathVariable String id) {
+        return cmsNoticeService.removeNotice(id);
+    }
+
+    @PostMapping("/page")
+    public BaseResult queryNoticePage(Page page, CmsNotice cmsNotice) {
+        return cmsNoticeService.queryNoticePage(page, cmsNotice);
+    }
+
+    @GetMapping("/receive")
+    public BaseResult receiveNotice() {
+        return cmsNoticeService.receiveNotice();
+    }
+}
+

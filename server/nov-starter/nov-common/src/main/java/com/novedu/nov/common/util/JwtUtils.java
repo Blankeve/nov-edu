@@ -4,6 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import io.swagger.models.auth.In;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -20,7 +21,7 @@ import java.util.Map;
 public class JwtUtils {
     private static final String SECRET_KEY = "FUCK";
 
-    public static String createToken(String userId, String username ,String nickname,String avatar) {
+    public static String createToken(String userId, String username , String rolecode) {
 
         Calendar now = Calendar.getInstance();
         now.add(Calendar.DAY_OF_MONTH, 1);
@@ -32,8 +33,7 @@ public class JwtUtils {
                 .withExpiresAt(expireDate)
                 .withClaim("uid", userId)
                 .withClaim("username", username)
-                .withClaim("nickname", nickname)
-                .withClaim("avatar", avatar)
+                .withClaim("rolecode", rolecode)
                 .sign(Algorithm.HMAC256(SECRET_KEY));
     }
 
@@ -41,8 +41,9 @@ public class JwtUtils {
         Map<String, String> userInfo = new HashMap<>();
         try {
             DecodedJWT decodedJWT = JWT.decode(token);
-            userInfo.put("uid", decodedJWT.getClaim("uid").asString());
             userInfo.put("username", decodedJWT.getClaim("username").asString());
+            userInfo.put("uid", decodedJWT.getClaim("uid").asString());
+            userInfo.put("rolecode", decodedJWT.getClaim("rolecode").asString());
         } catch (Exception e) {
             userInfo = null;
         }

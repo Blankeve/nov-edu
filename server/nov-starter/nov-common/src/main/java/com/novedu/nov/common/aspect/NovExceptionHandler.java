@@ -29,14 +29,14 @@ public class NovExceptionHandler {
         StringBuilder sb = new StringBuilder();
         for (FieldError fieldError : bindingResult.getFieldErrors()
         ) {
-            sb.append("<<")
+            sb.append("[")
                     .append(fieldError.getDefaultMessage())
-                    .append(">>")
+                    .append("]")
             ;
         }
         log.error(sb.toString());
         //4.返回字段校验异常信息给接口调用方
-        return BaseResult.error("格式错误:" + sb.toString());
+        return BaseResult.error(sb.toString());
     }
 
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
@@ -45,14 +45,14 @@ public class NovExceptionHandler {
         StringBuilder sb = new StringBuilder();
         for (FieldError fieldError : bindingResult.getFieldErrors()
         ) {
-            sb.append("<<")
+            sb.append("[")
                     .append(fieldError.getDefaultMessage())
-                    .append(">>")
+                    .append("]")
             ;
         }
         log.error(sb.toString());
         //4.返回字段校验异常信息给接口调用方
-        return BaseResult.error("格式错误:" + sb.toString());
+        return BaseResult.error(sb.toString());
     }
 
     @ExceptionHandler(value = ServiceInvokeFailureException.class)

@@ -25,7 +25,7 @@ public interface EduCourseService extends IService<EduCourse> {
 
     BaseResult queryCourseDetail(Long id);
 
-    BaseResult queryCourseTree(HttpServletRequest request,Page page, EduCourseInfoDTO courseInfoDTO);
+    BaseResult queryCourseTree(Page page, EduCourseInfoDTO courseInfoDTO);
 
     BaseResult queryCourseList(EduCourseInfoVO courseInfoVO);
 
@@ -56,4 +56,6 @@ public interface EduCourseService extends IService<EduCourse> {
     void exportAll(HttpServletResponse response);
 
     BaseResult releaseCourse(EduCourseInfoDTO courseInfoDTO);
+
+    BaseResult queryClientCourseTree(EduCourseInfoDTO courseInfoDTO);
 }

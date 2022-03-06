@@ -39,4 +39,6 @@ public interface EduClient {
     @GetMapping("/edu/course/statistics/course/buyCount")
      BaseResult statisticsCourseBuyCount();
 
+    @PostMapping("/edu/edu-teacher/bind/{uid}")
+     BaseResult queryTeacherIdByUid(@PathVariable String uid);
 }

@@ -46,7 +46,7 @@ spring:
       allow: 127.0.0.1
       #deny: 192.168.1.100
   jackson:
-    date-format: yyyy-MM-dd HH:mm:ss
+    date-format: yyyy年MM月dd日 HH:mm:ss
     time-zone: GMT+8
   cloud:
     nacos:
@@ -54,16 +54,18 @@ spring:
         server-addr: 127.0.0.1:8848
   application:
     name: service-ucenter
-#  redis:
-#    host: 127.0.0.1
-#    port: 6379
-#    jedis:
-#      pool:
-#        max-active: 8
-#        max-wait: -1
-#        max-idle: 500
-#        min-idle: 0
-#    timeout: 5000
+  redis:
+    host: 42.193.169.224
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 500
+        min-idle: 0
+    timeout: 5000
+    password: ju2009jedis
+    database: 0     #Redis提供了 16 个索引库，但是每个数据库之间是隔离互不共享的，客户端默认连接使用的是 0 号数据库
 #logging:
 #  config: classpath:logback-spring.mapping
 #  config: classpath:properties/log4j2.mapping
@@ -82,3 +84,26 @@ mybatis-plus:
 #    log-impl: org.apache.ibatis.logging.log4j2   #Log4j2Impl:这个不在控制台打印查询结果,但是在log4j中打印
 server:
   port: 8085
+
+feign:
+  client:
+    config:
+      default:
+        ConnectTimeOut: 10000
+        ReadTimeOut: 10000
+  hystrix:
+    enabled: true
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000  #熔断超时时间
+
+ribbon:
+  ReadTimeout: 60000  #请求处理的超时时间
+  ConnectTimeout: 60000 #请求连接超时时间
+  MaxAutoRetries: 0 #对当前实例的重试次数
+  MaxAutoRetriesNextServer: 1 #切换实例的重试次数 1
+

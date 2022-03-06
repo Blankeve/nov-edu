@@ -4,16 +4,18 @@
     <div class="myCourseFrm">
       <el-form
         v-show="active == 0"
+        :model="courseVO"
+        :rules="formRules"
         :label-position="labelPosition"
         label-width="80px"
       >
-        <el-form-item label="课程标题">
+        <el-form-item prop="courseTitle" label="课程标题">
           <el-input v-model="courseVO.courseTitle"></el-input>
         </el-form-item>
 
         <el-row>
           <el-col :span="6">
-            <el-form-item label="课程分类">
+            <el-form-item prop="subjectId" label="课程分类">
               <el-cascader
                 v-model="courseVO.subjectId"
                 :options="subjects"
@@ -24,7 +26,7 @@
           </el-col>
 
           <el-col :span="6">
-            <el-form-item label="课程讲师">
+            <el-form-item prop="teacherId" label="课程讲师">
               <el-select v-model="courseVO.teacherId" placeholder="请选择讲师">
                 <el-option
                   v-for="(item, index) in teacher"
@@ -59,7 +61,7 @@
           </el-col>
         </el-row>
 
-        <el-form-item label="课程封面">
+        <el-form-item prop="courseCover" label="课程封面">
           <el-upload
             class="avatar-uploader"
             name="img"
@@ -77,7 +79,7 @@
           </el-upload>
         </el-form-item>
 
-        <el-form-item label="课程简介">
+        <el-form-item prop="introDescription" label="课程简介">
           <quill-editor
             v-model="courseVO.introDescription"
             ref="VueQuillEditor"
@@ -94,7 +96,7 @@
         </el-form-item>
       </el-form>
       <br />
-      <el-button type="primary" @click="submitForm"
+      <el-button icon="el-icon-plus" type="primary" @click="submitForm"
         >{{ this.$route.query.course ? "修改" : "添加" }}课程</el-button
       >
     </div>
@@ -124,12 +126,59 @@ export default {
       },
       course: {
         title: "",
-        lessonNum: "",
+        lessonNum: 0,
         price: 0,
         teacherId: "",
         subjectId: "",
         cover: "",
         description: "",
+      },
+      formRules: {
+        courseTitle: [
+          { required: true, message: "请输入课程标题", trigger: "blur" },
+          {
+            min: 1,
+            max: 50,
+            message: "长度在 1 到 50 个字符",
+            trigger: "blur",
+          },
+        ],
+        teacherId: [
+          { required: true, message: "请选择课程讲师", trigger: "blur" },
+          {
+            min: 1,
+            max: 20,
+            message: "长度在 1 到 20 个字符",
+            trigger: "blur",
+          },
+        ],
+        subjectId: [
+          { required: true, message: "请选择课程分类", trigger: "blur" },
+          {
+            min: 1,
+            max: 20,
+            message: "长度在 1 到 10 个字符",
+            trigger: "blur",
+          },
+        ],
+        courseCover: [
+          { required: true, message: "请上传课程封面", trigger: "blur" },
+          {
+            min: 1,
+            max: 50,
+            message: "长度在 1 到 50 个字符",
+            trigger: "blur",
+          },
+        ],
+        introDescription: [
+          { required: true, message: "请输入课程简介", trigger: "blur" },
+          {
+            min: 1,
+            max: 500,
+            message: "长度在 1 到 500 个字符",
+            trigger: "blur",
+          },
+        ],
       },
       teacher: [],
       subjects: [],

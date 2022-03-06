@@ -13,6 +13,7 @@
         o.create_time as createTime,
         o.paid_time as paidTime,
         u.nickname as nickname,
+        u.username as username,
         u.mobile as mobile,
         c.title as courseTitle,
         c.cover as courseCover,

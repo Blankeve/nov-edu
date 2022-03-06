@@ -7,6 +7,7 @@ import com.novedu.nov.common.module.service.SysConfigService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public class SysConfigController {
     }
 
     @PostMapping("/save")
-    public BaseResult saveConfig(SysConfig config){
+    public BaseResult saveConfig(@Validated SysConfig config){
         return sysConfigService.saveConfig(config);
     }
 

@@ -66,6 +66,11 @@ public class TradeOrder implements Serializable {
     @ApiModelProperty(value = "用户昵称")
     private String nickname;
 
+    @TableField(exist = false)
+    @Excel(name = "用户名", height = 20, width = 30, isImportField = "true_st",orderNum = "2")
+    @ApiModelProperty(value = "用户名")
+    private String username;
+
     @Excel(name = "用户手机", height = 20, width = 30, isImportField = "true_st",orderNum = "3")
     @ApiModelProperty(value = "用户手机")
     private String mobile;

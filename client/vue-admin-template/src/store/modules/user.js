@@ -9,7 +9,8 @@ const getDefaultState = () => {
     token: getToken(),
     name: '',
     avatar: '',
-    routes: ''
+    routes: '',
+    code: ''
   }
 }
 
@@ -68,6 +69,12 @@ const mutations = {
   SET_AVATAR: (state, avatar) => {
     state.avatar = avatar
   },
+  SET_CODE: (state, code) => {
+    state.code = code
+  },
+  SET_ROLE: (state, role) => {
+    state.role = role
+  },
   SET_ROUTES: (state, routes) => {
     state.routes = constantRoutes.concat(routes).concat(theLastRoute)
   }
@@ -99,10 +106,12 @@ const actions = {
           return reject('登录失效，请重新登录')
         }
 
-        const { username, avatar, menus } = data
+        const { username, avatar, code, roleName, menus } = data
 
         commit('SET_NAME', username)
         commit('SET_AVATAR', avatar)
+        commit('SET_CODE', code)
+        commit('SET_ROLE', roleName)
         let accessedRoutes = filterAsyncRouter(menus)
         commit('SET_ROUTES', accessedRoutes)
 

@@ -3,13 +3,18 @@ package com.novedu.nov.ucenter.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.common.api.RoleType;
+import com.novedu.nov.common.config.SysConfigCache;
+import com.novedu.nov.ucenter.client.EduClient;
 import com.novedu.nov.ucenter.entity.AclRole;
+import com.novedu.nov.ucenter.entity.AclUser;
 import com.novedu.nov.ucenter.entity.AclUserRole;
 import com.novedu.nov.ucenter.entity.dto.AssignUserRoleForm;
 import com.novedu.nov.ucenter.mapper.AclRoleMapper;
 import com.novedu.nov.ucenter.service.AclRoleService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.ucenter.service.AclUserRoleService;
+import com.novedu.nov.ucenter.service.AclUserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +35,12 @@ public class AclRoleServiceImpl extends ServiceImpl<AclRoleMapper, AclRole> impl
     @Autowired
     AclUserRoleService userRoleService;
 
+    @Autowired
+    EduClient eduClient;
+
+    @Autowired
+    AclUserService userService;
+
     @Override
     public BaseResult queryRoleList() {
         return BaseResult.success(list());
@@ -42,6 +53,18 @@ public class AclRoleServiceImpl extends ServiceImpl<AclRoleMapper, AclRole> impl
 
     @Override
     public BaseResult saveOrUpdateRole(AclRole role) {
+        if (role.getId() == null) {
+            if (query().eq("name", role.getName()).count() > 0)
+                return BaseResult.error("该角色名已被使用");
+            if (query().eq("code", role.getCode()).count() > 0)
+                return BaseResult.error("该角色编码已被使用");
+        } else {
+            AclRole aclRole = getById(role);
+            if (!aclRole.getName().equals(role.getName()) && query().eq("name", role.getName()).count() > 0)
+                return BaseResult.error("该角色名已被使用");
+            if (!aclRole.getCode().equals(role.getCode()) && query().eq("code", role.getCode()).count() > 0)
+                return BaseResult.error("该角色编码已被使用");
+        }
         return BaseResult.successOrError(saveOrUpdate(role));
     }
 
@@ -54,6 +77,20 @@ public class AclRoleServiceImpl extends ServiceImpl<AclRoleMapper, AclRole> impl
     @Override
     public BaseResult assignRoleByUid(AssignUserRoleForm params) {
         Long uid = params.getUid();
+        AclUser user = userService.getById(uid);
+        Integer code = query().eq("id", params.getRoleId()).one().getCode();
+        if (code == RoleType.TEACHER.getCode()) {
+            BaseResult baseResult = eduClient.clearBind(uid + "");
+            if (baseResult == null)
+                return BaseResult.error("分配角色失败");
+            user.setAvatar(SysConfigCache.getConfigByKey("teacher_def_avatar").getConfigValue());
+        } else if (code == RoleType.ADMIN.getCode()) {
+            user.setAvatar(SysConfigCache.getConfigByKey("admin_def_avatar").getConfigValue());
+        } else if (code == RoleType.STUDENT.getCode()) {
+            user.setAvatar(SysConfigCache.getConfigByKey("stu_def_avatar").getConfigValue());
+        } else
+            user.setAvatar(SysConfigCache.getConfigByKey("other_def_avatar").getConfigValue());
+        userService.updateById(user);
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("uid", uid);
         userRoleService.remove(queryWrapper);

@@ -1,10 +1,13 @@
 package com.novedu.nov.edu.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.common.api.RoleType;
 import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.common.util.JwtUtils;
+import com.novedu.nov.edu.client.UserRoleClient;
 import com.novedu.nov.edu.entity.EduComment;
 import com.novedu.nov.edu.entity.EduCourse;
 import com.novedu.nov.edu.entity.EduCourseApply;
@@ -15,13 +18,19 @@ import com.novedu.nov.edu.service.EduCommentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.edu.service.EduCourseApplyService;
 import com.novedu.nov.edu.service.EduCourseService;
+import com.novedu.nov.edu.service.EduTeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
+import java.util.Map;
 
 /**
  * <p>
@@ -42,6 +51,12 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
 
     @Autowired
     EduCourseApplyService courseApplyService;
+
+    @Autowired
+    UserRoleClient userRoleClient;
+
+    @Autowired
+    EduTeacherService teacherService;
 
     @Override
     public BaseResult saveComment(EduComment eduComment, HttpServletRequest request) {
@@ -79,11 +94,29 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
     public BaseResult queryCommentPage(Page page, EduComment eduComment) {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("course_id", eduComment.getCourseId());
-        return BaseResult.success(commentMapper.queryPage(page, queryWrapper));
+        IPage<EduUserCommentVO> page1 = commentMapper.queryPage(page, queryWrapper);
+        for (EduUserCommentVO record : page1.getRecords()) {
+            if(!StringUtils.hasText(record.getNickname()))
+                record.setNickname("已注销");
+        }
+        return BaseResult.success(page1);
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public BaseResult queryCommentPage(Page page, EduUserCommentDTO eduComment) {
+    public BaseResult queryCommentPage(HttpServletRequest request, Page page, EduUserCommentDTO eduComment) {
+        String token = request.getHeader("X-Token");
+        String uid = JwtUtils.getAudience(token).get("uid");
+        BaseResult baseResult = userRoleClient.queryUserRole(Long.valueOf(uid));
+        if (baseResult == null) {
+            return BaseResult.success();
+        }
+        Map role = (Map) baseResult.getData();
+        Integer code = (Integer) role.get("code");
+        if (code == RoleType.TEACHER.getCode()) {
+            Long teacherId = teacherService.query().eq("uid", uid).one().getId();
+            eduComment.setTeacherId(teacherId);
+        }
         QueryWrapper queryWrapper = new QueryWrapper();
         if (StringUtils.hasText(eduComment.getNickname()))
             queryWrapper.like("u.nickname", eduComment.getNickname());
@@ -122,9 +155,11 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
         return BaseResult.successOrError(updateById(comment));
     }
 
+
     @Override
     public void exportCommentPage(HttpServletResponse response, Page page, EduUserCommentDTO eduComment) {
-        BaseResult baseResult = queryCommentPage(page, eduComment);
+        HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
+        BaseResult baseResult = queryCommentPage(request, page, eduComment);
         if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
             Page page1 = (Page) baseResult.getData();
             ExcelUtils.exportExcel(page1.getRecords(), "评论信息", "评论信息", EduUserCommentVO.class, "评论信息", response);
@@ -133,7 +168,8 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
 
     @Override
     public void exportAll(HttpServletResponse response, EduUserCommentDTO eduComment) {
-        BaseResult baseResult = queryCommentPage(new Page(1, count()), eduComment);
+        HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
+        BaseResult baseResult = queryCommentPage(request,new Page(1, count()), eduComment);
         if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
             Page page1 = (Page) baseResult.getData();
             ExcelUtils.exportExcel(page1.getRecords(), "评论信息", "评论信息", EduUserCommentVO.class, "评论信息", response);

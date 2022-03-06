@@ -1,10 +1,13 @@
 package com.novedu.nov.ucenter.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.common.api.RoleType;
 import com.novedu.nov.common.config.SysConfigCache;
+import com.novedu.nov.common.util.ExcelUtils;
+import com.novedu.nov.common.util.IpAddressUtils;
 import com.novedu.nov.common.util.JwtUtils;
 import com.novedu.nov.common.util.TreeUtils;
 import com.novedu.nov.ucenter.entity.*;
@@ -19,13 +22,21 @@ import com.novedu.nov.ucenter.service.AclUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.StringUtils;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * <p>
@@ -50,8 +61,12 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
     @Autowired
     AclPermissionService permissionService;
 
+    @Autowired
+    RedisTemplate redisTemplate;
+
     @Override
     public BaseResult login(AclUser ucenterMemberDto) {
+        HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
         String password = DigestUtils.md5DigestAsHex(ucenterMemberDto.getPassword().getBytes());
         AclUser ucenterMember = query().eq("username", ucenterMemberDto.getUsername())
                 .eq("password", password).one();
@@ -59,13 +74,21 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
             return BaseResult.error("用户名或密码不正确");
         }
         AclUserRole userRole = userRoleService.query().eq("uid", ucenterMember.getId()).one();
-        AclRole role = roleService.query().eq("id",userRole.getRoleId()).one();
-        if(role == null || role.getCode() != RoleType.STUDENT.getCode()){
+        AclRole role = roleService.query().eq("id", userRole.getRoleId()).one();
+        if (role == null || role.getCode() != RoleType.STUDENT.getCode()) {
             log.error("uid:" + ucenterMember.getId() + " 当前无权限登录,code:" + role.getCode());
             return BaseResult.error("用户名或密码不正确");
         }
-        String token = JwtUtils.createToken(ucenterMember.getId().toString(), ucenterMember.getUsername(), ucenterMember.getNickname(), ucenterMember.getAvatar());
-        return BaseResult.success().mapSet("access_token", token);
+        UpdateWrapper updateWrapper = new UpdateWrapper();
+        updateWrapper.eq("id", ucenterMember.getId());
+        updateWrapper.set("last_login_time", new Date());
+        updateWrapper.set("last_login_ip", IpAddressUtils.getIpAddress(request));
+        update(updateWrapper);
+        String token = JwtUtils.createToken(ucenterMember.getId().toString(), ucenterMember.getUsername(), RoleType.STUDENT.getCode()+"");
+        Map loginInfo = new HashMap();
+        loginInfo.put("nickname", ucenterMember.getNickname());
+        loginInfo.put("avatar", ucenterMember.getAvatar());
+        return BaseResult.success().mapSet("access_token", token).mapSet("loginInfo", loginInfo);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -122,6 +145,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
 
     @Override
     public BaseResult loginBg(AclUser user) {
+        HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
         String password = DigestUtils.md5DigestAsHex(user.getPassword().getBytes());
         user = query()
                 .eq("username", user.getUsername())
@@ -134,48 +158,134 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
             return BaseResult.error("用户名或密码不正确");
         }
         Integer code = roleService.query().eq("id", userRole.getRoleId()).one().getCode();
-        if (code != RoleType.ADMIN.getCode() && code != RoleType.TEACHER.getCode()) {
+        if (code == RoleType.STUDENT.getCode()) {
             log.error("uid:" + user.getId() + " 当前无权限登录,code:" + code);
             return BaseResult.error("用户名或密码不正确");
         }
-
-        String token = JwtUtils.createToken(user.getId().toString(), user.getUsername(), "", "");
+        UpdateWrapper updateWrapper = new UpdateWrapper();
+        updateWrapper.eq("id", user.getId());
+        updateWrapper.set("last_login_time", new Date());
+        updateWrapper.set("last_login_ip", IpAddressUtils.getIpAddress(request));
+        update(updateWrapper);
+        String token = JwtUtils.createToken(user.getId().toString(), user.getUsername(), code.toString());
+        String loginKey = "bg_" + user.getId();
+        redisTemplate.opsForValue().set(loginKey, token, 1, TimeUnit.DAYS);
         return BaseResult.success("登录成功")
                 .mapSet("token", token)
-               ;
+                ;
     }
 
     @Override
     public BaseResult getInfoBg(String token) {
-        String uid = JwtUtils.getAudience(token).get("uid");
+        Long uid = Long.valueOf(JwtUtils.getAudience(token).get("uid"));
         AclUser user = getById(uid);
         if (user == null)
             return BaseResult.error();
         AclUserRole userRole = userRoleService.query().eq("uid", user.getId()).one();
+        AclRole role = roleService.query().eq("id", userRole.getRoleId()).one();
         BaseResult baseResult = permissionService.queryPermissionByRoleId(userRole.getRoleId());
         List<AclPermission> permissions = null;
         if (baseResult != null)
             permissions = (List<AclPermission>) baseResult.getData();
         List<AclPermissionVO> permissionVOS = new ArrayList<>();
         for (AclPermission permission : permissions) {
-            if(permission.getType() != 1)
+            if (permission.getType() != 1)
                 continue;
             AclPermissionVO aclPermissionVO = new AclPermissionVO();
-            BeanUtils.copyProperties(permission,aclPermissionVO);
-            if(permission.getStatus() == 2)
+            BeanUtils.copyProperties(permission, aclPermissionVO);
+            if (permission.getStatus() == 2)
                 aclPermissionVO.setHidden(true);
-            if(StringUtils.hasText(permission.getTitle())){
+            if (StringUtils.hasText(permission.getTitle())) {
                 Map map = new HashMap<>();
-                map.put("title",permission.getTitle());
-                map.put("icon",permission.getIcon());
+                map.put("title", permission.getTitle());
+                map.put("icon", permission.getIcon());
                 aclPermissionVO.setMeta(map);
             }
             permissionVOS.add(aclPermissionVO);
         }
-        permissionVOS= (List<AclPermissionVO>) TreeUtils.toTree(permissionVOS,AclPermissionVO.class);
+        permissionVOS = (List<AclPermissionVO>) TreeUtils.toTree(permissionVOS, AclPermissionVO.class);
         return BaseResult.success()
                 .mapSet("username", user.getUsername())
                 .mapSet("avatar", user.getAvatar())
+                .mapSet("code", role.getCode())
+                .mapSet("roleName", role.getName())
                 .mapSet("menus", permissionVOS);
+    }
+
+    @Override
+    public BaseResult resetPwd(Long uid) {
+        UpdateWrapper updateWrapper = new UpdateWrapper();
+        updateWrapper.eq("id", uid);
+        updateWrapper.set("password", DigestUtils.md5DigestAsHex(SysConfigCache.getConfigByKey("user_def_reset_pwd").getConfigValue().getBytes(StandardCharsets.UTF_8)));
+        return BaseResult.successOrError(update(updateWrapper));
+    }
+
+    @Override
+    public void exportUserPage(HttpServletResponse response, Page page, AclUserRoleDTO user) {
+        BaseResult baseResult = queryUserPage(page, user);
+        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
+            Page page1 = (Page) baseResult.getData();
+            ExcelUtils.exportExcel(page1.getRecords(), "用户信息", "用户信息", AclUserRoleVO.class, "用户信息", response);
+        }
+    }
+
+    @Override
+    public void exportAll(HttpServletResponse response) {
+        BaseResult baseResult = queryUserPage(new Page(1, count()), new AclUserRoleDTO());
+        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
+            Page page1 = (Page) baseResult.getData();
+            ExcelUtils.exportExcel(page1.getRecords(), "用户信息", "用户信息", AclUserRoleVO.class, "用户信息", response);
+        }
+    }
+
+    private List getRecentAddUsers() {
+        List list = query().orderByDesc("create_time").list();
+        if (list.size() > 3)
+            list = list.subList(0, 3);
+        return list;
+    }
+
+    @Override
+    public BaseResult getDashBoardInfo() {
+        HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
+        String token = request.getHeader("X-Token");
+        Long uid = Long.valueOf(JwtUtils.getAudience(token).get("uid"));
+        AclUser user = getById(uid);
+        if (user == null)
+            return BaseResult.error();
+        AclUserRole userRole = userRoleService.query().eq("uid", user.getId()).one();
+        AclRole role = roleService.query().eq("id", userRole.getRoleId()).one();
+        Map userInfo = new HashMap();
+        userInfo.put("uid", user.getId());
+        userInfo.put("avatar", user.getAvatar());
+        userInfo.put("username", user.getUsername());
+        userInfo.put("rolename", role.getName());
+        userInfo.put("code", role.getCode());
+        userInfo.put("lastLoginTime", user.getLastLoginTime());
+        userInfo.put("lastLoginIp", user.getLastLoginIp());
+        if (!role.getCode().equals(RoleType.TEACHER.getCode())) {
+            userInfo.put("users", count());
+            userInfo.put("recentAddUsers", getRecentAddUsers());
+            String key ="access_num";
+            if(redisTemplate.hasKey(key)){
+                Integer accessNum = (Integer) redisTemplate.opsForValue().get(key)/2;
+                userInfo.put("accessNum", accessNum);
+            }
+        }
+        return BaseResult.success().mapSet("userInfo",userInfo);
+    }
+
+    @Override
+    public BaseResult syncRegisterLoginCount() {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date(System.currentTimeMillis());
+        String nowDate = formatter.format(date);
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.like("create_time", nowDate);
+        Integer registerCount = count(queryWrapper);
+        queryWrapper = new QueryWrapper();
+        queryWrapper.like("last_login_time", nowDate);
+        Integer loginCount = count(queryWrapper);
+        return BaseResult.success().mapSet("registerCount", registerCount).mapSet("loginCount", loginCount);
     }
 }

@@ -43,12 +43,24 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">查询</el-button>
-        <el-button @click="resetForm('form')">重置</el-button>
-        <el-button type="success" @click="exportTeacherPage"
+        <el-button type="primary" icon="el-icon-search" @click="onSubmit"
+          >查询</el-button
+        >
+        <el-button
+          type="danger"
+          icon="el-icon-refresh-left"
+          @click="resetForm('form')"
+          >重置</el-button
+        >
+        <el-button
+          type="success"
+          icon="el-icon-download"
+          @click="exportUserPage"
           >导出当前</el-button
         >
-        <el-button type="success" @click="exportAllTeacher">导出所有</el-button>
+        <el-button type="success" icon="el-icon-download" @click="exportAllUser"
+          >导出所有</el-button
+        >
       </el-form-item>
     </el-form>
 
@@ -80,13 +92,13 @@
         </template>
       </el-table-column>
 
-      <el-table-column width="100" label="昵称" align="center">
+      <el-table-column width="200" label="昵称" align="center">
         <template slot-scope="scope">
           {{ scope.row.nickname }}
         </template>
       </el-table-column>
 
-      <el-table-column label="用户名" align="center">
+      <el-table-column width="100" label="用户名" align="center">
         <template slot-scope="scope">
           {{ scope.row.username }}
         </template>
@@ -104,19 +116,27 @@
         </template>
       </el-table-column>
 
-      <el-table-column
-        align="center"
-        prop="created_at"
-        label="注册时间"
-        width="200"
-      >
+      <el-table-column align="center" prop="created_at" label="注册时间">
         <template slot-scope="scope">
           <i class="el-icon-time" />
           <span>{{ scope.row.createTime }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column fixed="right" align="center" label="操作" >
+      <el-table-column align="center" prop="created_at" label="最后登录时间">
+        <template slot-scope="scope">
+          <i class="el-icon-time" />
+          <span>{{ scope.row.lastLoginTime }}</span>
+        </template>
+      </el-table-column>
+
+      <el-table-column label="最后登录ip" align="center">
+        <template slot-scope="scope">
+          {{ scope.row.lastLoginIp }}
+        </template>
+      </el-table-column>
+
+      <el-table-column fixed="right" width="400" align="center" label="操作">
         <template slot-scope="scope">
           <!-- <el-button @click="handleEdit(scope.row.id)" icon="el-icon-edit"
             >编辑</el-button
@@ -144,12 +164,20 @@
           >
             {{ scope.row.isDisabled == 1 ? "恢复" : "禁言" }}</el-button
           > -->
-          <el-button
+          &nbsp;
+          <el-popconfirm
+            title="默认密码为666666,确定重置该用户密码?"
+            @onConfirm="handleResetPwd(scope.row.id)"
+          >
+            <el-button slot="reference" type="danger">重置密码</el-button>
+          </el-popconfirm>
+
+          <!-- <el-button
             type="danger"
             @click="handleDelete(scope.row.id)"
             icon="el-icon-delete"
             >删除</el-button
-          >
+          > -->
         </template>
       </el-table-column>
     </el-table>
@@ -216,7 +244,7 @@
 
 <script>
 import { getList, saveRoleByUid } from "@/api/role";
-import { getPage } from "@/api/user";
+import { getPage, resetPwd, exportAll, exportPage } from "@/api/user";
 import { exportExcel } from "@/utils/excel";
 import { getAllAndBindId, updateBindByUidAndId } from "@/api/teacher";
 
@@ -317,6 +345,16 @@ export default {
         this.roles = resp.data;
       });
     },
+    exportUserPage() {
+      exportPage(this.form).then((resp) => {
+        exportExcel(resp);
+      });
+    },
+    exportAllUser() {
+      exportAll().then((resp) => {
+        exportExcel(resp);
+      });
+    },
     handleBindTeacher(uid) {
       this.tForm.uid = uid;
       this.dialogVisibleTeacher = true;
@@ -331,13 +369,20 @@ export default {
       this.uid = uid;
       this.dialogVisibleRole = true;
     },
+    handleResetPwd(uid) {
+      resetPwd(uid).then((resp) => {
+        if (resp.code === 200) {
+          this.$message.success("重置密码成功");
+        }
+      });
+    },
     handleSaveBind() {
-        updateBindByUidAndId(this.tForm).then(resp=>{
-           if (resp.code === 200) {
+      updateBindByUidAndId(this.tForm).then((resp) => {
+        if (resp.code === 200) {
           this.$message.success("绑定讲师成功");
           this.dialogVisibleTeacher = false;
         }
-        })
+      });
     },
     handleCancel() {
       this.dialogVisibleRole = false;

@@ -41,10 +41,27 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="searchForm">查询</el-button>
-        <el-button @click="resetForm('form')">重置</el-button>
-                <el-button type="success" @click="exportChapterPage">导出当前</el-button>
-        <el-button type="success" @click="exportAllChapter">导出所有</el-button>
+        <el-button type="primary" icon="el-icon-search" @click="searchForm"
+          >查询</el-button
+        >
+        <el-button
+          type="danger"
+          icon="el-icon-refresh-left"
+          @click="resetForm('form')"
+          >重置</el-button
+        >
+        <el-button
+          type="success"
+          icon="el-icon-download"
+          @click="exportChapterPage"
+          >导出当前</el-button
+        >
+        <el-button
+          type="success"
+          icon="el-icon-download"
+          @click="exportAllChapter"
+          >导出所有</el-button
+        >
       </el-form-item>
     </el-form>
 
@@ -105,9 +122,9 @@
           <span>{{ scope.row.chapterUpdateTime }}</span>
         </template>
       </el-table-column>
-      <el-table-column fixed="right" align="center" label="操作" width="170">
+      <el-table-column fixed="right" align="center" label="操作" width="250">
         <template slot-scope="scope">
-          <el-button @click="handleEdit(scope.row.chapterId)">编辑</el-button>
+          <el-button icon="el-icon-edit" @click="handleEdit(scope.row.chapterId)">编辑</el-button>
           <el-popconfirm
             :title="
               (scope.row.videoQty > 0 ? '该章节下视频不为空,' : '') +
@@ -115,7 +132,7 @@
             "
             @onConfirm="handleDelete(scope.$index, scope.row.chapterId)"
           >
-            <el-button slot="reference" type="danger">删除</el-button>
+            <el-button icon="el-icon-delete" slot="reference" type="danger">删除</el-button>
           </el-popconfirm>
 
           <el-button type="text" @click="addVideo(scope.row.chapterId)"
@@ -147,7 +164,12 @@
 </template>
 
 <script>
-import { getPage, removeChapterById, exportPage, exportAll } from "@/api/chapter";
+import {
+  getPage,
+  removeChapterById,
+  exportPage,
+  exportAll,
+} from "@/api/chapter";
 import { getList } from "@/api/course";
 import { exportExcel } from "@/utils/excel";
 export default {
@@ -238,7 +260,7 @@ export default {
         this.listLoading = false;
       });
     },
-      exportChapterPage() {
+    exportChapterPage() {
       exportPage(this.form).then((resp) => {
         exportExcel(resp);
       });

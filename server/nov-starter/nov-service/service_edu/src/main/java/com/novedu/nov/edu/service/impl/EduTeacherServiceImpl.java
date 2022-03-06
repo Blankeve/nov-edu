@@ -1,23 +1,32 @@
 package com.novedu.nov.edu.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.common.api.RoleType;
 import com.novedu.nov.common.util.ExcelUtils;
+import com.novedu.nov.common.util.JwtUtils;
+import com.novedu.nov.edu.client.UserRoleClient;
 import com.novedu.nov.edu.entity.EduTeacher;
 import com.novedu.nov.edu.entity.dto.EduTeacherDTO;
 import com.novedu.nov.edu.entity.dto.UserBindTeacherForm;
 import com.novedu.nov.edu.mapper.EduTeacherMapper;
 import com.novedu.nov.edu.service.EduTeacherService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -30,6 +39,9 @@ import java.util.List;
 @Service
 public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeacher> implements EduTeacherService {
 
+
+    @Autowired
+    UserRoleClient userRoleClient;
 
     @Override
     public BaseResult<List<EduTeacher>> queryTeacherPage(Page page, EduTeacherDTO teacher) {
@@ -67,8 +79,22 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
         return BaseResult.success(getById(id));
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public BaseResult<List<EduTeacher>> findAll() {
+        HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
+        String token = request.getHeader("X-Token");
+        String uid = JwtUtils.getAudience(token).get("uid");
+        BaseResult baseResult = userRoleClient.queryUserRole(Long.valueOf(uid));
+        if (baseResult == null) {
+            return BaseResult.success();
+        }
+        Map role = (Map) baseResult.getData();
+        Integer code = (Integer) role.get("code");
+        if (code == RoleType.TEACHER.getCode()){
+            Long teacherId = query().eq("uid", uid).one().getId();
+            return BaseResult.success(query().eq("id",teacherId).list());
+        }
         return BaseResult.success(list());
     }
 
@@ -113,8 +139,20 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
     @Override
     public BaseResult updateBindTeacher(UserBindTeacherForm bindTeacherForm) {
         EduTeacher teacher = query().eq("id", bindTeacherForm.getId()).one();
+        if(teacher.getUid() != null){
+            return BaseResult.error("该讲师已经绑定其它账号");
+        }
+        clearBind(String.valueOf(bindTeacherForm.getUid()));
         teacher.setUid(bindTeacherForm.getUid());
         return BaseResult.successOrError(updateById(teacher));
+    }
+
+    @Override
+    public BaseResult clearBind(String uid) {
+        UpdateWrapper updateWrapper = new UpdateWrapper();
+        updateWrapper.eq("uid",uid);
+        updateWrapper.set("uid",null);
+        return BaseResult.successOrError(update(updateWrapper));
     }
 
 

@@ -39,4 +39,10 @@ public class EduClientImpl implements EduClient {
         log.error("同步课程购买数失败");
         return BaseResult.serviceInvokeFailure();
     }
+
+    @Override
+    public BaseResult queryTeacherIdByUid(String uid) {
+        log.error("通过uid查询讲师id失败");
+        return BaseResult.serviceInvokeFailure();
+    }
 }

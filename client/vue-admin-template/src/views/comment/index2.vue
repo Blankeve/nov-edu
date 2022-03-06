@@ -7,7 +7,6 @@
 
       <el-form-item label="课程讲师">
         <el-select v-model="form.teacherId" placeholder="请选择讲师">
-          <el-option label="所有讲师" key="" value=""> </el-option>
           <el-option
             v-for="(item, index) in teachers"
             :label="item.name"
@@ -45,12 +44,27 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="searchForm">查询</el-button>
-        <el-button @click="resetForm('form')">重置</el-button>
-        <el-button type="success" @click="exportCommentPage"
+        <el-button type="primary" icon="el-icon-search" @click="searchForm"
+          >查询</el-button
+        >
+        <el-button
+          type="danger"
+          icon="el-icon-refresh-left"
+          @click="resetForm('form')"
+          >重置</el-button
+        >
+        <el-button
+          type="success"
+          icon="el-icon-download"
+          @click="exportCommentPage"
           >导出当前</el-button
         >
-        <el-button type="success" @click="exportAllComment">导出所有</el-button>
+        <el-button
+          type="success"
+          icon="el-icon-download"
+          @click="exportAllComment"
+          >导出所有</el-button
+        >
       </el-form-item>
     </el-form>
 
@@ -117,7 +131,9 @@
             "
             @onConfirm="handleDelete(scope.$index, scope.row.id)"
           >
-            <el-button slot="reference" type="danger">删除</el-button>
+            <el-button icon="el-icon-delete" slot="reference" type="danger"
+              >删除</el-button
+            >
           </el-popconfirm>
         </template>
       </el-table-column>
@@ -172,7 +188,8 @@ export default {
         current: 1,
         size: 8,
         total: 0,
-        teacherId: "",
+        nickname: "",
+        teacherId: null,
         reported: 1,
       },
       dateRange: [],
@@ -318,10 +335,9 @@ export default {
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
-      this.subjectId = null;
-      this.form.subjectId = null;
-      this.form.teacherId = "";
-      this.form.status = "";
+      this.form.courseId = null;
+      this.form.teacherId = null;
+      this.form.nickname = "";
       this.dateRange = [];
     },
     watchChapter(data) {
