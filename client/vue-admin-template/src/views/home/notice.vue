@@ -1,6 +1,8 @@
 <template>
   <div class="app-container">
-    <el-button icon="el-icon-plus" type="primary" @click="addNotice">添加公告</el-button>
+    <el-button icon="el-icon-plus" type="primary" @click="addNotice"
+      >添加公告</el-button
+    >
     <el-table
       v-loading="listLoading"
       :data="list"
@@ -191,7 +193,9 @@ export default {
       });
     },
     addNotice() {
-      this.form = {};
+      this.form.title = "";
+      this.form.content = "";
+      this.form.sendUser = "";
       this.noticeFormTitle = "添加公告";
       this.noticeFormVisible = true;
     },
