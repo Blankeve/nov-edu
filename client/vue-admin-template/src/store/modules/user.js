@@ -103,6 +103,7 @@ const actions = {
         const { data } = response
 
         if (!data) {
+          removeToken()
           return reject('登录失效，请重新登录')
         }
 

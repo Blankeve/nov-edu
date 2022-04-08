@@ -46,7 +46,7 @@ service.interceptors.response.use(
     const res = response.data
     if (response.headers["content-disposition"]) {
       console.log("excel")
-        return response;
+      return response;
     }
 
     // if the custom code is not 20000, it is judged as an error.
@@ -59,15 +59,14 @@ service.interceptors.response.use(
 
       // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
       if (res.code === 403 || res.code === 4031 || res.code === 4032) {
+        store.dispatch('user/resetToken');
         // to re-login
         MessageBox.confirm(res.msg, '登录确认', {
           confirmButtonText: '重新登录',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          store.dispatch('user/resetToken').then(() => {
-            location.reload()
-          })
+          location.reload()
         })
       }
       return Promise.reject(new Error(res.message || 'Error'))
