@@ -38,6 +38,14 @@ export function getPage(params) {
   })
 }
 
+export function getLoginHistoryPage(params) {
+  return request({
+    url: '/ucenter/sys-login-history/page',
+    method: 'get',
+    params
+  })
+}
+
 export function resetPwd(params) {
   return request({
     url: `/ucenter/member/reset-pwd/${params}`,

@@ -1,3 +1,5 @@
 spring:
   profiles:
-    active: dev
+    active: prod
+server:
+  forward-headers-strategy: native

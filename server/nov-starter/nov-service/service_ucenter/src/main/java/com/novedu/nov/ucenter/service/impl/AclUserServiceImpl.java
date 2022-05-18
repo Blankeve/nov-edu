@@ -15,10 +15,7 @@ import com.novedu.nov.ucenter.entity.dto.AclUserRoleDTO;
 import com.novedu.nov.ucenter.entity.vo.AclPermissionVO;
 import com.novedu.nov.ucenter.entity.vo.AclUserRoleVO;
 import com.novedu.nov.ucenter.mapper.AclUserMapper;
-import com.novedu.nov.ucenter.service.AclPermissionService;
-import com.novedu.nov.ucenter.service.AclRoleService;
-import com.novedu.nov.ucenter.service.AclUserRoleService;
-import com.novedu.nov.ucenter.service.AclUserService;
+import com.novedu.nov.ucenter.service.*;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +61,9 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
     @Autowired
     RedisTemplate redisTemplate;
 
+    @Autowired
+    SysLoginHistoryService sysLoginHistoryService;
+
     @Override
     public BaseResult login(AclUser ucenterMemberDto) {
         HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
@@ -79,12 +79,11 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
             log.error("uid:" + ucenterMember.getId() + " 当前无权限登录,code:" + role.getCode());
             return BaseResult.error("用户名或密码不正确");
         }
-        UpdateWrapper updateWrapper = new UpdateWrapper();
-        updateWrapper.eq("id", ucenterMember.getId());
-        updateWrapper.set("last_login_time", new Date());
-        updateWrapper.set("last_login_ip", IpAddressUtils.getIpAddress(request));
-        update(updateWrapper);
-        String token = JwtUtils.createToken(ucenterMember.getId().toString(), ucenterMember.getUsername(), RoleType.STUDENT.getCode()+"");
+        SysLoginHistory sysLoginHistory = new SysLoginHistory();
+        sysLoginHistory.setUsername(ucenterMember.getUsername());
+        sysLoginHistory.setLoginIp(IpAddressUtils.getIpAddress(request));
+        sysLoginHistoryService.save(sysLoginHistory);
+        String token = JwtUtils.createToken(ucenterMember.getId().toString(), ucenterMember.getUsername(), RoleType.STUDENT.getCode() + "");
         Map loginInfo = new HashMap();
         loginInfo.put("nickname", ucenterMember.getNickname());
         loginInfo.put("avatar", ucenterMember.getAvatar());
@@ -162,11 +161,10 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
             log.error("uid:" + user.getId() + " 当前无权限登录,code:" + code);
             return BaseResult.error("用户名或密码不正确");
         }
-        UpdateWrapper updateWrapper = new UpdateWrapper();
-        updateWrapper.eq("id", user.getId());
-        updateWrapper.set("last_login_time", new Date());
-        updateWrapper.set("last_login_ip", IpAddressUtils.getIpAddress(request));
-        update(updateWrapper);
+        SysLoginHistory sysLoginHistory = new SysLoginHistory();
+        sysLoginHistory.setUsername(user.getUsername());
+        sysLoginHistory.setLoginIp(IpAddressUtils.getIpAddress(request));
+        sysLoginHistoryService.save(sysLoginHistory);
         String token = JwtUtils.createToken(user.getId().toString(), user.getUsername(), code.toString());
         String loginKey = "bg_" + user.getId();
         redisTemplate.opsForValue().set(loginKey, token, 1, TimeUnit.DAYS);
@@ -266,13 +264,13 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         if (!role.getCode().equals(RoleType.TEACHER.getCode())) {
             userInfo.put("users", count());
             userInfo.put("recentAddUsers", getRecentAddUsers());
-            String key ="access_num";
-            if(redisTemplate.hasKey(key)){
-                Integer accessNum = (Integer) redisTemplate.opsForValue().get(key)/2;
+            String key = "access_num";
+            if (redisTemplate.hasKey(key)) {
+                Integer accessNum = (Integer) redisTemplate.opsForValue().get(key) / 2;
                 userInfo.put("accessNum", accessNum);
             }
         }
-        return BaseResult.success().mapSet("userInfo",userInfo);
+        return BaseResult.success().mapSet("userInfo", userInfo);
     }
 
     @Override

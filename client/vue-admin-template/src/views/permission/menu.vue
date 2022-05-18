@@ -92,7 +92,7 @@
             <el-input v-model="form.name"></el-input>
           </el-form-item>
 
-          <el-form-item label="访问路径">
+          <el-form-item label="访问路径" prop="path">
             <el-input v-model="form.path"></el-input>
           </el-form-item>
 
@@ -162,6 +162,15 @@ export default {
         ],
         component: [
           { required: true, message: "请输入组件路径", trigger: "blur" },
+          {
+            min: 1,
+            max: 100,
+            message: "长度在 2 到 100 个字符",
+            trigger: "blur",
+          },
+        ],
+          path: [
+          { required: true, message: "请输入访问路径", trigger: "blur" },
           {
             min: 1,
             max: 100,
