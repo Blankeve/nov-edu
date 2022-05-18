@@ -1,7 +1,6 @@
 
 package com.novedu.nov.common.util;
 
-import org.springframework.util.StringUtils;
 import javax.servlet.http.HttpServletRequest;
 
 
@@ -10,22 +9,40 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class IpAddressUtils {
     public static String getIpAddress(HttpServletRequest request) {
-        String ip = request.getHeader("X-Real-IP");
-        if (!StringUtils.isEmpty(ip) && !"unknown".equalsIgnoreCase(ip)) {
-            return ip;
+        String ip = null;
+        // X-Real-IP：nginx服务代理
+        String ipAddresses = request.getHeader("X-Real-IP");
+        System.out.println("获取nginx的ip：" + ipAddresses);
+        if (ipAddresses == null || ipAddresses.length() == 0 || "unknown".equalsIgnoreCase(ipAddresses)) {
+            //Proxy-Client-IP：apache 服务代理
+            ipAddresses = request.getHeader("Proxy-Client-IP");
         }
-        ip = request.getHeader("X-Forwarded-For");
-        if (!StringUtils.isEmpty(ip) && !"unknown".equalsIgnoreCase(ip)) {
-// 多次反向代理后会有多个IP值，第一个为真实IP。
-            int index = ip.indexOf(',');
-            if (index != -1) {
-                return ip.substring(0, index);
-            } else {
-                return ip;
-            }
-        } else {
-            return request.getRemoteAddr();
+
+        if (ipAddresses == null || ipAddresses.length() == 0 || "unknown".equalsIgnoreCase(ipAddresses)) {
+            //WL-Proxy-Client-IP：weblogic 服务代理
+            ipAddresses = request.getHeader("WL-Proxy-Client-IP");
         }
+
+        if (ipAddresses == null || ipAddresses.length() == 0 || "unknown".equalsIgnoreCase(ipAddresses)) {
+            //HTTP_CLIENT_IP：有些代理服务器
+            ipAddresses = request.getHeader("HTTP_CLIENT_IP");
+        }
+
+        if (ipAddresses == null || ipAddresses.length() == 0 || "unknown".equalsIgnoreCase(ipAddresses)) {
+            //X-Forwarded-For：Squid 服务代理
+            ipAddresses = request.getHeader("X-FORWARDED-FOR");
+        }
+
+        //有些网络通过多层代理，那么获取到的ip就会有多个，一般都是通过逗号（,）分割开来，并且第一个ip为客户端的真实IP
+        if (ipAddresses != null && ipAddresses.length() != 0) {
+            ip = ipAddresses.split(",")[0];
+        }
+        //还是不能获取到，最后再通过request.getRemoteAddr();获取
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ipAddresses)) {
+            ip = request.getRemoteAddr();
+        }
+        return ip.equals("0:0:0:0:0:0:0:1") ? "127.0.0.1" : ip;
+
     }
 
 }

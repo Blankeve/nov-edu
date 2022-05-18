@@ -79,6 +79,11 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
             log.error("uid:" + ucenterMember.getId() + " 当前无权限登录,code:" + role.getCode());
             return BaseResult.error("用户名或密码不正确");
         }
+        UpdateWrapper updateWrapper = new UpdateWrapper();
+        updateWrapper.eq("id", ucenterMember.getId());
+        updateWrapper.set("last_login_time", new Date());
+        updateWrapper.set("last_login_ip", IpAddressUtils.getIpAddress(request));
+        update(updateWrapper);
         SysLoginHistory sysLoginHistory = new SysLoginHistory();
         sysLoginHistory.setUsername(ucenterMember.getUsername());
         sysLoginHistory.setLoginIp(IpAddressUtils.getIpAddress(request));
@@ -161,6 +166,11 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
             log.error("uid:" + user.getId() + " 当前无权限登录,code:" + code);
             return BaseResult.error("用户名或密码不正确");
         }
+        UpdateWrapper updateWrapper = new UpdateWrapper();
+        updateWrapper.eq("id", user.getId());
+        updateWrapper.set("last_login_time", new Date());
+        updateWrapper.set("last_login_ip", IpAddressUtils.getIpAddress(request));
+        update(updateWrapper);
         SysLoginHistory sysLoginHistory = new SysLoginHistory();
         sysLoginHistory.setUsername(user.getUsername());
         sysLoginHistory.setLoginIp(IpAddressUtils.getIpAddress(request));
