@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/nov_edu?useUnicode=true&characterEncoding=utf-8
-    username: root
-    password: 123456
+    url: jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8
+    username: judb
+    password: ju2009
   jackson:
     date-format: MM月dd日
     time-zone: GMT+8
@@ -16,7 +16,7 @@ spring:
   cache:
     type: redis
   redis:
-    host: localhost
+    host: 42.193.169.224
     port: 6379
     jedis:
       pool:
@@ -25,6 +25,7 @@ spring:
         max-idle: 500
         min-idle: 0
     timeout: 5000
+    password: ju2009jedis
     database: 0     #Redis提供了 16 个索引库，但是每个数据库之间是隔离互不共享的，客户端默认连接使用的是 0 号数据库
 #logging:
 #  config: classpath:logback-spring.mapping

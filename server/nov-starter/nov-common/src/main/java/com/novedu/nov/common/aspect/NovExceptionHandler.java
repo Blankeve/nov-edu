@@ -74,6 +74,6 @@ public class NovExceptionHandler {
         e.printStackTrace(new PrintStream(byteArrayOutputStream));
         //3.使用logback输出异常信息至控制台并保存到本地文件
         log.error(byteArrayOutputStream.toString());
-        return BaseResult.error("未知错误");
+        return BaseResult.error("出错了，请联系管理员");
     }
 }
