@@ -1,13 +1,26 @@
 
 package com.novedu.nov.common.util;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.StringUtils;
+
 import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 
 /**
  * 获取IP方法
  */
+@Slf4j
 public class IpAddressUtils {
+
+    // IP地址查询
+    public static final String IP_URL = "http://whois.pconline.com.cn/ipJson.jsp";
+
+    // 未知地址
+    public static final String UNKNOWN = "XX XX";
+
     public static String getIpAddress(HttpServletRequest request) {
         String ip = null;
         // X-Real-IP：nginx服务代理
@@ -43,6 +56,37 @@ public class IpAddressUtils {
         }
         return ip.equals("0:0:0:0:0:0:0:1") ? "127.0.0.1" : ip;
 
+    }
+
+    public static String getRealAddressByIP(String ip)
+    {
+        // 内网不查询
+        if ("127.0.0.1".equals(ip))
+        {
+            return "内网IP";
+        }
+
+            try
+            {
+                String rspStr = HttpUtils.sendGet(IP_URL, "ip=" + ip + "&json=true", "GBK");
+                if (StringUtils.isEmpty(rspStr))
+                {
+                    log.error("获取地理位置异常 {}", ip);
+                    return UNKNOWN;
+                }
+                ObjectMapper objectMapper = new ObjectMapper();
+                Map jsonObject = objectMapper.readValue(rspStr, Map.class);
+                String pro = (String) jsonObject.get("pro");
+                String city = (String) jsonObject.get("city");
+                String region = (String) jsonObject.get("region");
+                return String.format("%s %s %s", pro, city, region);
+            }
+            catch (Exception e)
+            {
+                log.error("获取地理位置异常 {}", ip);
+            }
+
+        return UNKNOWN;
     }
 
 }

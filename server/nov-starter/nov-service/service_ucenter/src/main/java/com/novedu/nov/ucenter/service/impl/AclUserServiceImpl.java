@@ -17,6 +17,7 @@ import com.novedu.nov.ucenter.entity.vo.AclUserRoleVO;
 import com.novedu.nov.ucenter.mapper.AclUserMapper;
 import com.novedu.nov.ucenter.service.*;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import eu.bitwalker.useragentutils.UserAgent;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -79,15 +80,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
             log.error("uid:" + ucenterMember.getId() + " 当前无权限登录,code:" + role.getCode());
             return BaseResult.error("用户名或密码不正确");
         }
-        UpdateWrapper updateWrapper = new UpdateWrapper();
-        updateWrapper.eq("id", ucenterMember.getId());
-        updateWrapper.set("last_login_time", new Date());
-        updateWrapper.set("last_login_ip", IpAddressUtils.getIpAddress(request));
-        update(updateWrapper);
-        SysLoginHistory sysLoginHistory = new SysLoginHistory();
-        sysLoginHistory.setUsername(ucenterMember.getUsername());
-        sysLoginHistory.setLoginIp(IpAddressUtils.getIpAddress(request));
-        sysLoginHistoryService.save(sysLoginHistory);
+        saveLoginInfo(ucenterMemberDto);
         String token = JwtUtils.createToken(ucenterMember.getId().toString(), ucenterMember.getUsername(), RoleType.STUDENT.getCode() + "");
         Map loginInfo = new HashMap();
         loginInfo.put("nickname", ucenterMember.getNickname());
@@ -147,9 +140,40 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         return BaseResult.success(userMapper.queryPage(page, queryWrapper));
     }
 
+    public LoginInfo getLoginInfo(){
+        HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
+        final UserAgent userAgent = UserAgent.parseUserAgentString(request.getHeader("User-Agent"));
+        // 获取客户端操作系统
+        String os = userAgent.getOperatingSystem().getName();
+        // 获取客户端浏览器
+        String browser = userAgent.getBrowser().getName();
+        String ip = IpAddressUtils.getIpAddress(request);
+        String location = IpAddressUtils.getRealAddressByIP(ip);
+        LoginInfo loginInfo = new LoginInfo();
+        loginInfo.setOS(os);
+        loginInfo.setDevice(browser);
+        loginInfo.setIp(ip);
+        loginInfo.setLocation(location);
+        return loginInfo;
+    }
+
+    private void saveLoginInfo(AclUser user){
+        LoginInfo loginInfo = getLoginInfo();
+        UpdateWrapper updateWrapper = new UpdateWrapper();
+        updateWrapper.eq("id", user.getId());
+        updateWrapper.set("last_login_time", new Date());
+        updateWrapper.set("last_login_ip", loginInfo.getLocation());
+        update(updateWrapper);
+        SysLoginHistory sysLoginHistory = new SysLoginHistory();
+        sysLoginHistory.setUsername(user.getUsername());
+        sysLoginHistory.setLoginIp(loginInfo.getIp());
+        sysLoginHistory.setLoginAddress(loginInfo.getLocation());
+        sysLoginHistory.setLoginDevice(loginInfo.getOS()+" "+loginInfo.getDevice());
+        sysLoginHistoryService.save(sysLoginHistory);
+    }
+
     @Override
     public BaseResult loginBg(AclUser user) {
-        HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
         String password = DigestUtils.md5DigestAsHex(user.getPassword().getBytes());
         user = query()
                 .eq("username", user.getUsername())
@@ -166,18 +190,10 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
             log.error("uid:" + user.getId() + " 当前无权限登录,code:" + code);
             return BaseResult.error("用户名或密码不正确");
         }
-        UpdateWrapper updateWrapper = new UpdateWrapper();
-        updateWrapper.eq("id", user.getId());
-        updateWrapper.set("last_login_time", new Date());
-        updateWrapper.set("last_login_ip", IpAddressUtils.getIpAddress(request));
-        update(updateWrapper);
-        SysLoginHistory sysLoginHistory = new SysLoginHistory();
-        sysLoginHistory.setUsername(user.getUsername());
-        sysLoginHistory.setLoginIp(IpAddressUtils.getIpAddress(request));
-        sysLoginHistoryService.save(sysLoginHistory);
         String token = JwtUtils.createToken(user.getId().toString(), user.getUsername(), code.toString());
         String loginKey = "bg_" + user.getId();
         redisTemplate.opsForValue().set(loginKey, token, 1, TimeUnit.DAYS);
+        saveLoginInfo(user);
         return BaseResult.success("登录成功")
                 .mapSet("token", token)
                 ;

@@ -136,7 +136,7 @@ export default {
         content: "",
         sendUser: "",
         current: 1,
-        size: 8,
+        size: 12,
         total: 0,
       },
       sizes: [],
