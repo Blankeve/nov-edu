@@ -55,7 +55,7 @@
 
         <nuxt-link to="/">
           <div class="btn">
-            <input type="button" class="back-home-button" value="返回主页" />
+            <input type="button" class="back-home-button" value="返回首页" />
           </div>
         </nuxt-link>
       </el-form>

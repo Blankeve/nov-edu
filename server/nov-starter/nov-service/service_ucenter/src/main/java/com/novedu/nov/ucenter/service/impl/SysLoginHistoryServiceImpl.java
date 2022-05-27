@@ -35,6 +35,7 @@ public class SysLoginHistoryServiceImpl extends ServiceImpl<SysLoginHistoryMappe
         Date end = loginHistory.getEndTime();
         if (start != null && end != null && end.getTime() > start.getTime())
             queryWrapper.apply("create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start, end);
+        queryWrapper.orderByDesc("create_time");
         return BaseResult.success(page(page, queryWrapper));
     }
 }

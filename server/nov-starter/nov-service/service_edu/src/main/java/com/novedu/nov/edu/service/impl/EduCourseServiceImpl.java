@@ -8,6 +8,7 @@ import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.common.api.RoleType;
 import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.common.util.JwtUtils;
+import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.edu.client.UserRoleClient;
 import com.novedu.nov.edu.entity.*;
 import com.novedu.nov.edu.entity.dto.EduCourseInfoDTO;
@@ -130,9 +131,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     public BaseResult queryCourseTree(Page page, EduCourseInfoDTO courseInfoDTO) {
 
         if(needToken){
-            HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
-            String token = request.getHeader("X-Token");
-            String uid = JwtUtils.getAudience(token).get("uid");
+            Long uid = RequestUtils.getUid();
             BaseResult baseResult = userRoleClient.queryUserRole(Long.valueOf(uid));
             if (baseResult == null) {
                 return BaseResult.success();

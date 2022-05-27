@@ -1,0 +1,92 @@
+2022-05-19 09:41:02.356 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-05-19 09:41:02.945 [main] INFO  org.reflections.Reflections-Reflections took 38 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-05-19 09:41:02.975 [main] INFO  org.reflections.Reflections-Reflections took 13 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-05-19 09:41:02.989 [main] INFO  org.reflections.Reflections-Reflections took 10 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-05-19 09:41:03.119 [main] INFO  org.reflections.Reflections-Reflections took 124 ms to scan 240 urls, producing 0 keys and 0 values 
+2022-05-19 09:41:03.128 [main] INFO  org.reflections.Reflections-Reflections took 8 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-05-19 09:41:03.139 [main] INFO  org.reflections.Reflections-Reflections took 8 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-05-19 09:41:03.148 [main] INFO  org.reflections.Reflections-Reflections took 6 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-05-19 09:41:03.255 [main] INFO  org.reflections.Reflections-Reflections took 103 ms to scan 240 urls, producing 0 keys and 0 values 
+2022-05-19 09:41:13.861 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-edu-prod.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu,DEFAULT_GROUP'}]
+2022-05-19 09:41:13.872 [main] INFO  NoName-The following profiles are active: prod
+2022-05-19 09:41:14.597 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-05-19 09:41:14.600 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-05-19 09:41:14.628 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Finished Spring Data repository scanning in 16ms. Found 0 Redis repository interfaces.
+2022-05-19 09:41:14.868 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=1ef6bdbf-a50b-330a-89d9-28233552b63b
+2022-05-19 09:41:15.450 [main] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure-Init DruidDataSource
+2022-05-19 09:41:15.594 [main] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} inited
+2022-05-19 09:41:17.055 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-ucenter' URL not provided. Will try picking an instance via load-balancing.
+2022-05-19 09:41:17.172 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-order' URL not provided. Will try picking an instance via load-balancing.
+2022-05-19 09:41:17.189 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-statistics' URL not provided. Will try picking an instance via load-balancing.
+2022-05-19 09:41:18.581 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-05-19 09:41:18.727 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-05-19 09:41:18.740 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-05-19 09:41:19.033 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-05-19 09:41:19.319 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-05-19 09:41:26.366 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2022-05-19 09:41:26.383 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2022-05-19 09:41:26.427 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2022-05-19 09:41:26.610 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: exportAllUsingGET_1
+2022-05-19 09:41:26.615 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: exportCoursePageUsingPOST_1
+2022-05-19 09:41:26.627 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: queryCommentPageUsingPOST_1
+2022-05-19 09:41:26.646 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: exportAllUsingGET_2
+2022-05-19 09:41:26.659 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: exportCoursePageUsingPOST_2
+2022-05-19 09:41:26.699 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: queryCourseByTeacherIdUsingPOST_1
+2022-05-19 09:41:26.727 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: saveCourseUsingPOST_1
+2022-05-19 09:41:26.761 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: exportAllUsingGET_3
+2022-05-19 09:41:26.787 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: exportAllUsingGET_4
+2022-05-19 09:41:26.794 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: exportCoursePageUsingPOST_3
+2022-05-19 09:41:26.802 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: saveCourseUsingPOST_2
+2022-05-19 09:41:26.842 [main] INFO  NoName-Started NoName in 24.854 seconds (JVM running for 26.12)
+2022-05-19 09:41:27.079 [main] INFO  com.novedu.nov.common.util.HttpUtils-sendGet - http://whois.pconline.com.cn/ipJson.jsp?ip=59.57.155.9&json=true
+2022-05-19 09:41:27.135 [main] INFO  com.novedu.nov.common.util.HttpUtils-recv - {"ip":"59.57.155.9","pro":"福建省","proCode":"350000","city":"厦门市","cityCode":"350200","region":"海沧区","regionCode":"350205","addr":"福建省厦门市海沧区 电信ADSL","regionNames":"","err":""}
+2022-05-19 09:41:27.168 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-05-19 09:41:28.151 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'
+2022-05-19 09:41:28.181 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closing ...
+2022-05-19 09:41:28.186 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closed
+2022-05-19 09:42:21.630 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-05-19 09:42:22.175 [main] INFO  org.reflections.Reflections-Reflections took 29 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-05-19 09:42:22.199 [main] INFO  org.reflections.Reflections-Reflections took 11 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-05-19 09:42:22.208 [main] INFO  org.reflections.Reflections-Reflections took 7 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-05-19 09:42:22.328 [main] INFO  org.reflections.Reflections-Reflections took 117 ms to scan 240 urls, producing 0 keys and 0 values 
+2022-05-19 09:42:22.334 [main] INFO  org.reflections.Reflections-Reflections took 5 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-05-19 09:42:22.344 [main] INFO  org.reflections.Reflections-Reflections took 8 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-05-19 09:42:22.352 [main] INFO  org.reflections.Reflections-Reflections took 6 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-05-19 09:42:22.465 [main] INFO  org.reflections.Reflections-Reflections took 110 ms to scan 240 urls, producing 0 keys and 0 values 
+2022-05-19 09:42:32.932 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-edu-prod.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-edu,DEFAULT_GROUP'}]
+2022-05-19 09:42:32.945 [main] INFO  NoName-The following profiles are active: prod
+2022-05-19 09:42:33.548 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-05-19 09:42:33.550 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-05-19 09:42:33.589 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Finished Spring Data repository scanning in 30ms. Found 0 Redis repository interfaces.
+2022-05-19 09:42:33.781 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=1ef6bdbf-a50b-330a-89d9-28233552b63b
+2022-05-19 09:42:34.215 [main] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure-Init DruidDataSource
+2022-05-19 09:42:34.330 [main] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} inited
+2022-05-19 09:42:35.539 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-ucenter' URL not provided. Will try picking an instance via load-balancing.
+2022-05-19 09:42:35.638 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-order' URL not provided. Will try picking an instance via load-balancing.
+2022-05-19 09:42:35.657 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-statistics' URL not provided. Will try picking an instance via load-balancing.
+2022-05-19 09:42:37.002 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-05-19 09:42:37.115 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-05-19 09:42:37.121 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-05-19 09:42:37.366 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-05-19 09:42:37.638 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-05-19 09:42:44.666 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2022-05-19 09:42:44.679 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2022-05-19 09:42:44.708 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2022-05-19 09:42:44.888 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: exportAllUsingGET_1
+2022-05-19 09:42:44.893 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: exportCoursePageUsingPOST_1
+2022-05-19 09:42:44.905 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: queryCommentPageUsingPOST_1
+2022-05-19 09:42:44.921 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: exportAllUsingGET_2
+2022-05-19 09:42:44.930 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: exportCoursePageUsingPOST_2
+2022-05-19 09:42:44.974 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: queryCourseByTeacherIdUsingPOST_1
+2022-05-19 09:42:45.005 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: saveCourseUsingPOST_1
+2022-05-19 09:42:45.042 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: exportAllUsingGET_3
+2022-05-19 09:42:45.063 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: exportAllUsingGET_4
+2022-05-19 09:42:45.068 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: exportCoursePageUsingPOST_3
+2022-05-19 09:42:45.077 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator-Generating unique operation named: saveCourseUsingPOST_2
+2022-05-19 09:42:45.103 [main] INFO  NoName-Started NoName in 23.817 seconds (JVM running for 24.755)
+2022-05-19 09:42:45.280 [main] INFO  com.novedu.nov.common.util.HttpUtils-sendGet - http://whois.pconline.com.cn/ipJson.jsp?ip=59.57.155.9&json=true
+2022-05-19 09:42:45.333 [main] INFO  com.novedu.nov.common.util.HttpUtils-recv - {"ip":"59.57.155.9","pro":"福建省","proCode":"350000","city":"厦门市","cityCode":"350200","region":"海沧区","regionCode":"350205","addr":"福建省厦门市海沧区 电信ADSL","regionNames":"","err":""}
+2022-05-19 09:42:45.364 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-05-19 09:42:46.344 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'
+2022-05-19 09:42:46.371 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closing ...
+2022-05-19 09:42:46.375 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closed

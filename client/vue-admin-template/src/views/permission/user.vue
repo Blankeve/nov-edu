@@ -92,15 +92,23 @@
         </template>
       </el-table-column>
 
-      <el-table-column width="200" label="昵称" align="center">
+      <el-table-column width="150" label="昵称" align="center">
         <template slot-scope="scope">
-          {{ scope.row.nickname }}
+          <el-tag size="medium">
+            {{ scope.row.nickname }}
+          </el-tag>
         </template>
       </el-table-column>
 
       <el-table-column width="100" label="用户名" align="center">
         <template slot-scope="scope">
           {{ scope.row.username }}
+        </template>
+      </el-table-column>
+
+          <el-table-column width="150" label="手机号" align="center">
+        <template slot-scope="scope">
+          {{ scope.row.mobile }}
         </template>
       </el-table-column>
 

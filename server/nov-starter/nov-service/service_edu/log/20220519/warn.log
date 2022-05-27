@@ -1,0 +1,20 @@
+2022-05-19 09:41:13.198 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu] & group[DEFAULT_GROUP]
+2022-05-19 09:41:13.527 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu.properties] & group[DEFAULT_GROUP]
+2022-05-19 09:41:13.859 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu-prod.properties] & group[DEFAULT_GROUP]
+2022-05-19 09:41:18.727 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-05-19 09:41:18.740 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-05-19 09:41:27.166 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-05-19 09:41:27.166 [Thread-8] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-05-19 09:41:27.167 [Thread-8] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-05-19 09:41:27.167 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-05-19 09:41:28.149 [SpringContextShutdownHook] WARN  org.springframework.beans.factory.support.DisposableBeanAdapter-Destroy method 'close' on bean with name 'nacosServiceRegistry' threw an exception: java.lang.NullPointerException
+2022-05-19 09:42:32.283 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu] & group[DEFAULT_GROUP]
+2022-05-19 09:42:32.604 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu.properties] & group[DEFAULT_GROUP]
+2022-05-19 09:42:32.929 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-edu-prod.properties] & group[DEFAULT_GROUP]
+2022-05-19 09:42:37.115 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-05-19 09:42:37.121 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-05-19 09:42:45.363 [Thread-8] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-05-19 09:42:45.363 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-05-19 09:42:45.363 [Thread-8] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-05-19 09:42:45.363 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
+2022-05-19 09:42:46.342 [SpringContextShutdownHook] WARN  org.springframework.beans.factory.support.DisposableBeanAdapter-Destroy method 'close' on bean with name 'nacosServiceRegistry' threw an exception: java.lang.NullPointerException

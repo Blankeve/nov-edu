@@ -17,7 +17,7 @@ public class CodeGenerator {
 //2、全局配置
         GlobalConfig gc = new GlobalConfig();
 //此处建议写项目/src/main/java源代码的绝对路径
-        gc.setOutputDir("F:\\my space\\nov-edu\\server\\nov-starter\\nov-service\\service_edu" + "/src/main/java");
+        gc.setOutputDir("D:\\workspace\\git\\nov-edu\\server\\nov-starter\\nov-service\\service_edu" + "/src/main/java");
 //生成注释时的作者
         gc.setAuthor("juam");
 //生成后是否打开资源管理器
@@ -54,7 +54,7 @@ public class CodeGenerator {
 //5、策略配置
         StrategyConfig strategy = new StrategyConfig();
 //数据库中表的名字，表示要对哪些表进行自动生成controllerservice、mapper...
-        strategy.setInclude("cms_notice");
+        strategy.setInclude("cms_consult");
 
 //数据库表映射到实体的命名策略,驼峰命名法
         strategy.setNaming(NamingStrategy.underline_to_camel);

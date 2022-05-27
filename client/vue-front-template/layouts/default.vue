@@ -15,6 +15,9 @@
             <nuxt-link to="/course" tag="li" active-class="current">
               <a>课程</a>
             </nuxt-link>
+            <nuxt-link to="/consult" tag="li" active-class="current">
+              <a>咨询</a>
+            </nuxt-link>
             <!-- <nuxt-link to="/" tag="li">
               <a @click="openTip">公告</a>
             </nuxt-link> -->
@@ -50,9 +53,9 @@
                 </client-only>
                 <span id="userName">{{ loginInfo.nickname }}</span>
               </a>
-              <nuxt-link to="/">
+              <a>
                 <span title="退出" @click="logout()" class="ml5">退出</span>
-              </nuxt-link>
+              </a>
             </li>
           </ul>
 
@@ -191,8 +194,17 @@ export default {
       }
     },
     logout() {
-      removeToken();
-      removeInfo();
+      this.$confirm("此操作将注销账号, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          removeToken();
+          removeInfo();
+          this.$router.go(0);
+        })
+        .catch(() => {});
     },
   },
 };

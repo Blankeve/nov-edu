@@ -50,7 +50,8 @@ public class AclPermissionController {
     @ApiOperation("删除")
     @DeleteMapping("/remove/{id}")
     public BaseResult remove(@PathVariable Long id) {
-        return permissionService.removePermission(id);
+        return BaseResult.error("演示模式下暂不支持删除菜单");
+        // return permissionService.removePermission(id);
     }
 
     @GetMapping("/tree")

@@ -43,7 +43,7 @@
         <bootstrap.version>3.1.0</bootstrap.version>
         <redis.version>2.3.0.RELEASE</redis.version>
         <alipay.version>3.0.0</alipay.version>
-        <shiro.version>1.5.3</shiro.version>
+        <shiro.version>1.8.0</shiro.version>
         <UserAgentUtils.version>1.21</UserAgentUtils.version>
 
     </properties>
@@ -242,7 +242,7 @@
 
             <dependency>
                 <groupId>org.apache.shiro</groupId>
-                <artifactId>shiro-spring-boot-starter</artifactId>
+                <artifactId>shiro-spring</artifactId>
                 <version>${shiro.version}</version>
             </dependency>
 

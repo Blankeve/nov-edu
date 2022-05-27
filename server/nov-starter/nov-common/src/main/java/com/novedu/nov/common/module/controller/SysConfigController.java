@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author juam
@@ -29,19 +29,20 @@ public class SysConfigController {
     SysConfigService sysConfigService;
 
     @GetMapping("/list")
-    public BaseResult<List<SysConfig>> getConfigList(){
+    public BaseResult<List<SysConfig>> getConfigList() {
         return sysConfigService.getConfigList();
     }
 
     @PostMapping("/save")
-    public BaseResult saveConfig(@Validated SysConfig config){
+    public BaseResult saveConfig(@Validated SysConfig config) {
         return sysConfigService.saveConfig(config);
     }
 
     @ApiOperation("删除")
     @DeleteMapping("/remove/{id}")
     public BaseResult removeConfig(@PathVariable Integer id) {
-        return sysConfigService.removeConfig(id);
+        return BaseResult.error("演示模式下暂不支持删除字典数据");
+        // return sysConfigService.removeConfig(id);
     }
 }
 

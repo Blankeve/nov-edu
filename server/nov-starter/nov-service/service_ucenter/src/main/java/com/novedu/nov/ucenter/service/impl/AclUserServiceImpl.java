@@ -80,7 +80,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
             log.error("uid:" + ucenterMember.getId() + " 当前无权限登录,code:" + role.getCode());
             return BaseResult.error("用户名或密码不正确");
         }
-        saveLoginInfo(ucenterMemberDto);
+        saveLoginInfo(ucenterMember);
         String token = JwtUtils.createToken(ucenterMember.getId().toString(), ucenterMember.getUsername(), RoleType.STUDENT.getCode() + "");
         Map loginInfo = new HashMap();
         loginInfo.put("nickname", ucenterMember.getNickname());
