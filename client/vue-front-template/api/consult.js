@@ -2,8 +2,8 @@ import request from '@/utils/request'
 
 export function getPage(params) {
   return request({
-    url: '/edu/consult/page',
-    method: 'post',
+    url: '/edu/consult/page-client',
+    method: 'get',
     params
   })
 }

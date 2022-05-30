@@ -20,21 +20,9 @@
         </template>
       </el-table-column>
 
-      <el-table-column width="200" label="咨询内容" align="center">
+      <el-table-column label="咨询内容" align="center">
         <template slot-scope="scope">
           {{ scope.row.content }}
-        </template>
-      </el-table-column>
-
-      <el-table-column width="100" label="回复人" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.adminName }}
-        </template>
-      </el-table-column>
-
-      <el-table-column label="回复内容" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.replyContent }}</span>
         </template>
       </el-table-column>
 
@@ -47,6 +35,18 @@
         <template slot-scope="scope">
           <i class="el-icon-time" />
           <span>{{ scope.row.createTime }}</span>
+        </template>
+      </el-table-column>
+
+      <el-table-column width="100" label="回复人" align="center">
+        <template slot-scope="scope">
+          {{ scope.row.adminName }}
+        </template>
+      </el-table-column>
+
+      <el-table-column label="回复内容" align="center">
+        <template slot-scope="scope">
+          <span>{{ scope.row.replyContent }}</span>
         </template>
       </el-table-column>
 

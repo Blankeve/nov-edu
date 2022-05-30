@@ -5,9 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.edu.entity.CmsConsult;
-import com.novedu.nov.edu.entity.CmsNotice;
 import com.novedu.nov.edu.service.CmsConsultService;
-import com.novedu.nov.edu.service.CmsNoticeService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -47,6 +45,11 @@ public class CmsConsultController {
     @DeleteMapping("/remove/{id}")
     public BaseResult removeNotice(@PathVariable String id) {
         return BaseResult.successOrError(cmsConsultService.removeById(id));
+    }
+
+    @GetMapping("/page-client")
+    public BaseResult queryClientNoticePage(Page page) {
+        return cmsConsultService.queryClientPage(page);
     }
 
     @PostMapping("/page")

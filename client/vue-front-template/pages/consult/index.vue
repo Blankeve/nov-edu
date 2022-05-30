@@ -34,7 +34,7 @@
             placement="top"
           >
             <el-card>
-              <p>{{ consult.nickname }} ：</p>
+              <p>  <el-avatar :src="consult.avatar" size="small"></el-avatar>{{ consult.nickname }} ：</p>
               <p class="c">&nbsp;&nbsp;{{ consult.content }}</p>
               <div v-if="consult.adminId != null">
                 <br />

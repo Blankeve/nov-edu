@@ -4,6 +4,8 @@ package com.novedu.nov.ucenter.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.ucenter.entity.AclUser;
+import com.novedu.nov.ucenter.entity.dto.AclUserPasswordDto;
+import com.novedu.nov.ucenter.entity.dto.AclUserProfileDto;
 import com.novedu.nov.ucenter.entity.dto.AclUserRoleDTO;
 import com.novedu.nov.ucenter.entity.vo.AclUserRoleVO;
 import com.novedu.nov.ucenter.service.AclUserService;
@@ -48,6 +50,16 @@ public class AclUserController {
     @PutMapping("/reset-pwd/{uid}")
     public BaseResult resetPwd(@PathVariable Long uid) {
         return aclUserService.resetPwd(uid);
+    }
+
+    @PutMapping("/pwd")
+    public BaseResult resetPwd(@Validated @RequestBody AclUserPasswordDto userPasswordDto) {
+        return aclUserService.updatePassword(userPasswordDto);
+    }
+
+    @PutMapping("/profile")
+    public BaseResult updateProfile(@Validated @RequestBody AclUserProfileDto userProfileDto) {
+        return aclUserService.updateProfile(userProfileDto);
     }
 
     @GetMapping("/page")

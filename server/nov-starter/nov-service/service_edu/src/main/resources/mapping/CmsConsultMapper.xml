@@ -8,6 +8,7 @@
         c.content as content,
         c.reply_content as replyContent,
         u.nickname as nickname,
+        u.avatar as avatar,
         '管理员' as adminName,
         c.admin_id,
         c.create_time as createTime,

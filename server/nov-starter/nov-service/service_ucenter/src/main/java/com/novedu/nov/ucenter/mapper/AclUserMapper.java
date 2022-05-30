@@ -23,4 +23,5 @@ public interface AclUserMapper extends BaseMapper<AclUser> {
 
     IPage<AclUserRoleVO> queryPage(Page page, @Param("ew") Wrapper<AclUserRoleDTO> queryWrapper);
 
+    AclUserRoleVO getInfoById(Long id);
 }

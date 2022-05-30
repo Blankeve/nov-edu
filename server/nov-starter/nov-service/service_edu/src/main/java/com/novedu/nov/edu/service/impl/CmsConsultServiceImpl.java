@@ -38,4 +38,10 @@ public class CmsConsultServiceImpl extends ServiceImpl<CmsConsultMapper, CmsCons
         cmsConsult.setAdminId(RequestUtils.getUid());
         return BaseResult.successOrError(updateById(cmsConsult));
     }
+
+    @Override
+    public BaseResult queryClientPage(Page page) {
+        Page<CmsConsultVo> cmsConsultVoPage = (Page<CmsConsultVo>) cmsConsultMapper.queryPage(page,null);
+        return BaseResult.success(cmsConsultVoPage);
+    }
 }
