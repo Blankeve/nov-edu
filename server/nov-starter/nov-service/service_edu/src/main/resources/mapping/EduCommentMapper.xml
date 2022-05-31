@@ -24,6 +24,7 @@
         <if test="ew != null and ew.sqlSegment != null and ew.sqlSegment != ''">
             and ${ew.sqlSegment}
         </if>
+        order by comment.create_time desc
     </select>
 
 </mapper>

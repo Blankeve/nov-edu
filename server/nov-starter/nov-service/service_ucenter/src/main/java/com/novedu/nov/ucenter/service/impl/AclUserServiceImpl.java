@@ -11,6 +11,8 @@ import com.novedu.nov.common.util.IpAddressUtils;
 import com.novedu.nov.common.util.JwtUtils;
 import com.novedu.nov.common.util.TreeUtils;
 import com.novedu.nov.ucenter.entity.*;
+import com.novedu.nov.ucenter.entity.dto.AclUserPasswordDto;
+import com.novedu.nov.ucenter.entity.dto.AclUserProfileDto;
 import com.novedu.nov.ucenter.entity.dto.AclUserRoleDTO;
 import com.novedu.nov.ucenter.entity.vo.AclPermissionVO;
 import com.novedu.nov.ucenter.entity.vo.AclUserRoleVO;
@@ -121,7 +123,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
 
     @Override
     public BaseResult getMemberInfo(Long id) {
-        return BaseResult.success(getById(id));
+        return BaseResult.success(userMapper.getInfoById(id));
     }
 
     @Override
@@ -311,5 +313,25 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         queryWrapper.like("last_login_time", nowDate);
         Integer loginCount = count(queryWrapper);
         return BaseResult.success().mapSet("registerCount", registerCount).mapSet("loginCount", loginCount);
+    }
+
+    @Override
+    public BaseResult updatePassword(AclUserPasswordDto userPasswordDto) {
+        String oldpass = DigestUtils.md5DigestAsHex(userPasswordDto.getOldpass().getBytes(StandardCharsets.UTF_8));
+        AclUser aclUser = getById(userPasswordDto.getId());
+        if(!oldpass.equals(aclUser.getPassword()))
+            return BaseResult.error("修改密码失败，旧密码不正确");
+        String newpass = DigestUtils.md5DigestAsHex(userPasswordDto.getNewpass().getBytes(StandardCharsets.UTF_8));
+        UpdateWrapper updateWrapper = new UpdateWrapper();
+        updateWrapper.set("password",newpass);
+        update(updateWrapper);
+        return BaseResult.success();
+    }
+
+    @Override
+    public BaseResult updateProfile(AclUserProfileDto userProfileDto) {
+        AclUser aclUser = new AclUser();
+        BeanUtils.copyProperties(userProfileDto,aclUser);
+        return BaseResult.successOrError(updateById(aclUser));
     }
 }

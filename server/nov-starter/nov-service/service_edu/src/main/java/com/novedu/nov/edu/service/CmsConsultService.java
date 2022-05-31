@@ -18,4 +18,6 @@ public interface CmsConsultService extends IService<CmsConsult> {
     BaseResult queryPage(Page page, CmsConsult cmsConsult);
 
     BaseResult update(CmsConsult cmsConsult);
+
+    BaseResult queryClientPage(Page page);
 }

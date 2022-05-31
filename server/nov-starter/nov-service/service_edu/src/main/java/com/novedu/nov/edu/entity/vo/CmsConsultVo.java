@@ -38,6 +38,9 @@ public class CmsConsultVo implements Serializable {
     @ApiModelProperty(value = "咨询人昵称")
     private String nickname;
 
+    @ApiModelProperty(value = "用户头像")
+    private String avatar;
+
     @ApiModelProperty(value = "回复人id")
     private Long adminId;
 

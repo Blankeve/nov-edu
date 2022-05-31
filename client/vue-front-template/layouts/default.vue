@@ -41,7 +41,7 @@
               <q class="red-point" style="display: none">&nbsp;</q>
             </li>
             <li v-show="loginInfo.nickname" id="is-login-two" class="h-r-user">
-              <a title>
+              <a href="/profile" title>
                 <client-only>
                   <img
                     :src="loginInfo.avatar"
