@@ -23,4 +23,7 @@ public interface UserRoleClient {
 
     @GetMapping("/ucenter/member/dashboard-recent-users")
     BaseResult getRecentAddUsers();
+
+    @GetMapping("/ucenter/member/sync-users-cache")
+    BaseResult syncUsersCache();
 }

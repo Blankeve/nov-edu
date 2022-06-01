@@ -4,8 +4,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.ucenter.entity.AclUser;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.novedu.nov.ucenter.entity.dto.AclUserPasswordDto;
-import com.novedu.nov.ucenter.entity.dto.AclUserProfileDto;
+import com.novedu.nov.ucenter.entity.dto.AclUserPasswordDTO;
+import com.novedu.nov.ucenter.entity.dto.AclUserProfileDTO;
 import com.novedu.nov.ucenter.entity.dto.AclUserRoleDTO;
 import com.novedu.nov.ucenter.entity.vo.AclUserRoleVO;
 
@@ -43,7 +43,9 @@ public interface AclUserService extends IService<AclUser> {
 
     BaseResult syncRegisterLoginCount();
 
-    BaseResult updatePassword(AclUserPasswordDto userPasswordDto);
+    BaseResult updatePassword(AclUserPasswordDTO userPasswordDto);
 
-    BaseResult updateProfile(AclUserProfileDto userProfileDto);
+    BaseResult updateProfile(AclUserProfileDTO userProfileDto);
+
+    BaseResult syncUsersCache();
 }

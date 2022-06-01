@@ -3,6 +3,8 @@ package com.novedu.nov.ucenter.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.common.api.RoleType;
 import com.novedu.nov.common.config.SysConfigCache;
@@ -11,8 +13,8 @@ import com.novedu.nov.common.util.IpAddressUtils;
 import com.novedu.nov.common.util.JwtUtils;
 import com.novedu.nov.common.util.TreeUtils;
 import com.novedu.nov.ucenter.entity.*;
-import com.novedu.nov.ucenter.entity.dto.AclUserPasswordDto;
-import com.novedu.nov.ucenter.entity.dto.AclUserProfileDto;
+import com.novedu.nov.ucenter.entity.dto.AclUserPasswordDTO;
+import com.novedu.nov.ucenter.entity.dto.AclUserProfileDTO;
 import com.novedu.nov.ucenter.entity.dto.AclUserRoleDTO;
 import com.novedu.nov.ucenter.entity.vo.AclPermissionVO;
 import com.novedu.nov.ucenter.entity.vo.AclUserRoleVO;
@@ -27,6 +29,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -142,7 +145,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         return BaseResult.success(userMapper.queryPage(page, queryWrapper));
     }
 
-    public LoginInfo getLoginInfo(){
+    public LoginInfo getLoginInfo() {
         HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
         final UserAgent userAgent = UserAgent.parseUserAgentString(request.getHeader("User-Agent"));
         // 获取客户端操作系统
@@ -159,7 +162,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         return loginInfo;
     }
 
-    private void saveLoginInfo(AclUser user){
+    private void saveLoginInfo(AclUser user) {
         LoginInfo loginInfo = getLoginInfo();
         UpdateWrapper updateWrapper = new UpdateWrapper();
         updateWrapper.eq("id", user.getId());
@@ -170,7 +173,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         sysLoginHistory.setUsername(user.getUsername());
         sysLoginHistory.setLoginIp(loginInfo.getIp());
         sysLoginHistory.setLoginAddress(loginInfo.getLocation());
-        sysLoginHistory.setLoginDevice(loginInfo.getOS()+" "+loginInfo.getDevice());
+        sysLoginHistory.setLoginDevice(loginInfo.getOS() + " " + loginInfo.getDevice());
         sysLoginHistoryService.save(sysLoginHistory);
     }
 
@@ -316,22 +319,37 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
     }
 
     @Override
-    public BaseResult updatePassword(AclUserPasswordDto userPasswordDto) {
+    public BaseResult updatePassword(AclUserPasswordDTO userPasswordDto) {
         String oldpass = DigestUtils.md5DigestAsHex(userPasswordDto.getOldpass().getBytes(StandardCharsets.UTF_8));
         AclUser aclUser = getById(userPasswordDto.getId());
-        if(!oldpass.equals(aclUser.getPassword()))
+        if (!oldpass.equals(aclUser.getPassword()))
             return BaseResult.error("修改密码失败，旧密码不正确");
         String newpass = DigestUtils.md5DigestAsHex(userPasswordDto.getNewpass().getBytes(StandardCharsets.UTF_8));
         UpdateWrapper updateWrapper = new UpdateWrapper();
-        updateWrapper.set("password",newpass);
+        updateWrapper.eq("id", userPasswordDto.getId());
+        updateWrapper.set("password", newpass);
         update(updateWrapper);
         return BaseResult.success();
     }
 
     @Override
-    public BaseResult updateProfile(AclUserProfileDto userProfileDto) {
+    public BaseResult updateProfile(AclUserProfileDTO userProfileDto) {
         AclUser aclUser = new AclUser();
-        BeanUtils.copyProperties(userProfileDto,aclUser);
+        BeanUtils.copyProperties(userProfileDto, aclUser);
         return BaseResult.successOrError(updateById(aclUser));
+    }
+
+    @Override
+    public BaseResult syncUsersCache() {
+        String key = "usersCache";
+        List<AclUser> aclUsers = list();
+        if(ObjectUtils.isEmpty(aclUsers))
+            return BaseResult.error("获取用户列表失败");
+        try {
+            redisTemplate.opsForValue().set(key, new ObjectMapper().writeValueAsString(aclUsers));
+        } catch (JsonProcessingException e) {
+            return BaseResult.error("用户列表写入缓存失败");
+        }
+        return BaseResult.success();
     }
 }

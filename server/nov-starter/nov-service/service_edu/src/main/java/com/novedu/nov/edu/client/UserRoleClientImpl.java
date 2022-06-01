@@ -22,4 +22,10 @@ public class UserRoleClientImpl implements UserRoleClient {
         log.error("getRecentAddUsers failed");
         return BaseResult.serviceInvokeFailure();
     }
+
+    @Override
+    public BaseResult syncUsersCache() {
+        log.error("getSyncUsersCache failed");
+        return BaseResult.serviceInvokeFailure();
+    }
 }

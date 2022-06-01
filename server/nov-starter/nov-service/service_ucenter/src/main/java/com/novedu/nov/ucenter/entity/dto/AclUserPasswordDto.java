@@ -27,7 +27,7 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @ApiModel(value="AclUser对象", description="会员表")
-public class AclUserPasswordDto implements Serializable {
+public class AclUserPasswordDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

@@ -8,6 +8,14 @@ export function getList(params) {
   })
 }
 
+export function getListByKey(params) {
+  return request({
+    url: '/edu/config/list',
+    method: 'post',
+    params
+  })
+}
+
 export function getAll() {
   return request({
     url: '/edu/edu-teacher/all',

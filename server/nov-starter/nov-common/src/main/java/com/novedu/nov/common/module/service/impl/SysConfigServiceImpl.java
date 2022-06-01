@@ -42,5 +42,10 @@ public class SysConfigServiceImpl extends ServiceImpl<SysConfigMapper, SysConfig
         return BaseResult.successOrError(removeById(id));
     }
 
+    @Override
+    public BaseResult<List<SysConfig>> getConfigListByKey(String key) {
+        return BaseResult.success(query().eq("config_key",key).list());
+    }
+
 
 }

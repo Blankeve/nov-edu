@@ -18,6 +18,9 @@
             <nuxt-link to="/consult" tag="li" active-class="current">
               <a>咨询</a>
             </nuxt-link>
+            <nuxt-link to="/info" tag="li" active-class="current">
+              <a>资讯</a>
+            </nuxt-link>
             <!-- <nuxt-link to="/" tag="li">
               <a @click="openTip">公告</a>
             </nuxt-link> -->
@@ -41,7 +44,7 @@
               <q class="red-point" style="display: none">&nbsp;</q>
             </li>
             <li v-show="loginInfo.nickname" id="is-login-two" class="h-r-user">
-               <a href="/profile" title>
+              <a href="/profile" title>
                 <client-only>
                   <img
                     :src="loginInfo.avatar"
@@ -79,10 +82,9 @@
         <div class="clear"></div>
       </section>
     </header>
-    <br>   <br>
+    <br />
+    <br />
     <nuxt />
-
- 
   </div>
 </template>
 <script>

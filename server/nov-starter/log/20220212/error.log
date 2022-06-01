@@ -864,7 +864,7 @@ Caused by: com.netflix.client.ClientException: Load balancer does not have avail
 	at org.springframework.cloud.openfeign.ribbon.LoadBalancerFeignClient.execute(LoadBalancerFeignClient.java:84)
 	... 16 common frames omitted
 2022-02-12 14:09:11.762 [http-nio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 33226, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 33226, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 33226, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 33226, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 14:09:11.768 [http-nio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10001} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -1212,7 +1212,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 119 more
 
 2022-02-12 14:09:49.229 [http-nio-8081-exec-8] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 36679, minIdle 0, poolingCount 5, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 36679, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 36679, minIdle 0, poolingCount 5, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 36679, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 14:09:49.236 [http-nio-8081-exec-8] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10005} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -1574,7 +1574,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 126 more
 
 2022-02-12 14:17:15.923 [http-nio-8081-exec-8] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 70816, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 70816, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 70816, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 70816, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 14:17:15.932 [http-nio-8081-exec-8] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10011} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -1932,7 +1932,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 124 more
 
 2022-02-12 14:18:19.208 [http-nio-8081-exec-3] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 41222, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 41222, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 41222, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 41222, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 14:18:19.216 [http-nio-8081-exec-3] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10014} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -3101,7 +3101,7 @@ Caused by: org.apache.ibatis.exceptions.TooManyResultsException: Expected one re
 	... 88 more
 
 2022-02-12 14:35:02.301 [Druid-ConnectionPool-Create-838733029] ERROR com.alibaba.druid.pool.DruidDataSource -
-                create connection SQLException, url: jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
+                create connection SQLException, url: jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
 java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -3113,7 +3113,7 @@ java.sql.SQLNonTransientConnectionException: Data source rejected establishment 
 	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1723)
 	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2838)
 2022-02-12 14:35:15.278 [Druid-ConnectionPool-Create-838733029] ERROR com.alibaba.druid.pool.DruidDataSource -
-                create connection SQLException, url: jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
+                create connection SQLException, url: jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
 java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -3125,7 +3125,7 @@ java.sql.SQLNonTransientConnectionException: Data source rejected establishment 
 	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1723)
 	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2838)
 2022-02-12 14:35:15.325 [Druid-ConnectionPool-Create-838733029] ERROR com.alibaba.druid.pool.DruidDataSource -
-                create connection SQLException, url: jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
+                create connection SQLException, url: jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
 java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -3281,7 +3281,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 85 more
 
 2022-02-12 14:35:21.410 [http-nio-8081-exec-2] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 42201, minIdle 0, poolingCount 2, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 42201, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 42201, minIdle 0, poolingCount 2, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 42201, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 14:35:21.415 [http-nio-8081-exec-2] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10002} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -3647,7 +3647,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 128 more
 
 2022-02-12 14:35:34.391 [http-nio-8081-exec-9] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 30833, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 30833, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 30833, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 30833, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 14:35:34.397 [http-nio-8081-exec-9] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10003} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -4131,7 +4131,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 85 more
 
 2022-02-12 14:36:42.798 [http-nio-8081-exec-6] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 35930, minIdle 0, poolingCount 2, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 35930, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 35930, minIdle 0, poolingCount 2, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 35930, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 14:36:42.804 [http-nio-8081-exec-6] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10006} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -4493,7 +4493,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 126 more
 
 2022-02-12 14:36:42.812 [http-nio-8081-exec-10] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 36025, minIdle 0, poolingCount 2, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 36025, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 36025, minIdle 0, poolingCount 2, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 36025, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 14:36:42.819 [http-nio-8081-exec-10] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10005} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -4833,7 +4833,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 115 more
 
 2022-02-12 14:36:42.844 [Druid-ConnectionPool-Create-838733029] ERROR com.alibaba.druid.pool.DruidDataSource -
-                create connection SQLException, url: jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
+                create connection SQLException, url: jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
 java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -4845,7 +4845,7 @@ java.sql.SQLNonTransientConnectionException: Data source rejected establishment 
 	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1723)
 	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2838)
 2022-02-12 14:36:49.217 [http-nio-8081-exec-9] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 42489, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 42489, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 42489, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 42489, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 14:36:49.223 [http-nio-8081-exec-9] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10007} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -5207,7 +5207,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 126 more
 
 2022-02-12 14:36:49.295 [Druid-ConnectionPool-Create-838733029] ERROR com.alibaba.druid.pool.DruidDataSource -
-                create connection SQLException, url: jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
+                create connection SQLException, url: jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
 java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -5219,7 +5219,7 @@ java.sql.SQLNonTransientConnectionException: Data source rejected establishment 
 	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1723)
 	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2838)
 2022-02-12 14:37:13.755 [Druid-ConnectionPool-Create-838733029] ERROR com.alibaba.druid.pool.DruidDataSource -
-                create connection SQLException, url: jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
+                create connection SQLException, url: jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
 java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -5231,7 +5231,7 @@ java.sql.SQLNonTransientConnectionException: Data source rejected establishment 
 	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1723)
 	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2838)
 2022-02-12 14:37:21.858 [http-nio-8081-exec-10] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 38784, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 47250, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 38784, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 47250, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 14:37:21.864 [http-nio-8081-exec-10] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10008} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -5737,7 +5737,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 85 more
 
 2022-02-12 14:37:43.176 [Druid-ConnectionPool-Create-838733029] ERROR com.alibaba.druid.pool.DruidDataSource -
-                create connection SQLException, url: jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
+                create connection SQLException, url: jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
 java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -5749,9 +5749,9 @@ java.sql.SQLNonTransientConnectionException: Data source rejected establishment 
 	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1723)
 	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2838)
 2022-02-12 14:37:48.509 [http-nio-8081-exec-5] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 33462, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 33462, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 33462, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 33462, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 14:37:48.509 [http-nio-8081-exec-8] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 33352, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 33352, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 33352, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 33352, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 14:37:48.515 [http-nio-8081-exec-8] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10009} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -6449,7 +6449,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 14:37:48.565 [Druid-ConnectionPool-Create-838733029] ERROR com.alibaba.druid.pool.DruidDataSource -
-                create connection SQLException, url: jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
+                create connection SQLException, url: jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
 java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -6461,7 +6461,7 @@ java.sql.SQLNonTransientConnectionException: Data source rejected establishment 
 	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1723)
 	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2838)
 2022-02-12 14:37:49.157 [Druid-ConnectionPool-Create-838733029] ERROR com.alibaba.druid.pool.DruidDataSource -
-                create connection SQLException, url: jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
+                create connection SQLException, url: jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
 java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -6473,7 +6473,7 @@ java.sql.SQLNonTransientConnectionException: Data source rejected establishment 
 	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1723)
 	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2838)
 2022-02-12 14:37:49.745 [Druid-ConnectionPool-Create-838733029] ERROR com.alibaba.druid.pool.DruidDataSource -
-                create connection SQLException, url: jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
+                create connection SQLException, url: jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
 java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -6485,7 +6485,7 @@ java.sql.SQLNonTransientConnectionException: Data source rejected establishment 
 	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1723)
 	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2838)
 2022-02-12 14:37:50.317 [Druid-ConnectionPool-Create-838733029] ERROR com.alibaba.druid.pool.DruidDataSource -
-                create connection SQLException, url: jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
+                create connection SQLException, url: jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
 java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -6497,7 +6497,7 @@ java.sql.SQLNonTransientConnectionException: Data source rejected establishment 
 	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1723)
 	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2838)
 2022-02-12 14:37:50.890 [Druid-ConnectionPool-Create-838733029] ERROR com.alibaba.druid.pool.DruidDataSource -
-                create connection SQLException, url: jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
+                create connection SQLException, url: jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
 java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -6509,7 +6509,7 @@ java.sql.SQLNonTransientConnectionException: Data source rejected establishment 
 	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1723)
 	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2838)
 2022-02-12 14:37:51.885 [http-nio-8081-exec-4] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 36813, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 36813, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 36813, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 36813, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 14:37:51.891 [http-nio-8081-exec-4] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10010} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -6849,7 +6849,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 115 more
 
 2022-02-12 14:38:45.243 [Druid-ConnectionPool-Create-838733029] ERROR com.alibaba.druid.pool.DruidDataSource -
-                create connection SQLException, url: jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
+                create connection SQLException, url: jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
 java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -6861,7 +6861,7 @@ java.sql.SQLNonTransientConnectionException: Data source rejected establishment 
 	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1723)
 	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2838)
 2022-02-12 14:38:49.210 [http-nio-8081-exec-2] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 46976, minIdle 0, poolingCount 1, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 46976, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 46976, minIdle 0, poolingCount 1, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 46976, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 14:38:49.217 [http-nio-8081-exec-2] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10014} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -7223,7 +7223,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 126 more
 
 2022-02-12 14:38:49.251 [Druid-ConnectionPool-Create-838733029] ERROR com.alibaba.druid.pool.DruidDataSource -
-                create connection SQLException, url: jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
+                create connection SQLException, url: jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
 java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -7235,7 +7235,7 @@ java.sql.SQLNonTransientConnectionException: Data source rejected establishment 
 	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1723)
 	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2838)
 2022-02-12 14:38:49.815 [Druid-ConnectionPool-Create-838733029] ERROR com.alibaba.druid.pool.DruidDataSource -
-                create connection SQLException, url: jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
+                create connection SQLException, url: jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, errorCode 1040, state 08004
 java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -7247,7 +7247,7 @@ java.sql.SQLNonTransientConnectionException: Data source rejected establishment 
 	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1723)
 	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2838)
 2022-02-12 14:39:48.128 [http-nio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 45640, minIdle 0, poolingCount 5, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 45640, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 45640, minIdle 0, poolingCount 5, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 45640, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 14:39:48.135 [http-nio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10015} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -7740,7 +7740,7 @@ Caused by: com.netflix.client.ClientException: Load balancer does not have avail
 	at org.springframework.cloud.openfeign.ribbon.LoadBalancerFeignClient.execute(LoadBalancerFeignClient.java:84)
 	... 16 common frames omitted
 2022-02-12 14:43:22.016 [http-nio-8081-exec-3] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 32058, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 32058, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 32058, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 32058, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 14:43:22.026 [http-nio-8081-exec-3] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10001} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -8231,7 +8231,7 @@ Caused by: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Da
 	... 87 more
 
 2022-02-12 14:57:43.059 [http-nio-8081-exec-6] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 36168, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 36168, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 36168, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 36168, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 14:57:43.067 [http-nio-8081-exec-6] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10014} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -8589,7 +8589,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 124 more
 
 2022-02-12 14:59:19.200 [http-nio-8081-exec-8] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 43665, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 43665, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 43665, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 43665, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 14:59:19.208 [http-nio-8081-exec-8] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10017} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -8949,7 +8949,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 15:00:19.239 [http-nio-8081-exec-5] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 43354, minIdle 0, poolingCount 5, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 43354, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 43354, minIdle 0, poolingCount 5, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 43354, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 15:00:19.247 [http-nio-8081-exec-5] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10020} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -9309,7 +9309,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 15:01:19.178 [http-nio-8081-exec-2] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 41424, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 41424, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 41424, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 41424, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 15:01:19.186 [http-nio-8081-exec-2] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10022} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -9669,7 +9669,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 15:09:49.209 [http-nio-8081-exec-7] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 39029, minIdle 0, poolingCount 2, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 39029, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 39029, minIdle 0, poolingCount 2, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 39029, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 15:09:49.217 [http-nio-8081-exec-7] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10028} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -10029,7 +10029,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 15:10:49.205 [http-nio-8081-exec-3] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 46729, minIdle 0, poolingCount 2, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 46729, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 46729, minIdle 0, poolingCount 2, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 46729, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 15:10:49.213 [http-nio-8081-exec-3] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10030} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -11049,7 +11049,7 @@ Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'å
 	... 87 more
 
 2022-02-12 15:31:49.223 [http-nio-8081-exec-9] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 30178, minIdle 0, poolingCount 1, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 30178, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 30178, minIdle 0, poolingCount 1, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 30178, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 15:31:49.232 [http-nio-8081-exec-9] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10039} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -11407,7 +11407,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 15:36:49.216 [http-nio-8081-exec-6] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 45962, minIdle 0, poolingCount 2, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 45962, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 45962, minIdle 0, poolingCount 2, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 45962, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 15:36:49.225 [http-nio-8081-exec-6] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10045} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -11765,7 +11765,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 15:38:19.223 [http-nio-8081-exec-5] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 39654, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 39654, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 39654, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 39654, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 15:38:19.233 [http-nio-8081-exec-5] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10047} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -12123,7 +12123,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 15:43:49.203 [http-nio-8081-exec-4] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 46570, minIdle 0, poolingCount 1, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 46570, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 46570, minIdle 0, poolingCount 1, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 46570, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 15:43:49.213 [http-nio-8081-exec-4] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10050} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -12481,7 +12481,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 15:44:49.220 [http-nio-8081-exec-2] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 46649, minIdle 0, poolingCount 2, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 46649, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 46649, minIdle 0, poolingCount 2, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 46649, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 15:44:49.230 [http-nio-8081-exec-2] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10051} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -12839,7 +12839,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 15:48:19.209 [http-nio-8081-exec-3] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 37716, minIdle 0, poolingCount 2, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 37716, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 37716, minIdle 0, poolingCount 2, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 37716, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 15:48:19.218 [http-nio-8081-exec-3] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10056} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -13197,7 +13197,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 15:49:24.545 [http-nio-8081-exec-7] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 51614, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 51614, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 51614, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 51614, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 15:49:24.553 [http-nio-8081-exec-7] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10057} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -13533,7 +13533,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 114 more
 
 2022-02-12 15:52:41.709 [http-nio-8081-exec-9] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 68914, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 68914, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 68914, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 68914, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 15:52:41.719 [http-nio-8081-exec-9] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10064} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -13889,7 +13889,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 124 more
 
 2022-02-12 15:58:41.304 [http-nio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 75515, minIdle 0, poolingCount 1, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 75515, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 75515, minIdle 0, poolingCount 1, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 75515, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 15:58:41.313 [http-nio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10072} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -14243,7 +14243,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 123 more
 
 2022-02-12 15:58:41.319 [http-nio-8081-exec-7] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 75598, minIdle 0, poolingCount 1, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 75598, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 75598, minIdle 0, poolingCount 1, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 75598, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 15:58:41.327 [http-nio-8081-exec-7] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10071} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -14599,7 +14599,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 124 more
 
 2022-02-12 15:58:41.349 [http-nio-8081-exec-5] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 75925, minIdle 0, poolingCount 1, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 75925, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 75925, minIdle 0, poolingCount 1, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 75925, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 15:58:41.356 [http-nio-8081-exec-5] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10070} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -14953,7 +14953,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 123 more
 
 2022-02-12 16:09:00.175 [http-nio-8081-exec-5] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 52336, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 52336, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 52336, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 52336, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 16:09:00.184 [http-nio-8081-exec-5] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10082} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -15309,7 +15309,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 124 more
 
 2022-02-12 16:09:00.190 [http-nio-8081-exec-7] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 52478, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 52478, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 52478, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 52478, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 16:09:00.196 [http-nio-8081-exec-7] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10081} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -15645,7 +15645,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 114 more
 
 2022-02-12 16:09:49.621 [http-nio-8081-exec-7] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 48204, minIdle 0, poolingCount 6, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 48204, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 48204, minIdle 0, poolingCount 6, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 48204, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 16:09:49.630 [http-nio-8081-exec-7] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10086} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -16001,7 +16001,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 124 more
 
 2022-02-12 16:11:19.195 [http-nio-8081-exec-5] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 36803, minIdle 0, poolingCount 7, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 36803, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 36803, minIdle 0, poolingCount 7, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 36803, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 16:11:19.204 [http-nio-8081-exec-5] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10090} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -16359,7 +16359,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 16:15:12.276 [http-nio-8081-exec-4] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 74283, minIdle 0, poolingCount 6, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 74283, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 74283, minIdle 0, poolingCount 6, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 74283, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 16:15:12.286 [http-nio-8081-exec-4] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10092} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -16715,7 +16715,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 124 more
 
 2022-02-12 16:15:49.216 [http-nio-8081-exec-3] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 31834, minIdle 0, poolingCount 7, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 31834, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 31834, minIdle 0, poolingCount 7, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 31834, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 16:15:49.225 [http-nio-8081-exec-3] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10098} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -17073,7 +17073,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 16:16:49.134 [http-nio-8081-exec-5] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 66384, minIdle 0, poolingCount 6, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 66384, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 66384, minIdle 0, poolingCount 6, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 66384, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 16:16:49.143 [http-nio-8081-exec-5] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10099} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -17429,7 +17429,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 124 more
 
 2022-02-12 16:16:49.148 [http-nio-8081-exec-10] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 47079, minIdle 0, poolingCount 6, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 47079, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 47079, minIdle 0, poolingCount 6, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 47079, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 16:16:49.155 [http-nio-8081-exec-10] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10100} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -17785,7 +17785,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 124 more
 
 2022-02-12 16:17:48.047 [http-nio-8081-exec-2] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 44799, minIdle 0, poolingCount 7, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 44799, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 44799, minIdle 0, poolingCount 7, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 44799, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 16:17:48.056 [http-nio-8081-exec-2] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10101} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -18141,7 +18141,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 124 more
 
 2022-02-12 16:37:30.008 [http-nio-8081-exec-7] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 75912, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 75912, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 75912, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 75912, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 16:37:30.017 [http-nio-8081-exec-7] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10114} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -18495,7 +18495,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 123 more
 
 2022-02-12 16:37:30.040 [http-nio-8081-exec-10] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 76344, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 76344, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 76344, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 76344, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 16:37:30.047 [http-nio-8081-exec-10] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10116} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -18849,7 +18849,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 123 more
 
 2022-02-12 16:38:19.203 [http-nio-8081-exec-8] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 35656, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 35656, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 35656, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 35656, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 16:38:19.212 [http-nio-8081-exec-8] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10118} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -19207,7 +19207,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 16:39:19.199 [http-nio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 34581, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 34581, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 34581, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 34581, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 16:39:19.208 [http-nio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10120} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -19565,7 +19565,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 17:18:49.213 [http-nio-8081-exec-3] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 39843, minIdle 0, poolingCount 2, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 39843, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 39843, minIdle 0, poolingCount 2, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 39843, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 17:18:49.222 [http-nio-8081-exec-3] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10124} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -19923,7 +19923,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 17:26:19.242 [http-nio-8081-exec-2] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 40064, minIdle 0, poolingCount 2, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 40064, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 40064, minIdle 0, poolingCount 2, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 40064, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 17:26:19.251 [http-nio-8081-exec-2] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10130} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -20281,7 +20281,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 18:23:20.746 [http-nio-8081-exec-9] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 30544, minIdle 0, poolingCount 5, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 30544, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 30544, minIdle 0, poolingCount 5, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 30544, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 18:23:20.756 [http-nio-8081-exec-9] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10135} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -20639,7 +20639,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 18:36:35.057 [http-nio-8081-exec-4] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 35228, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 35228, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 35228, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 35228, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 18:36:35.068 [http-nio-8081-exec-4] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10152} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -20975,7 +20975,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 114 more
 
 2022-02-12 18:49:49.977 [http-nio-8081-exec-11] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 36003, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 36003, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 36003, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 36003, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 18:49:49.986 [http-nio-8081-exec-11] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10169} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -21331,7 +21331,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 124 more
 
 2022-02-12 18:50:49.208 [http-nio-8081-exec-11] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 41745, minIdle 0, poolingCount 5, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 41745, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 41745, minIdle 0, poolingCount 5, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 41745, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 18:50:49.217 [http-nio-8081-exec-11] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10171} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -21689,7 +21689,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 19:00:49.202 [http-nio-8081-exec-5] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 30544, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 30544, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 30544, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 30544, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 19:00:49.211 [http-nio-8081-exec-5] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10177} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -22047,7 +22047,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 19:01:36.450 [http-nio-8081-exec-2] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 34046, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 34046, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 34046, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 34046, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 19:01:36.459 [http-nio-8081-exec-2] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10181} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -22403,7 +22403,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 124 more
 
 2022-02-12 19:04:05.404 [http-nio-8081-exec-11] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 49569, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 49569, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 49569, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 49569, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 19:04:05.413 [http-nio-8081-exec-11] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10184} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -22759,7 +22759,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 124 more
 
 2022-02-12 19:05:19.231 [http-nio-8081-exec-5] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 30455, minIdle 0, poolingCount 5, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 30455, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 30455, minIdle 0, poolingCount 5, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 30455, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 19:05:19.240 [http-nio-8081-exec-5] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10189} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -23117,7 +23117,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 19:10:19.225 [http-nio-8081-exec-8] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 44886, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 44886, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 44886, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 44886, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 19:10:19.235 [http-nio-8081-exec-8] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10193} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -23475,7 +23475,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 19:15:49.211 [http-nio-8081-exec-3] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 46631, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 46631, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 46631, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 46631, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 19:15:49.221 [http-nio-8081-exec-3] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10206} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -23833,7 +23833,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 19:18:46.649 [http-nio-8081-exec-11] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 39176, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 39176, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 39176, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 39176, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 19:18:46.659 [http-nio-8081-exec-11] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10211} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -24189,7 +24189,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 124 more
 
 2022-02-12 19:43:49.179 [http-nio-8081-exec-5] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 46578, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 46578, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 46578, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 46578, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 19:43:49.188 [http-nio-8081-exec-5] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10230} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -24547,7 +24547,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 19:46:49.220 [http-nio-8081-exec-11] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 35956, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 35956, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 35956, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 35956, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 19:46:49.230 [http-nio-8081-exec-11] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10235} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -24955,7 +24955,7 @@ Caused by: com.netflix.client.ClientException: Load balancer does not have avail
 	at org.springframework.cloud.openfeign.ribbon.LoadBalancerFeignClient.execute(LoadBalancerFeignClient.java:84)
 	... 16 common frames omitted
 2022-02-12 20:08:10.603 [http-nio-8081-exec-7] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 38840, minIdle 0, poolingCount 1, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 38840, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 38840, minIdle 0, poolingCount 1, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 38840, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 20:08:10.614 [http-nio-8081-exec-7] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10009} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -25315,7 +25315,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 20:08:49.225 [http-nio-8081-exec-10] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 37333, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 37333, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 37333, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 37333, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 20:08:49.234 [http-nio-8081-exec-10] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10010} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -25822,7 +25822,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 86 more
 
 2022-02-12 20:09:46.629 [http-nio-8085-exec-9] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 31242, minIdle 0, poolingCount 0, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 31242, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 31242, minIdle 0, poolingCount 0, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 31242, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 20:09:46.642 [http-nio-8085-exec-9] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10012} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -26162,7 +26162,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 115 more
 
 2022-02-12 21:07:19.219 [http-nio-8081-exec-6] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 46308, minIdle 0, poolingCount 2, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 46308, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 46308, minIdle 0, poolingCount 2, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 46308, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 21:07:19.228 [http-nio-8081-exec-6] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10021} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -26879,7 +26879,7 @@ Caused by: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Da
 	... 87 more
 
 2022-02-12 21:32:59.844 [http-nio-8085-exec-9] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 32745, minIdle 0, poolingCount 1, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 32745, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 32745, minIdle 0, poolingCount 1, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 32745, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 21:32:59.850 [http-nio-8085-exec-9] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10018} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -27219,7 +27219,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 115 more
 
 2022-02-12 21:39:32.272 [http-nio-8081-exec-5] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 40972, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 40972, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 40972, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 40972, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 21:39:32.279 [http-nio-8081-exec-5] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10001} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -27585,7 +27585,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 128 more
 
 2022-02-12 21:47:19.230 [http-nio-8081-exec-10] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 44149, minIdle 0, poolingCount 2, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 44149, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 44149, minIdle 0, poolingCount 2, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 44149, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 21:47:19.238 [http-nio-8081-exec-10] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10010} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -27945,7 +27945,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 21:47:23.847 [http-nio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 49136, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 49136, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 49136, minIdle 0, poolingCount 3, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 49136, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 21:47:23.854 [http-nio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10011} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -28305,7 +28305,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 21:56:18.614 [http-nio-8081-exec-6] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 75525, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 75525, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 75525, minIdle 0, poolingCount 4, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 75525, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 21:56:18.622 [http-nio-8081-exec-6] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10019} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -28665,7 +28665,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 23:14:20.583 [http-nio-8081-exec-4] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 33989, minIdle 0, poolingCount 5, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 33989, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 33989, minIdle 0, poolingCount 5, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 33989, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 23:14:20.592 [http-nio-8081-exec-4] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10030} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -29023,7 +29023,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 124 more
 
 2022-02-12 23:16:49.229 [http-nio-8081-exec-4] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 46536, minIdle 0, poolingCount 1, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 46536, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 46536, minIdle 0, poolingCount 1, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 46536, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 23:16:49.239 [http-nio-8081-exec-4] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10035} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -29383,7 +29383,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	... 125 more
 
 2022-02-12 23:17:04.803 [http-nio-8081-exec-6] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 69027, minIdle 0, poolingCount 5, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 69027, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 69027, minIdle 0, poolingCount 5, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 69027, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-12 23:17:04.811 [http-nio-8081-exec-6] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10036} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure

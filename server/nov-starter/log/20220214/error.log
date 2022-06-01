@@ -3393,7 +3393,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	at feign.SynchronousMethodHandler.executeAndDecode(SynchronousMethodHandler.java:119)
 	... 15 common frames omitted
 2022-02-14 21:23:19.231 [http-nio-8081-exec-3] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 46304, minIdle 0, poolingCount 1, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 46304, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 46304, minIdle 0, poolingCount 1, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 46304, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-14 21:23:19.243 [http-nio-8081-exec-3] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10008} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
@@ -3877,7 +3877,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	at feign.SynchronousMethodHandler.executeAndDecode(SynchronousMethodHandler.java:119)
 	... 15 common frames omitted
 2022-02-14 21:56:49.222 [http-nio-8081-exec-6] ERROR com.alibaba.druid.pool.DruidPooledStatement -
-                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://42.193.169.224:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 45733, minIdle 0, poolingCount 1, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 45733, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+                CommunicationsException, druid version 1.2.8, jdbcUrl : jdbc:mysql://106.13.225.159:3306/nov_edu?useUnicode=true&characterEncoding=utf-8, testWhileIdle true, idle millis 45733, minIdle 0, poolingCount 1, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 45733, driver com.mysql.cj.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
 2022-02-14 21:56:49.233 [http-nio-8081-exec-6] ERROR com.alibaba.druid.pool.DruidDataSource -
                 {conn-10007} discard
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure

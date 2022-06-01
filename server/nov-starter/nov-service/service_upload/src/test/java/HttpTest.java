@@ -33,7 +33,7 @@ public class HttpTest {
 
     @Test
     public void test1(){
-        String url = "http://42.193.169.224:8888/upload/img";
+        String url = "http://106.13.225.159:8888/upload/img";
         //传入参数可以为file或者filePath，在此处做转换
         File file = new File("C:\\Users\\dzyx\\Documents\\nov_log\\2022\\01\\05\\1.png");
         CloseableHttpClient httpClient = HttpClients.createDefault();

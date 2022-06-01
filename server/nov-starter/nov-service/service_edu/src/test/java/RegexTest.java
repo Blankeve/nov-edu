@@ -36,7 +36,7 @@ public class RegexTest {
     @Autowired
     CrmBannerService bannerService;
 
-    private String url = "http://42.193.169.224:8888/img/2022/01/24/1596929522266148864.jpg";
+    private String url = "http://106.13.225.159:8888/img/2022/01/24/1596929522266148864.jpg";
 
     @Test
     public void test1(){

@@ -44,5 +44,10 @@ public class SysConfigController {
         return BaseResult.error("演示模式下暂不支持删除字典数据");
         // return sysConfigService.removeConfig(id);
     }
+
+    @PostMapping("/list")
+    public BaseResult<List<SysConfig>> getConfigListByKey(String key) {
+        return sysConfigService.getConfigListByKey(key);
+    }
 }
 

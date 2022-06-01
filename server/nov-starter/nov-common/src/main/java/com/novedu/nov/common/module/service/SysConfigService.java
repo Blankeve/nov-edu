@@ -23,4 +23,6 @@ public interface SysConfigService extends IService<SysConfig> {
     BaseResult saveConfig(SysConfig config);
 
     BaseResult removeConfig(Integer id);
+
+    BaseResult<List<SysConfig>> getConfigListByKey(String key);
 }

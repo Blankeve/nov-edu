@@ -4,8 +4,8 @@ package com.novedu.nov.ucenter.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.ucenter.entity.AclUser;
-import com.novedu.nov.ucenter.entity.dto.AclUserPasswordDto;
-import com.novedu.nov.ucenter.entity.dto.AclUserProfileDto;
+import com.novedu.nov.ucenter.entity.dto.AclUserPasswordDTO;
+import com.novedu.nov.ucenter.entity.dto.AclUserProfileDTO;
 import com.novedu.nov.ucenter.entity.dto.AclUserRoleDTO;
 import com.novedu.nov.ucenter.entity.vo.AclUserRoleVO;
 import com.novedu.nov.ucenter.service.AclUserService;
@@ -53,12 +53,12 @@ public class AclUserController {
     }
 
     @PutMapping("/pwd")
-    public BaseResult resetPwd(@Validated @RequestBody AclUserPasswordDto userPasswordDto) {
+    public BaseResult resetPwd(@Validated @RequestBody AclUserPasswordDTO userPasswordDto) {
         return aclUserService.updatePassword(userPasswordDto);
     }
 
     @PutMapping("/profile")
-    public BaseResult updateProfile(@Validated @RequestBody AclUserProfileDto userProfileDto) {
+    public BaseResult updateProfile(@Validated @RequestBody AclUserProfileDTO userProfileDto) {
         return aclUserService.updateProfile(userProfileDto);
     }
 
@@ -97,6 +97,12 @@ public class AclUserController {
     @GetMapping("/sync-register-login")
     public BaseResult syncRegisterLoginCount(){
         return aclUserService.syncRegisterLoginCount();
+    }
+
+    @ApiOperation("同步所有用户至redis缓存")
+    @GetMapping("/sync-users-cache")
+    public BaseResult syncUsersCache(){
+        return aclUserService.syncUsersCache();
     }
 }
 

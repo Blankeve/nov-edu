@@ -18,6 +18,9 @@
             <nuxt-link to="/consult" tag="li" active-class="current">
               <a>咨询</a>
             </nuxt-link>
+            <nuxt-link to="/info" tag="li" active-class="current">
+              <a>资讯</a>
+            </nuxt-link>
             <!-- <nuxt-link to="/" tag="li">
               <a @click="openTip">公告</a>
             </nuxt-link> -->
