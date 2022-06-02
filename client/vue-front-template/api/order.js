@@ -16,6 +16,14 @@ export function createOrder(data) {
     })
   }
 
+  export function getOrderPage(params) {
+    return request({
+      url: '/order/trade/page',
+      method: 'get',
+      params
+    })
+  }
+
   export function getOrderByUidAndCourseId(params) {
     return request({
       url: `/order/trade/hasbuy/${params}`,

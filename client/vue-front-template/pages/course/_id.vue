@@ -171,7 +171,7 @@
                   </h6>
                   <div class="course-txt-body-wrap">
                     <section class="course-txt-body">
-                      <p v-html="course.introDescription"></p>
+                      <p class="content-html" v-html="course.introDescription"></p>
                     </section>
                   </div>
                 </div>
