@@ -172,7 +172,7 @@ export default {
       key: {
         key: "info_cate",
       },
-       pickerOptions: {
+      pickerOptions: {
         shortcuts: [
           {
             text: "最近一周",
@@ -286,7 +286,7 @@ export default {
       });
     },
 
-      searchForm() {
+    searchForm() {
       this.fetchData();
     },
   },
