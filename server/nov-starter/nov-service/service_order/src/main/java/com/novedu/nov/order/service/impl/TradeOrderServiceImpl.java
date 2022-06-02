@@ -162,6 +162,7 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
         Long uid = RequestUtils.getUid();
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("o.uid", uid);
+        queryWrapper.eq("o.status",1);
         return BaseResult.success(orderMapper.queryOrderPage(page, queryWrapper));
     }
 

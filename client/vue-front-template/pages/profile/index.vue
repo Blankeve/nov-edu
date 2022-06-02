@@ -1,7 +1,8 @@
 <template>
   <div class="main">
     <div class="title" style="width: 1000px; margin: 0 auto">
-      <el-tabs tab-position="left" style="height: 700px">
+      <client-only>
+        <el-tabs tab-position="left" style="height: 1080px">
         <el-tab-pane label="我的资料">
           <el-descriptions class="margin-top" :column="1" border>
             <template slot="extra">
@@ -210,6 +211,7 @@
           </el-form></el-tab-pane
         >
       </el-tabs>
+      </client-only>
     </div>
   </div>
 </template>
