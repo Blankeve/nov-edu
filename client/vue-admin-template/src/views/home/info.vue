@@ -7,6 +7,7 @@
 
       <el-form-item prop="cate" label="资讯分类">
         <el-select v-model="form.cate" placeholder="请选择分类">
+          <el-option label="全部" :key="0" :value="null"> </el-option>
           <el-option
             v-for="(item, index) in cates"
             :label="item.configName"
@@ -18,10 +19,7 @@
       </el-form-item>
 
       <el-form-item label="作者" prop="title">
-        <el-input
-          v-model="form.createrNickname"
-          placeholder="资讯标题"
-        ></el-input>
+        <el-input v-model="form.createrNickname" placeholder="作者"></el-input>
       </el-form-item>
 
       <el-form-item label="发布时间" prop="createTime">
@@ -63,12 +61,6 @@
         </template>
       </el-table-column>
 
-      <el-table-column width="100" label="作者" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.createrNickname }}
-        </template>
-      </el-table-column>
-
       <el-table-column width="200" label="资讯分类" align="center">
         <template slot-scope="scope">
           {{ scope.row.catename }}
@@ -102,6 +94,18 @@
         <template slot-scope="scope">
           <i class="el-icon-time" />
           <span>{{ scope.row.updateTime }}</span>
+        </template>
+      </el-table-column>
+
+      <el-table-column width="100" label="点击量" align="center">
+        <template slot-scope="scope">
+          {{ scope.row.clickCount }}
+        </template>
+      </el-table-column>
+
+      <el-table-column width="100" label="作者" align="center">
+        <template slot-scope="scope">
+          {{ scope.row.createrNickname }}
         </template>
       </el-table-column>
 
@@ -211,6 +215,7 @@ export default {
   },
   methods: {
     fetchData() {
+      this.handleDateRange();
       getListByKey(this.key).then((resp) => (this.cates = resp.data));
       this.listLoading = true;
       this.sizes =
@@ -270,12 +275,10 @@ export default {
         }
       });
     },
-    addNotice() {
-      this.form.title = "";
-      this.form.content = "";
-      this.form.sendUser = "";
-      this.noticeFormTitle = "添加公告";
-      this.noticeFormVisible = true;
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
+      this.form.createrNickname = "";
+      this.dateRange = [];
     },
     handleEdit(data) {
       this.$router.push({

@@ -52,6 +52,10 @@ public class CmsInfo implements Serializable {
     @ApiModelProperty(value = "创建人")
     private Long creater;
 
+    @ApiModelProperty(value = "创建人昵称")
+    @TableField(exist = false)
+    private String createrNickname;
+
     @TableField(value = "create_time", fill = FieldFill.INSERT)
     @ApiModelProperty(value = "创建时间")
     private Date createTime;
@@ -67,4 +71,9 @@ public class CmsInfo implements Serializable {
     @ApiModelProperty(value = "逻辑删除")
     private Integer isDeleted;
 
+    @TableField(exist = false)
+    private Date startTime;
+
+    @TableField(exist = false)
+    private Date endTime;
 }

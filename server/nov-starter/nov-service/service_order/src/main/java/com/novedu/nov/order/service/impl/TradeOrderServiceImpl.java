@@ -6,6 +6,7 @@ import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.common.api.RoleType;
 import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.common.util.JwtUtils;
+import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.order.client.EduClient;
 import com.novedu.nov.order.client.UcenterClient;
 import com.novedu.nov.order.entity.EduCourseApply;
@@ -88,9 +89,7 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
 
     @Override
     public BaseResult queryOrderPage(Page page, TradeOrder order) {
-        HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
-        String token = request.getHeader("X-Token");
-        String uid = JwtUtils.getAudience(token).get("uid");
+        Long uid = RequestUtils.getUid();
         BaseResult baseResult = ucenterClient.queryUserRole(Long.valueOf(uid));
         if (baseResult == null) {
             return BaseResult.success();
@@ -98,7 +97,7 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
         Map role = (Map) baseResult.getData();
         Integer code = (Integer) role.get("code");
         if (code == RoleType.TEACHER.getCode()) {
-            BaseResult baseResult1 = eduClient.queryTeacherIdByUid(uid);
+            BaseResult baseResult1 = eduClient.queryTeacherIdByUid(uid.toString());
             if (baseResult1 == null)
                 return BaseResult.success();
             order.setTeacherId(Long.valueOf(baseResult1.getData().toString()));
@@ -156,6 +155,14 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
             Page page1 = (Page) baseResult.getData();
             ExcelUtils.exportExcel(page1.getRecords(), "订单信息", "订单信息", TradeOrder.class, "订单信息", response);
         }
+    }
+
+    @Override
+    public BaseResult queryUserOrderPage(Page page) {
+        Long uid = RequestUtils.getUid();
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("o.uid", uid);
+        return BaseResult.success(orderMapper.queryOrderPage(page, queryWrapper));
     }
 
 }

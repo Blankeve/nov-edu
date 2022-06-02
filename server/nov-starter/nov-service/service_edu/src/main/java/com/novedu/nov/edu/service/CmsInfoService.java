@@ -16,4 +16,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface CmsInfoService extends IService<CmsInfo> {
 
     BaseResult queryPage(Page page, CmsInfo cmsInfo);
+
+    BaseResult getDetail(String id);
 }

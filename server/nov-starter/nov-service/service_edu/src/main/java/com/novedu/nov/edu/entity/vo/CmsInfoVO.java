@@ -57,6 +57,10 @@ public class CmsInfoVO implements Serializable {
     @ApiModelProperty(value = "创建人")
     private Long creater;
 
+    @JsonSerialize(using = ToStringSerializer.class)
+    @ApiModelProperty(value = "点击量")
+    private Long clickCount;
+
     @TableField(value = "create_time", fill = FieldFill.INSERT)
     @ApiModelProperty(value = "创建时间")
     private Date createTime;

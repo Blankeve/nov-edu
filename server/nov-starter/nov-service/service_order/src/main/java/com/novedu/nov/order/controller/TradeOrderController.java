@@ -72,5 +72,10 @@ public class TradeOrderController {
     public BaseResult queryOrderPage(Page page, TradeOrder order) {
         return tradeOrderService.queryOrderPage(page, order);
     }
+
+    @GetMapping("/page")
+    public BaseResult queryUserOrderPage(Page page) {
+        return tradeOrderService.queryUserOrderPage(page);
+    }
 }
 

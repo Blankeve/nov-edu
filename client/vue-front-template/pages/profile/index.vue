@@ -87,8 +87,95 @@
             </el-descriptions-item>
           </el-descriptions>
         </el-tab-pane>
-        <el-tab-pane label="我的订单"></el-tab-pane>
-        <el-tab-pane label="历史观看"></el-tab-pane>
+        <el-tab-pane label="我的订单">
+          <el-table
+            v-loading="listLoading"
+            :data="list"
+            element-loading-text="Loading"
+            fit
+            highlight-current-row
+          >
+            <el-table-column align="center" label="#" width="50">
+              <template slot-scope="scope">
+                {{ scope.$index + 1 }}
+              </template>
+            </el-table-column>
+
+            <el-table-column label="购买课程" width="200px" align="center">
+              <template slot-scope="scope">
+                {{ scope.row.courseTitle }}
+              </template>
+            </el-table-column>
+            <el-table-column label="课程封面" width="200px" align="center">
+              <template slot-scope="scope">
+                <div class="demo-image__preview">
+                  <el-image
+                    :src="scope.row.courseCover"
+                    alt="图片获取失败"
+                    title="点击查看大图"
+                    width="100px"
+                    :preview-src-list="[scope.row.courseCover]"
+                  />
+                </div>
+              </template>
+            </el-table-column>
+            <el-table-column label="课程讲师" align="center">
+              <template slot-scope="scope">
+                {{ scope.row.teacherName }}
+              </template>
+            </el-table-column>
+
+            <el-table-column label="课程价格" width="80px" align="center">
+              <template slot-scope="scope">
+                {{ scope.row.totalFee }}
+              </template>
+            </el-table-column>
+
+            <el-table-column label="支付方式" width="100px" align="center">
+              <template slot-scope="scope" v-if="scope.row.status === 1">
+                {{ scope.row.payType === 1 ? "微信支付" : "支付宝" }}
+              </template>
+            </el-table-column>
+
+            <el-table-column align="center" prop="created_at" label="支付时间">
+              <template slot-scope="scope">
+                <i class="el-icon-time" />
+                <span>{{ scope.row.createTime }}</span>
+              </template>
+            </el-table-column>
+
+            <el-table-column
+              fixed="right"
+              align="center"
+              label="操作"
+              width="170"
+            >
+              <template slot-scope="scope">
+                <el-button
+                  @click="studyCourse(scope.row.courseId)"
+                  icon="el-icon-right"
+                  slot="reference"
+                  type="primary"
+                  >立即学习</el-button
+                >
+              </template>
+            </el-table-column>
+          </el-table>
+          <div class="block">
+            <el-pagination
+              background
+              @size-change="handleSizeChange"
+              @current-change="handleCurrentChange"
+              :current-page="form.current"
+              :page-sizes="sizes"
+              :page-size="form.size"
+              layout="total, sizes, prev, pager, next, jumper"
+              :total="form.total"
+            >
+            </el-pagination>
+          </div>
+        </el-tab-pane>
+        <el-tab-pane label="历史观看"> </el-tab-pane>
         <el-tab-pane label="修改密码">
           <el-form
             :model="ruleForm"
@@ -131,6 +218,7 @@ import "~/assets/css/iconfont.css";
 import { getById, updatePwdById, updateById } from "@/api/user";
 import { getToken, removeToken } from "@/utils/auth";
 import jwtDecode from "jwt-decode";
+import { getOrderPage } from "@/api/order";
 export default {
   layout: "simple",
   data() {
@@ -145,6 +233,9 @@ export default {
       }
     };
     return {
+      list: null,
+      listLoading: true,
+      sizes: [],
       form: {
         current: 1,
         size: 8,
@@ -188,6 +279,19 @@ export default {
           this.user = resp.data;
         }
       });
+      this.listLoading = true;
+      this.sizes =
+        this.form.size > 1
+          ? [this.form.size / 2, this.form.size, this.form.size * 2]
+          : [this.form.size, this.form.size * 2];
+      getOrderPage(this.form).then((response) => {
+        let data = response.data;
+        this.form.current = data.current;
+        this.form.size = data.size;
+        this.form.total = data.total;
+        this.list = data.records;
+        this.listLoading = false;
+      });
     },
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
@@ -224,6 +328,11 @@ export default {
       }
       return (isJPG || isPNG) && isLt2M;
     },
+    studyCourse(id) {
+      this.$router.push({
+        path: "/course/" + id,
+      });
+    },
     updateProfile() {
       updateById(this.user).then((resp) => {
         if (resp.code === 200) {
@@ -239,7 +348,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .c {
   font-size: 10px;
 }

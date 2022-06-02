@@ -19,7 +19,7 @@
               <a>咨询</a>
             </nuxt-link>
             <nuxt-link to="/info" tag="li" active-class="current">
-              <a>资讯</a>
+              <a>文章</a>
             </nuxt-link>
             <!-- <nuxt-link to="/" tag="li">
               <a @click="openTip">公告</a>
@@ -62,19 +62,6 @@
             </li>
           </ul>
 
-          <aside class="h-r-search">
-            <label class="h-r-s-box">
-              <input
-                type="text"
-                placeholder="输入你想学的课程"
-                v-model="queryTitle"
-                value
-              />
-              <button @click="queryCourse" class="s-btn">
-                <em class="icon18">&nbsp;</em>
-              </button>
-            </label>
-          </aside>
         </div>
         <aside class="mw-nav-btn">
           <div class="mw-nav-icon"></div>

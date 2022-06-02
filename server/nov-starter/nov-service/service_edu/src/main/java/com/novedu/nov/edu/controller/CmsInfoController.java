@@ -52,5 +52,10 @@ public class CmsInfoController {
     public BaseResult detail(@PathVariable String id) {
         return BaseResult.success(cmsInfoService.getById(id));
     }
+
+    @GetMapping("/detail-client/{id}")
+    public BaseResult getDetail(@PathVariable String id) {
+        return BaseResult.success(cmsInfoService.getDetail(id));
+    }
 }
 
