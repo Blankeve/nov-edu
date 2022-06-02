@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication(scanBasePackages = "com.novedu.nov")
 @EnableDiscoveryClient
 @EnableFeignClients
-public class UCenterServiceApplication {
+public class  UCenterServiceApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(UCenterServiceApplication.class, args);

@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.edu.entity.CmsConsult;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.novedu.nov.edu.entity.vo.CmsConsultVo;
+import com.novedu.nov.edu.entity.vo.CmsConsultVO;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -17,5 +17,5 @@ import org.apache.ibatis.annotations.Param;
  * @since 2022-05-27
  */
 public interface CmsConsultMapper extends BaseMapper<CmsConsult> {
-    IPage<CmsConsultVo> queryPage(Page page, @Param("ew") Wrapper<CmsConsult> queryWrapper);
+    IPage<CmsConsultVO> queryPage(Page page, @Param("ew") Wrapper<CmsConsult> queryWrapper);
 }

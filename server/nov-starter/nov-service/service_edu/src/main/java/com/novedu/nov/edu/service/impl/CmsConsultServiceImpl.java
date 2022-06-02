@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.edu.entity.CmsConsult;
-import com.novedu.nov.edu.entity.vo.CmsConsultVo;
+import com.novedu.nov.edu.entity.vo.CmsConsultVO;
 import com.novedu.nov.edu.mapper.CmsConsultMapper;
 import com.novedu.nov.edu.service.CmsConsultService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -29,7 +29,7 @@ public class CmsConsultServiceImpl extends ServiceImpl<CmsConsultMapper, CmsCons
     @Override
     public BaseResult queryPage(Page page, CmsConsult cmsConsult) {
         QueryWrapper queryWrapper = new QueryWrapper();
-        Page<CmsConsultVo> cmsConsultVoPage = (Page<CmsConsultVo>) cmsConsultMapper.queryPage(page, queryWrapper);
+        Page<CmsConsultVO> cmsConsultVoPage = (Page<CmsConsultVO>) cmsConsultMapper.queryPage(page, queryWrapper);
         return BaseResult.success(cmsConsultVoPage);
     }
 
@@ -41,7 +41,7 @@ public class CmsConsultServiceImpl extends ServiceImpl<CmsConsultMapper, CmsCons
 
     @Override
     public BaseResult queryClientPage(Page page) {
-        Page<CmsConsultVo> cmsConsultVoPage = (Page<CmsConsultVo>) cmsConsultMapper.queryPage(page,null);
+        Page<CmsConsultVO> cmsConsultVoPage = (Page<CmsConsultVO>) cmsConsultMapper.queryPage(page,null);
         return BaseResult.success(cmsConsultVoPage);
     }
 }

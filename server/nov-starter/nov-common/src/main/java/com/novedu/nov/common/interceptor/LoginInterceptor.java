@@ -24,7 +24,8 @@ public class LoginInterceptor implements HandlerInterceptor {
             "/edu/course/statistics/course/applyCount", "/edu/course/statistics/course/buyCount", "/edu/edu-teacher/bind", "/ucenter/member/info", "/ucenter/role/by-uid",
             "/edu/course/statistics/course/playCount", "/edu/course/statistics/course/applyCount", "/edu/course/statistics/course/buyCount", "/edu/edu-teacher/clear-bind", "/edu/banner/client-list",
             "/edu/course/client-list", "/edu/edu-teacher/client-list", "/edu/notice/receive", "/edu/course/client-tree", "/edu/comment/page-client", "/edu/course/list-teacher", "/edu/edu-teacher/info", "/edu/course/page-client",
-            "/edu/subject/list", "/edu/edu-teacher/list", "/ucenter/member/sync-register-login", "/order/alipay","img","video","error","favicon.ico","img","video","/edu/consult/page-client","/edu/info/page","/ucenter/member/sync-users-cache"
+            "/edu/subject/list", "/edu/edu-teacher/list", "/ucenter/member/sync-register-login", "/order/alipay","img","video","error","favicon.ico","img","video","/edu/consult/page-client","/edu/info/page","/ucenter/member/sync-users-cache",
+            "/edu/config/list","/edu/info/detail-client"
     };
 
     @Override

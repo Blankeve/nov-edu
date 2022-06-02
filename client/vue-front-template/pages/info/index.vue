@@ -84,7 +84,7 @@ export default {
       form: {
         cate: null,
         current: 1,
-        size: 8,
+        size: 10,
         total: 0,
         pages: 1,
       },
@@ -160,7 +160,7 @@ span {
 .author {
   font-weight: 600;
   margin-top: 30px;
-  font-size: 10px;
+  font-size: 11px;
   float: right;
 }
 .cate:hover {
