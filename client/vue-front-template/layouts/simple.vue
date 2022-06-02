@@ -21,6 +21,9 @@
             <nuxt-link to="/info" tag="li" active-class="current">
               <a>文章</a>
             </nuxt-link>
+            <nuxt-link to="/profile" tag="li" active-class="current">
+              <a>个人中心</a>
+            </nuxt-link>
             <!-- <nuxt-link to="/" tag="li">
               <a @click="openTip">公告</a>
             </nuxt-link> -->
@@ -56,12 +59,8 @@
                 </client-only>
                 <span id="userName">{{ loginInfo.nickname }}</span>
               </a>
-              <a>
-                <span title="退出" @click="logout()" class="ml5">退出</span>
-              </a>
             </li>
           </ul>
-
         </div>
         <aside class="mw-nav-btn">
           <div class="mw-nav-icon"></div>
@@ -132,19 +131,6 @@ export default {
         this.loginInfo.nickname = loginInfo.nickname;
         this.loginInfo.avatar = loginInfo.avatar;
       }
-    },
-    logout() {
-      this.$confirm("此操作将注销账号, 是否继续?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning",
-      })
-        .then(() => {
-          removeToken();
-          removeInfo();
-          this.$router.go(0);
-        })
-        .catch(() => {});
     },
   },
 };

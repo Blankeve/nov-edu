@@ -11,6 +11,9 @@
                 @click="updateProfile"
                 >更新资料</el-button
               >
+              <el-button icon="el-icon-close" type="danger" @click="logout"
+                >退出登录</el-button
+              >
             </template>
             <el-descriptions-item>
               <template slot="label">
@@ -175,7 +178,7 @@
             </el-pagination>
           </div>
         </el-tab-pane>
-        <el-tab-pane label="历史观看"> </el-tab-pane>
+        <el-tab-pane label="历史观看"></el-tab-pane>
         <el-tab-pane label="修改密码">
           <el-form
             :model="ruleForm"
@@ -216,7 +219,7 @@ import "~/assets/css/sign.css";
 import "~/assets/css/iconfont.css";
 
 import { getById, updatePwdById, updateById } from "@/api/user";
-import { getToken, removeToken } from "@/utils/auth";
+import { getToken, removeToken, removeInfo } from "@/utils/auth";
 import jwtDecode from "jwt-decode";
 import { getOrderPage } from "@/api/order";
 export default {
@@ -265,6 +268,7 @@ export default {
   },
   created() {
     this.token = getToken();
+    if (!this.token) this.$router.push("/login");
   },
   mounted() {
     this.fetchData();
@@ -292,6 +296,14 @@ export default {
         this.list = data.records;
         this.listLoading = false;
       });
+    },
+    handleCurrentChange(p) {
+      this.form.current = p;
+      this.fetchData();
+    },
+    handleSizeChange(s) {
+      this.form.size = s;
+      this.fetchData();
     },
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
@@ -343,6 +355,24 @@ export default {
           this.fetchData();
         }
       });
+    },
+    historyWatch(){
+      this.$alert("该功能敬请期待", "nov在线课堂提示", {
+        confirmButtonText: "确定",
+      });
+    },
+    logout() {
+      this.$confirm("此操作将注销账号, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          removeToken();
+          removeInfo();
+          this.$router.push("/");
+        })
+        .catch(() => {});
     },
   },
 };
