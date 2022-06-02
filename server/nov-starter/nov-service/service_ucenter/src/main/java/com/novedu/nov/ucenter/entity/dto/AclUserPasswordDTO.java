@@ -13,8 +13,9 @@ import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
-import java.io.Serializable;
 import java.util.Date;
+
+
 
 /**
  * <p>
@@ -27,8 +28,7 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @ApiModel(value="AclUser对象", description="会员表")
-public class AclUserPasswordDTO implements Serializable {
-
+public class AclUserPasswordDTO {
     private static final long serialVersionUID = 1L;
 
     @JsonSerialize(using = ToStringSerializer.class)
@@ -89,5 +89,4 @@ public class AclUserPasswordDTO implements Serializable {
 
     @ApiModelProperty(value = "最后登录ip")
     private String lastLoginIp;
-
 }

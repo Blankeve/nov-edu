@@ -29,6 +29,4 @@ public interface TradeOrderService extends IService<TradeOrder> {
     void exportOrderPage(HttpServletResponse response, Page page, TradeOrder order);
 
     void exportAll(HttpServletResponse response,TradeOrder order);
-
-    BaseResult queryUserOrderPage(Page page);
 }

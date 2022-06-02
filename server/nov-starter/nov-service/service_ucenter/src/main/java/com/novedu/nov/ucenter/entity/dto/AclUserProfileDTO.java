@@ -1,8 +1,6 @@
 package com.novedu.nov.ucenter.entity.dto;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
@@ -11,11 +9,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
-import java.io.Serializable;
-import java.util.Date;
 
 /**
  * <p>
@@ -28,8 +23,7 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @ApiModel(value = "AclUser对象", description = "会员表")
-public class AclUserProfileDTO implements Serializable {
-
+public class AclUserProfileDTO {
     private static final long serialVersionUID = 1L;
 
     @JsonSerialize(using = ToStringSerializer.class)
@@ -51,6 +45,4 @@ public class AclUserProfileDTO implements Serializable {
     @NotEmpty(message = "头像不能为空")
     @ApiModelProperty(value = "用户头像")
     private String avatar;
-
-
 }
