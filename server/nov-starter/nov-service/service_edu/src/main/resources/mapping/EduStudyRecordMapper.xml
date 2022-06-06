@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.novedu.nov.edu.mapper.EduStudyRecordMapper">
+
+
+    <select id="queryPage" parameterType="EduStudyRecordDTO" resultType="EduStudyRecordVO">
+        select
+        c.title as courseTitle,
+        c.cover as courseCover,
+        ch.sort as chapterSort,
+        v.title as videoTitle,
+        v.sort as videoSort,
+        r.create_time as createTime,
+        u.nickname as nickname
+        from
+        edu_course c , edu_chapter ch, edu_video v, edu_study_record r,acl_user u
+        where c.id = r.course_id and ch.id = r.chapter_id and v.id = r.video_id
+        and u.id = r.uid
+        <if test="ew != null and ew.sqlSegment != null and ew.sqlSegment != ''">
+            and ${ew.sqlSegment}
+        </if>
+        order by r.create_time desc
+    </select>
+</mapper>

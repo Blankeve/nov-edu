@@ -1,7 +1,5 @@
 package com.novedu.nov.edu.entity.vo;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import io.swagger.annotations.ApiModel;
@@ -24,7 +22,7 @@ import java.util.Objects;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @ApiModel(value = "EduCourseInfoVO对象", description = "课程信息")
-public class HistoryWatchVO implements Serializable {
+public class EduStudyRecordVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -39,6 +37,7 @@ public class HistoryWatchVO implements Serializable {
 
     private String teacherCareer;
 
+    private String nickname;
 
     @ApiModelProperty(value = "课程ID")
     @JsonSerialize(using = ToStringSerializer.class)
@@ -51,6 +50,9 @@ public class HistoryWatchVO implements Serializable {
     @ApiModelProperty(value = "课程封面图片路径")
     private String courseCover;
 
+    @ApiModelProperty(value = "章节ID")
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long chapterId;
 
     @ApiModelProperty(value = "章节标题")
     private String chapterTitle;
@@ -75,7 +77,7 @@ public class HistoryWatchVO implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        HistoryWatchVO that = (HistoryWatchVO) o;
+        EduStudyRecordVO that = (EduStudyRecordVO) o;
         return courseId.equals(that.courseId);
     }
 

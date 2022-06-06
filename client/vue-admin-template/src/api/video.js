@@ -33,6 +33,14 @@ export function getPage(params) {
   })
 }
 
+export function getStudyRecordPage(params) {
+  return request({
+    url: '/edu/video/study/record/page',
+    method: 'post',
+    params
+  })
+}
+
 export function getOneByVideoId(params) {
   return request({
     url: `/edu/video/detail/${params}`,

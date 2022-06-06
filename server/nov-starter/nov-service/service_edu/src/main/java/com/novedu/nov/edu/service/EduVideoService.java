@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduVideo;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.novedu.nov.edu.entity.dto.EduStudyRecordDTO;
 import com.novedu.nov.edu.entity.dto.EduVideoInfoDTO;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 
@@ -36,4 +37,6 @@ public interface EduVideoService extends IService<EduVideo> {
     void exportAll(HttpServletResponse response);
 
     BaseResult queryHistoryWatchPage(Page page);
+
+    BaseResult queryStudyRecordPage(Page page, EduStudyRecordDTO studyRecordDTO);
 }

@@ -4,38 +4,32 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.novedu.nov.common.api.BaseResult;
-import com.novedu.nov.common.api.ResultCode;
 import com.novedu.nov.common.util.ExcelUtils;
-import com.novedu.nov.common.util.JwtUtils;
 import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.edu.client.OrderClient;
 import com.novedu.nov.edu.entity.*;
+import com.novedu.nov.edu.entity.dto.EduStudyRecordDTO;
 import com.novedu.nov.edu.entity.dto.EduVideoInfoDTO;
-import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
+import com.novedu.nov.edu.entity.vo.EduStudyRecordVO;
 import com.novedu.nov.edu.entity.vo.EduVideoInfoVO;
-import com.novedu.nov.edu.entity.vo.HistoryWatchVO;
+import com.novedu.nov.edu.mapper.EduStudyRecordMapper;
 import com.novedu.nov.edu.mapper.EduVideoMapper;
-import com.novedu.nov.edu.service.EduChapterService;
-import com.novedu.nov.edu.service.EduCourseApplyService;
-import com.novedu.nov.edu.service.EduCourseService;
-import com.novedu.nov.edu.service.EduVideoService;
+import com.novedu.nov.edu.service.*;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 /**
  * <p>
@@ -65,6 +59,12 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
 
     @Autowired
     EduCourseApplyService courseApplyService;
+
+    @Autowired
+    EduStudyRecordService studyRecordService;
+
+    @Autowired
+    EduStudyRecordMapper studyRecordMapper;
 
     @Override
     public BaseResult saveVideo(EduVideo video) {
@@ -168,12 +168,12 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
         videoPlayCounts.put(id, playCount);
         redisTemplate.opsForValue().set(key, videoPlayCounts);
         String historyKey = "history_watch_" + uid;
-        List<HistoryWatchVO> historyWatchVOS = new ArrayList<>();
+        List<EduStudyRecordVO> historyWatchVOS = new ArrayList<>();
         ObjectMapper objectMapper = new ObjectMapper();
         if (redisTemplate.hasKey(historyKey)) {
             String str = (String) redisTemplate.opsForValue().get(historyKey);
             try {
-                historyWatchVOS = objectMapper.readValue(str, new TypeReference<List<HistoryWatchVO>>() {
+                historyWatchVOS = objectMapper.readValue(str, new TypeReference<List<EduStudyRecordVO>>() {
                 });
             } catch (JsonProcessingException e) {
                 log.error(e.getMessage());
@@ -186,19 +186,20 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
         QueryWrapper courseWrapper = new QueryWrapper();
         courseWrapper.eq("id", chapter.getCourseId());
         EduCourse course = courseService.getOne(courseWrapper);
-        HistoryWatchVO historyWatchVO = new HistoryWatchVO();
+        EduStudyRecordVO historyWatchVO = new EduStudyRecordVO();
         historyWatchVO.setCourseId(course.getId());
         historyWatchVO.setCourseTitle(course.getTitle());
         historyWatchVO.setCourseCover(course.getCover());
+        historyWatchVO.setChapterId(chapter.getId());
         historyWatchVO.setChapterTitle(chapter.getTitle());
         historyWatchVO.setChapterSort(chapter.getSort());
         historyWatchVO.setVideoId(id);
         historyWatchVO.setVideoTitle(video.getTitle());
         historyWatchVO.setVideoSort(video.getSort());
         historyWatchVO.setCreateTime(Calendar.getInstance().getTime());
-        Iterator<HistoryWatchVO> iterator = historyWatchVOS.iterator();
-        while (iterator.hasNext()){
-            if(iterator.next().getCourseId().equals(historyWatchVO.getCourseId())){
+        Iterator<EduStudyRecordVO> iterator = historyWatchVOS.iterator();
+        while (iterator.hasNext()) {
+            if (iterator.next().getCourseId().equals(historyWatchVO.getCourseId())) {
                 iterator.remove();
                 break;
             }
@@ -209,6 +210,10 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
         } catch (JsonProcessingException e) {
             log.error(e.getMessage());
         }
+        EduStudyRecord studyRecord = new EduStudyRecord();
+        BeanUtils.copyProperties(historyWatchVO, studyRecord);
+        studyRecord.setUid(uid);
+        studyRecordService.save(studyRecord);
         return BaseResult.success(getById(id));
     }
 
@@ -234,27 +239,43 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
     public BaseResult queryHistoryWatchPage(Page page) {
         Long uid = RequestUtils.getUid();
         String historyKey = "history_watch_" + uid;
-        List<HistoryWatchVO> historyWatchVOS = new ArrayList<>();
+        List<EduStudyRecordVO> historyWatchVOS = new ArrayList<>();
         ObjectMapper objectMapper = new ObjectMapper();
         if (redisTemplate.hasKey(historyKey)) {
             String str = (String) redisTemplate.opsForValue().get(historyKey);
             try {
-                historyWatchVOS = objectMapper.readValue(str, new TypeReference<List<HistoryWatchVO>>() {
+                historyWatchVOS = objectMapper.readValue(str, new TypeReference<List<EduStudyRecordVO>>() {
                 });
             } catch (JsonProcessingException e) {
                 log.error(e.getMessage());
             }
         }
         Collections.reverse(historyWatchVOS);
-        int start = (int)((page.getCurrent() - 1) * page.getSize());
+        int start = (int) ((page.getCurrent() - 1) * page.getSize());
         // 当前页最后一条数据在List中的位置
-        int end = (int)((start + page.getSize()) > historyWatchVOS.size() ? historyWatchVOS.size() : (page.getSize() * page.getCurrent()));
+        int end = (int) ((start + page.getSize()) > historyWatchVOS.size() ? historyWatchVOS.size() : (page.getSize() * page.getCurrent()));
         page.setRecords(new ArrayList<>());
-        if (page.getSize()*(page.getCurrent()-1) <= page.getTotal()) {
+        if (page.getSize() * (page.getCurrent() - 1) <= page.getTotal()) {
             // 分隔列表 当前页存在数据时 设置
             page.setRecords(historyWatchVOS.subList(start, end));
         }
         page.setTotal(historyWatchVOS.size());
         return BaseResult.success(page);
+    }
+
+    @Override
+    public BaseResult queryStudyRecordPage(Page page, EduStudyRecordDTO studyRecordDTO) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        if (!StringUtils.isEmpty(studyRecordDTO.getNickname()))
+            queryWrapper.like("u.nickname", studyRecordDTO.getNickname());
+        if (!StringUtils.isEmpty(studyRecordDTO.getCourseTitle()))
+            queryWrapper.like("c.title", studyRecordDTO.getCourseTitle());
+        if (!StringUtils.isEmpty(studyRecordDTO.getVideoTitle()))
+            queryWrapper.like("v.title", studyRecordDTO.getVideoTitle());
+        Date start = studyRecordDTO.getStartTime();
+        Date end = studyRecordDTO.getEndTime();
+        if (start != null && end != null && end.getTime() > start.getTime())
+            queryWrapper.apply("r.create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and r.create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start, end);
+        return BaseResult.success(studyRecordMapper.queryPage(page, queryWrapper));
     }
 }

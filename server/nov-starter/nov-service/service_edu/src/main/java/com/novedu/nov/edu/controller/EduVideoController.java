@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduChapter;
 import com.novedu.nov.edu.entity.EduVideo;
+import com.novedu.nov.edu.entity.dto.EduStudyRecordDTO;
 import com.novedu.nov.edu.entity.dto.EduVideoInfoDTO;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 import com.novedu.nov.edu.service.EduVideoService;
@@ -56,6 +57,11 @@ public class EduVideoController {
     @PostMapping("/history-watch/page")
     public BaseResult queryHistoryWatchPage(Page page) {
         return videoService.queryHistoryWatchPage(page);
+    }
+
+    @PostMapping("/study/record/page")
+    public BaseResult queryStudyRecordPage(Page page, EduStudyRecordDTO studyRecordDTO) {
+        return videoService.queryStudyRecordPage(page,studyRecordDTO);
     }
 
     @PostMapping("/detail/{id}")
