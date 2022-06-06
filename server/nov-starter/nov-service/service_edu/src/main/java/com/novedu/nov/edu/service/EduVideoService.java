@@ -34,4 +34,6 @@ public interface EduVideoService extends IService<EduVideo> {
     void exportVideoPage(HttpServletResponse response, Page page, EduVideoInfoDTO videoInfoDTO);
 
     void exportAll(HttpServletResponse response);
+
+    BaseResult queryHistoryWatchPage(Page page);
 }

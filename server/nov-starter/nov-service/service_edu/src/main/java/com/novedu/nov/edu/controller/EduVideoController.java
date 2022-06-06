@@ -53,6 +53,11 @@ public class EduVideoController {
         return videoService.queryVideoPage(page, videoInfoDTO);
     }
 
+    @PostMapping("/history-watch/page")
+    public BaseResult queryHistoryWatchPage(Page page) {
+        return videoService.queryHistoryWatchPage(page);
+    }
+
     @PostMapping("/detail/{id}")
     public BaseResult queryVideoDetail(@PathVariable Long id) {
         return videoService.queryVideoDetail(id);

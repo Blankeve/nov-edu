@@ -2,18 +2,21 @@ package com.novedu.nov.edu.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.common.api.ResultCode;
 import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.common.util.JwtUtils;
+import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.edu.client.OrderClient;
-import com.novedu.nov.edu.entity.EduChapter;
-import com.novedu.nov.edu.entity.EduCourse;
-import com.novedu.nov.edu.entity.EduCourseApply;
-import com.novedu.nov.edu.entity.EduVideo;
+import com.novedu.nov.edu.entity.*;
 import com.novedu.nov.edu.entity.dto.EduVideoInfoDTO;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 import com.novedu.nov.edu.entity.vo.EduVideoInfoVO;
+import com.novedu.nov.edu.entity.vo.HistoryWatchVO;
 import com.novedu.nov.edu.mapper.EduVideoMapper;
 import com.novedu.nov.edu.service.EduChapterService;
 import com.novedu.nov.edu.service.EduCourseApplyService;
@@ -23,6 +26,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
@@ -140,12 +145,10 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
         return true;
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public BaseResult queryClientVideo(Long id, HttpServletRequest request) {
-        String token = request.getHeader("X-Token");
-        if (!StringUtils.hasText(token))
-            return BaseResult.success("未登录");
-        Long uid = Long.valueOf(JwtUtils.getAudience(token).get("uid"));
+        Long uid = RequestUtils.getUid();
         if (!queryOrderByUidAndCourseId(id, uid))
             return BaseResult.error("请先购买该课程");
         String key = "video_play_count";
@@ -164,6 +167,48 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
         }
         videoPlayCounts.put(id, playCount);
         redisTemplate.opsForValue().set(key, videoPlayCounts);
+        String historyKey = "history_watch_" + uid;
+        List<HistoryWatchVO> historyWatchVOS = new ArrayList<>();
+        ObjectMapper objectMapper = new ObjectMapper();
+        if (redisTemplate.hasKey(historyKey)) {
+            String str = (String) redisTemplate.opsForValue().get(historyKey);
+            try {
+                historyWatchVOS = objectMapper.readValue(str, new TypeReference<List<HistoryWatchVO>>() {
+                });
+            } catch (JsonProcessingException e) {
+                log.error(e.getMessage());
+            }
+        }
+        EduVideo video = query().eq("id", id).one();
+        QueryWrapper chapterWrapper = new QueryWrapper();
+        chapterWrapper.eq("id", video.getChapterId());
+        EduChapter chapter = chapterService.getOne(chapterWrapper);
+        QueryWrapper courseWrapper = new QueryWrapper();
+        courseWrapper.eq("id", chapter.getCourseId());
+        EduCourse course = courseService.getOne(courseWrapper);
+        HistoryWatchVO historyWatchVO = new HistoryWatchVO();
+        historyWatchVO.setCourseId(course.getId());
+        historyWatchVO.setCourseTitle(course.getTitle());
+        historyWatchVO.setCourseCover(course.getCover());
+        historyWatchVO.setChapterTitle(chapter.getTitle());
+        historyWatchVO.setChapterSort(chapter.getSort());
+        historyWatchVO.setVideoId(id);
+        historyWatchVO.setVideoTitle(video.getTitle());
+        historyWatchVO.setVideoSort(video.getSort());
+        historyWatchVO.setCreateTime(Calendar.getInstance().getTime());
+        Iterator<HistoryWatchVO> iterator = historyWatchVOS.iterator();
+        while (iterator.hasNext()){
+            if(iterator.next().getCourseId().equals(historyWatchVO.getCourseId())){
+                iterator.remove();
+                break;
+            }
+        }
+        historyWatchVOS.add(historyWatchVO);
+        try {
+            redisTemplate.opsForValue().set(historyKey, new ObjectMapper().writeValueAsString(historyWatchVOS));
+        } catch (JsonProcessingException e) {
+            log.error(e.getMessage());
+        }
         return BaseResult.success(getById(id));
     }
 
@@ -183,5 +228,33 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
             Page page1 = (Page) baseResult.getData();
             ExcelUtils.exportExcel(page1.getRecords(), "视频信息", "视频信息", EduVideoInfoVO.class, "视频信息", response);
         }
+    }
+
+    @Override
+    public BaseResult queryHistoryWatchPage(Page page) {
+        Long uid = RequestUtils.getUid();
+        String historyKey = "history_watch_" + uid;
+        List<HistoryWatchVO> historyWatchVOS = new ArrayList<>();
+        ObjectMapper objectMapper = new ObjectMapper();
+        if (redisTemplate.hasKey(historyKey)) {
+            String str = (String) redisTemplate.opsForValue().get(historyKey);
+            try {
+                historyWatchVOS = objectMapper.readValue(str, new TypeReference<List<HistoryWatchVO>>() {
+                });
+            } catch (JsonProcessingException e) {
+                log.error(e.getMessage());
+            }
+        }
+        Collections.reverse(historyWatchVOS);
+        int start = (int)((page.getCurrent() - 1) * page.getSize());
+        // 当前页最后一条数据在List中的位置
+        int end = (int)((start + page.getSize()) > historyWatchVOS.size() ? historyWatchVOS.size() : (page.getSize() * page.getCurrent()));
+        page.setRecords(new ArrayList<>());
+        if (page.getSize()*(page.getCurrent()-1) <= page.getTotal()) {
+            // 分隔列表 当前页存在数据时 设置
+            page.setRecords(historyWatchVOS.subList(start, end));
+        }
+        page.setTotal(historyWatchVOS.size());
+        return BaseResult.success(page);
     }
 }

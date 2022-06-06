@@ -10,6 +10,14 @@ import request from '@/utils/request'
     })
   }
 
+  export function getHistoryWatchPage(params) {
+    return request({
+      url: '/edu/video/history-watch/page',
+      method: 'post',
+      params
+    })
+  }
+
   export function getOneByVideoId(params) {
     return request({
       url: `/edu/video/detail-client/${params}`,
@@ -17,3 +25,4 @@ import request from '@/utils/request'
     })
   }
 
+  

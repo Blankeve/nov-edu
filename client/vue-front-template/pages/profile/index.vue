@@ -1,216 +1,306 @@
 <template>
   <div class="main">
-    <div class="title" style="width: 1000px; margin: 0 auto">
+    <div class="title" style="width: 1200px; margin: 0 auto">
       <client-only>
         <el-tabs tab-position="left" style="height: 1080px">
-        <el-tab-pane label="我的资料">
-          <el-descriptions class="margin-top" :column="1" border>
-            <template slot="extra">
-              <el-button
-                icon="el-icon-check"
-                type="primary"
-                @click="updateProfile"
-                >更新资料</el-button
-              >
-              <el-button icon="el-icon-close" type="danger" @click="logout"
-                >退出登录</el-button
-              >
-            </template>
-            <el-descriptions-item>
-              <template slot="label">
-                <i class="el-icon-user"></i>
-                头像
-              </template>
-
-              <el-upload
-                class="avatar-uploader"
-                name="img"
-                :action="'http://159.75.234.20:8000/upload/img'"
-                :show-file-list="false"
-                :on-success="handleAvatarSuccess"
-                :before-upload="beforeAvatarUpload"
-              >
-                <img
-                  width="100"
-                  v-if="user.avatar"
-                  :src="user.avatar"
-                  class="avatar"
-                />
-                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-              </el-upload>
-            </el-descriptions-item>
-            <el-descriptions-item>
-              <template slot="label">
-                <i class="el-icon-user"></i>
-                昵称
-              </template>
-              <el-input v-model="user.nickname" autocomplete="off"></el-input>
-            </el-descriptions-item>
-
-            <el-descriptions-item>
-              <template slot="label">
-                <i class="el-icon-user"></i>
-                用户名
-              </template>
-              {{ user.username }}
-            </el-descriptions-item>
-            <el-descriptions-item>
-              <template slot="label">
-                <i class="el-icon-mobile-phone"></i>
-                手机号
-              </template>
-              <el-input v-model="user.mobile" autocomplete="off"></el-input>
-            </el-descriptions-item>
-            <el-descriptions-item>
-              <template slot="label">
-                <i class="el-icon-location-outline"></i>
-                居住地
-              </template>
-              {{ user.lastLoginIp }}
-            </el-descriptions-item>
-            <el-descriptions-item>
-              <template slot="label">
-                <i class="el-icon-tickets"></i>
-                账户角色
-              </template>
-              <el-tag size="small">{{ user.roleName }}</el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item>
-              <template slot="label">
-                <i class="el-icon-office-building"></i>
-                加入时间
-              </template>
-              {{ user.createTime }}
-            </el-descriptions-item>
-            <el-descriptions-item>
-              <template slot="label">
-                <i class="el-icon-office-building"></i>
-                更新时间
-              </template>
-              {{ user.updateTime }}
-            </el-descriptions-item>
-          </el-descriptions>
-        </el-tab-pane>
-        <el-tab-pane label="我的订单">
-          <el-table
-            v-loading="listLoading"
-            :data="list"
-            element-loading-text="Loading"
-            fit
-            highlight-current-row
-          >
-            <el-table-column align="center" label="#" width="50">
-              <template slot-scope="scope">
-                {{ scope.$index + 1 }}
-              </template>
-            </el-table-column>
-
-            <el-table-column label="购买课程" width="200px" align="center">
-              <template slot-scope="scope">
-                {{ scope.row.courseTitle }}
-              </template>
-            </el-table-column>
-            <el-table-column label="课程封面" width="200px" align="center">
-              <template slot-scope="scope">
-                <div class="demo-image__preview">
-                  <el-image
-                    :src="scope.row.courseCover"
-                    alt="图片获取失败"
-                    title="点击查看大图"
-                    width="100px"
-                    :preview-src-list="[scope.row.courseCover]"
-                  />
-                </div>
-              </template>
-            </el-table-column>
-            <el-table-column label="课程讲师" align="center">
-              <template slot-scope="scope">
-                {{ scope.row.teacherName }}
-              </template>
-            </el-table-column>
-
-            <el-table-column label="课程价格" width="80px" align="center">
-              <template slot-scope="scope">
-                {{ scope.row.totalFee }}
-              </template>
-            </el-table-column>
-
-            <el-table-column label="支付方式" width="100px" align="center">
-              <template slot-scope="scope" v-if="scope.row.status === 1">
-                {{ scope.row.payType === 1 ? "微信支付" : "支付宝" }}
-              </template>
-            </el-table-column>
-
-            <el-table-column align="center" prop="created_at" label="支付时间">
-              <template slot-scope="scope">
-                <i class="el-icon-time" />
-                <span>{{ scope.row.createTime }}</span>
-              </template>
-            </el-table-column>
-
-            <el-table-column
-              fixed="right"
-              align="center"
-              label="操作"
-              width="170"
-            >
-              <template slot-scope="scope">
+          <el-tab-pane label="我的资料">
+            <el-descriptions class="margin-top" :column="1" border>
+              <template slot="extra">
                 <el-button
-                  @click="studyCourse(scope.row.courseId)"
-                  icon="el-icon-right"
-                  slot="reference"
+                  icon="el-icon-check"
                   type="primary"
-                  >立即学习</el-button
+                  @click="updateProfile"
+                  >更新资料</el-button
+                >
+                <el-button icon="el-icon-close" type="danger" @click="logout"
+                  >退出登录</el-button
                 >
               </template>
-            </el-table-column>
-          </el-table>
-          <div class="block">
-            <el-pagination
-              background
-              @size-change="handleSizeChange"
-              @current-change="handleCurrentChange"
-              :current-page="form.current"
-              :page-sizes="sizes"
-              :page-size="form.size"
-              layout="total, sizes, prev, pager, next, jumper"
-              :total="form.total"
+              <el-descriptions-item>
+                <template slot="label">
+                  <i class="el-icon-user"></i>
+                  头像
+                </template>
+
+                <el-upload
+                  class="avatar-uploader"
+                  name="img"
+                  :action="'http://159.75.234.20:8000/upload/img'"
+                  :show-file-list="false"
+                  :on-success="handleAvatarSuccess"
+                  :before-upload="beforeAvatarUpload"
+                >
+                  <img
+                    width="100"
+                    v-if="user.avatar"
+                    :src="user.avatar"
+                    class="avatar"
+                  />
+                  <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                </el-upload>
+              </el-descriptions-item>
+              <el-descriptions-item>
+                <template slot="label">
+                  <i class="el-icon-user"></i>
+                  昵称
+                </template>
+                <el-input v-model="user.nickname" autocomplete="off"></el-input>
+              </el-descriptions-item>
+
+              <el-descriptions-item>
+                <template slot="label">
+                  <i class="el-icon-user"></i>
+                  用户名
+                </template>
+                {{ user.username }}
+              </el-descriptions-item>
+              <el-descriptions-item>
+                <template slot="label">
+                  <i class="el-icon-mobile-phone"></i>
+                  手机号
+                </template>
+                <el-input v-model="user.mobile" autocomplete="off"></el-input>
+              </el-descriptions-item>
+              <el-descriptions-item>
+                <template slot="label">
+                  <i class="el-icon-location-outline"></i>
+                  居住地
+                </template>
+                {{ user.lastLoginIp }}
+              </el-descriptions-item>
+              <el-descriptions-item>
+                <template slot="label">
+                  <i class="el-icon-tickets"></i>
+                  账户角色
+                </template>
+                <el-tag size="small">{{ user.roleName }}</el-tag>
+              </el-descriptions-item>
+              <el-descriptions-item>
+                <template slot="label">
+                  <i class="el-icon-office-building"></i>
+                  加入时间
+                </template>
+                {{ user.createTime }}
+              </el-descriptions-item>
+              <el-descriptions-item>
+                <template slot="label">
+                  <i class="el-icon-office-building"></i>
+                  更新时间
+                </template>
+                {{ user.updateTime }}
+              </el-descriptions-item>
+            </el-descriptions>
+          </el-tab-pane>
+          <el-tab-pane label="我的订单">
+            <el-table
+              v-loading="listLoading"
+              :data="list"
+              element-loading-text="Loading"
+              fit
+              highlight-current-row
             >
-            </el-pagination>
-          </div>
-        </el-tab-pane>
-        <el-tab-pane label="历史观看"></el-tab-pane>
-        <el-tab-pane label="修改密码">
-          <el-form
-            :model="ruleForm"
-            status-icon
-            :rules="rules"
-            ref="ruleForm"
-            label-width="100px"
-            class="demo-ruleForm"
-          >
-            <el-form-item label="旧密码" prop="oldpass">
-              <el-input
-                type="password"
-                v-model="ruleForm.oldpass"
-                autocomplete="off"
-              ></el-input>
-            </el-form-item>
-            <el-form-item label="新密码" prop="newpass">
-              <el-input
-                type="password"
-                v-model="ruleForm.newpass"
-                autocomplete="off"
-              ></el-input>
-            </el-form-item>
-            <el-form-item>
-              <el-button type="primary" @click="submitForm('ruleForm')"
-                >提交</el-button
+              <el-table-column align="center" label="#" width="50">
+                <template slot-scope="scope">
+                  {{ scope.$index + 1 }}
+                </template>
+              </el-table-column>
+
+              <el-table-column label="购买课程" width="200px" align="center">
+                <template slot-scope="scope">
+                  {{ scope.row.courseTitle }}
+                </template>
+              </el-table-column>
+              <el-table-column label="课程封面" width="200px" align="center">
+                <template slot-scope="scope">
+                  <div class="demo-image__preview">
+                    <el-image
+                      :src="scope.row.courseCover"
+                      alt="图片获取失败"
+                      title="点击查看大图"
+                      width="100px"
+                      :preview-src-list="[scope.row.courseCover]"
+                    />
+                  </div>
+                </template>
+              </el-table-column>
+              <el-table-column label="课程讲师" align="center">
+                <template slot-scope="scope">
+                  {{ scope.row.teacherName }}
+                </template>
+              </el-table-column>
+
+              <el-table-column label="课程价格" width="80px" align="center">
+                <template slot-scope="scope">
+                  {{ scope.row.totalFee }}
+                </template>
+              </el-table-column>
+
+              <el-table-column label="支付方式" width="100px" align="center">
+                <template slot-scope="scope" v-if="scope.row.status === 1">
+                  {{ scope.row.payType === 1 ? "微信支付" : "支付宝" }}
+                </template>
+              </el-table-column>
+
+              <el-table-column
+                align="center"
+                prop="created_at"
+                label="支付时间"
               >
-            </el-form-item>
-          </el-form></el-tab-pane
-        >
-      </el-tabs>
+                <template slot-scope="scope">
+                  <i class="el-icon-time" />
+                  <span>{{ scope.row.createTime }}</span>
+                </template>
+              </el-table-column>
+
+              <el-table-column
+                fixed="right"
+                align="center"
+                label="操作"
+                width="170"
+              >
+                <template slot-scope="scope">
+                  <el-button
+                    @click="studyCourse(scope.row.courseId)"
+                    icon="el-icon-right"
+                    slot="reference"
+                    type="primary"
+                    >立即学习</el-button
+                  >
+                </template>
+              </el-table-column>
+            </el-table>
+            <div class="block">
+              <el-pagination
+                background
+                @size-change="handleSizeChange"
+                @current-change="handleCurrentChange"
+                :current-page="form.current"
+                :page-sizes="sizes"
+                :page-size="form.size"
+                layout="total, sizes, prev, pager, next, jumper"
+                :total="form.total"
+              >
+              </el-pagination>
+            </div>
+          </el-tab-pane>
+          <el-tab-pane label="历史观看">
+            <el-table
+              v-loading="hislistLoading"
+              :data="hislist"
+              element-loading-text="Loading"
+              fit
+              highlight-current-row
+            >
+              <el-table-column align="center" label="#" width="50">
+                <template slot-scope="scope">
+                  {{ scope.$index + 1 }}
+                </template>
+              </el-table-column>
+
+              <el-table-column label="观看课程" width="200px" align="center">
+                <template slot-scope="scope">
+                  {{ scope.row.courseTitle }}
+                </template>
+              </el-table-column>
+              <el-table-column label="课程封面" width="200px" align="center">
+                <template slot-scope="scope">
+                  <div class="demo-image__preview">
+                    <el-image
+                      :src="scope.row.courseCover"
+                      alt="图片获取失败"
+                      title="点击查看大图"
+                      width="100px"
+                      :preview-src-list="[scope.row.courseCover]"
+                    />
+                  </div>
+                </template>
+              </el-table-column>
+
+              <el-table-column label="章节/小节" width="100px" align="center">
+                <template slot-scope="scope">
+                  {{ scope.row.chapterSort }}/{{ scope.row.videoSort }}
+                </template>
+              </el-table-column>
+
+              <el-table-column label="视频标题" width="200px" align="center">
+                <template slot-scope="scope">
+                  {{ scope.row.videoTitle }}
+                </template>
+              </el-table-column>
+
+              <el-table-column
+                align="center"
+                prop="created_at"
+                label="观看时间"
+              >
+                <template slot-scope="scope">
+                  <i class="el-icon-time" />
+                  <span>{{ scope.row.createTime }}</span>
+                </template>
+              </el-table-column>
+
+              <el-table-column
+                fixed="right"
+                align="center"
+                label="操作"
+                width="170"
+              >
+                <template slot-scope="scope">
+                  <el-button
+                    @click="continueStudy(scope.row.videoId)"
+                    icon="el-icon-right"
+                    slot="reference"
+                    type="primary"
+                    >继续学习</el-button
+                  >
+                </template>
+              </el-table-column>
+            </el-table>
+            <div class="block">
+              <el-pagination
+                background
+                @size-change="hishandleSizeChange"
+                @current-change="hishandleCurrentChange"
+                :current-page="his.current"
+                :page-sizes="sizes"
+                :page-size="his.size"
+                layout="total, sizes, prev, pager, next, jumper"
+                :total="his.total"
+              >
+              </el-pagination>
+            </div>
+          </el-tab-pane>
+          <el-tab-pane label="修改密码">
+            <el-form
+              :model="ruleForm"
+              status-icon
+              :rules="rules"
+              ref="ruleForm"
+              label-width="100px"
+              class="demo-ruleForm"
+            >
+              <el-form-item label="旧密码" prop="oldpass">
+                <el-input
+                  type="password"
+                  v-model="ruleForm.oldpass"
+                  autocomplete="off"
+                ></el-input>
+              </el-form-item>
+              <el-form-item label="新密码" prop="newpass">
+                <el-input
+                  type="password"
+                  v-model="ruleForm.newpass"
+                  autocomplete="off"
+                ></el-input>
+              </el-form-item>
+              <el-form-item>
+                <el-button type="primary" @click="submitForm('ruleForm')"
+                  >提交</el-button
+                >
+              </el-form-item>
+            </el-form></el-tab-pane
+          >
+        </el-tabs>
       </client-only>
     </div>
   </div>
@@ -224,6 +314,7 @@ import { getById, updatePwdById, updateById } from "@/api/user";
 import { getToken, removeToken, removeInfo } from "@/utils/auth";
 import jwtDecode from "jwt-decode";
 import { getOrderPage } from "@/api/order";
+import { getHistoryWatchPage } from "@/api/video";
 export default {
   layout: "simple",
   data() {
@@ -240,8 +331,16 @@ export default {
     return {
       list: null,
       listLoading: true,
+      hislist: null,
+      hislistLoading: true,
       sizes: [],
       form: {
+        current: 1,
+        size: 8,
+        total: 0,
+        pages: 1,
+      },
+      his: {
         current: 1,
         size: 8,
         total: 0,
@@ -298,6 +397,14 @@ export default {
         this.list = data.records;
         this.listLoading = false;
       });
+      getHistoryWatchPage(this.his).then((response) => {
+        let data = response.data;
+        this.his.current = data.current;
+        this.his.size = data.size;
+        this.his.total = data.total;
+        this.hislist = data.records;
+        this.hislistLoading = false;
+      });
     },
     handleCurrentChange(p) {
       this.form.current = p;
@@ -305,6 +412,14 @@ export default {
     },
     handleSizeChange(s) {
       this.form.size = s;
+      this.fetchData();
+    },
+    hishandleCurrentChange(p) {
+      this.his.current = p;
+      this.fetchData();
+    },
+    hishandleSizeChange(s) {
+      this.his.size = s;
       this.fetchData();
     },
     submitForm(formName) {
@@ -358,9 +473,9 @@ export default {
         }
       });
     },
-    historyWatch(){
-      this.$alert("该功能敬请期待", "nov在线课堂提示", {
-        confirmButtonText: "确定",
+    continueStudy(id) {
+      this.$router.push({
+        path: "/video/" + id,
       });
     },
     logout() {

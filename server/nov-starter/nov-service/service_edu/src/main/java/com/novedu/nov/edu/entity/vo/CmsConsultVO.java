@@ -22,7 +22,7 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @ApiModel(value="CmsConsult对象", description="")
-public class CmsConsultVo implements Serializable {
+public class CmsConsultVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

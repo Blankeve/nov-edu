@@ -16,8 +16,8 @@
         <span class="c-333 fsize14">{{ course.courseTitle }}</span>
       </section>
       <div>
-        <article class="c-v-pic-wrap" >
-          <section  id="videoPlay">
+        <article class="c-v-pic-wrap">
+          <section id="videoPlay">
             <img
               :src="course.courseCover"
               :alt="course.courseCover"
@@ -171,7 +171,10 @@
                   </h6>
                   <div class="course-txt-body-wrap">
                     <section class="course-txt-body">
-                      <p class="content-html" v-html="course.introDescription"></p>
+                      <p
+                        class="content-html"
+                        v-html="course.introDescription"
+                      ></p>
                     </section>
                   </div>
                 </div>
