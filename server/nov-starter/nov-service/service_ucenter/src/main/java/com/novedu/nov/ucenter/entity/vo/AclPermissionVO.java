@@ -29,7 +29,7 @@ import java.util.Map;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @ApiModel(value="AclPermission对象", description="权限")
-public class AclPermissionVO implements Serializable {
+public class AclPermissionVO implements Serializable , Comparable<AclPermissionVO>{
 
     private static final long serialVersionUID = 1L;
 
@@ -56,4 +56,12 @@ public class AclPermissionVO implements Serializable {
 
     @TableField(exist = false)
     private List<AclPermissionVO> children;
+
+    private Integer sort;
+
+
+    @Override
+    public int compareTo(AclPermissionVO o) {
+        return this.getSort() - o.getSort();
+    }
 }

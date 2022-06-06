@@ -28,6 +28,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
@@ -233,12 +234,21 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
             permissionVOS.add(aclPermissionVO);
         }
         permissionVOS = (List<AclPermissionVO>) TreeUtils.toTree(permissionVOS, AclPermissionVO.class);
+        Collections.sort(permissionVOS);
+        permissionVOS.forEach(o->childrenSort(o.getChildren()));
         return BaseResult.success()
                 .mapSet("username", user.getUsername())
                 .mapSet("avatar", user.getAvatar())
                 .mapSet("code", role.getCode())
                 .mapSet("roleName", role.getName())
                 .mapSet("menus", permissionVOS);
+    }
+
+    private void childrenSort(List<AclPermissionVO> children){
+        if(CollectionUtils.isEmpty(children))
+            return;
+        Collections.sort(children);
+        children.forEach(o->childrenSort(o.getChildren()));
     }
 
     @Override

@@ -12,7 +12,8 @@
         p.icon as icon,
         p.status  as status,
         p.type as type,
-        p.parent_id as parentId
+        p.parent_id as parentId,
+        p.sort as sort
         from acl_permission p
         where p.is_deleted = 0
         and p.id

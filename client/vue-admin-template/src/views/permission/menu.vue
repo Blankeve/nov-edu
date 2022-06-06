@@ -7,59 +7,59 @@
       <el-button type="text" size="mini" @click="() => appendRoot(data)">
         添加一级菜单
       </el-button>
-    <div class="menu-tree">
+      <div class="menu-tree">
         <el-tree
-        :data="data"
-        node-key="id"
-        ref="tree"
-        :filter-node-method="filterNode"
-        @node-drag-start="handleDragStart"
-        @node-drag-enter="handleDragEnter"
-        @node-drag-leave="handleDragLeave"
-        @node-drag-over="handleDragOver"
-        @node-drag-end="handleDragEnd"
-        @node-drop="handleDrop"
-        :expand-on-click-node="false"
-        :default-expanded-keys="defaultShowNodes"
-        @node-expand="handleNodeExpand"
-        @node-collapse="handleNodeCollapse"
-      >
-        <span class="custom-tree-node" slot-scope="{ node, data }">
-          <i
-            :class="data.type == 1 ? 'top-node-icon' : 'leaf-node-icon '"
-          ></i>
-          <span
-            >{{ data.title }}&nbsp;{{
-              data.children ? `(${data.children.length})` : ""
-            }}</span
-          >
-          <span style="margin-left: 100px">
-            <el-button
-              type="text"
-              size="mini"
-              icon="el-icon-circle-plus-outline"
-              @click="() => append(data)"
+          :data="data"
+          node-key="id"
+          ref="tree"
+          :filter-node-method="filterNode"
+          @node-drag-start="handleDragStart"
+          @node-drag-enter="handleDragEnter"
+          @node-drag-leave="handleDragLeave"
+          @node-drag-over="handleDragOver"
+          @node-drag-end="handleDragEnd"
+          @node-drop="handleDrop"
+          :expand-on-click-node="false"
+          :default-expanded-keys="defaultShowNodes"
+          @node-expand="handleNodeExpand"
+          @node-collapse="handleNodeCollapse"
+        >
+          <span class="custom-tree-node" slot-scope="{ node, data }">
+            <i
+              :class="data.type == 1 ? 'top-node-icon' : 'leaf-node-icon '"
+            ></i>
+            <span
+              >{{ data.title }}&nbsp;{{
+                data.children ? `(${data.children.length})` : ""
+              }}</span
             >
-            </el-button>
-            <el-button
-              type="text"
-              size="mini"
-              icon="el-icon-edit"
-              circle
-              @click="() => edit(node, data)"
-            >
-            </el-button>
-            <el-button
-              type="text"
-              size="mini"
-              icon="el-icon-delete"
-              @click="() => remove(node, data)"
-            >
-            </el-button>
+            <span style="margin-left: 100px">
+              <el-button
+                type="text"
+                size="mini"
+                icon="el-icon-circle-plus-outline"
+                @click="() => append(data)"
+              >
+              </el-button>
+              <el-button
+                type="text"
+                size="mini"
+                icon="el-icon-edit"
+                circle
+                @click="() => edit(node, data)"
+              >
+              </el-button>
+              <el-button
+                type="text"
+                size="mini"
+                icon="el-icon-delete"
+                @click="() => remove(node, data)"
+              >
+              </el-button>
+            </span>
           </span>
-        </span>
-      </el-tree>
-    </div>
+        </el-tree>
+      </div>
 
       <el-dialog
         :title="menuFormTitle"
@@ -73,15 +73,19 @@
             <el-input v-model="form.parentName"></el-input>
           </el-form-item>
 
-          <el-form-item label="权限名称" prop="title">
+          <el-form-item label="菜单名称" prop="title">
             <el-input v-model="form.title"></el-input>
           </el-form-item>
 
-          <el-form-item label="权限类型">
+          <el-form-item label="菜单类型" prop="type">
             <el-radio-group v-model="form.type">
               <el-radio-button label="1">菜单</el-radio-button>
               <el-radio-button label="2">按钮</el-radio-button>
             </el-radio-group>
+          </el-form-item>
+
+          <el-form-item label="菜单级别">
+            <el-input v-model="form.value"></el-input>
           </el-form-item>
 
           <el-form-item label="权限值">
@@ -109,6 +113,15 @@
               <el-radio-button label="1">显示</el-radio-button>
               <el-radio-button label="2">隐藏</el-radio-button>
             </el-radio-group>
+          </el-form-item>
+
+          <el-form-item label="菜单排序">
+            <el-input-number
+              v-model="form.sort"
+              :min="0"
+              :max="1000"
+              label="菜单排序"
+            ></el-input-number>
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
@@ -141,6 +154,7 @@ export default {
         id: null,
         parentName: "无",
         parentId: 0,
+        sort: 0,
         title: "",
         name: "",
         type: 1,
@@ -160,6 +174,7 @@ export default {
             trigger: "blur",
           },
         ],
+        type: [{ required: true, message: "请输入权限名称", trigger: "blur" }],
         component: [
           { required: true, message: "请输入组件路径", trigger: "blur" },
           {
@@ -169,7 +184,7 @@ export default {
             trigger: "blur",
           },
         ],
-          path: [
+        path: [
           { required: true, message: "请输入访问路径", trigger: "blur" },
           {
             min: 1,
@@ -212,7 +227,11 @@ export default {
     onSubmit() {
       saveOrUpdate(this.form).then((resp) => {
         if (resp.code === 200) {
-          this.$message.success((this.form.id ? "更新" : "添加") + "成功");
+          if (this.form.id) this.$message.success("更新成功");
+          else
+            this.$message.success(
+              "添加成功，如需显示请在对应角色分配该菜单权限"
+            );
           this.fetchData();
           this.menuFormVisible = false;
         }
@@ -253,6 +272,7 @@ export default {
         this.form.component = data.component;
         this.form.icon = data.icon;
         this.form.status = data.status;
+        this.form.sort = data.sort;
         this.menuFormTitle = "更新菜单";
         this.menuFormVisible = true;
       }

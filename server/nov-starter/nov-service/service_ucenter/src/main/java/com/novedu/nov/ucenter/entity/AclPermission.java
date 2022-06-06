@@ -48,7 +48,7 @@ public class AclPermission implements Serializable {
     @ApiModelProperty(value = "权限名称")
     private String title;
 
-    @ApiModelProperty(value = "权限组件访问名称")
+    @ApiModelProperty(value = "权限组件")
     private String name;
 
     @NotNull(message = "权限类型不能为空")
@@ -58,6 +58,7 @@ public class AclPermission implements Serializable {
     @ApiModelProperty(value = "权限值")
     private String value;
 
+    @NotBlank(message = "访问路径不能为空")
     @ApiModelProperty(value = "访问路径")
     private String path;
 
@@ -84,4 +85,6 @@ public class AclPermission implements Serializable {
 
     @TableField(exist = false)
     private List<AclPermission> children;
+
+    private Integer sort;
 }
