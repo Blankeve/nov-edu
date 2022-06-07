@@ -29,7 +29,7 @@
             </nuxt-link> -->
           </ul>
           <ul class="h-r-login">
-            <li v-show="!loginInfo.nickname" id="no-login">
+            <li v-show="!nickname" id="no-login">
               |
               <nuxt-link to="/login">
                 <em class="icon18 login-icon">&nbsp;</em>
@@ -40,24 +40,24 @@
                 <span class="vam ml5">注册</span></nuxt-link
               >
             </li>
-            <li v-show="loginInfo.nickname" id="is-login-one" class="mr10">
+            <li v-show="nickname" id="is-login-one" class="mr10">
               <a id="headerMsgCountId" href="#" title="消息">
                 <em class="icon18 news-icon">&nbsp;</em>
               </a>
               <q class="red-point" style="display: none">&nbsp;</q>
             </li>
-            <li v-show="loginInfo.nickname" id="is-login-two" class="h-r-user">
+            <li v-show="nickname" id="is-login-two" class="h-r-user">
               <a href="/profile" title>
                 <client-only>
                   <img
-                    :src="loginInfo.avatar"
+                    :src="avatar"
                     width="30"
                     height="30"
                     class="vam picImg"
                     alt
                   />
                 </client-only>
-                <span id="userName">{{ loginInfo.nickname }}</span>
+                <span id="userName">{{ nickname }}</span>
               </a>
             </li>
           </ul>
@@ -150,8 +150,10 @@ import "~/assets/css/order.css";
 import "~/assets/css/swiper-3.3.1.min.css";
 import "~/assets/css/pages-weixinpay.css";
 
-import jwtDecode from "jwt-decode";
+import store from "@/store";
+import { mapGetters } from 'vuex'
 import { getInfo, removeInfo, removeToken } from "@/utils/auth";
+
 export default {
   data() {
     return {
@@ -164,8 +166,12 @@ export default {
       queryTitle: "",
     };
   },
-  created() {
-    this.fetchData();
+    computed: {
+    ...mapGetters([
+      'token',
+      'avatar',
+      'nickname'
+    ])
   },
   watch: {
     $route(to, from) {
@@ -185,16 +191,6 @@ export default {
           title: this.queryTitle,
         },
       });
-    },
-    fetchData() {
-      let loginInfo = getInfo();
-      if (typeof loginInfo == "string" && loginInfo.length > 0) {
-        loginInfo = JSON.parse(loginInfo);
-      }
-      if (loginInfo) {
-        this.loginInfo.nickname = loginInfo.nickname;
-        this.loginInfo.avatar = loginInfo.avatar;
-      }
     },
   },
 };

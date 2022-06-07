@@ -48,4 +48,6 @@ public interface AclUserService extends IService<AclUser> {
     BaseResult updateProfile(AclUserProfileDTO userProfileDto);
 
     BaseResult syncUsersCache();
+
+    BaseResult getInfoClient(String token);
 }

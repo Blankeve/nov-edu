@@ -199,7 +199,7 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
         historyWatchVO.setCreateTime(Calendar.getInstance().getTime());
         Iterator<EduStudyRecordVO> iterator = historyWatchVOS.iterator();
         while (iterator.hasNext()) {
-            if (iterator.next().getCourseId().equals(historyWatchVO.getCourseId())) {
+            if (iterator.next().getVideoId().equals(historyWatchVO.getVideoId())) {
                 iterator.remove();
                 break;
             }

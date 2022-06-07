@@ -88,6 +88,11 @@ public class AclUserController {
         return aclUserService.getInfoBg(token);
     }
 
+    @GetMapping("/info-client")
+    public BaseResult getInfoClient(String token) {
+        return aclUserService.getInfoClient(token);
+    }
+
     @GetMapping("/info-dashboard")
     public BaseResult getDashBoardInfo() {
         return aclUserService.getDashBoardInfo();

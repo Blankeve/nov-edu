@@ -82,9 +82,7 @@
 <script>
 import "~/assets/css/sign.css";
 import "~/assets/css/iconfont.css";
-import cookie from "js-cookie";
-import { loginMember } from "@/api/login";
-import { setToken, setInfo } from "@/utils/auth";
+
 export default {
   layout: "sign",
 
@@ -137,26 +135,13 @@ export default {
     },
 
     submitLogin() {
-      loginMember(this.user).then((resp) => {
-        if (resp.code === 200) {
-          //提示登录成功
-          this.$message({
-            type: "success",
-            message: "登录成功",
-          });
-          let token = resp.data.access_token;
-          setToken(token);
-          let loginInfo = resp.data.loginInfo;
-          setInfo(JSON.stringify(loginInfo))
-          //跳转登录页面
-          this.$router.push({
-            path: "/",
-            query: {
-              loginInfo: loginInfo,
-            },
-          });
-        }
-      });
+      this.$store
+        .dispatch("user/login", this.user)
+        .then(() => {
+          this.$router.push({ path: "/" });
+        })
+        .catch(() => {
+        });
     },
   },
 };

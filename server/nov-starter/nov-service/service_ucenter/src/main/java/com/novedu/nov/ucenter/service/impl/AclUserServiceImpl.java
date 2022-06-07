@@ -94,6 +94,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         return BaseResult.success().mapSet("access_token", token).mapSet("loginInfo", loginInfo);
     }
 
+
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public BaseResult register(AclUser ucenterMemberDto) {
@@ -124,6 +125,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         userRoleService.save(userRole);
         return BaseResult.success();
     }
+
 
     @Override
     public BaseResult getMemberInfo(Long id) {
@@ -235,7 +237,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         }
         permissionVOS = (List<AclPermissionVO>) TreeUtils.toTree(permissionVOS, AclPermissionVO.class);
         Collections.sort(permissionVOS);
-        permissionVOS.forEach(o->childrenSort(o.getChildren()));
+        permissionVOS.forEach(o -> childrenSort(o.getChildren()));
         return BaseResult.success()
                 .mapSet("username", user.getUsername())
                 .mapSet("avatar", user.getAvatar())
@@ -244,11 +246,11 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
                 .mapSet("menus", permissionVOS);
     }
 
-    private void childrenSort(List<AclPermissionVO> children){
-        if(CollectionUtils.isEmpty(children))
+    private void childrenSort(List<AclPermissionVO> children) {
+        if (CollectionUtils.isEmpty(children))
             return;
         Collections.sort(children);
-        children.forEach(o->childrenSort(o.getChildren()));
+        children.forEach(o -> childrenSort(o.getChildren()));
     }
 
     @Override
@@ -307,7 +309,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
             userInfo.put("recentAddUsers", getRecentAddUsers());
             String key = "access_num";
             if (redisTemplate.hasKey(key)) {
-                Integer accessNum = (Integer) redisTemplate.opsForValue().get(key) / 2;
+                Integer accessNum = (Integer) redisTemplate.opsForValue().get(key);
                 userInfo.put("accessNum", accessNum);
             }
         }
@@ -353,7 +355,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
     public BaseResult syncUsersCache() {
         String key = "usersCache";
         List<AclUser> aclUsers = list();
-        if(ObjectUtils.isEmpty(aclUsers))
+        if (ObjectUtils.isEmpty(aclUsers))
             return BaseResult.error("获取用户列表失败");
         try {
             redisTemplate.opsForValue().set(key, new ObjectMapper().writeValueAsString(aclUsers));
@@ -361,5 +363,14 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
             return BaseResult.error("用户列表写入缓存失败");
         }
         return BaseResult.success();
+    }
+
+    @Override
+    public BaseResult getInfoClient(String token) {
+        Long uid = Long.valueOf(JwtUtils.getAudience(token).get("uid"));
+        AclUser user = getById(uid);
+        return BaseResult.success().mapSet("username", user.getUsername())
+                .mapSet("nickname", user.getNickname())
+                .mapSet("avatar", user.getAvatar());
     }
 }

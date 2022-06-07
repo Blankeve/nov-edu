@@ -528,9 +528,11 @@ export default {
     openVideo(isFree, id) {
       if ((this.course.coursePrice > 0 && isFree == 1) || this.hasBuy) {
         if (!this.checkLogin()) return;
-        this.$router.push({
+      let routeUrl =   this.$router.resolve({
           path: "/video/" + id,
         });
+           window.open(routeUrl.href, '_blank');
+
       } else {
         this.$message({
           type: "error",

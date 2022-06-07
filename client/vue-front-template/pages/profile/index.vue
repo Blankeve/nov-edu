@@ -485,9 +485,13 @@ export default {
         type: "warning",
       })
         .then(() => {
-          removeToken();
-          removeInfo();
-          this.$router.push("/");
+             this.$store
+        .dispatch("user/logout")
+        .then(() => {
+          this.$router.push({ path: "/" });
+        })
+        .catch(() => {
+        });
         })
         .catch(() => {});
     },
