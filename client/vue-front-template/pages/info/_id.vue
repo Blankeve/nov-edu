@@ -65,7 +65,7 @@ export default {
       editorOption: editorOptions,
     };
   },
-  created() {
+  mounted() {
     this.fetchData();
   },
   methods: {

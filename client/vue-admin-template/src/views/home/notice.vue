@@ -221,6 +221,7 @@ export default {
       });
     },
     addNotice() {
+      this.form.id = undefined;
       this.form.title = "";
       this.form.content = "";
       this.form.sendUser = "";
@@ -239,7 +240,7 @@ export default {
       this.form.sendUser = store.getters.name;
       saveOrUpdate(this.form).then((resp) => {
         if (resp.code === 200) {
-          this.$message.success("添加成功");
+          this.$message.success((this.form.id?"更新":"添加")+"成功");
           this.noticeFormVisible = false;
           this.fetchData();
         }
@@ -260,8 +261,8 @@ export default {
   text-align: center;
 }
 
-::v-deep .ql-container {
-  min-height: 500px;
+::v-deep .ql-editor {
+  height: 500px;
 }
 .el-input {
   width: 100%;
