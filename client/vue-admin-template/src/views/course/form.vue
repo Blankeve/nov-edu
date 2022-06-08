@@ -290,11 +290,13 @@ export default {
   margin: 0 auto;
 }
 
-.ql-editor {
-  height: 800px;
-}
-
 h2 {
   text-align: center;
+}
+</style>
+
+<style lang="scss" scoped>
+::v-deep .ql-editor {
+  height: 800px;
 }
 </style>

@@ -1,34 +1,47 @@
 <template>
   <div class="main">
     <div style="width: 1000px; margin: 0 auto">
+      <el-page-header style="float: left" @back="goBack" content="">
+      </el-page-header>
+      <div>
+        <p class="text2">
+          {{ info.title }}
+          <span class="author">
+            点击量: {{ info.clickCount }} &nbsp;&nbsp;&nbsp;
+            {{ info.createTime }} 作者: {{ info.createrNickname }}</span
+          >
+        </p>
+      </div>
+      <el-divider></el-divider>
+      <!-- <quill-editor
+          disabled
+          ref="editor"
+          v-model="info.content"
+          :options="editorOption"
+        /> -->
       <client-only>
-        <el-page-header style="float: left" @back="goBack" content="">
-        </el-page-header>
-        <div>
-          <p class="text2">
-            {{ info.title }}
-            <span class="author">
-              点击量: {{ info.clickCount }} &nbsp;&nbsp;&nbsp;
-              {{ info.createTime }} 作者: {{ info.createrNickname }}</span
-            >
-          </p>
+        <div class="ql-container ql-snow">
+          <div class="html-content ql-editor" v-html="info.content"></div>
         </div>
-        <el-divider></el-divider>
-        <div class="html-content" v-html="info.content"></div>
+
+        <el-backtop :bottom="100">
+          <div
+            style="
+               {
+                height: 100%;
+                width: 100%;
+                background-color: #f2f5f6;
+                box-shadow: 0 0 6px rgba(0, 0, 0, 0.12);
+                text-align: center;
+                line-height: 40px;
+                color: #1989fa;
+              }
+            "
+          >
+            回到顶部
+          </div></el-backtop
+        >
       </client-only>
-        <el-backtop :bottom="100"> <div
-      style="{
-        height: 100%;
-        width: 100%;
-        background-color: #f2f5f6;
-        box-shadow: 0 0 6px rgba(0,0,0, .12);
-        text-align: center;
-        line-height: 40px;
-        color: #1989fa;
-      }"
-    >
-      回到顶部
-    </div></el-backtop>
     </div>
   </div>
 </template>
@@ -36,9 +49,10 @@
 <script>
 import "~/assets/css/sign.css";
 import "~/assets/css/iconfont.css";
-
+if (process.client) {
+  var editorOptions = require("@/utils/editor-options");
+}
 import { getOneDetailByInfoId } from "@/api/info";
-import { getListByKey } from "@/api/config";
 
 export default {
   layout: "simple",
@@ -48,9 +62,10 @@ export default {
       listLoading: true,
       cates: [],
       info: {},
+      editorOption: editorOptions,
     };
   },
-  mounted() {
+  created() {
     this.fetchData();
   },
   methods: {
@@ -86,17 +101,5 @@ export default {
   font-weight: 600;
   float: right;
 }
-.html-content > h1,
-h2,
-h3,
-h4 {
-  color: #24282b;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: block;
-  font-size: 17px;
-}
-
 </style>
 

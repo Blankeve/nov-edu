@@ -10,18 +10,18 @@ export function removeById(params) {
 }
 
 
-export function saveOrUpdate(params) {
+export function saveOrUpdate(data) {
   return request({
     url: '/edu/notice/save',
     method: 'post',
-    params
+    data
   })
 }
 
-export function getPage(params) {
+export function getPage(data) {
   return request({
     url: '/edu/notice/page',
     method: 'post',
-    params
+    data
   })
 }

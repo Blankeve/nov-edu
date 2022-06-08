@@ -63,3 +63,37 @@ div:focus {
 .app-container {
   padding: 20px;
 }
+
+//配置编辑器行高
+.ql-snow .ql-picker.ql-lineheight .ql-picker-label::before {
+  content: "行高";
+}
+.ql-snow
+  .ql-picker.ql-lineheight
+  .ql-picker-item[data-value="initial"]::before {
+  content: "默认";
+}
+.ql-snow .ql-picker.ql-lineheight .ql-picker-item[data-value="1"]::before {
+  content: "1";
+}
+.ql-snow .ql-picker.ql-lineheight .ql-picker-item[data-value="1.5"]::before {
+  content: "1.5";
+}
+.ql-snow .ql-picker.ql-lineheight .ql-picker-item[data-value="1.75"]::before {
+  content: "1.75";
+}
+.ql-snow .ql-picker.ql-lineheight .ql-picker-item[data-value="2"]::before {
+  content: "2";
+}
+.ql-snow .ql-picker.ql-lineheight .ql-picker-item[data-value="3"]::before {
+  content: "3";
+}
+.ql-snow .ql-picker.ql-lineheight .ql-picker-item[data-value="4"]::before {
+  content: "4";
+}
+.ql-snow .ql-picker.ql-lineheight .ql-picker-item[data-value="5"]::before {
+  content: "5";
+}
+.ql-snow .ql-picker.ql-lineheight {
+  width: 70px;
+}

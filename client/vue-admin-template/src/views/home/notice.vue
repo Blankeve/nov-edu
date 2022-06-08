@@ -1,8 +1,11 @@
 <template>
   <div class="app-container">
-    <el-button icon="el-icon-plus" type="primary" @click="addNotice"
-      >添加公告</el-button
-    >
+    <el-row>
+      <el-button icon="el-icon-plus" type="primary" @click="addNotice"
+        >添加公告</el-button
+      >
+    </el-row>
+    <br />
     <el-table
       v-loading="listLoading"
       :data="list"
@@ -31,7 +34,16 @@
 
       <el-table-column label="公告内容" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.content }}</span>
+          <span
+            :class="{
+              red: scope.row.content.length > 300,
+            }"
+            >{{
+              scope.row.content.length > 300
+                ? "当前内容太长，请点击编辑查看"
+                : scope.row.content
+            }}</span
+          >
         </template>
       </el-table-column>
 
@@ -82,21 +94,33 @@
       :title="noticeFormTitle"
       :visible.sync="noticeFormVisible"
       :close-on-click-modal="false"
-      width="500px"
+      width="800px"
       center=""
     >
-      <el-form
-        :model="form"
-        :rules="rules"
-        class="demo-ruleForm"
-        label-width="120"
-      >
-        <el-form-item prop="title" label="公告名称">
-          <el-input v-model="form.title"></el-input>
-        </el-form-item>
+      <el-form inline :model="form" :rules="rules" label-width="120">
+        <el-row>
+          <el-col :span="14">
+            <el-form-item prop="title" label="公告名称">
+              <el-input
+                style="width: 300px"
+                v-model="form.title"
+              ></el-input> </el-form-item
+          ></el-col>
+          <el-col :span="10">
+            <el-form-item label="公告类型">
+              <el-select v-model="form.type" placeholder="请选择公告类型">
+                <el-option label="公告" value="1"></el-option>
+                <el-option label="通知" value="2"></el-option>
+              </el-select> </el-form-item
+          ></el-col>
+        </el-row>
 
         <el-form-item prop="content" label="公告内容">
-          <el-input type="textarea" v-model="form.content"></el-input>
+          <quill-editor
+            v-model="form.content"
+            ref="VueQuillEditor"
+            :options="editorOption"
+          ></quill-editor>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -109,6 +133,7 @@
 
 <script>
 import { getPage, removeById, saveOrUpdate } from "@/api/notice";
+import { editorOptions } from "@/utils/editor-options";
 import store from "@/store";
 export default {
   filters: {
@@ -150,12 +175,15 @@ export default {
         content: "",
         sendUser: "",
         current: 1,
+        type: "1",
         size: 8,
         total: 0,
       },
       noticeFormTitle: "添加公告",
       noticeFormVisible: false,
       sizes: [],
+      //编辑器相关
+      editorOption: editorOptions,
     };
   },
   created() {
@@ -221,11 +249,21 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.red {
+  color: rgb(245, 104, 104);
+}
 .mid-input {
   width: 80px;
 }
 .el-pagination {
   text-align: center;
+}
+
+::v-deep .ql-container {
+  min-height: 500px;
+}
+.el-input {
+  width: 100%;
 }
 </style>

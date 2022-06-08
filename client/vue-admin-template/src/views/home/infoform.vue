@@ -4,33 +4,48 @@
     <div class="myCourseFrm">
       <el-form
         v-show="active == 0"
-        :model="courseVO"
-        :rules="formRules"
         :label-position="labelPosition"
         label-width="80px"
       >
-        <el-form-item prop="title" label="资讯标题">
-          <el-input v-model="info.title"></el-input>
-        </el-form-item>
+        <el-row>
+          <el-col>
+            <el-form-item prop="title" label="资讯标题">
+              <el-input v-model="info.title"></el-input>
+            </el-form-item>
+          </el-col>
+        </el-row>
 
-        <el-form-item prop="cate" label="资讯分类">
-          <el-select v-model="info.cate" placeholder="请选择分类">
-            <el-option
-              v-for="(item, index) in cates"
-              :label="item.configName"
-              :key="item.id"
-              :value="item.configValue"
-            >
-            </el-option>
-          </el-select>
-        </el-form-item>
+        <el-row>
+          <el-col :span="8">
+            <el-form-item prop="cate" label="资讯分类">
+              <el-select
+                style="width: 100%"
+                v-model="info.cate"
+                placeholder="请选择分类"
+              >
+                <el-option
+                  v-for="(item, index) in cates"
+                  :label="item.configName"
+                  :key="item.id"
+                  :value="item.configValue"
+                >
+                </el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+        </el-row>
 
-        <el-form-item prop="content" label="资讯内容">
-          <quill-editor
-            v-model="info.content"
-            ref="VueQuillEditor"
-          ></quill-editor>
-        </el-form-item>
+        <el-row>
+          <el-col>
+            <el-form-item prop="content" label="资讯内容">
+              <quill-editor
+                v-model="info.content"
+                ref="VueQuillEditor"
+                :options="editorOption"
+              ></quill-editor>
+            </el-form-item>
+          </el-col>
+        </el-row>
       </el-form>
 
       <br />
@@ -47,6 +62,7 @@
 <script>
 import { getListByKey } from "@/api/config";
 import { saveOrUpdate, getOneDetailByInfoId } from "@/api/info";
+import { editorOptions } from "@/utils/editor-options";
 
 export default {
   data() {
@@ -56,58 +72,11 @@ export default {
       key: {
         key: "info_cate",
       },
-      editorOption: {
-        /* quill options */
-      },
+      //编辑器相关
+      editorOption: editorOptions,
+
       cates: [],
       info: {},
-      formRules: {
-        courseTitle: [
-          { required: true, message: "请输入课程标题", trigger: "blur" },
-          {
-            min: 1,
-            max: 50,
-            message: "长度在 1 到 50 个字符",
-            trigger: "blur",
-          },
-        ],
-        teacherId: [
-          { required: true, message: "请选择课程讲师", trigger: "blur" },
-          {
-            min: 1,
-            max: 20,
-            message: "长度在 1 到 20 个字符",
-            trigger: "blur",
-          },
-        ],
-        subjectId: [
-          { required: true, message: "请选择课程分类", trigger: "blur" },
-          {
-            min: 1,
-            max: 20,
-            message: "长度在 1 到 10 个字符",
-            trigger: "blur",
-          },
-        ],
-        courseCover: [
-          { required: true, message: "请上传课程封面", trigger: "blur" },
-          {
-            min: 1,
-            max: 50,
-            message: "长度在 1 到 50 个字符",
-            trigger: "blur",
-          },
-        ],
-        introDescription: [
-          { required: true, message: "请输入课程简介", trigger: "blur" },
-          {
-            min: 1,
-            max: 500,
-            message: "长度在 1 到 500 个字符",
-            trigger: "blur",
-          },
-        ],
-      },
     };
   },
   created() {
@@ -133,17 +102,17 @@ export default {
         }
       });
     },
+    ready() {
+
+    },
   },
 };
 </script>
 
-<style>
-.myCourseFrm {
-  width: 1200px;
-  margin: 0 auto;
-}
 
-.ql-editor {
+
+<style lang="scss" scoped>
+::v-deep .ql-editor {
   height: 800px;
 }
 

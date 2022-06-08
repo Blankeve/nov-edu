@@ -61,5 +61,7 @@ public class CmsNotice implements Serializable {
     @ApiModelProperty(value = "逻辑删除")
     private Integer isDeleted;
 
-
+    @NotNull(message = "公告类型不能为空")
+    @ApiModelProperty(value = "公告类型")
+    private Integer type;
 }

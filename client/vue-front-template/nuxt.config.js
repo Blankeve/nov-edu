@@ -39,6 +39,7 @@ module.exports = {
 
   plugins: [
     { src: '~/plugins/nuxt-swiper-plugin.js', ssr: false },
+    { src: '~/plugins/vue-quill-editor.js', ssr: false },
     { src: '~/plugins/permission.js', ssr: false },
     { src: '@/assets/icon/iconfont.js', ssr: false },
   ],
@@ -47,6 +48,9 @@ module.exports = {
     'swiper/dist/css/swiper.css',
     '@/assets/icon/iconfont.css',
     '@/assets/main.css',
+    'quill/dist/quill.core.css',
+    'quill/dist/quill.snow.css',
+    'quill/dist/quill.bubble.css'
   ],
 
   axios: {

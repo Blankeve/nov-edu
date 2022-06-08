@@ -38,6 +38,7 @@ public class CmsInfo implements Serializable {
 
     @NotNull(message = "资讯分类不能为空")
     @ApiModelProperty(value = "资讯分类  ")
+    @JsonSerialize(using = ToStringSerializer.class)
     private Integer cate;
 
     @NotEmpty(message = "资讯标题不能为空")

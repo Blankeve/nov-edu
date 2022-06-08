@@ -109,11 +109,11 @@ export default {
       'nickname'
     ])
   },
-  watch: {
-    $route(to, from) {
-      this.$router.go(0);
-    },
-  },
+  // watch: {
+  //   $route(to, from) {
+  //     this.$router.go(0);
+  //   },
+  // },
   methods: {
     openTip() {
       this.$alert("该功能敬请期待", "nov在线课堂提示", {

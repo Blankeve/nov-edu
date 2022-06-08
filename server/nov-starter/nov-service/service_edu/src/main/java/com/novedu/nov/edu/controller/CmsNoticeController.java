@@ -30,7 +30,7 @@ public class CmsNoticeController {
     private CmsNoticeService cmsNoticeService;
 
     @PostMapping("/save")
-    public BaseResult saveOrUpdateNotice(@Validated CmsNotice cmsNotice) {
+    public BaseResult saveOrUpdateNotice(@Validated @RequestBody CmsNotice cmsNotice) {
         return cmsNoticeService.saveOrUpdateNotice(cmsNotice);
     }
 
@@ -41,7 +41,7 @@ public class CmsNoticeController {
     }
 
     @PostMapping("/page")
-    public BaseResult queryNoticePage(Page page, CmsNotice cmsNotice) {
+    public BaseResult queryNoticePage(Page page,@RequestBody CmsNotice cmsNotice) {
         return cmsNoticeService.queryNoticePage(page, cmsNotice);
     }
 

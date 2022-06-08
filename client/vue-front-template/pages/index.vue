@@ -280,7 +280,7 @@
         width="500px"
         center=""
       >
-        <span>{{ notice.content }}</span>
+        <div class="html-content" v-html="notice.content"></div>
         <div slot="footer" class="dialog-footer">
           <el-button @click="noticeFormVisible = false">我知道了</el-button>
         </div>
@@ -373,3 +373,9 @@ export default {
 };
 </script>
 
+<style>
+.html-content img{
+  max-width:100%;
+  height:auto
+}
+</style>

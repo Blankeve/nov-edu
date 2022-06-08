@@ -24,6 +24,7 @@ import VueQuillEditor from 'vue-quill-editor'
 import './assets/icon/iconfont.css' // icon
 import './assets/icon/iconfont.js' // icon
 
+
 Vue.use(VueQuillEditor,  )
 /**
  * If you don't want to use mock-server
