@@ -9,7 +9,10 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 
 import java.io.Serializable;
+import java.util.List;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -60,5 +63,12 @@ public class SysConfig implements Serializable {
     @ApiModelProperty(value = "1已删除 0未删除")
     private Integer isDeleted;
 
-
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Integer status;
+    private Integer parentId;
+    private Integer grade;
+    @TableField(exist = false)
+    private boolean hasChildren;
+    @TableField(exist = false)
+    private List<SysConfig> children;
 }

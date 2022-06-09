@@ -24,12 +24,10 @@
         left join acl_user_role ur on u.id = ur.uid
         left join acl_role r on ur.role_id = r.id
         where u.is_deleted = 0
-          and r.code != 0
         <if test="ew != null and ew.sqlSegment != null and ew.sqlSegment != ''">
             and ${ew.sqlSegment}
         </if>
         order by
-        r.code asc ,
         u.create_time desc
     </select>
 

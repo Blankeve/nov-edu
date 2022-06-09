@@ -1,5 +1,6 @@
 package com.novedu.nov.common.module.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.common.module.entity.SysConfig;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -16,13 +17,13 @@ import java.util.List;
  */
 public interface SysConfigService extends IService<SysConfig> {
 
-    BaseResult<SysConfig> getConfigByKey(String key);
+    BaseResult<SysConfig> getRootConfigByKey(String key);
 
-    BaseResult<List<SysConfig>> getConfigList();
+    BaseResult<List<SysConfig>> getConfigList(SysConfig config);
 
     BaseResult saveConfig(SysConfig config);
 
     BaseResult removeConfig(Integer id);
 
-    BaseResult<List<SysConfig>> getConfigListByKey(String key);
+    BaseResult<List<SysConfig>> getConfigListByKey(String key,Integer grade);
 }

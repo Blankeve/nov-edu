@@ -1,6 +1,7 @@
 package com.novedu.nov.common.module.controller;
 
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.common.module.entity.SysConfig;
 import com.novedu.nov.common.module.service.SysConfigService;
@@ -29,8 +30,8 @@ public class SysConfigController {
     SysConfigService sysConfigService;
 
     @GetMapping("/list")
-    public BaseResult<List<SysConfig>> getConfigList() {
-        return sysConfigService.getConfigList();
+    public BaseResult<List<SysConfig>> getConfigList(SysConfig config) {
+        return sysConfigService.getConfigList(config);
     }
 
     @PostMapping("/save")
@@ -46,8 +47,8 @@ public class SysConfigController {
     }
 
     @PostMapping("/list")
-    public BaseResult<List<SysConfig>> getConfigListByKey(String key) {
-        return sysConfigService.getConfigListByKey(key);
+    public BaseResult<List<SysConfig>> getConfigListByKey(String key,Integer grade) {
+        return sysConfigService.getConfigListByKey(key,grade);
     }
 }
 

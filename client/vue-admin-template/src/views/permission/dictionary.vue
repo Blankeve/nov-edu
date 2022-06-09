@@ -1,25 +1,18 @@
 <template>
   <div class="table-wrapper">
     <el-button icon="el-icon-plus" type="primary" @click="addConfig()"
-      >添加配置</el-button
+      >添加字典</el-button
     >
     <el-table
       v-loading="listLoading"
       :data="list"
       element-loading-text="Loading"
-      fit
-      stripe
-      highlight-current-row
+      row-key="id"
       :row-style="getRowClass"
       :header-row-style="getRowClass"
       :header-cell-style="getRowClass"
+      :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
     >
-      <el-table-column align="center" label="#" width="50">
-        <template slot-scope="scope">
-          {{ scope.$index + 1 }}
-        </template>
-      </el-table-column>
-
       <el-table-column label="名称" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.configName }}</span>
@@ -52,25 +45,45 @@
         </template>
       </el-table-column>
 
-      <el-table-column fixed="right" align="center" label="操作" width="250">
+      <el-table-column align="center" width="100px" label="是否启用">
+        <template slot-scope="scope">
+          <el-switch
+            v-model="scope.row.status"
+            active-color="#1890ff"
+            active-value="1"
+            inactive-color="#DCDFE6"
+            inactive-value="0"
+            @change="changeSwitch(scope.row)"
+          ></el-switch>
+        </template>
+      </el-table-column>
+
+      <el-table-column fixed="right" align="center" width="300px" label="操作">
         <template slot-scope="scope">
           <el-button
             type="info"
             @click="handleEdit(scope.row)"
+            size="small"
             icon="el-icon-edit"
             >编辑</el-button
           >
-
+          <el-button
+            type="primary"
+            @click="handleAddConfig(scope.row)"
+            size="small"
+            icon="el-icon-plus"
+            >新增</el-button
+          >
           <el-button
             type="danger"
             @click="handleDelete(scope.row.id)"
+            size="small"
             icon="el-icon-delete"
             >删除</el-button
           >
         </template>
       </el-table-column>
     </el-table>
-
     <el-dialog
       :title="configFormTitle"
       :visible.sync="configFormVisible"
@@ -88,7 +101,11 @@
         </el-form-item>
 
         <el-form-item prop="configValue" label="配置值">
-          <el-input :autosize="{ minRows: 2, maxRows: 4}" type="textarea" v-model="form.configValue"></el-input>
+          <el-input
+            :autosize="{ minRows: 2, maxRows: 4 }"
+            type="textarea"
+            v-model="form.configValue"
+          ></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -115,23 +132,44 @@ export default {
   },
   data() {
     return {
-      list: null,
+      list: [],
       listLoading: true,
       form: { configName: "", configKey: "", configValue: "" },
       configFormTitle: "",
       configFormVisible: false,
+      form: {
+        configName: "",
+        configKey: "",
+        configValue: "",
+      },
+      sizes: [],
       formRules: {
         configName: [
           { required: true, message: "请输入配置名称", trigger: "blur" },
-          { min: 1, max: 50, message: "长度在 1 到 50 个字符", trigger: "blur" },
+          {
+            min: 1,
+            max: 50,
+            message: "长度在 1 到 50 个字符",
+            trigger: "blur",
+          },
         ],
         configKey: [
           { required: true, message: "请输入配置键", trigger: "blur" },
-          { min: 1, max: 50, message: "长度在 1 到 50 个字符", trigger: "blur" },
+          {
+            min: 1,
+            max: 50,
+            message: "长度在 1 到 50 个字符",
+            trigger: "blur",
+          },
         ],
         configValue: [
           { required: true, message: "请输入配置值", trigger: "blur" },
-          { min: 1, max: 500, message: "长度在 1 到 500 个字符", trigger: "blur" },
+          {
+            min: 1,
+            max: 500,
+            message: "长度在 1 到 500 个字符",
+            trigger: "blur",
+          },
         ],
       },
     };
@@ -142,7 +180,11 @@ export default {
   methods: {
     fetchData() {
       this.listLoading = true;
-      getList().then((response) => {
+      this.sizes =
+        this.form.size > 1
+          ? [this.form.size / 2, this.form.size, this.form.size * 2]
+          : [this.form.size, this.form.size * 2];
+      getList(this.form).then((response) => {
         let data = response.data;
         this.list = data;
         this.listLoading = false;
@@ -165,9 +207,20 @@ export default {
       this.configFormVisible = true;
     },
     addConfig() {
-      this.form = {};
-      this.configFormTitle = "添加配置";
+      this.form = {
+        configName: "",
+        configKey: "",
+        configValue: "",
+      };
+      this.form.grade = 1;
+      this.configFormTitle = "添加字典";
       this.configFormVisible = true;
+    },
+    handleAddConfig(row) {
+      this.addConfig();
+      this.form.parentId = row.id;
+      this.form.grade = row.grade + 1;
+      this.form.configKey = row.configKey;
     },
     onSubmit() {
       this.configFormVisible = false;
@@ -184,6 +237,23 @@ export default {
     getRowClass({ row, column, rowIndex, columnIndex }) {
       return "background:#3f5c6d2c;";
     },
+    changeSwitch(row) {
+      row.children = undefined;
+      saveOrUpdate(row).then((resp) => {
+        console.log(typeof row.status);
+        if (resp.code === 200) {
+          console.log(row.status);
+          this.$message.success(
+            "字典: " +
+              "'" +
+              row.configName +
+              "' " +
+              (row.status == "1" ? "已启用" : "已禁用")
+          );
+        }
+        this.fetchData();
+      });
+    },
   },
 };
 </script>
@@ -191,29 +261,5 @@ export default {
 <style lang="less" >
 .mid-input {
   width: 80px;
-}
-.el-pagination {
-  text-align: center;
-}
-.table-wrapper {
-  background: url("../../icons/png/bg.png") no-repeat;
-  width: 100%;
-  height: 100%;
-  background-size: 100%;
-}
-.table-wrapper /deep/ .el-table--fit {
-  padding: 20px;
-}
-.table-wrapper /deep/ .el-table,
-.el-table__expanded-cell {
-  background-color: transparent;
-}
-
-.table-wrapper /deep/ .el-table tr {
-  background-color: transparent !important;
-}
-.table-wrapper /deep/ .el-table--enable-row-transition .el-table__body td,
-.el-table .cell {
-  background-color: transparent;
 }
 </style>

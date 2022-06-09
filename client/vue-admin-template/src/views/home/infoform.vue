@@ -71,6 +71,7 @@ export default {
       labelPosition: "left",
       key: {
         key: "info_cate",
+        grade: 2,
       },
       //编辑器相关
       editorOption: editorOptions,
@@ -102,9 +103,7 @@ export default {
         }
       });
     },
-    ready() {
-
-    },
+    ready() {},
   },
 };
 </script>

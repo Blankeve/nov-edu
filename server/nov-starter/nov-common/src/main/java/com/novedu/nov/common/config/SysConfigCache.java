@@ -30,7 +30,7 @@ public class SysConfigCache implements InitializingBean {
         System.out.println("获取配置项个数:"+SYS_CONFIG.size());
     }
 
-    public static SysConfig getConfigByKey(String key){
+    public static SysConfig getRootConfigByKey(String key){
       return SYS_CONFIG.stream().filter(o->o.getConfigKey().equals(key)).findAny().orElse(null);
     }
 }

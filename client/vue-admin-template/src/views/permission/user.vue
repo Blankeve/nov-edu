@@ -138,7 +138,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="最后登录ip" align="center">
+      <el-table-column label="最后登录地址" align="center">
         <template slot-scope="scope">
           {{ scope.row.lastLoginIp }}
         </template>

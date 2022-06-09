@@ -46,7 +46,7 @@ spring:
       allow: 127.0.0.1
       #deny: 192.168.1.100
   jackson:
-    date-format: yyyy年MM月dd日 HH:mm:ss
+    date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
   cloud:
     nacos:

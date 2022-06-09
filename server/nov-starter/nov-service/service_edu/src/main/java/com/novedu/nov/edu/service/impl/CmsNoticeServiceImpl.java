@@ -54,7 +54,7 @@ public class CmsNoticeServiceImpl extends ServiceImpl<CmsNoticeMapper, CmsNotice
         }
         else
             redisTemplate.opsForValue().set(accessKey,1);
-        return BaseResult.success(query().orderByDesc("create_time").last("limit 1").one());
+        return BaseResult.success(query().eq("type",1).orderByDesc("create_time").last("limit 1").one());
     }
 
 

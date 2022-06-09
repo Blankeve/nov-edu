@@ -25,6 +25,7 @@ import org.springframework.util.StringUtils;
 
 import java.util.Date;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * <p>
@@ -57,7 +58,7 @@ public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> impl
                 String str = (String) redisTemplate.opsForValue().get(key);
                 List<AclUser> users = objectMapper.readValue(str, new TypeReference<List<AclUser>>() {
                 });
-                List<SysConfig> sysConfigs = configService.getConfigListByKey("info_cate").getData();
+                List<SysConfig> sysConfigs = configService.getConfigListByKey("artcle_care",2).getData();
                 QueryWrapper queryWrapper = new QueryWrapper();
                 if (!StringUtils.isEmpty(cmsInfo.getTitle())) {
                     queryWrapper.like("title", cmsInfo.getTitle());
@@ -86,8 +87,12 @@ public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> impl
                         String nickname = users.stream().filter(u -> u.getId().equals(o.getUpdater())).findAny().get().getNickname();
                         o.setUpdaterNickname(nickname);
                     }
-                    String catename = sysConfigs.stream().filter(s -> s.getConfigValue().equals(o.getCate().toString())).findAny().get().getConfigName();
-                    o.setCatename(catename);
+                    try {
+                        String catename = sysConfigs.stream().filter(s -> s.getConfigValue().equals(o.getCate().toString())).findAny().get().getConfigName();
+                        o.setCatename(catename);
+                    }catch(NoSuchElementException ex) {
+                        log.error(ex.getMessage());
+                    }
                     Long clickCount  = (Long) redisTemplate.opsForValue().get("info" + o.getId());
                     o.setClickCount(clickCount);
                 }

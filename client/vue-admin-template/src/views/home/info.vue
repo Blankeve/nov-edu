@@ -175,6 +175,7 @@ export default {
       sizes: [],
       key: {
         key: "info_cate",
+        grade: 2
       },
       pickerOptions: {
         shortcuts: [

@@ -83,6 +83,7 @@
           <quill-editor
             v-model="courseVO.introDescription"
             ref="VueQuillEditor"
+            :options="editorOption"
           ></quill-editor>
         </el-form-item>
       </el-form>
@@ -104,17 +105,17 @@
 </template>
 <script>
 import { getAll } from "@/api/teacher";
-import { getList, getParentList } from "@/api/subject";
+import { getList } from "@/api/subject";
 import { save, getOneDetailByCourseId, getIntroByCourseId } from "@/api/course";
+import { editorOptions } from "@/utils/editor-options";
 
 export default {
   data() {
     return {
       active: 0,
       labelPosition: "left",
-      editorOption: {
-        /* quill options */
-      },
+      //编辑器相关
+      editorOption: editorOptions,
       courseVO: {
         courseTitle: "",
         courseLessonNum: "",

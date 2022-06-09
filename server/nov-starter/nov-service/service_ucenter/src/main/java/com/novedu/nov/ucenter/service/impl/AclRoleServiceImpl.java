@@ -83,13 +83,13 @@ public class AclRoleServiceImpl extends ServiceImpl<AclRoleMapper, AclRole> impl
             BaseResult baseResult = eduClient.clearBind(uid + "");
             if (baseResult == null)
                 return BaseResult.error("分配角色失败");
-            user.setAvatar(SysConfigCache.getConfigByKey("teacher_def_avatar").getConfigValue());
+            user.setAvatar(SysConfigCache.getRootConfigByKey("teacher_def_avatar").getConfigValue());
         } else if (code == RoleType.ADMIN.getCode()) {
-            user.setAvatar(SysConfigCache.getConfigByKey("admin_def_avatar").getConfigValue());
+            user.setAvatar(SysConfigCache.getRootConfigByKey("admin_def_avatar").getConfigValue());
         } else if (code == RoleType.STUDENT.getCode()) {
-            user.setAvatar(SysConfigCache.getConfigByKey("stu_def_avatar").getConfigValue());
+            user.setAvatar(SysConfigCache.getRootConfigByKey("stu_def_avatar").getConfigValue());
         } else
-            user.setAvatar(SysConfigCache.getConfigByKey("other_def_avatar").getConfigValue());
+            user.setAvatar(SysConfigCache.getRootConfigByKey("other_def_avatar").getConfigValue());
         userService.updateById(user);
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("uid", uid);
