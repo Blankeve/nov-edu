@@ -70,7 +70,7 @@ export default {
       active: 0,
       labelPosition: "left",
       key: {
-        key: "info_cate",
+        key: "artcle_cate",
         grade: 2,
       },
       //编辑器相关

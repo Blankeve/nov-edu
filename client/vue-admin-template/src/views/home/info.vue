@@ -174,7 +174,7 @@ export default {
       cates: [],
       sizes: [],
       key: {
-        key: "info_cate",
+        key: "artcle_cate",
         grade: 2
       },
       pickerOptions: {
