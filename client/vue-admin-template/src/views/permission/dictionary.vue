@@ -53,17 +53,31 @@
       icon="el-icon-plus"
       size="mini"
       type="primary"
+      :disabled="btnDisabled"
       plain
       @click="addConfig()"
-      >新增</el-button
+      >新增一级字典</el-button
+    >
+    <el-button
+      icon="el-icon-delete"
+      size="mini"
+      type="danger"
+      :disabled="!btnDisabled"
+      plain
+      @click="handleDelete()"
+      >删除</el-button
     >
     <el-table
       v-loading="listLoading"
+      highlight-current-row
+      @selection-change="handleSelectionChange"
       :data="list"
       element-loading-text="Loading"
       row-key="id"
       :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
     >
+      <el-table-column type="selection" width="55"> </el-table-column>
+
       <el-table-column label="字典名称" align="left">
         <template slot-scope="scope">
           <span>{{ scope.row.configName }}</span>
@@ -201,6 +215,7 @@ export default {
   data() {
     return {
       list: [],
+      btnDisabled: false,
       disabled: true,
       listLoading: true,
       configFormTitle: "",
@@ -210,6 +225,7 @@ export default {
         configKey: "",
         configValue: "",
       },
+      selectionIds: [],
       form: {
         configName: "",
         configKey: "",
@@ -296,6 +312,11 @@ export default {
       this.$refs[formName].resetFields();
       this.dateRange = [];
     },
+    handleSelectionChange(val) {
+      if (val.length > 0) this.btnDisabled = true;
+      else this.btnDisabled = false;
+      this.selectionIds = val;
+    },
     handleDateLength(str) {
       str += "";
       if (str.length < 2) return "0" + str;
@@ -327,6 +348,12 @@ export default {
       }
     },
     handleDelete(id) {
+      if(this.selectionIds && this.selectionIds.length > 0){
+        id = []
+        for(let i = 0;i<this.selectionIds.length;i++)
+          id.push(this.selectionIds[i]['id'])
+      }
+          console.log(id)
       removeById(id).then((resp) => {
         if (resp.code === 200) {
           this.$message.success("删除成功");

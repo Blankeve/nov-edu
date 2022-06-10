@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -45,10 +46,9 @@ public class SysConfigController {
     }
 
     @ApiOperation("删除")
-    @DeleteMapping("/remove/{id}")
-    public BaseResult removeConfig(@PathVariable Integer id) {
-        //  return BaseResult.error("演示模式下暂不支持删除字典数据");
-        return sysConfigService.removeConfig(id);
+    @DeleteMapping("/remove/{ids}")
+    public BaseResult removeConfig(@PathVariable Integer[] ids) {
+        return BaseResult.successOrError(sysConfigService.removeByIds(Arrays.asList(ids)));
     }
 
     @PostMapping("/list")
