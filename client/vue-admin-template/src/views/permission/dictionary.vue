@@ -1,27 +1,80 @@
 <template>
-  <div class="table-wrapper">
-    <el-button icon="el-icon-plus" type="primary" @click="addConfig()"
-      >添加字典</el-button
+  <div class="app-container">
+    <el-form :inline="true" ref="queryForm" :model="queryForm">
+      <el-form-item prop="configName" label="字典名称">
+        <el-input
+          v-model="queryForm.configName"
+          placeholder="字典名称"
+        ></el-input>
+      </el-form-item>
+
+      <el-form-item prop="configKey" label="字典类型">
+        <el-input
+          v-model="queryForm.configKey"
+          placeholder="字典类型"
+        ></el-input>
+      </el-form-item>
+
+      <el-form-item prop="status" label="状态">
+        <el-select v-model="queryForm.status" placeholder="请选择状态">
+          <el-option label="全部" value=""> </el-option>
+          <el-option label="启用" value="1"> </el-option>
+          <el-option label="停用" value="0"> </el-option>
+        </el-select>
+      </el-form-item>
+
+      <el-form-item label="创建时间" prop="dateRange">
+        <el-date-picker
+          v-model="dateRange"
+          type="datetimerange"
+          :picker-options="pickerOptions"
+          range-separator="至"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
+          align="right"
+        >
+        </el-date-picker>
+      </el-form-item>
+
+      <el-form-item>
+        <el-button type="primary" icon="el-icon-search" @click="fetchData"
+          >查询</el-button
+        >
+        <el-button
+          type="danger"
+          icon="el-icon-refresh-left"
+          @click="resetForm('queryForm')"
+          >重置</el-button
+        >
+      </el-form-item>
+    </el-form>
+
+    <el-button
+      icon="el-icon-plus"
+      size="mini"
+      type="primary"
+      plain
+      @click="addConfig()"
+      >新增</el-button
     >
     <el-table
       v-loading="listLoading"
       :data="list"
       element-loading-text="Loading"
       row-key="id"
-      :row-style="getRowClass"
-      :header-row-style="getRowClass"
-      :header-cell-style="getRowClass"
       :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
     >
-      <el-table-column label="名称" align="center">
+      <el-table-column label="字典名称" align="left">
         <template slot-scope="scope">
           <span>{{ scope.row.configName }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column label="key" align="center">
+      <el-table-column label="字典类型" align="center">
         <template slot-scope="scope">
-          {{ scope.row.configKey }}
+          <el-tag size="medium">
+            {{ scope.row.configKey }}
+          </el-tag>
         </template>
       </el-table-column>
 
@@ -58,29 +111,44 @@
         </template>
       </el-table-column>
 
-      <el-table-column fixed="right" align="center" width="300px" label="操作">
+      <el-table-column fixed="right" align="center" width="250px" label="操作">
         <template slot-scope="scope">
           <el-button
-            type="info"
-            @click="handleEdit(scope.row)"
-            size="small"
-            icon="el-icon-edit"
-            >编辑</el-button
-          >
-          <el-button
-            type="primary"
+            round
             @click="handleAddConfig(scope.row)"
-            size="small"
+            size="mini"
             icon="el-icon-plus"
+            type="primary"
+            plain
             >新增</el-button
           >
           <el-button
-            type="danger"
-            @click="handleDelete(scope.row.id)"
-            size="small"
-            icon="el-icon-delete"
-            >删除</el-button
+            style="margin-left: 0"
+            round
+            @click="handleEdit(scope.row)"
+            size="mini"
+            icon="el-icon-edit"
+            type="info"
+            plain
+            >编辑</el-button
           >
+          <el-popconfirm
+            :title="
+              (scope.row.children ? '该字典包含多个节点,' : '') +
+              `确定删除 [${scope.row.configName}] 吗？`
+            "
+            @onConfirm="handleDelete(scope.row.id)"
+          >
+            <el-button
+              round
+              slot="reference"
+              size="mini"
+              icon="el-icon-delete"
+              type="danger"
+              plain
+              >删除</el-button
+            >
+          </el-popconfirm>
         </template>
       </el-table-column>
     </el-table>
@@ -92,15 +160,15 @@
       center=""
     >
       <el-form :rules="formRules" :model="form" label-width="120">
-        <el-form-item prop="configName" label="配置名称">
+        <el-form-item prop="configName" label="字典名称">
           <el-input v-model="form.configName"></el-input>
         </el-form-item>
 
-        <el-form-item prop="configKey" label="配置键">
-          <el-input v-model="form.configKey"></el-input>
+        <el-form-item prop="configKey" label="字典类型">
+          <el-input :disabled="disabled" v-model="form.configKey"></el-input>
         </el-form-item>
 
-        <el-form-item prop="configValue" label="配置值">
+        <el-form-item prop="configValue" label="字典值">
           <el-input
             :autosize="{ minRows: 2, maxRows: 4 }"
             type="textarea"
@@ -117,7 +185,7 @@
 </template>
 
 <script>
-import { getList, saveOrUpdate, removeById } from "@/api/config";
+import { getList, saveOrUpdate, changeStatus, removeById } from "@/api/config";
 
 export default {
   filters: {
@@ -133,19 +201,56 @@ export default {
   data() {
     return {
       list: [],
+      disabled: true,
       listLoading: true,
-      form: { configName: "", configKey: "", configValue: "" },
       configFormTitle: "",
       configFormVisible: false,
+      queryForm: {
+        configName: "",
+        configKey: "",
+        configValue: "",
+      },
       form: {
         configName: "",
         configKey: "",
         configValue: "",
       },
       sizes: [],
+      pickerOptions: {
+        shortcuts: [
+          {
+            text: "最近一周",
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
+              picker.$emit("pick", [start, end]);
+            },
+          },
+          {
+            text: "最近一个月",
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+              picker.$emit("pick", [start, end]);
+            },
+          },
+          {
+            text: "最近三个月",
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
+              picker.$emit("pick", [start, end]);
+            },
+          },
+        ],
+      },
+      dateRange: [],
       formRules: {
         configName: [
-          { required: true, message: "请输入配置名称", trigger: "blur" },
+          { required: true, message: "请输入字典名称", trigger: "blur" },
           {
             min: 1,
             max: 50,
@@ -154,7 +259,7 @@ export default {
           },
         ],
         configKey: [
-          { required: true, message: "请输入配置键", trigger: "blur" },
+          { required: true, message: "请输入字典类型", trigger: "blur" },
           {
             min: 1,
             max: 50,
@@ -163,7 +268,7 @@ export default {
           },
         ],
         configValue: [
-          { required: true, message: "请输入配置值", trigger: "blur" },
+          { required: true, message: "请输入字典值", trigger: "blur" },
           {
             min: 1,
             max: 500,
@@ -180,15 +285,46 @@ export default {
   methods: {
     fetchData() {
       this.listLoading = true;
-      this.sizes =
-        this.form.size > 1
-          ? [this.form.size / 2, this.form.size, this.form.size * 2]
-          : [this.form.size, this.form.size * 2];
-      getList(this.form).then((response) => {
+      this.handleDateRange();
+      getList(this.queryForm).then((response) => {
         let data = response.data;
         this.list = data;
         this.listLoading = false;
       });
+    },
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
+      this.dateRange = [];
+    },
+    handleDateLength(str) {
+      str += "";
+      if (str.length < 2) return "0" + str;
+      return str;
+    },
+    handleDateFormat(time) {
+      let formatDate =
+        time.getFullYear() +
+        "-" +
+        this.handleDateLength(time.getMonth() + 1) +
+        "-" +
+        this.handleDateLength(time.getDate()) +
+        " " +
+        this.handleDateLength(time.getHours()) +
+        ":" +
+        this.handleDateLength(time.getMinutes()) +
+        ":" +
+        this.handleDateLength(time.getSeconds());
+      return formatDate;
+    },
+    handleDateRange() {
+      if (this.dateRange && this.dateRange.length > 0) {
+        this.queryForm.startTime = this.handleDateFormat(
+          new Date(this.dateRange[0])
+        );
+        this.queryForm.endTime = this.handleDateFormat(
+          new Date(this.dateRange[1])
+        );
+      }
     },
     handleDelete(id) {
       removeById(id).then((resp) => {
@@ -199,25 +335,28 @@ export default {
       });
     },
     handleEdit(row) {
+      this.disabled = false;
       this.form.id = row.id;
       this.form.configName = row.configName;
       this.form.configKey = row.configKey;
       this.form.configValue = row.configValue;
-      this.configFormTitle = "修改配置";
+      this.configFormTitle = "修改字典数据";
       this.configFormVisible = true;
     },
     addConfig() {
+      this.disabled = false;
       this.form = {
         configName: "",
         configKey: "",
         configValue: "",
       };
       this.form.grade = 1;
-      this.configFormTitle = "添加字典";
+      this.configFormTitle = "添加字典数据";
       this.configFormVisible = true;
     },
     handleAddConfig(row) {
       this.addConfig();
+      this.disabled = true;
       this.form.parentId = row.id;
       this.form.grade = row.grade + 1;
       this.form.configKey = row.configKey;
@@ -226,32 +365,36 @@ export default {
       this.configFormVisible = false;
       saveOrUpdate(this.form).then((resp) => {
         if (resp.code === 200) {
-          this.$message.success((this.form.id ? "修改" : "添加") + "配置成功");
+          this.$message.success((this.form.id ? "修改" : "添加") + "字典成功");
           this.fetchData();
         }
       });
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
+      this.dateRange = [];
     },
     getRowClass({ row, column, rowIndex, columnIndex }) {
       return "background:#3f5c6d2c;";
     },
     changeSwitch(row) {
       row.children = undefined;
-      saveOrUpdate(row).then((resp) => {
+      changeStatus(row).then((resp) => {
         console.log(typeof row.status);
         if (resp.code === 200) {
-          console.log(row.status);
-          this.$message.success(
-            "字典: " +
-              "'" +
+          this.$message({
+            showClose: true,
+            message:
+              "字典数据  " +
+              "[" +
               row.configName +
-              "' " +
-              (row.status == "1" ? "已启用" : "已禁用")
-          );
+              "] " +
+              (row.status == "1" ? "已启用" : "已禁用"),
+            type: row.status == "1" ? "success" : "warning",
+          });
+
+          this.fetchData();
         }
-        this.fetchData();
       });
     },
   },

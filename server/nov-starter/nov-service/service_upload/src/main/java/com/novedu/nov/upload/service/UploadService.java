@@ -38,7 +38,7 @@ public class UploadService {
     private String localPort;
 
     String getServerAddress() {
-        return SysConfigCache.getRootConfigByKey("media_server_address").getConfigValue();
+        return SysConfigCache.getSysConfigByKey("media_server_address").getConfigValue();
     }
 
     public BaseResult uploadImg(MultipartFile img) {

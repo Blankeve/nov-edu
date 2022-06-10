@@ -36,6 +36,34 @@ public class TreeUtils {
         return toTree(collection, id, parent, children, clazz);
     }
 
+    //根据父节点获取全部子节点
+    public static <T> Collection<T> getChildren(Object pid, Collection<T> nodeList, Class<T> clazz) {
+
+        Collection<T> resultList = null;
+        try {
+            resultList = initContext(clazz, null, null, null, nodeList);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
+        if (null != nodeList && nodeList.size() > 0) {
+            try {
+                for (T layer : nodeList) {
+                    Object parentId = parentField.get(layer);
+                    Object id = idField.get(layer);
+                    if (pid == parentId) {
+                        //添加子级节点
+                        resultList.add(layer);
+                        //递归获取深层节点
+                        resultList.addAll(getChildren(id, nodeList, clazz));
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+        return resultList;
+    }
+
     /**
      * 集合转树结构
      *

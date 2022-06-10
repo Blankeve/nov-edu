@@ -53,3 +53,10 @@ export function saveOrUpdate(params) {
   })
 }
 
+export function changeStatus(params) {
+  return request({
+    url: '/edu/config/change/status',
+    method: 'post',
+    params
+  })
+}

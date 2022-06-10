@@ -116,7 +116,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
             if (nickname.length() > 15)
                 return BaseResult.error("您的昵称太过个性，请换个简短点的吧,15个字符以内");
         }
-        ucenterMemberDto.setAvatar(SysConfigCache.getRootConfigByKey("stu_def_avatar").getConfigValue());
+        ucenterMemberDto.setAvatar(SysConfigCache.getSysConfigByKey("stu_def_avatar").getConfigValue());
         save(ucenterMemberDto);
         AclUserRole userRole = new AclUserRole();
         userRole.setUid(ucenterMemberDto.getId());
@@ -257,7 +257,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
     public BaseResult resetPwd(Long uid) {
         UpdateWrapper updateWrapper = new UpdateWrapper();
         updateWrapper.eq("id", uid);
-        updateWrapper.set("password", DigestUtils.md5DigestAsHex(SysConfigCache.getRootConfigByKey("user_def_reset_pwd").getConfigValue().getBytes(StandardCharsets.UTF_8)));
+        updateWrapper.set("password", DigestUtils.md5DigestAsHex(SysConfigCache.getSysConfigByKey("user_def_reset_pwd").getConfigValue().getBytes(StandardCharsets.UTF_8)));
         return BaseResult.successOrError(update(updateWrapper));
     }
 

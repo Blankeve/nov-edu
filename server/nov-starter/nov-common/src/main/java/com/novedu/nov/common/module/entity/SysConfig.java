@@ -13,6 +13,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import com.novedu.nov.common.api.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -31,7 +32,7 @@ import javax.validation.constraints.NotEmpty;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @ApiModel(value = "SysConfig对象", description = "")
-public class SysConfig implements Serializable {
+public class SysConfig extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 

@@ -91,7 +91,8 @@ export default {
       acolor: true, //是否展示颜色
       currentIndex: null,
       key: {
-        key: "info_cate",
+        key: "artcle_cate",
+        grade: 2
       },
     };
   },

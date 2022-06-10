@@ -34,6 +34,11 @@ public class SysConfigController {
         return sysConfigService.getConfigList(config);
     }
 
+    @PostMapping("/change/status")
+    public BaseResult changeStatus(SysConfig config) {
+        return sysConfigService.changeStatus(config);
+    }
+
     @PostMapping("/save")
     public BaseResult saveConfig(@Validated SysConfig config) {
         return sysConfigService.saveConfig(config);
@@ -42,13 +47,13 @@ public class SysConfigController {
     @ApiOperation("删除")
     @DeleteMapping("/remove/{id}")
     public BaseResult removeConfig(@PathVariable Integer id) {
-        return BaseResult.error("演示模式下暂不支持删除字典数据");
-        // return sysConfigService.removeConfig(id);
+        //  return BaseResult.error("演示模式下暂不支持删除字典数据");
+        return sysConfigService.removeConfig(id);
     }
 
     @PostMapping("/list")
-    public BaseResult<List<SysConfig>> getConfigListByKey(String key,Integer grade) {
-        return sysConfigService.getConfigListByKey(key,grade);
+    public BaseResult<List<SysConfig>> getConfigListByKey(String key, Integer grade) {
+        return sysConfigService.getConfigListByKey(key, grade);
     }
 }
 

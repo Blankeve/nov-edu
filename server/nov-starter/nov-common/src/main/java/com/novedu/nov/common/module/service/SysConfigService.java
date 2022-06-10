@@ -17,7 +17,7 @@ import java.util.List;
  */
 public interface SysConfigService extends IService<SysConfig> {
 
-    BaseResult<SysConfig> getRootConfigByKey(String key);
+    BaseResult<SysConfig> getSysConfigByKey(String key);
 
     BaseResult<List<SysConfig>> getConfigList(SysConfig config);
 
@@ -26,4 +26,6 @@ public interface SysConfigService extends IService<SysConfig> {
     BaseResult removeConfig(Integer id);
 
     BaseResult<List<SysConfig>> getConfigListByKey(String key,Integer grade);
+
+    BaseResult changeStatus(SysConfig config);
 }
