@@ -469,7 +469,9 @@ export default {
             type: "success",
             message: "更新成功",
           });
-           location.reload();
+          setTimeout(function () {
+            location.reload();
+          }, 1000);
         }
       });
     },
@@ -485,13 +487,12 @@ export default {
         type: "warning",
       })
         .then(() => {
-             this.$store
-        .dispatch("user/logout")
-        .then(() => {
-          this.$router.push({ path: "/" });
-        })
-        .catch(() => {
-        });
+          this.$store
+            .dispatch("user/logout")
+            .then(() => {
+              this.$router.push({ path: "/" });
+            })
+            .catch(() => {});
         })
         .catch(() => {});
     },

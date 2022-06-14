@@ -1,5 +1,6 @@
 package com.novedu.nov.common.util;
 
+import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -11,6 +12,8 @@ public class RequestUtils {
     public static Long getUid() {
         HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
         String token = request.getHeader(tokenKey);
+        if(StringUtils.isEmpty(token))
+            return null;
         return Long.valueOf(JwtUtils.getAudience(token).get("uid"));
     }
 }

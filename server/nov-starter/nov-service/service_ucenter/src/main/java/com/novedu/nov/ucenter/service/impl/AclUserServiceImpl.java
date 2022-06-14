@@ -235,9 +235,11 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
             }
             permissionVOS.add(aclPermissionVO);
         }
-        permissionVOS = (List<AclPermissionVO>) TreeUtils.toTree(permissionVOS, AclPermissionVO.class);
-        Collections.sort(permissionVOS);
-        permissionVOS.forEach(o -> childrenSort(o.getChildren()));
+        if(!CollectionUtils.isEmpty(permissionVOS)){
+            permissionVOS = (List<AclPermissionVO>) TreeUtils.toTree(permissionVOS, AclPermissionVO.class);
+            Collections.sort(permissionVOS);
+            permissionVOS.forEach(o -> childrenSort(o.getChildren()));
+        }
         return BaseResult.success()
                 .mapSet("username", user.getUsername())
                 .mapSet("avatar", user.getAvatar())

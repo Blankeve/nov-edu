@@ -131,6 +131,8 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
     public BaseResult queryOrderByUidAndCourseId(Long id, Long uid) {
         if (uid == null || uid == 1)
             uid = RequestUtils.getUid();
+        if(uid == null)
+            return BaseResult.success();
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("uid", uid);
         queryWrapper.eq("course_id", id);
