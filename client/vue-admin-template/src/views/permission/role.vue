@@ -229,7 +229,7 @@ export default {
       let checkedMenuIds = this.$refs.tree
         .getCheckedKeys()
         .concat(this.$refs.tree.getHalfCheckedKeys());
-      this.$confirm("是否要分配该菜单?", "提示", {
+      this.$confirm("确认分配所选菜单?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning",
@@ -237,8 +237,8 @@ export default {
         let obj = { id: this.roleId, checkMenu: checkedMenuIds };
         saveRoleSelMenu(obj).then((resp) => {
           if (resp.code === 200) {
-            this.$message.success("分配成功，刷新网页后生效");
-            this.dialogVisibleMenu = false;
+            this.$message.success("分配成功");
+            location.reload();
           }
         });
       });
