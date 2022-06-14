@@ -52,7 +52,6 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
     RedisTemplate redisTemplate;
 
 
-
     @Override
     public BaseResult createOrder(TradeOrder tradeOrder) {
         Long courseId = tradeOrder.getCourseId();
@@ -74,6 +73,12 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
         tradeOrder.setTotalFee(new BigDecimal(price));
         tradeOrder.setMobile(memberInfo.get("mobile").toString());
         tradeOrder.setNickname(memberInfo.get("nickname").toString());
+        //当课程免费时，直接创建订单并完成支付状态
+        if (Float.valueOf(price) == 0) {
+            tradeOrder.setPaidTime(new Date());
+            tradeOrder.setPayType(0);
+            tradeOrder.setStatus(1);
+        }
         boolean success = save(tradeOrder);
         if (!success) {
             return BaseResult.error("创建订单失败");
@@ -123,20 +128,15 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
     }
 
     @Override
-    public BaseResult queryOrderByUidAndCourseId(HttpServletRequest request, Long id) {
-        String token = request.getHeader("X-Token");
-        if (!StringUtils.hasText(token))
-            return BaseResult.success("未登录");
-        Long uid = Long.valueOf(JwtUtils.getAudience(token).get("uid"));
-        EduCourseApply courseApply = new EduCourseApply();
-        courseApply.setUid(uid);
-        courseApply.setCourseId(id);
-        BaseResult baseResult = eduClient.queryCourseApplyByCourseIdAndUid(courseApply);
-        if (BaseResult.success().getCode().equals(baseResult.getCode()))
-            return BaseResult.success("已报名该课程").mapSet("hasBuy", "1");
-        else if (BaseResult.serviceInvokeFailure().getCode().equals(baseResult.getCode()))
-            return BaseResult.serviceInvokeFailure();
-        return BaseResult.success("暂未购买该课程");
+    public BaseResult queryOrderByUidAndCourseId(Long id, Long uid) {
+        if (uid == null || uid == 1)
+            uid = RequestUtils.getUid();
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("uid", uid);
+        queryWrapper.eq("course_id", id);
+        queryWrapper.eq("status", 1);
+        int count = count(queryWrapper);
+        return BaseResult.success().mapSet("paid", count > 0);
     }
 
     @Override
@@ -162,7 +162,7 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
         Long uid = RequestUtils.getUid();
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("o.uid", uid);
-        queryWrapper.eq("o.status",1);
+        queryWrapper.eq("o.status", 1);
         return BaseResult.success(orderMapper.queryOrderPage(page, queryWrapper));
     }
 

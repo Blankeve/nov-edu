@@ -154,7 +154,7 @@
             </article>
           </div>
 
-          <header class="comm-title">
+          <!-- <header class="comm-title">
             <h2 class="tac">
               <span class="c-333">最多人购买课程</span>
             </h2>
@@ -217,7 +217,7 @@
                 <a title="全部课程" class="comm-btn c-btn-2">全部课程</a>
               </nuxt-link>
             </section>
-          </div>
+          </div> -->
         </section>
       </div>
       <!-- /网校课程 结束 -->
@@ -321,7 +321,7 @@ export default {
       banners: [],
       courses: [],
       courses2: [],
-      courses3: [],
+      // courses3: [],
       teachers: [],
       notice: { id: "", title: "", content: "", sendUser: "" },
       noticeFormVisible: false,
@@ -359,7 +359,7 @@ export default {
         if (resp.code === 200) {
           this.courses = resp.data.c1;
           this.courses2 = resp.data.c2;
-          this.courses3 = resp.data.c3;
+          // this.courses3 = resp.data.c3;
         }
       });
 

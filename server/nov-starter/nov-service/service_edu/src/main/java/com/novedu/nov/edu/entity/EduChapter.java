@@ -70,4 +70,7 @@ public class EduChapter implements Serializable {
 
     @TableField(exist = false)
     private List<EduVideo> children;
+
+    @TableField(exist = false)
+    private boolean courseIsFree;
 }

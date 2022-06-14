@@ -63,9 +63,9 @@ public class TradeOrderController {
     }
 
     @ApiOperation("查询用户是否已经下单")
-    @PostMapping("/hasbuy/{id}")
-    public BaseResult queryOrderByUidAndCourseId(HttpServletRequest request, @PathVariable Long id) {
-        return tradeOrderService.queryOrderByUidAndCourseId(request, id);
+    @PostMapping("/hasbuy/{id}/{uid}")
+    public BaseResult queryOrderByUidAndCourseId(@PathVariable Long id,@PathVariable Long uid) {
+        return tradeOrderService.queryOrderByUidAndCourseId(id,uid);
     }
 
     @PostMapping("/page")

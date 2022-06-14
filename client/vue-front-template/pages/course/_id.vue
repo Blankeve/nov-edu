@@ -57,7 +57,7 @@
                 @click="viewOrBuy"
                 title="立即观看"
                 class="comm-btn c-btn-3"
-                >{{ hasBuy ? "已报名" : "立即报名" }}</a
+                >{{ paid ? "已报名" : "立即报名" }}</a
               >
               <a
                 v-show="course.coursePrice > 0"
@@ -65,7 +65,7 @@
                 @click="viewOrBuy"
                 title="立即观看"
                 class="comm-btn c-btn-3"
-                >{{ hasBuy ? "已购买" : "立即购买" }}</a
+                >{{ paid ? "已购买" : "立即购买" }}</a
               >
             </section>
           </section>
@@ -147,7 +147,7 @@
                                       >{{
                                         video.isFree == 1
                                           ? "免费"
-                                          : hasBuy
+                                          : paid
                                           ? "已付费"
                                           : "付费"
                                       }}</i
@@ -364,7 +364,7 @@ export default {
   data() {
     return {
       token: null,
-      hasBuy: false,
+      paid: false,
       course: {
         courseTitle: "",
       },
@@ -397,8 +397,8 @@ export default {
         }
       });
       getOrderByUidAndCourseId(id).then((resp) => {
-        if (resp.code === 200 && resp.data && resp.data.hasBuy) {
-          this.hasBuy = true;
+        if (resp.code === 200 && resp.data.paid) {
+          this.paid = true;
         }
       });
       getTree({ id: id }).then((resp) => {
@@ -487,18 +487,18 @@ export default {
         teacherId: this.course.teacherId,
       };
       if (this.course.coursePrice == 0) {
-        applyCourse(data).then((resp) => {
+        createOrder(data).then((resp) => {
           if (resp.code === 200) {
             this.$message({
               type: "success",
               message: "报名成功",
             });
-            this.hasBuy = true;
+            this.paid = true;
             this.course.courseApplyCount++;
           }
         });
       }
-      if (this.course.coursePrice > 0 && !this.hasBuy) {
+      if (this.course.coursePrice > 0 && !this.paid) {
         this.$confirm("您还未拥有该课程, 是否立即购买?", "提示", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
@@ -526,13 +526,12 @@ export default {
       }
     },
     openVideo(isFree, id) {
-      if ((this.course.coursePrice > 0 && isFree == 1) || this.hasBuy) {
+      if ((this.course.coursePrice > 0 && isFree == 1) || this.paid) {
         if (!this.checkLogin()) return;
-      let routeUrl =   this.$router.resolve({
+        let routeUrl = this.$router.resolve({
           path: "/video/" + id,
         });
-           window.open(routeUrl.href, '_blank');
-
+        window.open(routeUrl.href, "_blank");
       } else {
         this.$message({
           type: "error",

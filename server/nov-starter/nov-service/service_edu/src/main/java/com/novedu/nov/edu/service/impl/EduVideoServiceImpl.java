@@ -132,17 +132,19 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
 
     public boolean queryOrderByUidAndCourseId(Long id, Long uid) {
         EduVideo video = getById(id);
-        if (video.getIsFree().equals(0)) {
+        if (video.getIsFree().equals(1))
+            return true;
+        else {
             EduChapter chapter = chapterService.getById(video.getChapterId());
             EduCourse course = courseService.getById(chapter.getCourseId());
-            EduCourseApply courseApply = new EduCourseApply();
-            courseApply.setCourseId(course.getId());
-            courseApply.setUid(uid);
-            BaseResult baseResult = courseApplyService.queryCourseApplyByCourseIdAndUid(courseApply);
-            if (baseResult == null || baseResult.getCode().equals(BaseResult.error().getCode()))
-                return false;
+            BaseResult baseResult = orderClient.queryOrderByUidAndCourseId(course.getId(), uid);
+            if (BaseResult.success().getCode().equals(baseResult.getCode())) {
+                Map paid = (Map) baseResult.getData();
+                if (paid.get("paid").equals(true))
+                    return true;
+            }
         }
-        return true;
+        return false;
     }
 
     @Transactional(propagation = Propagation.REQUIRED)

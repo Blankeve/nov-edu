@@ -28,6 +28,9 @@ export default ({ app, store }) => {
                     }
                 }
             } else {
+                await store.dispatch("user/logout").then(() => {
+                }).catch(() => {
+                });
                 next();
             }
         }

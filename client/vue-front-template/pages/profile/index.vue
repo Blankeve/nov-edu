@@ -469,7 +469,7 @@ export default {
             type: "success",
             message: "更新成功",
           });
-          this.fetchData();
+           location.reload();
         }
       });
     },

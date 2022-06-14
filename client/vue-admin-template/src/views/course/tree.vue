@@ -228,7 +228,6 @@
         </el-form-item>
 
         <el-form-item v-if="video.videoSourcePath" label="视频路径">
-          {{ video.videoSourcePath }}
           <video width="320" controls>
             <source :src="video.videoSourcePath" type="video/mp4" />
             您的浏览器不支持 HTML5 video 标签。
@@ -543,6 +542,7 @@ export default {
         this.video.chapterId = data.id;
         this.videoFormTitle = "添加小节";
         this.videoFormVisible = true;
+        this.video.courseIsFree = data.courseIsFree;
       }
     },
     edit(node, data) {
@@ -561,6 +561,7 @@ export default {
         this.video = data;
         this.videoFormTitle = "修改小节";
         this.videoFormVisible = true;
+        this.video.courseIsFree = data.courseIsFree;
       }
     },
     appendRoot(data) {

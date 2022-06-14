@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 public interface OrderClient {
 
     @ApiOperation("查询用户是否已经下单")
-    @PostMapping("/order/trade/hasbuy/{id}")
-    BaseResult queryOrderByUidAndCourseId(@PathVariable Long id);
+    @PostMapping("/order/trade/hasbuy/{id}/{uid}")
+    BaseResult queryOrderByUidAndCourseId(@PathVariable Long id,@PathVariable Long uid);
 
 
     @ApiOperation("查询成交订单数量")

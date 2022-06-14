@@ -112,7 +112,7 @@
 
       <el-table-column label="支付方式" width="200px" align="center">
         <template slot-scope="scope" v-if="scope.row.status === 1">
-          {{ scope.row.payType === 1 ? "微信支付" : "支付宝" }}
+          {{ scope.row.payType === 0 ? "免费" : (scope.row.payType === 1 ? "微信":"支付宝") }}
         </template>
       </el-table-column>
 

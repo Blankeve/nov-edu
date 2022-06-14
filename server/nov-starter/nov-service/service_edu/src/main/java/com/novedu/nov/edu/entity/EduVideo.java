@@ -3,6 +3,7 @@ package com.novedu.nov.edu.entity;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -96,5 +97,6 @@ public class EduVideo implements Serializable {
     @ApiModelProperty(value = "是否删除：1删除 2未删除")
     private Integer isDeleted;
 
-
+    @TableField(exist = false)
+    private boolean courseIsFree;
 }

@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class OrderClientImpl implements OrderClient {
     @Override
-    public BaseResult queryOrderByUidAndCourseId(Long id) {
+    public BaseResult queryOrderByUidAndCourseId(Long id,Long uid) {
         log.error("queryOrderByUidAndCourseId failed");
         return BaseResult.serviceInvokeFailure();
     }

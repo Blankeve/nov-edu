@@ -24,7 +24,7 @@ public interface TradeOrderService extends IService<TradeOrder> {
 
     BaseResult queryOrderPage(Page page, TradeOrder order);
 
-    BaseResult queryOrderByUidAndCourseId(HttpServletRequest request, Long id);
+    BaseResult queryOrderByUidAndCourseId(Long id,Long uid);
 
     void exportOrderPage(HttpServletResponse response, Page page, TradeOrder order);
 

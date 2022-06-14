@@ -3,6 +3,7 @@ package com.novedu.nov.edu.service.impl;
 import cn.afterturn.easypoi.excel.ExcelExportUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.common.api.RoleType;
@@ -31,6 +32,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
@@ -84,7 +86,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public BaseResult saveCourse(EduCourseInfoDTO courseInfoDTO) {
-        if(courseInfoDTO.getSubjectId() == null || courseInfoDTO.getSubjectId().length < 2){
+        if (courseInfoDTO.getSubjectId() == null || courseInfoDTO.getSubjectId().length < 2) {
             return BaseResult.error("课程分类不能为空");
         }
         QueryWrapper queryWrapper = new QueryWrapper();
@@ -130,7 +132,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     @Override
     public BaseResult queryCourseTree(Page page, EduCourseInfoDTO courseInfoDTO) {
 
-        if(needToken){
+        if (needToken) {
             Long uid = RequestUtils.getUid();
             BaseResult baseResult = userRoleClient.queryUserRole(Long.valueOf(uid));
             if (baseResult == null) {
@@ -165,8 +167,17 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
             queryWrapper.apply("c1.create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and c1.create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start, end);
         if (StringUtils.hasText(courseInfoDTO.getTitle()))
             queryWrapper.orderByAsc("title");
-
-        return BaseResult.success(courseMapper.queryCourseTree(page, queryWrapper));
+        IPage<EduCourse> eduCourseIPage = courseMapper.queryCourseTree(page, queryWrapper);
+        List<EduCourse> eduCourseList = eduCourseIPage.getRecords();
+        eduCourseList.forEach(c -> c.getChildren().forEach(ch -> {
+            boolean courseIsFree = false;
+            if (c.getPrice().compareTo(BigDecimal.valueOf(0)) == 0)
+                courseIsFree = true;
+            ch.setCourseIsFree(courseIsFree);
+            boolean finalCourseIsFree = courseIsFree;
+            ch.getChildren().forEach(v -> v.setCourseIsFree(finalCourseIsFree));
+        }));
+        return BaseResult.success(eduCourseIPage);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -176,7 +187,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         if (courseInfoDTO.getId() != null) {
             queryWrapper.eq("c1.id", courseInfoDTO.getId());
         }
-        return BaseResult.success(courseMapper.queryCourseTree(new Page(1,1), queryWrapper));
+        return BaseResult.success(courseMapper.queryCourseTree(new Page(1, 1), queryWrapper));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -259,12 +270,12 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         setCourseCommentCount(courses1);
         List<EduCourse> courses2 = query().eq("status", 1).orderByDesc("apply_count").last("limit 8").list();
         setCourseCommentCount(courses2);
-        List<EduCourse> courses3 = query().eq("status", 1).gt("price", 0).orderByDesc("buy_count").last("limit 8").list();
-        setCourseCommentCount(courses3);
+        // List<EduCourse> courses3 = query().eq("status", 1).gt("price", 0).orderByDesc("buy_count").last("limit 8").list();
+        //  setCourseCommentCount(courses3);
         return BaseResult.success()
                 .mapSet("c1", courses1)
-                .mapSet("c2", courses2)
-                .mapSet("c3", courses3);
+                .mapSet("c2", courses2);
+        //  .mapSet("c3", courses3);
     }
 
     @Override
