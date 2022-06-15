@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div style="width: 1080px; margin: 0 auto">
+    <h2 style="text-align: center">{{this.video.title}}</h2>
     <video-player
       class="video-player vjs-custom-skin"
       ref="videoPlayer"
@@ -7,6 +8,7 @@
       :options="playerOptions"
     >
     </video-player>
+      <br>
   </div>
 </template>
 

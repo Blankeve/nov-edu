@@ -30,16 +30,20 @@
           <el-timeline-item
             v-for="consult in consults"
             :key="consult.id"
-            :timestamp="consult.createTime"
+            :timestamp="consult.createTime + '\t' + consult.address"
             placement="top"
           >
             <el-card>
-              <p>  <el-avatar :src="consult.avatar" size="small"></el-avatar>{{ consult.nickname }} ：</p>
-              <p class="c">&nbsp;&nbsp;{{ consult.content }}</p>
+              <p>
+                <el-avatar :src="consult.avatar" size="small"></el-avatar
+                ><span class="c">{{ consult.nickname }}</span
+                >:&nbsp;&nbsp;{{ consult.content }}
+              </p>
+
               <div v-if="consult.adminId != null">
                 <br />
                 <h5 class="a-re">
-                  {{ consult.adminName }}于 {{ consult.updateTime }} 回复 :
+                  {{ consult.adminName }}于 {{ consult.updateTime }} 回复:
                 </h5>
                 <p class="c">&nbsp;&nbsp;{{ consult.replyContent }}</p>
               </div>
@@ -88,6 +92,7 @@ import "~/assets/css/sign.css";
 import "~/assets/css/iconfont.css";
 
 import { save, getPage } from "@/api/consult";
+import { getFormatTime } from "@/utils/datetime-format";
 
 export default {
   layout: "simple",
@@ -113,6 +118,11 @@ export default {
       getPage(this.form).then((resp) => {
         if (resp.code === 200) {
           this.consults = resp.data.records;
+          for (let i = 0; i < this.consults.length; i++) {
+            this.consults[i]["createTime"] = getFormatTime(
+              this.consults[i]["createTime"]
+            );
+          }
           this.form.pages = resp.data.pages;
         }
       });

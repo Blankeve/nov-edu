@@ -3,7 +3,7 @@ html {font-size: 14px;color: #424242;}
 table {border-collapse: collapse;border-spacing: 0;}
 ol, ul {list-style: none;}
 dl {-webkit-margin-before:0;-webkit-margin-after:0;}
-h1, h2, h3, h4, h5, h6 {font-size: 14px;}
+/* h1, h2, h3, h4, h5, h6 {font-size: 14px;} */
 a {text-decoration: none;color:#424242;}
 a:hover, .color81 a:hover, .color81 a.cur {color: #000}
 a.red {color: #ff4a56;}
