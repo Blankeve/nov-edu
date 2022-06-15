@@ -244,6 +244,7 @@ export default {
       teacherName: "",
       courseCount: 0,
       orderCount: 0,
+      orderAmount: 0,
       barCharts: {},
       lineCharts: {},
       recentAddCourses: [],

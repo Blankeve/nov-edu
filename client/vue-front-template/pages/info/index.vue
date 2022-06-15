@@ -40,7 +40,7 @@
               <nuxt-link :to="'/info/' + item.id">{{ item.title }}</nuxt-link>
             </span>
             <span class="author">
-              {{ item.createTime }} 作者: {{ item.createrNickname }}</span
+              {{ item.createTime }}&nbsp; {{ item.createrNickname }}</span
             >
             <el-divider></el-divider>
           </span>
@@ -72,6 +72,7 @@ import "~/assets/css/iconfont.css";
 
 import { getPage } from "@/api/info";
 import { getListByKey } from "@/api/config";
+import { getFormatTime } from "@/utils/datetime-format";
 
 export default {
   layout: "simple",
@@ -92,7 +93,7 @@ export default {
       currentIndex: null,
       key: {
         key: "artcle_cate",
-        grade: 2
+        grade: 2,
       },
     };
   },
@@ -117,6 +118,11 @@ export default {
         this.form.size = data.size;
         this.form.total = data.total;
         this.list = data.records;
+        for (let i = 0; i < this.list.length; i++) {
+          this.list[i]["createTime"] = getFormatTime(
+            this.list[i]["createTime"]
+          );
+        }
         this.listLoading = false;
         sessionStorage.setItem("infoPageForm", JSON.stringify(this.form));
       });

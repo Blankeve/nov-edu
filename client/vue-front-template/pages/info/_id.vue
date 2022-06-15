@@ -8,7 +8,7 @@
           {{ info.title }}
           <span class="author">
             点击量: {{ info.clickCount }} &nbsp;&nbsp;&nbsp;
-            {{ info.createTime }} 作者: {{ info.createrNickname }}</span
+            {{ info.createTime }}  &nbsp;&nbsp;&nbsp;作者: {{ info.createrNickname }}</span
           >
         </p>
       </div>

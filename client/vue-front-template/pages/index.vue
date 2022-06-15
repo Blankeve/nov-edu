@@ -3,9 +3,30 @@
     <div id="aCoursesList">
       <!-- 网校课程 开始 -->
       <div>
+        <div
+          style="
+            margin: 0px;
+            padding: 0px;
+            width: 50px;
+            position: fixed;
+            top: 50%;
+            margin-top: -190px;
+            z-index: 1100;
+          "
+        >
+          <a
+            target="_blank"
+            href="http://wpa.qq.com/msgrd?v=3&uin=95307355&site=qq&menu=yes"
+            ><img
+              border="0"
+              src="http://wpa.qq.com/pa?p=2:95307355:53"
+              alt="点击这里给我发消息"
+              title="点击这里给我发消息"
+          /></a>
+        </div>
         <section class="container">
           <!-- 幻灯片 开始 -->
-          <div v-show="banners.length" v-swiper:mySwiper="swiperOption">
+          <div v-if="banners.length" v-swiper:mySwiper="swiperOption">
             <div class="swiper-wrapper">
               <div
                 v-for="banner in banners"
@@ -281,6 +302,7 @@
         center=""
       >
         <div class="html-content" v-html="notice.content"></div>
+        <p>发布于{{ this.notice.createTime }}</p>
         <div slot="footer" class="dialog-footer">
           <el-button @click="noticeFormVisible = false">我知道了</el-button>
         </div>
@@ -296,7 +318,7 @@ import { getClientTeacherList } from "@/api/teacher";
 import { receiveNotice } from "@/api/notice";
 import jwtDecode from "jwt-decode";
 import { getToken, removeToken } from "@/utils/auth";
-
+import { getFormatTime } from "@/utils/datetime-format";
 export default {
   data() {
     return {
@@ -339,6 +361,7 @@ export default {
     receiveNotice().then((resp) => {
       if (resp.code === 200) {
         this.notice = resp.data;
+        this.notice.createTime = getFormatTime(this.notice.createTime);
         let adValue = localStorage.getItem(adId);
         if (!adValue || adValue != this.notice.id) {
           this.noticeFormVisible = true;
