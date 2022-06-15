@@ -129,15 +129,9 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="销售数量" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.courseBuyCount }}
-        </template>
-      </el-table-column>
-
       <el-table-column label="学习人数" align="center">
         <template slot-scope="scope">
-          {{ scope.row.courseApplyCount }}
+          {{ scope.row.courseBuyCount }}
         </template>
       </el-table-column>
 
@@ -150,12 +144,6 @@
       <el-table-column label="评论数量" align="center">
         <template slot-scope="scope">
           {{ scope.row.courseCommentCount }}
-        </template>
-      </el-table-column>
-
-      <el-table-column label="课程简介" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.description }}
         </template>
       </el-table-column>
 

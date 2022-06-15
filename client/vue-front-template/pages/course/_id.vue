@@ -46,7 +46,7 @@
               <span class="ml10 vam">
                 <em class="icon18 scIcon"></em>
                 <span class="c-fff vam" title="收藏"
-                  >{{ course.courseApplyCount }}人正在学习该门课程</span
+                  >{{ course.courseBuyCount }}人正在学习该门课程</span
                 >
               </span>
             </section>
@@ -486,7 +486,7 @@ export default {
         uid: uid,
         teacherId: this.course.teacherId,
       };
-      if (this.course.coursePrice == 0) {
+      if (!this.paid && this.course.coursePrice == 0) {
         createOrder(data).then((resp) => {
           if (resp.code === 200) {
             this.$message({
@@ -494,7 +494,7 @@ export default {
               message: "报名成功",
             });
             this.paid = true;
-            this.course.courseApplyCount++;
+            this.course.courseBuyCount++;
           }
         });
       }

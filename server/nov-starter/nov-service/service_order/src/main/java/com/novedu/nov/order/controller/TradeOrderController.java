@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -59,13 +63,21 @@ public class TradeOrderController {
         if (teacherId != null && teacherId != 0)
             queryWrapper.eq("id", teacherId);
         queryWrapper.eq("status", 1);
-        return BaseResult.success(tradeOrderService.count(queryWrapper));
+        List<TradeOrder> orders = tradeOrderService.list(queryWrapper);
+        Map info = new HashMap();
+        BigDecimal amount = BigDecimal.ZERO;
+        for (TradeOrder o : orders) {
+            amount = amount.add(o.getTotalFee());
+        }
+        info.put("count", orders.size());
+        info.put("amount", amount);
+        return BaseResult.success(info);
     }
 
     @ApiOperation("查询用户是否已经下单")
     @PostMapping("/hasbuy/{id}/{uid}")
-    public BaseResult queryOrderByUidAndCourseId(@PathVariable Long id,@PathVariable Long uid) {
-        return tradeOrderService.queryOrderByUidAndCourseId(id,uid);
+    public BaseResult queryOrderByUidAndCourseId(@PathVariable Long id, @PathVariable Long uid) {
+        return tradeOrderService.queryOrderByUidAndCourseId(id, uid);
     }
 
     @PostMapping("/page")

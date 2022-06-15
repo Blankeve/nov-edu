@@ -83,6 +83,10 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
         if (!success) {
             return BaseResult.error("创建订单失败");
         }
+       BaseResult baseResult = eduClient.statisticsCourseBuyCount();
+        if(baseResult == null || BaseResult.error().getCode().equals(baseResult.getCode())){
+            log.error("学习人数同步失败");
+        }
         redisTemplate.opsForValue().set(userOrderKey, tradeOrder, 30, TimeUnit.MINUTES);
         return BaseResult.success().mapSet("order", tradeOrder.getId() + "");
     }

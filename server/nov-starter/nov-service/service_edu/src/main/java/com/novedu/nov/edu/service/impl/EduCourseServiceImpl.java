@@ -268,7 +268,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     public BaseResult<List<EduCourse>> getClientCourseList() {
         List<EduCourse> courses1 = query().eq("status", 1).orderByDesc("view_count").last("limit 8").list();
         setCourseCommentCount(courses1);
-        List<EduCourse> courses2 = query().eq("status", 1).orderByDesc("apply_count").last("limit 8").list();
+        List<EduCourse> courses2 = query().eq("status", 1).orderByDesc("buy_count").last("limit 8").list();
         setCourseCommentCount(courses2);
         // List<EduCourse> courses3 = query().eq("status", 1).gt("price", 0).orderByDesc("buy_count").last("limit 8").list();
         //  setCourseCommentCount(courses3);

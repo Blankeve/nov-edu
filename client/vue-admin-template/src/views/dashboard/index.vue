@@ -72,7 +72,7 @@
       </el-col>
       <el-col :span="16">
         <el-row :gutter="20" class="mgb20">
-          <el-col v-if="code != 5" :span="6">
+          <el-col v-if="code != 5" :span="5">
             <el-card shadow="hover" :body-style="{ padding: '0px' }">
               <div class="grid-content grid-con-1">
                 <i class="el-icon-user-solid grid-con-icon"></i>
@@ -83,7 +83,7 @@
               </div>
             </el-card>
           </el-col>
-          <el-col v-if="code != 5" :span="6">
+          <el-col v-if="code != 5" :span="5">
             <el-card shadow="hover" :body-style="{ padding: '0px' }">
               <div class="grid-content grid-con-1">
                 <i class="el-icon-view grid-con-icon"></i>
@@ -94,7 +94,7 @@
               </div>
             </el-card>
           </el-col>
-          <el-col :span="6">
+          <el-col :span="4">
             <el-card shadow="hover" :body-style="{ padding: '0px' }">
               <div class="grid-content grid-con-2">
                 <i class="el-icon-reading grid-con-icon"></i>
@@ -105,13 +105,24 @@
               </div>
             </el-card>
           </el-col>
-          <el-col :span="6">
+          <el-col :span="4">
             <el-card shadow="hover" :body-style="{ padding: '0px' }">
-              <div class="grid-content grid-con-3">
+              <div class="grid-content grid-con-2">
                 <i class="el-icon-s-goods grid-con-icon"></i>
                 <div class="grid-cont-right">
                   <div class="grid-num">{{ orderCount }}</div>
                   <div>已售课程数</div>
+                </div>
+              </div>
+            </el-card>
+          </el-col>
+          <el-col :span="6">
+            <el-card shadow="hover" :body-style="{ padding: '0px' }">
+              <div class="grid-content grid-con-3">
+                <i class="el-icon-bank-card grid-con-icon"></i>
+                <div class="grid-cont-right">
+                  <div class="grid-num">{{ orderAmount }}</div>
+                  <div>成交金额</div>
                 </div>
               </div>
             </el-card>
@@ -261,6 +272,7 @@ export default {
         if (resp.code === 200) {
           this.courseCount = resp.data.courseCount;
           this.orderCount = resp.data.orderCount;
+          this.orderAmount = resp.data.orderAmount;
           this.subjectRatios = resp.data.subjectRatios;
           this.recentAddCourses = resp.data.recentAddCourses;
           this.teacherName = resp.data.teacherName;

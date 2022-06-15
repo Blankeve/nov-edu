@@ -140,7 +140,7 @@
                         }}</i>
                       </span>
                       <span class="fl jgAttr c-ccc f-fA">
-                        <i class="c-999 f-fA">{{ course.applyCount }}人学习</i>
+                        <i class="c-999 f-fA">{{ course.buyCount }}人学习</i>
                         |
                         <i class="c-999 f-fA"
                           >{{ course.commentCount }}人评论</i

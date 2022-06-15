@@ -151,7 +151,9 @@ public class EduSubjectServiceImpl extends ServiceImpl<EduSubjectMapper, EduSubj
         }
         BaseResult baseResult = orderClient.queryOrderCount(teacherId);
         if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
-            dashBoardInfoVO.setOrderCount((Integer) baseResult.getData());
+            Map orderInfo = (Map) baseResult.getData();
+            dashBoardInfoVO.setOrderCount((Integer) orderInfo.get("count"));
+            dashBoardInfoVO.setOrderAmount((double) orderInfo.get("amount"));
         }
         //1.课程分类详情     当前分类课程数量/所以分类课程数
         QueryWrapper queryWrapper = new QueryWrapper();

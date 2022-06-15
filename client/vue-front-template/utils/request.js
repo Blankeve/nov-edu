@@ -56,9 +56,12 @@ service.interceptors.response.use(
         MessageBox.confirm(res.msg, '登录确认', {
           type: 'warning'
         }).then(() => {
-          this.$router.push({
-            path: "/login",
-          });
+          this.$store
+            .dispatch("user/logout")
+            .then(() => {
+              this.$router.push({ path: "/login" });
+            })
+            .catch(() => { });
         })
       }
       return Promise.reject(new Error(res.message || 'Error'))

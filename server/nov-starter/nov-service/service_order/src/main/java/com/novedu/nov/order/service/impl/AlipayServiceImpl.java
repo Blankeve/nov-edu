@@ -89,19 +89,6 @@ public class AlipayServiceImpl implements AlipayService {
         order.setStatus(1);
         if (orderService.updateById(order)) {
             log.info("同步订单:" + orderId + "成功");
-            EduCourseApply courseApply = new EduCourseApply();
-            courseApply.setCourseId(order.getCourseId());
-            courseApply.setUid(order.getUid());
-            baseResult = eduClient.saveApply(courseApply);
-            if (BaseResult.serviceInvokeFailure().getCode().equals(baseResult.getCode())) {
-                httpResponse.getWriter().write(baseResult.getMsg());
-                return;
-            }
-            baseResult = eduClient.statisticsCourseApplyCount();
-            if (BaseResult.serviceInvokeFailure().getCode().equals(baseResult.getCode())) {
-                httpResponse.getWriter().write(baseResult.getMsg());
-                return;
-            }
             baseResult = eduClient.statisticsCourseBuyCount();
             if (BaseResult.serviceInvokeFailure().getCode().equals(baseResult.getCode())) {
                 httpResponse.getWriter().write(baseResult.getMsg());
