@@ -223,7 +223,7 @@
         <el-form-item prop="isFree" label="是否收费">
           <el-radio-group v-model="video.isFree">
             <el-radio-button label="1">免费</el-radio-button>
-            <el-radio-button label="0">付费</el-radio-button>
+            <el-radio-button v-if="!video.courseIsFree" label="0">付费</el-radio-button>
           </el-radio-group>
         </el-form-item>
 
