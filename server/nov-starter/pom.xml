@@ -45,6 +45,7 @@
         <alipay.version>3.0.0</alipay.version>
         <shiro.version>1.8.0</shiro.version>
         <UserAgentUtils.version>1.21</UserAgentUtils.version>
+        <bootstrap.version>3.0.4</bootstrap.version>
 
     </properties>
     <dependencyManagement>
@@ -252,6 +253,11 @@
                 <version>${UserAgentUtils.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-bootstrap</artifactId>
+                <version>${bootstrap.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

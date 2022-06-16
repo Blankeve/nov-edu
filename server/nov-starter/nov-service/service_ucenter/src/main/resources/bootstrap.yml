@@ -12,11 +12,11 @@ spring:
         username: nacos
         password: nacos
   application:
-    name: service-edu
+    name: service-ucenter
 
 
 server:
-  port: 8081
+  port: 8085
 
 
 
