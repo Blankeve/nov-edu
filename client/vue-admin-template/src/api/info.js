@@ -21,7 +21,7 @@ export function saveOrUpdate(data) {
 export function getPage(params) {
   return request({
     url: '/edu/info/page',
-    method: 'post',
+    method: 'get',
     params
   })
 }
