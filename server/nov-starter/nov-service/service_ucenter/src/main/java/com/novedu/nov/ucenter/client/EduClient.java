@@ -1,11 +1,8 @@
 package com.novedu.nov.ucenter.client;
 
-import com.novedu.nov.common.api.BaseResult;
-import io.swagger.annotations.ApiOperation;
+import com.novedu.nov.common.base.BaseResult;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 

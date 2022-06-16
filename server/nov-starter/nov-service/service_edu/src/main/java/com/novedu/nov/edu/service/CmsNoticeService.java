@@ -1,7 +1,7 @@
 package com.novedu.nov.edu.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.edu.entity.CmsNotice;
 import com.baomidou.mybatisplus.extension.service.IService;
 

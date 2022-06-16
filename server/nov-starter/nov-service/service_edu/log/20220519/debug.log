@@ -642,7 +642,7 @@ file:/C:/Users/Admin/.m2/repository/com/sun/jersey/contribs/jersey-apache-client
 2022-05-19 09:41:17.374 [main] DEBUG org.mybatis.spring.SqlSessionUtils-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@39dee5fd] was not registered for synchronization because synchronization is not active
 2022-05-19 09:41:18.054 [main] DEBUG org.mybatis.spring.transaction.SpringManagedTransaction-JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@28dd038f] will not be managed by Spring
 2022-05-19 09:41:18.057 [main] DEBUG com.novedu.nov.common.module.mapper.SysConfigMapper.selectList-==>  Preparing: SELECT id,config_key,config_value,config_name,create_time,update_time,is_deleted FROM sys_config WHERE is_deleted=0
-2022-05-19 09:41:18.076 [main] DEBUG com.novedu.nov.common.module.mapper.SysConfigMapper.selectList-==> Parameters: 
+2022-05-19 09:41:18.076 [main] DEBUG com.novedu.nov.common.module.mapper.SysConfigMapper.selectList-==> Parameters:
 2022-05-19 09:41:18.119 [main] DEBUG com.novedu.nov.common.module.mapper.SysConfigMapper.selectList-<==      Total: 7
 2022-05-19 09:41:18.120 [main] DEBUG org.mybatis.spring.SqlSessionUtils-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@39dee5fd]
 2022-05-19 09:41:18.579 [main] DEBUG springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-initialising the handler methods
@@ -4262,7 +4262,7 @@ file:/C:/Users/Admin/.m2/repository/com/sun/jersey/contribs/jersey-apache-client
 2022-05-19 09:41:26.809 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Finished reading parameters models for handlerMethod |saveConfig|
 2022-05-19 09:41:26.809 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationModelsProvider-Reading parameters models for handlerMethod |saveConfig|
 2022-05-19 09:41:26.809 [main] DEBUG springfox.documentation.spring.web.scanners.ApiModelReader-Generated parameter model id: BaseResult, name: BaseResult, schema: {} models
-2022-05-19 09:41:26.812 [main] DEBUG springfox.documentation.spring.web.readers.parameter.ModelAttributeParameterExpander-Expanding parameter type: com.novedu.nov.common.module.entity.SysConfig
+2022-05-19 09:41:26.812 [main] DEBUG springfox.documentation.spring.web.readers.parameter.ModelAttributeParameterExpander-Expanding parameter type: com.novedu.nov.common.base.SysConfig
 2022-05-19 09:41:26.813 [main] DEBUG springfox.documentation.spring.web.readers.parameter.ModelAttributeParameterExpander-Attempting to expand field: springfox.documentation.spring.web.readers.parameter.ModelAttributeField@43d00636
 2022-05-19 09:41:26.813 [main] DEBUG springfox.documentation.spring.web.readers.parameter.ModelAttributeParameterExpander-Building parameter for field: springfox.documentation.spring.web.readers.parameter.ModelAttributeField@43d00636, with type: 
 2022-05-19 09:41:26.813 [main] DEBUG springfox.documentation.spring.web.readers.parameter.ModelAttributeParameterExpander-Attempting to expand field: springfox.documentation.spring.web.readers.parameter.ModelAttributeField@3a72160a
@@ -4927,7 +4927,7 @@ file:/C:/Users/Admin/.m2/repository/com/sun/jersey/contribs/jersey-apache-client
 2022-05-19 09:42:35.847 [main] DEBUG org.mybatis.spring.SqlSessionUtils-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@28f081ad] was not registered for synchronization because synchronization is not active
 2022-05-19 09:42:36.506 [main] DEBUG org.mybatis.spring.transaction.SpringManagedTransaction-JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6fe33512] will not be managed by Spring
 2022-05-19 09:42:36.509 [main] DEBUG com.novedu.nov.common.module.mapper.SysConfigMapper.selectList-==>  Preparing: SELECT id,config_key,config_value,config_name,create_time,update_time,is_deleted FROM sys_config WHERE is_deleted=0
-2022-05-19 09:42:36.528 [main] DEBUG com.novedu.nov.common.module.mapper.SysConfigMapper.selectList-==> Parameters: 
+2022-05-19 09:42:36.528 [main] DEBUG com.novedu.nov.common.module.mapper.SysConfigMapper.selectList-==> Parameters:
 2022-05-19 09:42:36.572 [main] DEBUG com.novedu.nov.common.module.mapper.SysConfigMapper.selectList-<==      Total: 7
 2022-05-19 09:42:36.573 [main] DEBUG org.mybatis.spring.SqlSessionUtils-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@28f081ad]
 2022-05-19 09:42:36.999 [main] DEBUG springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-initialising the handler methods
@@ -8547,7 +8547,7 @@ file:/C:/Users/Admin/.m2/repository/com/sun/jersey/contribs/jersey-apache-client
 2022-05-19 09:42:45.084 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Finished reading parameters models for handlerMethod |saveConfig|
 2022-05-19 09:42:45.085 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationModelsProvider-Reading parameters models for handlerMethod |saveConfig|
 2022-05-19 09:42:45.085 [main] DEBUG springfox.documentation.spring.web.scanners.ApiModelReader-Generated parameter model id: BaseResult, name: BaseResult, schema: {} models
-2022-05-19 09:42:45.087 [main] DEBUG springfox.documentation.spring.web.readers.parameter.ModelAttributeParameterExpander-Expanding parameter type: com.novedu.nov.common.module.entity.SysConfig
+2022-05-19 09:42:45.087 [main] DEBUG springfox.documentation.spring.web.readers.parameter.ModelAttributeParameterExpander-Expanding parameter type: com.novedu.nov.common.base.SysConfig
 2022-05-19 09:42:45.087 [main] DEBUG springfox.documentation.spring.web.readers.parameter.ModelAttributeParameterExpander-Attempting to expand field: springfox.documentation.spring.web.readers.parameter.ModelAttributeField@30be77cd
 2022-05-19 09:42:45.087 [main] DEBUG springfox.documentation.spring.web.readers.parameter.ModelAttributeParameterExpander-Building parameter for field: springfox.documentation.spring.web.readers.parameter.ModelAttributeField@30be77cd, with type: 
 2022-05-19 09:42:45.087 [main] DEBUG springfox.documentation.spring.web.readers.parameter.ModelAttributeParameterExpander-Attempting to expand field: springfox.documentation.spring.web.readers.parameter.ModelAttributeField@71c9c7f3

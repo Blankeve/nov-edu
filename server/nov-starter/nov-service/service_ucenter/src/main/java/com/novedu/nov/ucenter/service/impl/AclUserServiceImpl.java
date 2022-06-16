@@ -5,9 +5,9 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.novedu.nov.common.api.BaseResult;
-import com.novedu.nov.common.api.RoleType;
-import com.novedu.nov.common.config.SysConfigCache;
+import com.novedu.nov.common.base.BaseResult;
+import com.novedu.nov.common.base.RoleType;
+import com.novedu.nov.common.module.service.SysConfigService;
 import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.common.util.IpAddressUtils;
 import com.novedu.nov.common.util.JwtUtils;
@@ -71,6 +71,9 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
     @Autowired
     SysLoginHistoryService sysLoginHistoryService;
 
+    @Autowired
+    SysConfigService configService;
+
     @Override
     public BaseResult login(AclUser ucenterMemberDto) {
         HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
@@ -116,7 +119,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
             if (nickname.length() > 15)
                 return BaseResult.error("您的昵称太过个性，请换个简短点的吧,15个字符以内");
         }
-        ucenterMemberDto.setAvatar(SysConfigCache.getSysConfigByKey("stu_def_avatar").getConfigValue());
+        ucenterMemberDto.setAvatar(configService.getSysConfigByKey("stu_def_avatar").getData().getConfigValue());
         save(ucenterMemberDto);
         AclUserRole userRole = new AclUserRole();
         userRole.setUid(ucenterMemberDto.getId());
@@ -259,7 +262,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
     public BaseResult resetPwd(Long uid) {
         UpdateWrapper updateWrapper = new UpdateWrapper();
         updateWrapper.eq("id", uid);
-        updateWrapper.set("password", DigestUtils.md5DigestAsHex(SysConfigCache.getSysConfigByKey("user_def_reset_pwd").getConfigValue().getBytes(StandardCharsets.UTF_8)));
+        updateWrapper.set("password", DigestUtils.md5DigestAsHex(configService.getSysConfigByKey("user_def_reset_pwd").getData().getConfigValue().getBytes(StandardCharsets.UTF_8)));
         return BaseResult.successOrError(update(updateWrapper));
     }
 

@@ -1,9 +1,8 @@
 package com.novedu.nov.common.module.controller;
 
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.novedu.nov.common.api.BaseResult;
-import com.novedu.nov.common.module.entity.SysConfig;
+import com.novedu.nov.common.base.BaseResult;
+import com.novedu.nov.common.base.SysConfig;
 import com.novedu.nov.common.module.service.SysConfigService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

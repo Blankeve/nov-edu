@@ -1,4 +1,4 @@
-package com.novedu.nov.common.api;
+package com.novedu.nov.common.base;
 
 /**
  * @author ：juam

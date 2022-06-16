@@ -3,11 +3,10 @@ package com.novedu.nov.edu.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.novedu.nov.common.api.BaseResult;
-import com.novedu.nov.common.module.entity.SysConfig;
+import com.novedu.nov.common.base.BaseResult;
+import com.novedu.nov.common.base.SysConfig;
 import com.novedu.nov.common.module.service.SysConfigService;
 import com.novedu.nov.common.util.BeanListUtils;
 import com.novedu.nov.edu.client.UserRoleClient;
@@ -46,6 +45,7 @@ public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> impl
     RedisTemplate redisTemplate;
     @Autowired
     SysConfigService configService;
+
     private String key = "usersCache";
 
     @Override

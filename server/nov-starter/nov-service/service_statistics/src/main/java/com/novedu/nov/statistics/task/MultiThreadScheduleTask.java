@@ -1,6 +1,6 @@
 package com.novedu.nov.statistics.task;
 
-import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.statistics.client.EduClient;
 import com.novedu.nov.statistics.client.UcenterClient;
 import com.novedu.nov.statistics.entity.StatisticsDaily;
@@ -37,19 +37,18 @@ public class MultiThreadScheduleTask {
 
     @Async
     @Scheduled(cron = "0/30 * * * * ?")  //间隔30秒
-    public void asyncCourseViewCount() {
+    public void syncCourseViewCount() {
         log.info("---------------正在同步课程播放次数...");
         BaseResult baseResult = eduClient.statisticsCoursePlayCount();
         log.info("---------------课程播放次数同步" + (baseResult.getCode().equals(200) ? "完成" : "失败"));
     }
-
 
     @Async
     @Scheduled(cron = "45 59 23 * * ?")  //每天下午11点59分45秒同步
     public void syncRegisterLoginCount() {
         log.info("---------------正在同步每天用户新增注册和登录人数...");
         BaseResult baseResult = ucenterClient.syncRegisterLoginCount();
-        if(BaseResult.success().getCode().equals(baseResult.getCode())){
+        if (BaseResult.success().getCode().equals(baseResult.getCode())) {
             StatisticsDaily statisticsDaily = new StatisticsDaily();
             Map map = (Map) baseResult.getData();
             statisticsDaily.setRegisterNum((Integer) map.get("registerCount"));

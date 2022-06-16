@@ -8,12 +8,25 @@ import javax.servlet.http.HttpServletRequest;
 
 public class RequestUtils {
     private static String tokenKey = "X-Token";
+    private static HttpServletRequest request;
+
+    private static void getRequest() {
+        request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
+    }
 
     public static Long getUid() {
-        HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
+        getRequest();
         String token = request.getHeader(tokenKey);
-        if(StringUtils.isEmpty(token))
+        if (StringUtils.isEmpty(token))
             return null;
         return Long.valueOf(JwtUtils.getAudience(token).get("uid"));
+    }
+
+    public static String getUsername() {
+        getRequest();
+        String token = request.getHeader(tokenKey);
+        if (StringUtils.isEmpty(token))
+            return "";
+        return JwtUtils.getAudience(token).get("username");
     }
 }

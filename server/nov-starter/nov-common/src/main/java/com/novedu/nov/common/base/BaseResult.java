@@ -1,6 +1,4 @@
-package com.novedu.nov.common.api;
-
-import com.novedu.nov.common.exception.ServiceInvokeFailureException;
+package com.novedu.nov.common.base;
 
 import java.util.HashMap;
 import java.util.Map;

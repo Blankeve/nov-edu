@@ -1,8 +1,8 @@
 package com.novedu.nov.edu.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.novedu.nov.common.api.BaseResult;
-import com.novedu.nov.common.api.RoleType;
+import com.novedu.nov.common.base.BaseResult;
+import com.novedu.nov.common.base.RoleType;
 import com.novedu.nov.common.util.JwtUtils;
 import com.novedu.nov.common.util.TreeUtils;
 import com.novedu.nov.edu.client.OrderClient;
@@ -21,7 +21,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

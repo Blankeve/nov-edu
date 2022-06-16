@@ -1,11 +1,9 @@
 package com.novedu.nov.edu.controller;
 
 
-import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.edu.entity.EduCourseApply;
-import com.novedu.nov.edu.entity.dto.EduCourseInfoDTO;
 import com.novedu.nov.edu.service.EduCourseApplyService;
-import com.novedu.nov.edu.service.EduCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

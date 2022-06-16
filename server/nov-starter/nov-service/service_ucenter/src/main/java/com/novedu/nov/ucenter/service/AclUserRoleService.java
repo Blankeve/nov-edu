@@ -1,6 +1,5 @@
 package com.novedu.nov.ucenter.service;
 
-import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.ucenter.entity.AclUserRole;
 import com.baomidou.mybatisplus.extension.service.IService;
 

@@ -2,7 +2,7 @@ package com.novedu.nov.ucenter.controller;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.ucenter.entity.AclUser;
 import com.novedu.nov.ucenter.entity.dto.AclUserPasswordDTO;
 import com.novedu.nov.ucenter.entity.dto.AclUserProfileDTO;

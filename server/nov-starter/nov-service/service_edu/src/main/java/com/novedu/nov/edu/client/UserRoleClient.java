@@ -1,6 +1,6 @@
 package com.novedu.nov.edu.client;
 
-import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.common.base.BaseResult;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;

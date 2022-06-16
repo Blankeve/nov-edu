@@ -9,16 +9,14 @@ package com.novedu.nov.order.service.impl;
  */
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import com.alipay.api.internal.util.AlipaySignature;
-import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.order.client.EduClient;
 import com.novedu.nov.order.config.AlipayConfig;
-import com.novedu.nov.order.entity.EduCourseApply;
 import com.novedu.nov.order.entity.TradeOrder;
 import com.novedu.nov.order.service.AlipayService;
 import com.novedu.nov.order.service.TradeOrderService;
@@ -29,13 +27,7 @@ import org.springframework.stereotype.Service;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
-import com.alipay.api.domain.AlipayTradeWapPayModel;
-import com.alipay.api.request.AlipayTradeCloseRequest;
-import com.alipay.api.request.AlipayTradeFastpayRefundQueryRequest;
 import com.alipay.api.request.AlipayTradePagePayRequest;
-import com.alipay.api.request.AlipayTradeQueryRequest;
-import com.alipay.api.request.AlipayTradeRefundRequest;
-import com.alipay.api.request.AlipayTradeWapPayRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

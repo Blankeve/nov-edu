@@ -1,10 +1,8 @@
 package com.novedu.nov.edu.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.novedu.nov.common.api.BaseResult;
-import com.novedu.nov.edu.entity.CrmBanner;
+import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.edu.entity.EduTeacher;
 import com.novedu.nov.edu.entity.dto.EduTeacherDTO;
 import com.novedu.nov.edu.entity.dto.UserBindTeacherForm;
@@ -15,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 

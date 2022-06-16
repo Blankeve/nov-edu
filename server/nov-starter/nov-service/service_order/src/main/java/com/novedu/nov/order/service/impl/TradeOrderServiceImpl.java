@@ -2,14 +2,12 @@ package com.novedu.nov.order.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.novedu.nov.common.api.BaseResult;
-import com.novedu.nov.common.api.RoleType;
+import com.novedu.nov.common.base.BaseResult;
+import com.novedu.nov.common.base.RoleType;
 import com.novedu.nov.common.util.ExcelUtils;
-import com.novedu.nov.common.util.JwtUtils;
 import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.order.client.EduClient;
 import com.novedu.nov.order.client.UcenterClient;
-import com.novedu.nov.order.entity.EduCourseApply;
 import com.novedu.nov.order.entity.TradeOrder;
 import com.novedu.nov.order.mapper.TradeOrderMapper;
 import com.novedu.nov.order.service.TradeOrderService;
@@ -18,10 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.math.BigDecimal;
 import java.util.Date;

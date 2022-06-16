@@ -1,5 +1,5 @@
 import com.novedu.nov.StatisticsServiceApplication;
-import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.statistics.client.EduClient;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

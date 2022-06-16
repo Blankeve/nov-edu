@@ -1,8 +1,8 @@
 package com.novedu.nov.common.interceptor;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.novedu.nov.common.api.BaseResult;
-import com.novedu.nov.common.api.ResultCode;
+import com.novedu.nov.common.base.BaseResult;
+import com.novedu.nov.common.base.ResultCode;
 import com.novedu.nov.common.util.JwtUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

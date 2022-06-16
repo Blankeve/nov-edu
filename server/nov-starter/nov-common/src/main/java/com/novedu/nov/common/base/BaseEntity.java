@@ -1,4 +1,4 @@
-package com.novedu.nov.common.api;
+package com.novedu.nov.common.base;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;

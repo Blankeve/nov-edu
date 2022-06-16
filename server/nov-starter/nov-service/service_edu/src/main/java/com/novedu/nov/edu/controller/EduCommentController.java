@@ -2,12 +2,10 @@ package com.novedu.nov.edu.controller;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.edu.entity.EduComment;
 import com.novedu.nov.edu.entity.dto.EduUserCommentDTO;
-import com.novedu.nov.edu.entity.vo.EduUserCommentVO;
 import com.novedu.nov.edu.service.EduCommentService;
-import com.novedu.nov.edu.service.impl.EduCommentServiceImpl;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

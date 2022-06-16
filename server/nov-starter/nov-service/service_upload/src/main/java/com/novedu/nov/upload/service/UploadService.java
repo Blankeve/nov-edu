@@ -1,9 +1,8 @@
 package com.novedu.nov.upload.service;
 
-import com.novedu.nov.common.api.BaseResult;
-import com.novedu.nov.common.config.SysConfigCache;
+import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.helper.SnowFlake;
-import com.novedu.nov.common.util.HttpUtils;
+import com.novedu.nov.common.module.service.SysConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -37,8 +36,11 @@ public class UploadService {
     @Value("${server.port}")
     private String localPort;
 
+    @Autowired
+    SysConfigService configService;
+
     String getServerAddress() {
-        return SysConfigCache.getSysConfigByKey("media_server_address").getConfigValue();
+        return configService.getSysConfigByKey("media_server_address").getData().getConfigValue();
     }
 
     public BaseResult uploadImg(MultipartFile img) {

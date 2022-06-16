@@ -1,7 +1,7 @@
 package com.novedu.nov.upload.controller;
 
 
-import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.upload.service.UploadService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;

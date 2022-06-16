@@ -1,6 +1,6 @@
 package com.novedu.nov.common.aspect;
 
-import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.exception.ServiceInvokeFailureException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindException;

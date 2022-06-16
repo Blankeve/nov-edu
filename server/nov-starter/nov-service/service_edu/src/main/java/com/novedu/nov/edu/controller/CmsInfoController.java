@@ -2,12 +2,10 @@ package com.novedu.nov.edu.controller;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.novedu.nov.common.api.BaseResult;
+import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.edu.entity.CmsInfo;
-import com.novedu.nov.edu.entity.CmsNotice;
 import com.novedu.nov.edu.service.CmsInfoService;
-import com.novedu.nov.edu.service.CmsNoticeService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -43,7 +41,7 @@ public class CmsInfoController {
         return BaseResult.successOrError(cmsInfoService.removeById(id));
     }
 
-    @PostMapping("/page")
+    @GetMapping("/page")
     public BaseResult queryPage(Page page, CmsInfo cmsInfo) {
         return cmsInfoService.queryPage(page, cmsInfo);
     }

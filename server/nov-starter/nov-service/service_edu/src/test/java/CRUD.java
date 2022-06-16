@@ -1,5 +1,4 @@
 import com.novedu.nov.EduServiceApplication;
-import com.novedu.nov.common.api.BaseResult;
 import com.novedu.nov.edu.entity.EduCourse;
 import com.novedu.nov.edu.entity.EduSubject;
 import com.novedu.nov.edu.mapper.EduCourseMapper;

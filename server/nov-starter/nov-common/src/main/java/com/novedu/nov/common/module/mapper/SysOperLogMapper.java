@@ -1,6 +1,6 @@
 package com.novedu.nov.common.module.mapper;
 
-import com.novedu.nov.common.base.SysConfig;
+import com.novedu.nov.common.base.SysOperLog;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author juam
- * @since 2022-01-07
+ * @since 2022-06-16
  */
-public interface SysConfigMapper extends BaseMapper<SysConfig> {
+public interface SysOperLogMapper extends BaseMapper<SysOperLog> {
 
 }

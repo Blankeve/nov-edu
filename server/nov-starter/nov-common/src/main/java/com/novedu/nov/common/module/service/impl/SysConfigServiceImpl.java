@@ -1,23 +1,18 @@
 package com.novedu.nov.common.module.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.Query;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.novedu.nov.common.api.BaseResult;
-import com.novedu.nov.common.module.entity.SysConfig;
+import com.novedu.nov.common.base.BaseResult;
+import com.novedu.nov.common.base.SysConfig;
+import com.novedu.nov.common.util.TreeUtils;
 import com.novedu.nov.common.module.mapper.SysConfigMapper;
 import com.novedu.nov.common.module.service.SysConfigService;
-import com.novedu.nov.common.util.TreeUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
