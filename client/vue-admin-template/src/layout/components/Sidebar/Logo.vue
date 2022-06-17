@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       title: 'nov在线课堂后台管理系统',
-      logo: 'https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png'
+      logo: 'http://159.75.234.20:8888/img/2022/06/17/1649036454237704203.png'
     }
   }
 }

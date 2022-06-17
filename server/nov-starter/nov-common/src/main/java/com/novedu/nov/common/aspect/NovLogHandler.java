@@ -92,8 +92,10 @@ public class NovLogHandler {
         sysOperLog.setReqMethod(method.getName());
         sysOperLog.setMethod(reqMethod);
         sysOperLog.setReqArgs(args.toString());
-        if (json.length() < 512)
+        if (json.length() < 383)
             sysOperLog.setReqResult(json);
+        else
+            sysOperLog.setReqResult("响应结果太长，取消显示");
         sysOperLog.setReqTimeSpend(spendTime);
         sysOperLogs.add(sysOperLog);
         //log.info(webLog.toString());

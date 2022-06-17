@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { MessageBox, Message } from 'element-ui'
 import { getToken } from '@/utils/auth'
-
+import { removeToken } from '@/utils/auth'
 
 // create an axios instance
 const service = axios.create({
@@ -54,16 +54,12 @@ service.interceptors.response.use(
 
       // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
       if (res.code === 403 || res.code === 4031 || res.code === 4032) {
+        removeToken();
         // to re-login
-        MessageBox.confirm(res.msg, '登录确认', {
+        MessageBox.confirm(res.msg, '登录失效', {
           type: 'warning'
         }).then(() => {
-          this.$store
-            .dispatch("user/logout")
-            .then(() => {
-              this.$router.push({ path: "/login" });
-            })
-            .catch(() => { });
+          location.href = "/login";
         })
       }
       return Promise.reject(new Error(res.message || 'Error'))

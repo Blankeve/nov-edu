@@ -2,6 +2,7 @@ package com.novedu.nov.edu.controller;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.novedu.nov.common.annotation.UserMultiSubmitLimit;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.edu.entity.CmsConsult;
@@ -27,6 +28,7 @@ public class CmsConsultController {
     @Autowired
     private CmsConsultService cmsConsultService;
 
+    @UserMultiSubmitLimit
     @PostMapping("/save")
     public BaseResult saveConsult(@Validated CmsConsult cmsConsult) {
         cmsConsult.setUid(RequestUtils.getUid());
