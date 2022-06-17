@@ -15,6 +15,7 @@ import com.novedu.nov.common.util.IpAddressUtils;
 import com.novedu.nov.common.util.JwtUtils;
 import com.novedu.nov.common.util.TreeUtils;
 import com.novedu.nov.ucenter.entity.*;
+import com.novedu.nov.ucenter.entity.dto.AclUserDTO;
 import com.novedu.nov.ucenter.entity.dto.AclUserPasswordDTO;
 import com.novedu.nov.ucenter.entity.dto.AclUserProfileDTO;
 import com.novedu.nov.ucenter.entity.dto.AclUserRoleDTO;
@@ -186,7 +187,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
     }
 
     @Override
-    public BaseResult loginBg(AclUser user) {
+    public BaseResult loginBg(AclUserDTO user) {
         BaseResult<SysConfig> baseResult = configService.getSysConfigByKey(Constants.PIC_VERIFY_CODE);
         if (baseResult.getData() != null) {
             String verifyKey = Constants.PIC_VERIFY_CODE + user.getUuid();
@@ -197,25 +198,25 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
             }
         }
         String password = DigestUtils.md5DigestAsHex(user.getPassword().getBytes());
-        user = query()
+        AclUser user2 = query()
                 .eq("username", user.getUsername())
                 .eq("password", password).one();
-        if (user == null)
+        if (user2 == null)
             return BaseResult.error("用户名或密码不正确");
-        AclUserRole userRole = userRoleService.query().eq("uid", user.getId()).one();
+        AclUserRole userRole = userRoleService.query().eq("uid", user2.getId()).one();
         if (userRole == null) {
-            log.error("uid:" + user.getId() + " 未分配角色");
+            log.error("uid:" + user2.getId() + " 未分配角色");
             return BaseResult.error("用户名或密码不正确");
         }
         Integer code = roleService.query().eq("id", userRole.getRoleId()).one().getCode();
         if (code == RoleType.STUDENT.getCode()) {
-            log.error("uid:" + user.getId() + " 当前无权限登录,code:" + code);
+            log.error("uid:" + user2.getId() + " 当前无权限登录,code:" + code);
             return BaseResult.error("用户名或密码不正确");
         }
-        String token = JwtUtils.createToken(user.getId().toString(), user.getUsername(), code.toString());
-        String loginKey = "bg_" + user.getId();
+        String token = JwtUtils.createToken(user2.getId().toString(), user2.getUsername(), code.toString());
+        String loginKey = "bg_" + user2.getId();
         redisTemplate.opsForValue().set(loginKey, token, 1, TimeUnit.DAYS);
-        saveLoginInfo(user);
+        saveLoginInfo(user2);
         return BaseResult.success("登录成功")
                 .mapSet("token", token)
                 ;

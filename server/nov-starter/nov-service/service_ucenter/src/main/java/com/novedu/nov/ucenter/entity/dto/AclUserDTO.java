@@ -1,20 +1,18 @@
-package com.novedu.nov.ucenter.entity;
+package com.novedu.nov.ucenter.entity.dto;
 
-import cn.afterturn.easypoi.excel.annotation.Excel;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
-import java.util.Date;
-
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.io.Serializable;
-
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -27,7 +25,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @ApiModel(value="AclUser对象", description="会员表")
-public class AclUser implements Serializable {
+public class AclUserDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -83,4 +81,8 @@ public class AclUser implements Serializable {
     @ApiModelProperty(value = "最后登录ip")
     private String lastLoginIp;
 
+    @TableField(exist = false)
+    private String code;
+    @TableField(exist = false)
+    private String uuid;
 }

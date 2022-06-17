@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.ucenter.entity.AclUser;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.novedu.nov.ucenter.entity.dto.AclUserDTO;
 import com.novedu.nov.ucenter.entity.dto.AclUserPasswordDTO;
 import com.novedu.nov.ucenter.entity.dto.AclUserProfileDTO;
 import com.novedu.nov.ucenter.entity.dto.AclUserRoleDTO;
@@ -29,7 +30,7 @@ public interface AclUserService extends IService<AclUser> {
 
     BaseResult<List<AclUserRoleVO>> queryUserPage(Page page, AclUserRoleDTO user);
 
-    BaseResult loginBg(AclUser user);
+    BaseResult loginBg(AclUserDTO user);
 
     BaseResult getInfoBg(String token);
 

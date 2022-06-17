@@ -9,6 +9,7 @@ import com.novedu.nov.common.base.SysConfig;
 import com.novedu.nov.common.module.service.SysConfigService;
 import com.novedu.nov.common.util.Base64Utils;
 import com.novedu.nov.ucenter.entity.AclUser;
+import com.novedu.nov.ucenter.entity.dto.AclUserDTO;
 import com.novedu.nov.ucenter.entity.dto.AclUserPasswordDTO;
 import com.novedu.nov.ucenter.entity.dto.AclUserProfileDTO;
 import com.novedu.nov.ucenter.entity.dto.AclUserRoleDTO;
@@ -96,7 +97,7 @@ public class AclUserController {
     }
 
     @PostMapping("/login-bg")
-    public BaseResult loginBg(@RequestBody AclUser user) {
+    public BaseResult loginBg(@RequestBody AclUserDTO user) {
         return aclUserService.loginBg(user);
 
     }
