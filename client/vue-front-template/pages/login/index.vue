@@ -36,6 +36,7 @@
         >
           <div>
             <el-input
+              @keyup.enter.native="submitLogin"
               type="password"
               placeholder="密码"
               v-model="user.password"
@@ -140,8 +141,7 @@ export default {
         .then(() => {
           this.$router.push({ path: "/" });
         })
-        .catch(() => {
-        });
+        .catch(() => {});
     },
   },
 };
