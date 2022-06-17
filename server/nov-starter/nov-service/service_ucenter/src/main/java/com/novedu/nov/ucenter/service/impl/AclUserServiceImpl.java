@@ -6,7 +6,9 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.novedu.nov.common.base.BaseResult;
+import com.novedu.nov.common.base.Constants;
 import com.novedu.nov.common.base.RoleType;
+import com.novedu.nov.common.base.SysConfig;
 import com.novedu.nov.common.module.service.SysConfigService;
 import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.common.util.IpAddressUtils;
@@ -185,6 +187,15 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
 
     @Override
     public BaseResult loginBg(AclUser user) {
+        BaseResult<SysConfig> baseResult = configService.getSysConfigByKey(Constants.PIC_VERIFY_CODE);
+        if (baseResult.getData() != null) {
+            String verifyKey = Constants.PIC_VERIFY_CODE + user.getUuid();
+            String captcha = (String) redisTemplate.opsForValue().get(verifyKey);
+            redisTemplate.delete(verifyKey);
+            if (captcha == null || !captcha.equalsIgnoreCase(user.getCode())) {
+                return BaseResult.error("验证码不正确");
+            }
+        }
         String password = DigestUtils.md5DigestAsHex(user.getPassword().getBytes());
         user = query()
                 .eq("username", user.getUsername())
@@ -238,7 +249,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
             }
             permissionVOS.add(aclPermissionVO);
         }
-        if(!CollectionUtils.isEmpty(permissionVOS)){
+        if (!CollectionUtils.isEmpty(permissionVOS)) {
             permissionVOS = (List<AclPermissionVO>) TreeUtils.toTree(permissionVOS, AclPermissionVO.class);
             Collections.sort(permissionVOS);
             permissionVOS.forEach(o -> childrenSort(o.getChildren()));

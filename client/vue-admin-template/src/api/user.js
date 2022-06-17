@@ -69,3 +69,10 @@ export function exportPage(params) {
     params
   })
 }
+
+export function getPicVerifyCode() {
+  return request({
+    url: '/ucenter/member/picVerifyCode',
+    method: 'get',
+  })
+}

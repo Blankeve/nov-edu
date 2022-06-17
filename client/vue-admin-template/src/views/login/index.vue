@@ -19,7 +19,7 @@
         <el-input
           ref="username"
           v-model="loginForm.username"
-          placeholder="Username"
+          placeholder="用户名"
           name="username"
           type="text"
           tabindex="1"
@@ -36,7 +36,7 @@
           ref="password"
           v-model="loginForm.password"
           :type="passwordType"
-          placeholder="Password"
+          placeholder="密码"
           name="password"
           tabindex="2"
           auto-complete="on"
@@ -47,6 +47,26 @@
             :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'"
           />
         </span>
+      </el-form-item>
+
+      <el-form-item v-if="codeUrl" prop="code">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          "
+        >
+          <el-input
+            type="text"
+            placeholder="验证码"
+            style="width: 55%"
+            v-model="loginForm.code"
+          ></el-input>
+          <div class="login-code">
+            <img :src="codeUrl" @click="getCode" class="login-code-img" />
+          </div>
+        </div>
       </el-form-item>
 
       <el-button
@@ -66,29 +86,39 @@
 </template>
 
 <script>
-
+import { getPicVerifyCode } from "@/api/user";
 
 export default {
   name: "Login",
   data() {
     const validateUsername = (rule, value, callback) => {
-      if (!(/^\w{5,18}$/.test(value))) {
-        callback(new Error("Please enter the correct user name"));
+      if (!/^\w{5,18}$/.test(value)) {
+        callback(new Error("用户名格式不正确"));
       } else {
         callback();
       }
     };
     const validatePassword = (rule, value, callback) => {
       if (value.length < 6) {
-        callback(new Error("The password can not be less than 6 digits"));
+        callback(new Error("密码不能小于6位数"));
+      } else {
+        callback();
+      }
+    };
+    const validateCode = (rule, value, callback) => {
+      if (value.length < 1) {
+        callback(new Error("请输入验证码"));
       } else {
         callback();
       }
     };
     return {
+      codeUrl: undefined,
       loginForm: {
         username: "",
         password: "",
+        code: "",
+        uuid: "",
       },
       loginRules: {
         username: [
@@ -97,6 +127,7 @@ export default {
         password: [
           { required: true, trigger: "blur", validator: validatePassword },
         ],
+        code: [{ required: true, trigger: "blur", validator: validateCode }],
       },
       loading: false,
       passwordType: "password",
@@ -111,7 +142,22 @@ export default {
       immediate: true,
     },
   },
+  created() {
+    this.fetchData();
+  },
   methods: {
+    fetchData() {
+      this.getCode();
+    },
+    getCode() {
+      getPicVerifyCode().then((resp) => {
+        if (resp.code === 200 && resp.data.img) {
+          this.codeUrl = "data:image/gif;base64," + resp.data.img;
+          console.log(this.codeUrl);
+          this.loginForm.uuid = resp.data.uuid;
+        }
+      });
+    },
     showPwd() {
       if (this.passwordType === "password") {
         this.passwordType = "";
@@ -129,11 +175,12 @@ export default {
           this.$store
             .dispatch("user/login", this.loginForm)
             .then(() => {
-              this.$router.push({ path:  "/" });
+              this.$router.push({ path: "/" });
               this.loading = false;
             })
             .catch(() => {
               this.loading = false;
+              this.getCode();
             });
         } else {
           console.log("error submit!!");
@@ -253,5 +300,16 @@ $light_gray: #eee;
     cursor: pointer;
     user-select: none;
   }
+}
+.login-code {
+  height: 30px;
+  // float: right;
+  img {
+    cursor: pointer;
+    // vertical-align: middle;
+  }
+}
+.login-code-img {
+  height: 30px;
 }
 </style>

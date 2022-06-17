@@ -46,7 +46,7 @@
         <shiro.version>1.8.0</shiro.version>
         <UserAgentUtils.version>1.21</UserAgentUtils.version>
         <bootstrap.version>3.0.4</bootstrap.version>
-
+        <kaptcha.version>2.3.2</kaptcha.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -257,6 +257,13 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-bootstrap</artifactId>
                 <version>${bootstrap.version}</version>
+            </dependency>
+
+            <!-- 验证码 -->
+            <dependency>
+                <groupId>com.github.penggle</groupId>
+                <artifactId>kaptcha</artifactId>
+                <version>${kaptcha.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

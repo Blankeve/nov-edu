@@ -83,4 +83,8 @@ public class AclUser implements Serializable {
     @ApiModelProperty(value = "最后登录ip")
     private String lastLoginIp;
 
+    @TableField(exist = false)
+    private String code;
+    @TableField(exist = false)
+    private String uuid;
 }
