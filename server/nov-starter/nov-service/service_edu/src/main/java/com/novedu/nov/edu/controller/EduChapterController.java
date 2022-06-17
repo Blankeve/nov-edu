@@ -2,6 +2,7 @@ package com.novedu.nov.edu.controller;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.novedu.nov.common.annotation.UserMultiSubmitLimit;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.edu.entity.EduChapter;
 import com.novedu.nov.edu.entity.dto.EduChapterInfoDTO;
@@ -29,6 +30,7 @@ public class EduChapterController {
     @Autowired
     EduChapterService chapterService;
 
+    @UserMultiSubmitLimit
     @PostMapping("/save")
     public BaseResult saveCourse(@Validated @RequestBody EduChapter chapter) {
         return chapterService.saveChapter(chapter);

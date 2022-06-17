@@ -1,6 +1,7 @@
 package com.novedu.nov.ucenter.controller;
 
 
+import com.novedu.nov.common.annotation.UserMultiSubmitLimit;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.ucenter.entity.AclPermission;
 import com.novedu.nov.ucenter.entity.dto.AssignRolePermissionForm;
@@ -25,6 +26,7 @@ public class AclPermissionController {
     @Autowired
     AclPermissionService permissionService;
 
+    @UserMultiSubmitLimit
     @PostMapping("/save")
     public BaseResult saveOrUpdate(@Validated @RequestBody AclPermission permission) {
         return permissionService.saveOrUpdatePermission(permission);

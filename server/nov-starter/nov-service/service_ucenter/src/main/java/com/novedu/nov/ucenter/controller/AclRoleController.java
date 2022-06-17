@@ -2,6 +2,7 @@ package com.novedu.nov.ucenter.controller;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.novedu.nov.common.annotation.UserMultiSubmitLimit;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.ucenter.entity.AclRole;
 import com.novedu.nov.ucenter.entity.dto.AssignUserRoleForm;
@@ -26,6 +27,7 @@ public class AclRoleController {
     @Autowired
     AclRoleService roleService;
 
+    @UserMultiSubmitLimit
     @PostMapping("/save")
     public BaseResult saveOrUpdateRole(@Validated @RequestBody AclRole role) {
         return roleService.saveOrUpdateRole(role);

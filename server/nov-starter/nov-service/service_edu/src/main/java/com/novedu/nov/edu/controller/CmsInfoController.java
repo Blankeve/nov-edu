@@ -2,6 +2,7 @@ package com.novedu.nov.edu.controller;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.novedu.nov.common.annotation.UserMultiSubmitLimit;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.edu.entity.CmsInfo;
@@ -26,6 +27,7 @@ public class CmsInfoController {
     @Autowired
     private CmsInfoService cmsInfoService;
 
+    @UserMultiSubmitLimit
     @PostMapping("/save")
     public BaseResult saveOrUpdate(@Validated @RequestBody CmsInfo cmsInfo) {
         if(cmsInfo.getId() == null)

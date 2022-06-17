@@ -2,6 +2,7 @@ package com.novedu.nov.edu.controller;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.novedu.nov.common.annotation.UserMultiSubmitLimit;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.edu.entity.EduComment;
 import com.novedu.nov.edu.entity.dto.EduUserCommentDTO;
@@ -28,6 +29,7 @@ public class EduCommentController {
     @Autowired
     EduCommentService eduCommentService;
 
+    @UserMultiSubmitLimit
     @PostMapping("/save")
     public BaseResult saveComment(@RequestBody EduComment eduComment , HttpServletRequest request) {
         return eduCommentService.saveComment(eduComment,request);

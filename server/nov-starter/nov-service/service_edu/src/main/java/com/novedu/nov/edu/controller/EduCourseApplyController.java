@@ -1,6 +1,7 @@
 package com.novedu.nov.edu.controller;
 
 
+import com.novedu.nov.common.annotation.UserMultiSubmitLimit;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.edu.entity.EduCourseApply;
 import com.novedu.nov.edu.service.EduCourseApplyService;
@@ -23,6 +24,7 @@ public class EduCourseApplyController {
     @Autowired
     EduCourseApplyService courseApplyService;
 
+    @UserMultiSubmitLimit
     @PostMapping("/save")
     public BaseResult saveApply(@RequestBody EduCourseApply courseApply) {
         return courseApplyService.saveApply(courseApply);

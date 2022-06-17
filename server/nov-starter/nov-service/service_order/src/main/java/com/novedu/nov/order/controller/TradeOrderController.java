@@ -3,6 +3,7 @@ package com.novedu.nov.order.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.novedu.nov.common.annotation.UserMultiSubmitLimit;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.order.entity.TradeOrder;
 import com.novedu.nov.order.service.TradeOrderService;
@@ -33,6 +34,7 @@ public class TradeOrderController {
     @Autowired
     TradeOrderService tradeOrderService;
 
+    @UserMultiSubmitLimit
     @ApiOperation("创建订单")
     @PostMapping("/create")
     public BaseResult createOrder(@RequestBody TradeOrder tradeOrder) {

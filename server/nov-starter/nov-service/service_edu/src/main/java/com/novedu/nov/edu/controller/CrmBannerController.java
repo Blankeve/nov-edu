@@ -1,6 +1,7 @@
 package com.novedu.nov.edu.controller;
 
 
+import com.novedu.nov.common.annotation.UserMultiSubmitLimit;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.edu.entity.CrmBanner;
 import com.novedu.nov.edu.service.CrmBannerService;
@@ -30,6 +31,7 @@ public class CrmBannerController {
         return crmBannerService.getBannerList();
     }
 
+    @UserMultiSubmitLimit
     @PostMapping("/save")
     public BaseResult saveBanner(CrmBanner banner){
         return crmBannerService.saveBanner(banner);

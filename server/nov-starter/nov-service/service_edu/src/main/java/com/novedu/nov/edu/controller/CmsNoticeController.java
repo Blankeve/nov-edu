@@ -2,6 +2,7 @@ package com.novedu.nov.edu.controller;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.novedu.nov.common.annotation.UserMultiSubmitLimit;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.edu.entity.CmsNotice;
 import com.novedu.nov.edu.service.CmsNoticeService;
@@ -25,6 +26,7 @@ public class CmsNoticeController {
     @Autowired
     private CmsNoticeService cmsNoticeService;
 
+    @UserMultiSubmitLimit
     @PostMapping("/save")
     public BaseResult saveOrUpdateNotice(@Validated @RequestBody CmsNotice cmsNotice) {
         return cmsNoticeService.saveOrUpdateNotice(cmsNotice);

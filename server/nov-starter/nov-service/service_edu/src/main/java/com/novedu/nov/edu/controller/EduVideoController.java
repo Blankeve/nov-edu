@@ -2,6 +2,7 @@ package com.novedu.nov.edu.controller;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.novedu.nov.common.annotation.UserMultiSubmitLimit;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.edu.entity.EduVideo;
 import com.novedu.nov.edu.entity.dto.EduStudyRecordDTO;
@@ -32,6 +33,7 @@ public class EduVideoController {
     @Autowired
     EduVideoService videoService;
 
+    @UserMultiSubmitLimit
     @PostMapping("/save")
     public BaseResult saveCourse(@Validated @RequestBody EduVideo video) {
         return videoService.saveVideo(video);

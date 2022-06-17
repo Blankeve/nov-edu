@@ -2,6 +2,7 @@ package com.novedu.nov.edu.controller;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.novedu.nov.common.annotation.UserMultiSubmitLimit;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.edu.entity.EduTeacher;
 import com.novedu.nov.edu.entity.dto.EduTeacherDTO;
@@ -83,6 +84,7 @@ public class EduTeacherController {
         return eduTeacherService.clearBind(uid);
     }
 
+    @UserMultiSubmitLimit
     @PostMapping("/save")
     public BaseResult saveTeacher(@RequestBody @Validated EduTeacher teacher) {
         return eduTeacherService.saveTeacher(teacher);

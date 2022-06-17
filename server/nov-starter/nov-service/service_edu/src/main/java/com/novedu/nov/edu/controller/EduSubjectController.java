@@ -1,6 +1,7 @@
 package com.novedu.nov.edu.controller;
 
 
+import com.novedu.nov.common.annotation.UserMultiSubmitLimit;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.edu.entity.EduSubject;
 import com.novedu.nov.edu.service.EduSubjectService;
@@ -31,6 +32,7 @@ public class EduSubjectController {
     @Autowired
     EduSubjectService eduSubjectService;
 
+    @UserMultiSubmitLimit
     @PostMapping("/save-update")
     public BaseResult saveOrUpdate(@Validated @RequestBody EduSubject subject) {
         return eduSubjectService.saveOrUpdateSubject(subject);
