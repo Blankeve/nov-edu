@@ -40,7 +40,6 @@
           name="password"
           tabindex="2"
           auto-complete="on"
-          @keyup.enter.native="handleLogin"
         />
         <span class="show-pwd" @click="showPwd">
           <svg-icon
@@ -62,6 +61,7 @@
             placeholder="验证码"
             style="width: 55%"
             v-model="loginForm.code"
+            @keyup.enter.native="handleLogin"
           ></el-input>
           <div class="login-code">
             <img :src="codeUrl" @click="getCode" class="login-code-img" />
@@ -74,7 +74,7 @@
         type="primary"
         style="width: 100%; margin-bottom: 30px"
         @click.native.prevent="handleLogin"
-        >Login</el-button
+        >登录</el-button
       >
 
       <div class="tips">
