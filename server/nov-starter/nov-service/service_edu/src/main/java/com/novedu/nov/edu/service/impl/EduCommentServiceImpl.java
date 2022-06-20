@@ -7,10 +7,10 @@ import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.base.RoleType;
 import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.common.util.JwtUtils;
+import com.novedu.nov.common.util.RequestUtils;
+import com.novedu.nov.edu.client.OrderClient;
 import com.novedu.nov.edu.client.UserRoleClient;
-import com.novedu.nov.edu.entity.EduComment;
-import com.novedu.nov.edu.entity.EduCourse;
-import com.novedu.nov.edu.entity.EduCourseApply;
+import com.novedu.nov.edu.entity.*;
 import com.novedu.nov.edu.entity.dto.EduUserCommentDTO;
 import com.novedu.nov.edu.entity.vo.EduUserCommentVO;
 import com.novedu.nov.edu.mapper.EduCommentMapper;
@@ -58,17 +58,26 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
     @Autowired
     EduTeacherService teacherService;
 
+    @Autowired
+    OrderClient orderClient;
+
+    public boolean queryOrderByUidAndCourseId(Long id, Long uid) {
+        BaseResult baseResult = orderClient.queryOrderByUidAndCourseId(id, uid);
+        if (BaseResult.success().getCode().equals(baseResult.getCode())) {
+            Map paid = (Map) baseResult.getData();
+            if (paid.get("paid").equals(true))
+                return true;
+        }
+        return false;
+    }
+
     @Override
     public BaseResult saveComment(EduComment eduComment, HttpServletRequest request) {
-        String token = request.getHeader("X-Token");
-        Long uid = Long.valueOf(JwtUtils.getAudience(token).get("uid"));
+        Long uid = RequestUtils.getUid();
         Long courseId = eduComment.getCourseId();
         EduCourse course = courseService.getById(courseId);
-        EduCourseApply courseApply = new EduCourseApply();
-        courseApply.setCourseId(courseId);
-        courseApply.setUid(uid);
-        BaseResult baseResult = courseApplyService.queryCourseApplyByCourseIdAndUid(courseApply);
-        if (baseResult == null || BaseResult.error().getCode().equals(baseResult.getCode())) {
+        boolean hasBuy = queryOrderByUidAndCourseId(courseId, uid);
+        if (!hasBuy) {
             if (Float.parseFloat(course.getPrice().toString()) > 0) {
                 return BaseResult.error("购买该课程后才能评论哦");
             } else {
@@ -96,7 +105,7 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
         queryWrapper.eq("course_id", eduComment.getCourseId());
         IPage<EduUserCommentVO> page1 = commentMapper.queryPage(page, queryWrapper);
         for (EduUserCommentVO record : page1.getRecords()) {
-            if(!StringUtils.hasText(record.getNickname()))
+            if (!StringUtils.hasText(record.getNickname()))
                 record.setNickname("已注销");
         }
         return BaseResult.success(page1);
@@ -169,7 +178,7 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
     @Override
     public void exportAll(HttpServletResponse response, EduUserCommentDTO eduComment) {
         HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
-        BaseResult baseResult = queryCommentPage(request,new Page(1, count()), eduComment);
+        BaseResult baseResult = queryCommentPage(request, new Page(1, count()), eduComment);
         if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
             Page page1 = (Page) baseResult.getData();
             ExcelUtils.exportExcel(page1.getRecords(), "评论信息", "评论信息", EduUserCommentVO.class, "评论信息", response);
