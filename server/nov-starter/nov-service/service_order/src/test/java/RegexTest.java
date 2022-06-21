@@ -43,4 +43,13 @@ public class RegexTest {
         });
         orderService.updateBatchById(videos);
     }
+
+
+    @Test
+    void lengthTest(){
+        String str1 = "ccc";
+        String str2 = "你你你";
+        System.out.println(str1.length());
+        System.out.println(str2.length());
+    }
 }

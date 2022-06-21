@@ -232,7 +232,6 @@ $cursor: #fff;
 
   .el-form-item {
     border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     color: #454545;
   }
@@ -247,7 +246,8 @@ $light_gray: #eee;
 .login-container {
   min-height: 100%;
   width: 100%;
-  background-color: $bg;
+  background:url("../../assets/img/login.jpg");
+  background-size:100% 100%;
   overflow: hidden;
 
   .login-form {
@@ -288,6 +288,7 @@ $light_gray: #eee;
       margin: 0px auto 40px auto;
       text-align: center;
       font-weight: bold;
+      font-family: "宋体",sans-serif;
     }
   }
 
