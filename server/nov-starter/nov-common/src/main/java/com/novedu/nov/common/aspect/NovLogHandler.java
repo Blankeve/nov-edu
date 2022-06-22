@@ -39,8 +39,6 @@ public class NovLogHandler {
     private static List<SysOperLog> sysOperLogs = new ArrayList<>();
     @Autowired
     SysOperLogService sysOperLogService;
-    @Autowired
-    SnowFlake snowFlakeUtils;
 
     @Pointcut("execution(* com.novedu.nov.*.controller.*.*(..))")
     public void pointcut() {
@@ -56,7 +54,9 @@ public class NovLogHandler {
         String reqUrl = request.getRequestURI();
         String reqMethod = request.getMethod();
         String ip = IpAddressUtils.getIpAddress(request);
-        Long id = snowFlakeUtils.nextValue();
+        int port = request.getServerPort();
+        SnowFlake snowFlake = new SnowFlake(port, 10);
+        Long id = snowFlake.nextValue();
         String username = RequestUtils.getUsername();
         String addr = IpAddressUtils.getRealAddressByIP(ip);
 //        webLog.append("\nlogId:" + id);

@@ -1,0 +1,32 @@
+2022-06-21 14:15:44.738 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-06-21 14:15:45.457 [main] INFO  org.reflections.Reflections-Reflections took 31 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-06-21 14:15:45.480 [main] INFO  org.reflections.Reflections-Reflections took 11 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-06-21 14:15:45.494 [main] INFO  org.reflections.Reflections-Reflections took 12 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-06-21 14:15:45.616 [main] INFO  org.reflections.Reflections-Reflections took 118 ms to scan 256 urls, producing 0 keys and 0 values 
+2022-06-21 14:15:45.623 [main] INFO  org.reflections.Reflections-Reflections took 7 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-06-21 14:15:45.645 [main] INFO  org.reflections.Reflections-Reflections took 9 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-06-21 14:15:45.656 [main] INFO  org.reflections.Reflections-Reflections took 9 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-06-21 14:15:45.770 [main] INFO  org.reflections.Reflections-Reflections took 111 ms to scan 256 urls, producing 0 keys and 0 values 
+2022-06-21 14:15:46.559 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-order-prod.yaml,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-order.yaml,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-order,DEFAULT_GROUP'}]
+2022-06-21 14:15:46.568 [main] INFO  RegexTest-The following profiles are active: prod
+2022-06-21 14:15:47.150 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-06-21 14:15:47.153 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-06-21 14:15:47.173 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Finished Spring Data repository scanning in 11ms. Found 0 Redis repository interfaces.
+2022-06-21 14:15:47.364 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=2a403781-1ca3-3eba-81aa-0b1beb59ed14
+2022-06-21 14:15:48.040 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-edu' URL not provided. Will try picking an instance via load-balancing.
+2022-06-21 14:15:48.217 [main] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure-Init DruidDataSource
+2022-06-21 14:15:48.470 [main] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} inited
+2022-06-21 14:15:48.826 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-ucenter' URL not provided. Will try picking an instance via load-balancing.
+2022-06-21 14:15:49.816 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-06-21 14:15:49.966 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-06-21 14:15:49.987 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-06-21 14:15:50.251 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-06-21 14:15:50.537 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-06-21 14:15:51.229 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2022-06-21 14:15:51.437 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2022-06-21 14:15:51.462 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2022-06-21 14:15:51.627 [main] INFO  RegexTest-Started RegexTest in 7.269 seconds (JVM running for 8.247)
+2022-06-21 14:15:51.887 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-06-21 14:15:52.574 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'
+2022-06-21 14:15:52.588 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closing ...
+2022-06-21 14:15:52.589 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closed

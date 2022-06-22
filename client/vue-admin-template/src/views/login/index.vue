@@ -228,6 +228,7 @@ $cursor: #fff;
         -webkit-text-fill-color: $cursor !important;
       }
     }
+    
   }
 
   .el-form-item {
@@ -249,7 +250,7 @@ $light_gray: #eee;
   background:url("../../assets/img/login.jpg");
   background-size:100% 100%;
   overflow: hidden;
-
+  
   .login-form {
     position: relative;
     width: 520px;
