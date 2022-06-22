@@ -54,8 +54,9 @@ public class NovLogHandler {
         String reqUrl = request.getRequestURI();
         String reqMethod = request.getMethod();
         String ip = IpAddressUtils.getIpAddress(request);
-        int port = request.getServerPort();
-        SnowFlake snowFlake = new SnowFlake(port, 10);
+        String port = (request.getServerPort() + "");
+        int lastPortNum = Integer.valueOf(port.substring(port.length() - 1));
+        SnowFlake snowFlake = new SnowFlake(lastPortNum, 10);
         Long id = snowFlake.nextValue();
         String username = RequestUtils.getUsername();
         String addr = IpAddressUtils.getRealAddressByIP(ip);
@@ -104,12 +105,11 @@ public class NovLogHandler {
         //log.info(webLog.toString());
         if (sysOperLogs.size() > 10) {
             try {
-                boolean res = sysOperLogService.saveBatch(sysOperLogs);
-                if (res)
-                    sysOperLogs.clear();
+                sysOperLogService.saveBatch(sysOperLogs);
             } catch (Exception e) {
                 log.error(e.getMessage());
             }
+            sysOperLogs.clear();
         }
         return obj;
     }
