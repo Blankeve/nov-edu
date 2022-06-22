@@ -81,6 +81,10 @@
       <el-table-column type="expand">
         <template slot-scope="scope">
           <el-form label-position="left" inline class="demo-table-expand">
+            <el-form-item label="请求参数">
+              <span>{{ scope.row.reqArgs }}</span>
+            </el-form-item>
+
             <el-form-item label="请求结果">
               <span>{{ scope.row.reqResult }}</span>
             </el-form-item>
