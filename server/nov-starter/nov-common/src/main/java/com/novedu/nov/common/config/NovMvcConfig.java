@@ -1,6 +1,6 @@
 package com.novedu.nov.common.config;
 
-import com.novedu.nov.common.interceptor.LoginInterceptor;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
@@ -19,10 +19,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class NovMvcConfig implements WebMvcConfigurer {
 
 
-    @Bean
-    public LoginInterceptor getSessionInterceptor() {
-        return new LoginInterceptor();
-    }
+//    @Bean
+//    public LoginInterceptor getSessionInterceptor() {
+//        return new LoginInterceptor();
+//    }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -32,16 +32,17 @@ public class NovMvcConfig implements WebMvcConfigurer {
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        InterceptorRegistration registration = registry.addInterceptor(getSessionInterceptor());
-        registration.addPathPatterns("/**");                      //所有路径都被拦截
-        registration.excludePathPatterns(                         //添加不拦截路径//登录
-                "/**/*.html",            //html静态资源
-                "/**/*.js",              //js静态资源
-                "/**/*.css",             //css静态资源
-                "/**/*.woff",
-                "/**/*.ttf"
-        );
-    }
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        InterceptorRegistration registration = registry.addInterceptor(getSessionInterceptor());
+//        registration.addPathPatterns("/**");                      //所有路径都被拦截
+//        registration.excludePathPatterns(                         //添加不拦截路径//登录
+//                "/**/*.html",            //html静态资源
+//                "/**/*.js",              //js静态资源
+//                "/**/*.css",             //css静态资源
+//                "/**/*.woff",
+//                "/**/*.ttf"
+//        );
+//    }
+
 }
