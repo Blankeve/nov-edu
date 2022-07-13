@@ -4,7 +4,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
-import com.novedu.nov.common.base.SysOperLog;
+
+import com.novedu.nov.common.module.entity.SysOperLog;
 import com.novedu.nov.common.module.mapper.SysOperLogMapper;
 import com.novedu.nov.common.module.service.SysOperLogService;
 import org.springframework.stereotype.Service;

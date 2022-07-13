@@ -1,12 +1,12 @@
-package com.novedu.nov.common.module.service.impl;
+package com.novedu.nov.ucenter.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
-import com.novedu.nov.common.base.SysConfig;
 import com.novedu.nov.common.util.TreeUtils;
-import com.novedu.nov.common.module.mapper.SysConfigMapper;
-import com.novedu.nov.common.module.service.SysConfigService;
+import com.novedu.nov.common.base.SysConfig;
+import com.novedu.nov.ucenter.mapper.SysConfigMapper;
+import com.novedu.nov.ucenter.service.SysConfigService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;

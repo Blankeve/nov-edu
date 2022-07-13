@@ -191,10 +191,8 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public BaseResult queryCourseList(EduCourseInfoVO courseInfoVO) {
-        HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
-        String token = request.getHeader("X-Token");
-        String uid = JwtUtils.getAudience(token).get("uid");
-        BaseResult baseResult = userRoleClient.queryUserRole(Long.valueOf(uid));
+        Long uid = RequestUtils.getUid();
+        BaseResult baseResult = userRoleClient.queryUserRole(uid);
         if (baseResult == null) {
             return BaseResult.success();
         }

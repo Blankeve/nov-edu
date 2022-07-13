@@ -1,9 +1,9 @@
 package com.novedu.nov.common.module.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.novedu.nov.common.base.BaseResult;
-import com.novedu.nov.common.base.SysOperLog;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.novedu.nov.common.base.BaseResult;
+import com.novedu.nov.common.module.entity.SysOperLog;
 
 import java.util.List;
 

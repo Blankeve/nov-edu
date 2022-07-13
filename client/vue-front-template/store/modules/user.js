@@ -7,6 +7,7 @@ const getDefaultState = () => {
     name: '',
     nickname: undefined,
     avatar: '',
+    uid: '',
     routes: '',
     code: ''
   }
@@ -25,8 +26,8 @@ const mutations = {
   SET_TOKEN: (state, token) => {
     state.token = token
   },
-  SET_NAME: (state, name) => {
-    state.name = name
+  SET_UID: (state, uid) => {
+    state.uid = uid
   },
   SET_NICKNAME: (state, nickname) => {
     state.nickname = nickname
@@ -60,7 +61,7 @@ const actions = {
   // get user info
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
-  
+
       getInfo(getToken()).then(response => {
         const { data } = response
 
@@ -69,11 +70,11 @@ const actions = {
           return reject('登录失效，请重新登录')
         }
 
-        const { avatar, nickname } = data
-        
+        const { uid, avatar, nickname } = data
+
         commit('SET_NICKNAME', nickname)
         commit('SET_AVATAR', avatar)
-
+        commit('SET_UID', uid)
         resolve(data)
       }).catch(error => {
         removeToken()

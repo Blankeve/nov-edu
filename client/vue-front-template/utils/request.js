@@ -5,7 +5,7 @@ import { removeToken } from '@/utils/auth'
 
 // create an axios instance
 const service = axios.create({
-  baseURL: 'http://localhost:8000', // url = base url + request url
+  baseURL: 'http://localhost:8100', // url = base url + request url
   // withCredentials: true, // send cookies when cross-domain requests
   timeout: 10000 // request timeout
 })
@@ -16,7 +16,7 @@ service.interceptors.request.use(
     // do something before request is sent
     const token = getToken()
     if (token)
-      config.headers['X-Token'] = token
+      config.headers['Authorization'] = token
 
     return config
   },

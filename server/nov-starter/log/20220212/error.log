@@ -25989,7 +25989,7 @@ The last packet successfully received from the server was 31,239 milliseconds ag
 ### The error may exist in com/novedu/nov/ucenter/mapper/UcenterMemberMapper.java (best guess)
 ### The error may involve defaultParameterMap
 ### The error occurred while setting parameters
-### SQL: SELECT id,openid,username,password,mobile,nickname,gender,age,avatar,sign,is_disabled,is_deleted,create_time,update_time FROM ucenter_member WHERE id=?  AND is_deleted=0
+### SQL: SELECT id,openid,username,password,mobile,nickname,gender,age,avatar,sign,status,is_deleted,create_time,update_time FROM ucenter_member WHERE id=?  AND is_deleted=0
 ### Cause: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
 
 The last packet successfully received from the server was 31,239 milliseconds ago. The last packet sent successfully to the server was 31,261 milliseconds ago.

@@ -234,7 +234,6 @@ import Schart from "vue-schart";
 import { getDashboardInfo } from "@/api/subject";
 import { getUserDashBoardInfo } from "@/api/user";
 import { getAWeekUserRegisterAndLoginCount } from "@/api/statistics";
-import store from "@/store";
 import { mapGetters } from "vuex";
 
 export default {

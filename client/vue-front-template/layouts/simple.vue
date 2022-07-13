@@ -86,7 +86,7 @@ import "~/assets/css/order.css";
 import "~/assets/css/swiper-3.3.1.min.css";
 import "~/assets/css/pages-weixinpay.css";
 
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 
 export default {
   data() {
@@ -100,14 +100,9 @@ export default {
       queryTitle: "",
     };
   },
-  created() {
-  },
-      computed: {
-    ...mapGetters([
-      'token',
-      'avatar',
-      'nickname'
-    ])
+  created() {},
+  computed: {
+    ...mapGetters(["token", "avatar", "nickname"]),
   },
   // watch: {
   //   $route(to, from) {
@@ -128,7 +123,6 @@ export default {
         },
       });
     },
- 
   },
 };
 </script>

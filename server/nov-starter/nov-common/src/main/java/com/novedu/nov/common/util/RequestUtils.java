@@ -1,32 +1,55 @@
 package com.novedu.nov.common.util;
 
+import cn.hutool.json.JSONUtil;
+import com.nimbusds.jose.JWSObject;
+import com.novedu.nov.common.base.AuthConstant;
+import com.novedu.nov.common.base.UserDTO;
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
 
 public class RequestUtils {
-    private static String tokenKey = "X-Token";
     private static HttpServletRequest request;
 
     private static void getRequest() {
         request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
     }
 
-    public static Long getUid() {
+    public static UserDTO getUserInfo() {
         getRequest();
-        String token = request.getHeader(tokenKey);
+        String token = request.getHeader(AuthConstant.JWT_TOKEN_HEADER);
+        String realToken = token.replace(AuthConstant.JWT_TOKEN_PREFIX, "");
+        JWSObject jwsObject;
+        try {
+            jwsObject = JWSObject.parse(realToken);
+        } catch (ParseException e) {
+            return null;
+        }
+        String userStr = jwsObject.getPayload().toString();
         if (StringUtils.isEmpty(token))
             return null;
-        return Long.valueOf(JwtUtils.getAudience(token).get("uid"));
+        UserDTO userDto = JSONUtil.toBean(userStr, UserDTO.class);
+        return userDto;
+    }
+
+    public static Long getUid() {
+        try {
+            return getUserInfo().getUid();
+        }
+        catch (NullPointerException e){
+            return null;
+        }
     }
 
     public static String getUsername() {
-        getRequest();
-        String token = request.getHeader(tokenKey);
-        if (StringUtils.isEmpty(token))
+        try {
+            return getUserInfo().getUsername();
+        }
+      catch (NullPointerException e){
             return "";
-        return JwtUtils.getAudience(token).get("username");
+      }
     }
 }

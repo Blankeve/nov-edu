@@ -358,7 +358,7 @@ import {
   getOrderByUidAndCourseId,
 } from "@/api/order";
 import { getToken, removeToken } from "@/utils/auth";
-import jwtDecode from "jwt-decode";
+import { mapGetters } from 'vuex'
 
 export default {
   data() {
@@ -387,6 +387,9 @@ export default {
   created() {
     this.token = getToken();
     this.fetchData();
+  },
+  computed: {
+    ...mapGetters(["uid"]),
   },
   methods: {
     fetchData() {
@@ -479,8 +482,7 @@ export default {
     },
     viewOrBuy() {
       if (!this.checkLogin()) return;
-      const loginInfo = jwtDecode(this.token);
-      let uid = loginInfo.uid;
+      let uid = this.uid;
       let data = {
         courseId: this.course.courseId,
         uid: uid,

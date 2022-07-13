@@ -1,4 +1,4 @@
-package com.novedu.nov.common.base;
+package com.novedu.nov.common.module.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -7,6 +7,7 @@ import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 
+import com.novedu.nov.common.base.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -27,7 +28,7 @@ public class SysOperLog extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.NONE)
+    @TableId(value = "id", type = IdType.INPUT)
     private Long id;
 
     @ApiModelProperty(value = "操作人")

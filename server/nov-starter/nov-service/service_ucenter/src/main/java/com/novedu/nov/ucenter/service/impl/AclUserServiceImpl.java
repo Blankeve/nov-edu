@@ -5,15 +5,10 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.novedu.nov.common.base.BaseResult;
-import com.novedu.nov.common.base.Constants;
-import com.novedu.nov.common.base.RoleType;
-import com.novedu.nov.common.base.SysConfig;
-import com.novedu.nov.common.module.service.SysConfigService;
-import com.novedu.nov.common.util.ExcelUtils;
-import com.novedu.nov.common.util.IpAddressUtils;
-import com.novedu.nov.common.util.JwtUtils;
-import com.novedu.nov.common.util.TreeUtils;
+import com.novedu.nov.common.base.*;
+import com.novedu.nov.common.util.*;
+import com.novedu.nov.ucenter.client.OpenAuthService;
+import com.novedu.nov.ucenter.service.SysConfigService;
 import com.novedu.nov.ucenter.entity.*;
 import com.novedu.nov.ucenter.entity.dto.AclUserDTO;
 import com.novedu.nov.ucenter.entity.dto.AclUserPasswordDTO;
@@ -77,27 +72,37 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
     @Autowired
     SysConfigService configService;
 
+    @Autowired
+    OpenAuthService authService;
+
     @Override
     public BaseResult login(AclUser ucenterMemberDto) {
-        HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
         String password = DigestUtils.md5DigestAsHex(ucenterMemberDto.getPassword().getBytes());
-        AclUser ucenterMember = query().eq("username", ucenterMemberDto.getUsername())
-                .eq("password", password).one();
+        AclUser ucenterMember = lambdaQuery().eq(AclUser::getUsername, ucenterMemberDto.getUsername())
+                .eq(AclUser::getPassword, password).one();
         if (ucenterMember == null) {
             return BaseResult.error("用户名或密码不正确");
         }
-        AclUserRole userRole = userRoleService.query().eq("uid", ucenterMember.getId()).one();
-        AclRole role = roleService.query().eq("id", userRole.getRoleId()).one();
-        if (role == null || role.getCode() != RoleType.STUDENT.getCode()) {
-            log.error("uid:" + ucenterMember.getId() + " 当前无权限登录,code:" + role.getCode());
+        Map<String, String> params = new HashMap<>();
+        params.put("client_id", AuthConstant.PC_CLIENT_ID);
+        params.put("client_secret", "777777");
+        params.put("grant_type", "password");
+        params.put("username", ucenterMemberDto.getUsername());
+        params.put("password", ucenterMemberDto.getPassword());
+        BaseResult baseResult1 = authService.postAccessToken(params);
+        if (baseResult1 != null && BaseResult.success().getCode().equals(baseResult1.getCode())) {
+            AclUser user2 = lambdaQuery().eq(AclUser::getUsername, ucenterMemberDto.getUsername()).one();
+            Map data = (Map) baseResult1.getData();
+            String token = (String) data.get("token");
+            String loginKey = "bg_" + user2.getId();
+            redisTemplate.opsForValue().set(loginKey, token, 1, TimeUnit.DAYS);
+            saveLoginInfo(user2);
+            Map loginInfo = new HashMap();
+            loginInfo.put("nickname", ucenterMember.getNickname());
+            loginInfo.put("avatar", ucenterMember.getAvatar());
+            return BaseResult.success().mapSet("access_token", token).mapSet("loginInfo", loginInfo);
+        } else
             return BaseResult.error("用户名或密码不正确");
-        }
-        saveLoginInfo(ucenterMember);
-        String token = JwtUtils.createToken(ucenterMember.getId().toString(), ucenterMember.getUsername(), RoleType.STUDENT.getCode() + "");
-        Map loginInfo = new HashMap();
-        loginInfo.put("nickname", ucenterMember.getNickname());
-        loginInfo.put("avatar", ucenterMember.getAvatar());
-        return BaseResult.success().mapSet("access_token", token).mapSet("loginInfo", loginInfo);
     }
 
 
@@ -196,38 +201,34 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
             if (captcha == null) {
                 return BaseResult.error("验证码失效");
             }
-            if(!captcha.equalsIgnoreCase(user.getCode())){
+            if (!captcha.equalsIgnoreCase(user.getCode())) {
                 return BaseResult.error("验证码不正确");
             }
         }
-        String password = DigestUtils.md5DigestAsHex(user.getPassword().getBytes());
-        AclUser user2 = query()
-                .eq("username", user.getUsername())
-                .eq("password", password).one();
-        if (user2 == null)
-            return BaseResult.error("用户名或密码不正确");
-        AclUserRole userRole = userRoleService.query().eq("uid", user2.getId()).one();
-        if (userRole == null) {
-            log.error("uid:" + user2.getId() + " 未分配角色");
-            return BaseResult.error("用户名或密码不正确");
-        }
-        Integer code = roleService.query().eq("id", userRole.getRoleId()).one().getCode();
-        if (code == RoleType.STUDENT.getCode()) {
-            log.error("uid:" + user2.getId() + " 当前无权限登录,code:" + code);
-            return BaseResult.error("用户名或密码不正确");
-        }
-        String token = JwtUtils.createToken(user2.getId().toString(), user2.getUsername(), code.toString());
-        String loginKey = "bg_" + user2.getId();
-        redisTemplate.opsForValue().set(loginKey, token, 1, TimeUnit.DAYS);
-        saveLoginInfo(user2);
-        return BaseResult.success("登录成功")
-                .mapSet("token", token)
-                ;
+        Map<String, String> params = new HashMap<>();
+        params.put("client_id", AuthConstant.PC_ADMIN_ID);
+        params.put("client_secret", "666666");
+        params.put("grant_type", "password");
+        params.put("username", user.getUsername());
+        params.put("password", user.getPassword());
+        BaseResult baseResult1 = authService.postAccessToken(params);
+        if (baseResult1 != null && BaseResult.success().getCode().equals(baseResult1.getCode())) {
+            AclUser user2 = lambdaQuery().eq(AclUser::getUsername, user.getUsername()).one();
+            Map data = (Map) baseResult1.getData();
+            String token = (String) data.get("token");
+            String loginKey = "bg_" + user2.getId();
+            redisTemplate.opsForValue().set(loginKey, token, 1, TimeUnit.DAYS);
+            saveLoginInfo(user2);
+            return BaseResult.success("登录成功")
+                    .mapSet("token", token)
+                    ;
+        } else
+            return BaseResult.error("登录失败，请稍后再试");
     }
 
     @Override
     public BaseResult getInfoBg(String token) {
-        Long uid = Long.valueOf(JwtUtils.getAudience(token).get("uid"));
+        Long uid = RequestUtils.getUid();
         AclUser user = getById(uid);
         if (user == null)
             return BaseResult.error();
@@ -308,9 +309,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
 
     @Override
     public BaseResult getDashBoardInfo() {
-        HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
-        String token = request.getHeader("X-Token");
-        Long uid = Long.valueOf(JwtUtils.getAudience(token).get("uid"));
+        Long uid = RequestUtils.getUid();
         AclUser user = getById(uid);
         if (user == null)
             return BaseResult.error();
@@ -387,9 +386,10 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
 
     @Override
     public BaseResult getInfoClient(String token) {
-        Long uid = Long.valueOf(JwtUtils.getAudience(token).get("uid"));
+        Long uid = RequestUtils.getUid();
         AclUser user = getById(uid);
         return BaseResult.success().mapSet("username", user.getUsername())
+                .mapSet("uid",uid+"")
                 .mapSet("nickname", user.getNickname())
                 .mapSet("avatar", user.getAvatar());
     }

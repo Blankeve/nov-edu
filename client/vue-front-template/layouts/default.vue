@@ -150,9 +150,7 @@ import "~/assets/css/order.css";
 import "~/assets/css/swiper-3.3.1.min.css";
 import "~/assets/css/pages-weixinpay.css";
 
-import store from "@/store";
-import { mapGetters } from 'vuex'
-import { getInfo, removeInfo, removeToken } from "@/utils/auth";
+import { mapGetters } from "vuex";
 
 export default {
   data() {
@@ -166,12 +164,8 @@ export default {
       queryTitle: "",
     };
   },
-    computed: {
-    ...mapGetters([
-      'token',
-      'avatar',
-      'nickname'
-    ])
+  computed: {
+    ...mapGetters(["token", "avatar", "nickname"]),
   },
   // watch: {
   //   $route(to, from) {

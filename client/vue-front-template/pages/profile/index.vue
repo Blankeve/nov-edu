@@ -312,9 +312,10 @@ import "~/assets/css/iconfont.css";
 
 import { getById, updatePwdById, updateById } from "@/api/user";
 import { getToken, removeToken, removeInfo } from "@/utils/auth";
-import jwtDecode from "jwt-decode";
 import { getOrderPage } from "@/api/order";
 import { getHistoryWatchPage } from "@/api/video";
+import { mapGetters } from 'vuex'
+
 export default {
   layout: "simple",
   data() {
@@ -367,6 +368,11 @@ export default {
       loginInfo: undefined,
     };
   },
+      computed: {
+    ...mapGetters([
+      'uid',
+    ])
+  },
   created() {
     this.token = getToken();
     if (!this.token) this.$router.push("/login");
@@ -376,9 +382,7 @@ export default {
   },
   methods: {
     fetchData() {
-      if (!this.loginInfo) this.loginInfo = jwtDecode(this.token);
-
-      let uid = this.loginInfo.uid;
+      let uid = this.uid;
       getById(uid).then((resp) => {
         if (resp.code === 200) {
           this.user = resp.data;

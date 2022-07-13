@@ -1,7 +1,8 @@
 package com.novedu.nov.common.module.mapper;
 
-import com.novedu.nov.common.base.SysOperLog;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.novedu.nov.common.module.entity.SysOperLog;
+import org.springframework.stereotype.Repository;
 
 /**
  * <p>

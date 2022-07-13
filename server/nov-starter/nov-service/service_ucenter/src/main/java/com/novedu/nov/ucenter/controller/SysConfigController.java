@@ -1,9 +1,9 @@
-package com.novedu.nov.common.module.controller;
+package com.novedu.nov.ucenter.controller;
 
 
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.base.SysConfig;
-import com.novedu.nov.common.module.service.SysConfigService;
+import com.novedu.nov.ucenter.service.SysConfigService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ import java.util.List;
  */
 @Api("系统配置的接口文档")
 @RestController
-@RequestMapping("/edu/config")
+@RequestMapping("/ucenter/config")
 public class SysConfigController {
 
     @Autowired

@@ -48,10 +48,13 @@ public class BaseResult<T> {
         return new BaseResult<>(ResultCode.ERROR.getCode(), msg, data);
     }
 
+    public static <T> BaseResult forbidden(T data) {
+        return new BaseResult<>(ResultCode.FORBIDDEN.getCode(), ResultCode.FORBIDDEN.getMsg(), data);
+    }
+
     public static BaseResult serviceInvokeFailure() {
         return new BaseResult<>(ResultCode.SERVICE_INVOKE_FAILURE.getCode(), ResultCode.SERVICE_INVOKE_FAILURE.getMsg(), "");
     }
-
 
     public static BaseResult successOrError(boolean flag) {
         if (flag)

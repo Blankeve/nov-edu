@@ -1,4 +1,4 @@
-package com.novedu.nov.common.config;
+package com.novedu.nov.ucenter.config;
 
 import com.google.code.kaptcha.text.impl.DefaultTextCreator;
 

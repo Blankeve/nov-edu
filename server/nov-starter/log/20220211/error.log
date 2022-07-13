@@ -4173,7 +4173,7 @@ java.sql.SQLNonTransientConnectionException: Data source rejected establishment 
 	at com.baomidou.mybatisplus.extension.service.IService$$FastClassBySpringCGLIB$$f8525d18.invoke(<generated>)
 	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at com.novedu.nov.common.module.service.impl.SysConfigServiceImpl$$EnhancerBySpringCGLIB$$589bd2b9.list(<generated>)
+	at com.novedu.nov.ucenter.service.impl.SysConfigServiceImpl$$EnhancerBySpringCGLIB$$589bd2b9.list(<generated>)
 	at com.novedu.nov.common.config.SysConfigCache.afterPropertiesSet(SysConfigCache.java:29)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1858)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1795)
@@ -4199,7 +4199,7 @@ java.sql.SQLNonTransientConnectionException: Data source rejected establishment 
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sysConfigCache' defined in file [F:\my space\nov-edu\server\nov-starter\nov-common\target\classes\com\novedu\nov\common\config\SysConfigCache.class]: Invocation of init method failed; nested exception is org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
 ### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 ### The error may exist in com/novedu/nov/common/module/mapper/SysConfigMapper.java (best guess)
-### The error may involve com.novedu.nov.common.module.mapper.SysConfigMapper.selectList
+### The error may involve com.novedu.nov.ucenter.mapper.SysConfigMapper.selectList
 ### The error occurred while executing a query
 ### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1799)
@@ -4223,7 +4223,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 Caused by: org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
 ### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 ### The error may exist in com/novedu/nov/common/module/mapper/SysConfigMapper.java (best guess)
-### The error may involve com.novedu.nov.common.module.mapper.SysConfigMapper.selectList
+### The error may involve com.novedu.nov.ucenter.mapper.SysConfigMapper.selectList
 ### The error occurred while executing a query
 ### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:92)
@@ -4240,7 +4240,7 @@ Caused by: org.mybatis.spring.MyBatisSystemException: nested exception is org.ap
 	at com.baomidou.mybatisplus.extension.service.IService$$FastClassBySpringCGLIB$$f8525d18.invoke(<generated>)
 	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at com.novedu.nov.common.module.service.impl.SysConfigServiceImpl$$EnhancerBySpringCGLIB$$589bd2b9.list(<generated>)
+	at com.novedu.nov.ucenter.service.impl.SysConfigServiceImpl$$EnhancerBySpringCGLIB$$589bd2b9.list(<generated>)
 	at com.novedu.nov.common.config.SysConfigCache.afterPropertiesSet(SysConfigCache.java:29)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1858)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1795)
@@ -4248,7 +4248,7 @@ Caused by: org.mybatis.spring.MyBatisSystemException: nested exception is org.ap
 Caused by: org.apache.ibatis.exceptions.PersistenceException: 
 ### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 ### The error may exist in com/novedu/nov/common/module/mapper/SysConfigMapper.java (best guess)
-### The error may involve com.novedu.nov.common.module.mapper.SysConfigMapper.selectList
+### The error may involve com.novedu.nov.ucenter.mapper.SysConfigMapper.selectList
 ### The error occurred while executing a query
 ### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:30)
@@ -5323,7 +5323,7 @@ java.sql.SQLNonTransientConnectionException: Data source rejected establishment 
 	at com.baomidou.mybatisplus.extension.service.IService$$FastClassBySpringCGLIB$$f8525d18.invoke(<generated>)
 	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at com.novedu.nov.common.module.service.impl.SysConfigServiceImpl$$EnhancerBySpringCGLIB$$5df81749.list(<generated>)
+	at com.novedu.nov.ucenter.service.impl.SysConfigServiceImpl$$EnhancerBySpringCGLIB$$5df81749.list(<generated>)
 	at com.novedu.nov.common.config.SysConfigCache.afterPropertiesSet(SysConfigCache.java:29)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1858)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1795)
@@ -5349,7 +5349,7 @@ java.sql.SQLNonTransientConnectionException: Data source rejected establishment 
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sysConfigCache' defined in file [F:\my space\nov-edu\server\nov-starter\nov-common\target\classes\com\novedu\nov\common\config\SysConfigCache.class]: Invocation of init method failed; nested exception is org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
 ### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 ### The error may exist in com/novedu/nov/common/module/mapper/SysConfigMapper.java (best guess)
-### The error may involve com.novedu.nov.common.module.mapper.SysConfigMapper.selectList
+### The error may involve com.novedu.nov.ucenter.mapper.SysConfigMapper.selectList
 ### The error occurred while executing a query
 ### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1799)
@@ -5373,7 +5373,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 Caused by: org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
 ### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 ### The error may exist in com/novedu/nov/common/module/mapper/SysConfigMapper.java (best guess)
-### The error may involve com.novedu.nov.common.module.mapper.SysConfigMapper.selectList
+### The error may involve com.novedu.nov.ucenter.mapper.SysConfigMapper.selectList
 ### The error occurred while executing a query
 ### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:92)
@@ -5390,7 +5390,7 @@ Caused by: org.mybatis.spring.MyBatisSystemException: nested exception is org.ap
 	at com.baomidou.mybatisplus.extension.service.IService$$FastClassBySpringCGLIB$$f8525d18.invoke(<generated>)
 	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at com.novedu.nov.common.module.service.impl.SysConfigServiceImpl$$EnhancerBySpringCGLIB$$5df81749.list(<generated>)
+	at com.novedu.nov.ucenter.service.impl.SysConfigServiceImpl$$EnhancerBySpringCGLIB$$5df81749.list(<generated>)
 	at com.novedu.nov.common.config.SysConfigCache.afterPropertiesSet(SysConfigCache.java:29)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1858)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1795)
@@ -5398,7 +5398,7 @@ Caused by: org.mybatis.spring.MyBatisSystemException: nested exception is org.ap
 Caused by: org.apache.ibatis.exceptions.PersistenceException: 
 ### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 ### The error may exist in com/novedu/nov/common/module/mapper/SysConfigMapper.java (best guess)
-### The error may involve com.novedu.nov.common.module.mapper.SysConfigMapper.selectList
+### The error may involve com.novedu.nov.ucenter.mapper.SysConfigMapper.selectList
 ### The error occurred while executing a query
 ### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:30)
@@ -5492,7 +5492,7 @@ java.sql.SQLNonTransientConnectionException: Data source rejected establishment 
 	at com.baomidou.mybatisplus.extension.service.IService$$FastClassBySpringCGLIB$$f8525d18.invoke(<generated>)
 	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at com.novedu.nov.common.module.service.impl.SysConfigServiceImpl$$EnhancerBySpringCGLIB$$e23351b2.list(<generated>)
+	at com.novedu.nov.ucenter.service.impl.SysConfigServiceImpl$$EnhancerBySpringCGLIB$$e23351b2.list(<generated>)
 	at com.novedu.nov.common.config.SysConfigCache.afterPropertiesSet(SysConfigCache.java:29)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1858)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1795)
@@ -5518,7 +5518,7 @@ java.sql.SQLNonTransientConnectionException: Data source rejected establishment 
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sysConfigCache' defined in file [F:\my space\nov-edu\server\nov-starter\nov-common\target\classes\com\novedu\nov\common\config\SysConfigCache.class]: Invocation of init method failed; nested exception is org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
 ### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 ### The error may exist in com/novedu/nov/common/module/mapper/SysConfigMapper.java (best guess)
-### The error may involve com.novedu.nov.common.module.mapper.SysConfigMapper.selectList
+### The error may involve com.novedu.nov.ucenter.mapper.SysConfigMapper.selectList
 ### The error occurred while executing a query
 ### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1799)
@@ -5542,7 +5542,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 Caused by: org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
 ### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 ### The error may exist in com/novedu/nov/common/module/mapper/SysConfigMapper.java (best guess)
-### The error may involve com.novedu.nov.common.module.mapper.SysConfigMapper.selectList
+### The error may involve com.novedu.nov.ucenter.mapper.SysConfigMapper.selectList
 ### The error occurred while executing a query
 ### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:92)
@@ -5559,7 +5559,7 @@ Caused by: org.mybatis.spring.MyBatisSystemException: nested exception is org.ap
 	at com.baomidou.mybatisplus.extension.service.IService$$FastClassBySpringCGLIB$$f8525d18.invoke(<generated>)
 	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at com.novedu.nov.common.module.service.impl.SysConfigServiceImpl$$EnhancerBySpringCGLIB$$e23351b2.list(<generated>)
+	at com.novedu.nov.ucenter.service.impl.SysConfigServiceImpl$$EnhancerBySpringCGLIB$$e23351b2.list(<generated>)
 	at com.novedu.nov.common.config.SysConfigCache.afterPropertiesSet(SysConfigCache.java:29)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1858)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1795)
@@ -5567,7 +5567,7 @@ Caused by: org.mybatis.spring.MyBatisSystemException: nested exception is org.ap
 Caused by: org.apache.ibatis.exceptions.PersistenceException: 
 ### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 ### The error may exist in com/novedu/nov/common/module/mapper/SysConfigMapper.java (best guess)
-### The error may involve com.novedu.nov.common.module.mapper.SysConfigMapper.selectList
+### The error may involve com.novedu.nov.ucenter.mapper.SysConfigMapper.selectList
 ### The error occurred while executing a query
 ### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:30)
@@ -5910,7 +5910,7 @@ java.sql.SQLNonTransientConnectionException: Data source rejected establishment 
 	at com.baomidou.mybatisplus.extension.service.IService$$FastClassBySpringCGLIB$$f8525d18.invoke(<generated>)
 	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at com.novedu.nov.common.module.service.impl.SysConfigServiceImpl$$EnhancerBySpringCGLIB$$a3032f2c.list(<generated>)
+	at com.novedu.nov.ucenter.service.impl.SysConfigServiceImpl$$EnhancerBySpringCGLIB$$a3032f2c.list(<generated>)
 	at com.novedu.nov.common.config.SysConfigCache.afterPropertiesSet(SysConfigCache.java:29)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1858)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1795)
@@ -5936,7 +5936,7 @@ java.sql.SQLNonTransientConnectionException: Data source rejected establishment 
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sysConfigCache' defined in file [F:\my space\nov-edu\server\nov-starter\nov-common\target\classes\com\novedu\nov\common\config\SysConfigCache.class]: Invocation of init method failed; nested exception is org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
 ### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 ### The error may exist in com/novedu/nov/common/module/mapper/SysConfigMapper.java (best guess)
-### The error may involve com.novedu.nov.common.module.mapper.SysConfigMapper.selectList
+### The error may involve com.novedu.nov.ucenter.mapper.SysConfigMapper.selectList
 ### The error occurred while executing a query
 ### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1799)
@@ -5960,7 +5960,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 Caused by: org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
 ### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 ### The error may exist in com/novedu/nov/common/module/mapper/SysConfigMapper.java (best guess)
-### The error may involve com.novedu.nov.common.module.mapper.SysConfigMapper.selectList
+### The error may involve com.novedu.nov.ucenter.mapper.SysConfigMapper.selectList
 ### The error occurred while executing a query
 ### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:92)
@@ -5977,7 +5977,7 @@ Caused by: org.mybatis.spring.MyBatisSystemException: nested exception is org.ap
 	at com.baomidou.mybatisplus.extension.service.IService$$FastClassBySpringCGLIB$$f8525d18.invoke(<generated>)
 	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at com.novedu.nov.common.module.service.impl.SysConfigServiceImpl$$EnhancerBySpringCGLIB$$a3032f2c.list(<generated>)
+	at com.novedu.nov.ucenter.service.impl.SysConfigServiceImpl$$EnhancerBySpringCGLIB$$a3032f2c.list(<generated>)
 	at com.novedu.nov.common.config.SysConfigCache.afterPropertiesSet(SysConfigCache.java:29)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1858)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1795)
@@ -5985,7 +5985,7 @@ Caused by: org.mybatis.spring.MyBatisSystemException: nested exception is org.ap
 Caused by: org.apache.ibatis.exceptions.PersistenceException: 
 ### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 ### The error may exist in com/novedu/nov/common/module/mapper/SysConfigMapper.java (best guess)
-### The error may involve com.novedu.nov.common.module.mapper.SysConfigMapper.selectList
+### The error may involve com.novedu.nov.ucenter.mapper.SysConfigMapper.selectList
 ### The error occurred while executing a query
 ### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:30)

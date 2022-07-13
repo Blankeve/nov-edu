@@ -1,10 +1,11 @@
-package com.novedu.nov.common.module.service;
+package com.novedu.nov.ucenter.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.base.SysConfig;
-import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
+
 
 /**
  * <p>

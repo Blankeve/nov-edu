@@ -5,6 +5,8 @@
     <modules>
         <module>nov-common</module>
         <module>nov-service</module>
+        <module>nov-auth</module>
+        <module>nov-gateway</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -30,7 +32,7 @@
         <swagger.version>2.9.2</swagger.version>
         <swagger.annotations.version>1.6.2</swagger.annotations.version>
         <jwt.version>3.8.3</jwt.version>
-        <validation.version>2.4.5</validation.version>
+        <nimbus.version>8.16</nimbus.version>
         <aliyunOss.version>3.10.2</aliyunOss.version>
         <easypoi.version>3.2.0</easypoi.version>
         <httpmime.version>4.5.5</httpmime.version>
@@ -40,13 +42,13 @@
         <nacos.version>2.2.7.RELEASE</nacos.version>
         <openfeign.version>2.2.9.RELEASE</openfeign.version>
         <hystrix.version>2.2.9.RELEASE</hystrix.version>
-        <bootstrap.version>3.1.0</bootstrap.version>
         <redis.version>2.3.0.RELEASE</redis.version>
         <alipay.version>3.0.0</alipay.version>
-        <shiro.version>1.8.0</shiro.version>
         <UserAgentUtils.version>1.21</UserAgentUtils.version>
         <bootstrap.version>3.0.4</bootstrap.version>
         <kaptcha.version>2.3.2</kaptcha.version>
+        <gateway.version>2.2.3.RELEASE</gateway.version>
+        <hutool.version>5.4.0</hutool.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -129,9 +131,9 @@
             </dependency>
 
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-validation</artifactId>
-                <version>${validation.version}</version>
+                <groupId>com.nimbusds</groupId>
+                <artifactId>nimbus-jose-jwt</artifactId>
+                <version>${nimbus.version}</version>
             </dependency>
 
             <dependency>
@@ -242,21 +244,9 @@
             </dependency>
 
             <dependency>
-                <groupId>org.apache.shiro</groupId>
-                <artifactId>shiro-spring</artifactId>
-                <version>${shiro.version}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>eu.bitwalker</groupId>
                 <artifactId>UserAgentUtils</artifactId>
                 <version>${UserAgentUtils.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-bootstrap</artifactId>
-                <version>${bootstrap.version}</version>
             </dependency>
 
             <!-- 验证码 -->
@@ -264,6 +254,19 @@
                 <groupId>com.github.penggle</groupId>
                 <artifactId>kaptcha</artifactId>
                 <version>${kaptcha.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-gateway</artifactId>
+                <version>${gateway.version}</version>
+            </dependency>
+
+            <!--Hutool Java工具包-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

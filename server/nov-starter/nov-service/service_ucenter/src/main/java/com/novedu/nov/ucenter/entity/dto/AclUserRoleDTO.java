@@ -62,7 +62,7 @@ public class AclUserRoleDTO implements Serializable {
     private String sign;
 
     @ApiModelProperty(value = "是否禁用 1（true）已禁用，  0（false）未禁用")
-    private Boolean isDisabled;
+    private Integer status;
 
     @TableField(value = "create_time", fill = FieldFill.INSERT)
     @ApiModelProperty(value = "创建时间")

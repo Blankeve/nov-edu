@@ -316,9 +316,9 @@ import { getBannerList } from "@/api/banner";
 import { getClientCourseList } from "@/api/course";
 import { getClientTeacherList } from "@/api/teacher";
 import { receiveNotice } from "@/api/notice";
-import jwtDecode from "jwt-decode";
-import { getToken, removeToken } from "@/utils/auth";
 import { getFormatTime } from "@/utils/datetime-format";
+import { mapGetters } from 'vuex'
+
 export default {
   data() {
     return {
@@ -352,12 +352,13 @@ export default {
   created() {
     this.fetchData();
   },
+  computed: {
+    ...mapGetters(["uid"]),
+  },
   mounted() {
-    const token = getToken();
+    let uid = this.uid;
     let adId = "n_";
-    if (token) {
-      adId += jwtDecode(token).uid;
-    }
+    if (uid) adId += uid;
     receiveNotice().then((resp) => {
       if (resp.code === 200) {
         this.notice = resp.data;

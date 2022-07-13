@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.base.RoleType;
-import com.novedu.nov.common.module.service.SysConfigService;
+import com.novedu.nov.ucenter.service.SysConfigService;
 import com.novedu.nov.ucenter.client.EduClient;
 import com.novedu.nov.ucenter.entity.AclRole;
 import com.novedu.nov.ucenter.entity.AclUser;

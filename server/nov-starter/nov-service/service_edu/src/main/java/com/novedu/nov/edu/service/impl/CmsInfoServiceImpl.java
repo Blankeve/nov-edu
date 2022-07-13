@@ -7,7 +7,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.base.SysConfig;
-import com.novedu.nov.common.module.service.SysConfigService;
 import com.novedu.nov.common.util.BeanListUtils;
 import com.novedu.nov.edu.client.UserRoleClient;
 import com.novedu.nov.edu.entity.AclUser;
@@ -43,8 +42,6 @@ public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> impl
     UserRoleClient userRoleClient;
     @Autowired
     RedisTemplate redisTemplate;
-    @Autowired
-    SysConfigService configService;
 
     private String key = "usersCache";
 
@@ -58,7 +55,7 @@ public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> impl
                 String str = (String) redisTemplate.opsForValue().get(key);
                 List<AclUser> users = objectMapper.readValue(str, new TypeReference<List<AclUser>>() {
                 });
-                List<SysConfig> sysConfigs = configService.getConfigListByKey("artcle_care",2).getData();
+                List<SysConfig> sysConfigs = userRoleClient.getConfigListByKey("artcle_care",2).getData();
                 QueryWrapper queryWrapper = new QueryWrapper();
                 if (!StringUtils.isEmpty(cmsInfo.getTitle())) {
                     queryWrapper.like("title", cmsInfo.getTitle());

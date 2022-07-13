@@ -3,7 +3,9 @@ package com.novedu.nov.edu.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.base.RoleType;
+import com.novedu.nov.common.base.UserDTO;
 import com.novedu.nov.common.util.JwtUtils;
+import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.common.util.TreeUtils;
 import com.novedu.nov.edu.client.OrderClient;
 import com.novedu.nov.edu.client.StatisticsClient;
@@ -137,10 +139,9 @@ public class EduSubjectServiceImpl extends ServiceImpl<EduSubjectMapper, EduSubj
 
     @Override
     public BaseResult getDashBoardInfo(HttpServletRequest request) {
-        String token = request.getHeader("X-Token");
-        Map userInfo = JwtUtils.getAudience(token);
-        Long uid = Long.valueOf(userInfo.get("uid").toString());
-        Integer rolecode = Integer.valueOf(userInfo.get("rolecode").toString());
+        UserDTO userInfo = RequestUtils.getUserInfo();
+        Long uid = userInfo.getUid();
+        Integer rolecode = Integer.valueOf(userInfo.getRoleCode());
         DashBoardInfoVO dashBoardInfoVO = new DashBoardInfoVO();
         Long teacherId = 0l;
         if (rolecode.equals(RoleType.TEACHER.getCode())) {

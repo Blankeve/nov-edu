@@ -1,44 +1,44 @@
 <template>
   <div class="app-container">
     <el-form :inline="true" ref="queryForm" :model="queryForm">
-      <el-row>
-        <el-col :span="4">
+
+
           <el-form-item prop="operName" label="操作人员">
             <el-input
               v-model="queryForm.operName"
               placeholder="操作人员"
             ></el-input>
           </el-form-item>
-        </el-col>
 
-        <el-col :span="4">
+
+
           <el-form-item prop="operIp" label="操作ip">
             <el-input
               v-model="queryForm.operIp"
               placeholder="操作ip"
             ></el-input>
           </el-form-item>
-        </el-col>
+   
 
-        <el-col :span="4">
+       
           <el-form-item prop="operAddr" label="操作地址">
             <el-input
               v-model="queryForm.operAddr"
               placeholder="操作地址"
             ></el-input>
           </el-form-item>
-        </el-col>
+  
 
-        <el-col :span="4">
+    
           <el-form-item prop="reqUrl" label="请求地址">
             <el-input
               v-model="queryForm.reqUrl"
               placeholder="请求地址"
             ></el-input>
           </el-form-item>
-        </el-col>
+       
 
-        <el-col :span="5">
+       
           <el-form-item prop="method" label="请求方式">
             <el-select v-model="queryForm.method" placeholder="请选择请求方式">
               <el-option label="全部" value=""> </el-option>
@@ -48,8 +48,8 @@
               <el-option label="DELETE" value="DELETE"> </el-option>
             </el-select>
           </el-form-item>
-        </el-col>
-      </el-row>
+   
+ 
 
       <el-form-item label="请求时间" prop="dateRange">
         <el-date-picker

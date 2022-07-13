@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function getList(params) {
   return request({
-    url: '/edu/config/list',
+    url: '/ucenter/config/list',
     method: 'get',
     params
   })
@@ -10,7 +10,7 @@ export function getList(params) {
 
 export function getListByKey(params) {
   return request({
-    url: '/edu/config/list',
+    url: '/ucenter/config/list',
     method: 'post',
     params
   })
@@ -18,36 +18,21 @@ export function getListByKey(params) {
 
 export function getAll() {
   return request({
-    url: '/edu/edu-teacher/all',
+    url: '/ucenter/edu-teacher/all',
     method: 'get',
   })
 }
 
 export function removeById(params) {
   return request({
-    url: `/edu/config/remove/${params}`,
+    url: `/ucenter/config/remove/${params}`,
     method: 'delete',
-  })
-}
-
-export function getById(params) {
-  return request({
-    url: `/edu/edu-teacher/info/${params}`,
-    method: 'get',
-  })
-}
-
-export function updateById(data) {
-  return request({
-    url: '/edu/edu-teacher/edit',
-    method: 'put',
-    data
   })
 }
 
 export function saveOrUpdate(params) {
   return request({
-    url: '/edu/config/save',
+    url: '/ucenter/config/save',
     method: 'post',
     params
   })

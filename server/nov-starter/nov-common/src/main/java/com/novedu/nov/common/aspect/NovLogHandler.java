@@ -2,11 +2,13 @@ package com.novedu.nov.common.aspect;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.novedu.nov.common.helper.SnowFlake;
-import com.novedu.nov.common.base.SysOperLog;
+import com.novedu.nov.common.module.entity.SysOperLog;
 import com.novedu.nov.common.module.service.SysOperLogService;
 import com.novedu.nov.common.util.IpAddressUtils;
 import com.novedu.nov.common.util.RequestUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.RandomUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -40,7 +42,9 @@ public class NovLogHandler {
     @Autowired
     SysOperLogService sysOperLogService;
 
-    @Pointcut("execution(* com.novedu.nov.*.controller.*.*(..))")
+    @Pointcut("execution(* com.novedu.nov.edu.controller.*.*(..))" +
+            " || execution(* com.novedu.nov.ucenter.controller.*.*(..))" +
+            " || execution(* com.novedu.nov.order.controller.*.*(..))")
     public void pointcut() {
     }
 
@@ -54,9 +58,7 @@ public class NovLogHandler {
         String reqUrl = request.getRequestURI();
         String reqMethod = request.getMethod();
         String ip = IpAddressUtils.getIpAddress(request);
-        String port = (request.getServerPort() + "");
-        int lastPortNum = Integer.valueOf(port.substring(port.length() - 1));
-        SnowFlake snowFlake = new SnowFlake(lastPortNum, 10);
+        SnowFlake snowFlake = new SnowFlake();
         Long id = snowFlake.nextValue();
         String username = RequestUtils.getUsername();
         String addr = IpAddressUtils.getRealAddressByIP(ip);
@@ -96,7 +98,7 @@ public class NovLogHandler {
             sysOperLog.setReqArgs(args.toString());
         else
             sysOperLog.setReqArgs("请求参数过长，取消显示");
-        if (json.length() < 16777215 / 3)
+        if (json.length() < 1024)
             sysOperLog.setReqResult(json);
         else
             sysOperLog.setReqResult("响应结果太长，取消显示");
@@ -107,9 +109,10 @@ public class NovLogHandler {
             try {
                 sysOperLogService.saveBatch(sysOperLogs);
             } catch (Exception e) {
-                log.error(e.getMessage());
+            } finally {
+                sysOperLogs.clear();
             }
-            sysOperLogs.clear();
+
         }
         return obj;
     }

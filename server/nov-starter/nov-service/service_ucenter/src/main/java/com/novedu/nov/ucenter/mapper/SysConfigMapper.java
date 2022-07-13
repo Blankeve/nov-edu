@@ -1,7 +1,8 @@
-package com.novedu.nov.common.module.mapper;
+package com.novedu.nov.ucenter.mapper;
 
-import com.novedu.nov.common.base.SysConfig;
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.novedu.nov.common.base.SysConfig;
 
 /**
  * <p>

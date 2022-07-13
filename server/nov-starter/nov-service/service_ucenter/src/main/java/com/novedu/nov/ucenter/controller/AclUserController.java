@@ -6,7 +6,12 @@ import com.google.code.kaptcha.Producer;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.base.Constants;
 import com.novedu.nov.common.base.SysConfig;
-import com.novedu.nov.common.module.service.SysConfigService;
+import com.novedu.nov.common.base.UserDTO;
+import com.novedu.nov.ucenter.entity.AclRole;
+import com.novedu.nov.ucenter.entity.AclUserRole;
+import com.novedu.nov.ucenter.service.AclRoleService;
+import com.novedu.nov.ucenter.service.AclUserRoleService;
+import com.novedu.nov.ucenter.service.SysConfigService;
 import com.novedu.nov.common.util.Base64Utils;
 import com.novedu.nov.ucenter.entity.AclUser;
 import com.novedu.nov.ucenter.entity.dto.AclUserDTO;
@@ -16,8 +21,11 @@ import com.novedu.nov.ucenter.entity.dto.AclUserRoleDTO;
 import com.novedu.nov.ucenter.entity.vo.AclUserRoleVO;
 import com.novedu.nov.ucenter.service.AclUserService;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.FastByteArrayOutputStream;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +35,6 @@ import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.Base64;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
@@ -45,11 +52,15 @@ import java.util.concurrent.TimeUnit;
 public class AclUserController {
 
     @Autowired
-    AclUserService aclUserService;
+    private AclUserService aclUserService;
     @Autowired
-    SysConfigService configService;
+    private SysConfigService configService;
     @Autowired
-    RedisTemplate redisTemplate;
+    private RedisTemplate redisTemplate;
+    @Autowired
+    private AclUserRoleService userRoleService;
+    @Autowired
+    private AclRoleService roleService;
 
     @PostMapping("/login")
     public BaseResult login(AclUser aclUser) {
@@ -100,6 +111,19 @@ public class AclUserController {
     public BaseResult loginBg(@RequestBody AclUserDTO user) {
         return aclUserService.loginBg(user);
 
+    }
+
+    @PostMapping("/load-username")
+    @Transactional(propagation = Propagation.REQUIRED)
+    public UserDTO loadUserByUsername(String username) {
+        AclUser aclUser = aclUserService.lambdaQuery().eq(AclUser::getUsername,username).one();
+        AclUserRole userRole = userRoleService.lambdaQuery().eq(AclUserRole::getUid,aclUser.getId()).one();
+        AclRole role = roleService.lambdaQuery().eq(AclRole::getId,userRole.getRoleId()).one();
+        UserDTO userDTO = new UserDTO();
+        BeanUtils.copyProperties(aclUser, userDTO);
+        userDTO.setUid(aclUser.getId());
+        userDTO.setRoleCode(role.getCode());
+        return userDTO;
     }
 
     @GetMapping("/info-bg")

@@ -78,7 +78,7 @@ public class AclUserRoleVO implements Serializable {
 
     @Excel(name = "用户状态", height = 20, width = 30,replace = {"正常_0", "异常_1"}, isImportField = "true_st",orderNum = "4")
     @ApiModelProperty(value = "是否禁用 1（true）已禁用，  0（false）未禁用")
-    private Integer isDisabled;
+    private Integer status;
 
     @ApiModelProperty(value = "逻辑删除 1（true）已删除， 0（false）未删除")
     private Boolean isDeleted;
