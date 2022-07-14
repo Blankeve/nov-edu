@@ -1,10 +1,10 @@
 package com.novedu.nov.gateway.config;
 
 import cn.hutool.core.util.ArrayUtil;
+import com.novedu.nov.common.base.AuthConstant;
 import com.novedu.nov.gateway.authorization.AuthorizationManager;
 import com.novedu.nov.gateway.component.RestAuthenticationEntryPoint;
 import com.novedu.nov.gateway.component.RestfulAccessDeniedHandler;
-import com.novedu.nov.gateway.entity.AuthConstant;
 import com.novedu.nov.gateway.filter.IgnoreUrlsRemoveJwtFilter;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;

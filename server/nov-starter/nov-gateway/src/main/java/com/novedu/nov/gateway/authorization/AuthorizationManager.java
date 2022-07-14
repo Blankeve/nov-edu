@@ -2,13 +2,10 @@ package com.novedu.nov.gateway.authorization;
 
 import cn.hutool.core.convert.Convert;
 import cn.hutool.json.JSONUtil;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nimbusds.jose.JWSObject;
+import com.novedu.nov.common.base.AuthConstant;
+import com.novedu.nov.common.base.UserDTO;
 import com.novedu.nov.gateway.config.IgnoreUrlsConfig;
-import com.novedu.nov.gateway.entity.AuthConstant;
-import com.novedu.nov.gateway.entity.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpMethod;
@@ -22,8 +19,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.PathMatcher;
 import org.springframework.util.StringUtils;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
 import reactor.core.publisher.Mono;
 
 import java.net.URI;
@@ -79,9 +74,9 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
         if (StringUtils.isEmpty(token)) {
             return Mono.just(new AuthorizationDecision(false));
         }
-        if(!isSingleDevice(token)){
-            return Mono.just(new AuthorizationDecision(false));
-        }
+//        if(!isSingleDevice(token)){
+//            return Mono.just(new AuthorizationDecision(false));
+//        }
 //        UserDTO userDto = getUserInfo(token);
 //        if (AuthConstant.ADMIN_CLIENT_ID.equals(userDto.getClientId()) && !pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, uri.getPath())) {
 //            return Mono.just(new AuthorizationDecision(false));

@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @version:
  */
 @EnableTransactionManagement
-@MapperScan(basePackages = {"com.novedu.nov.ucenter.mapper","com.novedu.nov.common.module.mapper"})
+@MapperScan(basePackages = {"com.novedu.nov.ucenter.mapper","com.novedu.nov.system.mapper"})
 //,exclude = {ShiroAnnotationProcessorAutoConfiguration.class, ShiroAutoConfiguration.class, ShiroBeanAutoConfiguration.class}
 @SpringBootApplication(scanBasePackages = "com.novedu.nov")
 @EnableDiscoveryClient

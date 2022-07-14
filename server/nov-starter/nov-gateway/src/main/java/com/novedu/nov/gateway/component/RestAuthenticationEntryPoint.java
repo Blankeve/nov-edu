@@ -1,7 +1,8 @@
 package com.novedu.nov.gateway.component;
 
 import cn.hutool.json.JSONUtil;
-import com.novedu.nov.gateway.entity.BaseResult;
+
+import com.novedu.nov.common.base.BaseResult;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -28,7 +29,7 @@ public class RestAuthenticationEntryPoint implements ServerAuthenticationEntryPo
         response.getHeaders().set(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
         response.getHeaders().set("Access-Control-Allow-Origin","*");
         response.getHeaders().set("Cache-Control","no-cache");
-        String body= JSONUtil.toJsonStr(BaseResult.forbidden(""));
+        String body= JSONUtil.toJsonStr(BaseResult.unauthorized(""));
         DataBuffer buffer =  response.bufferFactory().wrap(body.getBytes(Charset.forName("UTF-8")));
         return response.writeWith(Mono.just(buffer));
     }

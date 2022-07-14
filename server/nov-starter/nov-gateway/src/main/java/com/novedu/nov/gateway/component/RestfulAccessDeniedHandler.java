@@ -2,7 +2,7 @@ package com.novedu.nov.gateway.component;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.novedu.nov.gateway.entity.BaseResult;
+import com.novedu.nov.common.base.BaseResult;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

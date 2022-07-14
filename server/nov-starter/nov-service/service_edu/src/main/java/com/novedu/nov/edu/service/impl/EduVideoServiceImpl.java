@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.common.util.RequestUtils;
-import com.novedu.nov.edu.client.OrderClient;
+import com.novedu.nov.edu.client.OpenOrderService;
 import com.novedu.nov.edu.entity.*;
 import com.novedu.nov.edu.entity.dto.EduStudyRecordDTO;
 import com.novedu.nov.edu.entity.dto.EduVideoInfoDTO;
@@ -55,7 +55,7 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
     EduCourseService courseService;
 
     @Autowired
-    OrderClient orderClient;
+    OpenOrderService openOrderService;
 
     @Autowired
     EduCourseApplyService courseApplyService;
@@ -137,7 +137,7 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
         else {
             EduChapter chapter = chapterService.getById(video.getChapterId());
             EduCourse course = courseService.getById(chapter.getCourseId());
-            BaseResult baseResult = orderClient.queryOrderByUidAndCourseId(course.getId(), uid);
+            BaseResult baseResult = openOrderService.queryOrderByUidAndCourseId(course.getId(), uid);
             if (BaseResult.success().getCode().equals(baseResult.getCode())) {
                 Map paid = (Map) baseResult.getData();
                 if (paid.get("paid").equals(true))

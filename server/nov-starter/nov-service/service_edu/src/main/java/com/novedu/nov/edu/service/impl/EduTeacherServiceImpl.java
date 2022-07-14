@@ -6,8 +6,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.base.RoleType;
 import com.novedu.nov.common.util.ExcelUtils;
-import com.novedu.nov.common.util.JwtUtils;
-import com.novedu.nov.edu.client.UserRoleClient;
+import com.novedu.nov.common.util.RequestUtils;
+import com.novedu.nov.edu.client.OpenUcenterService;
 import com.novedu.nov.edu.entity.EduTeacher;
 import com.novedu.nov.edu.entity.dto.EduTeacherDTO;
 import com.novedu.nov.edu.entity.dto.UserBindTeacherForm;
@@ -19,10 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.List;
@@ -41,7 +38,7 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
 
 
     @Autowired
-    UserRoleClient userRoleClient;
+    OpenUcenterService openUcenterService;
 
     @Override
     public BaseResult<List<EduTeacher>> queryTeacherPage(Page page, EduTeacherDTO teacher) {
@@ -82,10 +79,8 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public BaseResult<List<EduTeacher>> findAll() {
-        HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
-        String token = request.getHeader("X-Token");
-        String uid = JwtUtils.getAudience(token).get("uid");
-        BaseResult baseResult = userRoleClient.queryUserRole(Long.valueOf(uid));
+        Long uid = RequestUtils.getUid();
+        BaseResult baseResult = openUcenterService.queryUserRole(Long.valueOf(uid));
         if (baseResult == null) {
             return BaseResult.success();
         }

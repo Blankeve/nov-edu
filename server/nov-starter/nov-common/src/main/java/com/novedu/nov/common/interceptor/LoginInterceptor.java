@@ -37,10 +37,10 @@ public class LoginInterceptor implements HandlerInterceptor {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json; charset=utf-8");
         if (!StringUtils.hasText(token)) {
-            response.getWriter().append(new ObjectMapper().writeValueAsString(BaseResult.setStatus(ResultCode.LOGIN_FAIL)));
+            response.getWriter().append(new ObjectMapper().writeValueAsString(BaseResult.setStatus(ResultCode.UNAUTHORIZED)));
             return false;
         } else if (!JwtUtils.verifyToken(token)) {
-            response.getWriter().append(new ObjectMapper().writeValueAsString(BaseResult.setStatus(ResultCode.LOGIN_FAIL)));
+            response.getWriter().append(new ObjectMapper().writeValueAsString(BaseResult.setStatus(ResultCode.UNAUTHORIZED)));
             return false;
         } else if (!isSingleDevice(token)) {
             response.getWriter().append(new ObjectMapper().writeValueAsString(BaseResult.setStatus(ResultCode.OTHER_DEVICE_LOGIN)));

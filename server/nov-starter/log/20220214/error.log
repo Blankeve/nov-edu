@@ -529,7 +529,7 @@ Caused by: com.netflix.client.ClientException: Load balancer does not have avail
 	at com.netflix.client.AbstractLoadBalancerAwareClient.executeWithLoadBalancer(AbstractLoadBalancerAwareClient.java:112)
 	at org.springframework.cloud.openfeign.ribbon.LoadBalancerFeignClient.execute(LoadBalancerFeignClient.java:84)
 	... 16 common frames omitted
-2022-02-14 19:49:34.850 [http-nio-8081-exec-7] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:34.850 [http-nio-8081-exec-7] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -612,7 +612,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:34.870 [http-nio-8081-exec-1] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:34.870 [http-nio-8081-exec-1] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -695,7 +695,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:34.893 [http-nio-8081-exec-15] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:34.893 [http-nio-8081-exec-15] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -778,7 +778,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:34.914 [http-nio-8081-exec-2] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:34.914 [http-nio-8081-exec-2] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -861,7 +861,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:34.937 [http-nio-8081-exec-9] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:34.937 [http-nio-8081-exec-9] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -944,7 +944,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:34.958 [http-nio-8081-exec-18] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:34.958 [http-nio-8081-exec-18] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -1027,7 +1027,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:35.002 [http-nio-8081-exec-4] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:35.002 [http-nio-8081-exec-4] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -1110,7 +1110,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:35.024 [http-nio-8081-exec-8] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:35.024 [http-nio-8081-exec-8] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -1193,7 +1193,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:35.046 [http-nio-8081-exec-6] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:35.046 [http-nio-8081-exec-6] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -1276,7 +1276,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:35.068 [http-nio-8081-exec-5] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:35.068 [http-nio-8081-exec-5] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -1359,7 +1359,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:35.091 [http-nio-8081-exec-10] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:35.091 [http-nio-8081-exec-10] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -1442,7 +1442,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:35.114 [http-nio-8081-exec-12] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:35.114 [http-nio-8081-exec-12] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -1525,7 +1525,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:35.137 [http-nio-8081-exec-14] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:35.137 [http-nio-8081-exec-14] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -1608,7 +1608,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:35.160 [http-nio-8081-exec-16] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:35.160 [http-nio-8081-exec-16] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -1691,7 +1691,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:35.182 [http-nio-8081-exec-13] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:35.182 [http-nio-8081-exec-13] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -1774,7 +1774,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:35.204 [http-nio-8081-exec-11] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:35.204 [http-nio-8081-exec-11] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -1857,7 +1857,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:35.248 [http-nio-8081-exec-26] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:35.248 [http-nio-8081-exec-26] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -1940,7 +1940,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:35.270 [http-nio-8081-exec-33] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:35.270 [http-nio-8081-exec-33] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -2023,7 +2023,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:35.315 [http-nio-8081-exec-24] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:35.315 [http-nio-8081-exec-24] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -2106,7 +2106,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:35.323 [http-nio-8081-exec-25] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:35.323 [http-nio-8081-exec-25] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -2189,7 +2189,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:35.337 [http-nio-8081-exec-23] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:35.337 [http-nio-8081-exec-23] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -2272,7 +2272,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:35.350 [http-nio-8081-exec-20] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:35.350 [http-nio-8081-exec-20] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -2355,7 +2355,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:35.358 [http-nio-8081-exec-22] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:35.358 [http-nio-8081-exec-22] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -2438,7 +2438,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:35.381 [http-nio-8081-exec-40] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:35.381 [http-nio-8081-exec-40] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -2521,7 +2521,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:35.384 [http-nio-8081-exec-27] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:35.384 [http-nio-8081-exec-27] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -2604,7 +2604,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:35.404 [http-nio-8081-exec-19] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:35.404 [http-nio-8081-exec-19] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -2687,7 +2687,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:35.418 [http-nio-8081-exec-21] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:35.418 [http-nio-8081-exec-21] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -2770,7 +2770,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:35.452 [http-nio-8081-exec-17] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:35.452 [http-nio-8081-exec-17] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -2853,7 +2853,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:35.470 [http-nio-8081-exec-31] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:35.470 [http-nio-8081-exec-31] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -2936,7 +2936,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:35.492 [http-nio-8081-exec-29] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:35.492 [http-nio-8081-exec-29] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -3019,7 +3019,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:35.515 [http-nio-8081-exec-35] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:35.515 [http-nio-8081-exec-35] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -3102,7 +3102,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:35.520 [http-nio-8081-exec-38] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:35.520 [http-nio-8081-exec-38] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -3185,7 +3185,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-02-14 19:49:37.174 [http-nio-8081-exec-3] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 19:49:37.174 [http-nio-8081-exec-3] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.springframework.data.redis.RedisSystemException: Redis command interrupted; nested exception is io.lettuce.core.RedisCommandInterruptedException: Command interrupted
 	at org.springframework.data.redis.connection.lettuce.LettuceExceptionConverter.convert(LettuceExceptionConverter.java:62)
 	at org.springframework.data.redis.connection.lettuce.LettuceExceptionConverter.convert(LettuceExceptionConverter.java:41)
@@ -3211,7 +3211,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
 	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:88)
-	at com.novedu.nov.common.aspect.NovLogHandler.around(NovLogHandler.java:56)
+	at com.novedu.nov.sys.aspect.NovLogHandler.around(NovLogHandler.java:56)
 	at sun.reflect.GeneratedMethodAccessor270.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
@@ -3455,7 +3455,7 @@ The last packet successfully received from the server was 46,300 milliseconds ag
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
 	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:88)
-	at com.novedu.nov.common.aspect.NovLogHandler.around(NovLogHandler.java:56)
+	at com.novedu.nov.sys.aspect.NovLogHandler.around(NovLogHandler.java:56)
 	at sun.reflect.GeneratedMethodAccessor238.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
@@ -3562,7 +3562,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	at com.mysql.cj.protocol.a.MultiPacketReader.readHeader(MultiPacketReader.java:44)
 	at com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:514)
 	... 125 common frames omitted
-2022-02-14 21:23:19.285 [http-nio-8081-exec-3] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 21:23:19.285 [http-nio-8081-exec-3] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.springframework.dao.RecoverableDataAccessException: 
 ### Error querying database.  Cause: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
 
@@ -3614,7 +3614,7 @@ The last packet successfully received from the server was 46,300 milliseconds ag
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
 	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:88)
-	at com.novedu.nov.common.aspect.NovLogHandler.around(NovLogHandler.java:56)
+	at com.novedu.nov.sys.aspect.NovLogHandler.around(NovLogHandler.java:56)
 	at sun.reflect.GeneratedMethodAccessor238.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
@@ -3939,7 +3939,7 @@ The last packet successfully received from the server was 45,664 milliseconds ag
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
 	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:88)
-	at com.novedu.nov.common.aspect.NovLogHandler.around(NovLogHandler.java:56)
+	at com.novedu.nov.sys.aspect.NovLogHandler.around(NovLogHandler.java:56)
 	at sun.reflect.GeneratedMethodAccessor228.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
@@ -4047,7 +4047,7 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 	at com.mysql.cj.protocol.a.MultiPacketReader.readHeader(MultiPacketReader.java:44)
 	at com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:514)
 	... 126 common frames omitted
-2022-02-14 21:56:49.301 [http-nio-8081-exec-6] ERROR com.novedu.nov.common.aspect.NovExceptionHandler -
+2022-02-14 21:56:49.301 [http-nio-8081-exec-6] ERROR com.novedu.nov.sys.aspect.NovExceptionHandler -
                 org.springframework.dao.RecoverableDataAccessException: 
 ### Error querying database.  Cause: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
 
@@ -4099,7 +4099,7 @@ The last packet successfully received from the server was 45,664 milliseconds ag
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
 	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:88)
-	at com.novedu.nov.common.aspect.NovLogHandler.around(NovLogHandler.java:56)
+	at com.novedu.nov.sys.aspect.NovLogHandler.around(NovLogHandler.java:56)
 	at sun.reflect.GeneratedMethodAccessor228.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)

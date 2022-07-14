@@ -4,12 +4,11 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.base.RoleType;
 import com.novedu.nov.common.base.UserDTO;
-import com.novedu.nov.common.util.JwtUtils;
 import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.common.util.TreeUtils;
-import com.novedu.nov.edu.client.OrderClient;
-import com.novedu.nov.edu.client.StatisticsClient;
-import com.novedu.nov.edu.client.UserRoleClient;
+import com.novedu.nov.edu.client.OpenOrderService;
+import com.novedu.nov.edu.client.OpenStatisticsService;
+import com.novedu.nov.edu.client.OpenUcenterService;
 import com.novedu.nov.edu.entity.EduCourse;
 import com.novedu.nov.edu.entity.EduSubject;
 import com.novedu.nov.edu.entity.EduTeacher;
@@ -44,13 +43,13 @@ public class EduSubjectServiceImpl extends ServiceImpl<EduSubjectMapper, EduSubj
     @Autowired
     EduCourseService courseService;
     @Autowired
-    UserRoleClient userRoleClient;
+    OpenUcenterService openUcenterService;
     @Autowired
     EduTeacherService teacherService;
     @Autowired
-    OrderClient orderClient;
+    OpenOrderService openOrderService;
     @Autowired
-    StatisticsClient statisticsClient;
+    OpenStatisticsService openStatisticsService;
 
 
     @Override
@@ -149,7 +148,7 @@ public class EduSubjectServiceImpl extends ServiceImpl<EduSubjectMapper, EduSubj
             teacherId = teacher.getId();
             dashBoardInfoVO.setTeacherName(teacher.getName());
         }
-        BaseResult baseResult = orderClient.queryOrderCount(teacherId);
+        BaseResult baseResult = openOrderService.queryOrderCount(teacherId);
         if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
             Map orderInfo = (Map) baseResult.getData();
             dashBoardInfoVO.setOrderCount((Integer) orderInfo.get("count"));

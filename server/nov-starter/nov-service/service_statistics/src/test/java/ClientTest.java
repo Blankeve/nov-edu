@@ -1,6 +1,6 @@
 import com.novedu.nov.StatisticsServiceApplication;
 import com.novedu.nov.common.base.BaseResult;
-import com.novedu.nov.statistics.client.EduClient;
+import com.novedu.nov.statistics.client.OpenEduService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +19,11 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 public class ClientTest {
 
     @Autowired
-    EduClient eduClient;
+    OpenEduService openEduService;
 
     @Test
     public void test1(){
-        BaseResult baseResult =eduClient.statisticsCoursePlayCount();
+        BaseResult baseResult = openEduService.statisticsCoursePlayCount();
         System.out.println(baseResult.getCode());
     }
 }

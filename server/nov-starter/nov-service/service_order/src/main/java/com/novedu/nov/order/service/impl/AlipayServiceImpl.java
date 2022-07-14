@@ -15,7 +15,7 @@ import java.util.Map;
 
 import com.alipay.api.internal.util.AlipaySignature;
 import com.novedu.nov.common.base.BaseResult;
-import com.novedu.nov.order.client.EduClient;
+import com.novedu.nov.order.client.OpenEduService;
 import com.novedu.nov.order.config.AlipayConfig;
 import com.novedu.nov.order.entity.TradeOrder;
 import com.novedu.nov.order.service.AlipayService;
@@ -37,7 +37,7 @@ import javax.servlet.http.HttpServletResponse;
 public class AlipayServiceImpl implements AlipayService {
 
     @Autowired
-    EduClient eduClient;
+    OpenEduService openEduService;
 
     @Autowired
     TradeOrderService orderService;
@@ -45,7 +45,7 @@ public class AlipayServiceImpl implements AlipayService {
     @Override
     public void webPagePay(HttpServletRequest httpRequest, HttpServletResponse httpResponse, Long orderId) throws Exception {
         TradeOrder order = orderService.getById(orderId);
-        BaseResult baseResult = eduClient.queryCourseDetail(order.getCourseId());
+        BaseResult baseResult = openEduService.queryCourseDetail(order.getCourseId());
         httpResponse.setContentType("text/html;charset=UTF-8");
         if (BaseResult.serviceInvokeFailure().getCode().equals(baseResult.getCode())) {
             httpResponse.getWriter().write(baseResult.getMsg());
@@ -81,7 +81,7 @@ public class AlipayServiceImpl implements AlipayService {
         order.setStatus(1);
         if (orderService.updateById(order)) {
             log.info("同步订单:" + orderId + "成功");
-            baseResult = eduClient.statisticsCourseBuyCount();
+            baseResult = openEduService.statisticsCourseBuyCount();
             if (BaseResult.serviceInvokeFailure().getCode().equals(baseResult.getCode())) {
                 httpResponse.getWriter().write(baseResult.getMsg());
                 return;

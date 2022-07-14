@@ -6,15 +6,15 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.novedu.nov.common.base.BaseResult;
-import com.novedu.nov.common.base.SysConfig;
-import com.novedu.nov.common.util.BeanListUtils;
-import com.novedu.nov.edu.client.UserRoleClient;
+import com.novedu.nov.edu.client.OpenUcenterService;
 import com.novedu.nov.edu.entity.AclUser;
 import com.novedu.nov.edu.entity.CmsInfo;
 import com.novedu.nov.edu.entity.vo.CmsInfoVO;
 import com.novedu.nov.edu.mapper.CmsInfoMapper;
 import com.novedu.nov.edu.service.CmsInfoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.novedu.nov.system.entity.SysConfig;
+import com.novedu.nov.system.utils.BeanListUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -39,7 +39,7 @@ public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> impl
     @Autowired
     CmsInfoMapper cmsInfoMapper;
     @Autowired
-    UserRoleClient userRoleClient;
+    OpenUcenterService openUcenterService;
     @Autowired
     RedisTemplate redisTemplate;
 
@@ -47,7 +47,7 @@ public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> impl
 
     @Override
     public BaseResult queryPage(Page page, CmsInfo cmsInfo) {
-        BaseResult baseResult = userRoleClient.syncUsersCache();
+        BaseResult baseResult = openUcenterService.syncUsersCache();
         IPage<CmsInfoVO> iPage = new Page<>();
         if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
             try {
@@ -55,7 +55,7 @@ public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> impl
                 String str = (String) redisTemplate.opsForValue().get(key);
                 List<AclUser> users = objectMapper.readValue(str, new TypeReference<List<AclUser>>() {
                 });
-                List<SysConfig> sysConfigs = userRoleClient.getConfigListByKey("artcle_care",2).getData();
+                List<SysConfig> sysConfigs = openUcenterService.getConfigListByKey("artcle_care",2).getData();
                 QueryWrapper queryWrapper = new QueryWrapper();
                 if (!StringUtils.isEmpty(cmsInfo.getTitle())) {
                     queryWrapper.like("title", cmsInfo.getTitle());
@@ -105,7 +105,7 @@ public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> impl
         CmsInfo cmsInfo = getById(id);
         CmsInfoVO cmsInfoVO = new CmsInfoVO();
         BeanUtils.copyProperties(cmsInfo, cmsInfoVO);
-        BaseResult baseResult = userRoleClient.syncUsersCache();
+        BaseResult baseResult = openUcenterService.syncUsersCache();
         if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
             ObjectMapper objectMapper = new ObjectMapper();
             String str = (String) redisTemplate.opsForValue().get(key);

@@ -1,8 +1,8 @@
 package com.novedu.nov.statistics.task;
 
 import com.novedu.nov.common.base.BaseResult;
-import com.novedu.nov.statistics.client.EduClient;
-import com.novedu.nov.statistics.client.UcenterClient;
+import com.novedu.nov.statistics.client.OpenEduService;
+import com.novedu.nov.statistics.client.OpenUcenterService;
 import com.novedu.nov.statistics.entity.StatisticsDaily;
 import com.novedu.nov.statistics.service.StatisticsDailyService;
 import lombok.extern.slf4j.Slf4j;
@@ -29,9 +29,9 @@ import java.util.Map;
 public class MultiThreadScheduleTask {
 
     @Autowired
-    EduClient eduClient;
+    OpenEduService openEduService;
     @Autowired
-    UcenterClient ucenterClient;
+    OpenUcenterService openUcenterService;
     @Autowired
     StatisticsDailyService statisticsDailyService;
 
@@ -39,7 +39,7 @@ public class MultiThreadScheduleTask {
     @Scheduled(cron = "0 0/10 * * * ?")  //间隔10分钟
     public void syncCourseViewCount() {
         log.info("---------------正在同步课程播放次数...");
-        BaseResult baseResult = eduClient.statisticsCoursePlayCount();
+        BaseResult baseResult = openEduService.statisticsCoursePlayCount();
         log.info("---------------课程播放次数同步" + (baseResult.getCode().equals(200) ? "完成" : "失败"));
     }
 
@@ -47,7 +47,7 @@ public class MultiThreadScheduleTask {
     @Scheduled(cron = "45 59 23 * * ?")  //每天下午11点59分45秒同步
     public void syncRegisterLoginCount() {
         log.info("---------------正在同步每天用户新增注册和登录人数...");
-        BaseResult baseResult = ucenterClient.syncRegisterLoginCount();
+        BaseResult baseResult = openUcenterService.syncRegisterLoginCount();
         if (BaseResult.success().getCode().equals(baseResult.getCode())) {
             StatisticsDaily statisticsDaily = new StatisticsDaily();
             Map map = (Map) baseResult.getData();

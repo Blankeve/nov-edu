@@ -6,8 +6,8 @@ import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.base.RoleType;
 import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.common.util.RequestUtils;
-import com.novedu.nov.order.client.EduClient;
-import com.novedu.nov.order.client.UcenterClient;
+import com.novedu.nov.order.client.OpenEduService;
+import com.novedu.nov.order.client.OpenUcenterService;
 import com.novedu.nov.order.entity.TradeOrder;
 import com.novedu.nov.order.mapper.TradeOrderMapper;
 import com.novedu.nov.order.service.TradeOrderService;
@@ -35,10 +35,10 @@ import java.util.concurrent.TimeUnit;
 public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOrder> implements TradeOrderService {
 
     @Autowired
-    EduClient eduClient;
+    OpenEduService openEduService;
 
     @Autowired
-    UcenterClient ucenterClient;
+    OpenUcenterService openUcenterService;
 
     @Autowired
     TradeOrderMapper orderMapper;
@@ -59,8 +59,8 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
                 return BaseResult.success("该课程当前已有未支付订单").mapSet("order", order.getId() + "");
             }
         }
-        Map courseInfo = (Map) eduClient.queryCourseDetail(courseId).getData();
-        Map memberInfo = (Map) ucenterClient.getMemberInfo(uid).getData();
+        Map courseInfo = (Map) openEduService.queryCourseDetail(courseId).getData();
+        Map memberInfo = (Map) openUcenterService.getMemberInfo(uid).getData();
         tradeOrder.setCourseCover(courseInfo.get("courseCover").toString());
         tradeOrder.setCourseTitle(courseInfo.get("courseTitle").toString());
         tradeOrder.setTeacherName(courseInfo.get("teacherName").toString());
@@ -78,7 +78,7 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
         if (!success) {
             return BaseResult.error("创建订单失败");
         }
-       BaseResult baseResult = eduClient.statisticsCourseBuyCount();
+       BaseResult baseResult = openEduService.statisticsCourseBuyCount();
         if(baseResult == null || BaseResult.error().getCode().equals(baseResult.getCode())){
             log.error("学习人数同步失败");
         }
@@ -94,14 +94,14 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
     @Override
     public BaseResult queryOrderPage(Page page, TradeOrder order) {
         Long uid = RequestUtils.getUid();
-        BaseResult baseResult = ucenterClient.queryUserRole(Long.valueOf(uid));
+        BaseResult baseResult = openUcenterService.queryUserRole(Long.valueOf(uid));
         if (baseResult == null) {
             return BaseResult.success();
         }
         Map role = (Map) baseResult.getData();
         Integer code = (Integer) role.get("code");
         if (code == RoleType.TEACHER.getCode()) {
-            BaseResult baseResult1 = eduClient.queryTeacherIdByUid(uid.toString());
+            BaseResult baseResult1 = openEduService.queryTeacherIdByUid(uid.toString());
             if (baseResult1 == null)
                 return BaseResult.success();
             order.setTeacherId(Long.valueOf(baseResult1.getData().toString()));

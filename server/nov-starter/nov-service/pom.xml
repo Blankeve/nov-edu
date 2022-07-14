@@ -14,6 +14,7 @@
         <module>service_ucenter</module>
         <module>service_order</module>
         <module>service_statistics</module>
+        <module>service_system</module>
     </modules>
 
     <modelVersion>4.0.0</modelVersion>
@@ -25,6 +26,25 @@
             <groupId>com.novedu.nov</groupId>
             <artifactId>nov-common</artifactId>
             <version>0.0.7-RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <!--启动器-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
+        <!--MyBatisPlus所使用的模板引擎-->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

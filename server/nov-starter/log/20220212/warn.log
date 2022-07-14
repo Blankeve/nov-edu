@@ -128,7 +128,7 @@
 2022-02-12 13:35:16.904 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
 2022-02-12 13:35:16.905 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
 2022-02-12 13:35:20.045 [http-nio-8081-exec-3] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@6f7a0c1 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
-2022-02-12 13:35:22.617 [http-nio-8081-exec-3] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-12 13:35:22.617 [http-nio-8081-exec-3] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 java.lang.NullPointerException: null
 	at org.springframework.web.util.UrlPathHelper.getSanitizedPath(UrlPathHelper.java:355)
 	at org.springframework.web.util.UrlPathHelper.decodeAndCleanUriString(UrlPathHelper.java:495)

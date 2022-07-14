@@ -147,7 +147,7 @@ Caused by: com.alibaba.nacos.api.exception.NacosException: Client not connected,
 	at com.alibaba.nacos.common.remote.client.RpcClient.request(RpcClient.java:635)
 	at com.alibaba.nacos.client.naming.remote.gprc.NamingGrpcClientProxy.requestToServer(NamingGrpcClientProxy.java:269)
 	... 32 common frames omitted
-2022-01-26 21:49:03.501 [http-nio-8081-exec-7] ERROR com.novedu.nov.common.aspect.MyExceptionHandler -
+2022-01-26 21:49:03.501 [http-nio-8081-exec-7] ERROR com.novedu.nov.sys.aspect.MyExceptionHandler -
                 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -230,7 +230,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 58 more
 
-2022-01-26 21:53:39.385 [http-nio-8085-exec-4] ERROR com.novedu.nov.common.aspect.MyExceptionHandler -
+2022-01-26 21:53:39.385 [http-nio-8085-exec-4] ERROR com.novedu.nov.sys.aspect.MyExceptionHandler -
                 org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
 ### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30071ms.
 ### The error may exist in com/novedu/nov/ucenter/mapper/UcenterMemberMapper.java (best guess)
@@ -258,7 +258,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
 	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:88)
-	at com.novedu.nov.common.aspect.LogHandler.around(LogHandler.java:56)
+	at com.novedu.nov.sys.aspect.LogHandler.around(LogHandler.java:56)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

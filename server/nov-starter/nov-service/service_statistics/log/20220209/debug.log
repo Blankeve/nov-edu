@@ -581,7 +581,7 @@ file:/E:/tool/maven/repository/io/reactivex/rxnetty-contexts/0.4.9/rxnetty-conte
 2022-02-09 13:22:32.748 [main] DEBUG org.mybatis.spring.mapper.ClassPathMapperScanner-Identified candidate component class: file [E:\juam-workspace\code\git\edu\server\nov-starter\nov-common\target\classes\com\novedu\nov\common\module\mapper\SysConfigMapper.class]
 2022-02-09 13:22:32.752 [main] DEBUG org.mybatis.spring.mapper.ClassPathMapperScanner-Creating MapperFactoryBean with name 'statisticsDailyMapper' and 'com.novedu.nov.statistics.mapper.StatisticsDailyMapper' mapperInterface
 2022-02-09 13:22:32.756 [main] DEBUG org.mybatis.spring.mapper.ClassPathMapperScanner-Enabling autowire by type for MapperFactoryBean with name 'statisticsDailyMapper'.
-2022-02-09 13:22:32.756 [main] DEBUG org.mybatis.spring.mapper.ClassPathMapperScanner-Creating MapperFactoryBean with name 'sysConfigMapper' and 'com.novedu.nov.ucenter.mapper.SysConfigMapper' mapperInterface
+2022-02-09 13:22:32.756 [main] DEBUG org.mybatis.spring.mapper.ClassPathMapperScanner-Creating MapperFactoryBean with name 'sysConfigMapper' and 'com.novedu.nov.system.mapper.SysConfigMapper' mapperInterface
 2022-02-09 13:22:32.756 [main] DEBUG org.mybatis.spring.mapper.ClassPathMapperScanner-Enabling autowire by type for MapperFactoryBean with name 'sysConfigMapper'.
 2022-02-09 13:22:35.753 [main] DEBUG org.mybatis.spring.SqlSessionUtils-Creating a new SqlSession
 2022-02-09 13:22:35.772 [main] DEBUG org.mybatis.spring.SqlSessionUtils-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4511146f] was not registered for synchronization because synchronization is not active
@@ -591,9 +591,9 @@ file:/E:/tool/maven/repository/io/reactivex/rxnetty-contexts/0.4.9/rxnetty-conte
 2022-02-09 13:22:37.904 [grpc-nio-worker-ELG-1-2] DEBUG com.alibaba.nacos.shaded.io.grpc.netty.shaded.io.grpc.netty.NettyClientHandler-[id: 0xf78c3c68, L:/127.0.0.1:62531 - R:localhost/127.0.0.1:9848] INBOUND DATA: streamId=13 padding=0 endStream=false length=79 bytes=000000004a12151a134865616c7468436865636b526573706f6e73651a31122f7b22726573756c74436f6465223a3230302c226572726f72436f6465223a302c...
 2022-02-09 13:22:37.904 [grpc-nio-worker-ELG-1-2] DEBUG com.alibaba.nacos.shaded.io.grpc.netty.shaded.io.grpc.netty.NettyClientHandler-[id: 0xf78c3c68, L:/127.0.0.1:62531 - R:localhost/127.0.0.1:9848] INBOUND HEADERS: streamId=13 headers=GrpcHttp2ResponseHeaders[grpc-status: 0] streamDependency=0 weight=16 exclusive=false padding=0 endStream=true
 2022-02-09 13:22:38.045 [main] DEBUG org.mybatis.spring.transaction.SpringManagedTransaction-JDBC Connection [HikariProxyConnection@397641711 wrapping com.mysql.cj.jdbc.ConnectionImpl@489b7559] will not be managed by Spring
-2022-02-09 13:22:38.057 [main] DEBUG com.novedu.nov.ucenter.mapper.SysConfigMapper.selectList-==>  Preparing: SELECT id,config_key,config_value,config_name,create_time,update_time,is_deleted FROM sys_config WHERE is_deleted=0
-2022-02-09 13:22:38.110 [main] DEBUG com.novedu.nov.ucenter.mapper.SysConfigMapper.selectList-==> Parameters:
-2022-02-09 13:22:38.198 [main] DEBUG com.novedu.nov.ucenter.mapper.SysConfigMapper.selectList-<==      Total: 1
+2022-02-09 13:22:38.057 [main] DEBUG com.novedu.nov.system.mapper.SysConfigMapper.selectList-==>  Preparing: SELECT id,config_key,config_value,config_name,create_time,update_time,is_deleted FROM sys_config WHERE is_deleted=0
+2022-02-09 13:22:38.110 [main] DEBUG com.novedu.nov.system.mapper.SysConfigMapper.selectList-==> Parameters:
+2022-02-09 13:22:38.198 [main] DEBUG com.novedu.nov.system.mapper.SysConfigMapper.selectList-<==      Total: 1
 2022-02-09 13:22:38.217 [main] DEBUG org.mybatis.spring.SqlSessionUtils-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4511146f]
 2022-02-09 13:22:40.092 [main] DEBUG springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-initialising the handler methods
 2022-02-09 13:22:40.911 [main] DEBUG org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator-Loaded expression factory via original TCCL
@@ -968,7 +968,7 @@ file:/E:/tool/maven/repository/io/reactivex/rxnetty-contexts/0.4.9/rxnetty-conte
 2022-02-09 13:22:48.106 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Finished reading parameters models for handlerMethod |saveConfig|
 2022-02-09 13:22:48.107 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationModelsProvider-Reading parameters models for handlerMethod |saveConfig|
 2022-02-09 13:22:48.107 [main] DEBUG springfox.documentation.spring.web.scanners.ApiModelReader-Generated parameter model id: BaseResult, name: BaseResult, schema: {} models
-2022-02-09 13:22:48.116 [main] DEBUG springfox.documentation.spring.web.readers.parameter.ModelAttributeParameterExpander-Expanding parameter type: com.novedu.nov.common.base.SysConfig
+2022-02-09 13:22:48.116 [main] DEBUG springfox.documentation.spring.web.readers.parameter.ModelAttributeParameterExpander-Expanding parameter type: com.novedu.nov.system.entity.SysConfig
 2022-02-09 13:22:48.130 [main] DEBUG springfox.documentation.spring.web.readers.parameter.ModelAttributeParameterExpander-Attempting to expand field: springfox.documentation.spring.web.readers.parameter.ModelAttributeField@58397dee
 2022-02-09 13:22:48.130 [main] DEBUG springfox.documentation.spring.web.readers.parameter.ModelAttributeParameterExpander-Building parameter for field: springfox.documentation.spring.web.readers.parameter.ModelAttributeField@58397dee, with type: 
 2022-02-09 13:22:48.135 [main] DEBUG springfox.documentation.spring.web.readers.parameter.ModelAttributeParameterExpander-Attempting to expand field: springfox.documentation.spring.web.readers.parameter.ModelAttributeField@4164ab12

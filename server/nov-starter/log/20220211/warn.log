@@ -182,7 +182,7 @@
 2022-02-11 20:47:52.517 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
 2022-02-11 20:47:52.521 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
 2022-02-11 20:52:09.798 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool-HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m45s683ms179µs400ns).
-2022-02-11 20:52:09.809 [http-nio-8081-exec-2] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-11 20:52:09.809 [http-nio-8081-exec-2] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -271,7 +271,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 2022-02-11 20:52:09.830 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
 2022-02-11 20:52:09.830 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
 2022-02-11 20:52:09.830 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
-2022-02-11 20:52:10.038 [http-nio-8081-exec-10] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-11 20:52:10.038 [http-nio-8081-exec-10] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -411,7 +411,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 2022-02-11 21:09:24.055 [main] WARN  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext-Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sysConfigCache' defined in file [F:\my space\nov-edu\server\nov-starter\nov-common\target\classes\com\novedu\nov\common\config\SysConfigCache.class]: Invocation of init method failed; nested exception is org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
 ### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 ### The error may exist in com/novedu/nov/common/module/mapper/SysConfigMapper.java (best guess)
-### The error may involve com.novedu.nov.ucenter.mapper.SysConfigMapper.selectList
+### The error may involve com.novedu.nov.system.mapper.SysConfigMapper.selectList
 ### The error occurred while executing a query
 ### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 2022-02-11 21:09:25.084 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
@@ -445,7 +445,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 2022-02-11 21:13:44.161 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
 2022-02-11 21:13:44.165 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
 2022-02-11 21:14:53.790 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool-HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m9s299ms399µs).
-2022-02-11 21:14:53.813 [http-nio-8086-exec-2] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-11 21:14:53.813 [http-nio-8086-exec-2] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -534,7 +534,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 2022-02-11 21:14:53.822 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
 2022-02-11 21:14:53.822 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
 2022-02-11 21:14:53.823 [Thread-4] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
-2022-02-11 21:14:56.114 [http-nio-8086-exec-4] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-11 21:14:56.114 [http-nio-8086-exec-4] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 java.lang.NullPointerException: null
 	at org.springframework.web.util.UrlPathHelper.getSanitizedPath(UrlPathHelper.java:355)
 	at org.springframework.web.util.UrlPathHelper.decodeAndCleanUriString(UrlPathHelper.java:495)
@@ -610,7 +610,7 @@ java.lang.NullPointerException: null
 2022-02-11 21:31:46.019 [main] WARN  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext-Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sysConfigCache' defined in file [F:\my space\nov-edu\server\nov-starter\nov-common\target\classes\com\novedu\nov\common\config\SysConfigCache.class]: Invocation of init method failed; nested exception is org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
 ### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 ### The error may exist in com/novedu/nov/common/module/mapper/SysConfigMapper.java (best guess)
-### The error may involve com.novedu.nov.ucenter.mapper.SysConfigMapper.selectList
+### The error may involve com.novedu.nov.system.mapper.SysConfigMapper.selectList
 ### The error occurred while executing a query
 ### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 2022-02-11 21:31:47.041 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
@@ -623,7 +623,7 @@ java.lang.NullPointerException: null
 2022-02-11 21:31:58.132 [main] WARN  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext-Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sysConfigCache' defined in file [F:\my space\nov-edu\server\nov-starter\nov-common\target\classes\com\novedu\nov\common\config\SysConfigCache.class]: Invocation of init method failed; nested exception is org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
 ### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 ### The error may exist in com/novedu/nov/common/module/mapper/SysConfigMapper.java (best guess)
-### The error may involve com.novedu.nov.ucenter.mapper.SysConfigMapper.selectList
+### The error may involve com.novedu.nov.system.mapper.SysConfigMapper.selectList
 ### The error occurred while executing a query
 ### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 2022-02-11 21:31:59.155 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
@@ -636,7 +636,7 @@ java.lang.NullPointerException: null
 2022-02-11 21:32:28.122 [main] WARN  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext-Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sysConfigCache' defined in file [F:\my space\nov-edu\server\nov-starter\nov-common\target\classes\com\novedu\nov\common\config\SysConfigCache.class]: Invocation of init method failed; nested exception is org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
 ### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 ### The error may exist in com/novedu/nov/common/module/mapper/SysConfigMapper.java (best guess)
-### The error may involve com.novedu.nov.ucenter.mapper.SysConfigMapper.selectList
+### The error may involve com.novedu.nov.system.mapper.SysConfigMapper.selectList
 ### The error occurred while executing a query
 ### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
 2022-02-11 21:32:29.147 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher

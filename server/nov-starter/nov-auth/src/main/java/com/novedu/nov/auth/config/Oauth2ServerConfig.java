@@ -1,7 +1,7 @@
 package com.novedu.nov.auth.config;
 
-import com.novedu.nov.auth.domain.AuthConstant;
 import com.novedu.nov.auth.service.UserServiceImpl;
+import com.novedu.nov.common.base.AuthConstant;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -18,7 +18,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @version:
  */
 @EnableTransactionManagement
-@MapperScan(basePackages = {"com.novedu.nov.statistics.mapper","com.novedu.nov.common.module.mapper"})
+@MapperScan(basePackages = {"com.novedu.nov.statistics.mapper","com.novedu.nov.system.mapper"})
 @SpringBootApplication(scanBasePackages = "com.novedu.nov")
 @EnableDiscoveryClient
 @EnableFeignClients

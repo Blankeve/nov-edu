@@ -35,7 +35,7 @@
 2022-01-26 21:28:41.179 [http-nio-8081-exec-4] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@67bd41c3 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
 2022-01-26 21:48:39.284 [http-nio-8081-exec-4] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@919fa92 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
 2022-01-26 21:49:01.755 [http-nio-8081-exec-7] WARN  com.zaxxer.hikari.pool.PoolBase-HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@5ef46104 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
-2022-01-26 21:49:03.506 [http-nio-8081-exec-7] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.MyExceptionHandler#exceptionHandler(Exception)
+2022-01-26 21:49:03.506 [http-nio-8081-exec-7] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.MyExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)

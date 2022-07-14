@@ -18,7 +18,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication(scanBasePackages = "com.novedu.nov")
 @EnableDiscoveryClient
 @EnableFeignClients
-@MapperScan(basePackages = {"com.novedu.nov.common.module.mapper"})
+@MapperScan(basePackages = {"com.novedu.nov.system.mapper"})
 public class UploadServiceApplication {
 
     public static void main(String[] args) {

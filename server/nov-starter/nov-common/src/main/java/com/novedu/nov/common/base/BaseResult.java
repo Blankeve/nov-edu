@@ -52,6 +52,10 @@ public class BaseResult<T> {
         return new BaseResult<>(ResultCode.FORBIDDEN.getCode(), ResultCode.FORBIDDEN.getMsg(), data);
     }
 
+    public static <T> BaseResult unauthorized(T data) {
+        return new BaseResult<>(ResultCode.UNAUTHORIZED.getCode(), ResultCode.UNAUTHORIZED.getMsg(), data);
+    }
+
     public static BaseResult serviceInvokeFailure() {
         return new BaseResult<>(ResultCode.SERVICE_INVOKE_FAILURE.getCode(), ResultCode.SERVICE_INVOKE_FAILURE.getMsg(), "");
     }

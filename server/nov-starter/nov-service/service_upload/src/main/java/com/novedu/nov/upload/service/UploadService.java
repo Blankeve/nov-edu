@@ -2,7 +2,7 @@ package com.novedu.nov.upload.service;
 
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.helper.SnowFlake;
-import com.novedu.nov.common.module.service.SysConfigService;
+import com.novedu.nov.system.service.SysConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

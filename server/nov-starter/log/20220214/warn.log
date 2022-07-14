@@ -58,7 +58,7 @@
 2022-02-14 19:49:34.515 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
 2022-02-14 19:49:34.516 [Thread-10] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
 2022-02-14 19:49:34.518 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end
-2022-02-14 19:49:34.852 [http-nio-8081-exec-7] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:34.852 [http-nio-8081-exec-7] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -143,7 +143,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:34.872 [http-nio-8081-exec-1] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:34.872 [http-nio-8081-exec-1] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -228,7 +228,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:34.894 [http-nio-8081-exec-15] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:34.894 [http-nio-8081-exec-15] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -313,7 +313,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:34.915 [http-nio-8081-exec-2] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:34.915 [http-nio-8081-exec-2] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -398,7 +398,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:34.938 [http-nio-8081-exec-9] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:34.938 [http-nio-8081-exec-9] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -483,7 +483,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:34.960 [http-nio-8081-exec-18] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:34.960 [http-nio-8081-exec-18] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -568,7 +568,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:35.003 [http-nio-8081-exec-4] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:35.003 [http-nio-8081-exec-4] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -653,7 +653,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:35.025 [http-nio-8081-exec-8] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:35.025 [http-nio-8081-exec-8] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -738,7 +738,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:35.047 [http-nio-8081-exec-6] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:35.047 [http-nio-8081-exec-6] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -823,7 +823,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:35.070 [http-nio-8081-exec-5] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:35.070 [http-nio-8081-exec-5] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -908,7 +908,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:35.092 [http-nio-8081-exec-10] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:35.092 [http-nio-8081-exec-10] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -993,7 +993,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:35.115 [http-nio-8081-exec-12] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:35.115 [http-nio-8081-exec-12] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -1078,7 +1078,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:35.138 [http-nio-8081-exec-14] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:35.138 [http-nio-8081-exec-14] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -1163,7 +1163,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:35.161 [http-nio-8081-exec-16] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:35.161 [http-nio-8081-exec-16] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -1248,7 +1248,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:35.183 [http-nio-8081-exec-13] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:35.183 [http-nio-8081-exec-13] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -1333,7 +1333,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:35.205 [http-nio-8081-exec-11] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:35.205 [http-nio-8081-exec-11] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -1418,7 +1418,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:35.250 [http-nio-8081-exec-26] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:35.250 [http-nio-8081-exec-26] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -1503,7 +1503,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:35.272 [http-nio-8081-exec-33] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:35.272 [http-nio-8081-exec-33] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -1588,7 +1588,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:35.316 [http-nio-8081-exec-24] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:35.316 [http-nio-8081-exec-24] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -1673,7 +1673,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:35.324 [http-nio-8081-exec-25] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:35.324 [http-nio-8081-exec-25] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -1758,7 +1758,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:35.338 [http-nio-8081-exec-23] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:35.338 [http-nio-8081-exec-23] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -1843,7 +1843,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:35.351 [http-nio-8081-exec-20] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:35.351 [http-nio-8081-exec-20] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -1928,7 +1928,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:35.359 [http-nio-8081-exec-22] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:35.359 [http-nio-8081-exec-22] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -2013,7 +2013,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:35.382 [http-nio-8081-exec-40] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:35.382 [http-nio-8081-exec-40] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -2098,7 +2098,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:35.385 [http-nio-8081-exec-27] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:35.385 [http-nio-8081-exec-27] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -2183,7 +2183,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:35.406 [http-nio-8081-exec-19] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:35.406 [http-nio-8081-exec-19] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -2268,7 +2268,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:35.419 [http-nio-8081-exec-21] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:35.419 [http-nio-8081-exec-21] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -2353,7 +2353,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:35.453 [http-nio-8081-exec-17] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:35.453 [http-nio-8081-exec-17] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -2438,7 +2438,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:35.472 [http-nio-8081-exec-31] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:35.472 [http-nio-8081-exec-31] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -2523,7 +2523,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:35.493 [http-nio-8081-exec-29] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:35.493 [http-nio-8081-exec-29] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -2608,7 +2608,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:35.516 [http-nio-8081-exec-35] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:35.516 [http-nio-8081-exec-35] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -2693,7 +2693,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:35.521 [http-nio-8081-exec-38] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:35.521 [http-nio-8081-exec-38] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:310)
 	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:273)
@@ -2778,7 +2778,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 	at org.apache.coyote.Response.action(Response.java:209)
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:306)
 	... 61 common frames omitted
-2022-02-14 19:49:37.174 [http-nio-8081-exec-3] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.common.aspect.NovExceptionHandler#exceptionHandler(Exception)
+2022-02-14 19:49:37.174 [http-nio-8081-exec-3] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver-Failure in @ExceptionHandler com.novedu.nov.sys.aspect.NovExceptionHandler#exceptionHandler(Exception)
 java.lang.NullPointerException: null
 	at org.springframework.web.util.UrlPathHelper.getSanitizedPath(UrlPathHelper.java:355)
 	at org.springframework.web.util.UrlPathHelper.decodeAndCleanUriString(UrlPathHelper.java:495)

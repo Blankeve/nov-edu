@@ -8,8 +8,8 @@ import com.novedu.nov.common.base.RoleType;
 import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.common.util.JwtUtils;
 import com.novedu.nov.common.util.RequestUtils;
-import com.novedu.nov.edu.client.OrderClient;
-import com.novedu.nov.edu.client.UserRoleClient;
+import com.novedu.nov.edu.client.OpenOrderService;
+import com.novedu.nov.edu.client.OpenUcenterService;
 import com.novedu.nov.edu.entity.*;
 import com.novedu.nov.edu.entity.dto.EduUserCommentDTO;
 import com.novedu.nov.edu.entity.vo.EduUserCommentVO;
@@ -53,16 +53,16 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
     EduCourseApplyService courseApplyService;
 
     @Autowired
-    UserRoleClient userRoleClient;
+    OpenUcenterService openUcenterService;
 
     @Autowired
     EduTeacherService teacherService;
 
     @Autowired
-    OrderClient orderClient;
+    OpenOrderService openOrderService;
 
     public boolean queryOrderByUidAndCourseId(Long id, Long uid) {
-        BaseResult baseResult = orderClient.queryOrderByUidAndCourseId(id, uid);
+        BaseResult baseResult = openOrderService.queryOrderByUidAndCourseId(id, uid);
         if (BaseResult.success().getCode().equals(baseResult.getCode())) {
             Map paid = (Map) baseResult.getData();
             if (paid.get("paid").equals(true))
@@ -114,9 +114,8 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public BaseResult queryCommentPage(HttpServletRequest request, Page page, EduUserCommentDTO eduComment) {
-        String token = request.getHeader("X-Token");
-        String uid = JwtUtils.getAudience(token).get("uid");
-        BaseResult baseResult = userRoleClient.queryUserRole(Long.valueOf(uid));
+        Long uid = RequestUtils.getUid();
+        BaseResult baseResult = openUcenterService.queryUserRole(uid);
         if (baseResult == null) {
             return BaseResult.success();
         }

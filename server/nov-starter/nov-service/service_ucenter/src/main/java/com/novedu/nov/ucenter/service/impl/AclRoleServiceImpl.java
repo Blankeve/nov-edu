@@ -4,8 +4,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.base.RoleType;
-import com.novedu.nov.ucenter.service.SysConfigService;
-import com.novedu.nov.ucenter.client.EduClient;
+import com.novedu.nov.system.service.SysConfigService;
+import com.novedu.nov.ucenter.client.OpenEduService;
 import com.novedu.nov.ucenter.entity.AclRole;
 import com.novedu.nov.ucenter.entity.AclUser;
 import com.novedu.nov.ucenter.entity.AclUserRole;
@@ -36,7 +36,7 @@ public class AclRoleServiceImpl extends ServiceImpl<AclRoleMapper, AclRole> impl
     AclUserRoleService userRoleService;
 
     @Autowired
-    EduClient eduClient;
+    OpenEduService openEduService;
 
     @Autowired
     AclUserService userService;
@@ -83,7 +83,7 @@ public class AclRoleServiceImpl extends ServiceImpl<AclRoleMapper, AclRole> impl
         AclUser user = userService.getById(uid);
         Integer code = query().eq("id", params.getRoleId()).one().getCode();
         if (code == RoleType.TEACHER.getCode()) {
-            BaseResult baseResult = eduClient.clearBind(uid + "");
+            BaseResult baseResult = openEduService.clearBind(uid + "");
             if (baseResult == null)
                 return BaseResult.error("分配角色失败");
             user.setAvatar(configService.getSysConfigByKey("teacher_def_avatar").getData().getConfigValue());
