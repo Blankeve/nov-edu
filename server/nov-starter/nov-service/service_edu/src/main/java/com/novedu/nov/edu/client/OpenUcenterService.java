@@ -1,7 +1,6 @@
 package com.novedu.nov.edu.client;
 
 import com.novedu.nov.common.base.BaseResult;
-import com.novedu.nov.system.entity.SysConfig;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
@@ -9,8 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
 
 
 @Component
@@ -31,6 +28,4 @@ public interface OpenUcenterService {
     @GetMapping("/ucenter/member/sync-users-cache")
     BaseResult syncUsersCache();
 
-    @PostMapping("/ucenter/config/list")
-    BaseResult<List<SysConfig>> getConfigListByKey(@RequestParam("key") String key, @RequestParam("grade")  Integer grade);
 }

@@ -1,7 +1,7 @@
 package com.novedu.nov.statistics.mapper;
 
-import com.novedu.nov.statistics.entity.StatisticsDaily;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.novedu.nov.statistics.entity.StatisticsDaily;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

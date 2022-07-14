@@ -1,11 +1,11 @@
 package com.novedu.nov.statistics.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.statistics.entity.StatisticsDaily;
 import com.novedu.nov.statistics.entity.vo.EchartsVO;
 import com.novedu.nov.statistics.mapper.StatisticsDailyMapper;
 import com.novedu.nov.statistics.service.StatisticsDailyService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

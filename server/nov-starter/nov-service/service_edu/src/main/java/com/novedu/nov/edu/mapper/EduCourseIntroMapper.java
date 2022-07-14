@@ -1,7 +1,7 @@
 package com.novedu.nov.edu.mapper;
 
-import com.novedu.nov.edu.entity.EduCourseIntro;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.novedu.nov.edu.entity.EduCourseIntro;
 
 /**
  * <p>

@@ -1,9 +1,9 @@
 package com.novedu.nov.edu.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.edu.entity.EduStudyRecord;
 import com.novedu.nov.edu.mapper.EduStudyRecordMapper;
 import com.novedu.nov.edu.service.EduStudyRecordService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**

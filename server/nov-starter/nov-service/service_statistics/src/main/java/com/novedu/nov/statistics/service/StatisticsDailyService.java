@@ -1,8 +1,8 @@
 package com.novedu.nov.statistics.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.statistics.entity.StatisticsDaily;
-import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>

@@ -1,6 +1,7 @@
 package com.novedu.nov.ucenter.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.util.TreeUtils;
 import com.novedu.nov.ucenter.entity.AclPermission;
@@ -8,7 +9,6 @@ import com.novedu.nov.ucenter.entity.AclRolePermission;
 import com.novedu.nov.ucenter.entity.dto.AssignRolePermissionForm;
 import com.novedu.nov.ucenter.mapper.AclPermissionMapper;
 import com.novedu.nov.ucenter.service.AclPermissionService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.ucenter.service.AclRolePermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

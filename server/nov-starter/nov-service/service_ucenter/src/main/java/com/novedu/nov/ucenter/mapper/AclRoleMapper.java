@@ -1,7 +1,7 @@
 package com.novedu.nov.ucenter.mapper;
 
-import com.novedu.nov.ucenter.entity.AclRole;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.novedu.nov.ucenter.entity.AclRole;
 
 /**
  * <p>

@@ -1,9 +1,9 @@
 package com.novedu.nov.ucenter.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.ucenter.entity.AclUserRole;
 import com.novedu.nov.ucenter.mapper.AclUserRoleMapper;
 import com.novedu.nov.ucenter.service.AclUserRoleService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**

@@ -6,7 +6,10 @@ import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.edu.entity.EduCourseApply;
 import com.novedu.nov.edu.service.EduCourseApplyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>

@@ -1,13 +1,7 @@
 package com.novedu.nov.ucenter.mapper;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.novedu.nov.ucenter.entity.AclPermission;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.novedu.nov.ucenter.entity.dto.AclUserRoleDTO;
-import com.novedu.nov.ucenter.entity.vo.AclUserRoleVO;
-import org.apache.ibatis.annotations.Param;
+import com.novedu.nov.ucenter.entity.AclPermission;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

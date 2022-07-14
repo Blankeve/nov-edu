@@ -1,13 +1,5 @@
 package com.novedu.nov.gateway.config;
 
-import com.novedu.nov.gateway.authorization.AuthorizationManager;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.reactive.CorsWebFilter;
-import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
-import org.springframework.web.util.pattern.PathPatternParser;
-
 /**
  * 全局跨域配置
  * 注意：前端从网关进行调用时需要配置

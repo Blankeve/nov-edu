@@ -1,10 +1,10 @@
 package com.novedu.nov.edu.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.edu.entity.EduCourseApply;
 import com.novedu.nov.edu.mapper.EduCourseApplyMapper;
 import com.novedu.nov.edu.service.EduCourseApplyService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.edu.service.EduCourseService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

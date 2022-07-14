@@ -2,6 +2,7 @@ package com.novedu.nov.ucenter.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.base.RoleType;
 import com.novedu.nov.system.service.SysConfigService;
@@ -12,7 +13,6 @@ import com.novedu.nov.ucenter.entity.AclUserRole;
 import com.novedu.nov.ucenter.entity.dto.AssignUserRoleForm;
 import com.novedu.nov.ucenter.mapper.AclRoleMapper;
 import com.novedu.nov.ucenter.service.AclRoleService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.ucenter.service.AclUserRoleService;
 import com.novedu.nov.ucenter.service.AclUserService;
 import org.springframework.beans.BeanUtils;

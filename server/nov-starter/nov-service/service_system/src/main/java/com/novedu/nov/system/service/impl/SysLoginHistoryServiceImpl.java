@@ -2,10 +2,10 @@ package com.novedu.nov.system.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.system.entity.SysLoginHistory;
 import com.novedu.nov.system.mapper.SysLoginHistoryMapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.system.service.SysLoginHistoryService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

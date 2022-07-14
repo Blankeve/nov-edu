@@ -1,7 +1,7 @@
 package com.novedu.nov.ucenter.service;
 
-import com.novedu.nov.ucenter.entity.AclUserRole;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.novedu.nov.ucenter.entity.AclUserRole;
 
 /**
  * <p>

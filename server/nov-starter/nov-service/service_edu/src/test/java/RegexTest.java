@@ -1,6 +1,9 @@
 import com.novedu.nov.EduServiceApplication;
-import com.novedu.nov.edu.entity.*;
-import com.novedu.nov.edu.service.*;
+import com.novedu.nov.edu.entity.CrmBanner;
+import com.novedu.nov.edu.service.CrmBannerService;
+import com.novedu.nov.edu.service.EduCourseService;
+import com.novedu.nov.edu.service.EduTeacherService;
+import com.novedu.nov.edu.service.EduVideoService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.util.StringUtils;
 
-import java.security.acl.Acl;
 import java.util.List;
 
 /**

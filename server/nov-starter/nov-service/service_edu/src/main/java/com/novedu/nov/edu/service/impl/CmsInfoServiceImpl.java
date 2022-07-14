@@ -3,6 +3,7 @@ package com.novedu.nov.edu.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.novedu.nov.common.base.BaseResult;
@@ -12,8 +13,8 @@ import com.novedu.nov.edu.entity.CmsInfo;
 import com.novedu.nov.edu.entity.vo.CmsInfoVO;
 import com.novedu.nov.edu.mapper.CmsInfoMapper;
 import com.novedu.nov.edu.service.CmsInfoService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.system.entity.SysConfig;
+import com.novedu.nov.system.service.SysConfigService;
 import com.novedu.nov.system.utils.BeanListUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,8 @@ public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> impl
     @Autowired
     OpenUcenterService openUcenterService;
     @Autowired
+    SysConfigService configService;
+    @Autowired
     RedisTemplate redisTemplate;
 
     private String key = "usersCache";
@@ -55,7 +58,7 @@ public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> impl
                 String str = (String) redisTemplate.opsForValue().get(key);
                 List<AclUser> users = objectMapper.readValue(str, new TypeReference<List<AclUser>>() {
                 });
-                List<SysConfig> sysConfigs = openUcenterService.getConfigListByKey("artcle_care",2).getData();
+                List<SysConfig> sysConfigs = configService.getConfigListByKey("artcle_care",2).getData();
                 QueryWrapper queryWrapper = new QueryWrapper();
                 if (!StringUtils.isEmpty(cmsInfo.getTitle())) {
                     queryWrapper.like("title", cmsInfo.getTitle());

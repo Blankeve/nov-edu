@@ -2,6 +2,7 @@ package com.novedu.nov.edu.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.edu.entity.EduChapter;
@@ -10,7 +11,6 @@ import com.novedu.nov.edu.entity.dto.EduChapterInfoDTO;
 import com.novedu.nov.edu.entity.vo.EduChapterInfoVO;
 import com.novedu.nov.edu.mapper.EduChapterMapper;
 import com.novedu.nov.edu.service.EduChapterService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.edu.service.EduVideoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

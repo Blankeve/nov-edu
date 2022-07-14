@@ -1,10 +1,10 @@
 package com.novedu.nov.edu.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.edu.entity.EduCourseIntro;
 import com.novedu.nov.edu.mapper.EduCourseIntroMapper;
 import com.novedu.nov.edu.service.EduCourseIntroService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**

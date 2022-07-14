@@ -39,7 +39,7 @@ public class UploadService {
     @Autowired
     SysConfigService configService;
 
-    String getServerAddress() {
+    private String getServerAddress() {
         return configService.getSysConfigByKey("media_server_address").getData().getConfigValue();
     }
 
