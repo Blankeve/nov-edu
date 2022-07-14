@@ -3,6 +3,7 @@ package com.novedu.nov.auth.service;
 import com.novedu.nov.auth.client.OpenUserService;
 import com.novedu.nov.auth.domain.MessageConstant;
 import com.novedu.nov.auth.domain.SecurityUser;
+import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.base.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AccountExpiredException;

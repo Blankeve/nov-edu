@@ -3,6 +3,7 @@ package com.novedu.nov.system.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.system.entity.SysConfig;
+import com.novedu.nov.system.entity.dto.SysConfigDTO;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ public interface SysConfigService extends IService<SysConfig> {
 
     BaseResult<SysConfig> getSysConfigByKey(String key);
 
-    BaseResult<List<SysConfig>> getConfigList(SysConfig config);
+    BaseResult<List<SysConfig>> getConfigList(SysConfigDTO config);
 
     BaseResult saveConfig(SysConfig config);
 

@@ -1,0 +1,8 @@
+2022-07-14 15:34:00.693 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-order] & group[DEFAULT_GROUP]
+2022-07-14 15:34:00.696 [main] WARN  com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder-Ignore the empty nacos configuration and get it based on dataId[service-order.yaml] & group[DEFAULT_GROUP]
+2022-07-14 15:34:05.203 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-07-14 15:34:05.206 [main] WARN  com.netflix.config.sources.URLConfigurationSource-No URLs will be polled as dynamic configuration sources.
+2022-07-14 15:36:29.401 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Start destroying common HttpClient
+2022-07-14 15:36:29.401 [Thread-11] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Start destroying Publisher
+2022-07-14 15:36:29.404 [Thread-11] WARN  com.alibaba.nacos.common.notify.NotifyCenter-[NotifyCenter] Destruction of the end
+2022-07-14 15:36:29.404 [Thread-3] WARN  com.alibaba.nacos.common.http.HttpClientBeanHolder-[HttpClientBeanHolder] Destruction of the end

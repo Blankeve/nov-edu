@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.system.entity.SysOperLog;
+import com.novedu.nov.system.entity.dto.SysOperLogDTO;
 import com.novedu.nov.system.mapper.SysOperLogMapper;
 import com.novedu.nov.system.service.SysOperLogService;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,7 @@ import java.util.List;
 public class SysOperLogServiceImpl extends ServiceImpl<SysOperLogMapper, SysOperLog> implements SysOperLogService {
 
     @Override
-    public BaseResult<List<SysOperLog>> getOperLogPage(Page page, SysOperLog sysOperLog) {
+    public BaseResult<List<SysOperLog>> getOperLogPage(Page page, SysOperLogDTO sysOperLog) {
         QueryWrapper queryWrapper = new QueryWrapper();
         if(!StringUtils.isEmpty(sysOperLog.getOperName()))
         queryWrapper.like("oper_name",sysOperLog.getOperName());

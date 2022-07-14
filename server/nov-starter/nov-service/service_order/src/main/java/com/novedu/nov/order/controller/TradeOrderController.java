@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.annotation.UserMultiSubmitLimit;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.order.entity.TradeOrder;
+import com.novedu.nov.order.entity.dto.TradeOrderDTO;
 import com.novedu.nov.order.service.TradeOrderService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -42,12 +43,12 @@ public class TradeOrderController {
     }
 
     @PostMapping("/export")
-    public void exportCoursePage(HttpServletResponse response, Page page, TradeOrder order) {
+    public void exportCoursePage(HttpServletResponse response, Page page, TradeOrderDTO order) {
         tradeOrderService.exportOrderPage(response, page, order);
     }
 
     @GetMapping("/export-all")
-    public void exportAll(HttpServletResponse response, TradeOrder order) {
+    public void exportAll(HttpServletResponse response, TradeOrderDTO order) {
         tradeOrderService.exportAll(response, order);
     }
 
@@ -82,7 +83,7 @@ public class TradeOrderController {
     }
 
     @PostMapping("/page")
-    public BaseResult queryOrderPage(Page page, TradeOrder order) {
+    public BaseResult queryOrderPage(Page page, TradeOrderDTO order) {
         return tradeOrderService.queryOrderPage(page, order);
     }
 

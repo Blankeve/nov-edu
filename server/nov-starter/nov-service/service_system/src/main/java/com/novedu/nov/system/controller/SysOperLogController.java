@@ -4,6 +4,7 @@ package com.novedu.nov.system.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.system.entity.SysOperLog;
+import com.novedu.nov.system.entity.dto.SysOperLogDTO;
 import com.novedu.nov.system.service.SysOperLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +29,7 @@ public class SysOperLogController {
     SysOperLogService sysOperLogService;
 
     @GetMapping("/page")
-    public BaseResult<List<SysOperLog>> getOperLogPage(Page page, SysOperLog sysOperLog) {
+    public BaseResult<List<SysOperLog>> getOperLogPage(Page page, SysOperLogDTO sysOperLog) {
         return sysOperLogService.getOperLogPage(page,sysOperLog);
     }
 }

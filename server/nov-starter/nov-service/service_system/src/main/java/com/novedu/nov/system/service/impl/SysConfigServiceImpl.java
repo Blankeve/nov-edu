@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.util.TreeUtils;
 import com.novedu.nov.system.entity.SysConfig;
+import com.novedu.nov.system.entity.dto.SysConfigDTO;
 import com.novedu.nov.system.mapper.SysConfigMapper;
 import com.novedu.nov.system.service.SysConfigService;
 import org.springframework.stereotype.Service;
@@ -40,7 +41,7 @@ public class SysConfigServiceImpl extends ServiceImpl<SysConfigMapper, SysConfig
     }
 
     @Override
-    public BaseResult<List<SysConfig>> getConfigList(SysConfig config) {
+    public BaseResult<List<SysConfig>> getConfigList(SysConfigDTO config) {
         QueryWrapper queryWrapper = new QueryWrapper();
         if (!StringUtils.isEmpty(config.getConfigName()))
             queryWrapper.like("config_name", config.getConfigName());

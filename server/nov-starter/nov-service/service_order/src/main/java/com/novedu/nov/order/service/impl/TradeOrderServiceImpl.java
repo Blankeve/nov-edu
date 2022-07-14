@@ -10,6 +10,7 @@ import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.order.client.OpenEduService;
 import com.novedu.nov.order.client.OpenUcenterService;
 import com.novedu.nov.order.entity.TradeOrder;
+import com.novedu.nov.order.entity.dto.TradeOrderDTO;
 import com.novedu.nov.order.mapper.TradeOrderMapper;
 import com.novedu.nov.order.service.TradeOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,8 +79,8 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
         if (!success) {
             return BaseResult.error("创建订单失败");
         }
-       BaseResult baseResult = openEduService.statisticsCourseBuyCount();
-        if(baseResult == null || BaseResult.error().getCode().equals(baseResult.getCode())){
+        BaseResult baseResult = openEduService.statisticsCourseBuyCount();
+        if (baseResult == null || BaseResult.error().getCode().equals(baseResult.getCode())) {
             log.error("学习人数同步失败");
         }
         redisTemplate.opsForValue().set(userOrderKey, tradeOrder, 30, TimeUnit.MINUTES);
@@ -92,7 +93,7 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
     }
 
     @Override
-    public BaseResult queryOrderPage(Page page, TradeOrder order) {
+    public BaseResult queryOrderPage(Page page, TradeOrderDTO order) {
         Long uid = RequestUtils.getUid();
         BaseResult baseResult = openUcenterService.queryUserRole(Long.valueOf(uid));
         if (baseResult == null) {
@@ -130,7 +131,7 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
     public BaseResult queryOrderByUidAndCourseId(Long id, Long uid) {
         if (uid == null || uid == 1)
             uid = RequestUtils.getUid();
-        if(uid == null)
+        if (uid == null)
             return BaseResult.success();
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("uid", uid);
@@ -141,7 +142,7 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
     }
 
     @Override
-    public void exportOrderPage(HttpServletResponse response, Page page, TradeOrder order) {
+    public void exportOrderPage(HttpServletResponse response, Page page, TradeOrderDTO order) {
         BaseResult baseResult = queryOrderPage(page, order);
         if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
             Page page1 = (Page) baseResult.getData();
@@ -150,7 +151,7 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
     }
 
     @Override
-    public void exportAll(HttpServletResponse response, TradeOrder order) {
+    public void exportAll(HttpServletResponse response, TradeOrderDTO order) {
         BaseResult baseResult = queryOrderPage(new Page(1, count()), order);
         if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
             Page page1 = (Page) baseResult.getData();

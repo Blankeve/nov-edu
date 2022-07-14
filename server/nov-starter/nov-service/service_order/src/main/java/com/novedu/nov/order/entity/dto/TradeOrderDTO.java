@@ -1,4 +1,4 @@
-package com.novedu.nov.order.entity;
+package com.novedu.nov.order.entity.dto;
 
 import cn.afterturn.easypoi.excel.annotation.Excel;
 import com.baomidou.mybatisplus.annotation.FieldFill;
@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import com.novedu.nov.common.base.QueryEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -28,7 +29,7 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @ApiModel(value="TradeOrder对象", description="订单")
-public class TradeOrder implements Serializable {
+public class TradeOrderDTO extends QueryEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -92,6 +93,7 @@ public class TradeOrder implements Serializable {
     @Excel(name = "下单时间", height = 20, width = 30, isImportField = "true_st",exportFormat = "yyyy-MM-dd HH:mm:ss",orderNum = "8")
     @TableField(value = "create_time", fill = FieldFill.INSERT)
     @ApiModelProperty(value = "下单时间")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)

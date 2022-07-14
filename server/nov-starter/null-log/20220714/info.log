@@ -1,0 +1,43 @@
+2022-07-14 15:33:59.298 [background-preinit] INFO  org.hibernate.validator.internal.util.Version-HV000001: Hibernate Validator 6.1.7.Final
+2022-07-14 15:33:59.812 [main] INFO  org.reflections.Reflections-Reflections took 22 ms to scan 1 urls, producing 3 keys and 6 values 
+2022-07-14 15:33:59.839 [main] INFO  org.reflections.Reflections-Reflections took 16 ms to scan 1 urls, producing 4 keys and 9 values 
+2022-07-14 15:33:59.848 [main] INFO  org.reflections.Reflections-Reflections took 6 ms to scan 1 urls, producing 3 keys and 10 values 
+2022-07-14 15:33:59.953 [main] INFO  org.reflections.Reflections-Reflections took 103 ms to scan 214 urls, producing 0 keys and 0 values 
+2022-07-14 15:33:59.960 [main] INFO  org.reflections.Reflections-Reflections took 6 ms to scan 1 urls, producing 1 keys and 5 values 
+2022-07-14 15:33:59.969 [main] INFO  org.reflections.Reflections-Reflections took 7 ms to scan 1 urls, producing 1 keys and 7 values 
+2022-07-14 15:33:59.977 [main] INFO  org.reflections.Reflections-Reflections took 6 ms to scan 1 urls, producing 2 keys and 8 values 
+2022-07-14 15:34:00.071 [main] INFO  org.reflections.Reflections-Reflections took 92 ms to scan 214 urls, producing 0 keys and 0 values 
+2022-07-14 15:34:00.706 [main] INFO  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration-Located property source: [BootstrapPropertySource {name='bootstrapProperties-service-order-prod.yaml,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-order.yaml,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-service-order,DEFAULT_GROUP'}]
+2022-07-14 15:34:00.709 [main] INFO  com.novedu.nov.order.OrderServiceApplication-The following profiles are active: prod
+2022-07-14 15:34:01.183 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-07-14 15:34:01.184 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-07-14 15:34:01.201 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate-Finished Spring Data repository scanning in 9ms. Found 0 Redis repository interfaces.
+2022-07-14 15:34:01.338 [main] INFO  org.springframework.cloud.context.scope.GenericScope-BeanFactory id=931f6bc8-2a4f-3a66-bbcf-0f96b7ad8402
+2022-07-14 15:34:01.553 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat initialized with port(s): 8086 (http)
+2022-07-14 15:34:01.558 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Initializing ProtocolHandler ["http-nio-8086"]
+2022-07-14 15:34:01.559 [main] INFO  org.apache.catalina.core.StandardService-Starting service [Tomcat]
+2022-07-14 15:34:01.559 [main] INFO  org.apache.catalina.core.StandardEngine-Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-07-14 15:34:01.645 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring embedded WebApplicationContext
+2022-07-14 15:34:01.645 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext-Root WebApplicationContext: initialization completed in 922 ms
+2022-07-14 15:34:01.791 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-edu' URL not provided. Will try picking an instance via load-balancing.
+2022-07-14 15:34:01.849 [main] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure-Init DruidDataSource
+2022-07-14 15:34:04.632 [main] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} inited
+2022-07-14 15:34:04.918 [main] INFO  org.springframework.cloud.openfeign.FeignClientFactoryBean-For 'service-ucenter' URL not provided. Will try picking an instance via load-balancing.
+2022-07-14 15:34:05.197 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping-Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-07-14 15:34:05.203 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-07-14 15:34:05.206 [main] INFO  com.netflix.config.sources.URLConfigurationSource-To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-07-14 15:34:05.274 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Initializing ExecutorService 'applicationTaskExecutor'
+2022-07-14 15:34:05.373 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-07-14 15:34:05.712 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Starting ProtocolHandler ["http-nio-8086"]
+2022-07-14 15:34:05.722 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer-Tomcat started on port(s): 8086 (http) with context path ''
+2022-07-14 15:34:05.728 [main] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-nacos registry, DEFAULT_GROUP service-order 192.168.1.136:8086 register finished
+2022-07-14 15:34:05.764 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Context refreshed
+2022-07-14 15:34:05.772 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper-Found 1 custom documentation plugin(s)
+2022-07-14 15:34:05.792 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner-Scanning for api listing references
+2022-07-14 15:34:05.887 [main] INFO  com.novedu.nov.order.OrderServiceApplication-Started OrderServiceApplication in 6.962 seconds (JVM running for 7.515)
+2022-07-14 15:36:29.441 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler-Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2022-07-14 15:36:29.444 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registering from Nacos Server now...
+2022-07-14 15:36:29.446 [SpringContextShutdownHook] INFO  com.alibaba.cloud.nacos.registry.NacosServiceRegistry-De-registration finished.
+2022-07-14 15:36:29.778 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-Shutting down ExecutorService 'applicationTaskExecutor'
+2022-07-14 15:36:29.793 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closing ...
+2022-07-14 15:36:29.799 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource-{dataSource-1} closed

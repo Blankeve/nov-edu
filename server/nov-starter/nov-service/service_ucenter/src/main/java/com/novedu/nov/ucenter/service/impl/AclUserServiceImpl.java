@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.netflix.hystrix.exception.HystrixRuntimeException;
 import com.novedu.nov.common.base.AuthConstant;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.base.Constants;
@@ -101,20 +102,27 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         params.put("grant_type", "password");
         params.put("username", ucenterMemberDto.getUsername());
         params.put("password", ucenterMemberDto.getPassword());
-        BaseResult baseResult1 = authService.postAccessToken(params);
-        if (baseResult1 != null && BaseResult.success().getCode().equals(baseResult1.getCode())) {
-            AclUser user2 = lambdaQuery().eq(AclUser::getUsername, ucenterMemberDto.getUsername()).one();
-            Map data = (Map) baseResult1.getData();
-            String token = (String) data.get("token");
-            String loginKey = "bg_" + user2.getId();
-            redisTemplate.opsForValue().set(loginKey, token, 1, TimeUnit.DAYS);
-            saveLoginInfo(user2);
-            Map loginInfo = new HashMap();
-            loginInfo.put("nickname", ucenterMember.getNickname());
-            loginInfo.put("avatar", ucenterMember.getAvatar());
-            return BaseResult.success().mapSet("access_token", token).mapSet("loginInfo", loginInfo);
-        } else
-            return BaseResult.error("用户名或密码不正确");
+
+        try {
+            BaseResult baseResult1 = authService.postAccessToken(params);
+            if (BaseResult.success().getCode().equals(baseResult1.getCode())) {
+                AclUser user2 = lambdaQuery().eq(AclUser::getUsername, ucenterMemberDto.getUsername()).one();
+                Map data = (Map) baseResult1.getData();
+                String token = (String) data.get("token");
+                String loginKey = "bg_" + user2.getId();
+                redisTemplate.opsForValue().set(loginKey, token, 1, TimeUnit.DAYS);
+                saveLoginInfo(user2);
+                Map loginInfo = new HashMap();
+                loginInfo.put("nickname", ucenterMember.getNickname());
+                loginInfo.put("avatar", ucenterMember.getAvatar());
+                return BaseResult.success().mapSet("access_token", token).mapSet("loginInfo", loginInfo);
+            } else {
+                return BaseResult.error(baseResult1.getMsg());
+            }
+        } catch (Exception e) {
+            return BaseResult.error("登录失败，请稍后再试");
+        }
+
     }
 
 
@@ -223,19 +231,24 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         params.put("grant_type", "password");
         params.put("username", user.getUsername());
         params.put("password", user.getPassword());
-        BaseResult baseResult1 = authService.postAccessToken(params);
-        if (baseResult1 != null && BaseResult.success().getCode().equals(baseResult1.getCode())) {
-            AclUser user2 = lambdaQuery().eq(AclUser::getUsername, user.getUsername()).one();
-            Map data = (Map) baseResult1.getData();
-            String token = (String) data.get("token");
-            String loginKey = "bg_" + user2.getId();
-            redisTemplate.opsForValue().set(loginKey, token, 1, TimeUnit.DAYS);
-            saveLoginInfo(user2);
-            return BaseResult.success("登录成功")
-                    .mapSet("token", token)
-                    ;
-        } else
+        try {
+            BaseResult baseResult1 = authService.postAccessToken(params);
+            if (BaseResult.success().getCode().equals(baseResult1.getCode())) {
+                AclUser user2 = lambdaQuery().eq(AclUser::getUsername, user.getUsername()).one();
+                Map data = (Map) baseResult1.getData();
+                String token = (String) data.get("token");
+                String loginKey = "bg_" + user2.getId();
+                redisTemplate.opsForValue().set(loginKey, token, 1, TimeUnit.DAYS);
+                saveLoginInfo(user2);
+                return BaseResult.success("登录成功")
+                        .mapSet("token", token)
+                        ;
+            } else {
+                return BaseResult.error(baseResult1.getMsg());
+            }
+        } catch (Exception e) {
             return BaseResult.error("登录失败，请稍后再试");
+        }
     }
 
     @Override
@@ -401,7 +414,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         Long uid = RequestUtils.getUid();
         AclUser user = getById(uid);
         return BaseResult.success().mapSet("username", user.getUsername())
-                .mapSet("uid",uid+"")
+                .mapSet("uid", uid + "")
                 .mapSet("nickname", user.getNickname())
                 .mapSet("avatar", user.getAvatar());
     }

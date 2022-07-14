@@ -3,6 +3,7 @@ package com.novedu.nov.system.controller;
 
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.system.entity.SysConfig;
+import com.novedu.nov.system.entity.dto.SysConfigDTO;
 import com.novedu.nov.system.service.SysConfigService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -30,7 +31,7 @@ public class SysConfigController {
     SysConfigService sysConfigService;
 
     @GetMapping("/list")
-    public BaseResult<List<SysConfig>> getConfigList(SysConfig config) {
+    public BaseResult<List<SysConfig>> getConfigList(SysConfigDTO config) {
         return sysConfigService.getConfigList(config);
     }
 

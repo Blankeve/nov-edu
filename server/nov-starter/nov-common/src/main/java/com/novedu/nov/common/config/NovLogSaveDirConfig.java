@@ -19,15 +19,17 @@ public class NovLogSaveDirConfig extends PropertyDefinerBase {
         String logDir = "";
         String os = System.getProperty("os.name").toLowerCase();
         System.out.println("os:" + os);
-        if (os.indexOf("win") != -1) {
-            String projDir = System.getProperty("user.dir");
-            //   String user = System.getenv("USERNAME");
-            logDir = String.format("%s/log", projDir);
-        } else if (os.indexOf("lin") != -1) {
-            //logDir = "/usr/local/java/m_service/nov_log";
-            String projDir = System.getProperty("user.dir");
-            logDir = String.format("%s/log", projDir);
-        }
+//        if (os.indexOf("win") != -1) {
+//            String projDir = System.getProperty("user.dir");
+//            //   String user = System.getenv("USERNAME");
+//            logDir = String.format("%s/log", projDir);
+//        } else if (os.indexOf("lin") != -1) {
+//            //logDir = "/usr/local/java/m_service/nov_log";
+//            String projDir = System.getProperty("user.dir");
+//            logDir = String.format("%s/log", projDir);
+//        }
+        String projDir = System.getProperty("user.dir");
+        logDir = String.format("%s/log", projDir);
         System.out.println("logDir:" + logDir);
         return logDir;
     }

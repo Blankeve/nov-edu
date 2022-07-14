@@ -46,7 +46,12 @@ public class AuthController {
     })
     @PostMapping(value = "/token")
     public BaseResult<Oauth2TokenDTO> postAccessToken(@ApiIgnore Principal principal, @ApiIgnore @RequestParam Map<String, String> parameters) throws HttpRequestMethodNotSupportedException {
-        OAuth2AccessToken oAuth2AccessToken = tokenEndpoint.postAccessToken(principal, parameters).getBody();
+        OAuth2AccessToken oAuth2AccessToken;
+        try {
+            oAuth2AccessToken = tokenEndpoint.postAccessToken(principal, parameters).getBody();
+        } catch (Exception e) {
+            return BaseResult.error(e.getMessage());
+        }
         Oauth2TokenDTO oauth2TokenDto = Oauth2TokenDTO.builder()
                 .token(oAuth2AccessToken.getValue())
                 .refreshToken(oAuth2AccessToken.getRefreshToken().getValue())

@@ -241,7 +241,6 @@ export default {
 #down-tree {
   flex: 1;
   max-width: 500px;
-  height: 678px;
   background: rgba(245, 248, 250, 1);
   border-radius: 3px;
   border: 1px solid rgba(211, 219, 222, 1);

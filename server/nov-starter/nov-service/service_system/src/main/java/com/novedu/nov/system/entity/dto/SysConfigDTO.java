@@ -1,4 +1,4 @@
-package com.novedu.nov.system.entity;
+package com.novedu.nov.system.entity.dto;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import com.novedu.nov.common.base.QueryEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -26,7 +27,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @ApiModel(value = "SysConfig对象", description = "")
-public class SysConfig {
+public class SysConfigDTO extends QueryEntity {
 
     private static final long serialVersionUID = 1L;
 
@@ -65,7 +66,7 @@ public class SysConfig {
     @TableField(exist = false)
     private boolean hasChildren;
     @TableField(exist = false)
-    private List<SysConfig> children;
+    private List<SysConfigDTO> children;
 
 
 }
