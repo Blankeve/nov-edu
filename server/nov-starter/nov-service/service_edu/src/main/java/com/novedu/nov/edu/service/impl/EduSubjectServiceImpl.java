@@ -208,8 +208,11 @@ public class EduSubjectServiceImpl extends ServiceImpl<EduSubjectMapper, EduSubj
     @Override
     public BaseResult saveOrUpdateSubject(EduSubject subject) {
         List<EduSubject> eduSubjectList = list();
-        if (eduSubjectList.stream().filter(e -> e.getTitle().equals(subject.getTitle())).count() > 0)
-            return BaseResult.error("分类名称《" + subject.getTitle() + "》已存在");
+        List<EduSubject> repeatSubjects = eduSubjectList.stream().filter(e -> e.getTitle().equals(subject.getTitle())).collect(Collectors.toList());
+        if (repeatSubjects.size() > 0) {
+            if (!(repeatSubjects.size() == 1 && repeatSubjects.stream().filter(e -> e.getId().equals(subject.getId())).count() > 0))
+                return BaseResult.error("分类名称《" + subject.getTitle() + "》已存在");
+        }
         List<EduSubject> parents = new ArrayList<>();
         parents = findParents(eduSubjectList, parents, subject.getParentId());
         if (parents.size() > 1) {

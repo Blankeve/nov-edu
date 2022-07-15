@@ -133,8 +133,7 @@ export default {
           else this.form.parentId = data.id;
           this.form.title = value;
           saveOrUpdate(this.form).then((resp) => {
-            if (resp.code === 200)
-              this.$message.success((this.form.id ? "更新" : "添加") + "成功");
+            if (resp.code === 200) this.$message.success("添加成功");
             this.fetchData();
           });
         })
@@ -167,7 +166,14 @@ export default {
         },
       })
         .then(({ value }) => {
-          children[index].title = value;
+          let param = {};
+          param.id = data.id;
+          param.title = value;
+          param.parentId = data.parentId;
+          saveOrUpdate(param).then((resp) => {
+            if (resp.code === 200) this.$message.success("更新成功");
+            this.fetchData();
+          });
         })
         .catch(() => {
           return;

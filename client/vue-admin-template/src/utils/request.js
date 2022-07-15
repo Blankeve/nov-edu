@@ -44,18 +44,18 @@ service.interceptors.response.use(
    */
   response => {
     const res = response.data
-    if (response.headers["content-disposition"]) {
+    if (res.code !== 4030 && response.headers["content-disposition"]) {
       console.log("excel")
       return response;
     }
 
     // if the custom code is not 20000, it is judged as an error.
     if (res.code !== 200) {
-      if (res.code === 500) {
+      if (res.code === 500 || res.code === 4030) {
         Message({
           message: res.msg || 'Error',
           type: 'error',
-          duration: 5 * 1000
+          duration: 2 * 1000
         })
       }
 
@@ -72,7 +72,8 @@ service.interceptors.response.use(
         })
       }
       return Promise.reject(new Error(res.message || 'Error'))
-    } else {
+    }
+    else {
       return res
     }
   },

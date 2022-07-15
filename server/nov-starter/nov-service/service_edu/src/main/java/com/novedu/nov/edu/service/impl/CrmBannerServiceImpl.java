@@ -5,6 +5,7 @@ import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.edu.entity.CrmBanner;
 import com.novedu.nov.edu.mapper.CrmBannerMapper;
 import com.novedu.nov.edu.service.CrmBannerService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -22,9 +23,6 @@ import java.util.List;
 @Service
 public class CrmBannerServiceImpl extends ServiceImpl<CrmBannerMapper, CrmBanner> implements CrmBannerService {
 
-    @Autowired
-    private RedisTemplate redisTemplate;
-
     @Override
     public BaseResult<List<CrmBanner>> getBannerList() {
         return BaseResult.success(list());
@@ -32,6 +30,10 @@ public class CrmBannerServiceImpl extends ServiceImpl<CrmBannerMapper, CrmBanner
 
     @Override
     public BaseResult saveBanner(CrmBanner banner) {
+        if(banner.getId() != null){
+            if(StringUtils.isEmpty(banner.getImageUrl()))
+                return BaseResult.error("请先上传图片");
+        }
         return BaseResult.successOrError(saveOrUpdate(banner));
     }
 

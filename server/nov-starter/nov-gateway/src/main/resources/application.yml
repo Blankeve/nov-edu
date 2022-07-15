@@ -3,6 +3,20 @@ server:
 spring:
   application:
     name: nov-gateway
+  cache:
+    type: redis
+  redis:
+    host: 106.13.225.159
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 500
+        min-idle: 0
+    timeout: 5000
+    password: ju2009jedis
+    database: 0     #Redis提供了 16 个索引库，但是每个数据库之间是隔离互不共享的，客户端默认连接使用的是 0 号数据库
   cloud:
     nacos:
       discovery:
@@ -107,7 +121,6 @@ secure:
       - "/auth/rsa/publicKey"
       - "/order/trade/hasbuy/*"
       - "/order/trade/count"
-      - "/statistics/daily/register-and-access"
       - "/ucenter/role/by-uid"
       - "/ucenter/member/login"
       - "/ucenter/member/register"
@@ -134,8 +147,7 @@ secure:
       - "/edu/course/list-teacher"
       - "/edu/edu-teacher/info"
       - "/edu/course/page-client"
-      - "/edu/subject/list"
-      - "/edu/edu-teacher/list"
+      - "/edu/subject/client-list"
       - "/ucenter/member/sync-register-login"
       - "/order/alipay"
       - "img"
@@ -147,7 +159,5 @@ secure:
       - "/edu/consult/page-client"
       - "/edu/info/page"
       - "/ucenter/member/sync-users-cache"
-      - "/ucenter/config/list"
       - "/edu/info/detail-client/*"
       - "/ucenter/member/picVerifyCode"
-

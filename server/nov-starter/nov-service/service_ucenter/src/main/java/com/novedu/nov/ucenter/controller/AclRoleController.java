@@ -36,8 +36,7 @@ public class AclRoleController {
     @ApiOperation("删除")
     @DeleteMapping("/remove/{id}")
     public BaseResult removeRole(@PathVariable Long id) {
-        return BaseResult.error("演示模式下暂不支持删除角色");
-        // return roleService.removeRole(id);
+         return roleService.removeRole(id);
     }
 
 

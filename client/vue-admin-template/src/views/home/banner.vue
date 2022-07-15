@@ -1,6 +1,8 @@
 <template>
   <div class="app-container">
-    <el-button type="primary" icon="el-icon-plus"  @click="addConfig()">添加轮播图</el-button>
+    <el-button type="primary" icon="el-icon-plus" @click="addConfig()"
+      >添加轮播图</el-button
+    >
     <el-table
       v-loading="listLoading"
       :data="list"
@@ -63,9 +65,17 @@
 
       <el-table-column fixed="right" align="center" label="操作" width="220">
         <template slot-scope="scope">
-          <el-button type="info" @click="handleEdit(scope.row)"  icon="el-icon-edit">编辑</el-button>
+          <el-button
+            type="info"
+            @click="handleEdit(scope.row)"
+            icon="el-icon-edit"
+            >编辑</el-button
+          >
 
-          <el-button type="danger" @click="handleDelete(scope.row.id)" icon="el-icon-delete"
+          <el-button
+            type="danger"
+            @click="handleDelete(scope.row.id)"
+            icon="el-icon-delete"
             >删除</el-button
           >
         </template>
@@ -107,11 +117,15 @@
             :on-success="handleAvatarSuccess"
             :before-upload="beforeAvatarUpload"
           >
-            <img width="100%" v-if="form.imageUrl" :src="form.imageUrl" class="avatar" />
+            <img
+              width="100%"
+              v-if="form.imageUrl"
+              :src="form.imageUrl"
+              class="avatar"
+            />
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
           </el-upload>
         </el-form-item>
-
       </el-form>
 
       <div slot="footer" class="dialog-footer">
@@ -200,7 +214,7 @@ export default {
       return "background:#3f5c6d2c;";
     },
     handleAvatarSuccess(res, file) {
-      this.$forceUpdate()
+      this.$forceUpdate();
       this.form.imageUrl = res.data.path;
     },
     beforeAvatarUpload(file) {
@@ -227,5 +241,4 @@ export default {
 .el-pagination {
   text-align: center;
 }
-
 </style>

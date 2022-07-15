@@ -3,6 +3,7 @@ package com.novedu.nov.ucenter.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
+import com.novedu.nov.common.constants.AuthConstant;
 import com.novedu.nov.common.util.TreeUtils;
 import com.novedu.nov.ucenter.component.InitRolePermissionHandler;
 import com.novedu.nov.ucenter.entity.AclPermission;
@@ -38,8 +39,11 @@ public class AclPermissionServiceImpl extends ServiceImpl<AclPermissionMapper, A
 
     @Autowired
     InitRolePermissionHandler rolePermissionHandler;
+
     @Override
     public BaseResult saveOrUpdatePermission(AclPermission permission) {
+        if (AuthConstant.BUTTON_PERMISSION_TYPE == permission.getType() && permission.getTitle().indexOf("【") == -1)
+            permission.setTitle("【操作】" + permission.getTitle());
         boolean res = saveOrUpdate(permission);
         rolePermissionHandler.InitRolePermission();
         return BaseResult.successOrError(res);
@@ -71,7 +75,7 @@ public class AclPermissionServiceImpl extends ServiceImpl<AclPermissionMapper, A
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("role_id", id);
         rolePermissionService.remove(queryWrapper);
-        if(checkMenuIds.length == 0)
+        if (checkMenuIds.length == 0)
             return BaseResult.success();
         List<AclRolePermission> rolePermissions = new ArrayList<>();
         for (int i = 0; i < checkMenuIds.length; i++) {

@@ -44,6 +44,11 @@ public class EduSubjectController {
         return eduSubjectService.removeSubject(id);
     }
 
+    @GetMapping("/client-list")
+    public BaseResult<Map> getClientSubjects() {
+        return eduSubjectService.getSubjects();
+    }
+
     @GetMapping("/list")
     public BaseResult<Map> getSubjects() {
         return eduSubjectService.getSubjects();

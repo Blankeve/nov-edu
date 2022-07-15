@@ -11,8 +11,8 @@ public enum ResultCode {
     SUCCESS(200, "success"),
     ERROR(500, "error"),
     SERVICE_INVOKE_FAILURE(504, "网络出差了，请稍后再试"),
-    FORBIDDEN(4030, "没有相关权限"),
-    UNAUTHORIZED(403, "暂未登录或token已经过期"),
+    FORBIDDEN(403, "登录失效，请重新登录"),
+    UNAUTHORIZED(4030, "没有相关权限"),
     OTHER_DEVICE_LOGIN(4031, "当前账号已在别处登录，请重新登录");
 
     private final int code;

@@ -35,10 +35,11 @@ import java.util.stream.Collectors;
  */
 @Component
 public class AuthorizationManager implements ReactiveAuthorizationManager<AuthorizationContext> {
-    @Autowired
-    private RedisTemplate redisTemplate;
+
     @Autowired
     private IgnoreUrlsConfig ignoreUrlsConfig;
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     private UserDTO getUserInfo(String token){
         String realToken = token.replace(AuthConstant.JWT_TOKEN_PREFIX, "");
@@ -96,35 +97,30 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
         //非管理员路径需校验权限
         Map<Object, Object> resourceRolesMap = redisTemplate.opsForHash().entries(AuthConstant.RESOURCE_ROLES_MAP_KEY);
         Iterator<Object> iterator = resourceRolesMap.keySet().iterator();
-        List<String> authorities = new ArrayList<>();
+        List<Integer> authorities = new ArrayList<>();
         while (iterator.hasNext()) {
             String pattern = (String) iterator.next();
             if (pathMatcher.match(pattern, uri.getPath())) {
-                authorities.addAll(Convert.toList(String.class, resourceRolesMap.get(pattern)));
+                authorities.addAll(Convert.toList(Integer.class, resourceRolesMap.get(pattern)));
             }
         }
-        authorities = authorities.stream().map(i -> i = AuthConstant.AUTHORITY_PREFIX + i).collect(Collectors.toList());
         //认证通过且角色匹配的用户可访问当前路径
-        return mono
-                .filter(Authentication::isAuthenticated)
-                .flatMapIterable(Authentication::getAuthorities)
-                .map(GrantedAuthority::getAuthority)
-                .any(authorities::contains)
-                .map(AuthorizationDecision::new)
-                .defaultIfEmpty(new AuthorizationDecision(false));
+        if(authorities.contains(userDto.getRoleCode()))
+            return Mono.just(new AuthorizationDecision(true));
+        return Mono.just(new AuthorizationDecision(false));
     }
 
-    private boolean isSingleDevice(String token) {
-        System.out.println(redisTemplate);
-        UserDTO userDTO = getUserInfo(token);
-        String loginKey = "bg_" + userDTO.getUid();
-        if (redisTemplate.hasKey(loginKey)) {
-            String redisToken = (String) redisTemplate.opsForValue().get(loginKey);
-            if (token.equals(redisToken)) {
-                return true;
-            } else
-                return false;
-        } else
-            return true;
-    }
+//    private boolean isSingleDevice(String token) {
+//        System.out.println(redisTemplate);
+//        UserDTO userDTO = getUserInfo(token);
+//        String loginKey = "bg_" + userDTO.getUid();
+//        if (redisTemplate.hasKey(loginKey)) {
+//            String redisToken = (String) redisTemplate.opsForValue().get(loginKey);
+//            if (token.equals(redisToken)) {
+//                return true;
+//            } else
+//                return false;
+//        } else
+//            return true;
+//    }
 }

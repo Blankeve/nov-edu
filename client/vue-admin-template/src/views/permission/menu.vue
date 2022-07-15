@@ -80,12 +80,8 @@
           <el-form-item label="权限类型" prop="type">
             <el-radio-group v-model="form.type">
               <el-radio-button label="1">菜单</el-radio-button>
-              <el-radio-button label="2">按钮</el-radio-button>
+              <el-radio-button label="2">接口</el-radio-button>
             </el-radio-group>
-          </el-form-item>
-
-          <el-form-item label="权限级别">
-            <el-input v-model="form.value"></el-input>
           </el-form-item>
 
           <el-form-item label="接口路径">
@@ -230,7 +226,7 @@ export default {
           if (this.form.id) this.$message.success("更新成功");
           else
             this.$message.success(
-              "添加成功，如需显示请在对应角色分配该权限权限"
+              "添加成功，请在对应角色分配权限"
             );
           this.fetchData();
           this.menuFormVisible = false;
@@ -368,7 +364,7 @@ export default {
 
 #down-tree {
   flex: 1;
-  max-width: 500px;
+  max-width: 600px;
   background: rgba(245, 248, 250, 1);
   border-radius: 3px;
   border: 1px solid rgba(211, 219, 222, 1);
