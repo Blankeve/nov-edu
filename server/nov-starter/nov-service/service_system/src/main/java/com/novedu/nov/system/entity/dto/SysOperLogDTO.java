@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.novedu.nov.common.base.QueryEntity;
+import com.novedu.nov.common.base.BaseParam;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -23,7 +23,7 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @ApiModel(value="SysOperLog对象", description="")
-public class SysOperLogDTO extends QueryEntity {
+public class SysOperLogDTO extends BaseParam {
 
     private static final long serialVersionUID = 1L;
 

@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.base.RoleType;
-import com.novedu.nov.common.base.UserDTO;
+import com.novedu.nov.common.entity.UserDTO;
 import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.common.util.TreeUtils;
 import com.novedu.nov.edu.client.OpenOrderService;

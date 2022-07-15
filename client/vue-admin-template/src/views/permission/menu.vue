@@ -5,7 +5,7 @@
     <br />
     <div id="down-tree" style="width: 50%">
       <el-button type="text" size="mini" @click="() => appendRoot(data)">
-        添加一级菜单
+        添加一级权限
       </el-button>
       <div class="menu-tree">
         <el-tree
@@ -73,22 +73,22 @@
             <el-input v-model="form.parentName"></el-input>
           </el-form-item>
 
-          <el-form-item label="菜单名称" prop="title">
+          <el-form-item label="权限名称" prop="title">
             <el-input v-model="form.title"></el-input>
           </el-form-item>
 
-          <el-form-item label="菜单类型" prop="type">
+          <el-form-item label="权限类型" prop="type">
             <el-radio-group v-model="form.type">
               <el-radio-button label="1">菜单</el-radio-button>
               <el-radio-button label="2">按钮</el-radio-button>
             </el-radio-group>
           </el-form-item>
 
-          <el-form-item label="菜单级别">
+          <el-form-item label="权限级别">
             <el-input v-model="form.value"></el-input>
           </el-form-item>
 
-          <el-form-item label="权限值">
+          <el-form-item label="接口路径">
             <el-input v-model="form.value"></el-input>
           </el-form-item>
 
@@ -115,12 +115,12 @@
             </el-radio-group>
           </el-form-item>
 
-          <el-form-item label="菜单排序">
+          <el-form-item label="权限排序">
             <el-input-number
               v-model="form.sort"
               :min="0"
               :max="1000"
-              label="菜单排序"
+              label="权限排序"
             ></el-input-number>
           </el-form-item>
         </el-form>
@@ -230,7 +230,7 @@ export default {
           if (this.form.id) this.$message.success("更新成功");
           else
             this.$message.success(
-              "添加成功，如需显示请在对应角色分配该菜单权限"
+              "添加成功，如需显示请在对应角色分配该权限权限"
             );
           this.fetchData();
           this.menuFormVisible = false;
@@ -241,14 +241,14 @@ export default {
       this.resetForm();
       this.form.parentId = data.id;
       this.form.parentName = data.title;
-      this.menuFormTitle = "添加菜单";
+      this.menuFormTitle = "添加权限";
       this.menuFormVisible = true;
     },
     appendRoot(data) {
       this.resetForm();
       this.form.parentId = 0;
       this.form.parentName = "无";
-      this.menuFormTitle = "添加菜单";
+      this.menuFormTitle = "添加权限";
       this.menuFormVisible = true;
     },
     remove(node, data) {
@@ -273,7 +273,7 @@ export default {
         this.form.icon = data.icon;
         this.form.status = data.status;
         this.form.sort = data.sort;
-        this.menuFormTitle = "更新菜单";
+        this.menuFormTitle = "更新权限";
         this.menuFormVisible = true;
       }
     },

@@ -1,4 +1,4 @@
-package com.novedu.nov.common.base;
+package com.novedu.nov.common.constants;
 
 /**
  * 权限相关常量定义
@@ -57,4 +57,10 @@ public interface AuthConstant {
      */
     String USER_TOKEN_HEADER = "user";
 
+    int BUTTON_PERMISSION_TYPE = 2;
+
+    int ADMIN_ROLE_CODE = 0;
+    int TEACHER_ROLE_CODE = 5;
+    int STUDENT_ROLE_CODE = 9;
+    int WEBSITE_ADMIN_ROLE_CODE = 2;
 }

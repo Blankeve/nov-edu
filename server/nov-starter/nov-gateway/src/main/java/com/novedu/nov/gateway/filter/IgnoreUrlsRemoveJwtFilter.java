@@ -1,5 +1,5 @@
 package com.novedu.nov.gateway.filter;
-import com.novedu.nov.common.base.AuthConstant;
+import com.novedu.nov.common.constants.AuthConstant;
 import com.novedu.nov.gateway.config.IgnoreUrlsConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.server.reactive.ServerHttpRequest;

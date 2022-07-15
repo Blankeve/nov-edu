@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Data
-public class QueryEntity implements Serializable {
+public class BaseParam implements Serializable {
 
     private Date startTime;
 

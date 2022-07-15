@@ -3,7 +3,7 @@ package com.novedu.nov.gateway.filter;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 import com.nimbusds.jose.JWSObject;
-import com.novedu.nov.common.base.AuthConstant;
+import com.novedu.nov.common.constants.AuthConstant;
 import com.novedu.nov.common.base.BaseResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

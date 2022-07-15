@@ -1,7 +1,7 @@
 package com.novedu.nov.gateway.config;
 
 import cn.hutool.core.util.ArrayUtil;
-import com.novedu.nov.common.base.AuthConstant;
+import com.novedu.nov.common.constants.AuthConstant;
 import com.novedu.nov.gateway.authorization.AuthorizationManager;
 import com.novedu.nov.gateway.component.RestAuthenticationEntryPoint;
 import com.novedu.nov.gateway.component.RestfulAccessDeniedHandler;

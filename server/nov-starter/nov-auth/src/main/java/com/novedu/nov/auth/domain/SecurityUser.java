@@ -1,7 +1,7 @@
 package com.novedu.nov.auth.domain;
 
 
-import com.novedu.nov.common.base.UserDTO;
+import com.novedu.nov.common.entity.UserDTO;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

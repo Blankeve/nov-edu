@@ -1,7 +1,7 @@
 package com.novedu.nov.auth.client;
 
 
-import com.novedu.nov.common.base.UserDTO;
+import com.novedu.nov.common.entity.UserDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;

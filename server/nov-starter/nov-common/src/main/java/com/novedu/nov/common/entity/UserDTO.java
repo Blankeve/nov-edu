@@ -1,4 +1,4 @@
-package com.novedu.nov.common.base;
+package com.novedu.nov.common.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.novedu.nov.common.base;
+package com.novedu.nov.common.constants;
 
 /**
  * 消息常量

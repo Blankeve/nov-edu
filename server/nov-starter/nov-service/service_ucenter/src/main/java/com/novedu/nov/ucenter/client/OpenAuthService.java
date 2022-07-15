@@ -17,7 +17,7 @@ import java.util.Map;
  * @version:
  */
 @Component
-@FeignClient(name = "service-auth")
+@FeignClient(name = "nov-auth")
 public interface OpenAuthService {
 
     @PostMapping("/oauth/token")

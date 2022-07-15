@@ -2,8 +2,8 @@ package com.novedu.nov.common.util;
 
 import cn.hutool.json.JSONUtil;
 import com.nimbusds.jose.JWSObject;
-import com.novedu.nov.common.base.AuthConstant;
-import com.novedu.nov.common.base.UserDTO;
+import com.novedu.nov.common.constants.AuthConstant;
+import com.novedu.nov.common.entity.UserDTO;
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -38,6 +38,15 @@ public class RequestUtils {
     public static Long getUid() {
         try {
             return getUserInfo().getUid();
+        }
+        catch (NullPointerException e){
+            return null;
+        }
+    }
+
+    public static Integer getRoleCode() {
+        try {
+            return getUserInfo().getRoleCode();
         }
         catch (NullPointerException e){
             return null;

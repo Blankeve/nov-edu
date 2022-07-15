@@ -1,7 +1,7 @@
 package com.novedu.nov.auth.controller;
 
 import com.novedu.nov.auth.domain.Oauth2TokenDTO;
-import com.novedu.nov.common.base.AuthConstant;
+import com.novedu.nov.common.constants.AuthConstant;
 import com.novedu.nov.common.base.BaseResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;

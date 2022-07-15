@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.util.TreeUtils;
+import com.novedu.nov.ucenter.component.InitRolePermissionHandler;
 import com.novedu.nov.ucenter.entity.AclPermission;
 import com.novedu.nov.ucenter.entity.AclRolePermission;
 import com.novedu.nov.ucenter.entity.dto.AssignRolePermissionForm;
@@ -35,14 +36,20 @@ public class AclPermissionServiceImpl extends ServiceImpl<AclPermissionMapper, A
     @Autowired
     AclRolePermissionService rolePermissionService;
 
+    @Autowired
+    InitRolePermissionHandler rolePermissionHandler;
     @Override
     public BaseResult saveOrUpdatePermission(AclPermission permission) {
-        return BaseResult.successOrError(saveOrUpdate(permission));
+        boolean res = saveOrUpdate(permission);
+        rolePermissionHandler.InitRolePermission();
+        return BaseResult.successOrError(res);
     }
 
     @Override
     public BaseResult removePermission(Long id) {
-        return BaseResult.successOrError(removeById(id));
+        boolean res = removeById(id);
+        rolePermissionHandler.InitRolePermission();
+        return BaseResult.successOrError(res);
     }
 
     @Override
@@ -73,7 +80,9 @@ public class AclPermissionServiceImpl extends ServiceImpl<AclPermissionMapper, A
             rolePermission.setPermissionId(checkMenuIds[i]);
             rolePermissions.add(rolePermission);
         }
-        return BaseResult.successOrError(rolePermissionService.saveBatch(rolePermissions));
+        boolean res = rolePermissionService.saveBatch(rolePermissions);
+        rolePermissionHandler.InitRolePermission();
+        return BaseResult.successOrError(res);
     }
 
 

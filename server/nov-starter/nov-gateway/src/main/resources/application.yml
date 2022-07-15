@@ -2,7 +2,7 @@ server:
   port: 8100
 spring:
   application:
-    name: service-gateway
+    name: nov-gateway
   cloud:
     nacos:
       discovery:
@@ -20,8 +20,8 @@ spring:
           enabled: true
           lower-case-service-id: true #使用小写service-id
       routes: #配置路由路径
-        - id: service-auth
-          uri: lb://service-auth
+        - id: nov-auth
+          uri: lb://nov-auth
           predicates:
             - Path=/auth/**
           filters:

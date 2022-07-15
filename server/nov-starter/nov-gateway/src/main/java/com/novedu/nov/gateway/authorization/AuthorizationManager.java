@@ -3,8 +3,8 @@ package com.novedu.nov.gateway.authorization;
 import cn.hutool.core.convert.Convert;
 import cn.hutool.json.JSONUtil;
 import com.nimbusds.jose.JWSObject;
-import com.novedu.nov.common.base.AuthConstant;
-import com.novedu.nov.common.base.UserDTO;
+import com.novedu.nov.common.constants.AuthConstant;
+import com.novedu.nov.common.entity.UserDTO;
 import com.novedu.nov.gateway.config.IgnoreUrlsConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -84,11 +84,16 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
 //        if (AuthConstant.PORTAL_CLIENT_ID.equals(userDto.getClientId()) && pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, uri.getPath())) {
 //            return Mono.just(new AuthorizationDecision(false));
 //        }
-        //非管理端路径直接放行
-        if (!pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, uri.getPath())) {
+        UserDTO userDto = getUserInfo(token);
+        //管理员直接放行
+        if(AuthConstant.ADMIN_ROLE_CODE == userDto.getRoleCode()){
             return Mono.just(new AuthorizationDecision(true));
         }
-        //管理端路径需校验权限
+        //非管理端路径直接放行
+//        if (!pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, uri.getPath())) {
+//            return Mono.just(new AuthorizationDecision(true));
+//        }
+        //非管理员路径需校验权限
         Map<Object, Object> resourceRolesMap = redisTemplate.opsForHash().entries(AuthConstant.RESOURCE_ROLES_MAP_KEY);
         Iterator<Object> iterator = resourceRolesMap.keySet().iterator();
         List<String> authorities = new ArrayList<>();

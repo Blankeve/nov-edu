@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
-import com.novedu.nov.common.base.QueryEntity;
+import com.novedu.nov.common.base.BaseParam;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -29,7 +29,7 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @ApiModel(value="TradeOrder对象", description="订单")
-public class TradeOrderDTO extends QueryEntity implements Serializable {
+public class TradeOrderDTO extends BaseParam implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
