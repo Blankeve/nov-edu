@@ -44,6 +44,7 @@ service.interceptors.response.use(
    */
   response => {
     const res = response.data
+      console.log(res)
     if (res.code !== 4030 && response.headers["content-disposition"]) {
       console.log("excel")
       return response;

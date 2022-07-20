@@ -108,6 +108,7 @@ import { getAll } from "@/api/teacher";
 import { getList } from "@/api/subject";
 import { save, getOneDetailByCourseId, getIntroByCourseId } from "@/api/course";
 import { editorOptions } from "@/utils/editor-options";
+import { mapGetters } from "vuex";
 
 export default {
   data() {
@@ -185,6 +186,9 @@ export default {
       subjects: [],
       baseURL: process.env.VUE_APP_BASE_API,
     };
+  },
+    computed: {
+    ...mapGetters(["sidebar", "avatar", "name", "role", "code"]),
   },
   created() {
     this.fetchData();

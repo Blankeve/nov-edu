@@ -35,6 +35,21 @@ public class RequestUtils {
         return userDto;
     }
 
+    public static UserDTO getUserInfo(String token) {
+        String realToken = token.replace(AuthConstant.JWT_TOKEN_PREFIX, "");
+        JWSObject jwsObject;
+        try {
+            jwsObject = JWSObject.parse(realToken);
+        } catch (ParseException e) {
+            return null;
+        }
+        String userStr = jwsObject.getPayload().toString();
+        if (StringUtils.isEmpty(token))
+            return null;
+        UserDTO userDto = JSONUtil.toBean(userStr, UserDTO.class);
+        return userDto;
+    }
+
     public static Long getUid() {
         try {
             return getUserInfo().getUid();
@@ -60,5 +75,14 @@ public class RequestUtils {
       catch (NullPointerException e){
             return "";
       }
+    }
+
+    public static String getClientId(String token) {
+        try {
+            return getUserInfo(token).getClientId();
+        }
+        catch (NullPointerException e){
+            return "";
+        }
     }
 }

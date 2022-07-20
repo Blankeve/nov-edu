@@ -51,7 +51,7 @@ public class SysConfigController {
         return BaseResult.successOrError(sysConfigService.removeByIds(Arrays.asList(ids)));
     }
 
-    @PostMapping("/list")
+    @PostMapping("/list/key")
     public BaseResult<List<SysConfig>> getConfigListByKey(String key, Integer grade) {
         return sysConfigService.getConfigListByKey(key, grade);
     }

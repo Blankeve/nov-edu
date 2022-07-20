@@ -10,7 +10,7 @@ export function getList(params) {
 
 export function getListByKey(params) {
   return request({
-    url: '/ucenter/config/list',
+    url: '/ucenter/config/list/key',
     method: 'post',
     params
   })

@@ -21,7 +21,7 @@
             <nuxt-link to="/info" tag="li" active-class="current">
               <a>文章</a>
             </nuxt-link>
-            <nuxt-link to="/profile" tag="li" active-class="current">
+            <nuxt-link v-show="nickname" to="/profile" tag="li" active-class="current">
               <a>个人中心</a>
             </nuxt-link>
             <!-- <nuxt-link to="/" tag="li">

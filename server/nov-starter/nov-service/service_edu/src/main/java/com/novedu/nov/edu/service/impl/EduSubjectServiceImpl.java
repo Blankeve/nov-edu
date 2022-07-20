@@ -152,7 +152,8 @@ public class EduSubjectServiceImpl extends ServiceImpl<EduSubjectMapper, EduSubj
         if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
             Map orderInfo = (Map) baseResult.getData();
             dashBoardInfoVO.setOrderCount((Integer) orderInfo.get("count"));
-            dashBoardInfoVO.setOrderAmount((double) orderInfo.get("amount"));
+            BigDecimal amount = new BigDecimal(orderInfo.get("amount").toString());
+            dashBoardInfoVO.setOrderAmount(amount);
         }
         //1.课程分类详情     当前分类课程数量/所以分类课程数
         QueryWrapper queryWrapper = new QueryWrapper();
@@ -228,6 +229,7 @@ public class EduSubjectServiceImpl extends ServiceImpl<EduSubjectMapper, EduSubj
         List<EduSubject> children = new ArrayList<>();
         List<EduCourse> courses = courseService.list();
         children = findChildren(eduSubjectList, children, id);
+        //删除一级分类下所有课程
         if (children.size() > 0) {
             for (EduSubject child : children) {
                 for (EduCourse course : courses) {
@@ -236,6 +238,14 @@ public class EduSubjectServiceImpl extends ServiceImpl<EduSubjectMapper, EduSubj
                     }
                 }
                 removeById(child);
+            }
+        }
+        //删除二级分类下所有课程
+        else {
+            for (EduCourse course : courses) {
+                if (course.getSubjectId().equals(id)) {
+                    courseService.removeCourse(course.getId());
+                }
             }
         }
         removeById(id);

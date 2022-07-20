@@ -3,6 +3,7 @@ package com.novedu.nov.edu.entity.vo;
 import com.novedu.nov.edu.entity.EduCourse;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -17,7 +18,7 @@ public class DashBoardInfoVO {
 
     private Integer OrderCount;
 
-    private double orderAmount;
+    private BigDecimal orderAmount;
 
     private String teacherName;
 }

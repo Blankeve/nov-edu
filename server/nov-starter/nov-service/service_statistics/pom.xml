@@ -11,6 +11,13 @@
     <packaging>jar</packaging>
     <artifactId>service_statistics</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.novedu.nov</groupId>
+            <artifactId>service_system</artifactId>
+            <version>0.0.1-RELEASE</version>
+        </dependency>
+    </dependencies>
     <build>
         <plugins>
             <plugin>

@@ -3,11 +3,15 @@ package com.novedu.nov.gateway.authorization;
 import cn.hutool.core.convert.Convert;
 import cn.hutool.json.JSONUtil;
 import com.nimbusds.jose.JWSObject;
+import com.novedu.nov.common.base.ResultCode;
 import com.novedu.nov.common.constants.AuthConstant;
 import com.novedu.nov.common.entity.UserDTO;
+import com.novedu.nov.common.exception.MultiDeviceLoginException;
+import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.gateway.config.IgnoreUrlsConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.security.authorization.AuthorizationDecision;
@@ -75,9 +79,10 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
         if (StringUtils.isEmpty(token)) {
             return Mono.just(new AuthorizationDecision(false));
         }
-//        if(!isSingleDevice(token)){
-//            return Mono.just(new AuthorizationDecision(false));
-//        }
+        //限制单设备登录账号
+        if(!isSingleDevice(token)){
+            throw new MultiDeviceLoginException();
+        }
 //        UserDTO userDto = getUserInfo(token);
 //        if (AuthConstant.ADMIN_CLIENT_ID.equals(userDto.getClientId()) && !pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, uri.getPath())) {
 //            return Mono.just(new AuthorizationDecision(false));
@@ -90,7 +95,11 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
         if(AuthConstant.ADMIN_ROLE_CODE == userDto.getRoleCode()){
             return Mono.just(new AuthorizationDecision(true));
         }
+        String clientId = RequestUtils.getClientId(token);
         //非管理端路径直接放行
+        if (clientId.equals(AuthConstant.PC_CLIENT_ID)) {
+            return Mono.just(new AuthorizationDecision(true));
+        }
 //        if (!pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, uri.getPath())) {
 //            return Mono.just(new AuthorizationDecision(true));
 //        }
@@ -110,17 +119,17 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
         return Mono.just(new AuthorizationDecision(false));
     }
 
-//    private boolean isSingleDevice(String token) {
-//        System.out.println(redisTemplate);
-//        UserDTO userDTO = getUserInfo(token);
-//        String loginKey = "bg_" + userDTO.getUid();
-//        if (redisTemplate.hasKey(loginKey)) {
-//            String redisToken = (String) redisTemplate.opsForValue().get(loginKey);
-//            if (token.equals(redisToken)) {
-//                return true;
-//            } else
-//                return false;
-//        } else
-//            return true;
-//    }
+    private boolean isSingleDevice(String token) {
+        System.out.println(redisTemplate);
+        UserDTO userDTO = getUserInfo(token);
+        String loginKey = "bg_" + userDTO.getUid();
+        if (redisTemplate.hasKey(loginKey)) {
+            String redisToken = (String) redisTemplate.opsForValue().get(loginKey);
+            if (token.equals(redisToken)) {
+                return true;
+            } else
+                return false;
+        } else
+            return true;
+    }
 }

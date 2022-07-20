@@ -1,7 +1,6 @@
 
 import { getToken } from '@/utils/auth'
 import { Message } from 'element-ui'
-import { mapGetters } from 'vuex'
 export default ({ app, store }) => {
 
 
@@ -9,8 +8,7 @@ export default ({ app, store }) => {
         if (process.client) {
             const hasToken = getToken()
             if (hasToken) {
-                if (to.path === '/login') {
-                } else {
+                if (to.path !== '/login') {
                     const hasGetUserInfo = store.getters.nickname
                     if (hasGetUserInfo) {
                         next()

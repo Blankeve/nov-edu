@@ -119,7 +119,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
                 return BaseResult.error(baseResult1.getMsg());
             }
         } catch (Exception e) {
-            return BaseResult.error("登录失败，请稍后再试");
+            return BaseResult.error("登录超时，请稍后再试");
         }
 
     }
@@ -246,7 +246,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
                 return BaseResult.error(baseResult1.getMsg());
             }
         } catch (Exception e) {
-            return BaseResult.error("登录失败，请稍后再试");
+            return BaseResult.error("登录超时，请稍后再试");
         }
     }
 

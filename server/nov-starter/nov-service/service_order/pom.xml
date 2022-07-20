@@ -11,7 +11,13 @@
     <packaging>jar</packaging>
     <artifactId>service_order</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.novedu.nov</groupId>
+            <artifactId>service_system</artifactId>
+            <version>0.0.1-RELEASE</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <finalName>service_order</finalName>

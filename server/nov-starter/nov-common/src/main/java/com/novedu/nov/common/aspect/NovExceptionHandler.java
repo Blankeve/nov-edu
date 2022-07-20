@@ -1,6 +1,8 @@
-package com.novedu.nov.system.aspect;
+package com.novedu.nov.common.aspect;
 
 import com.novedu.nov.common.base.BaseResult;
+import com.novedu.nov.common.base.ResultCode;
+import com.novedu.nov.common.exception.MultiDeviceLoginException;
 import com.novedu.nov.common.exception.ServiceInvokeFailureException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindException;
@@ -64,6 +66,17 @@ public class NovExceptionHandler {
         //3.使用logback输出异常信息至控制台并保存到本地文件
         log.error(byteArrayOutputStream.toString());
         return BaseResult.error("网络出差了，请稍后再试");
+    }
+
+    @ExceptionHandler(value = MultiDeviceLoginException.class)
+    public BaseResult exceptionHandler(MultiDeviceLoginException e) {
+        //1.获取字节数组输出流
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        //2.打印异常到输出流
+        e.printStackTrace(new PrintStream(byteArrayOutputStream));
+        //3.使用logback输出异常信息至控制台并保存到本地文件
+        log.error(byteArrayOutputStream.toString());
+        return BaseResult.setStatus(ResultCode.OTHER_DEVICE_LOGIN);
     }
 
     @ExceptionHandler(value = Exception.class)

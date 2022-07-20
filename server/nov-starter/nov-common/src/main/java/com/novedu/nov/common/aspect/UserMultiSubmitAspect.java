@@ -1,4 +1,4 @@
-package com.novedu.nov.system.aspect;
+package com.novedu.nov.common.aspect;
 
 import com.novedu.nov.common.annotation.UserMultiSubmitLimit;
 import com.novedu.nov.common.base.BaseResult;
