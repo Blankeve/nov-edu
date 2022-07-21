@@ -152,8 +152,7 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
     @Override
     public BaseResult reportComment(Long id, HttpServletRequest request) {
         EduComment comment = getById(id);
-        String token = request.getHeader("X-Token");
-        Long uid = Long.valueOf(JwtUtils.getAudience(token).get("uid"));
+        Long uid = RequestUtils.getUid();
         if (comment.getUid().equals(uid))
             return BaseResult.error("不能举报自己哦");
         Integer count = query().eq("id", id).eq("report_uid", uid).count();
