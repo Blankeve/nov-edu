@@ -53,7 +53,7 @@ service.interceptors.response.use(
       }
 
       // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
-      if (res.code === 403 || res.code === 4031 || res.code === 4032) {
+      if (res.code === 4030  || res.code === 4032) {
         removeToken();
         // to re-login
         MessageBox.confirm(res.msg, '登录失效', {

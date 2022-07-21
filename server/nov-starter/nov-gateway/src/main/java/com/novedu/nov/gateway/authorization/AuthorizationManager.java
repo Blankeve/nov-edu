@@ -94,10 +94,6 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
         if (userDto == null) {
             throw new AccessDeniedException("");
         }
-        //限制单设备登录账号
-        if (!isSingleDevice(token)) {
-            throw new MultiDeviceLoginException();
-        }
 //        //管理员直接放行
 //        if (AuthConstant.ADMIN_ROLE_CODE == userDto.getRoleCode()) {
 //            return Mono.just(new AuthorizationDecision(true));
@@ -106,6 +102,10 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
         //非管理端路径直接放行
         if (clientId.equals(AuthConstant.PC_CLIENT_ID)) {
             return Mono.just(new AuthorizationDecision(true));
+        }
+        //管理端限制不可多个账号同时在线
+        if (!isSingleDevice(token)) {
+            throw new MultiDeviceLoginException();
         }
 //        if (!pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, uri.getPath())) {
 //            return Mono.just(new AuthorizationDecision(true));
