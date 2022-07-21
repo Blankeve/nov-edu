@@ -9,11 +9,13 @@ import com.novedu.nov.common.entity.UserDTO;
 import com.novedu.nov.common.exception.MultiDeviceLoginException;
 import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.gateway.config.IgnoreUrlsConfig;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.server.reactive.ServerHttpRequest;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authorization.AuthorizationDecision;
 import org.springframework.security.authorization.ReactiveAuthorizationManager;
 import org.springframework.security.core.Authentication;
@@ -37,6 +39,7 @@ import java.util.stream.Collectors;
  * 鉴权管理器，用于判断是否有资源的访问权限
  * Created by macro on 2020/6/19.
  */
+@Slf4j
 @Component
 public class AuthorizationManager implements ReactiveAuthorizationManager<AuthorizationContext> {
 
@@ -45,7 +48,7 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
     @Autowired
     private RedisTemplate redisTemplate;
 
-    private UserDTO getUserInfo(String token){
+    private UserDTO getUserInfo(String token) {
         String realToken = token.replace(AuthConstant.JWT_TOKEN_PREFIX, "");
         JWSObject jwsObject = null;
         try {
@@ -60,6 +63,7 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
 
     @Override
     public Mono<AuthorizationDecision> check(Mono<Authentication> mono, AuthorizationContext authorizationContext) {
+
         ServerHttpRequest request = authorizationContext.getExchange().getRequest();
         URI uri = request.getURI();
         PathMatcher pathMatcher = new AntPathMatcher();
@@ -79,10 +83,6 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
         if (StringUtils.isEmpty(token)) {
             return Mono.just(new AuthorizationDecision(false));
         }
-        //限制单设备登录账号
-        if(!isSingleDevice(token)){
-            throw new MultiDeviceLoginException();
-        }
 //        UserDTO userDto = getUserInfo(token);
 //        if (AuthConstant.ADMIN_CLIENT_ID.equals(userDto.getClientId()) && !pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, uri.getPath())) {
 //            return Mono.just(new AuthorizationDecision(false));
@@ -91,10 +91,17 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
 //            return Mono.just(new AuthorizationDecision(false));
 //        }
         UserDTO userDto = getUserInfo(token);
-        //管理员直接放行
-        if(AuthConstant.ADMIN_ROLE_CODE == userDto.getRoleCode()){
-            return Mono.just(new AuthorizationDecision(true));
+        if (userDto == null) {
+            throw new AccessDeniedException("");
         }
+        //限制单设备登录账号
+        if (!isSingleDevice(token)) {
+            throw new MultiDeviceLoginException();
+        }
+//        //管理员直接放行
+//        if (AuthConstant.ADMIN_ROLE_CODE == userDto.getRoleCode()) {
+//            return Mono.just(new AuthorizationDecision(true));
+//        }
         String clientId = RequestUtils.getClientId(token);
         //非管理端路径直接放行
         if (clientId.equals(AuthConstant.PC_CLIENT_ID)) {
@@ -106,21 +113,26 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
         //非管理员路径需校验权限
         Map<Object, Object> resourceRolesMap = redisTemplate.opsForHash().entries(AuthConstant.RESOURCE_ROLES_MAP_KEY);
         Iterator<Object> iterator = resourceRolesMap.keySet().iterator();
-        List<Integer> authorities = new ArrayList<>();
+        List<String> authorities = new ArrayList<>();
         while (iterator.hasNext()) {
             String pattern = (String) iterator.next();
             if (pathMatcher.match(pattern, uri.getPath())) {
-                authorities.addAll(Convert.toList(Integer.class, resourceRolesMap.get(pattern)));
+                authorities.addAll(Convert.toList(String.class, resourceRolesMap.get(pattern)));
             }
         }
+        authorities = authorities.stream().map(i -> i = AuthConstant.AUTHORITY_PREFIX + i).collect(Collectors.toList());
         //认证通过且角色匹配的用户可访问当前路径
-        if(authorities.contains(userDto.getRoleCode()))
-            return Mono.just(new AuthorizationDecision(true));
-        return Mono.just(new AuthorizationDecision(false));
+        return mono
+                .filter(Authentication::isAuthenticated)
+                .flatMapIterable(Authentication::getAuthorities)
+                .map(GrantedAuthority::getAuthority)
+                .any(authorities::contains)
+                .map(AuthorizationDecision::new)
+                .defaultIfEmpty(new AuthorizationDecision(false));
+
     }
 
     private boolean isSingleDevice(String token) {
-        System.out.println(redisTemplate);
         UserDTO userDTO = getUserInfo(token);
         String loginKey = "bg_" + userDTO.getUid();
         if (redisTemplate.hasKey(loginKey)) {

@@ -34,14 +34,14 @@ public class InitRolePermissionHandler {
 
     @PostConstruct
     public void InitRolePermission() {
-        Map<String, List<Integer>> resourceRoleMap = new TreeMap<>();
+        Map<String, List<String>> resourceRoleMap = new TreeMap<>();
         List<AclPermission> permissionList = permissionService.lambdaQuery().eq(AclPermission::getType, AuthConstant.BUTTON_PERMISSION_TYPE).list();
         List<AclRole> roleList = roleService.list();
         List<AclRolePermission> rolePermissionList = rolePermissionService.list();
         for (AclPermission permission : permissionList) {
             Set<Long> roleIds = rolePermissionList.stream().filter(item -> item.getPermissionId().equals(permission.getId())).map(AclRolePermission::getRoleId).collect(Collectors.toSet());
-            List<Integer> roleCodes = roleList.stream().filter(item -> roleIds.contains(item.getId())).map(item -> item.getCode()).collect(Collectors.toList());
-            resourceRoleMap.put(permission.getValue(), roleCodes);
+            List<String> roleNames = roleList.stream().filter(item -> roleIds.contains(item.getId())).map(item -> item.getId() + "_" + item.getName()).collect(Collectors.toList());
+            resourceRoleMap.put(permission.getValue(),roleNames);
         }
         redisTemplate.delete(AuthConstant.RESOURCE_ROLES_MAP_KEY);
         redisTemplate.opsForHash().putAll(AuthConstant.RESOURCE_ROLES_MAP_KEY, resourceRoleMap);

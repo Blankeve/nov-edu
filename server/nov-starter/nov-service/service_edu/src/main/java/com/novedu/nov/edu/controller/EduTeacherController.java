@@ -58,6 +58,11 @@ public class EduTeacherController {
         return eduTeacherService.findAll();
     }
 
+    @GetMapping("/client-all")
+    public BaseResult<List<EduTeacher>> clientAll() {
+        return eduTeacherService.findAll();
+    }
+
     @GetMapping("/all-bind/{id}")
     public BaseResult queryAllAndHadBind(@PathVariable String id) {
         return eduTeacherService.queryAllAndHadBind(id);

@@ -44,24 +44,12 @@ service.interceptors.response.use(
    */
   response => {
     const res = response.data
-      console.log(res)
-    if (res.code !== 4030 && response.headers["content-disposition"]) {
-      console.log("excel")
+    // if the custom code is not 20000, it is judged as an error.
+    if (response.headers["content-disposition"]) {
       return response;
     }
-
-    // if the custom code is not 20000, it is judged as an error.
     if (res.code !== 200) {
-      if (res.code === 500 || res.code === 4030) {
-        Message({
-          message: res.msg || 'Error',
-          type: 'error',
-          duration: 2 * 1000
-        })
-      }
-
-      // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
-      if (res.code === 403 || res.code === 4031 || res.code === 4032) {
+      if (res.code === 4030 || res.code === 4031 || res.code === 4032) {
         store.dispatch('user/resetToken');
         // to re-login
         MessageBox.confirm(res.msg, '登录确认', {
@@ -71,6 +59,26 @@ service.interceptors.response.use(
         }).then(() => {
           location.reload()
         })
+      }
+      else {
+        if (res instanceof Blob) {
+          const reader = new FileReader()
+          reader.readAsText(res)
+          reader.onload = function () {
+            const { msg } = JSON.parse(reader.result)//此处的msg就是后端返回的msg内容
+            Message({
+              message: msg || 'Error',
+              type: 'error',
+              duration: 2 * 1000
+            })
+          }
+        }
+        else
+          Message({
+            message: res.msg || 'Error',
+            type: 'error',
+            duration: 2 * 1000
+          })
       }
       return Promise.reject(new Error(res.message || 'Error'))
     }

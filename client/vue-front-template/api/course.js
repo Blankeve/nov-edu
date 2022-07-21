@@ -33,7 +33,7 @@ export function save(data) {
 
   export function getList(data) {
     return request({
-      url: '/edu/course/list',
+      url: '/edu/course/client-list',
       method: 'get',
       data
     })

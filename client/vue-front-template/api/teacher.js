@@ -18,7 +18,7 @@ export function getClientTeacherList(params) {
 
 export function getAll() {
   return request({
-    url: '/edu/edu-teacher/all',
+    url: '/edu/edu-teacher/client-all',
     method: 'get',
   })
 }

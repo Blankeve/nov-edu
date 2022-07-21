@@ -8,11 +8,10 @@ export function login(data) {
   })
 }
 
-export function getInfo(token) {
+export function getInfo() {
   return request({
     url: '/ucenter/member/info-bg',
     method: 'get',
-    params: { token }
   })
 }
 

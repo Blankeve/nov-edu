@@ -4,6 +4,7 @@ package com.novedu.nov.ucenter.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.google.code.kaptcha.Producer;
 import com.novedu.nov.common.base.BaseResult;
+import com.novedu.nov.common.constants.AuthConstant;
 import com.novedu.nov.common.constants.Constants;
 import com.novedu.nov.common.entity.UserDTO;
 import com.novedu.nov.common.util.Base64Utils;
@@ -35,6 +36,7 @@ import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
@@ -123,6 +125,9 @@ public class AclUserController {
         BeanUtils.copyProperties(aclUser, userDTO);
         userDTO.setUid(aclUser.getId());
         userDTO.setRoleCode(role.getCode());
+        List<String> roles = new ArrayList<>();
+        roles.add(role.getId()+"_"+role.getName());
+        userDTO.setRoles(roles);
         return userDTO;
     }
 
