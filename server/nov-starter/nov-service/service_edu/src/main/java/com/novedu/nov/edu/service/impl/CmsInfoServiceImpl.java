@@ -58,7 +58,7 @@ public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> impl
                 String str = (String) redisTemplate.opsForValue().get(key);
                 List<AclUser> users = objectMapper.readValue(str, new TypeReference<List<AclUser>>() {
                 });
-                List<SysConfig> sysConfigs = configService.getConfigListByKey("artcle_care",2).getData();
+                List<SysConfig> sysConfigs = configService.getConfigListByKey("artcle_cate",2).getData();
                 QueryWrapper queryWrapper = new QueryWrapper();
                 if (!StringUtils.isEmpty(cmsInfo.getTitle())) {
                     queryWrapper.like("title", cmsInfo.getTitle());

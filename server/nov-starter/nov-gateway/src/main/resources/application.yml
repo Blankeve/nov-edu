@@ -119,7 +119,7 @@ secure:
       - "/actuator/**"
       - "/auth/oauth/token"
       - "/auth/rsa/publicKey"
-      - "/order/trade/hasbuy/*"
+      - "/order/trade/hasbuy/*/*"
       - "/order/trade/count"
       - "/ucenter/role/by-uid"
       - "/ucenter/member/login"
