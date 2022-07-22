@@ -88,15 +88,15 @@
             <el-input v-model="form.value"></el-input>
           </el-form-item>
 
-          <el-form-item label="访问名称">
+          <el-form-item label="组件访问名称">
             <el-input v-model="form.name"></el-input>
           </el-form-item>
 
-          <el-form-item label="访问路径" prop="path">
+          <el-form-item label="组件访问路径《权限类型为接口时填写随意》" prop="path">
             <el-input v-model="form.path"></el-input>
           </el-form-item>
 
-          <el-form-item label="组件路径" prop="component">
+          <el-form-item label="组件本地路径《一级菜单填写Layout，权限类型为接口时填写随意》" prop="component">
             <el-input v-model="form.component"></el-input>
           </el-form-item>
 

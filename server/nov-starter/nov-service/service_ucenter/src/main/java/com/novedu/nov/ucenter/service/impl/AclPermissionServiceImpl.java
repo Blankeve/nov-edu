@@ -9,15 +9,19 @@ import com.novedu.nov.ucenter.component.InitRolePermissionHandler;
 import com.novedu.nov.ucenter.entity.AclPermission;
 import com.novedu.nov.ucenter.entity.AclRolePermission;
 import com.novedu.nov.ucenter.entity.dto.AssignRolePermissionForm;
+import com.novedu.nov.ucenter.entity.vo.AclPermissionVO;
 import com.novedu.nov.ucenter.mapper.AclPermissionMapper;
 import com.novedu.nov.ucenter.service.AclPermissionService;
 import com.novedu.nov.ucenter.service.AclRolePermissionService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -57,9 +61,21 @@ public class AclPermissionServiceImpl extends ServiceImpl<AclPermissionMapper, A
     }
 
     @Override
-    public BaseResult<List<AclPermission>> queryTree() {
-        List permissions = list();
+    public BaseResult<List<AclPermissionVO>> queryTree() {
+        List<AclPermission> permissions = list();
+        if (!CollectionUtils.isEmpty(permissions)) {
+            permissions = (List<AclPermission>) TreeUtils.toTree(permissions, AclPermission.class);
+            Collections.sort(permissions);
+            permissions.forEach(o -> childrenSort(o.getChildren()));
+        }
         return BaseResult.success(TreeUtils.toTree(permissions, AclPermission.class));
+    }
+
+    private void childrenSort(List<AclPermission> children) {
+        if (CollectionUtils.isEmpty(children))
+            return;
+        Collections.sort(children);
+        children.forEach(o -> childrenSort(o.getChildren()));
     }
 
     @Override

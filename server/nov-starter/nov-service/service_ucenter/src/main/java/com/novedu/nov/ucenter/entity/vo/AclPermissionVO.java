@@ -51,7 +51,6 @@ public class AclPermissionVO implements Serializable , Comparable<AclPermissionV
     @ApiModelProperty(value = "状态(0:禁止,1:正常)")
     private boolean hidden;
 
-    @TableField(exist = false)
     private List<AclPermissionVO> children;
 
     private Integer sort;
