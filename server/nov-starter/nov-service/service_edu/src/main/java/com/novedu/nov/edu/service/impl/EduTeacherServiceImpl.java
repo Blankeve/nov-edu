@@ -6,24 +6,29 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.base.RoleType;
+import com.novedu.nov.common.constants.RedisKeyConstants;
 import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.edu.client.OpenUcenterService;
+import com.novedu.nov.edu.entity.EduCourse;
 import com.novedu.nov.edu.entity.EduTeacher;
 import com.novedu.nov.edu.entity.dto.EduTeacherDTO;
 import com.novedu.nov.edu.entity.dto.UserBindTeacherForm;
 import com.novedu.nov.edu.mapper.EduTeacherMapper;
 import com.novedu.nov.edu.service.EduTeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * <p>
@@ -39,6 +44,8 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
 
     @Autowired
     OpenUcenterService openUcenterService;
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     @Override
     public BaseResult<List<EduTeacher>> queryTeacherPage(Page page, EduTeacherDTO teacher) {
@@ -86,16 +93,23 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
         }
         Map role = (Map) baseResult.getData();
         Integer code = (Integer) role.get("code");
-        if (code == RoleType.TEACHER.getCode()){
+        if (code == RoleType.TEACHER.getCode()) {
             Long teacherId = query().eq("uid", uid).one().getId();
-            return BaseResult.success(query().eq("id",teacherId).list());
+            return BaseResult.success(query().eq("id", teacherId).list());
         }
         return BaseResult.success(list());
     }
 
     @Override
     public BaseResult<List<EduTeacher>> getClientTeacherList() {
-        return BaseResult.success(query().orderByDesc("sort").last("limit 4").list());
+        List<EduTeacher> teachers;
+        if (redisTemplate.hasKey(RedisKeyConstants.CLIENT_TEACHER_LIST)) {
+            teachers = (List<EduTeacher>) redisTemplate.opsForValue().get(RedisKeyConstants.CLIENT_TEACHER_LIST);
+        } else {
+            teachers = lambdaQuery().orderByDesc(EduTeacher::getSort).last("limit 4").list();
+            redisTemplate.opsForValue().set(RedisKeyConstants.CLIENT_COURSE_LIST1, teachers, 5, TimeUnit.MINUTES);
+        }
+        return BaseResult.success(teachers);
     }
 
     @Override
@@ -122,7 +136,7 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
         List<EduTeacher> teachers = list();
         String id = "";
         for (EduTeacher teacher : teachers) {
-            if (uid.equals(teacher.getUid()+"")) {
+            if (uid.equals(teacher.getUid() + "")) {
                 id = teacher.getId() + "";
                 break;
             }
@@ -134,7 +148,7 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
     @Override
     public BaseResult updateBindTeacher(UserBindTeacherForm bindTeacherForm) {
         EduTeacher teacher = query().eq("id", bindTeacherForm.getId()).one();
-        if(teacher.getUid() != null){
+        if (teacher.getUid() != null) {
             return BaseResult.error("该讲师已经绑定其它账号");
         }
         clearBind(String.valueOf(bindTeacherForm.getUid()));
@@ -145,8 +159,8 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
     @Override
     public BaseResult clearBind(String uid) {
         UpdateWrapper updateWrapper = new UpdateWrapper();
-        updateWrapper.eq("uid",uid);
-        updateWrapper.set("uid",null);
+        updateWrapper.eq("uid", uid);
+        updateWrapper.set("uid", null);
         return BaseResult.successOrError(update(updateWrapper));
     }
 

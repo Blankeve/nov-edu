@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.base.RoleType;
+import com.novedu.nov.common.constants.RedisKeyConstants;
 import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.edu.client.OpenUcenterService;
@@ -264,12 +265,22 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     @Override
     public BaseResult<List<EduCourse>> getClientCourseList() {
-        List<EduCourse> courses1 = query().eq("status", 1).orderByDesc("view_count").last("limit 8").list();
-        setCourseCommentCount(courses1);
-        List<EduCourse> courses2 = query().eq("status", 1).orderByDesc("buy_count").last("limit 8").list();
-        setCourseCommentCount(courses2);
-        // List<EduCourse> courses3 = query().eq("status", 1).gt("price", 0).orderByDesc("buy_count").last("limit 8").list();
-        //  setCourseCommentCount(courses3);
+        List<EduCourse> courses1;
+        List<EduCourse> courses2;
+        if (redisTemplate.hasKey(RedisKeyConstants.CLIENT_COURSE_LIST1)) {
+            courses1 = (List<EduCourse>) redisTemplate.opsForValue().get(RedisKeyConstants.CLIENT_COURSE_LIST1);
+        } else {
+            courses1 = lambdaQuery().eq(EduCourse::getStatus, 1).orderByDesc(EduCourse::getViewCount).last("limit 8").list();
+            setCourseCommentCount(courses1);
+            redisTemplate.opsForValue().set(RedisKeyConstants.CLIENT_COURSE_LIST1, courses1, 5, TimeUnit.MINUTES);
+        }
+        if (redisTemplate.hasKey(RedisKeyConstants.CLIENT_COURSE_LIST2)) {
+            courses2 = (List<EduCourse>) redisTemplate.opsForValue().get(RedisKeyConstants.CLIENT_COURSE_LIST2);
+        } else {
+            courses2 = lambdaQuery().eq(EduCourse::getStatus, 1).orderByDesc(EduCourse::getBuyCount).last("limit 8").list();
+            setCourseCommentCount(courses2);
+            redisTemplate.opsForValue().set(RedisKeyConstants.CLIENT_COURSE_LIST2, courses2, 5, TimeUnit.MINUTES);
+        }
         return BaseResult.success()
                 .mapSet("c1", courses1)
                 .mapSet("c2", courses2);

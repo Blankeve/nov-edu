@@ -66,8 +66,7 @@ const actions = {
         const { data } = response
 
         if (!data) {
-          removeToken()
-          return reject('登录失效，请重新登录')
+          return reject('获取个人信息失败')
         }
 
         const { uid, avatar, nickname } = data
@@ -77,8 +76,7 @@ const actions = {
         commit('SET_UID', uid)
         resolve(data)
       }).catch(error => {
-        removeToken()
-        return reject('登录失效，请重新登录')
+        return reject('获取个人信息失败')
       })
     })
   },

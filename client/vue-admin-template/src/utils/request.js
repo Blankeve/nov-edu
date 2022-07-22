@@ -49,7 +49,7 @@ service.interceptors.response.use(
       return response;
     }
     if (res.code !== 200) {
-      if (res.code === 4030 || res.code === 4031 || res.code === 4032) {
+      if (res.code === 4030 || res.code === 4031) {
         store.dispatch('user/resetToken');
         // to re-login
         MessageBox.confirm(res.msg, '登录确认', {

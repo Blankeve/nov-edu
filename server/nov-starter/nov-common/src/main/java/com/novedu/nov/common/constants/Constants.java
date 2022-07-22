@@ -6,5 +6,8 @@ public class Constants {
 
     public static final long CAPTCHA_EXPIRATION = 2;
 
+    public static final String CLIENT_COURSE_List1_KEY = "client_course_list1";
+    public static final String CLIENT_COURSE_List2_KEY = "client_course_list2";
+
 
 }
