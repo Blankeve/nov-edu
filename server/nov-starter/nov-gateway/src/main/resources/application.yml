@@ -14,7 +14,12 @@ spring:
         max-wait: -1
         max-idle: 500
         min-idle: 0
-    timeout: 5000
+    lettuce:
+      cluster:
+        refresh:
+          adaptive: true
+          period: 20
+    timeout: 5000ms
     password: ju2009jedis
     database: 0     #Redis提供了 16 个索引库，但是每个数据库之间是隔离互不共享的，客户端默认连接使用的是 0 号数据库
   cloud:
