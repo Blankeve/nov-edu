@@ -107,7 +107,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
             if (BaseResult.success().getCode().equals(baseResult1.getCode())) {
                 AclUser user2 = lambdaQuery().eq(AclUser::getUsername, ucenterMemberDto.getUsername()).one();
                 Map data = (Map) baseResult1.getData();
-                String token = (String) data.get("token");
+                String token = AuthConstant.JWT_TOKEN_PREFIX + data.get("token");
                 String loginKey = "bg_" + user2.getId();
                 redisTemplate.opsForValue().set(loginKey, token, 1, TimeUnit.DAYS);
                 saveLoginInfo(user2);
@@ -235,7 +235,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
             if (BaseResult.success().getCode().equals(baseResult1.getCode())) {
                 AclUser user2 = lambdaQuery().eq(AclUser::getUsername, user.getUsername()).one();
                 Map data = (Map) baseResult1.getData();
-                String token =AuthConstant.JWT_TOKEN_PREFIX+ data.get("token");
+                String token = AuthConstant.JWT_TOKEN_PREFIX + data.get("token");
                 String loginKey = "bg_" + user2.getId();
                 redisTemplate.opsForValue().set(loginKey, token, 1, TimeUnit.DAYS);
                 saveLoginInfo(user2);
