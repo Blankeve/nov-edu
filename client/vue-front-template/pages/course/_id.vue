@@ -399,7 +399,8 @@ export default {
           this.course = resp.data;
         }
       });
-      getOrderByUidAndCourseId(id).then((resp) => {
+      let uid = this.uid?this.uid:1;
+      getOrderByUidAndCourseId(id,uid).then((resp) => {
         if (resp.code === 200 && resp.data.paid) {
           this.paid = true;
         }
