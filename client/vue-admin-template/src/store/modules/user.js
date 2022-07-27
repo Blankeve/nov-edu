@@ -103,7 +103,7 @@ const actions = {
         const { data } = response
 
         if (!data) {
-          return reject('获取个人信息失败')
+          return reject('登录失效，请重新登录')
         }
 
         const { username, avatar, code, roleName, menus } = data
@@ -117,7 +117,7 @@ const actions = {
 
         resolve(data)
       }).catch(error => {
-        return reject('获取个人信息失败')
+        return reject('登录失效，请重新登录')
       })
     })
   },

@@ -5,7 +5,7 @@ import { removeToken } from '@/utils/auth'
 
 // create an axios instance
 const service = axios.create({
-  baseURL: 'http://localhost:8100', // url = base url + request url
+  baseURL: 'http://159.75.234.20:8100', // url = base url + request url
   // withCredentials: true, // send cookies when cross-domain requests
   timeout: 10000 // request timeout
 })
@@ -53,7 +53,7 @@ service.interceptors.response.use(
       }
 
       // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
-      if (res.code === 4030  || res.code === 4031) {
+      if (res.code === 4031) {
         removeToken();
         // to re-login
         MessageBox.confirm(res.msg, '登录失效', {
