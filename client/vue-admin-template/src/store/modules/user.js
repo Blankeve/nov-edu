@@ -7,7 +7,8 @@ import { constantRoutes, theLastRoute } from '@/router'
 const getDefaultState = () => {
   return {
     token: getToken(),
-    name: '',
+    username: '',
+    roleName: '',
     avatar: '',
     routes: '',
     code: ''
@@ -63,8 +64,8 @@ const mutations = {
   SET_TOKEN: (state, token) => {
     state.token = token
   },
-  SET_NAME: (state, name) => {
-    state.name = name
+  SET_NAME: (state, username ) => {
+    state.username = username
   },
   SET_AVATAR: (state, avatar) => {
     state.avatar = avatar
@@ -72,8 +73,8 @@ const mutations = {
   SET_CODE: (state, code) => {
     state.code = code
   },
-  SET_ROLE: (state, role) => {
-    state.role = role
+  SET_ROLE: (state, roleName) => {
+    state.roleName = roleName
   },
   SET_ROUTES: (state, routes) => {
     state.routes = constantRoutes.concat(routes).concat(theLastRoute)
@@ -101,8 +102,9 @@ const actions = {
     return new Promise((resolve, reject) => {
       getInfo(state.token).then(response => {
         const { data } = response
-
+          console.log(data)
         if (!data) {
+          removeToken();
           return reject('登录失效，请重新登录')
         }
 
@@ -117,6 +119,7 @@ const actions = {
 
         resolve(data)
       }).catch(error => {
+        console.log(error)
         return reject('登录失效，请重新登录')
       })
     })

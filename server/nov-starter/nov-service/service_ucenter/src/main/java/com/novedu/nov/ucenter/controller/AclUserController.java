@@ -141,7 +141,7 @@ public class AclUserController {
         return aclUserService.getInfoClient(token);
     }
 
-    @GetMapping("/info-dashboard")
+    @GetMapping("/login-info")
     public BaseResult getDashBoardInfo() {
         return aclUserService.getDashBoardInfo();
     }

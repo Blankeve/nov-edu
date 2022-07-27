@@ -4,22 +4,21 @@
       <el-col :span="8">
         <el-card shadow="hover" class="mgb20" style="height: 262px">
           <div class="user-info">
-            <img :src="userInfo.avatar" class="user-avator" alt />
+            <img :src="avatar" class="user-avator" alt />
             <div class="user-info-cont">
-              <div class="user-info-name">{{ userInfo.username }}</div>
+              <div class="user-info-name">{{ username }}</div>
               <div>
-                {{ userInfo.rolename
-                }}{{ teacherName ? "-" + teacherName : "" }}
+                {{ roleName }}{{ teacherName ? "-" + teacherName : "" }}
               </div>
             </div>
           </div>
           <div class="user-info-list">
             上次登录时间：
-            <span>{{ userInfo.lastLoginTime }}</span>
+            <span>{{ userLoginInfo.lastLoginTime }}</span>
           </div>
           <div class="user-info-list">
             上次登录地点：
-            <span>{{ userInfo.lastLoginIp }}</span>
+            <span>{{ userLoginInfo.lastLoginIp }}</span>
           </div>
         </el-card>
         <el-card v-if="code != 5" shadow="hover" style="height: 415px">
@@ -77,7 +76,7 @@
               <div class="grid-content grid-con-1">
                 <i class="el-icon-user-solid grid-con-icon"></i>
                 <div class="grid-cont-right">
-                  <div class="grid-num">{{ userInfo.users }}</div>
+                  <div class="grid-num">{{ userLoginInfo.users }}</div>
                   <div>用户数</div>
                 </div>
               </div>
@@ -88,7 +87,7 @@
               <div class="grid-content grid-con-1">
                 <i class="el-icon-view grid-con-icon"></i>
                 <div class="grid-cont-right">
-                  <div class="grid-num">{{ userInfo.accessNum }}</div>
+                  <div class="grid-num">{{ userLoginInfo.accessNum }}</div>
                   <div>首页访问量</div>
                 </div>
               </div>
@@ -165,7 +164,7 @@
           </template>
           <el-table
             :show-header="false"
-            :data="userInfo.recentAddUsers"
+            :data="userLoginInfo.recentAddUsers"
             style="width: 100%"
           >
             <el-table-column width="120" align="left">
@@ -232,7 +231,7 @@
 <script>
 import Schart from "vue-schart";
 import { getDashboardInfo } from "@/api/subject";
-import { getUserDashBoardInfo } from "@/api/user";
+import { getUserLoginInfo } from "@/api/user";
 import { getAWeekUserRegisterAndLoginCount } from "@/api/statistics";
 import { mapGetters } from "vuex";
 
@@ -248,11 +247,8 @@ export default {
       lineCharts: {},
       recentAddCourses: [],
       subjectRatios: [],
-      userInfo: {
-        avatar: "",
-        username: "",
+      userLoginInfo: {
         users: 0,
-        rolename: "",
         lastLoginIp: "",
         lastLoginTime: "",
         recentAddUsers: [],
@@ -261,7 +257,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["sidebar", "avatar", "name", "role", "code"]),
+    ...mapGetters(["avatar", "username", "roleName", "code"]),
   },
   created() {
     this.fetchData();
@@ -278,9 +274,9 @@ export default {
           this.teacherName = resp.data.teacherName;
         }
       });
-      getUserDashBoardInfo().then((resp) => {
+      getUserLoginInfo().then((resp) => {
         if (resp.code === 200) {
-          this.userInfo = resp.data.userInfo;
+          this.userLoginInfo = resp.data.userLoginInfo;
         }
       });
       if (this.code != 5) {

@@ -340,11 +340,6 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         AclUserRole userRole = userRoleService.query().eq("uid", user.getId()).one();
         AclRole role = roleService.query().eq("id", userRole.getRoleId()).one();
         Map userInfo = new HashMap();
-        userInfo.put("uid", user.getId());
-        userInfo.put("avatar", user.getAvatar());
-        userInfo.put("username", user.getUsername());
-        userInfo.put("rolename", role.getName());
-        userInfo.put("code", role.getCode());
         userInfo.put("lastLoginTime", user.getLastLoginTime());
         userInfo.put("lastLoginIp", user.getLastLoginIp());
         if (!role.getCode().equals(RoleType.TEACHER.getCode())) {
@@ -356,7 +351,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
                 userInfo.put("accessNum", accessNum);
             }
         }
-        return BaseResult.success().mapSet("userInfo", userInfo);
+        return BaseResult.success().mapSet("userLoginInfo", userInfo);
     }
 
     @Override

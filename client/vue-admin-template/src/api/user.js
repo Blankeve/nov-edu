@@ -15,9 +15,9 @@ export function getInfo() {
   })
 }
 
-export function getUserDashBoardInfo() {
+export function getUserLoginInfo() {
   return request({
-    url: '/ucenter/member/info-dashboard',
+    url: '/ucenter/member/login-info',
     method: 'get',
   })
 }
