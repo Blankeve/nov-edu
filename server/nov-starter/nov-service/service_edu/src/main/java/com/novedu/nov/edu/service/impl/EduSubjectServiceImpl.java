@@ -157,9 +157,8 @@ public class EduSubjectServiceImpl extends ServiceImpl<EduSubjectMapper, EduSubj
         List<Map.Entry<String, Float>> list = new ArrayList<Map.Entry<String, Float>>(subjectRatios.entrySet());
         //根据value排序
         Collections.sort(list, (o1, o2) -> (int) (o2.getValue() - o1.getValue()));
-
-        if (list.size() > 6)
-            list = list.subList(0, 6);
+        if (list.size() > 8)
+            list = list.subList(0, 8);
         List<Map> mapList = new ArrayList<>();
         for (Map.Entry<String, Float> stringFloatEntry : list) {
             Map map = new HashMap();

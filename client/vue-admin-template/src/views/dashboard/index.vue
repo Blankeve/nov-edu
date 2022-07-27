@@ -24,7 +24,7 @@
         <el-card v-if="code != 5" shadow="hover" style="height: 415px">
           <template #header>
             <div class="clearfix">
-              <span>课程分类详情</span>
+              <span>上架课程分类占比详情-取前8</span>
             </div>
           </template>
           <div v-if="subjectRatios && subjectRatios.length > 0">
@@ -64,6 +64,27 @@
             {{ subjectRatios[5].title }}
             <el-progress
               :percentage="subjectRatios[5].value"
+              color="#f56c6c"
+            ></el-progress>
+          </div>
+          <div v-if="subjectRatios && subjectRatios.length > 6">
+            {{ subjectRatios[6].title }}
+            <el-progress
+              :percentage="subjectRatios[6].value"
+              color="#f56c6c"
+            ></el-progress>
+          </div>
+          <div v-if="subjectRatios && subjectRatios.length > 7">
+            {{ subjectRatios[7].title }}
+            <el-progress
+              :percentage="subjectRatios[7].value"
+              color="#f56c6c"
+            ></el-progress>
+          </div>
+          <div v-if="subjectRatios && subjectRatios.length > 8">
+            {{ subjectRatios[8].title }}
+            <el-progress
+              :percentage="subjectRatios[8].value"
               color="#f56c6c"
             ></el-progress>
           </div>
