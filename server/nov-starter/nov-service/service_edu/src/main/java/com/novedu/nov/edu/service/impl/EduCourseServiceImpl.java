@@ -8,14 +8,14 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.base.RoleType;
 import com.novedu.nov.common.constants.RedisKeyConstants;
+import com.novedu.nov.common.entity.UserDTO;
 import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.common.util.RequestUtils;
+import com.novedu.nov.edu.client.OpenOrderService;
 import com.novedu.nov.edu.client.OpenUcenterService;
-import com.novedu.nov.edu.entity.EduChapter;
-import com.novedu.nov.edu.entity.EduCourse;
-import com.novedu.nov.edu.entity.EduCourseIntro;
-import com.novedu.nov.edu.entity.EduVideo;
+import com.novedu.nov.edu.entity.*;
 import com.novedu.nov.edu.entity.dto.EduCourseInfoDTO;
+import com.novedu.nov.edu.entity.vo.DashBoardInfoVO;
 import com.novedu.nov.edu.entity.vo.EduCourseInfoVO;
 import com.novedu.nov.edu.mapper.EduCourseMapper;
 import com.novedu.nov.edu.service.*;
@@ -79,6 +79,9 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     @Autowired
     OpenUcenterService openUcenterService;
+
+    @Autowired
+    OpenOrderService openOrderService;
 
     private String courseViewCountRedisKey = "course_play_count";
 
@@ -189,6 +192,40 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
             queryWrapper.eq("c1.id", courseInfoDTO.getId());
         }
         return BaseResult.success(courseMapper.queryCourseTree(new Page(1, 1), queryWrapper));
+    }
+
+    @Override
+    public BaseResult getRecentAddCourses() {
+        Long uid = RequestUtils.getUid();
+        Integer rolecode = RequestUtils.getRoleCode();
+        DashBoardInfoVO dashBoardInfoVO = new DashBoardInfoVO();
+        Long teacherId = 0l;
+        if (rolecode.equals(RoleType.TEACHER.getCode())) {
+            EduTeacher teacher = teacherService.query().eq("uid", uid).one();
+            if(teacher == null)
+                return BaseResult.error("当前账号尚未绑定讲师");
+            teacherId = teacher.getId();
+            dashBoardInfoVO.setTeacherName(teacher.getName());
+        }
+        BaseResult baseResult = openOrderService.queryOrderCount(teacherId);
+        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
+            Map orderInfo = (Map) baseResult.getData();
+            dashBoardInfoVO.setOrderCount((Integer) orderInfo.get("count"));
+            BigDecimal amount = new BigDecimal(orderInfo.get("amount").toString());
+            dashBoardInfoVO.setOrderAmount(amount);
+        }
+        QueryWrapper queryWrapper = new QueryWrapper();
+        if (teacherId != 0) {
+            queryWrapper.eq("teacher_id", teacherId);
+        }
+        queryWrapper.eq("status", 1);
+        queryWrapper.orderByDesc("create_time");
+        List<EduCourse> courses = list(queryWrapper);
+        dashBoardInfoVO.setCourseCount(courses.size());
+        if (courses.size() > 4)
+            courses = courses.subList(0, 4);
+        dashBoardInfoVO.setRecentAddCourses(courses);
+        return BaseResult.success(dashBoardInfoVO);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)

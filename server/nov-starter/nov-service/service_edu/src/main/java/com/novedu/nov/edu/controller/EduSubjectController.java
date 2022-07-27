@@ -72,9 +72,9 @@ public class EduSubjectController {
     }
 
     @ApiOperation("获取仪表盘数据")
-    @GetMapping("/dashboard-info")
-    public BaseResult getDashBoardInfo(HttpServletRequest request ) {
-        return eduSubjectService.getDashBoardInfo(request);
+    @GetMapping("/subject-ratios")
+    public BaseResult getSubjectRatios() {
+        return eduSubjectService.getSubjectRatios();
     }
 }
 

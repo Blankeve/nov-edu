@@ -172,3 +172,4 @@ secure:
       - "/ucenter/config/list/key"
       - "/upload/img"
       - "/upload/video"
+      - "/edu/edu-teacher/all-bind/*"

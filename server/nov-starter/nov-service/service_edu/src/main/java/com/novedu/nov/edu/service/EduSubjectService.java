@@ -31,7 +31,7 @@ public interface EduSubjectService extends IService<EduSubject> {
 
     BaseResult updateSubjects(Map<String, List<EduSubject>> eduSubjects);
 
-    BaseResult getDashBoardInfo(HttpServletRequest request);
+    BaseResult getSubjectRatios();
 
     BaseResult saveOrUpdateSubject(EduSubject subject);
 

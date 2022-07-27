@@ -137,40 +137,10 @@ public class EduSubjectServiceImpl extends ServiceImpl<EduSubjectMapper, EduSubj
     }
 
     @Override
-    public BaseResult getDashBoardInfo(HttpServletRequest request) {
-        UserDTO userInfo = RequestUtils.getUserInfo();
-        Long uid = userInfo.getUid();
-        Integer rolecode = Integer.valueOf(userInfo.getRoleCode());
-        DashBoardInfoVO dashBoardInfoVO = new DashBoardInfoVO();
-        Long teacherId = 0l;
-        if (rolecode.equals(RoleType.TEACHER.getCode())) {
-            EduTeacher teacher = teacherService.query().eq("uid", uid).one();
-            teacherId = teacher.getId();
-            dashBoardInfoVO.setTeacherName(teacher.getName());
-        }
-        BaseResult baseResult = openOrderService.queryOrderCount(teacherId);
-        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
-            Map orderInfo = (Map) baseResult.getData();
-            dashBoardInfoVO.setOrderCount((Integer) orderInfo.get("count"));
-            BigDecimal amount = new BigDecimal(orderInfo.get("amount").toString());
-            dashBoardInfoVO.setOrderAmount(amount);
-        }
+    public BaseResult getSubjectRatios() {
         //1.课程分类详情     当前分类课程数量/所以分类课程数
-        QueryWrapper queryWrapper = new QueryWrapper();
-        if (teacherId != 0) {
-            queryWrapper.eq("teacher_id", teacherId);
-        }
-        queryWrapper.eq("status", 1);
-        queryWrapper.orderByDesc("create_time");
-        List<EduCourse> courses = courseService.list(queryWrapper);
-        dashBoardInfoVO.setCourseCount(courses.size());
-        if (rolecode.equals(RoleType.TEACHER.getCode())) {
-            if (courses.size() > 4)
-                courses = courses.subList(0, 4);
-            dashBoardInfoVO.setRecentAddCourses(courses);
-            return BaseResult.success(dashBoardInfoVO);
-        }
-
+        DashBoardInfoVO dashBoardInfoVO = new DashBoardInfoVO();
+        List<EduCourse> courses = courseService.list();
         List<EduSubject> subjects = list();
         Map subjectRatios = new HashMap();
         for (EduSubject subject : subjects) {
@@ -198,10 +168,6 @@ public class EduSubjectServiceImpl extends ServiceImpl<EduSubjectMapper, EduSubj
             mapList.add(map);
         }
         dashBoardInfoVO.setSubjectRatios(mapList);
-        if (courses.size() > 4)
-            courses = courses.subList(0, 4);
-        dashBoardInfoVO.setRecentAddCourses(courses);
-
         return BaseResult.success(dashBoardInfoVO);
     }
 

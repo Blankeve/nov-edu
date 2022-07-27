@@ -230,7 +230,8 @@
 
 <script>
 import Schart from "vue-schart";
-import { getDashboardInfo } from "@/api/subject";
+import { getSubjectRatios } from "@/api/subject";
+import { getRecentAddCourses } from "@/api/course";
 import { getUserLoginInfo } from "@/api/user";
 import { getAWeekUserRegisterAndLoginCount } from "@/api/statistics";
 import { mapGetters } from "vuex";
@@ -264,15 +265,12 @@ export default {
   },
   methods: {
     fetchData() {
-      getDashboardInfo().then((resp) => {
-        if (resp.code === 200) {
-          this.courseCount = resp.data.courseCount;
-          this.orderCount = resp.data.orderCount;
-          this.orderAmount = resp.data.orderAmount;
-          this.subjectRatios = resp.data.subjectRatios;
-          this.recentAddCourses = resp.data.recentAddCourses;
-          this.teacherName = resp.data.teacherName;
-        }
+      getRecentAddCourses().then((resp) => {
+        this.courseCount = resp.data.courseCount;
+        this.orderCount = resp.data.orderCount;
+        this.orderAmount = resp.data.orderAmount;
+        this.teacherName = resp.data.teacherName;
+        this.recentAddCourses = resp.data.recentAddCourses;
       });
       getUserLoginInfo().then((resp) => {
         if (resp.code === 200) {
@@ -280,6 +278,11 @@ export default {
         }
       });
       if (this.code != 5) {
+        getSubjectRatios().then((resp) => {
+          if (resp.code === 200) {
+            this.subjectRatios = resp.data.subjectRatios;
+          }
+        });
         getAWeekUserRegisterAndLoginCount().then((resp) => {
           if (resp.code === 200) {
             this.barCharts = resp.data.logAndRegBC;

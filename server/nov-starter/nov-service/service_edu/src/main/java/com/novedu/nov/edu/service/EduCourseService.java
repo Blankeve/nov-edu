@@ -57,4 +57,6 @@ public interface EduCourseService extends IService<EduCourse> {
     BaseResult releaseCourse(EduCourseInfoDTO courseInfoDTO);
 
     BaseResult queryClientCourseTree(EduCourseInfoDTO courseInfoDTO);
+
+    BaseResult getRecentAddCourses();
 }

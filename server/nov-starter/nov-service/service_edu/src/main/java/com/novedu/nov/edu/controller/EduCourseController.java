@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
@@ -117,6 +118,12 @@ public class EduCourseController {
     @GetMapping("/client-bought")
     public BaseResult<List<EduCourse>> getClientBoughtCourseList(){
         return eduCourseService.getClientBoughtCourseList();
+    }
+
+    @ApiOperation("获取仪表盘数据")
+    @GetMapping("/recent-courses")
+    public BaseResult getDashBoardInfo() {
+        return eduCourseService.getRecentAddCourses();
     }
 
     @ApiOperation("统计课程播放量")

@@ -93,3 +93,11 @@ export function save(data) {
       params: {id}
     })
   }
+
+  export function getRecentAddCourses() {
+    return request({
+      url: '/edu/course/recent-courses',
+      method: 'get',
+    })
+  }
+  

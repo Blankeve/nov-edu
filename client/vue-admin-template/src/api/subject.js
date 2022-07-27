@@ -7,9 +7,9 @@ export function getList() {
   })
 }
 
-export function getDashboardInfo() {
+export function getSubjectRatios() {
   return request({
-    url: '/edu/subject/dashboard-info',
+    url: '/edu/subject/subject-ratios',
     method: 'get',
   })
 }
