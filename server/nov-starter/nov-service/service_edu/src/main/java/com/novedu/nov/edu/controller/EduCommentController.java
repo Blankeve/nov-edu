@@ -36,7 +36,7 @@ public class EduCommentController {
     }
 
     @PostMapping("/export")
-    public void exportCoursePage(HttpServletResponse response, Page page, EduUserCommentDTO eduComment) {
+    public void exportCommentPage(HttpServletResponse response, Page page, EduUserCommentDTO eduComment) {
         eduCommentService.exportCommentPage(response,page, eduComment);
     }
 

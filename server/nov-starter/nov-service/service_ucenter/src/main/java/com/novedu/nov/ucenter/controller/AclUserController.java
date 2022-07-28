@@ -55,14 +55,6 @@ public class AclUserController {
 
     @Autowired
     private AclUserService aclUserService;
-    @Autowired
-    private SysConfigService configService;
-    @Autowired
-    private RedisTemplate redisTemplate;
-    @Autowired
-    private AclUserRoleService userRoleService;
-    @Autowired
-    private AclRoleService roleService;
 
     @PostMapping("/login")
     public BaseResult login(AclUser aclUser) {
@@ -118,17 +110,7 @@ public class AclUserController {
     @PostMapping("/load-username")
     @Transactional(propagation = Propagation.REQUIRED)
     public UserDTO loadUserByUsername(String username) {
-        AclUser aclUser = aclUserService.lambdaQuery().eq(AclUser::getUsername,username).one();
-        AclUserRole userRole = userRoleService.lambdaQuery().eq(AclUserRole::getUid,aclUser.getId()).one();
-        AclRole role = roleService.lambdaQuery().eq(AclRole::getId,userRole.getRoleId()).one();
-        UserDTO userDTO = new UserDTO();
-        BeanUtils.copyProperties(aclUser, userDTO);
-        userDTO.setUid(aclUser.getId());
-        userDTO.setRoleCode(role.getCode());
-        List<String> roles = new ArrayList<>();
-        roles.add(role.getId()+"_"+role.getName());
-        userDTO.setRoles(roles);
-        return userDTO;
+        return aclUserService.loadUserByUsername(username);
     }
 
     @GetMapping("/info-bg")
@@ -158,51 +140,12 @@ public class AclUserController {
         return aclUserService.syncUsersCache();
     }
 
-    @Resource(name = "captchaProducer")
-    private Producer captchaProducer;
-    @Resource(name = "captchaProducerMath")
-    private Producer captchaProducerMath;
-
     /**
      * 生成验证码
      */
     @GetMapping("/picVerifyCode")
-    public BaseResult getCode(HttpServletResponse response) throws IOException {
-
-        BaseResult<SysConfig> baseResult = configService.getSysConfigByKey(Constants.PIC_VERIFY_CODE);
-
-        SysConfig sysConfig = baseResult.getData();
-        if (sysConfig == null) {
-            return BaseResult.success();
-        }
-        // 保存验证码信息
-        String uuid = UUID.randomUUID().toString();
-        String verifyKey = Constants.PIC_VERIFY_CODE + uuid;
-
-        String capStr = null, code = null;
-        BufferedImage image = null;
-
-        String codeType = sysConfig.getConfigValue();
-        // 生成验证码
-        if ("math".equals(codeType)) {
-            String capText = captchaProducerMath.createText();
-            capStr = capText.substring(0, capText.lastIndexOf("@"));
-            code = capText.substring(capText.lastIndexOf("@") + 1);
-            image = captchaProducerMath.createImage(capStr);
-        } else if ("char".equals(codeType)) {
-            capStr = code = captchaProducer.createText();
-            image = captchaProducer.createImage(capStr);
-        }
-
-        redisTemplate.opsForValue().set(verifyKey, code, Constants.CAPTCHA_EXPIRATION, TimeUnit.MINUTES);
-        // 转换流信息写出
-        FastByteArrayOutputStream os = new FastByteArrayOutputStream();
-        try {
-            ImageIO.write(image, "jpg", os);
-        } catch (IOException e) {
-            return BaseResult.error(e.getMessage());
-        }
-        return BaseResult.success().mapSet("uuid", uuid).mapSet("img", Base64Utils.encode(os.toByteArray()));
+    public BaseResult getCode(){
+        return aclUserService.getCode();
     }
 }
 

@@ -3,6 +3,7 @@ package com.novedu.nov.ucenter.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.novedu.nov.common.base.BaseResult;
+import com.novedu.nov.common.entity.UserDTO;
 import com.novedu.nov.ucenter.entity.AclUser;
 import com.novedu.nov.ucenter.entity.dto.AclUserDTO;
 import com.novedu.nov.ucenter.entity.dto.AclUserPasswordDTO;
@@ -51,4 +52,8 @@ public interface AclUserService extends IService<AclUser> {
     BaseResult syncUsersCache();
 
     BaseResult getInfoClient(String token);
+
+    BaseResult getCode();
+
+    UserDTO loadUserByUsername(String username);
 }
