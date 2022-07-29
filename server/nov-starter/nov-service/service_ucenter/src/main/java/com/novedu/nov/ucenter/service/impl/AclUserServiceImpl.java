@@ -11,6 +11,7 @@ import com.novedu.nov.common.constants.AuthConstant;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.constants.Constants;
 import com.novedu.nov.common.base.RoleType;
+import com.novedu.nov.common.constants.RedisKeyConstants;
 import com.novedu.nov.common.entity.UserDTO;
 import com.novedu.nov.common.util.Base64Utils;
 import com.novedu.nov.common.util.ExcelUtils;
@@ -118,7 +119,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
                 Map loginInfo = new HashMap();
                 loginInfo.put("nickname", ucenterMember.getNickname());
                 loginInfo.put("avatar", ucenterMember.getAvatar());
-                return BaseResult.success().mapSet("access_token", token).mapSet("loginInfo", loginInfo);
+                return BaseResult.success().map("access_token", token).map("loginInfo", loginInfo);
             } else {
                 return BaseResult.error(baseResult1.getMsg());
             }
@@ -244,7 +245,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
                 redisTemplate.opsForValue().set(loginKey, token, 1, TimeUnit.DAYS);
                 saveLoginInfo(user2);
                 return BaseResult.success("登录成功")
-                        .mapSet("token", token)
+                        .map("token", token)
                         ;
             } else {
                 return BaseResult.error(baseResult1.getMsg());
@@ -288,11 +289,11 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
             permissionVOS.forEach(o -> childrenSort(o.getChildren()));
         }
         return BaseResult.success()
-                .mapSet("username", user.getUsername())
-                .mapSet("avatar", user.getAvatar())
-                .mapSet("code", role.getCode())
-                .mapSet("roleName", role.getName())
-                .mapSet("menus", permissionVOS);
+                .map("username", user.getUsername())
+                .map("avatar", user.getAvatar())
+                .map("code", role.getCode())
+                .map("roleName", role.getName())
+                .map("menus", permissionVOS);
     }
 
     private void childrenSort(List<AclPermissionVO> children) {
@@ -355,7 +356,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
                 userInfo.put("accessNum", accessNum);
             }
         }
-        return BaseResult.success().mapSet("userLoginInfo", userInfo);
+        return BaseResult.success().map("userLoginInfo", userInfo);
     }
 
     @Override
@@ -369,7 +370,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         queryWrapper = new QueryWrapper();
         queryWrapper.like("last_login_time", nowDate);
         Integer loginCount = count(queryWrapper);
-        return BaseResult.success().mapSet("registerCount", registerCount).mapSet("loginCount", loginCount);
+        return BaseResult.success().map("registerCount", registerCount).map("loginCount", loginCount);
     }
 
     @Override
@@ -395,12 +396,11 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
 
     @Override
     public BaseResult syncUsersCache() {
-        String key = "usersCache";
         List<AclUser> aclUsers = list();
         if (ObjectUtils.isEmpty(aclUsers))
             return BaseResult.error("获取用户列表失败");
         try {
-            redisTemplate.opsForValue().set(key, new ObjectMapper().writeValueAsString(aclUsers));
+            redisTemplate.opsForValue().set(RedisKeyConstants.USERS_CACHE, new ObjectMapper().writeValueAsString(aclUsers));
         } catch (JsonProcessingException e) {
             return BaseResult.error("用户列表写入缓存失败");
         }
@@ -411,10 +411,10 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
     public BaseResult getInfoClient(String token) {
         Long uid = RequestUtils.getUid();
         AclUser user = getById(uid);
-        return BaseResult.success().mapSet("username", user.getUsername())
-                .mapSet("uid", uid + "")
-                .mapSet("nickname", user.getNickname())
-                .mapSet("avatar", user.getAvatar());
+        return BaseResult.success().map("username", user.getUsername())
+                .map("uid", uid + "")
+                .map("nickname", user.getNickname())
+                .map("avatar", user.getAvatar());
     }
 
     @Resource(name = "captchaProducer")
@@ -457,7 +457,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         } catch (IOException e) {
             return BaseResult.error(e.getMessage());
         }
-        return BaseResult.success().mapSet("uuid", uuid).mapSet("img", Base64Utils.encode(os.toByteArray()));
+        return BaseResult.success().map("uuid", uuid).map("img", Base64Utils.encode(os.toByteArray()));
     }
 
     @Override

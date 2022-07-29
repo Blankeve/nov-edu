@@ -42,10 +42,6 @@ public interface EduCourseService extends IService<EduCourse> {
 
     BaseResult statisticsCoursePlayCount();
 
-    BaseResult<List<EduCourse>> getClientApplyCourseList();
-
-    BaseResult<List<EduCourse>> getClientBoughtCourseList();
-
     BaseResult statisticsCourseApplyCount();
 
     BaseResult statisticsCourseBuyCount();

@@ -317,7 +317,7 @@ import { getClientCourseList } from "@/api/course";
 import { getClientTeacherList } from "@/api/teacher";
 import { receiveNotice } from "@/api/notice";
 import { getFormatTime } from "@/utils/datetime-format";
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 
 export default {
   data() {
@@ -356,9 +356,7 @@ export default {
     ...mapGetters(["uid"]),
   },
   mounted() {
-    let uid = this.uid;
     let adId = "n_";
-    if (uid) adId += uid;
     receiveNotice().then((resp) => {
       if (resp.code === 200) {
         this.notice = resp.data;

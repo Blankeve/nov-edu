@@ -1,5 +1,6 @@
 package com.novedu.nov.edu.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -7,6 +8,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.novedu.nov.common.base.BaseResult;
+import com.novedu.nov.common.constants.RedisKeyConstants;
 import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.edu.client.OpenOrderService;
@@ -71,8 +73,8 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
 
     @Override
     public BaseResult saveVideo(EduVideo video) {
-        QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("chapter_id", video.getChapterId());
+        LambdaQueryWrapper<EduVideo> queryWrapper = new LambdaQueryWrapper();
+        queryWrapper.eq(EduVideo::getChapterId, video.getChapterId());
         List<EduVideo> eduVideos = list(queryWrapper);
         if (!ObjectUtils.isEmpty(video.getId()))
             video.setSort(null);
@@ -156,12 +158,11 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
         Long uid = RequestUtils.getUid();
         if (!queryOrderByUidAndCourseId(id, uid))
             return BaseResult.error("请先购买该课程");
-        String key = "video_play_count";
-        boolean hasKey = redisTemplate.hasKey(key);
+        boolean hasKey = redisTemplate.hasKey(RedisKeyConstants.VIDEO_PLAY_COUNT);
         Long playCount = 1l;
         Map videoPlayCounts;
         if (hasKey) {
-            videoPlayCounts = (Map) redisTemplate.opsForValue().get(key);
+            videoPlayCounts = (Map) redisTemplate.opsForValue().get(RedisKeyConstants.VIDEO_PLAY_COUNT);
             playCount = (Long) videoPlayCounts.get(id);
             if (playCount != null) {
                 playCount++;
@@ -171,8 +172,8 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
             videoPlayCounts = new HashMap();
         }
         videoPlayCounts.put(id, playCount);
-        redisTemplate.opsForValue().set(key, videoPlayCounts);
-        String historyKey = "history_watch_" + uid;
+        redisTemplate.opsForValue().set(RedisKeyConstants.VIDEO_PLAY_COUNT, videoPlayCounts);
+        String historyKey = RedisKeyConstants.HISTORY_WATCH + uid;
         List<EduStudyRecordVO> historyWatchVOS = new ArrayList<>();
         ObjectMapper objectMapper = new ObjectMapper();
         if (redisTemplate.hasKey(historyKey)) {
@@ -184,12 +185,12 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
                 log.error(e.getMessage());
             }
         }
-        EduVideo video = query().eq("id", id).one();
-        QueryWrapper chapterWrapper = new QueryWrapper();
-        chapterWrapper.eq("id", video.getChapterId());
+        EduVideo video = lambdaQuery().eq(EduVideo::getId, id).one();
+        LambdaQueryWrapper<EduChapter> chapterWrapper = new LambdaQueryWrapper();
+        chapterWrapper.eq(EduChapter::getId, video.getChapterId());
         EduChapter chapter = chapterService.getOne(chapterWrapper);
-        QueryWrapper courseWrapper = new QueryWrapper();
-        courseWrapper.eq("id", chapter.getCourseId());
+        LambdaQueryWrapper<EduCourse> courseWrapper = new LambdaQueryWrapper();
+        courseWrapper.eq(EduCourse::getId, chapter.getCourseId());
         EduCourse course = courseService.getOne(courseWrapper);
         EduStudyRecordVO historyWatchVO = new EduStudyRecordVO();
         historyWatchVO.setCourseId(course.getId());
@@ -243,7 +244,7 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
     @Override
     public BaseResult queryHistoryWatchPage(Page page) {
         Long uid = RequestUtils.getUid();
-        String historyKey = "history_watch_" + uid;
+        String historyKey = RedisKeyConstants.HISTORY_WATCH + uid;
         List<EduStudyRecordVO> historyWatchVOS = new ArrayList<>();
         ObjectMapper objectMapper = new ObjectMapper();
         if (redisTemplate.hasKey(historyKey)) {

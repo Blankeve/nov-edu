@@ -141,7 +141,7 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
                 break;
             }
         }
-        return BaseResult.success().mapSet("list", teachers).mapSet("bind", id);
+        return BaseResult.success().map("list", teachers).map("bind", id);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)

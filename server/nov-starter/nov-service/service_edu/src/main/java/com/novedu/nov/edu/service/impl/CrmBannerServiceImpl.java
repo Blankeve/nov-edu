@@ -45,7 +45,7 @@ public class CrmBannerServiceImpl extends ServiceImpl<CrmBannerMapper, CrmBanner
 
     @Override
     public BaseResult<List<CrmBanner>> getClientBannerList() {
-        List<CrmBanner> list = query().orderByDesc("sort").orderByDesc("create_time").last("limit 5").list();
+        List<CrmBanner> list = lambdaQuery().orderByDesc(CrmBanner::getSort).orderByDesc(CrmBanner::getCreateTime).last("limit 5").list();
         return BaseResult.success(list);
     }
 }

@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.novedu.nov.common.base.BaseResult;
+import com.novedu.nov.common.constants.RedisKeyConstants;
 import com.novedu.nov.edu.client.OpenUcenterService;
 import com.novedu.nov.edu.entity.AclUser;
 import com.novedu.nov.edu.entity.CmsInfo;
@@ -46,8 +47,6 @@ public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> impl
     @Autowired
     RedisTemplate redisTemplate;
 
-    private String key = "usersCache";
-
     @Override
     public BaseResult queryPage(Page page, CmsInfo cmsInfo) {
         BaseResult baseResult = openUcenterService.syncUsersCache();
@@ -55,10 +54,10 @@ public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> impl
         if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
             try {
                 ObjectMapper objectMapper = new ObjectMapper();
-                String str = (String) redisTemplate.opsForValue().get(key);
+                String str = (String) redisTemplate.opsForValue().get(RedisKeyConstants.USERS_CACHE);
                 List<AclUser> users = objectMapper.readValue(str, new TypeReference<List<AclUser>>() {
                 });
-                List<SysConfig> sysConfigs = configService.getConfigListByKey("artcle_cate",2).getData();
+                List<SysConfig> sysConfigs = configService.getConfigListByKey("artcle_cate", 2).getData();
                 QueryWrapper queryWrapper = new QueryWrapper();
                 if (!StringUtils.isEmpty(cmsInfo.getTitle())) {
                     queryWrapper.like("title", cmsInfo.getTitle());
@@ -90,10 +89,10 @@ public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> impl
                     try {
                         String catename = sysConfigs.stream().filter(s -> s.getConfigValue().equals(o.getCate().toString())).findAny().get().getConfigName();
                         o.setCatename(catename);
-                    }catch(NoSuchElementException ex) {
+                    } catch (NoSuchElementException ex) {
                         log.error(ex.getMessage());
                     }
-                    Long clickCount  = (Long) redisTemplate.opsForValue().get("info" + o.getId());
+                    Long clickCount = (Long) redisTemplate.opsForValue().get(RedisKeyConstants.INFO_CLICK_COUNT + o.getId());
                     o.setClickCount(clickCount);
                 }
             } catch (Exception e) {
@@ -111,7 +110,7 @@ public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> impl
         BaseResult baseResult = openUcenterService.syncUsersCache();
         if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
             ObjectMapper objectMapper = new ObjectMapper();
-            String str = (String) redisTemplate.opsForValue().get(key);
+            String str = (String) redisTemplate.opsForValue().get(RedisKeyConstants.USERS_CACHE);
             try {
                 List<AclUser> users = objectMapper.readValue(str, new TypeReference<List<AclUser>>() {
                 });
@@ -123,13 +122,12 @@ public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> impl
                 e.printStackTrace();
             }
         }
-        Long clickCount  = (Long) redisTemplate.opsForValue().get("info" + id);
+        Long clickCount = (Long) redisTemplate.opsForValue().get(RedisKeyConstants.INFO_CLICK_COUNT + id);
         if (clickCount != null) {
             clickCount++;
-        }
-        else
+        } else
             clickCount = 1l;
-        redisTemplate.opsForValue().set("info" + id, clickCount);
+        redisTemplate.opsForValue().set(RedisKeyConstants.INFO_CLICK_COUNT + id, clickCount);
         cmsInfoVO.setClickCount(clickCount);
         return BaseResult.success(cmsInfoVO);
     }

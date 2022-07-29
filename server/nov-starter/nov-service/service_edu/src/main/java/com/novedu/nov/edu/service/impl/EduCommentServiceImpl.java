@@ -1,5 +1,6 @@
 package com.novedu.nov.edu.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -102,8 +103,8 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
 
     @Override
     public BaseResult queryCommentPage(Page page, EduComment eduComment) {
-        QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("course_id", eduComment.getCourseId());
+        LambdaQueryWrapper<EduComment> queryWrapper = new LambdaQueryWrapper();
+        queryWrapper.eq(EduComment::getCourseId, eduComment.getCourseId());
         IPage<EduUserCommentVO> page1 = commentMapper.queryPage(page, queryWrapper);
         for (EduUserCommentVO record : page1.getRecords()) {
             if (!StringUtils.hasText(record.getNickname()))
@@ -154,8 +155,8 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
         EduComment comment = getById(id);
         Long uid = RequestUtils.getUid();
         if (comment.getUid().equals(uid))
-            return BaseResult.error("不能举报自己哦");
-        Integer count = query().eq("id", id).eq("report_uid", uid).count();
+            return BaseResult.error("不能举报自己的评论");
+        Integer count = lambdaQuery().eq(EduComment::getId, id).eq(EduComment::getReportUid, uid).count();
         if (count > 0)
             return BaseResult.error("您已经举报过该条评论啦");
         comment.setReported(1);

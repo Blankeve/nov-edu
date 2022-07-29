@@ -3,6 +3,7 @@ package com.novedu.nov.edu.service.impl;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
+import com.novedu.nov.common.constants.RedisKeyConstants;
 import com.novedu.nov.edu.entity.CmsNotice;
 import com.novedu.nov.edu.mapper.CmsNoticeMapper;
 import com.novedu.nov.edu.service.CmsNoticeService;
@@ -23,7 +24,7 @@ public class CmsNoticeServiceImpl extends ServiceImpl<CmsNoticeMapper, CmsNotice
 
     @Autowired
     private RedisTemplate redisTemplate;
-    private String accessKey = "access_num";
+
 
     @Override
     public BaseResult saveOrUpdateNotice(CmsNotice cmsNotice) {
@@ -42,14 +43,22 @@ public class CmsNoticeServiceImpl extends ServiceImpl<CmsNoticeMapper, CmsNotice
 
     @Override
     public BaseResult receiveNotice() {
-        if(redisTemplate.hasKey(accessKey)){
-           Integer accessNum = (Integer) redisTemplate.opsForValue().get(accessKey);
-           accessNum++;
-           redisTemplate.opsForValue().set(accessKey,accessNum);
+        //统计首页点击量
+        if (redisTemplate.hasKey(RedisKeyConstants.ACCESS_NUM)) {
+            Integer accessNum = (Integer) redisTemplate.opsForValue().get(RedisKeyConstants.ACCESS_NUM);
+            accessNum++;
+            redisTemplate.opsForValue().set(RedisKeyConstants.ACCESS_NUM, accessNum);
+        } else
+            redisTemplate.opsForValue().set(RedisKeyConstants.ACCESS_NUM, 1);
+        //接收最新公告
+        CmsNotice notice;
+        if (redisTemplate.hasKey(RedisKeyConstants.FRONT_NOTICE)) {
+            notice = (CmsNotice) redisTemplate.opsForValue().get(RedisKeyConstants.FRONT_NOTICE);
+        } else {
+            notice = lambdaQuery().eq(CmsNotice::getType, 1).orderByDesc(CmsNotice::getCreateTime).last("limit 1").one();
+            redisTemplate.opsForValue().set(RedisKeyConstants.FRONT_NOTICE, notice);
         }
-        else
-            redisTemplate.opsForValue().set(accessKey,1);
-        return BaseResult.success(query().eq("type",1).orderByDesc("create_time").last("limit 1").one());
+        return BaseResult.success(notice);
     }
 
 

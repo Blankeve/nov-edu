@@ -1,10 +1,12 @@
 package com.novedu.nov.order.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.base.RoleType;
+import com.novedu.nov.common.constants.RedisKeyConstants;
 import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.order.client.OpenEduService;
@@ -52,12 +54,12 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
     public BaseResult createOrder(TradeOrder tradeOrder) {
         Long courseId = tradeOrder.getCourseId();
         Long uid = tradeOrder.getUid();
-        String userOrderKey = "order_course_" + courseId + "_uid_" + uid;
+        String userOrderKey = RedisKeyConstants.USER_ORDER + courseId + "_uid_" + uid;
         boolean hasKey = redisTemplate.hasKey(userOrderKey);
         if (hasKey) {
             TradeOrder order = (TradeOrder) redisTemplate.opsForValue().get(userOrderKey);
             if (order != null) {
-                return BaseResult.success("该课程当前已有未支付订单").mapSet("order", order.getId() + "");
+                return BaseResult.success("该课程当前已有未支付订单").map("order", order.getId() + "");
             }
         }
         Map courseInfo = (Map) openEduService.queryCourseDetail(courseId).getData();
@@ -84,7 +86,7 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
             log.error("学习人数同步失败");
         }
         redisTemplate.opsForValue().set(userOrderKey, tradeOrder, 30, TimeUnit.MINUTES);
-        return BaseResult.success().mapSet("order", tradeOrder.getId() + "");
+        return BaseResult.success().map("order", tradeOrder.getId() + "");
     }
 
     @Override
@@ -133,12 +135,12 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
             uid = RequestUtils.getUid();
         if (uid == null)
             return BaseResult.success();
-        QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("uid", uid);
-        queryWrapper.eq("course_id", id);
-        queryWrapper.eq("status", 1);
+        LambdaQueryWrapper<TradeOrder> queryWrapper = new LambdaQueryWrapper();
+        queryWrapper.eq(TradeOrder::getUid, uid);
+        queryWrapper.eq(TradeOrder::getCourseId, id);
+        queryWrapper.eq(TradeOrder::getStatus, 1);
         int count = count(queryWrapper);
-        return BaseResult.success().mapSet("paid", count > 0);
+        return BaseResult.success().map("paid", count > 0);
     }
 
     @Override

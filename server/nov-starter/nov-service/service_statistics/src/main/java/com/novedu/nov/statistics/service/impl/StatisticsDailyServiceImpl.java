@@ -62,6 +62,6 @@ public class StatisticsDailyServiceImpl extends ServiceImpl<StatisticsDailyMappe
         EchartsVO lineCharts = new EchartsVO();
         BeanUtils.copyProperties(barCharts, lineCharts);
         lineCharts.setType("line");
-        return BaseResult.success().mapSet("logAndRegBC",barCharts).mapSet("logAndRegLC",lineCharts);
+        return BaseResult.success().map("logAndRegBC",barCharts).map("logAndRegLC",lineCharts);
     }
 }

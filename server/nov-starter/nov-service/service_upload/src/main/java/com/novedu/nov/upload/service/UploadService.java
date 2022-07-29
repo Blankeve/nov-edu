@@ -72,7 +72,7 @@ public class UploadService {
             imgName = snowFlake.nextValue() + suffix;
             File dest2 = new File(savePath, imgName);
             img.transferTo(dest2);
-            return BaseResult.success().mapSet("path", baseUrl + "/" + imgPath + imgName);
+            return BaseResult.success().map("path", baseUrl + "/" + imgPath + imgName);
         } catch (IOException e) {
             return BaseResult.error(e.getMessage());
         } catch (Exception e) {
@@ -114,10 +114,10 @@ public class UploadService {
             MultimediaObject multimediaObject = new MultimediaObject(dest2);
             MultimediaInfo multimediaInfo = multimediaObject.getInfo();
             long videoTime = multimediaInfo.getDuration() / 1000;
-            return BaseResult.success().mapSet("path", baseUrl + "/" + videoPath + videoName)
-                    .mapSet("videoOriginalName", videoName)
-                    .mapSet("duration", videoTime)
-                    .mapSet("size", videoSize)
+            return BaseResult.success().map("path", baseUrl + "/" + videoPath + videoName)
+                    .map("videoOriginalName", videoName)
+                    .map("duration", videoTime)
+                    .map("size", videoSize)
                     ;
         } catch (IOException e) {
             return BaseResult.error(e.getMessage());

@@ -1,5 +1,6 @@
 package com.novedu.nov.edu.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -43,8 +44,8 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
 
     @Override
     public BaseResult saveChapter(EduChapter chapter) {
-        QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("course_id", chapter.getCourseId());
+        LambdaQueryWrapper<EduChapter> queryWrapper = new LambdaQueryWrapper();
+        queryWrapper.eq(EduChapter::getCourseId, chapter.getCourseId());
         List<EduChapter> eduChapters = list(queryWrapper);
         if (!ObjectUtils.isEmpty(chapter.getId()))
             chapter.setSort(null);
@@ -55,15 +56,15 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
             if (eduChapters.stream().filter(o -> o.getSort().equals(chapter.getSort())).count() > 0)
                 return BaseResult.error("当前章节已存在!");
         }
-        if(StringUtils.hasText(chapter.getTitle()))
-        chapter.setTitle(chapter.getTitle().trim());
+        if (StringUtils.hasText(chapter.getTitle()))
+            chapter.setTitle(chapter.getTitle().trim());
         saveOrUpdate(chapter);
         return BaseResult.success(chapter.getId());
     }
 
     @Override
     public BaseResult queryChaptersByCourseId(Long id) {
-        return BaseResult.success(query().eq("course_id", id).list());
+        return BaseResult.success(lambdaQuery().eq(EduChapter::getCourseId, id).list());
     }
 
     @Override
@@ -78,7 +79,7 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
         Date start = chapterInfoDTO.getStartTime();
         Date end = chapterInfoDTO.getEndTime();
         if (start != null && end != null && end.getTime() > start.getTime())
-            queryWrapper.apply("chapter.create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and chapter.create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start,end);
+            queryWrapper.apply("chapter.create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and chapter.create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start, end);
         return BaseResult.success(chapterMapper.queryPage(page, queryWrapper));
     }
 

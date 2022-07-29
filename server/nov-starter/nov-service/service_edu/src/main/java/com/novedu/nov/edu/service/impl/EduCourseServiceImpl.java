@@ -1,6 +1,8 @@
 package com.novedu.nov.edu.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -83,7 +85,6 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     @Autowired
     OpenOrderService openOrderService;
 
-    private String courseViewCountRedisKey = "course_play_count";
 
     private boolean needToken = true;
 
@@ -93,11 +94,11 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         if (courseInfoDTO.getSubjectId() == null || courseInfoDTO.getSubjectId().length < 2) {
             return BaseResult.error("课程分类不能为空");
         }
-        QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("teacher_id", courseInfoDTO.getTeacherId());
-        queryWrapper.eq("title", courseInfoDTO.getTitle());
+        LambdaQueryWrapper<EduCourse> queryWrapper = new LambdaQueryWrapper();
+        queryWrapper.eq(EduCourse::getTeacherId, courseInfoDTO.getTeacherId());
+        queryWrapper.eq(EduCourse::getTitle, courseInfoDTO.getTitle());
         if (!ObjectUtils.isEmpty(courseInfoDTO.getId()))
-            queryWrapper.ne("id", courseInfoDTO.getId());
+            queryWrapper.ne(EduCourse::getId, courseInfoDTO.getId());
         if (!CollectionUtils.isEmpty(list(queryWrapper)))
             return BaseResult.error("当前课程已存在!");
         EduCourse course = new EduCourse();
@@ -114,7 +115,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     @Override
     public BaseResult queryCourseDetail(Long id) {
-        String key = "course_detail_" + id;
+        String key = RedisKeyConstants.COURSE_DETAIL + id;
         boolean hasKey = redisTemplate.hasKey(key);
         EduCourseInfoVO courseInfoVO;
         if (hasKey) {
@@ -202,7 +203,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         Long teacherId = 0l;
         if (rolecode.equals(RoleType.TEACHER.getCode())) {
             EduTeacher teacher = teacherService.query().eq("uid", uid).one();
-            if(teacher == null)
+            if (teacher == null)
                 return BaseResult.error("当前账号尚未绑定讲师");
             teacherId = teacher.getId();
             dashBoardInfoVO.setTeacherName(teacher.getName());
@@ -214,12 +215,12 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
             BigDecimal amount = new BigDecimal(orderInfo.get("amount").toString());
             dashBoardInfoVO.setOrderAmount(amount);
         }
-        QueryWrapper queryWrapper = new QueryWrapper();
+        LambdaQueryWrapper<EduCourse> queryWrapper = new LambdaQueryWrapper();
         if (teacherId != 0) {
-            queryWrapper.eq("teacher_id", teacherId);
+            queryWrapper.eq(EduCourse::getTeacherId, teacherId);
         }
-        queryWrapper.eq("status", 1);
-        queryWrapper.orderByDesc("create_time");
+        queryWrapper.eq(EduCourse::getStatus, 1);
+        queryWrapper.orderByDesc(EduCourse::getCreateTime);
         List<EduCourse> courses = list(queryWrapper);
         dashBoardInfoVO.setCourseCount(courses.size());
         if (courses.size() > 4)
@@ -247,7 +248,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     @Override
     public BaseResult queryCoursesByTeacherId(Long eduTeacher) {
-        List<EduCourse> eduCourses = query().eq("status", 1).eq("teacher_id", eduTeacher).list();
+        List<EduCourse> eduCourses = lambdaQuery().eq(EduCourse::getStatus, 1).eq(EduCourse::getTeacherId, eduTeacher).list();
         setCourseCommentCount(eduCourses);
         return BaseResult.success(eduCourses);
     }
@@ -319,47 +320,33 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
             redisTemplate.opsForValue().set(RedisKeyConstants.CLIENT_COURSE_LIST2, courses2, 5, TimeUnit.MINUTES);
         }
         return BaseResult.success()
-                .mapSet("c1", courses1)
-                .mapSet("c2", courses2);
-        //  .mapSet("c3", courses3);
-    }
-
-    @Override
-    public BaseResult<List<EduCourse>> getClientApplyCourseList() {
-        List<EduCourse> courses = query().eq("status", 1).orderByDesc("apply_count").last("limit 8").list();
-        setCourseCommentCount(courses);
-        return BaseResult.success(courses);
-    }
-
-    @Override
-    public BaseResult<List<EduCourse>> getClientBoughtCourseList() {
-        List<EduCourse> courses = query().eq("status", 1).gt("price", 0).orderByDesc("buy_count").last("limit 8").list();
-        setCourseCommentCount(courses);
-        return BaseResult.success(courses);
+                .map("c1", courses1)
+                .map("c2", courses2);
+        //  .map("c3", courses3);
     }
 
 
     @Override
     public BaseResult queryClientCoursePage(Page page, EduCourseInfoDTO courseInfoDTO) {
-        QueryWrapper queryWrapper = new QueryWrapper();
+        LambdaQueryWrapper<EduCourse> queryWrapper = new LambdaQueryWrapper();
         Integer subjectId = courseInfoDTO.getClientSubjectId();
         if (subjectId != null && subjectId > 0)
-            queryWrapper.eq("subject_id", subjectId);
+            queryWrapper.eq(EduCourse::getSubjectId, subjectId);
         String title = courseInfoDTO.getTitle();
         if (StringUtils.hasText(title))
-            queryWrapper.like("title", title);
+            queryWrapper.like(EduCourse::getTitle, title);
         Integer orderFieldValue = courseInfoDTO.getOrderFieldValue();
         if (orderFieldValue != null && !orderFieldValue.equals(EduCourseInfoDTO.ORDER_BY.NONE.ordinal())) {
             if (orderFieldValue.equals(EduCourseInfoDTO.ORDER_BY.NEWEST_ASC.ordinal()))
-                queryWrapper.orderByAsc("create_time");
+                queryWrapper.orderByAsc(EduCourse::getCreateTime);
             else if (orderFieldValue.equals(EduCourseInfoDTO.ORDER_BY.NEWEST_DESC.ordinal()))
-                queryWrapper.orderByDesc("create_time");
+                queryWrapper.orderByDesc(EduCourse::getCreateTime);
             else if (orderFieldValue.equals(EduCourseInfoDTO.ORDER_BY.PRICE_ASC.ordinal()))
-                queryWrapper.orderByAsc("price");
+                queryWrapper.orderByAsc(EduCourse::getPrice);
             else if (orderFieldValue.equals(EduCourseInfoDTO.ORDER_BY.PRICE_DESC.ordinal()))
-                queryWrapper.orderByDesc("price");
+                queryWrapper.orderByDesc(EduCourse::getPrice);
         }
-        queryWrapper.eq("status", 1);
+        queryWrapper.eq(EduCourse::getStatus, 1);
         Page page1 = page(page, queryWrapper);
         List<EduCourse> courses = page1.getRecords();
         setCourseCommentCount(courses);
@@ -368,8 +355,8 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     private void setCourseCommentCount(List<EduCourse> courses) {
         courses.forEach(o -> {
-                    QueryWrapper queryWrapper1 = new QueryWrapper();
-                    queryWrapper1.eq("course_id", o.getId());
+                    LambdaQueryWrapper<EduComment> queryWrapper1 = new LambdaQueryWrapper();
+                    queryWrapper1.eq(EduComment::getCourseId, o.getId());
                     o.setCommentCount((long) commentService.count(queryWrapper1));
                 }
         );
@@ -377,8 +364,8 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     private void setCourseCommentCount2(List<EduCourseInfoVO> courses) {
         courses.forEach(o -> {
-                    QueryWrapper queryWrapper1 = new QueryWrapper();
-                    queryWrapper1.eq("course_id", o.getCourseId());
+                    LambdaQueryWrapper<EduComment> queryWrapper1 = new LambdaQueryWrapper();
+                    queryWrapper1.eq(EduComment::getCourseId, o.getCourseId());
                     o.setCourseCommentCount((long) commentService.count(queryWrapper1));
                 }
         );
@@ -390,11 +377,10 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         needToken = false;
         Page page = (Page) queryCourseTree(new Page(1, count()), new EduCourseInfoDTO()).getData();
         List<EduCourse> courses = page.getRecords();
-        String key = "video_play_count";
-        boolean hasKey = redisTemplate.hasKey(key);
+        boolean hasKey = redisTemplate.hasKey(RedisKeyConstants.VIDEO_PLAY_COUNT);
         Map videoPlayCounts = null;
         if (hasKey)
-            videoPlayCounts = (Map) redisTemplate.opsForValue().get(key);
+            videoPlayCounts = (Map) redisTemplate.opsForValue().get(RedisKeyConstants.VIDEO_PLAY_COUNT);
         if (videoPlayCounts != null) {
             Map finalVideoPlayCounts = videoPlayCounts;
             for (EduCourse course : courses) {
@@ -410,9 +396,9 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
                                     courseViewCount += playCount;
                             }
                     }
-                UpdateWrapper updateWrapper = new UpdateWrapper();
-                updateWrapper.eq("id", course.getId());
-                updateWrapper.set("view_count", courseViewCount);
+                LambdaUpdateWrapper<EduCourse> updateWrapper = new LambdaUpdateWrapper();
+                updateWrapper.eq(EduCourse::getId, course.getId());
+                updateWrapper.set(EduCourse::getViewCount, courseViewCount);
                 update(updateWrapper);
             }
         }
