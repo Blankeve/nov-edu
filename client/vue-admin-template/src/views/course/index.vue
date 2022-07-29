@@ -185,7 +185,7 @@
             @click="handleRelease(scope.row.courseId, scope.row.courseStatus)"
           >
             {{
-              scope.row.courseStatus == 1 ? "下架该课程" : "上架该课程"
+              scope.row.courseStatus == 1 ? "下架课程" : "上架课程"
             }}</el-button
           >
         </template>
