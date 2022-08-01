@@ -64,7 +64,7 @@ const mutations = {
   SET_TOKEN: (state, token) => {
     state.token = token
   },
-  SET_NAME: (state, username ) => {
+  SET_NAME: (state, username) => {
     state.username = username
   },
   SET_AVATAR: (state, avatar) => {
@@ -86,7 +86,7 @@ const actions = {
   login({ commit }, userInfo) {
     const { username, password, code, uuid } = userInfo
     return new Promise((resolve, reject) => {
-      login({ username: username.trim(), password: password, code:code, uuid:uuid }).then(response => {
+      login({ username: username.trim(), password: password, code: code, uuid: uuid }).then(response => {
         const { data } = response
         commit('SET_TOKEN', data.token)
         setToken(data.token)
@@ -102,7 +102,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       getInfo(state.token).then(response => {
         const { data } = response
-          console.log(data)
+        console.log(data)
         if (!data) {
           removeToken();
           return reject('登录失效，请重新登录')
@@ -119,7 +119,7 @@ const actions = {
 
         resolve(data)
       }).catch(error => {
-        console.log(error)
+        removeToken();
         return reject('登录失效，请重新登录')
       })
     })

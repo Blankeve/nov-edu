@@ -77,6 +77,7 @@ const actions = {
         commit('SET_UID', uid)
         resolve(data)
       }).catch(error => {
+        removeToken();
         return reject('登录失效，请重新登录')
       })
     })
