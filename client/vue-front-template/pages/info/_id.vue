@@ -74,7 +74,7 @@ export default {
       if (id) {
         getOneDetailByInfoId(id).then((resp) => {
           if (resp.code === 200) {
-            this.info = resp.data.data;
+            this.info = resp.data;
           }
         });
       }

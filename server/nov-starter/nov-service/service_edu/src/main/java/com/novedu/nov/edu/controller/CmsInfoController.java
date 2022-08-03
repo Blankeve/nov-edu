@@ -6,9 +6,14 @@ import com.novedu.nov.common.annotation.UserMultiSubmitLimit;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.edu.entity.CmsInfo;
+import com.novedu.nov.edu.entity.CmsInfoDetail;
+import com.novedu.nov.edu.entity.vo.CmsInfoVO;
+import com.novedu.nov.edu.service.CmsInfoDetailService;
 import com.novedu.nov.edu.service.CmsInfoService;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,12 +34,8 @@ public class CmsInfoController {
 
     @UserMultiSubmitLimit
     @PostMapping("/save")
-    public BaseResult saveOrUpdate(@Validated @RequestBody CmsInfo cmsInfo) {
-        if(cmsInfo.getId() == null)
-            cmsInfo.setCreater(RequestUtils.getUid());
-        else
-            cmsInfo.setUpdater(RequestUtils.getUid());
-        return BaseResult.successOrError(cmsInfoService.saveOrUpdate(cmsInfo));
+    public BaseResult saveOrUpdate(@Validated @RequestBody CmsInfoVO cmsInfoVO) {
+            return cmsInfoService.saveOrUpdateInfo(cmsInfoVO);
     }
 
     @ApiOperation("删除")
@@ -50,12 +51,12 @@ public class CmsInfoController {
 
     @GetMapping("/detail/{id}")
     public BaseResult detail(@PathVariable String id) {
-        return BaseResult.success(cmsInfoService.getById(id));
+        return cmsInfoService.getDetail(id);
     }
 
     @GetMapping("/detail-client/{id}")
     public BaseResult getDetail(@PathVariable String id) {
-        return BaseResult.success(cmsInfoService.getDetail(id));
+        return cmsInfoService.getClientDetail(id);
     }
 }
 

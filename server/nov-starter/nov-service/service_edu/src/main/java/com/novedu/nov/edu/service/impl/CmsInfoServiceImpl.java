@@ -8,11 +8,14 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.constants.RedisKeyConstants;
+import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.edu.client.OpenUcenterService;
 import com.novedu.nov.edu.entity.AclUser;
 import com.novedu.nov.edu.entity.CmsInfo;
+import com.novedu.nov.edu.entity.CmsInfoDetail;
 import com.novedu.nov.edu.entity.vo.CmsInfoVO;
 import com.novedu.nov.edu.mapper.CmsInfoMapper;
+import com.novedu.nov.edu.service.CmsInfoDetailService;
 import com.novedu.nov.edu.service.CmsInfoService;
 import com.novedu.nov.system.entity.SysConfig;
 import com.novedu.nov.system.service.SysConfigService;
@@ -21,6 +24,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import java.util.Date;
@@ -39,13 +43,15 @@ import java.util.NoSuchElementException;
 public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> implements CmsInfoService {
 
     @Autowired
-    CmsInfoMapper cmsInfoMapper;
+    private CmsInfoMapper cmsInfoMapper;
     @Autowired
-    OpenUcenterService openUcenterService;
+    private OpenUcenterService openUcenterService;
     @Autowired
-    SysConfigService configService;
+    private SysConfigService configService;
     @Autowired
-    RedisTemplate redisTemplate;
+    private RedisTemplate redisTemplate;
+    @Autowired
+    private CmsInfoDetailService infoDetailService;
 
     @Override
     public BaseResult queryPage(Page page, CmsInfo cmsInfo) {
@@ -103,10 +109,12 @@ public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> impl
     }
 
     @Override
-    public BaseResult getDetail(String id) {
+    public BaseResult getClientDetail(String id) {
+        CmsInfoDetail cmsInfoDetail = infoDetailService.getById(id);
         CmsInfo cmsInfo = getById(id);
         CmsInfoVO cmsInfoVO = new CmsInfoVO();
         BeanUtils.copyProperties(cmsInfo, cmsInfoVO);
+        cmsInfoVO.setContent(cmsInfoDetail.getContent());
         BaseResult baseResult = openUcenterService.syncUsersCache();
         if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
             ObjectMapper objectMapper = new ObjectMapper();
@@ -129,6 +137,40 @@ public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> impl
             clickCount = 1l;
         redisTemplate.opsForValue().set(RedisKeyConstants.INFO_CLICK_COUNT + id, clickCount);
         cmsInfoVO.setClickCount(clickCount);
+        return BaseResult.success(cmsInfoVO);
+    }
+
+    @Transactional
+    @Override
+    public BaseResult saveOrUpdateInfo(CmsInfoVO cmsInfoVO) {
+        CmsInfo cmsInfo = new CmsInfo();
+        BeanUtils.copyProperties(cmsInfoVO,cmsInfo);
+        CmsInfoDetail cmsInfoDetail = new CmsInfoDetail();
+        if(cmsInfoVO.getId() == null){
+            cmsInfo.setCreater(RequestUtils.getUid());
+            cmsInfoDetail.setContent(cmsInfoVO.getContent());
+            save(cmsInfo);
+            cmsInfoDetail.setId(cmsInfo.getId());
+            infoDetailService.save(cmsInfoDetail);
+        }
+        else{
+            cmsInfo.setUpdater(RequestUtils.getUid());
+            updateById(cmsInfo);
+            cmsInfoDetail.setId(cmsInfo.getId());
+            cmsInfoDetail.setContent(cmsInfoVO.getContent());
+            infoDetailService.updateById(cmsInfoDetail);
+        }
+        return BaseResult.success();
+    }
+
+    @Transactional
+    @Override
+    public BaseResult getDetail(String id) {
+        CmsInfoDetail cmsInfoDetail = infoDetailService.getById(id);
+        CmsInfo cmsInfo = getById(id);
+        CmsInfoVO cmsInfoVO = new CmsInfoVO();
+        BeanUtils.copyProperties(cmsInfo, cmsInfoVO);
+        cmsInfoVO.setContent(cmsInfoDetail.getContent());
         return BaseResult.success(cmsInfoVO);
     }
 }

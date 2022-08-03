@@ -108,18 +108,6 @@ public class EduCourseController {
         return eduCourseService.getClientCourseList();
     }
 
-    @ApiOperation("前台最多人学习课程列表")
-    @GetMapping("/client-apply")
-    public BaseResult<List<EduCourse>> getClientApplyCourseList(){
-        return eduCourseService.getClientApplyCourseList();
-    }
-
-    @ApiOperation("前台最多人购买课程列表")
-    @GetMapping("/client-bought")
-    public BaseResult<List<EduCourse>> getClientBoughtCourseList(){
-        return eduCourseService.getClientBoughtCourseList();
-    }
-
     @ApiOperation("获取仪表盘数据")
     @GetMapping("/recent-courses")
     public BaseResult getDashBoardInfo() {

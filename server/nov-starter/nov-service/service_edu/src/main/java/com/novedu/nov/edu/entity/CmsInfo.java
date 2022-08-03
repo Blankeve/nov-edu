@@ -43,10 +43,6 @@ public class CmsInfo implements Serializable {
     @ApiModelProperty(value = "资讯标题")
     private String title;
 
-    @NotEmpty(message = "资讯标题不能为空")
-    @ApiModelProperty(value = "资讯内容")
-    private String content;
-
     @JsonSerialize(using = ToStringSerializer.class)
     @ApiModelProperty(value = "创建人")
     private Long creater;

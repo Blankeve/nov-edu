@@ -67,7 +67,6 @@ const actions = {
 
         if (!data) {
           removeToken();
-          return reject('登录失效，请重新登录')
         }
 
         const { uid, avatar, nickname } = data
@@ -78,7 +77,6 @@ const actions = {
         resolve(data)
       }).catch(error => {
         removeToken();
-        return reject('登录失效，请重新登录')
       })
     })
   },
