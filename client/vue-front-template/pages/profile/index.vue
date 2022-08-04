@@ -2,7 +2,7 @@
   <div class="main">
     <div class="title" style="width: 1200px; margin: 0 auto">
       <client-only>
-        <el-tabs tab-position="left" style="height: 1080px">
+        <el-tabs tab-position="left" style="height: 100%">
           <el-tab-pane label="我的资料">
             <el-descriptions class="margin-top" :column="1" border>
               <template slot="extra">

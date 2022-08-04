@@ -98,7 +98,7 @@ public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> impl
                     } catch (NoSuchElementException ex) {
                         log.error(ex.getMessage());
                     }
-                    Long clickCount = (Long) redisTemplate.opsForValue().get(RedisKeyConstants.INFO_CLICK_COUNT + o.getId());
+                    long clickCount = (long) redisTemplate.opsForValue().get(RedisKeyConstants.INFO_CLICK_COUNT + o.getId());
                     o.setClickCount(clickCount);
                 }
             } catch (Exception e) {

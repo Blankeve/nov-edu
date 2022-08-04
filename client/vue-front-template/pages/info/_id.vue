@@ -7,7 +7,7 @@
         <p class="text2">
           {{ info.title }}
           <span class="author">
-            点击量: {{ info.clickCount }} &nbsp;&nbsp;&nbsp;
+            阅读: {{ info.clickCount }} &nbsp;&nbsp;&nbsp;
             {{ info.createTime }}  &nbsp;&nbsp;&nbsp;作者: {{ info.createrNickname }}</span
           >
         </p>

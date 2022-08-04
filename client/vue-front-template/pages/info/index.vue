@@ -26,8 +26,8 @@
         <div v-loading="listLoading">
           <span v-for="(item, index) in list" :key="item.id">
             <el-badge
-              v-if="item.clickCount > 10"
-              value="热"
+              v-if="item.clickCount"
+              :value="item.clickCount+'次阅读'"
               class="item"
             ></el-badge>
             <el-badge
