@@ -105,7 +105,6 @@ const actions = {
         console.log(data)
         if (!data) {
           removeToken();
-          return reject('登录失效，请重新登录')
         }
 
         const { username, avatar, code, roleName, menus } = data
@@ -120,7 +119,6 @@ const actions = {
         resolve(data)
       }).catch(error => {
         removeToken();
-        return reject('登录失效，请重新登录')
       })
     })
   },

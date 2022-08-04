@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <h2>{{ this.$route.query.info ? "编辑" : "添加" }}资讯</h2>
+    <h2>{{ this.$route.query.info ? "编辑" : "添加" }}文章</h2>
     <div class="myCourseFrm">
       <el-form
         v-show="active == 0"
@@ -9,7 +9,7 @@
       >
         <el-row>
           <el-col>
-            <el-form-item prop="title" label="资讯标题">
+            <el-form-item prop="title" label="文章标题">
               <el-input v-model="info.title"></el-input>
             </el-form-item>
           </el-col>
@@ -17,7 +17,7 @@
 
         <el-row>
           <el-col :span="8">
-            <el-form-item prop="cate" label="资讯分类">
+            <el-form-item prop="cate" label="文章分类">
               <el-select
                 style="width: 100%"
                 v-model="info.cate"
@@ -37,7 +37,7 @@
 
         <el-row>
           <el-col>
-            <el-form-item prop="content" label="资讯内容">
+            <el-form-item prop="content" label="文章内容">
               <quill-editor
                 v-model="info.content"
                 ref="VueQuillEditor"

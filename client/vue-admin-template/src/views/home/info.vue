@@ -1,11 +1,11 @@
 <template>
   <div class="app-container">
     <el-form :inline="true" ref="form" :model="form">
-      <el-form-item label="资讯标题" prop="title">
-        <el-input v-model="form.title" placeholder="资讯标题"></el-input>
+      <el-form-item label="文章标题" prop="title">
+        <el-input v-model="form.title" placeholder="文章标题"></el-input>
       </el-form-item>
 
-      <el-form-item prop="cate" label="资讯分类">
+      <el-form-item prop="cate" label="文章分类">
         <el-select v-model="form.cate" placeholder="请选择分类">
           <el-option label="全部" :key="0" :value="null"> </el-option>
           <el-option
@@ -61,13 +61,13 @@
         </template>
       </el-table-column>
 
-      <el-table-column width="200" label="资讯分类" align="center">
+      <el-table-column width="200" label="文章分类" align="center">
         <template slot-scope="scope">
           {{ scope.row.catename }}
         </template>
       </el-table-column>
 
-      <el-table-column label="资讯标题" align="center">
+      <el-table-column label="文章标题" align="center">
         <template slot-scope="scope">
           {{ scope.row.title }}
         </template>
