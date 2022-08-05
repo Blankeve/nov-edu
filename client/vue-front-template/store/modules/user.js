@@ -64,19 +64,18 @@ const actions = {
 
       getInfo(getToken()).then(response => {
         const { data } = response
-
         if (!data) {
           removeToken();
+          resolve();
         }
-
         const { uid, avatar, nickname } = data
-
         commit('SET_NICKNAME', nickname)
         commit('SET_AVATAR', avatar)
         commit('SET_UID', uid)
         resolve(data)
       }).catch(error => {
         removeToken();
+        resolve();
       })
     })
   },

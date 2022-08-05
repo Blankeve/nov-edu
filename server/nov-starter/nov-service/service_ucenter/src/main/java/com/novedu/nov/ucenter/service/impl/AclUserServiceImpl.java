@@ -9,8 +9,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.code.kaptcha.Producer;
 import com.novedu.nov.common.constants.AuthConstant;
 import com.novedu.nov.common.base.BaseResult;
-import com.novedu.nov.common.constants.Constants;
 import com.novedu.nov.common.base.RoleType;
+import com.novedu.nov.common.constants.MsgConstants;
 import com.novedu.nov.common.constants.RedisKeyConstants;
 import com.novedu.nov.common.entity.UserDTO;
 import com.novedu.nov.common.util.Base64Utils;
@@ -217,9 +217,9 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
 
     @Override
     public BaseResult loginBg(AclUserDTO user) {
-        BaseResult<SysConfig> baseResult = configService.getSysConfigByKey(Constants.PIC_VERIFY_CODE);
+        BaseResult<SysConfig> baseResult = configService.getSysConfigByKey(RedisKeyConstants.PIC_VERIFY_CODE);
         if (baseResult.getData() != null) {
-            String verifyKey = Constants.PIC_VERIFY_CODE + user.getUuid();
+            String verifyKey = RedisKeyConstants.PIC_VERIFY_CODE + user.getUuid();
             String captcha = (String) redisTemplate.opsForValue().get(verifyKey);
             redisTemplate.delete(verifyKey);
             if (captcha == null) {
@@ -424,7 +424,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
 
     @Override
     public BaseResult getCode() {
-        BaseResult<SysConfig> baseResult = configService.getSysConfigByKey(Constants.PIC_VERIFY_CODE);
+        BaseResult<SysConfig> baseResult = configService.getSysConfigByKey(RedisKeyConstants.PIC_VERIFY_CODE);
 
         SysConfig sysConfig = baseResult.getData();
         if (sysConfig == null) {
@@ -432,7 +432,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         }
         // 保存验证码信息
         String uuid = UUID.randomUUID().toString();
-        String verifyKey = Constants.PIC_VERIFY_CODE + uuid;
+        String verifyKey = RedisKeyConstants.PIC_VERIFY_CODE + uuid;
 
         String capStr = null, code = null;
         BufferedImage image = null;
@@ -449,7 +449,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
             image = captchaProducer.createImage(capStr);
         }
 
-        redisTemplate.opsForValue().set(verifyKey, code, Constants.CAPTCHA_EXPIRATION, TimeUnit.MINUTES);
+        redisTemplate.opsForValue().set(verifyKey, code, RedisKeyConstants.CAPTCHA_EXPIRATION, TimeUnit.MINUTES);
         // 转换流信息写出
         FastByteArrayOutputStream os = new FastByteArrayOutputStream();
         try {

@@ -1,6 +1,8 @@
 package com.novedu.nov.order.client;
 
 import com.novedu.nov.common.base.BaseResult;
+import com.novedu.nov.common.constants.MsgConstants;
+import com.novedu.nov.common.exception.ServiceInvokeFailureException;
 import com.novedu.nov.order.entity.EduCourseApply;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -9,40 +11,33 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class OpenEduServiceImpl implements OpenEduService {
 
-
     @Override
     public BaseResult queryCourseDetail(Long id) {
-        log.error("查询课程信息失败");
-        return BaseResult.serviceInvokeFailure();
+        throw new ServiceInvokeFailureException(MsgConstants.EDU_SERVICE_UNAVAIlABLE);
     }
 
     @Override
     public BaseResult saveApply(EduCourseApply courseApply) {
-        log.error("saveApply fail");
-        return BaseResult.serviceInvokeFailure();
+        throw new ServiceInvokeFailureException(MsgConstants.EDU_SERVICE_UNAVAIlABLE);
     }
 
     @Override
     public BaseResult queryCourseApplyByCourseIdAndUid(EduCourseApply courseApply) {
-        log.error("同步课程购买数失败");
-        return BaseResult.serviceInvokeFailure();
+        throw new ServiceInvokeFailureException(MsgConstants.EDU_SERVICE_UNAVAIlABLE);
     }
 
     @Override
     public BaseResult statisticsCourseApplyCount() {
-        log.error("同步课程购买数失败");
-        return BaseResult.serviceInvokeFailure();
+        throw new ServiceInvokeFailureException(MsgConstants.EDU_SERVICE_UNAVAIlABLE);
     }
 
     @Override
     public BaseResult statisticsCourseBuyCount() {
-        log.error("同步课程购买数失败");
-        return BaseResult.serviceInvokeFailure();
+        throw new ServiceInvokeFailureException(MsgConstants.EDU_SERVICE_UNAVAIlABLE);
     }
 
     @Override
     public BaseResult queryTeacherIdByUid(String uid) {
-        log.error("通过uid查询讲师id失败");
-        return BaseResult.serviceInvokeFailure();
+        throw new ServiceInvokeFailureException(MsgConstants.EDU_SERVICE_UNAVAIlABLE);
     }
 }

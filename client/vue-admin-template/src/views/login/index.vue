@@ -40,6 +40,7 @@
           name="password"
           tabindex="2"
           auto-complete="on"
+          @keyup.enter.native="handleLogin"
         />
         <span class="show-pwd" @click="showPwd">
           <svg-icon
@@ -228,7 +229,6 @@ $cursor: #fff;
         -webkit-text-fill-color: $cursor !important;
       }
     }
-    
   }
 
   .el-form-item {
@@ -247,10 +247,10 @@ $light_gray: #eee;
 .login-container {
   min-height: 100%;
   width: 100%;
-  background:url("../../assets/img/login.jpg");
-  background-size:100% 100%;
+  background: url("../../assets/img/login.jpg");
+  background-size: 100% 100%;
   overflow: hidden;
-  
+
   .login-form {
     position: relative;
     width: 520px;
@@ -289,7 +289,7 @@ $light_gray: #eee;
       margin: 0px auto 40px auto;
       text-align: center;
       font-weight: bold;
-      font-family: "宋体",sans-serif;
+      font-family: "宋体", sans-serif;
     }
   }
 

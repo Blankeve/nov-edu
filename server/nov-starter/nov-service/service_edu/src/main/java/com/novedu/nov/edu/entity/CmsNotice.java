@@ -44,7 +44,6 @@ public class CmsNotice implements Serializable {
     @ApiModelProperty(value = "公告内容")
     private String content;
 
-    @NotEmpty(message = "发送人不能为空")
     @ApiModelProperty(value = "发送人")
     private String sendUser;
 

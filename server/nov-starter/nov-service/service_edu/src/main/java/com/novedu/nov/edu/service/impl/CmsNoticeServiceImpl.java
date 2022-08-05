@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.constants.RedisKeyConstants;
+import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.edu.entity.CmsNotice;
 import com.novedu.nov.edu.mapper.CmsNoticeMapper;
 import com.novedu.nov.edu.service.CmsNoticeService;
@@ -28,6 +29,7 @@ public class CmsNoticeServiceImpl extends ServiceImpl<CmsNoticeMapper, CmsNotice
 
     @Override
     public BaseResult saveOrUpdateNotice(CmsNotice cmsNotice) {
+        cmsNotice.setSendUser(RequestUtils.getUsername());
         return BaseResult.successOrError(saveOrUpdate(cmsNotice));
     }
 

@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.novedu.nov.common.base.BaseResult;
@@ -58,51 +59,52 @@ public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> impl
         BaseResult baseResult = openUcenterService.syncUsersCache();
         IPage<CmsInfoVO> iPage = new Page<>();
         if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
+            ObjectMapper objectMapper = new ObjectMapper();
+            String str = (String) redisTemplate.opsForValue().get(RedisKeyConstants.USERS_CACHE);
+            List<AclUser> users = null;
             try {
-                ObjectMapper objectMapper = new ObjectMapper();
-                String str = (String) redisTemplate.opsForValue().get(RedisKeyConstants.USERS_CACHE);
-                List<AclUser> users = objectMapper.readValue(str, new TypeReference<List<AclUser>>() {
+                users = objectMapper.readValue(str, new TypeReference<List<AclUser>>() {
                 });
-                List<SysConfig> sysConfigs = configService.getConfigListByKey("artcle_cate", 2).getData();
-                QueryWrapper queryWrapper = new QueryWrapper();
-                if (!StringUtils.isEmpty(cmsInfo.getTitle())) {
-                    queryWrapper.like("title", cmsInfo.getTitle());
+            } catch (JsonProcessingException e) {
+                return null;
+            }
+            List<SysConfig> sysConfigs = configService.getConfigListByKey("artcle_cate", 2).getData();
+            QueryWrapper queryWrapper = new QueryWrapper();
+            if (!StringUtils.isEmpty(cmsInfo.getTitle())) {
+                queryWrapper.like("title", cmsInfo.getTitle());
+            }
+            if (cmsInfo.getCate() != null) {
+                queryWrapper.eq("cate", cmsInfo.getCate());
+            }
+            if (!StringUtils.isEmpty(cmsInfo.getCreaterNickname())) {
+                Long id = users.stream().filter(o -> o.getNickname().equals(cmsInfo.getCreaterNickname())).findAny().get().getId();
+                queryWrapper.eq("creater", id);
+            }
+            Date start = cmsInfo.getStartTime();
+            Date end = cmsInfo.getEndTime();
+            if (start != null && end != null && end.getTime() > start.getTime())
+                queryWrapper.apply("create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start, end);
+            queryWrapper.orderByDesc("create_time");
+            iPage = BeanListUtils.copyPage(page(page, queryWrapper), new Page<>(), CmsInfoVO::new);
+            List<CmsInfoVO> cmsInfoVOS = iPage.getRecords();
+            for (CmsInfoVO o : cmsInfoVOS) {
+                o.setContent("");
+                if (o.getCreater() != null) {
+                    String nickname = users.stream().filter(u -> u.getId().equals(o.getCreater())).findAny().get().getNickname();
+                    o.setCreaterNickname(nickname);
                 }
-                if (cmsInfo.getCate() != null) {
-                    queryWrapper.eq("cate", cmsInfo.getCate());
+                if (o.getUpdater() != null) {
+                    String nickname = users.stream().filter(u -> u.getId().equals(o.getUpdater())).findAny().get().getNickname();
+                    o.setUpdaterNickname(nickname);
                 }
-                if (!StringUtils.isEmpty(cmsInfo.getCreaterNickname())) {
-                    Long id = users.stream().filter(o -> o.getNickname().equals(cmsInfo.getCreaterNickname())).findAny().get().getId();
-                    queryWrapper.eq("creater", id);
+                try {
+                    String catename = sysConfigs.stream().filter(s -> s.getConfigValue().equals(o.getCate().toString())).findAny().get().getConfigName();
+                    o.setCatename(catename);
+                } catch (NoSuchElementException ex) {
+                    log.error(ex.getMessage());
                 }
-                Date start = cmsInfo.getStartTime();
-                Date end = cmsInfo.getEndTime();
-                if (start != null && end != null && end.getTime() > start.getTime())
-                    queryWrapper.apply("create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start, end);
-                queryWrapper.orderByDesc("create_time");
-                iPage = BeanListUtils.copyPage(page(page, queryWrapper), new Page<>(), CmsInfoVO::new);
-                List<CmsInfoVO> cmsInfoVOS = iPage.getRecords();
-                for (CmsInfoVO o : cmsInfoVOS) {
-                    o.setContent("");
-                    if (o.getCreater() != null) {
-                        String nickname = users.stream().filter(u -> u.getId().equals(o.getCreater())).findAny().get().getNickname();
-                        o.setCreaterNickname(nickname);
-                    }
-                    if (o.getUpdater() != null) {
-                        String nickname = users.stream().filter(u -> u.getId().equals(o.getUpdater())).findAny().get().getNickname();
-                        o.setUpdaterNickname(nickname);
-                    }
-                    try {
-                        String catename = sysConfigs.stream().filter(s -> s.getConfigValue().equals(o.getCate().toString())).findAny().get().getConfigName();
-                        o.setCatename(catename);
-                    } catch (NoSuchElementException ex) {
-                        log.error(ex.getMessage());
-                    }
-                    long clickCount = (long) redisTemplate.opsForValue().get(RedisKeyConstants.INFO_CLICK_COUNT + o.getId());
-                    o.setClickCount(clickCount);
-                }
-            } catch (Exception e) {
-                log.error(e.getMessage());
+                Long clickCount = (Long) redisTemplate.opsForValue().get(RedisKeyConstants.INFO_CLICK_COUNT + o.getId());
+                o.setClickCount(clickCount == null ? 0 : clickCount);
             }
         }
         return BaseResult.success(iPage);
@@ -144,16 +146,15 @@ public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> impl
     @Override
     public BaseResult saveOrUpdateInfo(CmsInfoVO cmsInfoVO) {
         CmsInfo cmsInfo = new CmsInfo();
-        BeanUtils.copyProperties(cmsInfoVO,cmsInfo);
+        BeanUtils.copyProperties(cmsInfoVO, cmsInfo);
         CmsInfoDetail cmsInfoDetail = new CmsInfoDetail();
-        if(cmsInfoVO.getId() == null){
+        if (cmsInfoVO.getId() == null) {
             cmsInfo.setCreater(RequestUtils.getUid());
             cmsInfoDetail.setContent(cmsInfoVO.getContent());
             save(cmsInfo);
             cmsInfoDetail.setId(cmsInfo.getId());
             infoDetailService.save(cmsInfoDetail);
-        }
-        else{
+        } else {
             cmsInfo.setUpdater(RequestUtils.getUid());
             updateById(cmsInfo);
             cmsInfoDetail.setId(cmsInfo.getId());

@@ -49,11 +49,11 @@ service.interceptors.response.use(
       return response;
     }
     if (res.code !== 200) {
-      if (res.code === 4031) {
+      if (res.code === 4030 || res.code === 4031) {
         store.dispatch('user/resetToken');
         // to re-login
         MessageBox.confirm(res.msg, '登录确认', {
-          confirmButtonText: '重新登录',
+          confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
@@ -66,21 +66,16 @@ service.interceptors.response.use(
           reader.readAsText(res)
           reader.onload = function () {
             const { msg } = JSON.parse(reader.result)//此处的msg就是后端返回的msg内容
-            Message({
-              message: msg || 'Error',
-              type: 'error',
-              duration: 2 * 1000
-            })
+            res.msg = msg
           }
         }
-        else
           Message({
             message: res.msg || 'Error',
             type: 'error',
             duration: 2 * 1000
           })
       }
-      return Promise.reject(new Error(res.message || 'Error'))
+      return Promise.reject(new Error(res.msg || 'Error'))
     }
     else {
       return res

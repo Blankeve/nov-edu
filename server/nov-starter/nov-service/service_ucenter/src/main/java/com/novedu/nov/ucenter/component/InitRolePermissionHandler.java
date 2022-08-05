@@ -1,7 +1,6 @@
 package com.novedu.nov.ucenter.component;
 
 import com.novedu.nov.common.constants.AuthConstant;
-import com.novedu.nov.common.constants.Constants;
 import com.novedu.nov.ucenter.entity.AclPermission;
 import com.novedu.nov.ucenter.entity.AclRole;
 import com.novedu.nov.ucenter.entity.AclRolePermission;

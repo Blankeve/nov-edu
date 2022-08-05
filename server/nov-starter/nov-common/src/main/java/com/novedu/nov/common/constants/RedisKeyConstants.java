@@ -3,6 +3,10 @@ package com.novedu.nov.common.constants;
 public class RedisKeyConstants {
 
     /* -------------------单条缓存-------------------------------- */
+    //    验证码
+    public static final String PIC_VERIFY_CODE = "pic_verify_code";
+    //    验证码有效期
+    public static final long CAPTCHA_EXPIRATION = 2;
     //    首页访问量
     public static final String ACCESS_NUM = "access_num";
     //    前台公告
