@@ -61,7 +61,7 @@ public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> impl
         if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
             ObjectMapper objectMapper = new ObjectMapper();
             String str = (String) redisTemplate.opsForValue().get(RedisKeyConstants.USERS_CACHE);
-            List<AclUser> users = null;
+            List<AclUser> users;
             try {
                 users = objectMapper.readValue(str, new TypeReference<List<AclUser>>() {
                 });

@@ -32,7 +32,7 @@ public class EduChapterController {
 
     @UserMultiSubmitLimit
     @PostMapping("/save")
-    public BaseResult saveCourse(@Validated @RequestBody EduChapter chapter) {
+    public BaseResult saveChapter(@Validated @RequestBody EduChapter chapter) {
         return chapterService.saveChapter(chapter);
     }
 
