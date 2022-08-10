@@ -249,7 +249,6 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     @Override
     public BaseResult queryCoursesByTeacherId(Long eduTeacher) {
         List<EduCourse> eduCourses = lambdaQuery().eq(EduCourse::getStatus, 1).eq(EduCourse::getTeacherId, eduTeacher).list();
-        setCourseCommentCount(eduCourses);
         return BaseResult.success(eduCourses);
     }
 
@@ -272,8 +271,6 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         if (start != null && end != null && end.getTime() > start.getTime())
             queryWrapper.apply("course.create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and course.create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start, end);
         Page page1 = (Page) courseMapper.queryPage(page, queryWrapper);
-        List<EduCourseInfoVO> courses = page1.getRecords();
-        setCourseCommentCount2(courses);
         return BaseResult.success(page1);
     }
 
@@ -309,20 +306,17 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
             courses1 = (List<EduCourse>) redisTemplate.opsForValue().get(RedisKeyConstants.CLIENT_COURSE_LIST1);
         } else {
             courses1 = lambdaQuery().eq(EduCourse::getStatus, 1).orderByDesc(EduCourse::getViewCount).last("limit 8").list();
-            setCourseCommentCount(courses1);
-            redisTemplate.opsForValue().set(RedisKeyConstants.CLIENT_COURSE_LIST1, courses1, 30, TimeUnit.MINUTES);
+            redisTemplate.opsForValue().set(RedisKeyConstants.CLIENT_COURSE_LIST1, courses1, 5, TimeUnit.MINUTES);
         }
         if (redisTemplate.hasKey(RedisKeyConstants.CLIENT_COURSE_LIST2)) {
             courses2 = (List<EduCourse>) redisTemplate.opsForValue().get(RedisKeyConstants.CLIENT_COURSE_LIST2);
         } else {
             courses2 = lambdaQuery().eq(EduCourse::getStatus, 1).orderByDesc(EduCourse::getBuyCount).last("limit 8").list();
-            setCourseCommentCount(courses2);
-            redisTemplate.opsForValue().set(RedisKeyConstants.CLIENT_COURSE_LIST2, courses2, 30, TimeUnit.MINUTES);
+            redisTemplate.opsForValue().set(RedisKeyConstants.CLIENT_COURSE_LIST2, courses2, 5, TimeUnit.MINUTES);
         }
         return BaseResult.success()
                 .map("c1", courses1)
                 .map("c2", courses2);
-        //  .map("c3", courses3);
     }
 
 
@@ -347,28 +341,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
                 queryWrapper.orderByDesc(EduCourse::getPrice);
         }
         queryWrapper.eq(EduCourse::getStatus, 1);
-        Page page1 = page(page, queryWrapper);
-        List<EduCourse> courses = page1.getRecords();
-        setCourseCommentCount(courses);
-        return BaseResult.success(page1);
-    }
-
-    private void setCourseCommentCount(List<EduCourse> courses) {
-        courses.forEach(o -> {
-                    LambdaQueryWrapper<EduComment> queryWrapper1 = new LambdaQueryWrapper();
-                    queryWrapper1.eq(EduComment::getCourseId, o.getId());
-                    o.setCommentCount((long) commentService.count(queryWrapper1));
-                }
-        );
-    }
-
-    private void setCourseCommentCount2(List<EduCourseInfoVO> courses) {
-        courses.forEach(o -> {
-                    LambdaQueryWrapper<EduComment> queryWrapper1 = new LambdaQueryWrapper();
-                    queryWrapper1.eq(EduComment::getCourseId, o.getCourseId());
-                    o.setCourseCommentCount((long) commentService.count(queryWrapper1));
-                }
-        );
+        return BaseResult.success(page(page, queryWrapper));
     }
 
     /*统计各个课程的播放量*/
@@ -396,9 +369,11 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
                                     courseViewCount += playCount;
                             }
                     }
+                int count = commentService.lambdaQuery().eq(EduComment::getCourseId,course.getId()).count();
                 LambdaUpdateWrapper<EduCourse> updateWrapper = new LambdaUpdateWrapper();
                 updateWrapper.eq(EduCourse::getId, course.getId());
                 updateWrapper.set(EduCourse::getViewCount, courseViewCount);
+                updateWrapper.set(EduCourse::getCommentCount,count);
                 update(updateWrapper);
             }
         }

@@ -36,7 +36,7 @@ public class MultiThreadScheduleTask {
     StatisticsDailyService statisticsDailyService;
 
     @Async
-    @Scheduled(cron = "0 0/15 * * * ?")  //间隔15分钟
+    @Scheduled(cron = "0 0/1 * * * ?")  //间隔1分钟
     public void syncCourseViewCount() {
         log.info("---------------正在同步课程播放次数...");
         BaseResult baseResult = openEduService.statisticsCoursePlayCount();
