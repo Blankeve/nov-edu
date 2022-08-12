@@ -25,7 +25,7 @@
                 <el-upload
                   class="avatar-uploader"
                   name="img"
-                  :action="'http://159.75.234.20:8000/upload/img'"
+                  :action="'http://159.75.234.20:8100/upload/img'"
                   :show-file-list="false"
                   :on-success="handleAvatarSuccess"
                   :before-upload="beforeAvatarUpload"

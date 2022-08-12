@@ -306,13 +306,13 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
             courses1 = (List<EduCourse>) redisTemplate.opsForValue().get(RedisKeyConstants.CLIENT_COURSE_LIST1);
         } else {
             courses1 = lambdaQuery().eq(EduCourse::getStatus, 1).orderByDesc(EduCourse::getViewCount).last("limit 8").list();
-            redisTemplate.opsForValue().set(RedisKeyConstants.CLIENT_COURSE_LIST1, courses1, 5, TimeUnit.MINUTES);
+            redisTemplate.opsForValue().set(RedisKeyConstants.CLIENT_COURSE_LIST1, courses1, 30, TimeUnit.MINUTES);
         }
         if (redisTemplate.hasKey(RedisKeyConstants.CLIENT_COURSE_LIST2)) {
             courses2 = (List<EduCourse>) redisTemplate.opsForValue().get(RedisKeyConstants.CLIENT_COURSE_LIST2);
         } else {
             courses2 = lambdaQuery().eq(EduCourse::getStatus, 1).orderByDesc(EduCourse::getBuyCount).last("limit 8").list();
-            redisTemplate.opsForValue().set(RedisKeyConstants.CLIENT_COURSE_LIST2, courses2, 5, TimeUnit.MINUTES);
+            redisTemplate.opsForValue().set(RedisKeyConstants.CLIENT_COURSE_LIST2, courses2, 30, TimeUnit.MINUTES);
         }
         return BaseResult.success()
                 .map("c1", courses1)

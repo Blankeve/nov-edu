@@ -62,7 +62,7 @@
       </el-form>
       <br />
       <el-button icon="el-icon-check" type="primary" @click="submitForm"
-        >保存章节</el-button
+        >提交</el-button
       >
     </div>
   </div>

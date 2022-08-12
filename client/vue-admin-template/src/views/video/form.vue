@@ -117,11 +117,7 @@
       </el-form>
       <br />
       <el-button icon="el-icon-check" type="primary" @click="submitForm"
-        >{{
-          this.$route.query.video && !this.$route.query.chapter
-            ? "编辑"
-            : "添加"
-        }}小节</el-button
+        >提交</el-button
       >
     </div>
   </div>

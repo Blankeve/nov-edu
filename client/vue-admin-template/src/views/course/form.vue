@@ -98,7 +98,7 @@
       </el-form>
       <br />
       <el-button icon="el-icon-plus" type="primary" @click="submitForm"
-        >{{ this.$route.query.course ? "修改" : "添加" }}课程</el-button
+        >提交</el-button
       >
     </div>
   </div>
