@@ -51,6 +51,7 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
+        <finalName>service_edu</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
