@@ -93,6 +93,7 @@ import "~/assets/css/iconfont.css";
 
 import { save, getPage } from "@/api/consult";
 import { getFormatTime } from "@/utils/datetime-format";
+import { mapGetters } from "vuex";
 
 export default {
   layout: "simple",
@@ -112,6 +113,9 @@ export default {
   },
   created() {
     this.fetchData();
+  },
+  computed: {
+    ...mapGetters(["uid"]),
   },
   methods: {
     fetchData() {
@@ -144,6 +148,10 @@ export default {
       this.fetchData();
     },
     submitConsult() {
+      if (!this.uid) {
+         this.$message.error("请先登录!");
+        return;
+      }
       save(this.consult).then((resp) => {
         if (resp.code === 200)
           this.$message({

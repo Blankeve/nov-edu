@@ -53,13 +53,7 @@ public class CmsNoticeServiceImpl extends ServiceImpl<CmsNoticeMapper, CmsNotice
         } else
             redisTemplate.opsForValue().set(RedisKeyConstants.ACCESS_NUM, 1);
         //接收最新公告
-        CmsNotice notice;
-        if (redisTemplate.hasKey(RedisKeyConstants.FRONT_NOTICE)) {
-            notice = (CmsNotice) redisTemplate.opsForValue().get(RedisKeyConstants.FRONT_NOTICE);
-        } else {
-            notice = lambdaQuery().eq(CmsNotice::getType, 1).orderByDesc(CmsNotice::getCreateTime).last("limit 1").one();
-            redisTemplate.opsForValue().set(RedisKeyConstants.FRONT_NOTICE, notice);
-        }
+        CmsNotice notice = lambdaQuery().eq(CmsNotice::getType, 1).orderByDesc(CmsNotice::getCreateTime).last("limit 1").one();
         if (!notice.getId().toString().equals(id))
             return BaseResult.success(notice);
         else
