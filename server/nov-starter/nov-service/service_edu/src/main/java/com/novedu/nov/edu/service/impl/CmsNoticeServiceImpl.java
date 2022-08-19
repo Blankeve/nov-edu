@@ -44,7 +44,7 @@ public class CmsNoticeServiceImpl extends ServiceImpl<CmsNoticeMapper, CmsNotice
     }
 
     @Override
-    public BaseResult receiveNotice() {
+    public BaseResult receiveNotice(String id) {
         //统计首页点击量
         if (redisTemplate.hasKey(RedisKeyConstants.ACCESS_NUM)) {
             Integer accessNum = (Integer) redisTemplate.opsForValue().get(RedisKeyConstants.ACCESS_NUM);
@@ -60,7 +60,10 @@ public class CmsNoticeServiceImpl extends ServiceImpl<CmsNoticeMapper, CmsNotice
             notice = lambdaQuery().eq(CmsNotice::getType, 1).orderByDesc(CmsNotice::getCreateTime).last("limit 1").one();
             redisTemplate.opsForValue().set(RedisKeyConstants.FRONT_NOTICE, notice);
         }
-        return BaseResult.success(notice);
+        if (!notice.getId().toString().equals(id))
+            return BaseResult.success(notice);
+        else
+            return BaseResult.success().map("id", notice.getId().toString());
     }
 
 

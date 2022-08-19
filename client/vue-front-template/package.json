@@ -5,7 +5,8 @@
   "author": "juam",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "cross-env VUE_APP_BASE_API='http://localhost:8100' nuxt",
+    "prod": "cross-env VUE_APP_BASE_API='http://159.75.234.20:8100' nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
@@ -20,6 +21,7 @@
   },
   "dependencies": {
     "axios": "^0.24.0",
+    "cross-env": "^7.0.3",
     "element-ui": "^2.15.6",
     "highlight.js": "^11.5.1",
     "js-cookie": "^3.0.1",

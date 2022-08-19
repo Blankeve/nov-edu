@@ -43,6 +43,7 @@
         <openfeign.version>2.2.9.RELEASE</openfeign.version>
         <hystrix.version>2.2.9.RELEASE</hystrix.version>
         <redis.version>2.3.0.RELEASE</redis.version>
+        <commons-pool2.version>2.9.0</commons-pool2.version>
         <alipay.version>3.0.0</alipay.version>
         <UserAgentUtils.version>1.21</UserAgentUtils.version>
         <bootstrap.version>3.0.4</bootstrap.version>
@@ -222,6 +223,12 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-redis</artifactId>
                 <version>${redis.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>${commons-pool2.version}</version>
             </dependency>
 
             <dependency>

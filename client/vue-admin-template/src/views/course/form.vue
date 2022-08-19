@@ -97,7 +97,7 @@
         </el-form-item>
       </el-form>
       <br />
-      <el-button icon="el-icon-plus" type="primary" @click="submitForm"
+      <el-button icon="el-icon-check" type="primary" @click="submitForm"
         >提交</el-button
       >
     </div>

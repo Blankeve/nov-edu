@@ -61,5 +61,9 @@ module.exports = {
 
   link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
 
+  env: {
+    VUE_APP_BASE_API: process.env.VUE_APP_BASE_API
+
+  }
 }
 

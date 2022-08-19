@@ -3,6 +3,8 @@ package com.novedu.nov.auth.service;
 import com.novedu.nov.auth.client.OpenUserService;
 import com.novedu.nov.auth.domain.MessageConstant;
 import com.novedu.nov.auth.domain.SecurityUser;
+import com.novedu.nov.common.base.RoleType;
+import com.novedu.nov.common.constants.AuthConstant;
 import com.novedu.nov.common.entity.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AccountExpiredException;
@@ -34,6 +36,17 @@ public class UserServiceImpl implements UserDetailsService {
         UserDTO userDto = userService.loadUserByUsername(username);
         if (userDto == null) {
             throw new UsernameNotFoundException(MessageConstant.USERNAME_PASSWORD_ERROR);
+        }
+        if (AuthConstant.PC_CLIENT_ID.equals(clientId)) {
+            if (!(RoleType.STUDENT.getCode() == userDto.getRoleCode())) {
+                throw new UsernameNotFoundException(MessageConstant.USERNAME_PASSWORD_ERROR);
+            }
+        } else if (AuthConstant.PC_ADMIN_ID.equals(clientId)) {
+            if (!(RoleType.SUADMIN.getCode() == userDto.getRoleCode() ||
+                    RoleType.ADMIN.getCode() == userDto.getRoleCode() ||
+                    RoleType.TEACHER.getCode() == userDto.getRoleCode())) {
+                throw new UsernameNotFoundException(MessageConstant.USERNAME_PASSWORD_ERROR);
+            }
         }
         userDto.setClientId(clientId);
         SecurityUser securityUser = new SecurityUser(userDto);

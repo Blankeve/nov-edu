@@ -44,94 +44,28 @@ import java.util.NoSuchElementException;
 public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> implements CmsInfoService {
 
     @Autowired
-    private CmsInfoMapper cmsInfoMapper;
-    @Autowired
     private OpenUcenterService openUcenterService;
-    @Autowired
-    private SysConfigService configService;
     @Autowired
     private RedisTemplate redisTemplate;
     @Autowired
     private CmsInfoDetailService infoDetailService;
+    @Autowired
+    private CmsInfoMapper cmsInfoMapper;
 
     @Override
     public BaseResult queryPage(Page page, CmsInfo cmsInfo) {
-        BaseResult baseResult = openUcenterService.syncUsersCache();
-        IPage<CmsInfoVO> iPage = new Page<>();
-        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
-            ObjectMapper objectMapper = new ObjectMapper();
-            String str = (String) redisTemplate.opsForValue().get(RedisKeyConstants.USERS_CACHE);
-            List<AclUser> users;
-            try {
-                users = objectMapper.readValue(str, new TypeReference<List<AclUser>>() {
-                });
-            } catch (JsonProcessingException e) {
-                return null;
-            }
-            List<SysConfig> sysConfigs = configService.getConfigListByKey("artcle_cate", 2).getData();
-            QueryWrapper queryWrapper = new QueryWrapper();
-            if (!StringUtils.isEmpty(cmsInfo.getTitle())) {
-                queryWrapper.like("title", cmsInfo.getTitle());
-            }
-            if (cmsInfo.getCate() != null) {
-                queryWrapper.eq("cate", cmsInfo.getCate());
-            }
-            if (!StringUtils.isEmpty(cmsInfo.getCreaterNickname())) {
-                Long id = users.stream().filter(o -> o.getNickname().equals(cmsInfo.getCreaterNickname())).findAny().get().getId();
-                queryWrapper.eq("creater", id);
-            }
-            Date start = cmsInfo.getStartTime();
-            Date end = cmsInfo.getEndTime();
-            if (start != null && end != null && end.getTime() > start.getTime())
-                queryWrapper.apply("create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start, end);
-            queryWrapper.orderByDesc("create_time");
-            iPage = BeanListUtils.copyPage(page(page, queryWrapper), new Page<>(), CmsInfoVO::new);
-            List<CmsInfoVO> cmsInfoVOS = iPage.getRecords();
-            for (CmsInfoVO o : cmsInfoVOS) {
-                o.setContent("");
-                if (o.getCreater() != null) {
-                    String nickname = users.stream().filter(u -> u.getId().equals(o.getCreater())).findAny().get().getNickname();
-                    o.setCreaterNickname(nickname);
-                }
-                if (o.getUpdater() != null) {
-                    String nickname = users.stream().filter(u -> u.getId().equals(o.getUpdater())).findAny().get().getNickname();
-                    o.setUpdaterNickname(nickname);
-                }
-                try {
-                    String catename = sysConfigs.stream().filter(s -> s.getConfigValue().equals(o.getCate().toString())).findAny().get().getConfigName();
-                    o.setCatename(catename);
-                } catch (NoSuchElementException ex) {
-                    log.error(ex.getMessage());
-                }
-                Long clickCount = (Long) redisTemplate.opsForValue().get(RedisKeyConstants.INFO_CLICK_COUNT + o.getId());
-                o.setClickCount(clickCount == null ? 0 : clickCount);
-            }
+        IPage<CmsInfoVO> iPage = cmsInfoMapper.queryPage(page, cmsInfo);
+        List<CmsInfoVO> cmsInfoVOS = iPage.getRecords();
+        for (CmsInfoVO o : cmsInfoVOS) {
+            Long clickCount = (Long) redisTemplate.opsForValue().get(RedisKeyConstants.INFO_CLICK_COUNT + o.getId());
+            o.setClickCount(clickCount == null ? 0 : clickCount);
         }
         return BaseResult.success(iPage);
     }
 
     @Override
     public BaseResult getClientDetail(String id) {
-        CmsInfoDetail cmsInfoDetail = infoDetailService.getById(id);
-        CmsInfo cmsInfo = getById(id);
-        CmsInfoVO cmsInfoVO = new CmsInfoVO();
-        BeanUtils.copyProperties(cmsInfo, cmsInfoVO);
-        cmsInfoVO.setContent(cmsInfoDetail.getContent());
-        BaseResult baseResult = openUcenterService.syncUsersCache();
-        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
-            ObjectMapper objectMapper = new ObjectMapper();
-            String str = (String) redisTemplate.opsForValue().get(RedisKeyConstants.USERS_CACHE);
-            try {
-                List<AclUser> users = objectMapper.readValue(str, new TypeReference<List<AclUser>>() {
-                });
-                if (cmsInfo.getCreater() != null) {
-                    String nickname = users.stream().filter(u -> u.getId().equals(cmsInfo.getCreater())).findAny().get().getNickname();
-                    cmsInfoVO.setCreaterNickname(nickname);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+        CmsInfoVO cmsInfoVO = cmsInfoMapper.queryDetail(id);
         Long clickCount = (Long) redisTemplate.opsForValue().get(RedisKeyConstants.INFO_CLICK_COUNT + id);
         if (clickCount != null) {
             clickCount++;
@@ -167,11 +101,6 @@ public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> impl
     @Transactional
     @Override
     public BaseResult getDetail(String id) {
-        CmsInfoDetail cmsInfoDetail = infoDetailService.getById(id);
-        CmsInfo cmsInfo = getById(id);
-        CmsInfoVO cmsInfoVO = new CmsInfoVO();
-        BeanUtils.copyProperties(cmsInfo, cmsInfoVO);
-        cmsInfoVO.setContent(cmsInfoDetail.getContent());
-        return BaseResult.success(cmsInfoVO);
+        return BaseResult.success(cmsInfoMapper.queryDetail(id));
     }
 }

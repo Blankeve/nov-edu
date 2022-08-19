@@ -8,7 +8,8 @@ package com.novedu.nov.common.base;
  * @version:
  */
 public enum RoleType {
-    ADMIN(0),
+    SUADMIN(0),
+    ADMIN(2),
     TEACHER(5),
     STUDENT(9);
 

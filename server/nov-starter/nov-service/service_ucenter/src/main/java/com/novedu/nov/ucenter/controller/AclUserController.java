@@ -88,7 +88,6 @@ public class AclUserController {
     }
 
     @PostMapping("/load-username")
-    @Transactional(propagation = Propagation.REQUIRED)
     public UserDTO loadUserByUsername(String username) {
         return aclUserService.loadUserByUsername(username);
     }

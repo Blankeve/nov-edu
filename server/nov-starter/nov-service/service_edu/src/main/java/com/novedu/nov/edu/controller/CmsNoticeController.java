@@ -44,8 +44,8 @@ public class CmsNoticeController {
     }
 
     @GetMapping("/receive")
-    public BaseResult receiveNotice() {
-        return cmsNoticeService.receiveNotice();
+    public BaseResult receiveNotice(String id) {
+        return cmsNoticeService.receiveNotice(id);
     }
 }
 

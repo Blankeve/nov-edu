@@ -1,12 +1,12 @@
 package com.novedu.nov.edu.mapper;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.edu.entity.CmsInfo;
 import com.novedu.nov.edu.entity.vo.CmsInfoVO;
-import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
 
 /**
  * <p>
@@ -16,6 +16,9 @@ import org.apache.ibatis.annotations.Param;
  * @author juam
  * @since 2022-05-31
  */
+@Repository
 public interface CmsInfoMapper extends BaseMapper<CmsInfo> {
-    IPage<CmsInfoVO> queryPage(Page page, @Param("ew") Wrapper<CmsInfo> queryWrapper);
+    IPage<CmsInfoVO> queryPage(Page page, CmsInfo cmsInfo);
+
+    CmsInfoVO queryDetail(String id);
 }

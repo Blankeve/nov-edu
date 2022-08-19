@@ -1,8 +1,0 @@
-server:
-  port: 8101
-spring:
-  profiles:
-    active: prod
-  application:
-    name: nov-auth
-

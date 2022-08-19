@@ -21,5 +21,5 @@ public interface CmsNoticeService extends IService<CmsNotice> {
 
     BaseResult queryNoticePage(Page page, CmsNotice cmsNotice);
 
-    BaseResult receiveNotice();
+    BaseResult receiveNotice(String id);
 }

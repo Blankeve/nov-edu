@@ -461,6 +461,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
     }
 
     @Override
+    @Transactional
     public UserDTO loadUserByUsername(String username) {
         AclUser aclUser = lambdaQuery().eq(AclUser::getUsername, username).one();
         AclUserRole userRole = userRoleService.lambdaQuery().eq(AclUserRole::getUid, aclUser.getId()).one();

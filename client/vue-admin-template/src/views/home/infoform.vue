@@ -51,7 +51,7 @@
       <br />
       <el-button
         style="margin-left: 100px"
-        icon="el-icon-plus"
+        icon="el-icon-check"
         type="primary"
         @click="submitForm"
         >提交</el-button
@@ -91,6 +91,7 @@ export default {
         getOneDetailByInfoId(infoId).then((resp) => {
           if (resp.code === 200) {
             this.info = resp.data;
+            this.info.cate += '';
           }
         });
       }

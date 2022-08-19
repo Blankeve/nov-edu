@@ -2,7 +2,64 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.novedu.nov.edu.mapper.CmsInfoMapper">
 
+    <sql id="selectCmsInfoVO">
+        select c.id,
+               c.create_time,
+               c.update_time,
+               c.cate,
+               s.config_name as catename,
+               u.nickname    as createrNickname,
+               c.title
+        from cms_info c
+                 left join acl_user u on c.creater = u.id
+                 left join sys_config s on s.is_deleted = 0 and
+                                           s.config_key = 'artcle_cate'
+            and s.config_value = c.cate
+    </sql>
 
+    <sql id="selectCmsInfoVODetail">
+        select c.id,
+               c.create_time,
+               c.update_time,
+               c.cate,
+               s.config_name as catename,
+               u.nickname    as createrNickname,
+               c.title,
+               d.content
+        from cms_info c
+                 left join cms_info_detail d on c.id = d.id
+                 left join acl_user u on c.creater = u.id
+                 left join sys_config s on s.is_deleted = 0 and
+                                           s.config_key = 'artcle_cate'
+            and s.config_value = c.cate
+    </sql>
 
+    <select id="queryPage" parameterType="CmsInfo" resultType="CmsInfoVO">
+        <include refid="selectCmsInfoVO"></include>
+        <where>
+            <if test="cmsInfo.title != null and cmsInfo.title != ''">
+                c.title like #{cmsInfo.title}
+            </if>
+            <if test="cmsInfo.cate != null">
+                and c.cate = #{cmsInfo.cate}
+            </if>
+            <if test="cmsInfo.createrNickname != null and cmsInfo.createrNickname != ''">
+                and u.nickname = #{cmsInfo.createrNickname}
+            </if>
+            <if test="cmsInfo.startTime != null and cmsInfo.endTime != null">
+                and create_time > date_format(#{cmsInfo.startTime},'%Y-%m-%d %H:%i:%s') and
+                <![CDATA[create_time < date_format(#{cmsInfo.endTime},'%Y-%m-%d %H:%i:%s')]]>
+            </if>
+            and c.is_deleted = 0
+        </where>
+        order by c.create_time desc
+    </select>
 
+    <select id="queryDetail" parameterType="java.lang.String" resultType="CmsInfoVO">
+        <include refid="selectCmsInfoVODetail"></include>
+        where
+        c.is_deleted = 0
+        and
+        c.id = #{id}
+    </select>
 </mapper>

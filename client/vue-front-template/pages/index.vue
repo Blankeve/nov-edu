@@ -174,71 +174,6 @@
               <div class="clear"></div>
             </article>
           </div>
-
-          <!-- <header class="comm-title">
-            <h2 class="tac">
-              <span class="c-333">最多人购买课程</span>
-            </h2>
-          </header>
-          <div>
-            <article class="comm-course-list">
-              <ul class="of" id="bna">
-                <li v-for="course in courses3" :key="course.id">
-                  <div class="cc-l-wrap">
-                    <section class="course-img">
-                      <img
-                        :src="course.cover"
-                        class="img-responsive"
-                        :alt="course.title"
-                      />
-                      <div class="cc-mask">
-                        <nuxt-link :to="'/course/' + course.id">
-                          <a title="开始学习" class="comm-btn c-btn-1"
-                            >开始学习</a
-                          >
-                        </nuxt-link>
-                      </div>
-                    </section>
-                    <h3 class="hLh30 txtOf mt10">
-                      <nuxt-link :to="'/course/' + course.id">
-                        <a
-                          :title="course.title"
-                          class="course-title fsize16 c-333"
-                          >{{ course.title }}</a
-                        >
-                      </nuxt-link>
-                    </h3>
-                    <section class="mt10 hLh20 of">
-                      <span
-                        class="fr jgTag"
-                        :class="{
-                          'bg-green': course.price == 0,
-                          'bg-red': course.price > 0,
-                        }"
-                      >
-                        <i class="c-fff fsize18 f-fA">{{
-                          course.price > 0 ? "¥" + course.price : "免费"
-                        }}</i>
-                      </span>
-                      <span class="fl jgAttr c-ccc f-fA">
-                        <i class="c-999 f-fA">{{ course.buyCount }}人购买</i>
-                        |
-                        <i class="c-999 f-fA"
-                          >{{ course.commentCount }}人评论</i
-                        >
-                      </span>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-              <div class="clear"></div>
-            </article>
-            <section class="tac pt20">
-              <nuxt-link to="/course">
-                <a title="全部课程" class="comm-btn c-btn-2">全部课程</a>
-              </nuxt-link>
-            </section>
-          </div> -->
         </section>
       </div>
       <!-- /网校课程 结束 -->
@@ -356,16 +291,16 @@ export default {
     ...mapGetters(["uid"]),
   },
   mounted() {
-    let adId = "n_";
-    receiveNotice().then((resp) => {
+    let adKey = "n_";
+    let id = localStorage.getItem(adKey);
+    receiveNotice({ "id": id }).then((resp) => {
       if (resp.code === 200) {
         this.notice = resp.data;
-        this.notice.createTime = getFormatTime(this.notice.createTime);
-        let adValue = localStorage.getItem(adId);
-        if (!adValue || adValue != this.notice.id) {
+        if (this.notice.createTime) {
+          this.notice.createTime = getFormatTime(this.notice.createTime);
           this.noticeFormVisible = true;
-          localStorage.setItem(adId, this.notice.id);
         }
+        localStorage.setItem(adKey, this.notice.id);
       }
     });
   },

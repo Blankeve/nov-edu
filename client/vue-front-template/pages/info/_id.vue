@@ -38,7 +38,7 @@
               }
             "
           >
-            回到顶部
+            ↑
           </div></el-backtop
         >
       </client-only>

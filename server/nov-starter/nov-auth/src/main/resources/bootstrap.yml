@@ -1,0 +1,22 @@
+spring:
+  profiles:
+    active: prod
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        namespace: 4750f762-5f02-4f8b-88eb-6c9cde0079e6
+        group: DEFAULT_GROUP
+        file-extension: yaml
+        refresh-enabled: true
+        username: nacos
+        password: nacos
+  application:
+    name: nov-auth
+
+
+server:
+  port: 8101
+
+
+

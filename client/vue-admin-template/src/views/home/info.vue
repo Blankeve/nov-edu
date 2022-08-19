@@ -76,7 +76,7 @@
       <el-table-column
         align="center"
         prop="created_at"
-        label="发布日期"
+        label="发布时间"
         width="200"
       >
         <template slot-scope="scope">
@@ -88,7 +88,7 @@
       <el-table-column
         align="center"
         prop="created_at"
-        label="更新日期"
+        label="更新时间"
         width="200"
       >
         <template slot-scope="scope">
@@ -106,12 +106,6 @@
       <el-table-column width="100" label="作者" align="center">
         <template slot-scope="scope">
           {{ scope.row.createrNickname }}
-        </template>
-      </el-table-column>
-
-      <el-table-column width="100" label="更新人" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.updaterNickname }}
         </template>
       </el-table-column>
 

@@ -25,7 +25,6 @@ public class IpAddressUtils {
         String ip = null;
         // X-Real-IP：nginx服务代理
         String ipAddresses = request.getHeader("X-Real-IP");
-        System.out.println("获取nginx的ip：" + ipAddresses);
         if (ipAddresses == null || ipAddresses.length() == 0 || "unknown".equalsIgnoreCase(ipAddresses)) {
             //Proxy-Client-IP：apache 服务代理
             ipAddresses = request.getHeader("Proxy-Client-IP");
