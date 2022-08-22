@@ -1,7 +1,6 @@
 package com.novedu.nov.edu.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
@@ -21,7 +20,6 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletResponse;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -69,18 +67,7 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
 
     @Override
     public BaseResult queryChapterPage(Page page, EduChapterInfoDTO chapterInfoDTO) {
-        QueryWrapper queryWrapper = new QueryWrapper();
-        if (StringUtils.hasText(chapterInfoDTO.getTitle()))
-            queryWrapper.like("chapter.title", chapterInfoDTO.getTitle());
-        if (chapterInfoDTO.getCourseId() != null)
-            queryWrapper.eq("course_id", chapterInfoDTO.getCourseId());
-        if (chapterInfoDTO.getSort() != null && chapterInfoDTO.getSort() > 0)
-            queryWrapper.eq("chapter.sort", chapterInfoDTO.getSort());
-        Date start = chapterInfoDTO.getStartTime();
-        Date end = chapterInfoDTO.getEndTime();
-        if (start != null && end != null && end.getTime() > start.getTime())
-            queryWrapper.apply("chapter.create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and chapter.create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start, end);
-        return BaseResult.success(chapterMapper.queryPage(page, queryWrapper));
+        return BaseResult.success(chapterMapper.queryPage(page, chapterInfoDTO));
     }
 
     @Override

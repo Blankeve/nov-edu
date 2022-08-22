@@ -6,8 +6,6 @@ import com.novedu.nov.edu.entity.CrmBanner;
 import com.novedu.nov.edu.mapper.CrmBannerMapper;
 import com.novedu.nov.edu.service.CrmBannerService;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

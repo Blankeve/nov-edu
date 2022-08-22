@@ -47,8 +47,8 @@
                 and u.nickname = #{cmsInfo.createrNickname}
             </if>
             <if test="cmsInfo.startTime != null and cmsInfo.endTime != null">
-                and create_time > date_format(#{cmsInfo.startTime},'%Y-%m-%d %H:%i:%s') and
-                <![CDATA[create_time < date_format(#{cmsInfo.endTime},'%Y-%m-%d %H:%i:%s')]]>
+                and c.create_time > date_format(#{cmsInfo.startTime},'%Y-%m-%d %H:%i:%s') and
+                <![CDATA[c.create_time < date_format(#{cmsInfo.endTime},'%Y-%m-%d %H:%i:%s')]]>
             </if>
             and c.is_deleted = 0
         </where>

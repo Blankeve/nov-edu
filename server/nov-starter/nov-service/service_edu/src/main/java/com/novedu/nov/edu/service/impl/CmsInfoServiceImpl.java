@@ -1,36 +1,24 @@
 package com.novedu.nov.edu.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.constants.RedisKeyConstants;
 import com.novedu.nov.common.util.RequestUtils;
-import com.novedu.nov.edu.client.OpenUcenterService;
-import com.novedu.nov.edu.entity.AclUser;
 import com.novedu.nov.edu.entity.CmsInfo;
 import com.novedu.nov.edu.entity.CmsInfoDetail;
 import com.novedu.nov.edu.entity.vo.CmsInfoVO;
 import com.novedu.nov.edu.mapper.CmsInfoMapper;
 import com.novedu.nov.edu.service.CmsInfoDetailService;
 import com.novedu.nov.edu.service.CmsInfoService;
-import com.novedu.nov.system.entity.SysConfig;
-import com.novedu.nov.system.service.SysConfigService;
-import com.novedu.nov.system.utils.BeanListUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StringUtils;
 
-import java.util.Date;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 /**
  * <p>
@@ -43,8 +31,6 @@ import java.util.NoSuchElementException;
 @Service
 public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> implements CmsInfoService {
 
-    @Autowired
-    private OpenUcenterService openUcenterService;
     @Autowired
     private RedisTemplate redisTemplate;
     @Autowired

@@ -21,7 +21,7 @@ public interface EduCommentService extends IService<EduComment> {
 
     BaseResult saveComment(EduComment eduComment, HttpServletRequest request);
 
-    BaseResult queryCommentPage(Page page, EduComment eduComment);
+    BaseResult queryCommentPage(Page page, EduUserCommentDTO eduComment);
 
     BaseResult queryCommentPage(HttpServletRequest request,Page page, EduUserCommentDTO eduComment);
 

@@ -1,14 +1,11 @@
 package com.novedu.nov.edu.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.base.RoleType;
 import com.novedu.nov.common.util.ExcelUtils;
-import com.novedu.nov.common.util.JwtUtils;
 import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.edu.client.OpenOrderService;
 import com.novedu.nov.edu.client.OpenUcenterService;
@@ -31,7 +28,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Date;
 import java.util.Map;
 
 /**
@@ -102,10 +98,8 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
     }
 
     @Override
-    public BaseResult queryCommentPage(Page page, EduComment eduComment) {
-        LambdaQueryWrapper<EduComment> queryWrapper = new LambdaQueryWrapper();
-        queryWrapper.eq(EduComment::getCourseId, eduComment.getCourseId());
-        IPage<EduUserCommentVO> page1 = commentMapper.queryPage(page, queryWrapper);
+    public BaseResult queryCommentPage(Page page, EduUserCommentDTO eduComment) {
+        IPage<EduUserCommentVO> page1 = commentMapper.queryPage(page, eduComment);
         for (EduUserCommentVO record : page1.getRecords()) {
             if (!StringUtils.hasText(record.getNickname()))
                 record.setNickname("已注销");
@@ -127,22 +121,7 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
             Long teacherId = teacherService.query().eq("uid", uid).one().getId();
             eduComment.setTeacherId(teacherId);
         }
-        QueryWrapper queryWrapper = new QueryWrapper();
-        if (StringUtils.hasText(eduComment.getNickname()))
-            queryWrapper.like("u.nickname", eduComment.getNickname());
-        if (eduComment.getReported() != null)
-            queryWrapper.eq("comment.reported", eduComment.getReported());
-        if (eduComment.getCourseId() != null)
-            queryWrapper.eq("comment.course_id", eduComment.getCourseId());
-        if (eduComment.getUid() != null)
-            queryWrapper.eq("comment.uid", eduComment.getUid());
-        if (eduComment.getTeacherId() != null)
-            queryWrapper.eq("comment.teacher_id", eduComment.getTeacherId());
-        Date start = eduComment.getStartTime();
-        Date end = eduComment.getEndTime();
-        if (start != null && end != null && end.getTime() > start.getTime())
-            queryWrapper.apply("comment.create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and comment.create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start, end);
-        return BaseResult.success(commentMapper.queryPage(page, queryWrapper));
+        return BaseResult.success(commentMapper.queryPage(page, eduComment));
     }
 
     @Override

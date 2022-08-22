@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.edu.entity.CmsInfo;
 import com.novedu.nov.edu.entity.vo.CmsInfoVO;
-import org.springframework.stereotype.Repository;
+
 
 
 /**
@@ -16,7 +16,6 @@ import org.springframework.stereotype.Repository;
  * @author juam
  * @since 2022-05-31
  */
-@Repository
 public interface CmsInfoMapper extends BaseMapper<CmsInfo> {
     IPage<CmsInfoVO> queryPage(Page page, CmsInfo cmsInfo);
 

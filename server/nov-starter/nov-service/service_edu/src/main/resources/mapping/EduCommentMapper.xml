@@ -3,7 +3,7 @@
 <mapper namespace="com.novedu.nov.edu.mapper.EduCommentMapper">
 
 
-    <select id="queryPage" parameterType="EduComment" resultType="EduUserCommentVO">
+    <select id="queryPage" parameterType="EduUserCommentDTO" resultType="EduUserCommentVO">
         select comment.id as id,
         comment.course_id as courseId,
         comment.teacher_id as teacherId,
@@ -21,8 +21,24 @@
         left join edu_course c on comment.course_id = c.id
         left join edu_teacher t on comment.teacher_id = t.id
         where comment.is_deleted = 0
-        <if test="ew != null and ew.sqlSegment != null and ew.sqlSegment != ''">
-            and ${ew.sqlSegment}
+        <if test="comment.nickname != null and comment.nickname != ''">
+            and u.nickname like concat('%',#{comment.nickname},'%')
+        </if>
+        <if test="comment.reported != null">
+            and comment.reported = #{comment.reported}
+        </if>
+        <if test="comment.courseId != null">
+            and comment.course_id = #{comment.courseId}
+        </if>
+        <if test="comment.uid != null">
+            and comment.uid = #{comment.uid}
+        </if>
+        <if test="comment.teacherId != null">
+            and comment.teacher_id = #{comment.teacherId}
+        </if>
+        <if test="comment.startTime != null and comment.endTime != null">
+            and comment.create_time > date_format(#{comment.startTime},'%Y-%m-%d %H:%i:%s') and
+            <![CDATA[comment.create_time < date_format(#{comment.endTime},'%Y-%m-%d %H:%i:%s')]]>
         </if>
         order by comment.create_time desc
     </select>

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.novedu.nov.edu.mapper.EduChapterMapper">
 
-    <select id="queryPage" parameterType="EduCourseInfoVO" resultType="EduChapterInfoVO">
+    <select id="queryPage" parameterType="EduChapterInfoDTO" resultType="EduChapterInfoVO">
         select teacher.id as teacherId,
         teacher.name as teacherName,
         course.id as courseId,
@@ -30,8 +30,18 @@
         left join edu_course course on chapter.course_id = course.id
         left join edu_teacher teacher on course.teacher_id = teacher.id
         where chapter.is_deleted = 0
-        <if test="ew != null and ew.sqlSegment != null and ew.sqlSegment != ''">
-            and ${ew.sqlSegment}
+        <if test="chapter.title != null and chapter.title != ''">
+            and chapter.title like concat('%',#{chapter.title},'%')
+        </if>
+        <if test="chapter.courseId != null">
+            and chapter.course_id = #{chapter.courseId}
+        </if>
+        <if test="chapter.sort != null and chapter.sort > 0">
+            and chapter.sort = #{chapter.sort}
+        </if>
+        <if test="chapter.startTime != null and chapter.endTime != null">
+            and chapter.create_time > date_format(#{chapter.startTime},'%Y-%m-%d %H:%i:%s') and
+            <![CDATA[chapter.create_time < date_format(#{chapter.endTime},'%Y-%m-%d %H:%i:%s')]]>
         </if>
         order by course.title,teacher.name,chapter.sort
     </select>
