@@ -27,7 +27,7 @@ public interface EduCourseMapper extends BaseMapper<EduCourse> {
 
     List<EduCourse> queryAll();
 
-    IPage<EduCourseInfoVO> queryPage(Page page, @Param("ew") Wrapper<EduCourseInfoVO> queryWrapper);
+    IPage<EduCourseInfoVO> queryPage(Page page,EduCourseInfoDTO course);
 
     EduCourseInfoVO queryCourseDetail(Long id);
 

@@ -59,11 +59,23 @@ div:focus {
   }
 }
 
+.main_content{
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+.search_box{
+  margin: 0px 20px 10px 20px;
+}
 // main-container global css
 .app-container {
   padding: 20px;
 }
-
+.btn-layout{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 //配置编辑器行高
 .ql-snow .ql-picker.ql-lineheight .ql-picker-label::before {
   content: "行高";

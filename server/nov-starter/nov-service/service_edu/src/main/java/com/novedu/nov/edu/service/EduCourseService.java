@@ -1,5 +1,6 @@
 package com.novedu.nov.edu.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.novedu.nov.common.base.BaseResult;
@@ -30,7 +31,7 @@ public interface EduCourseService extends IService<EduCourse> {
 
     BaseResult queryCoursesByTeacherId(Long eduTeacher);
 
-    BaseResult queryCoursePage(Page page, EduCourseInfoDTO courseInfoDTO);
+    IPage<EduCourseInfoVO> queryCoursePage(Page page, EduCourseInfoDTO courseInfoDTO);
 
     BaseResult queryCourseById(EduCourse id);
 
@@ -46,9 +47,7 @@ public interface EduCourseService extends IService<EduCourse> {
 
     BaseResult statisticsCourseBuyCount();
 
-    void exportCoursePage(HttpServletResponse response, Page page, EduCourseInfoDTO courseInfoDTO);
-
-    void exportAll(HttpServletResponse response);
+    void export(HttpServletResponse response, EduCourseInfoDTO courseInfoDTO);
 
     BaseResult releaseCourse(EduCourseInfoDTO courseInfoDTO);
 

@@ -10,7 +10,6 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.base.RoleType;
 import com.novedu.nov.common.constants.RedisKeyConstants;
-import com.novedu.nov.common.entity.UserDTO;
 import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.edu.client.OpenOrderService;
@@ -254,24 +253,12 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
 
     @Override
-    public BaseResult queryCoursePage(Page page, EduCourseInfoDTO courseInfoDTO) {
-        QueryWrapper queryWrapper = new QueryWrapper();
-        if (StringUtils.hasText(courseInfoDTO.getTitle()))
-            queryWrapper.like("course.title", courseInfoDTO.getTitle());
+    public IPage<EduCourseInfoVO> queryCoursePage(Page page, EduCourseInfoDTO courseInfoDTO) {
         if (!ObjectUtils.isEmpty(courseInfoDTO.getSubjectId())) {
             Integer subjectId = courseInfoDTO.getSubjectId()[courseInfoDTO.getSubjectId().length - 1];
-            queryWrapper.eq("subject_id", subjectId);
+            courseInfoDTO.setClientSubjectId(subjectId);
         }
-        if (!ObjectUtils.isEmpty(courseInfoDTO.getTeacherId()))
-            queryWrapper.eq("teacher_id", courseInfoDTO.getTeacherId());
-        if (!ObjectUtils.isEmpty(courseInfoDTO.getStatus()))
-            queryWrapper.eq("status", courseInfoDTO.getStatus());
-        Date start = courseInfoDTO.getStartTime();
-        Date end = courseInfoDTO.getEndTime();
-        if (start != null && end != null && end.getTime() > start.getTime())
-            queryWrapper.apply("course.create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and course.create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start, end);
-        Page page1 = (Page) courseMapper.queryPage(page, queryWrapper);
-        return BaseResult.success(page1);
+        return courseMapper.queryPage(page, courseInfoDTO);
     }
 
     @Override
@@ -369,11 +356,11 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
                                     courseViewCount += playCount;
                             }
                     }
-                int count = commentService.lambdaQuery().eq(EduComment::getCourseId,course.getId()).count();
+                int count = commentService.lambdaQuery().eq(EduComment::getCourseId, course.getId()).count();
                 LambdaUpdateWrapper<EduCourse> updateWrapper = new LambdaUpdateWrapper();
                 updateWrapper.eq(EduCourse::getId, course.getId());
                 updateWrapper.set(EduCourse::getViewCount, courseViewCount);
-                updateWrapper.set(EduCourse::getCommentCount,count);
+                updateWrapper.set(EduCourse::getCommentCount, count);
                 update(updateWrapper);
             }
         }
@@ -393,21 +380,8 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     }
 
     @Override
-    public void exportCoursePage(HttpServletResponse response, Page page, EduCourseInfoDTO courseInfoDTO) {
-        BaseResult baseResult = queryCoursePage(page, courseInfoDTO);
-        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
-            Page page1 = (Page) baseResult.getData();
-            ExcelUtils.exportExcel(page1.getRecords(), "课程信息", "课程信息", EduCourseInfoVO.class, "课程信息", response);
-        }
-    }
-
-    @Override
-    public void exportAll(HttpServletResponse response) {
-        BaseResult baseResult = queryCoursePage(new Page(1, count()), new EduCourseInfoDTO());
-        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
-            Page page1 = (Page) baseResult.getData();
-            ExcelUtils.exportExcel(page1.getRecords(), "课程信息", "课程信息", EduCourseInfoVO.class, "课程信息", response);
-        }
+    public void export(HttpServletResponse response, EduCourseInfoDTO courseInfoDTO) {
+        ExcelUtils.exportExcel(queryCoursePage(new Page(1, -1), courseInfoDTO).getRecords(), "课程信息", "课程信息", EduCourseInfoVO.class, "课程信息", response);
     }
 
     @Override

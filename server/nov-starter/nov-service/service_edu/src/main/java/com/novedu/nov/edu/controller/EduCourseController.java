@@ -14,8 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -46,9 +46,9 @@ public class EduCourseController {
     }
 
     @ApiOperation("删除")
-    @DeleteMapping("/remove/{id}")
-    public BaseResult removeCourse(@PathVariable Long id) {
-        return eduCourseService.removeCourse(id);
+    @DeleteMapping("/remove/{ids}")
+    public BaseResult removeCourse(@PathVariable Long[] ids) {
+        return BaseResult.successOrError(eduCourseService.removeByIds(Arrays.asList(ids)));
     }
 
     @PostMapping("/detail/{id}")
@@ -72,18 +72,13 @@ public class EduCourseController {
     }
 
     @PostMapping("/export")
-    public void exportCoursePage(HttpServletResponse response, Page page, EduCourseInfoDTO courseInfoDTO) {
-         eduCourseService.exportCoursePage(response,page, courseInfoDTO);
-    }
-
-    @GetMapping("/export-all")
-    public void exportAll(HttpServletResponse response) {
-         eduCourseService.exportAll(response);
+    public void exportCoursePage(HttpServletResponse response, EduCourseInfoDTO courseInfoDTO) {
+         eduCourseService.export(response, courseInfoDTO);
     }
 
     @PostMapping("/page")
     public BaseResult queryCoursePage(Page page, EduCourseInfoDTO courseInfoDTO) {
-        return eduCourseService.queryCoursePage(page, courseInfoDTO);
+        return BaseResult.success(eduCourseService.queryCoursePage(page, courseInfoDTO));
     }
 
     @PostMapping("/page-client")

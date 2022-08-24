@@ -53,7 +53,6 @@
       icon="el-icon-plus"
       size="mini"
       type="primary"
-      :disabled="btnDisabled"
       plain
       @click="addConfig()"
       >新增一级字典</el-button
@@ -62,7 +61,7 @@
       icon="el-icon-delete"
       size="mini"
       type="danger"
-      :disabled="!btnDisabled"
+      :disabled="selectionIds.length == 0"
       plain
       @click="handleDelete()"
       >删除</el-button
@@ -74,6 +73,7 @@
       :data="list"
       element-loading-text="Loading"
       row-key="id"
+      @row-click="clickRow"
       :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
     >
       <el-table-column type="selection" width="55"> </el-table-column>
@@ -215,7 +215,6 @@ export default {
   data() {
     return {
       list: [],
-      btnDisabled: false,
       disabled: true,
       listLoading: true,
       configFormTitle: "",
@@ -313,8 +312,6 @@ export default {
       this.dateRange = [];
     },
     handleSelectionChange(val) {
-      if (val.length > 0) this.btnDisabled = true;
-      else this.btnDisabled = false;
       this.selectionIds = val;
     },
     handleDateLength(str) {
