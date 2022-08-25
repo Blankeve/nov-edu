@@ -28,7 +28,6 @@
             :min="0"
             :max="10"
             placeholder="第几章节"
-            clearable
           ></el-input-number>
         </el-form-item>
 

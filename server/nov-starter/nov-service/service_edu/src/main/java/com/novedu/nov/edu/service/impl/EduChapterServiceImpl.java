@@ -98,7 +98,7 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
 
     @Override
     public void exportChapterPage(HttpServletResponse response, EduChapterInfoDTO chapterInfoDTO) {
-        ExcelUtils.exportExcel(queryChapterPage(new Page(1, -1), chapterInfoDTO).getRecords(), "章节信息", "章节信息", EduChapterInfoVO.class, "课程信息", response);
+        ExcelUtils.exportExcel(queryChapterPage(new Page(1, -1), chapterInfoDTO).getRecords(), "章节信息", "章节信息", EduChapterInfoVO.class, "章节信息", response);
     }
 
 

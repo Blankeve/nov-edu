@@ -66,14 +66,13 @@ service.interceptors.response.use(
           reader.readAsText(res)
           reader.onload = function () {
             const { msg } = JSON.parse(reader.result)//此处的msg就是后端返回的msg内容
-            res.msg = msg
+            Message({
+              message: msg || 'Error',
+              type: 'error',
+              duration: 2 * 1000
+            })
           }
         }
-          Message({
-            message: res.msg || 'Error',
-            type: 'error',
-            duration: 2 * 1000
-          })
       }
       return Promise.reject(new Error(res.msg || 'Error'))
     }
