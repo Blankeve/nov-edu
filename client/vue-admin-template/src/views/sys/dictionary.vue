@@ -1,200 +1,220 @@
 <template>
   <div class="app-container">
-    <el-form :inline="true" ref="queryForm" :model="queryForm">
-      <el-form-item prop="configName" label="字典名称">
-        <el-input
-          v-model="queryForm.configName"
-          placeholder="字典名称"
-        ></el-input>
-      </el-form-item>
-
-      <el-form-item prop="configKey" label="字典类型">
-        <el-input
-          v-model="queryForm.configKey"
-          placeholder="字典类型"
-        ></el-input>
-      </el-form-item>
-
-      <el-form-item prop="status" label="状态">
-        <el-select v-model="queryForm.status" placeholder="请选择状态">
-          <el-option label="全部" value=""> </el-option>
-          <el-option label="启用" value="1"> </el-option>
-          <el-option label="停用" value="0"> </el-option>
-        </el-select>
-      </el-form-item>
-
-      <el-form-item label="创建时间" prop="dateRange">
-        <el-date-picker
-          v-model="dateRange"
-          type="datetimerange"
-          :picker-options="pickerOptions"
-          range-separator="至"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
-          align="right"
-        >
-        </el-date-picker>
-      </el-form-item>
-
-      <el-form-item>
-        <el-button type="primary" icon="el-icon-search" @click="fetchData"
-          >查询</el-button
-        >
-        <el-button
-          type="danger"
-          icon="el-icon-refresh-left"
-          @click="resetForm('queryForm')"
-          >重置</el-button
-        >
-      </el-form-item>
-    </el-form>
-
-    <el-button
-      icon="el-icon-plus"
-      size="mini"
-      type="primary"
-      plain
-      @click="addConfig()"
-      >新增一级字典</el-button
-    >
-    <el-button
-      icon="el-icon-delete"
-      size="mini"
-      type="danger"
-      :disabled="selectionIds.length == 0"
-      plain
-      @click="handleDelete()"
-      >删除</el-button
-    >
-    <el-table
-      v-loading="listLoading"
-      highlight-current-row
-      @selection-change="handleSelectionChange"
-      :data="list"
-      element-loading-text="Loading"
-      row-key="id"
-      @row-click="clickRow"
-      :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
-    >
-      <el-table-column type="selection" width="55"> </el-table-column>
-
-      <el-table-column label="字典名称" align="left">
-        <template slot-scope="scope">
-          <span>{{ scope.row.configName }}</span>
-        </template>
-      </el-table-column>
-
-      <el-table-column label="字典类型" align="center">
-        <template slot-scope="scope">
-          <el-tag size="medium">
-            {{ scope.row.configKey }}
-          </el-tag>
-        </template>
-      </el-table-column>
-
-      <el-table-column label="value" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.configValue }}</span>
-        </template>
-      </el-table-column>
-
-      <el-table-column align="center" prop="created_at" label="创建时间">
-        <template slot-scope="scope">
-          <i class="el-icon-time" />
-          <span>{{ scope.row.createTime }}</span>
-        </template>
-      </el-table-column>
-
-      <el-table-column align="center" prop="created_at" label="更新时间">
-        <template slot-scope="scope">
-          <i class="el-icon-time" />
-          <span>{{ scope.row.updateTime }}</span>
-        </template>
-      </el-table-column>
-
-      <el-table-column align="center" width="100px" label="是否启用">
-        <template slot-scope="scope">
-          <el-switch
-            v-model="scope.row.status"
-            active-color="#1890ff"
-            active-value="1"
-            inactive-color="#DCDFE6"
-            inactive-value="0"
-            @change="changeSwitch(scope.row)"
-          ></el-switch>
-        </template>
-      </el-table-column>
-
-      <el-table-column fixed="right" align="center" width="250px" label="操作">
-        <template slot-scope="scope">
-          <el-button
-            round
-            @click="handleAddConfig(scope.row)"
-            size="mini"
-            icon="el-icon-plus"
-            type="primary"
-            plain
-            >新增</el-button
-          >
-          <el-button
-            style="margin-left: 0"
-            round
-            @click="handleEdit(scope.row)"
-            size="mini"
-            icon="el-icon-edit"
-            type="info"
-            plain
-            >编辑</el-button
-          >
-          <el-popconfirm
-            :title="
-              (scope.row.children ? '该字典包含多个节点,' : '') +
-              `确定删除 [${scope.row.configName}] 吗？`
-            "
-            @onConfirm="handleDelete(scope.row.id)"
-          >
-            <el-button
-              round
-              slot="reference"
-              size="mini"
-              icon="el-icon-delete"
-              type="danger"
-              plain
-              >删除</el-button
-            >
-          </el-popconfirm>
-        </template>
-      </el-table-column>
-    </el-table>
-    <el-dialog
-      :title="configFormTitle"
-      :visible.sync="configFormVisible"
-      :close-on-click-modal="false"
-      width="500px"
-      center=""
-    >
-      <el-form :rules="formRules" :model="form" label-width="120">
+    <div class="search_box">
+      <el-form :inline="true" ref="queryForm" :model="queryForm" size="medium">
         <el-form-item prop="configName" label="字典名称">
-          <el-input v-model="form.configName"></el-input>
+          <el-input
+            v-model="queryForm.configName"
+            placeholder="字典名称"
+            clearable
+          ></el-input>
         </el-form-item>
 
         <el-form-item prop="configKey" label="字典类型">
-          <el-input :disabled="disabled" v-model="form.configKey"></el-input>
-        </el-form-item>
-
-        <el-form-item prop="configValue" label="字典值">
           <el-input
-            :autosize="{ minRows: 2, maxRows: 4 }"
-            type="textarea"
-            v-model="form.configValue"
+            v-model="queryForm.configKey"
+            placeholder="字典类型"
+            clearable
           ></el-input>
         </el-form-item>
+
+        <el-form-item prop="status" label="状态">
+          <el-select
+            v-model="queryForm.status"
+            placeholder="请选择状态"
+            clearable
+          >
+            <el-option label="启用" value="1"> </el-option>
+            <el-option label="停用" value="0"> </el-option>
+          </el-select>
+        </el-form-item>
+
+        <el-form-item label="创建时间" prop="dateRange">
+          <el-date-picker
+            style="width: 300px"
+            v-model="dateRange"
+            type="datetimerange"
+            :picker-options="pickerOptions"
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+            align="right"
+          >
+          </el-date-picker>
+        </el-form-item>
+
+        <el-form-item>
+          <el-button
+            type="primary"
+            icon="el-icon-search"
+            @click="fetchData"
+            size="small"
+            >查询</el-button
+          >
+          <el-button
+            type="danger"
+            icon="el-icon-refresh-left"
+            @click="resetForm('queryForm')"
+            size="small"
+            >重置</el-button
+          >
+        </el-form-item>
       </el-form>
-      <div slot="footer" class="dialog-footer">
-        <el-button @click="configFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="onSubmit">确 定</el-button>
-      </div>
-    </el-dialog>
+    </div>
+    <div class="main_content" style="border-top: 2px solid #f0f0f0">
+      <el-button
+        icon="el-icon-plus"
+        size="mini"
+        type="primary"
+        plain
+        @click="addConfig()"
+        >新增一级字典</el-button
+      >
+      <el-button
+        icon="el-icon-delete"
+        size="mini"
+        type="danger"
+        :disabled="selectionIds.length == 0"
+        plain
+        @click="handleDelete()"
+        >删除</el-button
+      >
+      <el-table
+        ref="table"
+        v-loading="listLoading"
+        highlight-current-row
+        @selection-change="handleSelectionChange"
+        :data="list"
+        element-loading-text="Loading"
+        row-key="id"
+        @row-click="handleRowClick"
+        :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
+      >
+        <el-table-column type="selection" width="55"> </el-table-column>
+
+        <el-table-column label="字典名称" align="left">
+          <template slot-scope="scope">
+            <span>{{ scope.row.configName }}</span>
+          </template>
+        </el-table-column>
+
+        <el-table-column label="字典类型" align="center">
+          <template slot-scope="scope">
+            <el-tag size="medium">
+              {{ scope.row.configKey }}
+            </el-tag>
+          </template>
+        </el-table-column>
+
+        <el-table-column label="value" align="center">
+          <template slot-scope="scope">
+            <span>{{ scope.row.configValue }}</span>
+          </template>
+        </el-table-column>
+
+        <el-table-column align="center" prop="created_at" label="创建时间">
+          <template slot-scope="scope">
+            <i class="el-icon-time" />
+            <span>{{ scope.row.createTime }}</span>
+          </template>
+        </el-table-column>
+
+        <el-table-column align="center" prop="created_at" label="更新时间">
+          <template slot-scope="scope">
+            <i class="el-icon-time" />
+            <span>{{ scope.row.updateTime }}</span>
+          </template>
+        </el-table-column>
+
+        <el-table-column align="center" width="100px" label="是否启用">
+          <template slot-scope="scope">
+            <el-switch
+              v-model="scope.row.status"
+              active-color="#1890ff"
+              active-value="1"
+              inactive-color="#DCDFE6"
+              inactive-value="0"
+              @change="changeSwitch(scope.row)"
+            ></el-switch>
+          </template>
+        </el-table-column>
+
+        <el-table-column
+          fixed="right"
+          align="center"
+          width="250px"
+          label="操作"
+        >
+          <template slot-scope="scope">
+            <el-button
+              round
+              @click="handleAddConfig(scope.row)"
+              size="mini"
+              icon="el-icon-plus"
+              type="primary"
+              plain
+              >新增</el-button
+            >
+            <el-button
+              style="margin-left: 0"
+              round
+              @click="handleEdit(scope.row)"
+              size="mini"
+              icon="el-icon-edit"
+              type="info"
+              plain
+              >编辑</el-button
+            >
+            <el-popconfirm
+              :title="
+                (scope.row.children ? '该字典包含多个节点,' : '') +
+                `确定删除 [${scope.row.configName}] 吗？`
+              "
+              @onConfirm="handleDelete(scope.row.id)"
+            >
+              <el-button
+                round
+                slot="reference"
+                size="mini"
+                icon="el-icon-delete"
+                type="danger"
+                plain
+                >删除</el-button
+              >
+            </el-popconfirm>
+          </template>
+        </el-table-column>
+      </el-table>
+      <el-dialog
+        :title="configFormTitle"
+        :visible.sync="configFormVisible"
+        :close-on-click-modal="false"
+        width="500px"
+        center=""
+      >
+        <el-form :rules="formRules" :model="form" label-width="120">
+          <el-form-item prop="configName" label="字典名称">
+            <el-input v-model="form.configName"></el-input>
+          </el-form-item>
+
+          <el-form-item prop="configKey" label="字典类型">
+            <el-input :disabled="disabled" v-model="form.configKey"></el-input>
+          </el-form-item>
+
+          <el-form-item prop="configValue" label="字典值">
+            <el-input
+              :autosize="{ minRows: 2, maxRows: 4 }"
+              type="textarea"
+              v-model="form.configValue"
+            ></el-input>
+          </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="configFormVisible = false">取 消</el-button>
+          <el-button type="primary" @click="onSubmit">确 定</el-button>
+        </div>
+      </el-dialog>
+    </div>
   </div>
 </template>
 
@@ -345,12 +365,11 @@ export default {
       }
     },
     handleDelete(id) {
-      if(this.selectionIds && this.selectionIds.length > 0){
-        id = []
-        for(let i = 0;i<this.selectionIds.length;i++)
-          id.push(this.selectionIds[i]['id'])
+      if (this.selectionIds && this.selectionIds.length > 0) {
+        id = [];
+        for (let i = 0; i < this.selectionIds.length; i++)
+          id.push(this.selectionIds[i]["id"]);
       }
-          console.log(id)
       removeById(id).then((resp) => {
         if (resp.code === 200) {
           this.$message.success("删除成功");
@@ -401,6 +420,11 @@ export default {
     getRowClass({ row, column, rowIndex, columnIndex }) {
       return "background:#3f5c6d2c;";
     },
+    handleRowClick(row) {
+      if (!row.disabled) {
+        this.$refs.table.toggleRowSelection(row);
+      }
+    },
     changeSwitch(row) {
       row.children = undefined;
       changeStatus(row).then((resp) => {
@@ -428,5 +452,8 @@ export default {
 <style lang="less" >
 .mid-input {
   width: 80px;
+}
+.el-form-item {
+  margin-bottom: 0 !important;
 }
 </style>

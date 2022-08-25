@@ -9,7 +9,7 @@
         <div class="avatar-wrapper">
           <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
           <i class="el-icon-caret-bottom" />
-          <span>{{name}}</span>
+          <span>{{username}}</span>
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
           <router-link to="/">
@@ -43,7 +43,7 @@ export default {
     ...mapGetters([
       'sidebar',
       'avatar',
-      'name'
+      'username'
     ])
   },
   methods: {

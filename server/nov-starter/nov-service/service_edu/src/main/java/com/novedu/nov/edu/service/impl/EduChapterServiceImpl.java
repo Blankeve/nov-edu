@@ -1,6 +1,7 @@
 package com.novedu.nov.edu.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
@@ -66,8 +67,8 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
     }
 
     @Override
-    public BaseResult queryChapterPage(Page page, EduChapterInfoDTO chapterInfoDTO) {
-        return BaseResult.success(chapterMapper.queryPage(page, chapterInfoDTO));
+    public IPage<EduChapterInfoVO> queryChapterPage(Page page, EduChapterInfoDTO chapterInfoDTO) {
+        return chapterMapper.queryPage(page, chapterInfoDTO);
     }
 
     @Override
@@ -96,22 +97,11 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
     }
 
     @Override
-    public void exportChapterPage(HttpServletResponse response, Page page, EduChapterInfoDTO chapterInfoDTO) {
-        BaseResult baseResult = queryChapterPage(page, chapterInfoDTO);
-        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
-            Page page1 = (Page) baseResult.getData();
-            ExcelUtils.exportExcel(page1.getRecords(), "章节信息", "章节信息", EduChapterInfoVO.class, "章节信息", response);
-        }
+    public void exportChapterPage(HttpServletResponse response, EduChapterInfoDTO chapterInfoDTO) {
+        ExcelUtils.exportExcel(queryChapterPage(new Page(1, -1), chapterInfoDTO).getRecords(), "章节信息", "章节信息", EduChapterInfoVO.class, "课程信息", response);
     }
 
-    @Override
-    public void exportAll(HttpServletResponse response) {
-        BaseResult baseResult = queryChapterPage(new Page(1, count()), new EduChapterInfoDTO());
-        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
-            Page page1 = (Page) baseResult.getData();
-            ExcelUtils.exportExcel(page1.getRecords(), "章节信息", "章节信息", EduChapterInfoVO.class, "章节信息", response);
-        }
-    }
+
 
 
 }

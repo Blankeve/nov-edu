@@ -47,7 +47,7 @@ public class EduCourseController {
 
     @ApiOperation("删除")
     @DeleteMapping("/remove/{ids}")
-    public BaseResult removeCourse(@PathVariable Long[] ids) {
+    public BaseResult remove(@PathVariable Long[] ids) {
         return BaseResult.successOrError(eduCourseService.removeByIds(Arrays.asList(ids)));
     }
 

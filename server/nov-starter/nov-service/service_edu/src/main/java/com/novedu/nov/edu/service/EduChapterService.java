@@ -1,10 +1,12 @@
 package com.novedu.nov.edu.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.edu.entity.EduChapter;
 import com.novedu.nov.edu.entity.dto.EduChapterInfoDTO;
+import com.novedu.nov.edu.entity.vo.EduChapterInfoVO;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -22,7 +24,7 @@ public interface EduChapterService extends IService<EduChapter> {
 
     BaseResult queryChaptersByCourseId(Long id);
 
-    BaseResult queryChapterPage(Page page, EduChapterInfoDTO chapterInfoDTO);
+    IPage<EduChapterInfoVO> queryChapterPage(Page page, EduChapterInfoDTO chapterInfoDTO);
 
     BaseResult updateChapterById(EduChapter id);
 
@@ -32,7 +34,6 @@ public interface EduChapterService extends IService<EduChapter> {
 
     BaseResult queryChapterList();
 
-    void exportChapterPage(HttpServletResponse response, Page page, EduChapterInfoDTO chapterInfoDTO);
+    void exportChapterPage(HttpServletResponse response, EduChapterInfoDTO chapterInfoDTO);
 
-    void exportAll(HttpServletResponse response);
 }

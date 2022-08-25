@@ -13,6 +13,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
 
 /**
  * <p>
@@ -37,24 +38,19 @@ public class EduChapterController {
     }
 
     @PostMapping("/export")
-    public void exportCoursePage(HttpServletResponse response, Page page, EduChapterInfoDTO chapterInfoDTO) {
-        chapterService.exportChapterPage(response,page, chapterInfoDTO);
-    }
-
-    @GetMapping("/export-all")
-    public void exportAll(HttpServletResponse response) {
-        chapterService.exportAll(response);
+    public void exportCoursePage(HttpServletResponse response,EduChapterInfoDTO chapterInfoDTO) {
+        chapterService.exportChapterPage(response,chapterInfoDTO);
     }
 
     @ApiOperation("删除")
-    @DeleteMapping("/remove/{id}")
-    public BaseResult removeChapter(@PathVariable Long id) {
-        return chapterService.removeChapter(id);
+    @DeleteMapping("/remove/{ids}")
+    public BaseResult remove(@PathVariable Long[] ids) {
+        return BaseResult.successOrError(chapterService.removeByIds(Arrays.asList(ids)));
     }
 
     @PostMapping("/page")
     public BaseResult queryChapterPage(Page page, EduChapterInfoDTO chapterInfoDTO) {
-        return chapterService.queryChapterPage(page, chapterInfoDTO);
+        return BaseResult.success(chapterService.queryChapterPage(page, chapterInfoDTO));
     }
 
     @PostMapping("/detail/{id}")

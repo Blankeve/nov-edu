@@ -1,175 +1,202 @@
 <template>
   <div class="app-container">
-    <el-form :inline="true" ref="form" :model="form">
-      <el-form-item label="章节名称" prop="title">
-        <el-input v-model="form.title" placeholder="章节名称"></el-input>
-      </el-form-item>
+    <div class="search_box">
+      <el-form :inline="true" ref="form" :model="form" size="medium">
+        <el-form-item prop="title">
+          <el-input
+            v-model="form.title"
+            placeholder="章节名称"
+            clearable
+          ></el-input>
+        </el-form-item>
 
-      <el-form-item label="所属课程">
-        <el-select v-model="form.courseId" placeholder="请选择课程">
-          <el-option label="所有课程" key="" value=""> </el-option>
-          <el-option
-            v-for="(item, index) in courses"
-            :label="item.title"
-            :key="item.id"
-            :value="item.id"
+        <el-form-item>
+          <el-select v-model="form.courseId" placeholder="课程名称" clearable>
+            <el-option
+              v-for="(item, index) in courses"
+              :label="item.title"
+              :key="item.id"
+              :value="item.id"
+            >
+            </el-option>
+          </el-select>
+        </el-form-item>
+
+        <el-form-item>
+          <el-input-number
+            v-model="form.sort"
+            :min="0"
+            :max="10"
+            placeholder="第几章节"
+            clearable
+          ></el-input-number>
+        </el-form-item>
+
+        <el-form-item prop="createTime">
+          <el-date-picker
+            style="width: 300px"
+            v-model="dateRange"
+            type="datetimerange"
+            :picker-options="pickerOptions"
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+            align="right"
           >
-          </el-option>
-        </el-select>
-      </el-form-item>
+          </el-date-picker>
+        </el-form-item>
 
-      <el-form-item label="第几章节">
-        <el-input-number
-          v-model="form.sort"
-          :min="0"
-          :max="10"
-          label="描述文字"
-        ></el-input-number>
-      </el-form-item>
-
-      <el-form-item label="添加时间" prop="createTime">
-        <el-date-picker
-          v-model="dateRange"
-          type="datetimerange"
-          :picker-options="pickerOptions"
-          range-separator="至"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
-          align="right"
-        >
-        </el-date-picker>
-      </el-form-item>
-
-      <el-form-item>
-        <el-button type="primary" icon="el-icon-search" @click="searchForm"
-          >查询</el-button
-        >
-        <el-button
-          type="danger"
-          icon="el-icon-refresh-left"
-          @click="resetForm('form')"
-          >重置</el-button
-        >
-        <el-button
-          type="success"
-          icon="el-icon-download"
-          @click="exportChapterPage"
-          >导出当前</el-button
-        >
-        <el-button
-          type="success"
-          icon="el-icon-download"
-          @click="exportAllChapter"
-          >导出所有</el-button
-        >
-      </el-form-item>
-    </el-form>
-
-    <el-table
-      v-loading="listLoading"
-      :data="list"
-      element-loading-text="Loading"
-      border
-      fit
-      highlight-current-row
-    >
-      <el-table-column align="center" label="#" width="50">
-        <template slot-scope="scope">
-          {{ scope.$index + 1 }}
-        </template>
-      </el-table-column>
-
-      <el-table-column label="所属课程" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.courseTitle }}</span>
-        </template>
-      </el-table-column>
-
-      <el-table-column label="课程讲师" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.teacherName }}
-        </template>
-      </el-table-column>
-
-      <el-table-column label="章节标题" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.chapterTitle }}
-        </template>
-      </el-table-column>
-
-      <el-table-column label="第几章节" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.chapterSort }}</span>
-        </template>
-      </el-table-column>
-
-      <el-table-column align="center" label="视频数量" width="100">
-        <template slot-scope="scope">
-          <span>{{ scope.row.videoQty }}</span>
-        </template>
-      </el-table-column>
-
-      <el-table-column align="center" prop="created_at" label="创建时间">
-        <template slot-scope="scope">
-          <i class="el-icon-time" />
-          <span>{{ scope.row.chapterCreateTime }}</span>
-        </template>
-      </el-table-column>
-
-      <el-table-column align="center" prop="created_at" label="更新时间">
-        <template slot-scope="scope">
-          <i class="el-icon-time" />
-          <span>{{ scope.row.chapterUpdateTime }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column fixed="right" align="center" label="操作" width="250">
-        <template slot-scope="scope">
-          <el-button icon="el-icon-edit" @click="handleEdit(scope.row.chapterId)">编辑</el-button>
-          <el-popconfirm
-            :title="
-              (scope.row.videoQty > 0 ? '该章节下视频不为空,' : '') +
-              '确定删除吗？'
-            "
-            @onConfirm="handleDelete(scope.$index, scope.row.chapterId)"
+        <el-form-item>
+          <el-button
+            size="small"
+            type="primary"
+            icon="el-icon-search"
+            @click="searchForm"
+            >查询</el-button
           >
-            <el-button icon="el-icon-delete" slot="reference" type="danger">删除</el-button>
-          </el-popconfirm>
-
-          <el-button type="text" @click="addVideo(scope.row.chapterId)"
+          <el-button
+            size="small"
+            type="danger"
+            icon="el-icon-refresh-left"
+            @click="resetForm('form')"
+            >重置</el-button
+          >
+        </el-form-item>
+      </el-form>
+    </div>
+    <div class="main_content" style="border-top: 2px solid #f0f0f0">
+      <div class="btn-layout">
+        <div>
+          <el-button
+            size="mini"
+            :disabled="selectionIds.length != 1"
+            plain
+            type="warning"
+            @click="handleEdit()"
+            icon="el-icon-edit"
+            >编辑</el-button
+          >
+          <el-button
+            size="mini"
+            :disabled="selectionIds.length != 1"
+            plain
+            type="primary"
+            @click="addVideo()"
             >添加小节</el-button
           >
           <el-button
-            v-if="scope.row.videoQty > 0"
-            type="text"
-            @click="watchVideo(scope.row.chapterId)"
+            size="mini"
+            :disabled="selectionIds.length != 1"
+            plain
+            type="primary"
+            @click="watchVideo()"
             >查看小节</el-button
           >
-        </template>
-      </el-table-column>
-    </el-table>
-    <div class="block">
-      <el-pagination
-        background
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        :current-page="form.current"
-        :page-sizes="sizes"
-        :page-size="form.size"
-        layout="total, sizes, prev, pager, next, jumper"
-        :total="form.total"
+          <el-button
+            icon="el-icon-delete"
+            size="mini"
+            type="danger"
+            :disabled="selectionIds.length == 0"
+            plain
+            @click="handleDelete()"
+            >删除</el-button
+          >
+        </div>
+        <div>
+          <el-button
+            size="mini"
+            type="success"
+            plain
+            icon="el-icon-download"
+            @click="exportChapterPage"
+            >导出</el-button
+          >
+        </div>
+      </div>
+
+      <el-table
+        ref="table"
+        @selection-change="handleSelectionChange"
+        @row-click="handleRowClick"
+        row-key="id"
+        v-loading="listLoading"
+        :data="list"
+        element-loading-text="Loading"
+        border
+        fit
+        highlight-current-row
       >
-      </el-pagination>
+        <el-table-column type="selection" width="55"> </el-table-column>
+
+        <el-table-column align="center" label="#" width="50">
+          <template slot-scope="scope">
+            {{ scope.$index + 1 }}
+          </template>
+        </el-table-column>
+
+        <el-table-column label="所属课程" align="center">
+          <template slot-scope="scope">
+            <span>{{ scope.row.courseTitle }}</span>
+          </template>
+        </el-table-column>
+
+        <el-table-column label="课程讲师" align="center">
+          <template slot-scope="scope">
+            {{ scope.row.teacherName }}
+          </template>
+        </el-table-column>
+
+        <el-table-column label="章节标题" align="center">
+          <template slot-scope="scope">
+            {{ scope.row.chapterTitle }}
+          </template>
+        </el-table-column>
+
+        <el-table-column label="第几章节" align="center">
+          <template slot-scope="scope">
+            <span>{{ scope.row.chapterSort }}</span>
+          </template>
+        </el-table-column>
+
+        <el-table-column align="center" label="视频数量" width="100">
+          <template slot-scope="scope">
+            <span>{{ scope.row.videoQty }}</span>
+          </template>
+        </el-table-column>
+
+        <el-table-column align="center" prop="created_at" label="创建时间">
+          <template slot-scope="scope">
+            <i class="el-icon-time" />
+            <span>{{ scope.row.chapterCreateTime }}</span>
+          </template>
+        </el-table-column>
+
+        <el-table-column align="center" prop="created_at" label="更新时间">
+          <template slot-scope="scope">
+            <i class="el-icon-time" />
+            <span>{{ scope.row.chapterUpdateTime }}</span>
+          </template>
+        </el-table-column>
+      </el-table>
+      <div class="block">
+        <el-pagination
+          background
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page="form.current"
+          :page-sizes="sizes"
+          :page-size="form.size"
+          layout="total, sizes, prev, pager, next, jumper"
+          :total="form.total"
+        >
+        </el-pagination>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import {
-  getPage,
-  removeChapterById,
-  exportPage,
-  exportAll,
-} from "@/api/chapter";
+import { getPage, exportPage, exportAll,removeChapterById } from "@/api/chapter";
 import { getList } from "@/api/course";
 import { exportExcel } from "@/utils/excel";
 export default {
@@ -189,7 +216,6 @@ export default {
       listLoading: true,
       form: {
         title: "",
-        sort: null,
         courseId: null,
         createTime: "",
         current: 1,
@@ -230,6 +256,7 @@ export default {
       dateRange: [],
       sizes: [],
       courses: [],
+      selectionIds: [],
     };
   },
   created() {
@@ -306,19 +333,25 @@ export default {
       this.form.size = s;
       this.fetchData();
     },
-    handleDelete(row, id) {
+    handleDelete(id) {
+      if (this.selectionIds && this.selectionIds.length > 0) {
+        id = [];
+        for (let i = 0; i < this.selectionIds.length; i++)
+          id.push(this.selectionIds[i]["chapterId"]);
+      }
       removeChapterById(id).then((resp) => {
         if (resp.code === 200) {
           this.$message.success("删除成功");
-          this.list.splice(row, 1);
+          this.fetchData();
         }
       });
     },
-    handleEdit(id) {
+    handleEdit() {
+      let chapterId = this.selectionIds[0]["chapterId"];
       this.$router.push({
         path: "/chapter/edit",
         query: {
-          chapter: id,
+          chapter: chapterId,
         },
       });
     },
@@ -332,19 +365,29 @@ export default {
       this.$refs[formName].resetFields();
       this.dateRange = [];
     },
+    handleSelectionChange(val) {
+      this.selectionIds = val;
+    },
+    handleRowClick(row) {
+      if (!row.disabled) {
+        this.$refs.table.toggleRowSelection(row);
+      }
+    },
     watchVideo(data) {
+      let chapterId = this.selectionIds[0]["chapterId"];
       this.$router.push({
         path: "/video/list",
         query: {
-          chapter: data,
+          chapter: chapterId,
         },
       });
     },
     addVideo(data) {
+      let chapterId = this.selectionIds[0]["chapterId"];
       this.$router.push({
-        path: "/video/save",
+        path: "/chapter/save",
         query: {
-          chapter: data,
+          chapter: chapterId,
         },
       });
     },
@@ -352,11 +395,14 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .mid-input {
   width: 80px;
 }
 .el-pagination {
   text-align: center;
+}
+.el-form-item {
+  margin-bottom: 0 !important;
 }
 </style>

@@ -17,11 +17,11 @@
             v-model="subjectId"
             :options="subjects"
             :props="{ expandTrigger: 'hover', label: 'title', value: 'id' }"
+            clearable
           ></el-cascader>
         </el-form-item>
         <el-form-item>
-          <el-select v-model="form.teacherId" placeholder="课程讲师">
-            <el-option label="所有讲师" key="" value=""> </el-option>
+          <el-select v-model="form.teacherId" placeholder="课程讲师" clearable>
             <el-option
               v-for="(item, index) in teachers"
               :label="item.name"
@@ -33,10 +33,9 @@
         </el-form-item>
 
         <el-form-item>
-          <el-select v-model="form.status" placeholder="课程状态">
+          <el-select v-model="form.status" placeholder="课程状态" clearable>
             <el-option label="已上架" key="1" value="1"> </el-option>
             <el-option label="已下架" key="0" value="0"> </el-option>
-            <el-option label="全部" key="" value=""> </el-option>
           </el-select>
         </el-form-item>
 
@@ -72,7 +71,7 @@
         </el-form-item>
       </el-form>
     </div>
-    <div class="main_content" style="border-top: 1px solid #f0f0f0">
+    <div class="main_content" style="border-top: 2px solid #f0f0f0">
       <div class="btn-layout">
         <div>
           <el-button
@@ -122,15 +121,15 @@
         </div>
       </div>
 
-      <div style="margin-top: 10px"></div>
       <el-table
+        ref="table"
         v-loading="listLoading"
         highlight-current-row
         @selection-change="handleSelectionChange"
+        @row-click="handleRowClick"
         :data="list"
         element-loading-text="Loading"
         row-key="id"
-        :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
       >
         <el-table-column type="selection" width="55"> </el-table-column>
 
@@ -238,7 +237,12 @@
           </template>
         </el-table-column>
 
-        <el-table-column label="课程发布" width="150" align="center">
+        <el-table-column
+          label="课程发布"
+          width="150"
+          align="center"
+          fixed="right"
+        >
           <template slot-scope="scope">
             <el-button
               size="small"
@@ -274,13 +278,7 @@
 </template>
 
 <script>
-import {
-  getPage,
-  removeById,
-  exportAll,
-  exportPage,
-  release,
-} from "@/api/course";
+import { getPage, removeById, exportPage, release } from "@/api/course";
 import { getAll } from "@/api/teacher";
 import { getList } from "@/api/subject";
 import { exportExcel } from "@/utils/excel";
@@ -475,6 +473,11 @@ export default {
       this.form.startTime = null;
       this.form.endTime = null;
     },
+    handleRowClick(row) {
+      if (!row.disabled) {
+        this.$refs.table.toggleRowSelection(row);
+      }
+    },
     watchChapter(data) {
       let courseId = this.selectionIds[0]["courseId"];
 
@@ -487,7 +490,6 @@ export default {
     },
     addChapter(data) {
       let courseId = this.selectionIds[0]["courseId"];
-      console.log(this.selectionIds)
       this.$router.push({
         path: "/chapter/save",
         query: {
