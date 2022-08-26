@@ -1,5 +1,6 @@
 package com.novedu.nov.edu.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.novedu.nov.common.base.BaseResult;
@@ -20,7 +21,7 @@ import java.util.List;
  */
 public interface EduTeacherService extends IService<EduTeacher> {
 
-    BaseResult<List<EduTeacher>> queryTeacherPage(Page page, EduTeacherDTO teacher);
+    IPage<List<EduTeacher>> queryTeacherPage(Page page, EduTeacherDTO teacher);
 
     BaseResult removeTeacher(String id);
 
@@ -34,9 +35,7 @@ public interface EduTeacherService extends IService<EduTeacher> {
 
     BaseResult<List<EduTeacher>> getClientTeacherList();
 
-    void exportTeacherPage(HttpServletResponse response, Page page, EduTeacherDTO teacher);
-
-    void exportAll(HttpServletResponse response);
+    void exportTeacherPage(HttpServletResponse response, EduTeacherDTO teacher);
 
     BaseResult queryAllAndHadBind(String id);
 

@@ -71,7 +71,7 @@ public class AclUserController {
         return aclUserService.queryUserPage(page, user);
     }
 
-    @PostMapping("/export")
+    @GetMapping("/export")
     public void exportUserPage(HttpServletResponse response, Page page, AclUserRoleDTO user) {
         aclUserService.exportUserPage(response, page, user);
     }

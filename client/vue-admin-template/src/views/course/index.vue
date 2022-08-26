@@ -123,14 +123,23 @@
 
       <el-table
         ref="table"
-        v-loading="listLoading"
-        highlight-current-row
         @selection-change="handleSelectionChange"
         @row-click="handleRowClick"
+        v-loading="listLoading"
         :data="list"
         element-loading-text="Loading"
-        row-key="id"
+        border
+        fit
+        highlight-current-row
       >
+        <el-table-column type="expand">
+          <template slot-scope="scope">
+            <video width="320" controls>
+              <source :src="scope.row.videoSourcePath" type="video/mp4" />
+              您的浏览器不支持 HTML5 video 标签。
+            </video>
+          </template>
+        </el-table-column>
         <el-table-column type="selection" width="55"> </el-table-column>
 
         <el-table-column align="center" label="#" width="50">
@@ -201,6 +210,17 @@
           </template>
         </el-table-column>
 
+        <el-table-column align="center" label="章节数量" width="100">
+          <template slot-scope="scope">
+            <span>{{ scope.row.chapterQty }}</span>
+          </template>
+        </el-table-column>
+
+        <el-table-column align="center" label="视频数量" width="100">
+          <template slot-scope="scope">
+            <span>{{ scope.row.videoQty }}</span>
+          </template>
+        </el-table-column>
         <el-table-column
           width="150"
           align="center"
@@ -224,19 +244,6 @@
             <span>{{ scope.row.courseUpdateTime }}</span>
           </template>
         </el-table-column>
-
-        <el-table-column align="center" label="章节数量" width="100">
-          <template slot-scope="scope">
-            <span>{{ scope.row.chapterQty }}</span>
-          </template>
-        </el-table-column>
-
-        <el-table-column align="center" label="视频数量" width="100">
-          <template slot-scope="scope">
-            <span>{{ scope.row.videoQty }}</span>
-          </template>
-        </el-table-column>
-
         <el-table-column
           label="课程发布"
           width="150"
@@ -426,7 +433,7 @@ export default {
       this.form.size = s;
       this.fetchData();
     },
-    handleDelete(id) {
+    handleDelete() {
       if (this.selectionIds && this.selectionIds.length > 0) {
         id = [];
         for (let i = 0; i < this.selectionIds.length; i++)

@@ -449,7 +449,7 @@ export default {
 };
 </script>
 
-<style lang="less" >
+<style lang="less" scoped>
 .mid-input {
   width: 80px;
 }

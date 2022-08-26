@@ -2,6 +2,7 @@ package com.novedu.nov.edu.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -16,7 +17,6 @@ import com.novedu.nov.edu.entity.EduChapter;
 import com.novedu.nov.edu.entity.EduCourse;
 import com.novedu.nov.edu.entity.EduStudyRecord;
 import com.novedu.nov.edu.entity.EduVideo;
-import com.novedu.nov.edu.entity.dto.EduStudyRecordDTO;
 import com.novedu.nov.edu.entity.dto.EduVideoInfoDTO;
 import com.novedu.nov.edu.entity.vo.EduStudyRecordVO;
 import com.novedu.nov.edu.entity.vo.EduVideoInfoVO;
@@ -93,7 +93,7 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
 
 
     @Override
-    public BaseResult queryVideoPage(Page page, EduVideoInfoDTO videoInfoDTO) {
+    public IPage<EduVideoInfoVO> queryVideoPage(Page page, EduVideoInfoDTO videoInfoDTO) {
         QueryWrapper queryWrapper = new QueryWrapper();
         if (StringUtils.hasText(videoInfoDTO.getTitle()))
             queryWrapper.like("video.title", videoInfoDTO.getTitle());
@@ -122,7 +122,7 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
                     }
                 }
         );
-        return BaseResult.success(page1);
+        return page1;
     }
 
     @Override
@@ -224,22 +224,10 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
     }
 
     @Override
-    public void exportVideoPage(HttpServletResponse response, Page page, EduVideoInfoDTO videoInfoDTO) {
-        BaseResult baseResult = queryVideoPage(page, videoInfoDTO);
-        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
-            Page page1 = (Page) baseResult.getData();
-            ExcelUtils.exportExcel(page1.getRecords(), "视频信息", "视频信息", EduVideoInfoVO.class, "视频信息", response);
-        }
+    public void exportVideoPage(HttpServletResponse response , EduVideoInfoDTO videoInfoDTO) {
+        ExcelUtils.exportExcel(queryVideoPage(new Page(1, -1), videoInfoDTO).getRecords(), "小节信息", "小节信息", EduVideoInfoVO.class, "小节信息", response);
     }
 
-    @Override
-    public void exportAll(HttpServletResponse response) {
-        BaseResult baseResult = queryVideoPage(new Page(1, count()), new EduVideoInfoDTO());
-        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
-            Page page1 = (Page) baseResult.getData();
-            ExcelUtils.exportExcel(page1.getRecords(), "视频信息", "视频信息", EduVideoInfoVO.class, "视频信息", response);
-        }
-    }
 
     @Override
     public BaseResult queryHistoryWatchPage(Page page) {
@@ -269,19 +257,4 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
         return BaseResult.success(page);
     }
 
-    @Override
-    public BaseResult queryStudyRecordPage(Page page, EduStudyRecordDTO studyRecordDTO) {
-        QueryWrapper queryWrapper = new QueryWrapper();
-        if (!StringUtils.isEmpty(studyRecordDTO.getNickname()))
-            queryWrapper.like("u.nickname", studyRecordDTO.getNickname());
-        if (!StringUtils.isEmpty(studyRecordDTO.getCourseTitle()))
-            queryWrapper.like("c.title", studyRecordDTO.getCourseTitle());
-        if (!StringUtils.isEmpty(studyRecordDTO.getVideoTitle()))
-            queryWrapper.like("v.title", studyRecordDTO.getVideoTitle());
-        Date start = studyRecordDTO.getStartTime();
-        Date end = studyRecordDTO.getEndTime();
-        if (start != null && end != null && end.getTime() > start.getTime())
-            queryWrapper.apply("r.create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and r.create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start, end);
-        return BaseResult.success(studyRecordMapper.queryPage(page, queryWrapper));
-    }
 }

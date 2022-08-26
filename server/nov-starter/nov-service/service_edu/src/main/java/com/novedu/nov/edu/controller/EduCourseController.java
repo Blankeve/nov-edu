@@ -71,7 +71,7 @@ public class EduCourseController {
         return eduCourseService.queryCoursesByTeacherId(id);
     }
 
-    @PostMapping("/export")
+    @GetMapping("/export")
     public void exportCoursePage(HttpServletResponse response, EduCourseInfoDTO courseInfoDTO) {
          eduCourseService.export(response, courseInfoDTO);
     }

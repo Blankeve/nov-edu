@@ -1,77 +1,98 @@
 <template>
   <div class="app-container">
-    <el-form :inline="true" ref="form" :model="form">
-      <el-form-item label="课程名称" prop="title">
-        <el-input v-model="form.title" placeholder="课程名称"></el-input>
-      </el-form-item>
+    <div class="search_box">
+      <el-form :inline="true" ref="form" :model="form" size="medium">
+        <el-form-item label="课程名称" prop="title">
+          <el-input
+            suffix-icon="el-icon-search"
+            v-model="form.title"
+            placeholder="课程名称"
+            clearable
+          ></el-input>
+        </el-form-item>
 
-      <el-form-item label="课程分类">
-        <el-cascader
-          v-model="subjectId"
-          :options="subjects"
-          :props="{ expandTrigger: 'hover', label: 'title', value: 'id' }"
-        ></el-cascader>
-      </el-form-item>
-      <el-form-item v-if="code !== 5" label="课程讲师">
-        <el-select v-model="form.teacherId" placeholder="请选择讲师">
-          <el-option label="所有讲师" key="" value=""> </el-option>
-          <el-option
-            v-for="(item, index) in teachers"
-            :label="item.name"
-            :key="item.id"
-            :value="item.id"
+        <el-form-item>
+          <el-cascader
+            v-model="subjectId"
+            :options="subjects"
+            placeholder="课程分类"
+            :props="{ expandTrigger: 'hover', label: 'title', value: 'id' }"
+            clearable
+          ></el-cascader>
+        </el-form-item>
+        <el-form-item v-if="code !== 5">
+          <el-select v-model="form.teacherId" placeholder="课程讲师" clearable>
+            <el-option
+              v-for="(item, index) in teachers"
+              :label="item.name"
+              :key="item.id"
+              :value="item.id"
+            >
+            </el-option>
+          </el-select>
+        </el-form-item>
+
+        <el-form-item>
+          <el-select
+            style="width: 150px"
+            v-model="form.status"
+            placeholder="课程状态"
+            clearable
           >
-          </el-option>
-        </el-select>
-      </el-form-item>
+            <el-option label="已上架" key="1" value="1"> </el-option>
+            <el-option label="已下架" key="0" value="0"> </el-option>
+          </el-select>
+        </el-form-item>
 
-      <el-form-item label="课程状态">
-        <el-select v-model="form.status" placeholder="请选择">
-          <el-option label="已上架" key="1" value="1"> </el-option>
-          <el-option label="已下架" key="0" value="0"> </el-option>
-          <el-option label="全部" key="" value=""> </el-option>
-        </el-select>
-      </el-form-item>
+        <el-form-item label="添加时间" prop="createTime">
+          <el-date-picker
+            style="width: 300px"
+            v-model="dateRange"
+            type="datetimerange"
+            :picker-options="pickerOptions"
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+            align="right"
+          >
+          </el-date-picker>
+        </el-form-item>
 
-      <el-form-item label="添加时间" prop="createTime">
-        <el-date-picker
-          v-model="dateRange"
-          type="datetimerange"
-          :picker-options="pickerOptions"
-          range-separator="至"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
-          align="right"
-        >
-        </el-date-picker>
-      </el-form-item>
-
-      <el-form-item>
-        <el-button type="primary" icon="el-icon-search" @click="searchForm"
-          >查询</el-button
-        >
-        <el-button
-          type="danger"
-          icon="el-icon-refresh-left"
-          @click="resetForm('form')"
-          >重置</el-button
-        >
-      </el-form-item>
-
-      <el-form-item label="关键字过滤">
-        <el-input placeholder="对查询结果进行过滤" v-model="filterText">
-        </el-input>
-      </el-form-item>
-    </el-form>
-
+        <el-form-item>
+          <el-button
+            size="small"
+            type="primary"
+            icon="el-icon-search"
+            @click="searchForm"
+            >查询</el-button
+          >
+          <el-button
+            size="small"
+            type="danger"
+            icon="el-icon-refresh-left"
+            @click="resetForm('form')"
+            >重置</el-button
+          >
+        </el-form-item>
+      </el-form>
+    </div>
     <div class="down-tree" style="width: 100%">
-      <el-button
-        icon="el-icon-circle-plus-outline"
-        type="text"
-        @click="() => appendRoot(data)"
-      >
-        添加课程
-      </el-button>
+      <el-form :inline="true">
+        <el-form-item>
+          <el-button
+            icon="el-icon-circle-plus-outline"
+            type="text"
+            @click="() => appendRoot(data)"
+          >
+            添加课程
+          </el-button>
+        </el-form-item>
+        <el-form-item>
+          <el-input placeholder="对查询结果进行过滤" v-model="filterText">
+          </el-input
+        ></el-form-item>
+      </el-form>
+
       <div class="current">
         <el-tree
           v-loading="listLoading"
@@ -152,7 +173,6 @@
         </el-tree>
       </div>
     </div>
-    <br />
     <div class="block">
       <el-pagination
         background
@@ -223,7 +243,9 @@
         <el-form-item prop="isFree" label="是否收费">
           <el-radio-group v-model="video.isFree">
             <el-radio-button label="1">免费</el-radio-button>
-            <el-radio-button v-if="!video.courseIsFree" label="0">付费</el-radio-button>
+            <el-radio-button v-if="!video.courseIsFree" label="0"
+              >付费</el-radio-button
+            >
           </el-radio-group>
         </el-form-item>
 
@@ -283,6 +305,10 @@ export default {
   },
   watch: {
     filterText(val) {
+      console.log(val);
+      if (val == "") {
+        this.collapseAllNodes();
+      }
       this.$refs.tree.filter(val);
     },
   },
@@ -405,6 +431,14 @@ export default {
     this.fetchData();
   },
   methods: {
+    collapseAllNodes() {
+      this.defaultExpand = false;
+      for (var i = 0; i < this.$refs.tree.store._getAllNodes().length; i++) {
+        if (this.$refs.tree.store._getAllNodes()[i].id !== 1) {
+          this.$refs.tree.store._getAllNodes()[i].expanded = this.defaultExpand;
+        }
+      }
+    },
     getOptions() {
       getAll().then((resp) => {
         if (resp.code === 200) {

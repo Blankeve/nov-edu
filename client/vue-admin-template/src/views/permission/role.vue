@@ -3,10 +3,6 @@
     <el-form :inline="true" ref="form" :model="form">
       <el-form-item>
         <el-button icon="el-icon-plus" type="primary" @click="addRole">添加角色</el-button>
-        <!-- <el-button type="success" @click="exportTeacherPage"
-          >导出当前</el-button
-        >
-        <el-button type="success" @click="exportAllTeacher">导出所有</el-button> -->
       </el-form-item>
     </el-form>
 
@@ -144,7 +140,6 @@ import {
   saveOrUpdate,
   getPage,
   removeById,
-  exportAll,
   exportPage,
 } from "@/api/role";
 import { exportExcel } from "@/utils/excel";
@@ -282,11 +277,6 @@ export default {
     },
     exportTeacherPage() {
       exportPage(this.form).then((resp) => {
-        exportExcel(resp);
-      });
-    },
-    exportAllTeacher() {
-      exportAll().then((resp) => {
         exportExcel(resp);
       });
     },

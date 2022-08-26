@@ -73,6 +73,13 @@ service.interceptors.response.use(
             })
           }
         }
+        else {
+          Message({
+            message: res.msg || 'Error',
+            type: 'error',
+            duration: 2 * 1000
+          })
+        }
       }
       return Promise.reject(new Error(res.msg || 'Error'))
     }
@@ -83,7 +90,7 @@ service.interceptors.response.use(
   error => {
     console.log('err' + error) // for debug
     Message({
-      message: '网络异常',
+      message: '连接超时',
       type: 'error',
       duration: 5 * 1000
     })

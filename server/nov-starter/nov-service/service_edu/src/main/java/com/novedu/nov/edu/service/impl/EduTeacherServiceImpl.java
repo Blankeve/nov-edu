@@ -2,6 +2,7 @@ package com.novedu.nov.edu.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
@@ -10,7 +11,6 @@ import com.novedu.nov.common.constants.RedisKeyConstants;
 import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.edu.client.OpenUcenterService;
-import com.novedu.nov.edu.entity.EduCourse;
 import com.novedu.nov.edu.entity.EduTeacher;
 import com.novedu.nov.edu.entity.dto.EduTeacherDTO;
 import com.novedu.nov.edu.entity.dto.UserBindTeacherForm;
@@ -24,7 +24,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -48,7 +47,7 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
     private RedisTemplate redisTemplate;
 
     @Override
-    public BaseResult<List<EduTeacher>> queryTeacherPage(Page page, EduTeacherDTO teacher) {
+    public IPage<List<EduTeacher>> queryTeacherPage(Page page, EduTeacherDTO teacher) {
         QueryWrapper queryWrapper = new QueryWrapper();
         if (StringUtils.hasText(teacher.getName()))
             queryWrapper.like("name", teacher.getName());
@@ -60,7 +59,7 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
             queryWrapper.apply("create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start, end);
         queryWrapper.orderByDesc("sort");
         queryWrapper.orderByDesc("create_time");
-        return BaseResult.success(page(page, queryWrapper));
+        return page(page, queryWrapper);
     }
 
     @Override
@@ -113,22 +112,8 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
     }
 
     @Override
-    public void exportTeacherPage(HttpServletResponse response, Page page, EduTeacherDTO teacher) {
-        BaseResult baseResult = queryTeacherPage(page, teacher);
-        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
-            Page page1 = (Page) baseResult.getData();
-            ExcelUtils.exportExcel(page1.getRecords(), "讲师信息", "讲师信息", EduTeacher.class, "讲师信息", response);
-        }
-    }
-
-    @Override
-    public void exportAll(HttpServletResponse response) {
-        BaseResult baseResult = queryTeacherPage(new Page(1, count()), new EduTeacherDTO());
-        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
-            Page page1 = (Page) baseResult.getData();
-            ExcelUtils.exportExcel(page1.getRecords(), "讲师信息", "讲师信息", EduTeacher.class, "讲师信息", response);
-        }
-
+    public void exportTeacherPage(HttpServletResponse response, EduTeacherDTO teacher) {
+        ExcelUtils.exportExcel(queryTeacherPage(new Page(1, -1), teacher).getRecords(), "讲师信息", "讲师信息", EduTeacher.class, "讲师信息", response);
     }
 
     @Override

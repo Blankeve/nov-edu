@@ -1,11 +1,12 @@
 package com.novedu.nov.edu.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.edu.entity.EduVideo;
-import com.novedu.nov.edu.entity.dto.EduStudyRecordDTO;
 import com.novedu.nov.edu.entity.dto.EduVideoInfoDTO;
+import com.novedu.nov.edu.entity.vo.EduVideoInfoVO;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +24,7 @@ public interface EduVideoService extends IService<EduVideo> {
     BaseResult saveVideo(EduVideo video);
 
 
-    BaseResult queryVideoPage(Page page, EduVideoInfoDTO videoInfoDTO);
+    IPage<EduVideoInfoVO> queryVideoPage(Page page, EduVideoInfoDTO videoInfoDTO);
 
     BaseResult queryVideoDetail(Long id);
 
@@ -31,11 +32,8 @@ public interface EduVideoService extends IService<EduVideo> {
 
     BaseResult queryClientVideo(Long id, HttpServletRequest request);
 
-    void exportVideoPage(HttpServletResponse response, Page page, EduVideoInfoDTO videoInfoDTO);
-
-    void exportAll(HttpServletResponse response);
+    void exportVideoPage(HttpServletResponse response, EduVideoInfoDTO videoInfoDTO);
 
     BaseResult queryHistoryWatchPage(Page page);
 
-    BaseResult queryStudyRecordPage(Page page, EduStudyRecordDTO studyRecordDTO);
 }

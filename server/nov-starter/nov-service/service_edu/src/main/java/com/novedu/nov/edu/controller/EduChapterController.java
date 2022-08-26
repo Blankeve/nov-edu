@@ -37,7 +37,7 @@ public class EduChapterController {
         return chapterService.saveChapter(chapter);
     }
 
-    @PostMapping("/export")
+    @GetMapping("/export")
     public void exportCoursePage(HttpServletResponse response,EduChapterInfoDTO chapterInfoDTO) {
         chapterService.exportChapterPage(response,chapterInfoDTO);
     }

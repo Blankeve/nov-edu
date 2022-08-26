@@ -50,7 +50,6 @@
         <el-button type="success" icon="el-icon-download" @click="exportOrderPage"
           >导出当前</el-button
         >
-        <el-button type="success" icon="el-icon-download" @click="exportAllOrder">导出所有</el-button>
       </el-form-item>
     </el-form>
 
@@ -151,8 +150,6 @@ import { getList } from "@/api/course";
 import { getAll } from "@/api/teacher";
 import {
   getOrderPage,
-  removeOrderById,
-  exportAll,
   exportPage,
 } from "@/api/order";
 import { exportExcel } from "@/utils/excel";
@@ -259,11 +256,6 @@ export default {
     },
     exportOrderPage() {
       exportPage(this.form).then((resp) => {
-        exportExcel(resp);
-      });
-    },
-    exportAllOrder() {
-      exportAll(this.form).then((resp) => {
         exportExcel(resp);
       });
     },

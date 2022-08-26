@@ -4,6 +4,7 @@
       <el-form :inline="true" ref="form" :model="form" size="medium">
         <el-form-item prop="title">
           <el-input
+            suffix-icon="el-icon-search"
             v-model="form.title"
             placeholder="章节名称"
             clearable
@@ -117,7 +118,6 @@
         ref="table"
         @selection-change="handleSelectionChange"
         @row-click="handleRowClick"
-        row-key="id"
         v-loading="listLoading"
         :data="list"
         element-loading-text="Loading"
@@ -157,7 +157,7 @@
           </template>
         </el-table-column>
 
-        <el-table-column align="center" label="视频数量" width="100">
+        <el-table-column align="center" label="小节数量" width="100">
           <template slot-scope="scope">
             <span>{{ scope.row.videoQty }}</span>
           </template>
@@ -195,7 +195,11 @@
 </template>
 
 <script>
-import { getPage, exportPage, exportAll,removeChapterById } from "@/api/chapter";
+import {
+  getPage,
+  exportPage,
+  removeChapterById,
+} from "@/api/chapter";
 import { getList } from "@/api/course";
 import { exportExcel } from "@/utils/excel";
 export default {
@@ -288,11 +292,6 @@ export default {
     },
     exportChapterPage() {
       exportPage(this.form).then((resp) => {
-        exportExcel(resp);
-      });
-    },
-    exportAllChapter() {
-      exportAll().then((resp) => {
         exportExcel(resp);
       });
     },

@@ -15,6 +15,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -40,17 +41,12 @@ public class EduTeacherController {
 
     @GetMapping("/list")
     public BaseResult<List<EduTeacher>> queryTeacherPage(Page page, EduTeacherDTO teacher) {
-        return eduTeacherService.queryTeacherPage(page, teacher);
+        return BaseResult.success(eduTeacherService.queryTeacherPage(page, teacher));
     }
 
-    @PostMapping("/export")
-    public void exportTeacherPage(HttpServletResponse response, Page page, EduTeacherDTO teacher) {
-        eduTeacherService.exportTeacherPage(response,page, teacher);
-    }
-
-    @GetMapping("/export-all")
-    public void exportAll(HttpServletResponse response) {
-        eduTeacherService.exportAll(response);
+    @GetMapping("/export")
+    public void exportTeacherPage(HttpServletResponse response, EduTeacherDTO teacher) {
+        eduTeacherService.exportTeacherPage(response, teacher);
     }
 
     @GetMapping("/all")
@@ -74,9 +70,9 @@ public class EduTeacherController {
     }
 
     @ApiOperation("删除")
-    @DeleteMapping("/remove/{id}")
-    public BaseResult removeTeacher(@PathVariable String id) {
-        return eduTeacherService.removeTeacher(id);
+    @DeleteMapping("/remove/{ids}")
+    public BaseResult remove(@PathVariable Long[] ids) {
+        return BaseResult.successOrError(eduTeacherService.removeByIds(Arrays.asList(ids)));
     }
 
     @PostMapping("/bind/{uid}")

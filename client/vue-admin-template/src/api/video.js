@@ -8,18 +8,10 @@ export function saveVideo(data) {
   })
 }
 
-export function exportAll() {
-  return request({
-    url: '/edu/video/export-all',
-    method: 'get',
-    responseType: 'blob'
-  })
-}
-
 export function exportPage(params) {
   return request({
     url: '/edu/video/export',
-    method: 'post',
+    method: 'get',
     responseType: 'blob',
     params
   })
@@ -28,14 +20,6 @@ export function exportPage(params) {
 export function getPage(params) {
   return request({
     url: '/edu/video/page',
-    method: 'post',
-    params
-  })
-}
-
-export function getStudyRecordPage(params) {
-  return request({
-    url: '/edu/video/study/record/page',
     method: 'post',
     params
   })

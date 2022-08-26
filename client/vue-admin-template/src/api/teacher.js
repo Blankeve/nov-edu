@@ -8,18 +8,10 @@ export function getList(params) {
   })
 }
 
-export function exportAll() {
-  return request({
-    url: '/edu/edu-teacher/export-all',
-    method: 'get',
-    responseType: 'blob'
-  })
-}
-
 export function exportPage(params) {
   return request({
     url: '/edu/edu-teacher/export',
-    method: 'post',
+    method: 'get',
     responseType: 'blob',
     params
   })

@@ -42,7 +42,7 @@ public class TradeOrderController {
         return tradeOrderService.createOrder(tradeOrder);
     }
 
-    @PostMapping("/export")
+    @GetMapping("/export")
     public void exportCoursePage(HttpServletResponse response, Page page, TradeOrderDTO order) {
         tradeOrderService.exportOrderPage(response, page, order);
     }

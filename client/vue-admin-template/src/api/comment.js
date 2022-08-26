@@ -8,15 +8,6 @@ export function save(data) {
   })
 }
 
-export function exportAll(params) {
-  return request({
-    url: '/edu/comment/export-all',
-    method: 'get',
-    responseType: 'blob',
-    params
-  })
-}
-
 export function exportPage(params) {
   return request({
     url: '/edu/comment/export',

@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.annotation.UserMultiSubmitLimit;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.edu.entity.EduVideo;
-import com.novedu.nov.edu.entity.dto.EduStudyRecordDTO;
 import com.novedu.nov.edu.entity.dto.EduVideoInfoDTO;
 import com.novedu.nov.edu.service.EduVideoService;
 import io.swagger.annotations.Api;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
 
 /**
  * <p>
@@ -39,19 +39,14 @@ public class EduVideoController {
         return videoService.saveVideo(video);
     }
 
-    @PostMapping("/export")
-    public void exportCoursePage(HttpServletResponse response, Page page, EduVideoInfoDTO videoInfoDTO) {
-        videoService.exportVideoPage(response,page, videoInfoDTO);
-    }
-
-    @GetMapping("/export-all")
-    public void exportAll(HttpServletResponse response) {
-        videoService.exportAll(response);
+    @GetMapping("/export")
+    public void exportCoursePage(HttpServletResponse response , EduVideoInfoDTO videoInfoDTO) {
+        videoService.exportVideoPage(response, videoInfoDTO);
     }
 
     @PostMapping("/page")
     public BaseResult queryVideoPage(Page page, EduVideoInfoDTO videoInfoDTO) {
-        return videoService.queryVideoPage(page, videoInfoDTO);
+        return BaseResult.success(videoService.queryVideoPage(page, videoInfoDTO));
     }
 
     @PostMapping("/history-watch/page")
@@ -59,10 +54,7 @@ public class EduVideoController {
         return videoService.queryHistoryWatchPage(page);
     }
 
-    @PostMapping("/study/record/page")
-    public BaseResult queryStudyRecordPage(Page page, EduStudyRecordDTO studyRecordDTO) {
-        return videoService.queryStudyRecordPage(page,studyRecordDTO);
-    }
+
 
     @PostMapping("/detail/{id}")
     public BaseResult queryVideoDetail(@PathVariable Long id) {
@@ -75,9 +67,9 @@ public class EduVideoController {
     }
 
     @ApiOperation("删除")
-    @DeleteMapping("/remove/{id}")
-    public BaseResult removeVideo(@PathVariable Long id) {
-        return videoService.removeVideo(id);
+    @DeleteMapping("/remove/{ids}")
+    public BaseResult remove(@PathVariable Long[] ids) {
+        return BaseResult.successOrError(videoService.removeByIds(Arrays.asList(ids)));
     }
 }
 

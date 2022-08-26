@@ -9,19 +9,11 @@ export function saveOrUpdate(data) {
   })
 }
 
-export function exportAll(params) {
-  return request({
-    url: '/ucenter/role/export-all',
-    method: 'get',
-    responseType: 'blob',
-    params
-  })
-}
 
 export function exportPage(params) {
   return request({
     url: '/ucenter/role/export',
-    method: 'post',
+    method: 'get',
     responseType: 'blob',
     params
   })

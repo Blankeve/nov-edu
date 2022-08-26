@@ -58,9 +58,6 @@
           @click="exportUserPage"
           >导出当前</el-button
         >
-        <el-button type="success" icon="el-icon-download" @click="exportAllUser"
-          >导出所有</el-button
-        >
       </el-form-item>
     </el-form>
 
@@ -252,7 +249,7 @@
 
 <script>
 import { getList, saveRoleByUid } from "@/api/role";
-import { getPage, resetPwd, exportAll, exportPage } from "@/api/user";
+import { getPage, resetPwd, exportPage } from "@/api/user";
 import { exportExcel } from "@/utils/excel";
 import { getAllAndBindId, updateBindByUidAndId } from "@/api/teacher";
 
@@ -358,11 +355,6 @@ export default {
         exportExcel(resp);
       });
     },
-    exportAllUser() {
-      exportAll().then((resp) => {
-        exportExcel(resp);
-      });
-    },
     handleBindTeacher(uid) {
       this.tForm.uid = uid;
       this.dialogVisibleTeacher = true;
@@ -409,11 +401,6 @@ export default {
     },
     exportTeacherPage() {
       exportPage(this.form).then((resp) => {
-        exportExcel(resp);
-      });
-    },
-    exportAllTeacher() {
-      exportAll().then((resp) => {
         exportExcel(resp);
       });
     },

@@ -36,13 +36,6 @@
           @click="resetForm('form')"
           >重置</el-button
         >
-        <!-- <el-button
-          type="success"
-          icon="el-icon-download"
-          @click="exportTeacherPage"
-          >导出当前</el-button
-        > -->
-        <!-- <el-button type="success" icon="el-icon-download" @click="exportAllTeacher">导出所有</el-button> -->
       </el-form-item>
     </el-form>
 
@@ -135,37 +128,11 @@
       </el-pagination>
     </div>
 
-    <!-- <el-dialog
-      :title="noticeFormTitle"
-      :visible.sync="noticeFormVisible"
-      :close-on-click-modal="false"
-      width="500px"
-      center=""
-    >
-      <el-form
-        :model="form"
-        :rules="rules"
-        class="demo-ruleForm"
-        label-width="120"
-      >
-        <el-form-item prop="title" label="公告名称">
-          <el-input v-model="form.title"></el-input>
-        </el-form-item>
-
-        <el-form-item prop="content" label="公告内容">
-          <el-input type="textarea" v-model="form.content"></el-input>
-        </el-form-item>
-      </el-form>
-      <div slot="footer" class="dialog-footer">
-        <el-button @click="noticeFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="onSubmit">确 定</el-button>
-      </div>
-    </el-dialog> -->
   </div>
 </template>
 
 <script>
-import { getStudyRecordPage } from "@/api/video";
+import { getStudyRecordPage,exportPage } from "@/api/study";
 import store from "@/store";
 export default {
   filters: {

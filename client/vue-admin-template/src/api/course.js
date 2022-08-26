@@ -47,18 +47,10 @@ export function save(data) {
     })
   }
 
-  export function exportAll() {
-    return request({
-      url: '/edu/course/export-all',
-      method: 'get',
-      responseType: 'blob'
-    })
-  }
-
   export function exportPage(params) {
     return request({
       url: '/edu/course/export',
-      method: 'post',
+      method: 'get',
       responseType: 'blob',
       params
     })

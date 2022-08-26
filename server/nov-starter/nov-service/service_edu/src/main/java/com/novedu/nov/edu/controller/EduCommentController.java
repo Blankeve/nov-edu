@@ -35,7 +35,7 @@ public class EduCommentController {
         return eduCommentService.saveComment(eduComment,request);
     }
 
-    @PostMapping("/export")
+    @GetMapping("/export")
     public void exportCommentPage(HttpServletResponse response, Page page, EduUserCommentDTO eduComment) {
         eduCommentService.exportCommentPage(response,page, eduComment);
     }

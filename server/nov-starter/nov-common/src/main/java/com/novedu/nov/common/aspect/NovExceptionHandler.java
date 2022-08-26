@@ -5,6 +5,7 @@ import com.novedu.nov.common.base.ResultCode;
 import com.novedu.nov.common.exception.MultiDeviceLoginException;
 import com.novedu.nov.common.exception.ServiceInvokeFailureException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.QueryTimeoutException;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -55,6 +56,17 @@ public class NovExceptionHandler {
         log.error(sb.toString());
         //4.返回字段校验异常信息给接口调用方
         return BaseResult.error(sb.toString());
+    }
+
+    @ExceptionHandler(value = QueryTimeoutException.class)
+    public BaseResult exceptionHandler(QueryTimeoutException e) {
+        //1.获取字节数组输出流
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        //2.打印异常到输出流
+        e.printStackTrace(new PrintStream(byteArrayOutputStream));
+        //3.使用logback输出异常信息至控制台并保存到本地文件
+        log.error(byteArrayOutputStream.toString());
+        return BaseResult.error("连接超时，请稍后再试");
     }
 
     @ExceptionHandler(value = ServiceInvokeFailureException.class)

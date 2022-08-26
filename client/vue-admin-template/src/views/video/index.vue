@@ -1,142 +1,184 @@
 <template>
   <div class="app-container">
-    <el-form :inline="true" ref="form" :model="form">
-      <el-form-item label="小节名称" prop="title">
-        <el-input v-model="form.title" placeholder="小节名称"></el-input>
-      </el-form-item>
+    <div class="search_box">
+      <el-form :inline="true" ref="form" :model="form" size="medium">
+        <el-form-item prop="title">
+          <el-input
+            suffix-icon="el-icon-search"
+            v-model="form.title"
+            placeholder="小节名称"
+            clearable=""
+          ></el-input>
+        </el-form-item>
 
-      <el-form-item label="所属章节">
-        <el-select v-model="form.chapterId" placeholder="请选择章节">
-          <el-option label="所有章节" key="" value=""> </el-option>
-          <el-option
-            v-for="(item, index) in chapters"
-            :label="item.title"
-            :key="item.id"
-            :value="item.id"
+        <el-form-item>
+          <el-select
+            v-model="form.chapterId"
+            placeholder="所属章节"
+            clearable=""
           >
-          </el-option>
-        </el-select>
-      </el-form-item>
+            <el-option
+              v-for="(item, index) in chapters"
+              :label="item.title"
+              :key="item.id"
+              :value="item.id"
+            >
+            </el-option>
+          </el-select>
+        </el-form-item>
 
-      <el-form-item label="第几小节">
-        <el-input-number
-          v-model="form.sort"
-          :min="0"
-          :max="10"
-          label="描述文字"
-        ></el-input-number>
-      </el-form-item>
+        <el-form-item>
+          <el-input-number
+            v-model="form.sort"
+            :min="0"
+            :max="10"
+            placeholder="第几小节"
+          ></el-input-number>
+        </el-form-item>
 
-      <el-form-item label="添加时间" prop="createTime">
-        <el-date-picker
-          v-model="dateRange"
-          type="datetimerange"
-          :picker-options="pickerOptions"
-          range-separator="至"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
-          align="right"
-        >
-        </el-date-picker>
-      </el-form-item>
+        <el-form-item label="添加时间" prop="createTime">
+          <el-date-picker
+            style="width: 300px"
+            v-model="dateRange"
+            type="datetimerange"
+            :picker-options="pickerOptions"
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+            align="right"
+          >
+          </el-date-picker>
+        </el-form-item>
 
-      <el-form-item>
-        <el-button type="primary" icon="el-icon-search" @click="searchForm"
-          >查询</el-button
-        >
-        <el-button
-          type="danger"
-          icon="el-icon-refresh-left"
-          @click="resetForm('form')"
-          >重置</el-button
-        >
-        <el-button
-          type="success"
-          icon="el-icon-download"
-          @click="exportVideoPage"
-          >导出当前</el-button
-        >
-        <el-button
-          type="success"
-          icon="el-icon-download"
-          @click="exportAllVideo"
-          >导出所有</el-button
-        >
-      </el-form-item>
-    </el-form>
+        <el-form-item>
+          <el-button
+            size="small"
+            type="primary"
+            icon="el-icon-search"
+            @click="searchForm"
+            >查询</el-button
+          >
+          <el-button
+            size="small"
+            type="danger"
+            icon="el-icon-refresh-left"
+            @click="resetForm('form')"
+            >重置</el-button
+          >
+        </el-form-item>
+      </el-form>
+    </div>
+    <div class="main_content" style="border-top: 2px solid #f0f0f0">
+      <div class="btn-layout">
+        <div>
+          <el-button
+            size="mini"
+            :disabled="selectionIds.length != 1"
+            plain
+            type="warning"
+            @click="handleEdit()"
+            icon="el-icon-edit"
+            >编辑</el-button
+          >
+          <el-button
+            icon="el-icon-delete"
+            size="mini"
+            type="danger"
+            :disabled="selectionIds.length == 0"
+            plain
+            @click="handleDelete()"
+            >删除</el-button
+          >
+        </div>
+        <div>
+          <el-button
+            size="mini"
+            type="success"
+            plain
+            icon="el-icon-download"
+            @click="exportVideoPage"
+            >导出</el-button
+          >
+        </div>
+      </div>
+      <el-table
+        ref="table"
+        @selection-change="handleSelectionChange"
+        @row-click="handleRowClick"
+        v-loading="listLoading"
+        :data="list"
+        element-loading-text="Loading"
+        border
+        fit
+        highlight-current-row
+      >
+        <el-table-column type="selection" width="55"> </el-table-column>
 
-    <el-table
-      v-loading="listLoading"
-      :data="list"
-      element-loading-text="Loading"
-      border
-      fit
-      highlight-current-row
-    >
-      <el-table-column align="center" label="#" width="50">
-        <template slot-scope="scope">
-          {{ scope.$index + 1 }}
-        </template>
-      </el-table-column>
+        <el-table-column align="center" label="#" width="50">
+          <template slot-scope="scope">
+            {{ scope.$index + 1 }}
+          </template>
+        </el-table-column>
+        <el-table-column type="expand">
+          <template slot-scope="scope">
+            <video width="320" controls>
+              <source :src="scope.row.videoSourcePath" type="video/mp4" />
+              您的浏览器不支持 HTML5 video 标签。
+            </video>
+          </template>
+        </el-table-column>
 
-      <el-table-column width="320px" label="源视频" align="center">
-        <template slot-scope="scope">
-          <video width="320" controls>
-            <source :src="scope.row.videoSourcePath" type="video/mp4" />
-            您的浏览器不支持 HTML5 video 标签。
-          </video>
-        </template>
-      </el-table-column>
+        <el-table-column width="100px" label="小节标题" align="center">
+          <template slot-scope="scope">
+            {{ scope.row.videoTitle }}
+          </template>
+        </el-table-column>
 
-      <el-table-column width="100px" label="小节标题" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.videoTitle }}
-        </template>
-      </el-table-column>
+        <el-table-column label="第几小节" align="center">
+          <template slot-scope="scope">
+            {{ scope.row.videoSort }}
+          </template>
+        </el-table-column>
 
-      <el-table-column label="第几小节" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.videoSort }}
-        </template>
-      </el-table-column>
+        <el-table-column width="200px" label="视频路径" align="center">
+          <template slot-scope="scope">
+            <span>{{ scope.row.videoSourcePath }}</span>
+          </template>
+        </el-table-column>
 
-      <el-table-column width="200px" label="视频路径" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.videoSourcePath }}</span>
-        </template>
-      </el-table-column>
+        <el-table-column label="视频时长/秒" align="center">
+          <template slot-scope="scope">
+            <span>{{ scope.row.videoDuration }}</span>
+          </template>
+        </el-table-column>
 
-      <el-table-column label="视频时长/秒" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.videoDuration }}</span>
-        </template>
-      </el-table-column>
+        <el-table-column label="视频大小/MB" align="center">
+          <template slot-scope="scope">
+            <span>{{ scope.row.videoSize }}</span>
+          </template>
+        </el-table-column>
 
-      <el-table-column label="视频大小/MB" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.videoSize }}</span>
-        </template>
-      </el-table-column>
+        <el-table-column label="是否试听" align="center">
+          <template slot-scope="scope">
+            <span>{{ scope.row.videoIsFree == 1 ? "是" : "否" }}</span>
+          </template>
+        </el-table-column>
 
-      <el-table-column label="是否试听" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.videoIsFree == 1 ? "是" : "否" }}</span>
-        </template>
-      </el-table-column>
+        <el-table-column label="播放次数" align="center">
+          <template slot-scope="scope">
+            <span>{{ scope.row.videoPlayCount }}</span>
+          </template>
+        </el-table-column>
 
-      <el-table-column label="播放次数" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.videoPlayCount }}</span>
-        </template>
-      </el-table-column>
+        <el-table-column label="视频状态" align="center">
+          <template slot-scope="scope">
+            <el-tag :type="scope.row.videoStatus == 1 ? 'success' : 'danger'">{{
+              scope.row.videoStatus == 1 ? "正常" : "异常"
+            }}</el-tag>
+          </template>
+        </el-table-column>
 
-      <el-table-column label="视频状态" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.videoStatus == 1 ? "正常" : "异常" }}</span>
-        </template>
-      </el-table-column>
-
-      <!-- <el-table-column label="课程讲师" align="center">
+        <!-- <el-table-column label="课程讲师" align="center">
         <template slot-scope="scope">
           {{ scope.row.teacherName }}
         </template>
@@ -148,52 +190,49 @@
         </template>
       </el-table-column> -->
 
-      <el-table-column align="center" prop="created_at" label="创建时间">
-        <template slot-scope="scope">
-          <i class="el-icon-time" />
-          <span>{{ scope.row.videoCreateTime }}</span>
-        </template>
-      </el-table-column>
+        <el-table-column
+          width="200"
+          align="center"
+          prop="created_at"
+          label="创建时间"
+        >
+          <template slot-scope="scope">
+            <i class="el-icon-time" />
+            <span>{{ scope.row.videoCreateTime }}</span>
+          </template>
+        </el-table-column>
 
-      <el-table-column align="center" prop="created_at" label="更新时间">
-        <template slot-scope="scope">
-          <i class="el-icon-time" />
-          <span>{{ scope.row.videoUpdateTime }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column fixed="right" align="center" label="操作" width="220">
-        <template slot-scope="scope">
-          <el-button icon="el-icon-edit" @click="handleEdit(scope.row.videoId)"
-            >编辑</el-button
-          >
-
-          <el-button
-            type="danger"
-            icon="el-icon-delete"
-            @click="handleDelete(scope.$index, scope.row.videoId)"
-            >删除</el-button
-          >
-        </template>
-      </el-table-column>
-    </el-table>
-    <div class="block">
-      <el-pagination
-        background
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        :current-page="form.current"
-        :page-sizes="sizes"
-        :page-size="form.size"
-        layout="total, sizes, prev, pager, next, jumper"
-        :total="form.total"
-      >
-      </el-pagination>
+        <el-table-column
+          width="200"
+          align="center"
+          prop="created_at"
+          label="更新时间"
+        >
+          <template slot-scope="scope">
+            <i class="el-icon-time" />
+            <span>{{ scope.row.videoUpdateTime }}</span>
+          </template>
+        </el-table-column>
+      </el-table>
+      <div class="block">
+        <el-pagination
+          background
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page="form.current"
+          :page-sizes="sizes"
+          :page-size="form.size"
+          layout="total, sizes, prev, pager, next, jumper"
+          :total="form.total"
+        >
+        </el-pagination>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { getPage, removeVideoById, exportAll, exportPage } from "@/api/video";
+import { getPage, removeVideoById, exportPage } from "@/api/video";
 import { getChapterList } from "@/api/chapter";
 import { exportExcel } from "@/utils/excel";
 export default {
@@ -214,7 +253,6 @@ export default {
       form: {
         title: "",
         chapterId: null,
-        sort: null,
         createTime: "",
         current: 1,
         size: 8,
@@ -254,6 +292,7 @@ export default {
       dateRange: [],
       sizes: [],
       chapters: [],
+      selectionIds: [],
     };
   },
   created() {
@@ -286,11 +325,6 @@ export default {
     },
     exportVideoPage() {
       exportPage(this.form).then((resp) => {
-        exportExcel(resp);
-      });
-    },
-    exportAllVideo() {
-      exportAll().then((resp) => {
         exportExcel(resp);
       });
     },
@@ -330,21 +364,35 @@ export default {
       this.form.size = s;
       this.fetchData();
     },
-    handleDelete(row, id) {
+    handleDelete(id) {
+      if (this.selectionIds && this.selectionIds.length > 0) {
+        id = [];
+        for (let i = 0; i < this.selectionIds.length; i++)
+          id.push(this.selectionIds[i]["videoId"]);
+      }
       removeVideoById(id).then((resp) => {
         if (resp.code === 200) {
           this.$message.success("删除成功");
-          this.list.splice(row, 1);
+          this.fetchData();
         }
       });
     },
-    handleEdit(id) {
+    handleEdit() {
+      let videoId = this.selectionIds[0]["videoId"];
       this.$router.push({
         path: "/video/edit",
         query: {
-          video: id,
+          video: videoId,
         },
       });
+    },
+    handleSelectionChange(val) {
+      this.selectionIds = val;
+    },
+    handleRowClick(row) {
+      if (!row.disabled) {
+        this.$refs.table.toggleRowSelection(row);
+      }
     },
     onSubmit() {
       this.fetchData();
@@ -362,11 +410,14 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .mid-input {
   width: 80px;
 }
 .el-pagination {
   text-align: center;
+}
+.el-form-item {
+  margin-bottom: 0 !important;
 }
 </style>

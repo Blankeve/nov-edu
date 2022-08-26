@@ -4,6 +4,7 @@
     <div class="myCourseFrm">
       <el-form
         v-show="active == 0"
+        v-loading="formLoading"
         :model="courseVO"
         :rules="formRules"
         :label-position="labelPosition"
@@ -185,9 +186,10 @@ export default {
       teacher: [],
       subjects: [],
       baseURL: process.env.VUE_APP_BASE_API,
+      formLoading: false,
     };
   },
-    computed: {
+  computed: {
     ...mapGetters(["sidebar", "avatar", "name", "role", "code"]),
   },
   created() {
@@ -196,6 +198,9 @@ export default {
   methods: {
     fetchData() {
       let courseId = this.$route.query.course;
+      if (courseId) {
+        this.formLoading = true;
+      }
       getAll().then((resp) => {
         if (resp.code === 200) {
           this.teacher = resp.data;
@@ -210,6 +215,7 @@ export default {
         getOneDetailByCourseId(courseId).then((resp) => {
           if (resp.code === 200) {
             this.courseVO = resp.data;
+            this.formLoading = false;
           }
         });
       }

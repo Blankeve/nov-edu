@@ -59,12 +59,6 @@
           @click="exportCommentPage"
           >导出当前</el-button
         >
-        <el-button
-          type="success"
-          icon="el-icon-download"
-          @click="exportAllComment"
-          >导出所有</el-button
-        >
       </el-form-item>
     </el-form>
 
@@ -169,7 +163,6 @@ import { mapGetters } from "vuex";
 import {
   getCommentPage,
   removeCommentById,
-  exportAll,
   exportPage,
 } from "@/api/comment";
 
@@ -275,11 +268,6 @@ export default {
     },
     exportCommentPage() {
       exportPage(this.form).then((resp) => {
-        exportExcel(resp);
-      });
-    },
-    exportAllComment() {
-      exportAll(this.form).then((resp) => {
         exportExcel(resp);
       });
     },

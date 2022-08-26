@@ -52,18 +52,10 @@ export function resetPwd(params) {
   })
 }
 
-export function exportAll() {
-  return request({
-    url: '/ucenter/member/export-all',
-    method: 'get',
-    responseType: 'blob'
-  })
-}
-
 export function exportPage(params) {
   return request({
     url: '/ucenter/member/export',
-    method: 'post',
+    method: 'get',
     responseType: 'blob',
     params
   })

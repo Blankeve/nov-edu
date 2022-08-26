@@ -10,6 +10,7 @@
       border
       fit
       highlight-current-row
+      :row-style="{ height: 80 + 'px' }"
     >
       <el-table-column align="center" label="#" width="50">
         <template slot-scope="scope">
@@ -23,19 +24,19 @@
         </template>
       </el-table-column>
 
-      <el-table-column  label="登录ip" align="center">
+      <el-table-column label="登录ip" align="center">
         <template slot-scope="scope">
           {{ scope.row.loginIp }}
         </template>
       </el-table-column>
 
-     <el-table-column  label="登录地址" align="center">
+      <el-table-column label="登录地址" align="center">
         <template slot-scope="scope">
           {{ scope.row.loginAddress }}
         </template>
       </el-table-column>
 
-           <el-table-column  label="登录设备" align="center">
+      <el-table-column label="登录设备" align="center">
         <template slot-scope="scope">
           {{ scope.row.loginDevice }}
         </template>
@@ -114,8 +115,7 @@
 </template>
 
 <script>
-import { getLoginHistoryPage, } from "@/api/user";
-import store from "@/store";
+import { getLoginHistoryPage } from "@/api/user";
 export default {
   filters: {
     statusFilter(status) {
@@ -205,7 +205,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .mid-input {
   width: 80px;
 }

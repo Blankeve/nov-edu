@@ -1,8 +1,5 @@
 <template>
   <div class="app-container">
-    <el-input placeholder="输入关键字进行过滤" v-model="filterText"> </el-input>
-    <br />
-    <br />
     <div id="down-tree" style="width: 50%">
       <el-button type="text" size="mini" @click="() => append()">
         添加一级分类

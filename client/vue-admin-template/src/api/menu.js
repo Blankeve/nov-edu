@@ -37,14 +37,6 @@ export function removeById(params) {
   })
 }
 
-export function exportAll(params) {
-  return request({
-    url: '/ucenter/permission/export-all',
-    method: 'get',
-    responseType: 'blob',
-    params
-  })
-}
 
 export function exportPage(params) {
   return request({

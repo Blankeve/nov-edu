@@ -65,7 +65,7 @@ div:focus {
   border-radius: 5px;
 }
 .search_box{
-  margin: 0px 20px 10px 20px;
+  margin: 0px 20px 10px 10px;
 }
 // main-container global css
 .app-container {
@@ -79,6 +79,22 @@ div:focus {
 }
 .block{
   margin-top: 10px;
+}
+.el-table {
+	.el-table__header-wrapper, .el-table__fixed-header-wrapper {
+		th {
+			word-break: break-word;
+			background-color: #f8f8f9;
+			color: #515a6e;
+			height: 40px;
+			font-size: 13px;
+		}
+	}
+	.el-table__body-wrapper {
+		.el-button [class*="el-icon-"] + span {
+			margin-left: 1px;
+		}
+	}
 }
 //配置编辑器行高
 .ql-snow .ql-picker.ql-lineheight .ql-picker-label::before {
