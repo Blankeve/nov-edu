@@ -1,20 +1,20 @@
 package com.novedu.nov.ucenter.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.code.kaptcha.Producer;
-import com.novedu.nov.common.constants.AuthConstant;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.base.RoleType;
-import com.novedu.nov.common.constants.MsgConstants;
+import com.novedu.nov.common.constants.AuthConstant;
 import com.novedu.nov.common.constants.RedisKeyConstants;
 import com.novedu.nov.common.entity.UserDTO;
 import com.novedu.nov.common.util.Base64Utils;
-import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.common.util.IpAddressUtils;
 import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.common.util.TreeUtils;
@@ -49,7 +49,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -168,7 +167,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
     }
 
     @Override
-    public BaseResult<List<AclUserRoleVO>> queryUserPage(Page page, AclUserRoleDTO user) {
+    public IPage<List<AclUserRoleVO>> queryUserPage(Page page, AclUserRoleDTO user) {
         QueryWrapper queryWrapper = new QueryWrapper();
         if (StringUtils.hasText(user.getNickname()))
             queryWrapper.like("u.nickname", user.getNickname());
@@ -180,7 +179,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         Date end = user.getEndTime();
         if (start != null && end != null && end.getTime() > start.getTime())
             queryWrapper.apply("u.create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and u.create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start, end);
-        return BaseResult.success(userMapper.queryPage(page, queryWrapper));
+        return userMapper.queryPage(page, queryWrapper);
     }
 
     public LoginInfo getLoginInfo() {
@@ -304,29 +303,14 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
     }
 
     @Override
-    public BaseResult resetPwd(Long uid) {
-        UpdateWrapper updateWrapper = new UpdateWrapper();
-        updateWrapper.eq("id", uid);
-        updateWrapper.set("password", DigestUtils.md5DigestAsHex(configService.getSysConfigByKey("user_def_reset_pwd").getData().getConfigValue().getBytes(StandardCharsets.UTF_8)));
-        return BaseResult.successOrError(update(updateWrapper));
-    }
-
-    @Override
-    public void exportUserPage(HttpServletResponse response, Page page, AclUserRoleDTO user) {
-        BaseResult baseResult = queryUserPage(page, user);
-        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
-            Page page1 = (Page) baseResult.getData();
-            ExcelUtils.exportExcel(page1.getRecords(), "用户信息", "用户信息", AclUserRoleVO.class, "用户信息", response);
+    public BaseResult resetPwd(Long[] uids) {
+        LambdaUpdateWrapper<AclUser> updateWrapper = new LambdaUpdateWrapper();
+        for (int i = 0; i < uids.length; i++) {
+            updateWrapper.eq(AclUser::getId, uids[i]);
+            updateWrapper.set(AclUser::getPassword, DigestUtils.md5DigestAsHex(configService.getSysConfigByKey("user_def_reset_pwd").getData().getConfigValue().getBytes(StandardCharsets.UTF_8)));
+            update(updateWrapper);
         }
-    }
-
-    @Override
-    public void exportAll(HttpServletResponse response) {
-        BaseResult baseResult = queryUserPage(new Page(1, count()), new AclUserRoleDTO());
-        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
-            Page page1 = (Page) baseResult.getData();
-            ExcelUtils.exportExcel(page1.getRecords(), "用户信息", "用户信息", AclUserRoleVO.class, "用户信息", response);
-        }
+        return BaseResult.success();
     }
 
     private List getRecentAddUsers() {

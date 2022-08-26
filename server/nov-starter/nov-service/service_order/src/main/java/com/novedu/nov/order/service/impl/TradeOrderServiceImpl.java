@@ -2,6 +2,7 @@ package com.novedu.nov.order.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
@@ -95,18 +96,18 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
     }
 
     @Override
-    public BaseResult queryOrderPage(Page page, TradeOrderDTO order) {
+    public IPage<TradeOrder> queryOrderPage(Page page, TradeOrderDTO order) {
         Long uid = RequestUtils.getUid();
         BaseResult baseResult = openUcenterService.queryUserRole(Long.valueOf(uid));
         if (baseResult == null) {
-            return BaseResult.success();
+            return new Page<>();
         }
         Map role = (Map) baseResult.getData();
         Integer code = (Integer) role.get("code");
         if (code == RoleType.TEACHER.getCode()) {
             BaseResult baseResult1 = openEduService.queryTeacherIdByUid(uid.toString());
             if (baseResult1 == null)
-                return BaseResult.success();
+                return new Page<>();
             order.setTeacherId(Long.valueOf(baseResult1.getData().toString()));
         }
         QueryWrapper queryWrapper = new QueryWrapper();
@@ -126,7 +127,7 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
         Date end = order.getEndTime();
         if (start != null && end != null && end.getTime() > start.getTime())
             queryWrapper.apply("o.create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and o.create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start, end);
-        return BaseResult.success(orderMapper.queryOrderPage(page, queryWrapper));
+        return orderMapper.queryOrderPage(page, queryWrapper);
     }
 
     @Override
@@ -141,24 +142,6 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
         queryWrapper.eq(TradeOrder::getStatus, 1);
         int count = count(queryWrapper);
         return BaseResult.success().map("paid", count > 0);
-    }
-
-    @Override
-    public void exportOrderPage(HttpServletResponse response, Page page, TradeOrderDTO order) {
-        BaseResult baseResult = queryOrderPage(page, order);
-        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
-            Page page1 = (Page) baseResult.getData();
-            ExcelUtils.exportExcel(page1.getRecords(), "订单信息", "订单信息", TradeOrder.class, "订单信息", response);
-        }
-    }
-
-    @Override
-    public void exportAll(HttpServletResponse response, TradeOrderDTO order) {
-        BaseResult baseResult = queryOrderPage(new Page(1, count()), order);
-        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
-            Page page1 = (Page) baseResult.getData();
-            ExcelUtils.exportExcel(page1.getRecords(), "订单信息", "订单信息", TradeOrder.class, "订单信息", response);
-        }
     }
 
     @Override

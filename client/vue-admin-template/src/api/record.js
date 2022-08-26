@@ -12,7 +12,7 @@ export function getStudyRecordPage(params) {
 
 export function exportPage(params) {
   return request({
-    url: '/edu/study/export',
+    url: '/edu/study/record/export',
     method: 'get',
     responseType: 'blob',
     params

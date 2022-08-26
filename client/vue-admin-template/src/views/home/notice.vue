@@ -1,7 +1,11 @@
 <template>
   <div class="app-container">
     <el-row>
-      <el-button icon="el-icon-plus" type="primary" @click="addNotice"
+      <el-button
+        icon="el-icon-plus"
+        type="primary"
+        size="small"
+        @click="addNotice"
         >添加公告</el-button
       >
     </el-row>
@@ -65,12 +69,14 @@
             type="info"
             @click="handleEdit(scope.row)"
             icon="el-icon-edit"
+            size="small"
             >编辑</el-button
           >
           <el-button
             type="danger"
             @click="handleDelete(scope.row.id)"
             icon="el-icon-delete"
+            size="small"
             >删除</el-button
           >
         </template>
@@ -240,7 +246,7 @@ export default {
       this.form.sendUser = store.getters.name;
       saveOrUpdate(this.form).then((resp) => {
         if (resp.code === 200) {
-          this.$message.success((this.form.id?"更新":"添加")+"成功");
+          this.$message.success((this.form.id ? "更新" : "添加") + "成功");
           this.noticeFormVisible = false;
           this.fetchData();
         }

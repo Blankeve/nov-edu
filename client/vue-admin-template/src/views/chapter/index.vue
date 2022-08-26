@@ -133,6 +133,12 @@
           </template>
         </el-table-column>
 
+        <el-table-column label="章节名称" align="center">
+          <template slot-scope="scope">
+            {{ scope.row.chapterTitle }}
+          </template>
+        </el-table-column>
+
         <el-table-column label="所属课程" align="center">
           <template slot-scope="scope">
             <span>{{ scope.row.courseTitle }}</span>
@@ -142,12 +148,6 @@
         <el-table-column label="课程讲师" align="center">
           <template slot-scope="scope">
             {{ scope.row.teacherName }}
-          </template>
-        </el-table-column>
-
-        <el-table-column label="章节标题" align="center">
-          <template slot-scope="scope">
-            {{ scope.row.chapterTitle }}
           </template>
         </el-table-column>
 
@@ -195,11 +195,7 @@
 </template>
 
 <script>
-import {
-  getPage,
-  exportPage,
-  removeChapterById,
-} from "@/api/chapter";
+import { getPage, exportPage, removeChapterById } from "@/api/chapter";
 import { getList } from "@/api/course";
 import { exportExcel } from "@/utils/excel";
 export default {

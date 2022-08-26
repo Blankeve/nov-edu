@@ -433,7 +433,7 @@ export default {
       this.form.size = s;
       this.fetchData();
     },
-    handleDelete() {
+    handleDelete(id) {
       if (this.selectionIds && this.selectionIds.length > 0) {
         id = [];
         for (let i = 0; i < this.selectionIds.length; i++)
@@ -509,9 +509,6 @@ export default {
 </script>
 
 <style scoped>
-.mid-input {
-  width: 80px;
-}
 .el-pagination {
   text-align: center;
 }

@@ -4,6 +4,7 @@ package com.novedu.nov.ucenter.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.entity.UserDTO;
+import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.ucenter.entity.AclUser;
 import com.novedu.nov.ucenter.entity.dto.AclUserDTO;
 import com.novedu.nov.ucenter.entity.dto.AclUserPasswordDTO;
@@ -13,8 +14,6 @@ import com.novedu.nov.ucenter.entity.vo.AclUserRoleVO;
 import com.novedu.nov.ucenter.service.AclUserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,9 +50,9 @@ public class AclUserController {
         return aclUserService.getMemberInfo(id);
     }
 
-    @PutMapping("/reset-pwd/{uid}")
-    public BaseResult resetPwd(@PathVariable Long uid) {
-        return aclUserService.resetPwd(uid);
+    @PutMapping("/reset-pwd/{uids}")
+    public BaseResult resetPwd(@PathVariable Long[] uids) {
+        return aclUserService.resetPwd(uids);
     }
 
     @PutMapping("/pwd")
@@ -68,18 +67,14 @@ public class AclUserController {
 
     @GetMapping("/page")
     public BaseResult<List<AclUserRoleVO>> queryUserPage(Page page, AclUserRoleDTO user) {
-        return aclUserService.queryUserPage(page, user);
+        return BaseResult.success(aclUserService.queryUserPage(page, user));
     }
 
     @GetMapping("/export")
-    public void exportUserPage(HttpServletResponse response, Page page, AclUserRoleDTO user) {
-        aclUserService.exportUserPage(response, page, user);
+    public void exportUserPage(HttpServletResponse response, AclUserRoleDTO user) {
+        ExcelUtils.exportExcel(aclUserService.queryUserPage(new Page(1, -1), user).getRecords(), "用户信息", "用户信息", AclUserRoleVO.class, "用户信息", response);
     }
 
-    @GetMapping("/export-all")
-    public void exportAll(HttpServletResponse response) {
-        aclUserService.exportAll(response);
-    }
 
     @PostMapping("/login-bg")
     public BaseResult loginBg(@RequestBody AclUserDTO user) {
@@ -123,7 +118,7 @@ public class AclUserController {
      * 生成验证码
      */
     @GetMapping("/picVerifyCode")
-    public BaseResult getCode(){
+    public BaseResult getCode() {
         return aclUserService.getCode();
     }
 }

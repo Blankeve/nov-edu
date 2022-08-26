@@ -1,5 +1,6 @@
 package com.novedu.nov.ucenter.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.novedu.nov.common.base.BaseResult;
@@ -11,7 +12,6 @@ import com.novedu.nov.ucenter.entity.dto.AclUserProfileDTO;
 import com.novedu.nov.ucenter.entity.dto.AclUserRoleDTO;
 import com.novedu.nov.ucenter.entity.vo.AclUserRoleVO;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -29,17 +29,13 @@ public interface AclUserService extends IService<AclUser> {
 
     BaseResult getMemberInfo(Long id);
 
-    BaseResult<List<AclUserRoleVO>> queryUserPage(Page page, AclUserRoleDTO user);
+    IPage<List<AclUserRoleVO>> queryUserPage(Page page, AclUserRoleDTO user);
 
     BaseResult loginBg(AclUserDTO user);
 
     BaseResult getInfoBg(String token);
 
-    BaseResult resetPwd(Long uid);
-
-    void exportUserPage(HttpServletResponse response, Page page, AclUserRoleDTO user);
-
-    void exportAll(HttpServletResponse response);
+    BaseResult resetPwd(Long []uids);
 
     BaseResult getDashBoardInfo();
 

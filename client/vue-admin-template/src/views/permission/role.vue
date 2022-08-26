@@ -2,7 +2,7 @@
   <div class="app-container">
     <el-form :inline="true" ref="form" :model="form">
       <el-form-item>
-        <el-button icon="el-icon-plus" type="primary" @click="addRole">添加角色</el-button>
+        <el-button icon="el-icon-plus" type="primary" size="small" @click="addRole">添加角色</el-button>
       </el-form-item>
     </el-form>
 

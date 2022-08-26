@@ -1,155 +1,168 @@
 <template>
   <div class="app-container">
-    <el-form :inline="true" ref="form" :model="form">
-      <el-form-item label="用户昵称" prop="title">
-        <el-input v-model="form.nickname" placeholder="用户昵称"></el-input>
-      </el-form-item>
+    <div class="search_box">
+      <el-form :inline="true" ref="form" :model="form" size="medium">
+        <el-form-item prop="title">
+          <el-input
+            suffix-icon="el-icon-search"
+            v-model="form.nickname"
+            placeholder="用户昵称"
+          ></el-input>
+        </el-form-item>
 
-      <el-form-item v-if="code !== 5" label="课程讲师">
-        <el-select v-model="form.teacherId" placeholder="请选择讲师">
-          <el-option
-            v-for="(item, index) in teachers"
-            :label="item.name"
-            :key="item.id"
-            :value="item.id"
-          >
-          </el-option>
-        </el-select>
-      </el-form-item>
-
-      <el-form-item label="所属课程">
-        <el-select v-model="form.courseId" placeholder="请选择课程">
-          <el-option label="请选择课程" key="" value=""> </el-option>
-          <el-option
-            v-for="(item, index) in courses"
-            :label="item.title"
-            :key="item.id"
-            :value="item.id"
-          >
-          </el-option>
-        </el-select>
-      </el-form-item>
-
-      <el-form-item label="评论时间" prop="createTime">
-        <el-date-picker
-          v-model="dateRange"
-          type="datetimerange"
-          :picker-options="pickerOptions"
-          range-separator="至"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
-          align="right"
-        >
-        </el-date-picker>
-      </el-form-item>
-
-      <el-form-item>
-        <el-button type="primary" icon="el-icon-search" @click="searchForm"
-          >查询</el-button
-        >
-        <el-button
-          type="danger"
-          icon="el-icon-refresh-left"
-          @click="resetForm('form')"
-          >重置</el-button
-        >
-        <el-button
-          type="success"
-          icon="el-icon-download"
-          @click="exportCommentPage"
-          >导出当前</el-button
-        >
-      </el-form-item>
-    </el-form>
-
-    <el-table
-      v-loading="listLoading"
-      :data="list"
-      element-loading-text="Loading"
-      border
-      fit
-      highlight-current-row
-    >
-      <el-table-column align="center" label="#" width="50">
-        <template slot-scope="scope">
-          {{ scope.$index + 1 }}
-        </template>
-      </el-table-column>
-
-      <el-table-column label="用户昵称" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.nickname }}
-        </template>
-      </el-table-column>
-
-      <el-table-column label="评论课程" width="200px" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.courseTitle }}
-        </template>
-      </el-table-column>
-
-      <el-table-column label="课程讲师" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.teacherName }}
-        </template>
-      </el-table-column>
-
-      <el-table-column label="评论内容" width="200px" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.content }}
-        </template>
-      </el-table-column>
-
-      <el-table-column label="评论星级" align="center">
-        <template slot-scope="scope">
-          <i
-            v-for="count in scope.row.mark"
-            :key="count"
-            class="iconfont icon--Star"
-          ></i>
-        </template>
-      </el-table-column>
-
-      <el-table-column align="center" prop="created_at" label="评论时间">
-        <template slot-scope="scope">
-          <i class="el-icon-time" />
-          <span>{{ scope.row.createTime }}</span>
-        </template>
-      </el-table-column>
-
-      <el-table-column
-        v-if="code !== 5"
-        fixed="right"
-        align="center"
-        label="操作"
-        width="170"
-      >
-        <template slot-scope="scope">
-          <el-popconfirm
-            title="
-              确定删除吗？
-            "
-            @onConfirm="handleDelete(scope.$index, scope.row.id)"
-          >
-            <el-button icon="el-icon-delete" slot="reference" type="danger"
-              >删除</el-button
+        <el-form-item v-if="code !== 5">
+          <el-select v-model="form.teacherId" placeholder="课程讲师" clearable>
+            <el-option
+              v-for="(item, index) in teachers"
+              :label="item.name"
+              :key="item.id"
+              :value="item.id"
             >
-          </el-popconfirm>
-        </template>
-      </el-table-column>
-    </el-table>
-    <div class="block">
-      <el-pagination
-        background
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        :current-page="form.current"
-        :page-sizes="sizes"
-        :page-size="form.size"
-        layout="total, sizes, prev, pager, next, jumper"
-        :total="form.total"
+            </el-option>
+          </el-select>
+        </el-form-item>
+
+        <el-form-item>
+          <el-select v-model="form.courseId" placeholder="课程名称" clearable>
+            <el-option
+              v-for="(item, index) in courses"
+              :label="item.title"
+              :key="item.id"
+              :value="item.id"
+            >
+            </el-option>
+          </el-select>
+        </el-form-item>
+
+        <el-form-item prop="createTime">
+          <el-date-picker
+            style="width: 300px"
+            v-model="dateRange"
+            type="datetimerange"
+            :picker-options="pickerOptions"
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+            align="right"
+          >
+          </el-date-picker>
+        </el-form-item>
+
+        <el-form-item>
+          <el-button
+            size="small"
+            type="primary"
+            icon="el-icon-search"
+            @click="searchForm"
+            >查询</el-button
+          >
+          <el-button
+            size="small"
+            type="danger"
+            icon="el-icon-refresh-left"
+            @click="resetForm('form')"
+            >重置</el-button
+          >
+        </el-form-item>
+      </el-form>
+    </div>
+    <div class="main_content" style="border-top: 2px solid #f0f0f0">
+      <div class="btn-layout">
+        <div>
+          <el-button
+            icon="el-icon-delete"
+            size="mini"
+            type="danger"
+            :disabled="selectionIds.length == 0"
+            plain
+            @click="handleDelete()"
+            >删除</el-button
+          >
+        </div>
+        <div>
+          <el-button
+            size="mini"
+            type="success"
+            plain
+            icon="el-icon-download"
+            @click="exportCommentPage"
+            >导出</el-button
+          >
+        </div>
+      </div>
+      <el-table
+        ref="table"
+        @selection-change="handleSelectionChange"
+        @row-click="handleRowClick"
+        v-loading="listLoading"
+        :data="list"
+        element-loading-text="Loading"
+        border
+        fit
+        highlight-current-row
       >
-      </el-pagination>
+        <el-table-column type="selection" width="55"> </el-table-column>
+
+        <el-table-column align="center" label="#" width="50">
+          <template slot-scope="scope">
+            {{ scope.$index + 1 }}
+          </template>
+        </el-table-column>
+
+        <el-table-column label="用户昵称" align="center">
+          <template slot-scope="scope">
+            {{ scope.row.nickname }}
+          </template>
+        </el-table-column>
+
+        <el-table-column label="评论课程" width="200px" align="center">
+          <template slot-scope="scope">
+            {{ scope.row.courseTitle }}
+          </template>
+        </el-table-column>
+
+        <el-table-column label="课程讲师" align="center">
+          <template slot-scope="scope">
+            {{ scope.row.teacherName }}
+          </template>
+        </el-table-column>
+
+        <el-table-column label="评论内容" width="200px" align="center">
+          <template slot-scope="scope">
+            {{ scope.row.content }}
+          </template>
+        </el-table-column>
+
+        <el-table-column label="评论星级" align="center">
+          <template slot-scope="scope">
+            <i
+              v-for="count in scope.row.mark"
+              :key="count"
+              class="iconfont icon--Star"
+            ></i>
+          </template>
+        </el-table-column>
+
+        <el-table-column align="center" prop="created_at" label="评论时间">
+          <template slot-scope="scope">
+            <i class="el-icon-time" />
+            <span>{{ scope.row.createTime }}</span>
+          </template>
+        </el-table-column>
+      </el-table>
+      <div class="block">
+        <el-pagination
+          background
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page="form.current"
+          :page-sizes="sizes"
+          :page-size="form.size"
+          layout="total, sizes, prev, pager, next, jumper"
+          :total="form.total"
+        >
+        </el-pagination>
+      </div>
     </div>
   </div>
 </template>
@@ -160,11 +173,7 @@ import { getAll } from "@/api/teacher";
 import { exportExcel } from "@/utils/excel";
 import { mapGetters } from "vuex";
 
-import {
-  getCommentPage,
-  removeCommentById,
-  exportPage,
-} from "@/api/comment";
+import { getCommentPage, removeCommentById, exportPage } from "@/api/comment";
 
 export default {
   computed: {
@@ -229,6 +238,7 @@ export default {
       courses: [],
       teachers: [],
       sizes: [],
+      selectionIds: [],
     };
   },
   created() {
@@ -307,22 +317,26 @@ export default {
       this.form.size = s;
       this.fetchData();
     },
-    handleDelete(row, id) {
-      console.log(id);
+    handleDelete(id) {
+      if (this.selectionIds && this.selectionIds.length > 0) {
+        id = [];
+        for (let i = 0; i < this.selectionIds.length; i++)
+          id.push(this.selectionIds[i]["id"]);
+      }
       removeCommentById(id).then((resp) => {
         if (resp.code === 200) {
           this.$message.success("删除成功");
-          this.list.splice(row, 1);
+          this.fetchData();
         }
       });
     },
-    handleEdit(data) {
-      this.$router.push({
-        path: "/course/edit",
-        query: {
-          course: data,
-        },
-      });
+    handleSelectionChange(val) {
+      this.selectionIds = val;
+    },
+    handleRowClick(row) {
+      if (!row.disabled) {
+        this.$refs.table.toggleRowSelection(row);
+      }
     },
     onSubmit() {
       this.fetchData();
@@ -357,11 +371,11 @@ export default {
 };
 </script>
 
-<style>
-.mid-input {
-  width: 80px;
-}
+<style scoped>
 .el-pagination {
   text-align: center;
+}
+.el-form-item {
+  margin-bottom: 0 !important;
 }
 </style>

@@ -11,7 +11,7 @@ export function save(data) {
 export function getCommentPage(params) {
   return request({
     url: '/edu/comment/page-client',
-    method: 'post',
+    method: 'get',
     params
   })
 }

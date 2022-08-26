@@ -66,12 +66,14 @@
         <template slot-scope="scope">
           <el-button
             type="info"
+            size="small"
             @click="handleEdit(scope.row)"
             icon="el-icon-edit"
             >回复</el-button
           >
           <el-button
             type="danger"
+            size="small"
             @click="handleDelete(scope.row.id)"
             icon="el-icon-delete"
             >删除</el-button

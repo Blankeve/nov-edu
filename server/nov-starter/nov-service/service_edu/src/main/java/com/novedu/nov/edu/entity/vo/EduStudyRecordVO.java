@@ -1,5 +1,6 @@
 package com.novedu.nov.edu.entity.vo;
 
+import cn.afterturn.easypoi.excel.annotation.Excel;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import io.swagger.annotations.ApiModel;
@@ -37,16 +38,18 @@ public class EduStudyRecordVO implements Serializable {
 
     private String teacherCareer;
 
+    @Excel(name = "用户昵称", height = 20, width = 30, isImportField = "true_st", orderNum = "1")
     private String nickname;
 
     @ApiModelProperty(value = "课程ID")
     @JsonSerialize(using = ToStringSerializer.class)
     private Long courseId;
 
+    @Excel(name = "课程名称", height = 20, width = 30, isImportField = "true_st", orderNum = "1")
     @ApiModelProperty(value = "课程标题")
     private String courseTitle;
 
-
+    @Excel(name = "课程封面", height = 20, width = 30, isImportField = "true_st", orderNum = "1")
     @ApiModelProperty(value = "课程封面图片路径")
     private String courseCover;
 
@@ -61,15 +64,19 @@ public class EduStudyRecordVO implements Serializable {
     @JsonSerialize(using = ToStringSerializer.class)
     private Long videoId;
 
-    @ApiModelProperty(value = "小节标题")
-    private String videoTitle;
-
+    @Excel(name = "章节", height = 20, width = 30, isImportField = "true_st", orderNum = "1")
     @ApiModelProperty(value = "排序字段")
     private Integer chapterSort;
 
+    @Excel(name = "小节", height = 20, width = 30, isImportField = "true_st", orderNum = "1")
     @ApiModelProperty(value = "排序字段")
     private Integer videoSort;
 
+    @Excel(name = "视频名称", height = 20, width = 30, isImportField = "true_st", orderNum = "1")
+    @ApiModelProperty(value = "小节标题")
+    private String videoTitle;
+
+    @Excel(name = "观看日期", height = 20, width = 30, isImportField = "true_st", exportFormat = "yyyy-MM-dd HH:mm:ss", orderNum = "1")
     @ApiModelProperty(value = "创建时间")
     private Date createTime;
 

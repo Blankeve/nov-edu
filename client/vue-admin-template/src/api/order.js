@@ -14,7 +14,7 @@ export function exportPage(params) {
 export function getOrderPage(params) {
   return request({
     url: '/order/trade/page',
-    method: 'post',
+    method: 'get',
     params
   })
 }

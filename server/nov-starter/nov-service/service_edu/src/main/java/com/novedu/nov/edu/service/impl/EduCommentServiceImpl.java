@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.base.RoleType;
-import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.edu.client.OpenOrderService;
 import com.novedu.nov.edu.client.OpenUcenterService;
@@ -23,11 +22,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 /**
@@ -98,7 +94,7 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
     }
 
     @Override
-    public BaseResult queryCommentPage(Page page, EduUserCommentDTO eduComment) {
+    public BaseResult queryClientCommentPage(Page page, EduUserCommentDTO eduComment) {
         IPage<EduUserCommentVO> page1 = commentMapper.queryPage(page, eduComment);
         for (EduUserCommentVO record : page1.getRecords()) {
             if (!StringUtils.hasText(record.getNickname()))
@@ -109,11 +105,11 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public BaseResult queryCommentPage(HttpServletRequest request, Page page, EduUserCommentDTO eduComment) {
+    public IPage<EduUserCommentVO> queryCommentPage(Page page, EduUserCommentDTO eduComment) {
         Long uid = RequestUtils.getUid();
         BaseResult baseResult = openUcenterService.queryUserRole(uid);
         if (baseResult == null) {
-            return BaseResult.success();
+            return new Page<>();
         }
         Map role = (Map) baseResult.getData();
         Integer code = (Integer) role.get("code");
@@ -121,7 +117,7 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
             Long teacherId = teacherService.query().eq("uid", uid).one().getId();
             eduComment.setTeacherId(teacherId);
         }
-        return BaseResult.success(commentMapper.queryPage(page, eduComment));
+        return commentMapper.queryPage(page, eduComment);
     }
 
     @Override
@@ -141,27 +137,6 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
         comment.setReported(1);
         comment.setReportUid(uid);
         return BaseResult.successOrError(updateById(comment));
-    }
-
-
-    @Override
-    public void exportCommentPage(HttpServletResponse response, Page page, EduUserCommentDTO eduComment) {
-        HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
-        BaseResult baseResult = queryCommentPage(request, page, eduComment);
-        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
-            Page page1 = (Page) baseResult.getData();
-            ExcelUtils.exportExcel(page1.getRecords(), "评论信息", "评论信息", EduUserCommentVO.class, "评论信息", response);
-        }
-    }
-
-    @Override
-    public void exportAll(HttpServletResponse response, EduUserCommentDTO eduComment) {
-        HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
-        BaseResult baseResult = queryCommentPage(request, new Page(1, count()), eduComment);
-        if (baseResult != null && BaseResult.success().getCode().equals(baseResult.getCode())) {
-            Page page1 = (Page) baseResult.getData();
-            ExcelUtils.exportExcel(page1.getRecords(), "评论信息", "评论信息", EduUserCommentVO.class, "评论信息", response);
-        }
     }
 
 }

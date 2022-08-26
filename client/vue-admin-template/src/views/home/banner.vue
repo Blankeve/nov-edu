@@ -1,6 +1,10 @@
 <template>
   <div class="app-container">
-    <el-button type="primary" icon="el-icon-plus" @click="addConfig()"
+    <el-button
+      type="primary"
+      icon="el-icon-plus"
+      size="small"
+      @click="addConfig()"
       >添加轮播图</el-button
     >
     <el-table
@@ -69,6 +73,7 @@
             type="info"
             @click="handleEdit(scope.row)"
             icon="el-icon-edit"
+            size="small"
             >编辑</el-button
           >
 
@@ -76,6 +81,7 @@
             type="danger"
             @click="handleDelete(scope.row.id)"
             icon="el-icon-delete"
+            size="small"
             >删除</el-button
           >
         </template>

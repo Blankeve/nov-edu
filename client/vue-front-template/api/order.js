@@ -18,7 +18,7 @@ export function createOrder(data) {
 
   export function getOrderPage(params) {
     return request({
-      url: '/order/trade/page',
+      url: '/order/trade/user',
       method: 'get',
       params
     })

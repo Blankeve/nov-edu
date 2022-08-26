@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.novedu.nov.common.annotation.UserMultiSubmitLimit;
 import com.novedu.nov.common.base.BaseResult;
+import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.order.entity.TradeOrder;
 import com.novedu.nov.order.entity.dto.TradeOrderDTO;
 import com.novedu.nov.order.service.TradeOrderService;
@@ -43,13 +44,8 @@ public class TradeOrderController {
     }
 
     @GetMapping("/export")
-    public void exportCoursePage(HttpServletResponse response, Page page, TradeOrderDTO order) {
-        tradeOrderService.exportOrderPage(response, page, order);
-    }
-
-    @GetMapping("/export-all")
-    public void exportAll(HttpServletResponse response, TradeOrderDTO order) {
-        tradeOrderService.exportAll(response, order);
+    public void exportCoursePage(HttpServletResponse response, TradeOrderDTO order) {
+        ExcelUtils.exportExcel(tradeOrderService.queryOrderPage(new Page(1, -1), order).getRecords(), "订单信息", "订单信息", TradeOrder.class, "订单信息", response);
     }
 
     @ApiOperation("查询订单")
@@ -82,12 +78,12 @@ public class TradeOrderController {
         return tradeOrderService.queryOrderByUidAndCourseId(id, uid);
     }
 
-    @PostMapping("/page")
+    @GetMapping("/page")
     public BaseResult queryOrderPage(Page page, TradeOrderDTO order) {
-        return tradeOrderService.queryOrderPage(page, order);
+        return BaseResult.success(tradeOrderService.queryOrderPage(page, order));
     }
 
-    @GetMapping("/page")
+    @GetMapping("/user")
     public BaseResult queryUserOrderPage(Page page) {
         return tradeOrderService.queryUserOrderPage(page);
     }

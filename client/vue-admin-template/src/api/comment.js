@@ -11,7 +11,7 @@ export function save(data) {
 export function exportPage(params) {
   return request({
     url: '/edu/comment/export',
-    method: 'post',
+    method: 'get',
     responseType: 'blob',
     params
   })
@@ -20,7 +20,7 @@ export function exportPage(params) {
 export function getCommentPage(params) {
   return request({
     url: '/edu/comment/page',
-    method: 'post',
+    method: 'get',
     params
   })
 }
