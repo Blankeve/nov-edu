@@ -35,17 +35,23 @@
         </el-col>
       </el-form-item>
       <el-form-item prop="avatar" label="讲师头像">
-        <el-upload
+        <!-- <el-upload
           class="avatar-uploader"
           name="img"
           :action="baseURL + '/upload/img'"
           :show-file-list="false"
           :on-success="handleAvatarSuccess"
           :before-upload="beforeAvatarUpload"
-        >
-          <img v-if="teacher.avatar" :src="teacher.avatar" class="avatar" />
-          <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-        </el-upload>
+        > -->
+
+        <img v-if="teacher.avatar" :src="teacher.avatar" class="avatar" />
+        <!-- <i v-else class="el-icon-plus avatar-uploader-icon"></i> -->
+        <!-- </el-upload> -->
+        <el-button @click="dialogVisible = true">上传头像</el-button>
+        <avatar-cropper
+          :dialogVisible.sync="dialogVisible"
+          @closeAvatarDialog="closeAvatarDialog"
+        ></avatar-cropper>
       </el-form-item>
       <el-form-item>
         <el-button icon="el-icon-check" type="primary" @click="saveOrEdit"
@@ -57,10 +63,16 @@
 </template>
 <script>
 import { save, getById, updateById } from "@/api/teacher";
+import { uploadImgBase64 } from "@/api/upload";
+import avatarCropper from "@/components/AvatarCropper";
 
 export default {
+  components: {
+    avatarCropper,
+  },
   data() {
     return {
+      dialogVisible: false,
       teacher: {
         id: "",
         name: "",
@@ -124,6 +136,13 @@ export default {
     this.fetchData();
   },
   methods: {
+    closeAvatarDialog(img) {
+      uploadImgBase64({"img":img}).then((resp) => {
+        if (resp.code === 200) {
+          this.teacher.avatar = resp.data.path;
+        }
+      });
+    },
     saveOrEdit() {
       if (this.teacher.id) {
         updateById(this.teacher).then((resp) => {
@@ -152,19 +171,6 @@ export default {
     },
     handleAvatarSuccess(res, file) {
       this.teacher.avatar = res.data.path;
-    },
-    beforeAvatarUpload(file) {
-      const isJPG = file.type === "image/jpeg";
-      const isPNG = file.type === "image/png";
-      const isLt2M = file.size / 1024 / 1024 < 2;
-
-      if (!(isJPG || isPNG)) {
-        this.$message.error("上传头像图片只能是 JPG，PNG 格式!");
-      }
-      if (!isLt2M) {
-        this.$message.error("上传头像图片大小不能超过 2MB!");
-      }
-      return (isJPG || isPNG) && isLt2M;
     },
   },
 };

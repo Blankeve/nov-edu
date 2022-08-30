@@ -86,7 +86,7 @@
             type="success"
             plain
             icon="el-icon-download"
-            @click="exportCommentPage"
+            @click="exportOrderPage"
             >导出</el-button
           >
         </div>

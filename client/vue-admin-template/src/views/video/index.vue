@@ -119,7 +119,7 @@
             {{ scope.$index + 1 }}
           </template>
         </el-table-column>
-        <el-table-column type="expand">
+        <el-table-column type="expand" label="观看">
           <template slot-scope="scope">
             <video width="320" controls>
               <source :src="scope.row.videoSourcePath" type="video/mp4" />

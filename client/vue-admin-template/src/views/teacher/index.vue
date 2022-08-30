@@ -100,7 +100,11 @@
             {{ scope.$index + 1 }}
           </template>
         </el-table-column>
-
+        <el-table-column type="expand" label="简介">
+          <template slot-scope="scope">
+            <span>{{ scope.row.intro }}</span>
+          </template>
+        </el-table-column>
         <el-table-column width="100" label="姓名" align="center">
           <template slot-scope="scope">
             {{ scope.row.name }}
@@ -124,12 +128,6 @@
         <el-table-column label="职业" align="center">
           <template slot-scope="scope">
             {{ scope.row.career }}
-          </template>
-        </el-table-column>
-
-        <el-table-column label="简介" width="500" align="center">
-          <template slot-scope="scope">
-            <span>{{ scope.row.intro }}</span>
           </template>
         </el-table-column>
 

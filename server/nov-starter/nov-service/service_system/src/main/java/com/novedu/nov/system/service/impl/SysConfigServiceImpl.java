@@ -60,9 +60,14 @@ public class SysConfigServiceImpl extends ServiceImpl<SysConfigMapper, SysConfig
 
     @Override
     public BaseResult saveConfig(SysConfig config) {
-        Integer count = lambdaQuery().eq(SysConfig::getConfigName, config.getConfigName()).ne(SysConfig::getId, config.getId()).count();
+        LambdaQueryWrapper<SysConfig> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(SysConfig::getConfigName, config.getConfigName());
+        if (config.getId() != null) {
+            queryWrapper.ne(SysConfig::getId, config.getId());
+        }
+        Integer count = count(queryWrapper);
         if (count > 0) {
-            return BaseResult.error("操作失败，存在相同名称:" + config.getConfigName());
+            return BaseResult.error("操作失败，存在相同名称：" + config.getConfigName());
         }
         return BaseResult.successOrError(saveOrUpdate(config));
     }

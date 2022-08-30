@@ -11,7 +11,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -78,7 +77,7 @@ public class TradeOrder implements Serializable {
     @ApiModelProperty(value = "订单金额（分）")
     private BigDecimal totalFee;
 
-    @Excel(name = "支付方式", height = 20, width = 30,replace = {"支付宝_2", "微信_1"}, isImportField = "true_st",orderNum = "7")
+    @Excel(name = "支付方式", height = 20, width = 30,replace = {"支付宝_2", "微信_1","免费_0"}, isImportField = "true_st",orderNum = "7")
     @ApiModelProperty(value = "支付方式（1：微信 2：支付宝）")
     private Integer payType;
 

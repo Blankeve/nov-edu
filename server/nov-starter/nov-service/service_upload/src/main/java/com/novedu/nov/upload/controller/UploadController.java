@@ -6,6 +6,7 @@ import com.novedu.nov.upload.service.UploadService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -32,6 +33,11 @@ public class UploadController {
     @PostMapping("/img")
     public BaseResult<Map> uploadImg(MultipartFile img) {
         return uploadService.uploadImg(img);
+    }
+
+    @PostMapping("/img/ba")
+    public BaseResult<Map> uploadImgByBase64(@RequestBody String img) {
+        return uploadService.uploadImgByBase64(img);
     }
 
     @PostMapping("/video")

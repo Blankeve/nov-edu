@@ -2,15 +2,19 @@ package com.novedu.nov.upload.service;
 
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.helper.SnowFlake;
+import com.novedu.nov.common.util.CheckFileTypeUtils;
 import com.novedu.nov.system.service.SysConfigService;
+import org.apache.http.entity.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import ws.schild.jave.MultimediaInfo;
 import ws.schild.jave.MultimediaObject;
 
+import javax.xml.bind.DatatypeConverter;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -46,13 +50,21 @@ public class UploadService {
     public BaseResult uploadImg(MultipartFile img) {
         String baseUrl = getServerAddress();
         String imgName = img.getOriginalFilename();
+        String suffix = null;
         if (img.isEmpty() || !StringUtils.hasText(imgName)
                 || imgName.lastIndexOf(".") == -1
         ) {
-            return BaseResult.error("上传失败,图片不能为空");
+            try {
+                suffix = CheckFileTypeUtils.getType(img.getBytes());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (suffix == null)
+                return BaseResult.error("上传失败,图片不能为空");
         }
-        String suffix = imgName.substring(imgName.lastIndexOf(".")).toLowerCase(); //文件后缀
-        Set<String> allowSuffix = new HashSet<>(Arrays.asList(".jpg", ".jpeg", ".png", ".gif"));
+        if (suffix == null)
+            suffix = imgName.substring(imgName.lastIndexOf(".")).toLowerCase(); //文件后缀
+        Set<String> allowSuffix = new HashSet<>(Arrays.asList(".jpg", ".jpeg", ".png", ".gif", ".tif", ".bmp"));
         if (!allowSuffix.contains(suffix)) {
             return BaseResult.error("上传失败,不允许的文件类型");
         }
@@ -125,5 +137,12 @@ public class UploadService {
             return BaseResult.error(e.getMessage());
         }
 
+    }
+
+    public BaseResult<Map> uploadImgByBase64(String img) {
+        img = img.replace("data:image/jpeg;base64,", "");
+        byte[] buff = DatatypeConverter.parseBase64Binary(img);
+        MultipartFile fileResult = new MockMultipartFile(ContentType.APPLICATION_OCTET_STREAM.toString(), buff);
+        return uploadImg(fileResult);
     }
 }
