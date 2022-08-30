@@ -5,7 +5,7 @@
     <br />
     <div id="down-tree" style="width: 50%">
       <el-button type="text" size="mini" @click="() => appendRoot(data)">
-        添加一级权限
+        新增一级权限
       </el-button>
       <div class="menu-tree">
         <el-tree
@@ -226,7 +226,7 @@ export default {
           if (this.form.id) this.$message.success("更新成功");
           else
             this.$message.success(
-              "添加成功，请在对应角色分配权限"
+              "新增成功，请在对应角色分配权限"
             );
           this.fetchData();
           this.menuFormVisible = false;
@@ -237,14 +237,14 @@ export default {
       this.resetForm();
       this.form.parentId = data.id;
       this.form.parentName = data.title;
-      this.menuFormTitle = "添加权限";
+      this.menuFormTitle = "新增权限";
       this.menuFormVisible = true;
     },
     appendRoot(data) {
       this.resetForm();
       this.form.parentId = 0;
       this.form.parentName = "无";
-      this.menuFormTitle = "添加权限";
+      this.menuFormTitle = "新增权限";
       this.menuFormVisible = true;
     },
     remove(node, data) {

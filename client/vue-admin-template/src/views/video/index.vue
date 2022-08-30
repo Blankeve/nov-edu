@@ -36,7 +36,7 @@
           ></el-input-number>
         </el-form-item>
 
-        <el-form-item label="添加时间" prop="createTime">
+        <el-form-item label="新增时间" prop="createTime">
           <el-date-picker
             style="width: 300px"
             v-model="dateRange"
@@ -107,7 +107,7 @@
         @row-click="handleRowClick"
         v-loading="listLoading"
         :data="list"
-        element-loading-text="Loading"
+        element-loading-text="玩命加载中"
         border
         fit
         highlight-current-row

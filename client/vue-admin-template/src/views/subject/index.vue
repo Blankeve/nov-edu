@@ -2,7 +2,7 @@
   <div class="app-container">
     <div id="down-tree" style="width: 50%">
       <el-button type="text" size="mini" @click="() => append()">
-        添加一级分类
+        新增一级分类
       </el-button>
       <el-tree
         :data="data"
@@ -114,7 +114,7 @@ export default {
       return data.title.indexOf(value) !== -1;
     },
     append(data) {
-      this.$prompt("添加的节点名称", "提示", {
+      this.$prompt("新增的节点名称", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         inputValidator: function (val) {
@@ -130,7 +130,7 @@ export default {
           else this.form.parentId = data.id;
           this.form.title = value;
           saveOrUpdate(this.form).then((resp) => {
-            if (resp.code === 200) this.$message.success("添加成功");
+            if (resp.code === 200) this.$message.success("新增成功");
             this.fetchData();
           });
         })

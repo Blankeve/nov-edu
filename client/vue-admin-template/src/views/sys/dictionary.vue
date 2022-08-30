@@ -62,30 +62,35 @@
       </el-form>
     </div>
     <div class="main_content" style="border-top: 2px solid #f0f0f0">
-      <el-button
-        icon="el-icon-plus"
-        size="mini"
-        type="primary"
-        plain
-        @click="addConfig()"
-        >新增一级字典</el-button
-      >
-      <el-button
-        icon="el-icon-delete"
-        size="mini"
-        type="danger"
-        :disabled="selectionIds.length == 0"
-        plain
-        @click="handleDelete()"
-        >删除</el-button
-      >
+      <div class="btn-layout">
+        <div>
+          <el-button
+            icon="el-icon-plus"
+            size="mini"
+            type="primary"
+            plain
+            @click="addConfig()"
+            >新增一级字典</el-button
+          >
+          <el-button
+            icon="el-icon-delete"
+            size="mini"
+            type="danger"
+            :disabled="selectionIds.length == 0"
+            plain
+            @click="handleDelete()"
+            >删除</el-button
+          >
+        </div>
+      </div>
+
       <el-table
         ref="table"
         v-loading="listLoading"
         highlight-current-row
         @selection-change="handleSelectionChange"
         :data="list"
-        element-loading-text="Loading"
+        element-loading-text="玩命加载中"
         row-key="id"
         @row-click="handleRowClick"
         :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
@@ -394,7 +399,7 @@ export default {
         configValue: "",
       };
       this.form.grade = 1;
-      this.configFormTitle = "添加字典数据";
+      this.configFormTitle = "新增字典数据";
       this.configFormVisible = true;
     },
     handleAddConfig(row) {
@@ -408,7 +413,7 @@ export default {
       this.configFormVisible = false;
       saveOrUpdate(this.form).then((resp) => {
         if (resp.code === 200) {
-          this.$message.success((this.form.id ? "修改" : "添加") + "字典成功");
+          this.$message.success((this.form.id ? "修改" : "新增") + "字典成功");
           this.fetchData();
         }
       });

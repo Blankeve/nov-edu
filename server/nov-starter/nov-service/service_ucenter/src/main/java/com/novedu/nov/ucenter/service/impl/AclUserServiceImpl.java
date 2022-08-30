@@ -221,7 +221,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
             String verifyKey = RedisKeyConstants.PIC_VERIFY_CODE + user.getUuid();
             String captcha = (String) redisTemplate.opsForValue().get(verifyKey);
             redisTemplate.delete(verifyKey);
-            if (captcha == null) {
+            if (!StringUtils.hasText(captcha)) {
                 return BaseResult.error("验证码失效");
             }
             if (!captcha.equalsIgnoreCase(user.getCode())) {

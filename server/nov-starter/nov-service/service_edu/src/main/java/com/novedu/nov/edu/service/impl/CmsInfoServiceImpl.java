@@ -39,14 +39,14 @@ public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> impl
     private CmsInfoMapper cmsInfoMapper;
 
     @Override
-    public BaseResult queryPage(Page page, CmsInfo cmsInfo) {
+    public IPage<CmsInfoVO> queryPage(Page page, CmsInfo cmsInfo) {
         IPage<CmsInfoVO> iPage = cmsInfoMapper.queryPage(page, cmsInfo);
         List<CmsInfoVO> cmsInfoVOS = iPage.getRecords();
         for (CmsInfoVO o : cmsInfoVOS) {
             Long clickCount = (Long) redisTemplate.opsForValue().get(RedisKeyConstants.INFO_CLICK_COUNT + o.getId());
             o.setClickCount(clickCount == null ? 0 : clickCount);
         }
-        return BaseResult.success(iPage);
+        return iPage;
     }
 
     @Override

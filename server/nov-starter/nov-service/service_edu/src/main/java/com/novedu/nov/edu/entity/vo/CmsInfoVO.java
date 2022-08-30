@@ -1,5 +1,6 @@
 package com.novedu.nov.edu.entity.vo;
 
+import cn.afterturn.easypoi.excel.annotation.Excel;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -33,36 +34,43 @@ public class CmsInfoVO implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "资讯分类")
+    @ApiModelProperty(value = "文章分类")
     private Integer cate;
 
-    @ApiModelProperty(value = "资讯分类名称")
+    @Excel(name = "文章分类", height = 20, width = 30, isImportField = "true_st", orderNum = "1")
+    @ApiModelProperty(value = "文章分类")
     private String catename;
 
     @ApiModelProperty(value = "用户名")
     private String username;
 
-    @ApiModelProperty(value = "用户昵称")
-    private String createrNickname;
 
-    @ApiModelProperty(value = "资讯标题")
+    @Excel(name = "文章标题", height = 20, width = 60, isImportField = "true_st", orderNum = "1")
+    @ApiModelProperty(value = "文章标题")
     private String title;
 
     @ApiModelProperty(value = "资讯内容")
     private String content;
 
-    @JsonSerialize(using = ToStringSerializer.class)
-    @ApiModelProperty(value = "创建人")
-    private Long creater;
-
+    @Excel(name = "点击量", height = 20, width = 30, isImportField = "true_st", orderNum = "1")
     @JsonSerialize(using = ToStringSerializer.class)
     @ApiModelProperty(value = "点击量")
     private long clickCount;
 
+    @Excel(name = "作者", height = 20, width = 30, isImportField = "true_st", orderNum = "1")
+    @ApiModelProperty(value = "用户昵称")
+    private String createrNickname;
+
+    @JsonSerialize(using = ToStringSerializer.class)
+    @ApiModelProperty(value = "创建人")
+    private Long creater;
+
+    @Excel(name = "发布时间", height = 20, width = 30, isImportField = "true_st", exportFormat = "yyyy-MM-dd HH:mm:ss", orderNum = "1")
     @TableField(value = "create_time", fill = FieldFill.INSERT)
     @ApiModelProperty(value = "创建时间")
     private Date createTime;
 
+    @Excel(name = "更新时间", height = 20, width = 30, isImportField = "true_st", exportFormat = "yyyy-MM-dd HH:mm:ss", orderNum = "1")
     @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
     @ApiModelProperty(value = "更新时间")
     private Date updateTime;

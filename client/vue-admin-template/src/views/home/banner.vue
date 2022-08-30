@@ -1,16 +1,21 @@
 <template>
   <div class="app-container">
-    <el-button
-      type="primary"
-      icon="el-icon-plus"
-      size="small"
-      @click="addConfig()"
-      >添加轮播图</el-button
-    >
+    <el-form :inline="true" ref="form" :model="form">
+      <el-form-item>
+        <el-button
+          type="primary"
+          icon="el-icon-plus"
+          size="small"
+          @click="addConfig()"
+          >新增轮播图</el-button
+        >
+      </el-form-item>
+    </el-form>
+
     <el-table
       v-loading="listLoading"
       :data="list"
-      element-loading-text="Loading"
+      element-loading-text="玩命加载中"
       fit
       stripe
       highlight-current-row
@@ -201,14 +206,14 @@ export default {
     },
     addConfig() {
       this.form = {};
-      this.configFormTitle = "添加图片";
+      this.configFormTitle = "新增图片";
       this.configFormVisible = true;
     },
     onSubmit() {
       this.configFormVisible = false;
       saveOrUpdate(this.form).then((resp) => {
         if (resp.code === 200) {
-          this.$message.success((this.form.id ? "修改" : "添加") + "图片成功");
+          this.$message.success((this.form.id ? "修改" : "新增") + "图片成功");
           this.fetchData();
         }
       });

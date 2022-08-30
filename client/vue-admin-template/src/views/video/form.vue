@@ -2,7 +2,7 @@
   <div class="app-container">
     <h2>
       {{
-        this.$route.query.video && !this.$route.query.chapter ? "编辑" : "添加"
+        this.$route.query.video && !this.$route.query.chapter ? "编辑" : "新增"
       }}小节
     </h2>
     <div class="myFrm">
@@ -220,7 +220,7 @@ export default {
             message:
               (this.$route.query.video && !this.$route.query.chapter
                 ? "修改"
-                : "添加") + "成功!",
+                : "新增") + "成功!",
           });
         }
       });

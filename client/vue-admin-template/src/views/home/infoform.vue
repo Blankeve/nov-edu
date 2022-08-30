@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <h2>{{ this.$route.query.info ? "编辑" : "添加" }}文章</h2>
+    <h2>{{ this.$route.query.info ? "编辑" : "新增" }}文章</h2>
     <div class="myCourseFrm">
       <el-form
         v-show="active == 0"
@@ -100,7 +100,7 @@ export default {
     submitForm() {
       saveOrUpdate(this.info).then((resp) => {
         if (resp.code === 200) {
-          this.$message.success((this.info.id ? "修改" : "添加") + "成功");
+          this.$message.success((this.info.id ? "修改" : "新增") + "成功");
         }
       });
     },

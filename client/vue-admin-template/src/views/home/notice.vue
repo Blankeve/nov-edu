@@ -6,14 +6,14 @@
         type="primary"
         size="small"
         @click="addNotice"
-        >添加公告</el-button
+        >新增公告</el-button
       >
     </el-row>
     <br />
     <el-table
       v-loading="listLoading"
       :data="list"
-      element-loading-text="Loading"
+      element-loading-text="玩命加载中"
       border
       fit
       highlight-current-row
@@ -185,7 +185,7 @@ export default {
         size: 8,
         total: 0,
       },
-      noticeFormTitle: "添加公告",
+      noticeFormTitle: "新增公告",
       noticeFormVisible: false,
       sizes: [],
       //编辑器相关
@@ -231,7 +231,7 @@ export default {
       this.form.title = "";
       this.form.content = "";
       this.form.sendUser = "";
-      this.noticeFormTitle = "添加公告";
+      this.noticeFormTitle = "新增公告";
       this.noticeFormVisible = true;
     },
     handleEdit(row) {
@@ -246,7 +246,7 @@ export default {
       this.form.sendUser = store.getters.name;
       saveOrUpdate(this.form).then((resp) => {
         if (resp.code === 200) {
-          this.$message.success((this.form.id ? "更新" : "添加") + "成功");
+          this.$message.success((this.form.id ? "更新" : "新增") + "成功");
           this.noticeFormVisible = false;
           this.fetchData();
         }

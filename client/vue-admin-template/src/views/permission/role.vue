@@ -2,21 +2,24 @@
   <div class="app-container">
     <el-form :inline="true" ref="form" :model="form">
       <el-form-item>
-        <el-button icon="el-icon-plus" type="primary" size="small" @click="addRole">添加角色</el-button>
+        <el-button
+          icon="el-icon-plus"
+          type="primary"
+          size="small"
+          @click="addRole"
+          >新增角色</el-button
+        >
       </el-form-item>
     </el-form>
 
     <el-table
       v-loading="listLoading"
       :data="list"
-      element-loading-text="Loading"
+      element-loading-text="玩命加载中"
       border
       fit
       highlight-current-row
     >
-      <!--展开列-->
-      <el-table-column type="expand"></el-table-column>
-
       <el-table-column align="center" label="#" width="50">
         <template slot-scope="scope">
           {{ scope.$index + 1 }}
@@ -29,7 +32,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column width="100"  label="角色编码" align="center">
+      <el-table-column width="100" label="角色编码" align="center">
         <template slot-scope="scope">
           {{ scope.row.code }}
         </template>
@@ -56,17 +59,25 @@
       <el-table-column fixed="right" align="center" width="400" label="操作">
         <template slot-scope="scope">
           <el-button
+            size="mini"
+            plain
             type="warning"
             icon="el-icon-setting"
             @click="handleSelectMenu(scope.row.id)"
             >分配权限</el-button
           >
 
-          <el-button @click="handleEdit(scope.row)" icon="el-icon-edit"
+          <el-button
+            size="mini"
+            plain
+            @click="handleEdit(scope.row)"
+            icon="el-icon-edit"
             >编辑</el-button
           >
 
           <el-button
+            size="mini"
+            plain
             type="danger"
             @click="handleDelete(scope.row.id)"
             icon="el-icon-delete"
@@ -136,12 +147,7 @@
 </template>
 
 <script>
-import {
-  saveOrUpdate,
-  getPage,
-  removeById,
-  exportPage,
-} from "@/api/role";
+import { saveOrUpdate, getPage, removeById, exportPage } from "@/api/role";
 import { exportExcel } from "@/utils/excel";
 import { getTree, queryMenuByRoleId, saveRoleSelMenu } from "@/api/menu";
 export default {
@@ -175,18 +181,33 @@ export default {
         size: 8,
         total: 0,
       },
-         formRules: {
+      formRules: {
         name: [
           { required: true, message: "请输入角色名称", trigger: "blur" },
-          { min: 1, max: 20, message: "长度在 1 到 20 个字符", trigger: "blur" },
+          {
+            min: 1,
+            max: 20,
+            message: "长度在 1 到 20 个字符",
+            trigger: "blur",
+          },
         ],
         code: [
           { required: true, message: "请输入角色编码", trigger: "blur" },
-          { min: 1, max: 10, message: "长度在 1 到 10 个字符", trigger: "blur" },
+          {
+            min: 1,
+            max: 10,
+            message: "长度在 1 到 10 个字符",
+            trigger: "blur",
+          },
         ],
         remark: [
           { required: true, message: "请输入角色描述", trigger: "blur" },
-          { min: 1, max: 50, message: "长度在 1 到 50 个字符", trigger: "blur" },
+          {
+            min: 1,
+            max: 50,
+            message: "长度在 1 到 50 个字符",
+            trigger: "blur",
+          },
         ],
       },
       roleFormTitle: "",
@@ -272,7 +293,7 @@ export default {
       this.form.name = "";
       this.form.code = null;
       this.form.remark = "";
-      this.roleFormTitle = "添加角色";
+      this.roleFormTitle = "新增角色";
       this.roleFormVisible = true;
     },
     exportTeacherPage() {
@@ -305,7 +326,7 @@ export default {
       saveOrUpdate(this.form).then((resp) => {
         if (resp.code === 200) {
           this.roleFormVisible = false;
-          this.$message.success((this.form.id ? "修改" : "添加") + "角色成功");
+          this.$message.success((this.form.id ? "修改" : "新增") + "角色成功");
           this.fetchData();
         }
       });

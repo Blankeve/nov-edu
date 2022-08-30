@@ -44,7 +44,7 @@
           </el-select>
         </el-form-item>
 
-        <el-form-item label="添加时间" prop="createTime">
+        <el-form-item label="新增时间" prop="createTime">
           <el-date-picker
             style="width: 300px"
             v-model="dateRange"
@@ -84,7 +84,7 @@
             type="text"
             @click="() => appendRoot(data)"
           >
-            添加课程
+            新增课程
           </el-button>
         </el-form-item>
         <el-form-item>
@@ -568,13 +568,13 @@ export default {
       if (data.subjectId) {
         this.chapter = {};
         this.chapter.courseId = data.id;
-        this.chapterFormTitle = "添加章节";
+        this.chapterFormTitle = "新增章节";
         this.chapterFormVisible = true;
       } else if (data.courseId) {
         this.video = {};
         this.video.isFree = 1;
         this.video.chapterId = data.id;
-        this.videoFormTitle = "添加小节";
+        this.videoFormTitle = "新增小节";
         this.videoFormVisible = true;
         this.video.courseIsFree = data.courseIsFree;
       }

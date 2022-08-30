@@ -26,6 +26,15 @@ export function getPage(params) {
   })
 }
 
+export function exportPage(params) {
+  return request({
+    url: '/edu/info/export',
+    method: 'get',
+    responseType: 'blob',
+    params
+  })
+}
+
 export function getOneDetailByInfoId(params) {
   return request({
     url: `/edu/info/detail/${params}`,

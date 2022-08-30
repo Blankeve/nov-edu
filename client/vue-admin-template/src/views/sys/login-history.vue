@@ -1,12 +1,12 @@
 <template>
   <div class="app-container">
     <!-- <el-button icon="el-icon-plus" type="primary" @click="addNotice"
-      >添加公告</el-button
+      >新增公告</el-button
     > -->
     <el-table
       v-loading="listLoading"
       :data="list"
-      element-loading-text="Loading"
+      element-loading-text="玩命加载中"
       border
       fit
       highlight-current-row
@@ -180,7 +180,7 @@ export default {
     //   this.form.title = "";
     //   this.form.content = "";
     //   this.form.sendUser = "";
-    //   this.noticeFormTitle = "添加公告";
+    //   this.noticeFormTitle = "新增公告";
     //   this.noticeFormVisible = true;
     // },
     // handleEdit(row) {
@@ -195,7 +195,7 @@ export default {
     //   this.form.sendUser = store.getters.name;
     //   saveOrUpdate(this.form).then((resp) => {
     //     if (resp.code === 200) {
-    //       this.$message.success("添加成功");
+    //       this.$message.success("新增成功");
     //       this.noticeFormVisible = false;
     //       this.fetchData();
     //     }

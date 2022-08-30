@@ -1,5 +1,6 @@
 package com.novedu.nov.edu.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.novedu.nov.common.base.BaseResult;
@@ -16,7 +17,7 @@ import com.novedu.nov.edu.entity.vo.CmsInfoVO;
  */
 public interface CmsInfoService extends IService<CmsInfo> {
 
-    BaseResult queryPage(Page page, CmsInfo cmsInfo);
+    IPage<CmsInfoVO> queryPage(Page page, CmsInfo cmsInfo);
 
     BaseResult getClientDetail(String id);
 

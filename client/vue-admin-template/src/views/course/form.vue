@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <h2>{{ this.$route.query.course ? "编辑" : "添加" }}课程</h2>
+    <h2>{{ this.$route.query.course ? "编辑" : "新增" }}课程</h2>
     <div class="myCourseFrm">
       <el-form
         v-show="active == 0"
@@ -251,7 +251,7 @@ export default {
       save(this.course).then((resp) => {
         if (resp.code === 200) {
           this.$confirm(
-            (this.$route.query.course ? "修改" : "添加") +
+            (this.$route.query.course ? "修改" : "新增") +
               "课程成功, 是否返回列表?",
             "提示",
             {

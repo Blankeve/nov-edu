@@ -99,7 +99,7 @@
         @row-click="handleRowClick"
         v-loading="listLoading"
         :data="list"
-        element-loading-text="Loading"
+        element-loading-text="玩命加载中"
         border
         fit
         highlight-current-row

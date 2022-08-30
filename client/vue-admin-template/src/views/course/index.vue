@@ -89,7 +89,7 @@
             plain
             type="primary"
             @click="addChapter()"
-            >添加章节</el-button
+            >新增章节</el-button
           >
           <el-button
             size="mini"
@@ -127,7 +127,7 @@
         @row-click="handleRowClick"
         v-loading="listLoading"
         :data="list"
-        element-loading-text="Loading"
+        element-loading-text="玩命加载中"
         border
         fit
         highlight-current-row
