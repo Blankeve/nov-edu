@@ -319,17 +319,6 @@ export default {
       this.fetchData();
     },
     handleDelete(id) {
-      // if (this.selectionIds && this.selectionIds.length > 0) {
-      //   id = [];
-      //   for (let i = 0; i < this.selectionIds.length; i++)
-      //     id.push(this.selectionIds[i]["id"]);
-      // }
-      // removeCommentById(id).then((resp) => {
-      //   if (resp.code === 200) {
-      //     this.$message.success("删除成功");
-      //     this.fetchData();
-      //   }
-      // });
       this.$message.error("暂时不支持删除订单!");
     },
     handleSelectionChange(val) {

@@ -3,7 +3,6 @@ package com.novedu.nov.gateway.authorization;
 import cn.hutool.core.convert.Convert;
 import cn.hutool.json.JSONUtil;
 import com.nimbusds.jose.JWSObject;
-import com.novedu.nov.common.base.ResultCode;
 import com.novedu.nov.common.constants.AuthConstant;
 import com.novedu.nov.common.entity.UserDTO;
 import com.novedu.nov.common.exception.MultiDeviceLoginException;
@@ -12,7 +11,6 @@ import com.novedu.nov.gateway.config.IgnoreUrlsConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.security.access.AccessDeniedException;
@@ -94,10 +92,6 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
         if (userDto == null) {
             throw new AccessDeniedException("");
         }
-//        //管理员直接放行
-//        if (AuthConstant.ADMIN_ROLE_CODE == userDto.getRoleCode()) {
-//            return Mono.just(new AuthorizationDecision(true));
-//        }
         String clientId = RequestUtils.getClientId(token);
         //非管理端路径直接放行
         if (clientId.equals(AuthConstant.PC_CLIENT_ID)) {
@@ -107,10 +101,11 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
         if (!isSingleDevice(token)) {
             throw new MultiDeviceLoginException();
         }
-//        if (!pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, uri.getPath())) {
-//            return Mono.just(new AuthorizationDecision(true));
-//        }
-        //管理端路径需校验权限
+        //-------------------管理端路径需校验权限
+        //超级管理员直接放行
+        if (AuthConstant.ADMIN_ROLE_CODE == userDto.getRoleCode()) {
+            return Mono.just(new AuthorizationDecision(true));
+        }
         Map<Object, Object> resourceRolesMap = redisTemplate.opsForHash().entries(AuthConstant.RESOURCE_ROLES_MAP_KEY);
         Iterator<Object> iterator = resourceRolesMap.keySet().iterator();
         List<String> authorities = new ArrayList<>();

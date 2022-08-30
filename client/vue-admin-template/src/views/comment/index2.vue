@@ -319,17 +319,30 @@ export default {
       this.fetchData();
     },
     handleDelete(id) {
-      if (this.selectionIds && this.selectionIds.length > 0) {
-        id = [];
-        for (let i = 0; i < this.selectionIds.length; i++)
-          id.push(this.selectionIds[i]["id"]);
-      }
-      removeCommentById(id).then((resp) => {
-        if (resp.code === 200) {
-          this.$message.success("删除成功");
-          this.fetchData();
-        }
-      });
+      this.$confirm("此操作将永久删除数据, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          if (this.selectionIds && this.selectionIds.length > 0) {
+            id = [];
+            for (let i = 0; i < this.selectionIds.length; i++)
+              id.push(this.selectionIds[i]["id"]);
+          }
+          removeCommentById(id).then((resp) => {
+            if (resp.code === 200) {
+              this.$message.success("删除成功");
+              this.fetchData();
+            }
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消删除",
+          });
+        });
     },
     handleSelectionChange(val) {
       this.selectionIds = val;

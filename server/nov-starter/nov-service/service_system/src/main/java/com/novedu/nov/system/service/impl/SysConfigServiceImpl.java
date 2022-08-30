@@ -1,6 +1,6 @@
 package com.novedu.nov.system.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.util.TreeUtils;
@@ -34,7 +34,7 @@ public class SysConfigServiceImpl extends ServiceImpl<SysConfigMapper, SysConfig
     @Override
     public BaseResult<SysConfig> getSysConfigByKey(String key) {
         SysConfig config = null;
-        List<SysConfig> sysConfigs = query().eq("status", 1).eq("config_key", key).list();
+        List<SysConfig> sysConfigs = lambdaQuery().eq(SysConfig::getStatus, 1).eq(SysConfig::getConfigKey, key).list();
         if (!CollectionUtils.isEmpty(sysConfigs))
             config = sysConfigs.get(0);
         return BaseResult.success(config);
@@ -42,13 +42,13 @@ public class SysConfigServiceImpl extends ServiceImpl<SysConfigMapper, SysConfig
 
     @Override
     public BaseResult<List<SysConfig>> getConfigList(SysConfigDTO config) {
-        QueryWrapper queryWrapper = new QueryWrapper();
+        LambdaQueryWrapper<SysConfig> queryWrapper = new LambdaQueryWrapper();
         if (!StringUtils.isEmpty(config.getConfigName()))
-            queryWrapper.like("config_name", config.getConfigName());
+            queryWrapper.like(SysConfig::getConfigName, config.getConfigName());
         if (!StringUtils.isEmpty(config.getConfigKey()))
-            queryWrapper.like("config_key", config.getConfigKey());
+            queryWrapper.like(SysConfig::getConfigKey, config.getConfigKey());
         if (!ObjectUtils.isEmpty(config.getStatus()))
-            queryWrapper.eq("status", config.getStatus());
+            queryWrapper.eq(SysConfig::getStatus, config.getStatus());
         Date start = config.getStartTime();
         Date end = config.getEndTime();
         if (start != null && end != null && end.getTime() > start.getTime())
@@ -60,6 +60,10 @@ public class SysConfigServiceImpl extends ServiceImpl<SysConfigMapper, SysConfig
 
     @Override
     public BaseResult saveConfig(SysConfig config) {
+        Integer count = lambdaQuery().eq(SysConfig::getConfigName, config.getConfigName()).ne(SysConfig::getId, config.getId()).count();
+        if (count > 0) {
+            return BaseResult.error("操作失败，存在相同名称:" + config.getConfigName());
+        }
         return BaseResult.successOrError(saveOrUpdate(config));
     }
 
@@ -75,7 +79,7 @@ public class SysConfigServiceImpl extends ServiceImpl<SysConfigMapper, SysConfig
 
     @Override
     public BaseResult<List<SysConfig>> getConfigListByKey(String key, Integer grade) {
-        return BaseResult.success(query().eq("status", 1).eq("config_key", key).eq("grade", grade).list());
+        return BaseResult.success(lambdaQuery().eq(SysConfig::getStatus, 1).eq(SysConfig::getConfigKey, key).eq(SysConfig::getGrade, grade).list());
     }
 
     @Override

@@ -170,23 +170,18 @@
               plain
               >编辑</el-button
             >
-            <el-popconfirm
-              :title="
-                (scope.row.children ? '该字典包含多个节点,' : '') +
-                `确定删除 [${scope.row.configName}] 吗？`
-              "
-              @onConfirm="handleDelete(scope.row.id)"
+
+            <el-button
+              style="margin-left: 0"
+              round
+              @click="handleDelete(scope.row)"
+              slot="reference"
+              size="mini"
+              icon="el-icon-delete"
+              type="danger"
+              plain
+              >删除</el-button
             >
-              <el-button
-                round
-                slot="reference"
-                size="mini"
-                icon="el-icon-delete"
-                type="danger"
-                plain
-                >删除</el-button
-              >
-            </el-popconfirm>
           </template>
         </el-table-column>
       </el-table>
@@ -370,17 +365,30 @@ export default {
       }
     },
     handleDelete(id) {
-      if (this.selectionIds && this.selectionIds.length > 0) {
-        id = [];
-        for (let i = 0; i < this.selectionIds.length; i++)
-          id.push(this.selectionIds[i]["id"]);
-      }
-      removeById(id).then((resp) => {
-        if (resp.code === 200) {
-          this.$message.success("删除成功");
-          this.fetchData();
-        }
-      });
+      this.$confirm("此操作将永久删除数据, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          if (this.selectionIds && this.selectionIds.length > 0) {
+            id = [];
+            for (let i = 0; i < this.selectionIds.length; i++)
+              id.push(this.selectionIds[i]["id"]);
+          }
+          removeById(id).then((resp) => {
+            if (resp.code === 200) {
+              this.$message.success("删除成功");
+              this.fetchData();
+            }
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消删除",
+          });
+        });
     },
     handleEdit(row) {
       this.disabled = false;

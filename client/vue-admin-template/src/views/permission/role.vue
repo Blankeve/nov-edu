@@ -59,6 +59,7 @@
       <el-table-column fixed="right" align="center" width="400" label="操作">
         <template slot-scope="scope">
           <el-button
+            v-show="scope.row.code != 0"
             size="mini"
             plain
             type="warning"
@@ -68,14 +69,15 @@
           >
 
           <el-button
+            v-show="scope.row.code != 0"
             size="mini"
             plain
             @click="handleEdit(scope.row)"
             icon="el-icon-edit"
             >编辑</el-button
           >
-
           <el-button
+            v-show="scope.row.code != 0"
             size="mini"
             plain
             type="danger"
@@ -310,9 +312,28 @@ export default {
       this.fetchData();
     },
     handleDelete(id) {
-      removeById(id).then((response) => {
-        this.fetchData();
-      });
+      this.$confirm("此操作将永久删除数据, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          removeById(id).then((resp) => {
+            if (resp.code === 200) {
+              this.$message({
+                type: "success",
+                message: "删除成功!",
+              });
+              this.fetchData();
+            }
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消删除",
+          });
+        });
     },
     handleEdit(row) {
       this.form.id = row.id;

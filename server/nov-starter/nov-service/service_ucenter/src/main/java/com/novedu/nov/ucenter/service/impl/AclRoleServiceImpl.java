@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.base.RoleType;
+import com.novedu.nov.common.constants.AuthConstant;
 import com.novedu.nov.system.service.SysConfigService;
 import com.novedu.nov.ucenter.client.OpenEduService;
 import com.novedu.nov.ucenter.entity.AclRole;
@@ -73,6 +74,10 @@ public class AclRoleServiceImpl extends ServiceImpl<AclRoleMapper, AclRole> impl
 
     @Override
     public BaseResult removeRole(Long id) {
+        Integer code = lambdaQuery().eq(AclRole::getId, id).one().getCode();
+        if(code == AuthConstant.ADMIN_ROLE_CODE){
+            return BaseResult.error("管理员角色不可被删除");
+        }
         return BaseResult.successOrError(removeById(id));
     }
 
