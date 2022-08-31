@@ -65,7 +65,6 @@ public class SysOperLog {
     @ApiModelProperty(value = "请求参数")
     private String reqArgs;
 
-    @Excel(name = "请求状态", height = 20, width = 30, isImportField = "true_st",orderNum = "3")
     @ApiModelProperty(value = "请求状态")
     private String reqStatus;
 
