@@ -8,3 +8,18 @@ export function getPage(params) {
   })
 }
 
+export function removeById(params) {
+  return request({
+    url: `/ucenter/oper-log/remove/${params}`,
+    method: 'delete',
+  })
+}
+
+export function exportPage(params) {
+  return request({
+    url: '/ucenter/oper-log/export',
+    method: 'get',
+    responseType: 'blob',
+    params
+  })
+}

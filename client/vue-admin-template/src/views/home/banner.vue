@@ -258,10 +258,7 @@ export default {
 };
 </script>
 
-<style  >
-.mid-input {
-  width: 80px;
-}
+<style  scoped>
 .el-pagination {
   text-align: center;
 }

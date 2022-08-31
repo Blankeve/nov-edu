@@ -169,10 +169,8 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
     @Override
     public IPage<List<AclUserRoleVO>> queryUserPage(Page page, AclUserRoleDTO user) {
         QueryWrapper queryWrapper = new QueryWrapper();
-        if (StringUtils.hasText(user.getNickname()))
-            queryWrapper.like("u.nickname", user.getNickname());
-        if (StringUtils.hasText(user.getUsername()))
-            queryWrapper.like("u.username", user.getUsername());
+        queryWrapper.like(StringUtils.hasText(user.getNickname()), "u.nickname", user.getNickname());
+        queryWrapper.like(StringUtils.hasText(user.getUsername()), "u.username", user.getUsername());
         if (user.getRoleId() != null)
             queryWrapper.eq("r.id", user.getRoleId());
         Date start = user.getStartTime();

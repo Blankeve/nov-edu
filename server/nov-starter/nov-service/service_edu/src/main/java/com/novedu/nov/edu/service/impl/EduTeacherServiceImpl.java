@@ -1,6 +1,6 @@
 package com.novedu.nov.edu.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -48,17 +48,16 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
 
     @Override
     public IPage<List<EduTeacher>> queryTeacherPage(Page page, EduTeacherDTO teacher) {
-        QueryWrapper queryWrapper = new QueryWrapper();
-        if (StringUtils.hasText(teacher.getName()))
-            queryWrapper.like("name", teacher.getName());
+        LambdaQueryWrapper<EduTeacher> queryWrapper = new LambdaQueryWrapper();
+            queryWrapper.like(StringUtils.hasText(teacher.getName()),EduTeacher::getName, teacher.getName());
         if (teacher.getLevel() != null)
-            queryWrapper.eq("level", teacher.getLevel());
+            queryWrapper.eq(EduTeacher::getLevel, teacher.getLevel());
         Date start = teacher.getStartTime();
         Date end = teacher.getEndTime();
         if (start != null && end != null && end.getTime() > start.getTime())
             queryWrapper.apply("create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start, end);
-        queryWrapper.orderByDesc("sort");
-        queryWrapper.orderByDesc("create_time");
+        queryWrapper.orderByDesc(EduTeacher::getSort);
+        queryWrapper.orderByDesc(EduTeacher::getCreateTime);
         return page(page, queryWrapper);
     }
 

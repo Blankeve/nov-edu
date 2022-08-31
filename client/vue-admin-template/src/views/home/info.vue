@@ -34,6 +34,7 @@
 
         <el-form-item prop="createTime">
           <el-date-picker
+            style="width: 300px"
             v-model="dateRange"
             type="datetimerange"
             :picker-options="pickerOptions"

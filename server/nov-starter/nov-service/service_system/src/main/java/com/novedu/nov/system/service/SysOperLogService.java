@@ -1,12 +1,11 @@
 package com.novedu.nov.system.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.system.entity.SysOperLog;
 import com.novedu.nov.system.entity.dto.SysOperLogDTO;
-
-import java.util.List;
 
 
 /**
@@ -19,5 +18,5 @@ import java.util.List;
  */
 public interface SysOperLogService extends IService<SysOperLog> {
 
-    BaseResult<List<SysOperLog>> getOperLogPage(Page page, SysOperLogDTO sysOperLog);
+    IPage<SysOperLog> getOperLogPage(Page page, SysOperLogDTO sysOperLog);
 }

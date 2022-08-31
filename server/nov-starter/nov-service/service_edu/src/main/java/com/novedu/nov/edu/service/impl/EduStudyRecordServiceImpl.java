@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.edu.entity.EduStudyRecord;
 import com.novedu.nov.edu.entity.dto.EduStudyRecordDTO;
 import com.novedu.nov.edu.entity.vo.EduStudyRecordVO;
@@ -33,12 +32,9 @@ public class EduStudyRecordServiceImpl extends ServiceImpl<EduStudyRecordMapper,
     @Override
     public IPage<EduStudyRecordVO> queryStudyRecordPage(Page page, EduStudyRecordDTO studyRecordDTO) {
         QueryWrapper queryWrapper = new QueryWrapper();
-        if (!StringUtils.isEmpty(studyRecordDTO.getNickname()))
-            queryWrapper.like("u.nickname", studyRecordDTO.getNickname());
-        if (!StringUtils.isEmpty(studyRecordDTO.getCourseTitle()))
-            queryWrapper.like("c.title", studyRecordDTO.getCourseTitle());
-        if (!StringUtils.isEmpty(studyRecordDTO.getVideoTitle()))
-            queryWrapper.like("v.title", studyRecordDTO.getVideoTitle());
+        queryWrapper.like(!StringUtils.isEmpty(studyRecordDTO.getNickname()), "u.nickname", studyRecordDTO.getNickname());
+        queryWrapper.like(!StringUtils.isEmpty(studyRecordDTO.getCourseTitle()), "c.title", studyRecordDTO.getCourseTitle());
+        queryWrapper.like(!StringUtils.isEmpty(studyRecordDTO.getVideoTitle()), "v.title", studyRecordDTO.getVideoTitle());
         Date start = studyRecordDTO.getStartTime();
         Date end = studyRecordDTO.getEndTime();
         if (start != null && end != null && end.getTime() > start.getTime())

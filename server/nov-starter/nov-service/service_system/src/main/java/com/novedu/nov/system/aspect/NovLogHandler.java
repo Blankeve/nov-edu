@@ -14,6 +14,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -74,7 +75,10 @@ public class NovLogHandler {
         ObjectMapper objectMapper = new ObjectMapper();
         String json = objectMapper.writeValueAsString(obj);
         sysOperLog.setId(id);
-        sysOperLog.setOperName(username);
+        if (!StringUtils.hasText(username))
+            sysOperLog.setOperName("访客");
+        else
+            sysOperLog.setOperName(username);
         sysOperLog.setOperIp(ip);
         sysOperLog.setOperAddr(addr);
         sysOperLog.setReqUrl(reqUrl);

@@ -95,8 +95,7 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
     @Override
     public IPage<EduVideoInfoVO> queryVideoPage(Page page, EduVideoInfoDTO videoInfoDTO) {
         QueryWrapper queryWrapper = new QueryWrapper();
-        if (StringUtils.hasText(videoInfoDTO.getTitle()))
-            queryWrapper.like("video.title", videoInfoDTO.getTitle());
+        queryWrapper.like(StringUtils.hasText(videoInfoDTO.getTitle()), "video.title", videoInfoDTO.getTitle());
         if (videoInfoDTO.getChapterId() != null)
             queryWrapper.eq("video.chapter_id", videoInfoDTO.getChapterId());
         if (videoInfoDTO.getSort() != null && videoInfoDTO.getSort() > 0)
@@ -224,7 +223,7 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
     }
 
     @Override
-    public void exportVideoPage(HttpServletResponse response , EduVideoInfoDTO videoInfoDTO) {
+    public void exportVideoPage(HttpServletResponse response, EduVideoInfoDTO videoInfoDTO) {
         ExcelUtils.exportExcel(queryVideoPage(new Page(1, -1), videoInfoDTO).getRecords(), "小节信息", "小节信息", EduVideoInfoVO.class, "小节信息", response);
     }
 

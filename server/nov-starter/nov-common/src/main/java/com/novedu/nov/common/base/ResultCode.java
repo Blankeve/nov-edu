@@ -8,8 +8,8 @@ package com.novedu.nov.common.base;
  * @version:
  */
 public enum ResultCode {
-    SUCCESS(200, "success"),
-    ERROR(500, "error"),
+    SUCCESS(200, "操作成功"),
+    ERROR(500, "操作失败"),
     SERVICE_INVOKE_FAILURE(504, "网络出差了，请稍后再试"),
     FORBIDDEN(403, "没有相关权限"),
     UNAUTHORIZED(4030, "登录失效，请重新登录"),

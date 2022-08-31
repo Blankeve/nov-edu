@@ -151,9 +151,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         }
         needToken = true;
         QueryWrapper queryWrapper = new QueryWrapper();
-        if (StringUtils.hasText(courseInfoDTO.getTitle())) {
-            queryWrapper.like("title", courseInfoDTO.getTitle());
-        }
+        queryWrapper.like(StringUtils.hasText(courseInfoDTO.getTitle()), "title", courseInfoDTO.getTitle());
         if (courseInfoDTO.getId() != null) {
             queryWrapper.eq("c1.id", courseInfoDTO.getId());
         }
@@ -314,8 +312,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         if (subjectId != null && subjectId > 0)
             queryWrapper.eq(EduCourse::getSubjectId, subjectId);
         String title = courseInfoDTO.getTitle();
-        if (StringUtils.hasText(title))
-            queryWrapper.like(EduCourse::getTitle, title);
+        queryWrapper.like(StringUtils.hasText(title), EduCourse::getTitle, title);
         Integer orderFieldValue = courseInfoDTO.getOrderFieldValue();
         if (orderFieldValue != null && !orderFieldValue.equals(EduCourseInfoDTO.ORDER_BY.NONE.ordinal())) {
             if (orderFieldValue.equals(EduCourseInfoDTO.ORDER_BY.NEWEST_ASC.ordinal()))

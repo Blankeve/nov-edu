@@ -8,7 +8,6 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.base.RoleType;
 import com.novedu.nov.common.constants.RedisKeyConstants;
-import com.novedu.nov.common.util.ExcelUtils;
 import com.novedu.nov.common.util.RequestUtils;
 import com.novedu.nov.order.client.OpenEduService;
 import com.novedu.nov.order.client.OpenUcenterService;
@@ -21,7 +20,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import javax.servlet.http.HttpServletResponse;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Map;
@@ -111,8 +109,7 @@ public class TradeOrderServiceImpl extends ServiceImpl<TradeOrderMapper, TradeOr
             order.setTeacherId(Long.valueOf(baseResult1.getData().toString()));
         }
         QueryWrapper queryWrapper = new QueryWrapper();
-        if (StringUtils.hasText(order.getNickname()))
-            queryWrapper.like("u.nickname", order.getNickname());
+        queryWrapper.like(StringUtils.hasText(order.getNickname()), "u.nickname", order.getNickname());
         if (order.getCourseId() != null)
             queryWrapper.eq("o.course_id", order.getCourseId());
         if (order.getUid() != null)

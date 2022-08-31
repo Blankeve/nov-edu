@@ -392,7 +392,7 @@ export default {
     addVideo(data) {
       let chapterId = this.selectionIds[0]["chapterId"];
       this.$router.push({
-        path: "/chapter/save",
+        path: "/video/save",
         query: {
           chapter: chapterId,
         },

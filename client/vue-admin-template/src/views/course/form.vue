@@ -63,21 +63,25 @@
         </el-row>
 
         <el-form-item prop="courseCover" label="课程封面">
-          <el-upload
+          <!-- <el-upload
             class="avatar-uploader"
             name="img"
             :action="baseURL + '/upload/img'"
             :show-file-list="false"
             :on-success="handleAvatarSuccess"
             :before-upload="beforeAvatarUpload"
-          >
-            <img
-              v-if="courseVO.courseCover"
-              :src="courseVO.courseCover"
-              class="avatar"
-            />
-            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-          </el-upload>
+          > -->
+          <img
+            v-if="courseVO.courseCover"
+            :src="courseVO.courseCover"
+            class="avatar"
+          />
+          <el-button @click="dialogVisible = true">上传封面</el-button>
+          <avatar-cropper
+            :dialogVisible.sync="dialogVisible"
+            @closeAvatarDialog="closeAvatarDialog"
+          ></avatar-cropper>
+          <!-- </el-upload> -->
         </el-form-item>
 
         <el-form-item prop="introDescription" label="课程简介">
@@ -97,10 +101,12 @@
           <el-input v-model="courseVO.title"></el-input>
         </el-form-item>
       </el-form>
-      <br />
+      <div style="text-align: center">
       <el-button icon="el-icon-check" type="primary" @click="submitForm"
         >提交</el-button
       >
+      </div>
+
     </div>
   </div>
 </template>
@@ -110,10 +116,16 @@ import { getList } from "@/api/subject";
 import { save, getOneDetailByCourseId, getIntroByCourseId } from "@/api/course";
 import { editorOptions } from "@/utils/editor-options";
 import { mapGetters } from "vuex";
+import { uploadImgBase64 } from "@/api/upload";
+import avatarCropper from "@/components/coverCropper";
 
 export default {
+  components: {
+    avatarCropper,
+  },
   data() {
     return {
+      dialogVisible: false,
       active: 0,
       labelPosition: "left",
       //编辑器相关
@@ -222,6 +234,13 @@ export default {
     },
     handleChange(value) {
       this.courseVO.subjectIds = value;
+    },
+    closeAvatarDialog(img) {
+      uploadImgBase64({ img: img }).then((resp) => {
+        if (resp.code === 200) {
+          this.courseVO.courseCover = resp.data.path;
+        }
+      });
     },
     beforeAvatarUpload(file) {
       const isJPG = file.type === "image/jpeg";

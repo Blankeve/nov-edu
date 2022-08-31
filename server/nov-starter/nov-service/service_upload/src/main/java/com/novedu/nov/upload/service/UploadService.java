@@ -2,19 +2,17 @@ package com.novedu.nov.upload.service;
 
 import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.common.helper.SnowFlake;
+import com.novedu.nov.common.util.Base64ToMultipartFileUtils;
 import com.novedu.nov.common.util.CheckFileTypeUtils;
 import com.novedu.nov.system.service.SysConfigService;
-import org.apache.http.entity.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import ws.schild.jave.MultimediaInfo;
 import ws.schild.jave.MultimediaObject;
 
-import javax.xml.bind.DatatypeConverter;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -140,9 +138,8 @@ public class UploadService {
     }
 
     public BaseResult<Map> uploadImgByBase64(String img) {
-        img = img.replace("data:image/jpeg;base64,", "");
-        byte[] buff = DatatypeConverter.parseBase64Binary(img);
-        MultipartFile fileResult = new MockMultipartFile(ContentType.APPLICATION_OCTET_STREAM.toString(), buff);
+        img = img.replace("=", "");
+        MultipartFile fileResult = Base64ToMultipartFileUtils.base64Convert(img);
         return uploadImg(fileResult);
     }
 }

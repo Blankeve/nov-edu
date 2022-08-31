@@ -45,6 +45,22 @@ export function getLoginHistoryPage(params) {
   })
 }
 
+export function removeLoginHistoryById(params) {
+  return request({
+    url: `/ucenter/sys-login-history/remove/${params}`,
+    method: 'delete',
+  })
+}
+
+export function exportLoginHistoryPage(params) {
+  return request({
+    url: '/ucenter/sys-login-history/export',
+    method: 'get',
+    responseType: 'blob',
+    params
+  })
+}
+
 export function resetPwd(params) {
   return request({
     url: `/ucenter/member/reset-pwd/${params}`,

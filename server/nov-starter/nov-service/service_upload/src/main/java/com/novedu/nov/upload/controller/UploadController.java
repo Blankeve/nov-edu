@@ -36,8 +36,9 @@ public class UploadController {
     }
 
     @PostMapping("/img/ba")
-    public BaseResult<Map> uploadImgByBase64(@RequestBody String img) {
-        return uploadService.uploadImgByBase64(img);
+    public BaseResult<Map> uploadImgByBase64(@RequestBody Map img) {
+        String image = (String) img.get("img");
+        return uploadService.uploadImgByBase64(image);
     }
 
     @PostMapping("/video")

@@ -1,8 +1,8 @@
 package com.novedu.nov.system.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.novedu.nov.common.base.BaseResult;
 import com.novedu.nov.system.entity.SysLoginHistory;
 
 
@@ -16,5 +16,5 @@ import com.novedu.nov.system.entity.SysLoginHistory;
  */
 public interface SysLoginHistoryService extends IService<SysLoginHistory> {
 
-    BaseResult queryLoginHistoryPage(Page page, SysLoginHistory loginHistory);
+    IPage<SysLoginHistory> queryLoginHistoryPage(Page page, SysLoginHistory loginHistory);
 }

@@ -1,60 +1,151 @@
 <template>
   <div class="app-container">
-    <!-- <el-button icon="el-icon-plus" type="primary" @click="addNotice"
-      >新增公告</el-button
-    > -->
-    <el-table
-      v-loading="listLoading"
-      :data="list"
-      element-loading-text="玩命加载中"
-      border
-      fit
-      highlight-current-row
-      :row-style="{ height: 80 + 'px' }"
-    >
-      <el-table-column align="center" label="#" width="50">
-        <template slot-scope="scope">
-          {{ scope.$index + 1 }}
-        </template>
-      </el-table-column>
+    <div class="search_box">
+      <el-form :inline="true" ref="form" :model="form" size="medium">
+        <el-form-item prop="username">
+          <el-input
+            suffix-icon="el-icon-search"
+            v-model="form.username"
+            placeholder="用户名"
+            clearable
+          ></el-input>
+        </el-form-item>
 
-      <el-table-column width="100" label="用户名" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.username }}
-        </template>
-      </el-table-column>
+        <el-form-item prop="logingIp">
+          <el-input
+            suffix-icon="el-icon-search"
+            v-model="form.logingIp"
+            placeholder="登录ip"
+            clearable
+          ></el-input>
+        </el-form-item>
 
-      <el-table-column label="登录ip" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.loginIp }}
-        </template>
-      </el-table-column>
+        <el-form-item prop="loginAddress">
+          <el-input
+            suffix-icon="el-icon-search"
+            v-model="form.loginAddress"
+            placeholder="登录地址"
+            clearable
+          ></el-input>
+        </el-form-item>
 
-      <el-table-column label="登录地址" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.loginAddress }}
-        </template>
-      </el-table-column>
+        <el-form-item prop="loginDevice">
+          <el-input
+            suffix-icon="el-icon-search"
+            v-model="form.loginDevice"
+            placeholder="登录设备"
+            clearable
+          ></el-input>
+        </el-form-item>
 
-      <el-table-column label="登录设备" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.loginDevice }}
-        </template>
-      </el-table-column>
+        <el-form-item prop="createTime">
+          <el-date-picker
+            style="width: 300px"
+            v-model="dateRange"
+            type="datetimerange"
+            :picker-options="pickerOptions"
+            range-separator="至"
+            start-placeholder="起始日期"
+            end-placeholder="结束日期"
+            align="right"
+          >
+          </el-date-picker>
+        </el-form-item>
 
-      <el-table-column
-        align="center"
-        prop="created_at"
-        label="登录时间"
-        width="200"
+        <el-form-item>
+          <el-button type="primary" icon="el-icon-search" @click="searchForm"
+            >查询</el-button
+          >
+          <el-button
+            type="danger"
+            icon="el-icon-refresh-left"
+            @click="resetForm('form')"
+            >重置</el-button
+          >
+        </el-form-item>
+      </el-form>
+    </div>
+
+    <div class="main_content" style="border-top: 2px solid #f0f0f0">
+      <div class="btn-layout">
+        <div>
+          <el-button
+            icon="el-icon-delete"
+            size="mini"
+            type="danger"
+            :disabled="selectionIds.length == 0"
+            plain
+            @click="handleDelete()"
+            >删除</el-button
+          >
+        </div>
+        <div>
+          <el-button
+            size="mini"
+            type="success"
+            plain
+            icon="el-icon-download"
+            @click="exportInfoPage"
+            >导出</el-button
+          >
+        </div>
+      </div>
+
+      <el-table
+        ref="table"
+        @selection-change="handleSelectionChange"
+        @row-click="handleRowClick"
+        v-loading="listLoading"
+        :data="list"
+        element-loading-text="玩命加载中"
+        border
+        fit
+        highlight-current-row
       >
-        <template slot-scope="scope">
-          <i class="el-icon-time" />
-          <span>{{ scope.row.createTime }}</span>
-        </template>
-      </el-table-column>
+        <el-table-column type="selection" width="55"> </el-table-column>
+        <el-table-column align="center" label="#" width="50">
+          <template slot-scope="scope">
+            {{ scope.$index + 1 }}
+          </template>
+        </el-table-column>
 
-      <!-- <el-table-column fixed="right" align="center" label="操作" width="220">
+        <el-table-column width="100" label="用户名" align="center">
+          <template slot-scope="scope">
+            {{ scope.row.username }}
+          </template>
+        </el-table-column>
+
+        <el-table-column label="登录ip" align="center">
+          <template slot-scope="scope">
+            {{ scope.row.loginIp }}
+          </template>
+        </el-table-column>
+
+        <el-table-column label="登录地址" align="center">
+          <template slot-scope="scope">
+            {{ scope.row.loginAddress }}
+          </template>
+        </el-table-column>
+
+        <el-table-column label="登录设备" align="center">
+          <template slot-scope="scope">
+            {{ scope.row.loginDevice }}
+          </template>
+        </el-table-column>
+
+        <el-table-column
+          align="center"
+          prop="created_at"
+          label="登录时间"
+          width="200"
+        >
+          <template slot-scope="scope">
+            <i class="el-icon-time" />
+            <span>{{ scope.row.createTime }}</span>
+          </template>
+        </el-table-column>
+
+        <!-- <el-table-column fixed="right" align="center" label="操作" width="220">
         <template slot-scope="scope">
           <el-button
             type="info"
@@ -70,21 +161,21 @@
           >
         </template>
       </el-table-column> -->
-    </el-table>
-    <div class="block">
-      <el-pagination
-        background
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        :current-page="form.current"
-        :page-sizes="sizes"
-        :page-size="form.size"
-        layout="total, sizes, prev, pager, next, jumper"
-        :total="form.total"
-      >
-      </el-pagination>
+      </el-table>
+      <div class="block">
+        <el-pagination
+          background
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page="form.current"
+          :page-sizes="sizes"
+          :page-size="form.size"
+          layout="total, sizes, prev, pager, next, jumper"
+          :total="form.total"
+        >
+        </el-pagination>
+      </div>
     </div>
-
     <!-- <el-dialog
       :title="noticeFormTitle"
       :visible.sync="noticeFormVisible"
@@ -115,31 +206,61 @@
 </template>
 
 <script>
-import { getLoginHistoryPage } from "@/api/user";
+import {
+  getLoginHistoryPage,
+  removeLoginHistoryById,
+  exportLoginHistoryPage,
+} from "@/api/user";
+import { exportExcel } from "@/utils/excel";
+
 export default {
-  filters: {
-    statusFilter(status) {
-      const statusMap = {
-        published: "success",
-        draft: "gray",
-        deleted: "danger",
-      };
-      return statusMap[status];
-    },
-  },
   data() {
     return {
       list: null,
       listLoading: true,
       form: {
-        title: "",
-        content: "",
-        sendUser: "",
+        username: "",
+        loginIp: "",
+        loginAddress: "",
+        loginDevice: "",
         current: 1,
-        size: 12,
+        size: 10,
         total: 0,
       },
+      pickerOptions: {
+        shortcuts: [
+          {
+            text: "最近一周",
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
+              picker.$emit("pick", [start, end]);
+            },
+          },
+          {
+            text: "最近一个月",
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+              picker.$emit("pick", [start, end]);
+            },
+          },
+          {
+            text: "最近三个月",
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
+              picker.$emit("pick", [start, end]);
+            },
+          },
+        ],
+      },
+      dateRange: [],
       sizes: [],
+      selectionIds: [],
     };
   },
   created() {
@@ -161,7 +282,39 @@ export default {
         this.listLoading = false;
       });
     },
-
+    exportInfoPage() {
+      exportLoginHistoryPage(this.form).then((resp) => {
+        exportExcel(resp);
+      });
+    },
+    handleDateLength(str) {
+      str += "";
+      if (str.length < 2) return "0" + str;
+      return str;
+    },
+    handleDateFormat(time) {
+      let formatDate =
+        time.getFullYear() +
+        "-" +
+        this.handleDateLength(time.getMonth() + 1) +
+        "-" +
+        this.handleDateLength(time.getDate()) +
+        " " +
+        this.handleDateLength(time.getHours()) +
+        ":" +
+        this.handleDateLength(time.getMinutes()) +
+        ":" +
+        this.handleDateLength(time.getSeconds());
+      return formatDate;
+    },
+    handleDateRange() {
+      if (this.dateRange && this.dateRange.length > 0) {
+        this.form.startTime = this.handleDateFormat(
+          new Date(this.dateRange[0])
+        );
+        this.form.endTime = this.handleDateFormat(new Date(this.dateRange[1]));
+      }
+    },
     handleCurrentChange(p) {
       this.form.current = p;
       this.fetchData();
@@ -170,46 +323,56 @@ export default {
       this.form.size = s;
       this.fetchData();
     },
-    // handleDelete(id) {
-    //   removeById(id).then((response) => {
-    //     this.$message.success("删除成功");
-    //     this.fetchData();
-    //   });
-    // },
-    // addNotice() {
-    //   this.form.title = "";
-    //   this.form.content = "";
-    //   this.form.sendUser = "";
-    //   this.noticeFormTitle = "新增公告";
-    //   this.noticeFormVisible = true;
-    // },
-    // handleEdit(row) {
-    //   this.noticeFormTitle = "编辑公告";
-    //   this.form.id = row.id;
-    //   this.form.sendUser = row.sendUser;
-    //   this.form.title = row.title;
-    //   this.form.content = row.content;
-    //   this.noticeFormVisible = true;
-    // },
-    // onSubmit() {
-    //   this.form.sendUser = store.getters.name;
-    //   saveOrUpdate(this.form).then((resp) => {
-    //     if (resp.code === 200) {
-    //       this.$message.success("新增成功");
-    //       this.noticeFormVisible = false;
-    //       this.fetchData();
-    //     }
-    //   });
-    // },
+    handleDelete(id) {
+      this.$confirm("此操作将永久删除数据, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          if (this.selectionIds && this.selectionIds.length > 0) {
+            id = [];
+            for (let i = 0; i < this.selectionIds.length; i++)
+              id.push(this.selectionIds[i]["id"]);
+          }
+          removeLoginHistoryById(id).then((resp) => {
+            if (resp.code === 200) {
+              this.$message.success("删除成功");
+              this.fetchData();
+            }
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消删除",
+          });
+        });
+    },
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
+      this.dateRange = [];
+    },
+    handleSelectionChange(val) {
+      this.selectionIds = val;
+    },
+    handleRowClick(row) {
+      if (!row.disabled) {
+        this.$refs.table.toggleRowSelection(row);
+      }
+    },
+    searchForm() {
+      this.fetchData();
+    },
   },
 };
 </script>
 
 <style scoped>
-.mid-input {
-  width: 80px;
-}
 .el-pagination {
   text-align: center;
+}
+.el-form-item {
+  margin-bottom: 0 !important;
 }
 </style>
