@@ -28,7 +28,11 @@
                   :src="user.avatar"
                   class="avatar"
                 />
-                <el-button style="margin-left: 10px" @click="dialogVisible = true">更换头像</el-button>
+                <el-button
+                  style="margin-left: 10px"
+                  @click="dialogVisible = true"
+                  >更换头像</el-button
+                >
                 <avatar-cropper
                   :dialogVisible.sync="dialogVisible"
                   @closeAvatarDialog="closeAvatarDialog"
@@ -412,7 +416,7 @@ export default {
     closeAvatarDialog(img) {
       uploadImgBase64({ img: img }).then((resp) => {
         if (resp.code === 200) {
-          this.teacher.avatar = resp.data.path;
+          this.user.avatar = resp.data.path;
         }
       });
     },

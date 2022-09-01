@@ -439,9 +439,10 @@ export default {
       }
     },
     changeSwitch(row) {
-      row.children = undefined;
+      let form = {};
+      form.id = row.id;
+      form.status = row.status;
       changeStatus(row).then((resp) => {
-        console.log(typeof row.status);
         if (resp.code === 200) {
           this.$message({
             showClose: true,
@@ -453,7 +454,6 @@ export default {
               (row.status == "1" ? "已启用" : "已禁用"),
             type: row.status == "1" ? "success" : "warning",
           });
-
           this.fetchData();
         }
       });

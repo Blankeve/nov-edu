@@ -7,4 +7,4 @@ export function uploadImgBase64(data) {
     data
   })
 }
-
+ 
