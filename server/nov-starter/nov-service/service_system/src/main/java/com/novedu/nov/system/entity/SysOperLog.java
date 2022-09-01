@@ -72,7 +72,7 @@ public class SysOperLog {
     @ApiModelProperty(value = "请求结果")
     private String reqResult;
 
-    @Excel(name = "请求耗时", height = 20, width = 30, isImportField = "true_st",orderNum = "3")
+    @Excel(name = "请求耗时(ms)", height = 20, width = 30, isImportField = "true_st",orderNum = "3")
     @ApiModelProperty(value = "请求耗时")
     private Long reqTimeSpend;
 

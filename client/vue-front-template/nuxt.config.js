@@ -42,6 +42,7 @@ module.exports = {
     { src: '~/plugins/vue-quill-editor.js', ssr: false },
     { src: '~/plugins/permission.js', ssr: false },
     { src: '@/assets/icon/iconfont.js', ssr: false },
+    { src: '~/plugins/cropper.js', ssr: false },
   ],
 
   css: [

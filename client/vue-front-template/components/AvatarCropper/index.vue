@@ -1,6 +1,6 @@
 <template>
   <el-dialog
-    title="裁剪封面"
+    title="裁剪头像"
     :visible.sync="dialogVisible"
     :show-close="false"
     :close-on-click-modal="false"
@@ -59,11 +59,7 @@
 </template>
  
 <script>
-import { VueCropper } from "vue-cropper";
 export default {
-  components: {
-    VueCropper,
-  },
   name: "avatarCropper",
   props: {
     dialogVisible: {
@@ -79,10 +75,10 @@ export default {
         autoCrop: true, // 默认生成截图框
         fixedBox: false, // 固定截图框大小
         canMoveBox: true, // 截图框可以拖动
-        autoCropWidth: 356, // 截图框宽度
+        autoCropWidth: 200, // 截图框宽度
         autoCropHeight: 200, // 截图框高度
         fixed: true, // 截图框宽高固定比例
-        fixedNumber: [1.7, 1], // 截图框的宽高比例
+        fixedNumber: [1, 1], // 截图框的宽高比例
         centerBox: true, // 截图框被限制在图片里面
         canMove: false, // 上传图片不允许拖动
         canScale: false, // 上传图片不允许滚轮缩放

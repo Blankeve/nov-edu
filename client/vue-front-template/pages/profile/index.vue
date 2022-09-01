@@ -22,22 +22,17 @@
                   头像
                 </template>
 
-                <el-upload
-                  class="avatar-uploader"
-                  name="img"
-                  :action="'http://159.75.234.20:8100/upload/img'"
-                  :show-file-list="false"
-                  :on-success="handleAvatarSuccess"
-                  :before-upload="beforeAvatarUpload"
-                >
-                  <img
-                    width="100"
-                    v-if="user.avatar"
-                    :src="user.avatar"
-                    class="avatar"
-                  />
-                  <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-                </el-upload>
+                <img
+                  width="100"
+                  v-if="user.avatar"
+                  :src="user.avatar"
+                  class="avatar"
+                />
+                <el-button style="margin-left: 10px" @click="dialogVisible = true">更换头像</el-button>
+                <avatar-cropper
+                  :dialogVisible.sync="dialogVisible"
+                  @closeAvatarDialog="closeAvatarDialog"
+                ></avatar-cropper>
               </el-descriptions-item>
               <el-descriptions-item>
                 <template slot="label">
@@ -314,10 +309,15 @@ import { getById, updatePwdById, updateById } from "@/api/user";
 import { getToken, removeToken, removeInfo } from "@/utils/auth";
 import { getOrderPage } from "@/api/order";
 import { getHistoryWatchPage } from "@/api/video";
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
+import { uploadImgBase64 } from "@/api/upload";
+import avatarCropper from "@/components/AvatarCropper";
 
 export default {
   layout: "simple",
+  components: {
+    avatarCropper,
+  },
   data() {
     var validatePass = (rule, value, callback) => {
       if (value === "") {
@@ -330,6 +330,7 @@ export default {
       }
     };
     return {
+      dialogVisible: false,
       list: null,
       listLoading: true,
       hislist: null,
@@ -368,10 +369,8 @@ export default {
       loginInfo: undefined,
     };
   },
-      computed: {
-    ...mapGetters([
-      'uid',
-    ])
+  computed: {
+    ...mapGetters(["uid"]),
   },
   created() {
     this.token = getToken();
@@ -408,6 +407,13 @@ export default {
         this.his.total = data.total;
         this.hislist = data.records;
         this.hislistLoading = false;
+      });
+    },
+    closeAvatarDialog(img) {
+      uploadImgBase64({ img: img }).then((resp) => {
+        if (resp.code === 200) {
+          this.teacher.avatar = resp.data.path;
+        }
       });
     },
     handleCurrentChange(p) {

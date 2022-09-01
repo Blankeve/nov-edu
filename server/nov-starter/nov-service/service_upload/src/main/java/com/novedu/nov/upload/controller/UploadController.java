@@ -35,7 +35,7 @@ public class UploadController {
         return uploadService.uploadImg(img);
     }
 
-    @PostMapping("/img/ba")
+    @PostMapping("/img/ba64")
     public BaseResult<Map> uploadImgByBase64(@RequestBody Map img) {
         String image = (String) img.get("img");
         return uploadService.uploadImgByBase64(image);

@@ -77,6 +77,7 @@
               slot="reference"
               type="danger"
               icon="el-icon-refresh-right"
+              :disabled="selectionIds.length == 0"
               >重置密码</el-button
             >
           </el-popconfirm>
