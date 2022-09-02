@@ -75,9 +75,12 @@ public class NovLogHandler {
         ObjectMapper objectMapper = new ObjectMapper();
         String json = objectMapper.writeValueAsString(obj);
         sysOperLog.setId(id);
-        if (!StringUtils.hasText(username))
-            sysOperLog.setOperName("访客");
-        else
+        if (!StringUtils.hasText(username)) {
+            if ("内网IP".equals(addr))
+                sysOperLog.setOperName("内部人员");
+            else
+                sysOperLog.setOperName("访客");
+        } else
             sysOperLog.setOperName(username);
         sysOperLog.setOperIp(ip);
         sysOperLog.setOperAddr(addr);

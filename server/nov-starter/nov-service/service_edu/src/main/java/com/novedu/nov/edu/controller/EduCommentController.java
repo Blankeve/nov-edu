@@ -48,7 +48,7 @@ public class EduCommentController {
         return BaseResult.success(eduCommentService.queryCommentPage(page, eduComment));
     }
 
-    @GetMapping("/page-client")
+    @GetMapping("/page/whi")
     public BaseResult queryClientCommentPage(Page page, EduUserCommentDTO eduComment) {
         return eduCommentService.queryClientCommentPage(page, eduComment);
     }

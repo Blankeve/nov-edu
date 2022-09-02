@@ -272,7 +272,8 @@ export default {
         this.form.endTime = this.handleDateFormat(new Date(this.dateRange[1]));
       }
     },
-    searchForm() {
+     searchForm() {
+      this.form.current = 1;
       this.fetchData();
     },
     resetForm(formName) {

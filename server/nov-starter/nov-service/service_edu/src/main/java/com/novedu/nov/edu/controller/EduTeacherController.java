@@ -39,7 +39,7 @@ public class EduTeacherController {
         return BaseResult.success("操作成功");
     }
 
-    @GetMapping("/list")
+    @GetMapping("/page/whi")
     public BaseResult<List<EduTeacher>> queryTeacherPage(Page page, EduTeacherDTO teacher) {
         return BaseResult.success(eduTeacherService.queryTeacherPage(page, teacher));
     }
@@ -54,17 +54,17 @@ public class EduTeacherController {
         return eduTeacherService.findAll();
     }
 
-    @GetMapping("/client-all")
+    @GetMapping("/all/whi")
     public BaseResult<List<EduTeacher>> clientAll() {
         return eduTeacherService.findAll();
     }
 
-    @GetMapping("/all-bind/{id}")
+    @GetMapping("/all-bind/{id}/whi")
     public BaseResult queryAllAndHadBind(@PathVariable String id) {
         return eduTeacherService.queryAllAndHadBind(id);
     }
 
-    @GetMapping("/info/{id}")
+    @GetMapping("/info/{id}/whi")
     public BaseResult<EduTeacher> info(@PathVariable String id) {
         return eduTeacherService.findTeacherOne(id);
     }
@@ -75,12 +75,12 @@ public class EduTeacherController {
         return BaseResult.successOrError(eduTeacherService.removeByIds(Arrays.asList(ids)));
     }
 
-    @PostMapping("/bind/{uid}")
+    @PostMapping("/bind/{uid}/whi")
     public BaseResult queryTeacherIdByUid(@PathVariable String uid) {
-        return BaseResult.success(eduTeacherService.query().eq("uid", uid).one().getId());
+        return BaseResult.success(eduTeacherService.lambdaQuery().eq(EduTeacher::getUid, uid).one().getId());
     }
 
-    @PostMapping("/clear-bind/{uid}")
+    @PostMapping("/clear-bind/{uid}/whi")
     public BaseResult clearBind(@PathVariable String uid) {
         return eduTeacherService.clearBind(uid);
     }
@@ -101,7 +101,7 @@ public class EduTeacherController {
         return eduTeacherService.updateBindTeacher(bindTeacherForm);
     }
 
-    @GetMapping("/client-list")
+    @GetMapping("/list/whi")
     public BaseResult<List<EduTeacher>> getClientTeacherList(){
         return eduTeacherService.getClientTeacherList();
     }

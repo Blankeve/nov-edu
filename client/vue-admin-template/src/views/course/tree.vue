@@ -259,7 +259,7 @@
         <el-form-item label="上传视频">
           <el-upload
             class="upload-demo"
-            :action="baseURL + '/upload/video'"
+            :action="baseURL + '/upload/video/whi'"
             :on-preview="handlePreview"
             :on-success="handleVideoSuccess"
             :on-remove="handleRemove"
@@ -542,7 +542,8 @@ export default {
       this.form.size = s;
       this.fetchData();
     },
-    searchForm() {
+     searchForm() {
+      this.form.current = 1;
       this.fetchData();
     },
     resetForm(formName) {

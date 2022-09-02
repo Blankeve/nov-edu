@@ -416,7 +416,8 @@ export default {
       this.form.chapterId = null;
       this.form.sort = null;
     },
-    searchForm() {
+     searchForm() {
+      this.form.current = 1;
       this.fetchData();
     },
   },

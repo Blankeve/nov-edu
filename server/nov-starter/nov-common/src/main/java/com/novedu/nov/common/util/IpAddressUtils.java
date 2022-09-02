@@ -7,6 +7,8 @@ import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 /**
@@ -57,33 +59,33 @@ public class IpAddressUtils {
 
     }
 
-    public static String getRealAddressByIP(String ip)
-    {
+    public static boolean isInternalIp(String ip) {
+        Pattern reg = Pattern.compile("^(127\\.0\\.0\\.1)|(localhost)|(10\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})|(172\\.((1[6-9])|(2\\d)|(3[01]))\\.\\d{1,3}\\.\\d{1,3})|(192\\.168\\.\\d{1,3}\\.\\d{1,3})$");
+        Matcher match = reg.matcher(ip);
+        return match.find();
+    }
+
+    public static String getRealAddressByIP(String ip) {
         // 内网不查询
-        if ("127.0.0.1".equals(ip))
-        {
+        if (isInternalIp(ip)) {
             return "内网IP";
         }
 
-            try
-            {
-                String rspStr = HttpUtils.sendGet(IP_URL, "ip=" + ip + "&json=true", "GBK");
-                if (StringUtils.isEmpty(rspStr))
-                {
-                    log.error("获取地理位置异常 {}", ip);
-                    return UNKNOWN;
-                }
-                ObjectMapper objectMapper = new ObjectMapper();
-                Map jsonObject = objectMapper.readValue(rspStr, Map.class);
-                String pro = (String) jsonObject.get("pro");
-                String city = (String) jsonObject.get("city");
-                String region = (String) jsonObject.get("region");
-                return String.format("%s %s %s", pro, city, region);
-            }
-            catch (Exception e)
-            {
+        try {
+            String rspStr = HttpUtils.sendGet(IP_URL, "ip=" + ip + "&json=true", "GBK");
+            if (StringUtils.isEmpty(rspStr)) {
                 log.error("获取地理位置异常 {}", ip);
+                return UNKNOWN;
             }
+            ObjectMapper objectMapper = new ObjectMapper();
+            Map jsonObject = objectMapper.readValue(rspStr, Map.class);
+            String pro = (String) jsonObject.get("pro");
+            String city = (String) jsonObject.get("city");
+            String region = (String) jsonObject.get("region");
+            return String.format("%s %s %s", pro, city, region);
+        } catch (Exception e) {
+            log.error("获取地理位置异常 {}", ip);
+        }
 
         return UNKNOWN;
     }

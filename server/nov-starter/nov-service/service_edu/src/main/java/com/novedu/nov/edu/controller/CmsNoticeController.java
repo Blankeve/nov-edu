@@ -43,7 +43,7 @@ public class CmsNoticeController {
         return cmsNoticeService.queryNoticePage(page, cmsNotice);
     }
 
-    @GetMapping("/receive")
+    @GetMapping("/receive/whi")
     public BaseResult receiveNotice(String id) {
         return cmsNoticeService.receiveNotice(id);
     }

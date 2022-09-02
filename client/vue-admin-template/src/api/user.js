@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function login(data) {
   return request({
-    url: '/ucenter/member/login-bg',
+    url: '/ucenter/member/login-bg/whi',
     method: 'post',
     data
   })
@@ -79,7 +79,7 @@ export function exportPage(params) {
 
 export function getPicVerifyCode() {
   return request({
-    url: '/ucenter/member/picVerifyCode',
+    url: '/ucenter/member/picVerifyCode/whi',
     method: 'get',
   })
 }

@@ -364,7 +364,8 @@ export default {
         this.$refs.table.toggleRowSelection(row);
       }
     },
-    searchForm() {
+     searchForm() {
+      this.form.current = 1;
       this.fetchData();
     },
   },

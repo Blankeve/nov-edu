@@ -123,7 +123,7 @@
           <el-upload
             class="avatar-uploader"
             name="img"
-            :action="baseURL + '/upload/img'"
+            :action="baseURL + '/upload/img/whi'"
             :show-file-list="false"
             :on-success="handleAvatarSuccess"
             :before-upload="beforeAvatarUpload"

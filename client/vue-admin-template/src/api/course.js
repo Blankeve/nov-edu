@@ -33,7 +33,7 @@ export function save(data) {
 
   export function getList(data) {
     return request({
-      url: '/edu/course/list',
+      url: '/edu/course/drop-list/whi',
       method: 'get',
       data
     })
@@ -66,7 +66,7 @@ export function save(data) {
 
   export function getOneDetailByCourseId(params) {
     return request({
-      url: `/edu/course/detail/${params}`,
+      url: `/edu/course/detail/${params}/whi`,
       method: 'post',
     })
   }
@@ -80,7 +80,7 @@ export function save(data) {
 
   export function getListByTeacherId(id) {
     return request({
-      url: '/edu/course/list-teacher',
+      url: '/edu/course/list-teacher/whi',
       method: 'post',
       params: {id}
     })

@@ -17,6 +17,6 @@ public interface OpenOrderService {
 
 
     @ApiOperation("查询成交订单数量")
-    @PostMapping("/order/trade/count/{teacherId}")
+    @PostMapping("/order/trade/count/{teacherId}/whi")
     BaseResult queryOrderCount(@PathVariable Long teacherId);
 }

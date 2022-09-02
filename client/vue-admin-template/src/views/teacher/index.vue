@@ -255,7 +255,8 @@ export default {
         this.listLoading = false;
       });
     },
-    searchForm() {
+     searchForm() {
+      this.form.current = 1;
       this.fetchData();
     },
     exportTeacherPage() {

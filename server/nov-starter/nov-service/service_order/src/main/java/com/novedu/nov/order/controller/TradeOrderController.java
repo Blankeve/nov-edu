@@ -55,7 +55,7 @@ public class TradeOrderController {
     }
 
     @ApiOperation("查询成交订单数量")
-    @PostMapping("/count/{teacherId}")
+    @PostMapping("/count/{teacherId}/whi")
     public BaseResult queryOrderCount(@PathVariable Long teacherId) {
         QueryWrapper queryWrapper = new QueryWrapper();
         if (teacherId != null && teacherId != 0)
@@ -73,7 +73,7 @@ public class TradeOrderController {
     }
 
     @ApiOperation("查询用户是否已经下单")
-    @PostMapping("/hasbuy/{id}/{uid}")
+    @PostMapping("/hasbuy/{id}/{uid}/whi")
     public BaseResult queryOrderByUidAndCourseId(@PathVariable Long id, @PathVariable Long uid) {
         return tradeOrderService.queryOrderByUidAndCourseId(id, uid);
     }

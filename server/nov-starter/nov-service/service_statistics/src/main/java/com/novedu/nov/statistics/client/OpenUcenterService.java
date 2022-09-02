@@ -19,6 +19,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public interface OpenUcenterService {
 
     @ApiOperation("同步每天用户新增注册和登录人数")
-    @GetMapping("/ucenter/member/sync-register-login")
+    @GetMapping("/ucenter/member/sync-register-login/whi")
     BaseResult syncRegisterLoginCount();
 }

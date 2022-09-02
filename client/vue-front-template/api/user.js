@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function loginMember(params) {
   return request({
-    url: '/ucenter/member/login',
+    url: '/ucenter/member/login/whi',
     method: 'post',
     params
   })
@@ -10,7 +10,7 @@ export function loginMember(params) {
 
 export function getById(params) {
   return request({
-    url: `/ucenter/member/info/${params}`,
+    url: `/ucenter/member/info/${params}/whi`,
     method: 'post',
   })
 }

@@ -48,7 +48,7 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
 
     private UserDTO getUserInfo(String token) {
         String realToken = token.replace(AuthConstant.JWT_TOKEN_PREFIX, "");
-        JWSObject jwsObject = null;
+        JWSObject jwsObject;
         try {
             jwsObject = JWSObject.parse(realToken);
         } catch (ParseException e) {
@@ -61,13 +61,17 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
 
     @Override
     public Mono<AuthorizationDecision> check(Mono<Authentication> mono, AuthorizationContext authorizationContext) {
-
         ServerHttpRequest request = authorizationContext.getExchange().getRequest();
         URI uri = request.getURI();
         PathMatcher pathMatcher = new AntPathMatcher();
         //白名单路径直接放行
         List<String> ignoreUrls = ignoreUrlsConfig.getUrls();
         for (String ignoreUrl : ignoreUrls) {
+            //以whi结尾的自定义白名单接口
+            if ("whi".equals(uri.getPath().substring(uri.getPath().lastIndexOf("/") + 1))) {
+                return Mono.just(new AuthorizationDecision(true));
+            }
+            //gateway配置的白名单接口
             if (pathMatcher.match(ignoreUrl, uri.getPath())) {
                 return Mono.just(new AuthorizationDecision(true));
             }
@@ -81,13 +85,6 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
         if (StringUtils.isEmpty(token)) {
             return Mono.just(new AuthorizationDecision(false));
         }
-//        UserDTO userDto = getUserInfo(token);
-//        if (AuthConstant.ADMIN_CLIENT_ID.equals(userDto.getClientId()) && !pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, uri.getPath())) {
-//            return Mono.just(new AuthorizationDecision(false));
-//        }
-//        if (AuthConstant.PORTAL_CLIENT_ID.equals(userDto.getClientId()) && pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, uri.getPath())) {
-//            return Mono.just(new AuthorizationDecision(false));
-//        }
         UserDTO userDto = getUserInfo(token);
         if (userDto == null) {
             throw new AccessDeniedException("");
@@ -124,7 +121,6 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
                 .any(authorities::contains)
                 .map(AuthorizationDecision::new)
                 .defaultIfEmpty(new AuthorizationDecision(false));
-
     }
 
     private boolean isSingleDevice(String token) {

@@ -10,7 +10,7 @@ export function save(data) {
 
 export function getCommentPage(params) {
   return request({
-    url: '/edu/comment/page-client',
+    url: '/edu/comment/page/whi',
     method: 'get',
     params
   })

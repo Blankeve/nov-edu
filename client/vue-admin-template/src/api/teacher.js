@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function getList(params) {
   return request({
-    url: '/edu/edu-teacher/list',
+    url: '/edu/edu-teacher/page/whi',
     method: 'get',
     params
   })
@@ -19,14 +19,14 @@ export function exportPage(params) {
 
 export function getAll() {
   return request({
-    url: '/edu/edu-teacher/all',
+    url: '/edu/edu-teacher/all/whi',
     method: 'get',
   })
 }
 
 export function getAllAndBindId(params) {
   return request({
-    url: `/edu/edu-teacher/all-bind/${params}`,
+    url: `/edu/edu-teacher/all-bind/${params}/whi`,
     method: 'get',
   })
 }

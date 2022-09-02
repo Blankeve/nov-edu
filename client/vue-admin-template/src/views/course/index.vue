@@ -480,7 +480,8 @@ export default {
     onSubmit() {
       this.fetchData();
     },
-    searchForm() {
+     searchForm() {
+      this.form.current = 1;
       this.fetchData();
     },
     resetForm(formName) {

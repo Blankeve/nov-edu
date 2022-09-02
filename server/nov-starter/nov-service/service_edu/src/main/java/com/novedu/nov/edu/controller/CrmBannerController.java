@@ -43,7 +43,7 @@ public class CrmBannerController {
         return crmBannerService.removeBanner(id);
     }
 
-    @GetMapping("/client-list")
+    @GetMapping("/list/whi")
     public BaseResult<List<CrmBanner>> getClientBannerList(){
         return crmBannerService.getClientBannerList();
     }

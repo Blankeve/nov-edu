@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 public interface OpenUcenterService {
 
     @ApiOperation("根据id获取member")
-    @PostMapping("/ucenter/member/info/{id}")
+    @PostMapping("/ucenter/member/info/{id}/whi")
     BaseResult getMemberInfo(@PathVariable("id")Long id);
 
     @ApiOperation("删除")
-    @PostMapping("/ucenter/role/by-uid/{uid}")
+    @PostMapping("/ucenter/role/by-uid/{uid}/whi")
     BaseResult queryUserRole(@PathVariable Long uid) ;
 }

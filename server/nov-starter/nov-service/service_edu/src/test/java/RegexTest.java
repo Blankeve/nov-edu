@@ -56,4 +56,11 @@ public class RegexTest {
         });
         bannerService.updateBatchById(videos);
     }
+
+    @Test
+    public void urlTest(){
+        String url = "/edu/edu-teacher/list/whi";
+        String suffix = url.substring(url.lastIndexOf("/")+1);
+        System.out.println(suffix);
+    }
 }

@@ -4,7 +4,7 @@ import request from '@/utils/request'
 
 export function getBannerList(data) {
     return request({
-      url: '/edu/banner/client-list',
+      url: '/edu/banner/list/whi',
       method: 'get',
       data
     })

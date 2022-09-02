@@ -22,21 +22,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface OpenEduService {
 
     @ApiOperation("根据id获取course")
-    @PostMapping("/edu/course/detail/{id}")
+    @PostMapping("/edu/course/detail/{id}/whi")
     BaseResult queryCourseDetail(@PathVariable("id")Long id);
 
-    @PostMapping("/edu/course-apply/save")
+    @PostMapping("/edu/course-apply/save/whi")
     BaseResult saveApply(@RequestBody EduCourseApply courseApply);
 
-    @PostMapping("/edu/course-apply/already")
+    @PostMapping("/edu/course-apply/already/whi")
     BaseResult queryCourseApplyByCourseIdAndUid(@RequestBody EduCourseApply courseApply);
 
     @ApiOperation("统计课程报名人数")
-    @GetMapping("/edu/course/statistics/course/applyCount")
+    @GetMapping("/edu/course/statistics/course/applyCount/whi")
      BaseResult statisticsCourseApplyCount();
 
     @ApiOperation("统计课程购买量")
-    @GetMapping("/edu/course/statistics/course/buyCount")
+    @GetMapping("/edu/course/statistics/course/buyCount/whi")
      BaseResult statisticsCourseBuyCount();
 
     @PostMapping("/edu/edu-teacher/bind/{uid}")

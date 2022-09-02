@@ -29,10 +29,20 @@
           ></el-input>
         </el-form-item>
 
+        <el-form-item prop="reqUrl">
+          <el-input
+            suffix-icon="el-icon-search"
+            v-model="queryForm.reqUrl"
+            placeholder="请求地址"
+            clearable
+          ></el-input>
+        </el-form-item>
+
         <el-form-item prop="method">
           <el-select
+            style="width: 150px"
             v-model="queryForm.method"
-            placeholder="请选择请求方式"
+            placeholder="请求方式"
             clearable
           >
             <el-option label="GET" value="GET"> </el-option>
@@ -42,7 +52,7 @@
           </el-select>
         </el-form-item>
 
-        <el-form-item label="请求时间" prop="dateRange">
+        <el-form-item prop="dateRange">
           <el-date-picker
             style="width: 300px"
             v-model="dateRange"
@@ -182,7 +192,12 @@
           </template>
         </el-table-column>
 
-        <el-table-column align="center" prop="created_at" label="操作时间" width="200">
+        <el-table-column
+          align="center"
+          prop="created_at"
+          label="操作时间"
+          width="200"
+        >
           <template slot-scope="scope">
             <i class="el-icon-time" />
             <span>{{ scope.row.reqTime }}</span>
@@ -382,6 +397,7 @@ export default {
       }
     },
     searchForm() {
+      this.form.current = 1;
       this.fetchData();
     },
   },
@@ -389,9 +405,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.el-form-item {
-  margin-bottom: 0 !important;
-}
 .el-pagination {
   text-align: center;
 }
@@ -400,5 +413,8 @@ export default {
 }
 .green {
   color: rgb(121, 206, 121);
+}
+.el-form-item {
+  margin-bottom: 0 !important;
 }
 </style>

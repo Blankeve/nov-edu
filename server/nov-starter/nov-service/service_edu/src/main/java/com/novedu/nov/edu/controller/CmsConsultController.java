@@ -49,8 +49,8 @@ public class CmsConsultController {
         return BaseResult.successOrError(cmsConsultService.removeById(id));
     }
 
-    @GetMapping("/page-client")
-    public BaseResult queryClientNoticePage(Page page) {
+    @GetMapping("/page/whi")
+    public BaseResult queryClientConsultPage(Page page) {
         return cmsConsultService.queryClientPage(page);
     }
 

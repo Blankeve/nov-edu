@@ -26,7 +26,7 @@ export function createOrder(data) {
 
   export function getOrderByUidAndCourseId(params,uid) {
     return request({
-      url: `/order/trade/hasbuy/${params}/${uid}`,
+      url: `/order/trade/hasbuy/${params}/${uid}/whi`,
       method: 'post',
     })
   }

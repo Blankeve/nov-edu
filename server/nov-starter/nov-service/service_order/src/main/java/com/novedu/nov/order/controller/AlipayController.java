@@ -28,7 +28,7 @@ public class AlipayController {
     AlipayService alipayService;
 
     @ApiOperation("电脑网页支付")
-    @GetMapping("/web")
+    @GetMapping("/web/whi")
     public void doPay(HttpServletRequest httpRequest,HttpServletResponse httpResponse, Long id) throws Exception {
             alipayService.webPagePay(httpRequest,httpResponse,id);
     }

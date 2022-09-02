@@ -11,10 +11,10 @@
           ></el-input>
         </el-form-item>
 
-        <el-form-item prop="logingIp">
+        <el-form-item prop="loginIp">
           <el-input
             suffix-icon="el-icon-search"
-            v-model="form.logingIp"
+            v-model="form.loginIp"
             placeholder="登录ip"
             clearable
           ></el-input>
@@ -362,6 +362,7 @@ export default {
       }
     },
     searchForm() {
+      this.form.current = 1;
       this.fetchData();
     },
   },

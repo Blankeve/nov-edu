@@ -28,12 +28,12 @@ public class EduCourseApplyController {
     EduCourseApplyService courseApplyService;
 
     @UserMultiSubmitLimit
-    @PostMapping("/save")
+    @PostMapping("/save/whi")
     public BaseResult saveApply(@RequestBody EduCourseApply courseApply) {
         return courseApplyService.saveApply(courseApply);
     }
 
-    @PostMapping("/already")
+    @PostMapping("/already/whi")
     public BaseResult queryCourseApplyByCourseIdAndUid(@RequestBody EduCourseApply courseApply) {
         return courseApplyService.queryCourseApplyByCourseIdAndUid(courseApply);
     }

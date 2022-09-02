@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function getPage(params) {
   return request({
-    url: '/edu/consult/page-client',
+    url: '/edu/consult/page/whi',
     method: 'get',
     params
   })

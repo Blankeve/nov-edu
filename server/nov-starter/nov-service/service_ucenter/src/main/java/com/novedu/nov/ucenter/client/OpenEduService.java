@@ -18,6 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 @FeignClient(name = "service-edu")
 public interface OpenEduService {
 
-    @PostMapping("/edu/edu-teacher/clear-bind/{uid}")
+    @PostMapping("/edu/edu-teacher/clear-bind/{uid}/whi")
     BaseResult clearBind(@PathVariable String uid);
 }

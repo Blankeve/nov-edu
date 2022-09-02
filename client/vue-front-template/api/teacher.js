@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function getList(params) {
   return request({
-    url: '/edu/edu-teacher/list',
+    url: '/edu/edu-teacher/page/whi',
     method: 'get',
     params
   })
@@ -10,7 +10,7 @@ export function getList(params) {
 
 export function getClientTeacherList(params) {
   return request({
-    url: '/edu/edu-teacher/client-list',
+    url: '/edu/edu-teacher/list/whi',
     method: 'get',
     params
   })
@@ -18,7 +18,7 @@ export function getClientTeacherList(params) {
 
 export function getAll() {
   return request({
-    url: '/edu/edu-teacher/client-all',
+    url: '/edu/edu-teacher/all/whi',
     method: 'get',
   })
 }
@@ -32,7 +32,7 @@ export function removeById(params) {
 
 export function getById(params) {
   return request({
-    url: `/edu/edu-teacher/info/${params}`,
+    url: `/edu/edu-teacher/info/${params}/whi`,
     method: 'get',
   })
 }

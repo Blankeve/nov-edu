@@ -20,7 +20,7 @@ export function saveOrUpdate(data) {
 
 export function getPage(params) {
   return request({
-    url: '/edu/info/page',
+    url: '/edu/info/page/whi',
     method: 'get',
     params
   })

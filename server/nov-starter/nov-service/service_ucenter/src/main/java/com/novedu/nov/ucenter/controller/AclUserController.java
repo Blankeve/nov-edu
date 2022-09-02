@@ -35,17 +35,17 @@ public class AclUserController {
     @Autowired
     private AclUserService aclUserService;
 
-    @PostMapping("/login")
+    @PostMapping("/login/whi")
     public BaseResult login(AclUser aclUser) {
         return aclUserService.login(aclUser);
     }
 
-    @PostMapping("/register")
+    @PostMapping("/register/whi")
     public BaseResult register(@Validated AclUser aclUser) {
         return aclUserService.register(aclUser);
     }
 
-    @PostMapping("/info/{id}")
+    @PostMapping("/info/{id}/whi")
     public BaseResult getMemberInfo(@PathVariable Long id) {
         return aclUserService.getMemberInfo(id);
     }
@@ -76,7 +76,7 @@ public class AclUserController {
     }
 
 
-    @PostMapping("/login-bg")
+    @PostMapping("/login-bg/whi")
     public BaseResult loginBg(@RequestBody AclUserDTO user) {
         return aclUserService.loginBg(user);
 
@@ -103,13 +103,13 @@ public class AclUserController {
     }
 
     @ApiOperation("同步每天用户新增注册和登录人数")
-    @GetMapping("/sync-register-login")
+    @GetMapping("/sync-register-login/whi")
     public BaseResult syncRegisterLoginCount() {
         return aclUserService.syncRegisterLoginCount();
     }
 
     @ApiOperation("同步所有用户至redis缓存")
-    @GetMapping("/sync-users-cache")
+    @GetMapping("/sync-users-cache/whi")
     public BaseResult syncUsersCache() {
         return aclUserService.syncUsersCache();
     }
@@ -117,7 +117,7 @@ public class AclUserController {
     /**
      * 生成验证码
      */
-    @GetMapping("/picVerifyCode")
+    @GetMapping("/picVerifyCode/whi")
     public BaseResult getCode() {
         return aclUserService.getCode();
     }

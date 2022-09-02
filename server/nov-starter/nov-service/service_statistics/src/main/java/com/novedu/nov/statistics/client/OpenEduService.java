@@ -19,14 +19,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 public interface OpenEduService {
 
     @ApiOperation("统计课程播放量")
-    @GetMapping("/edu/course/statistics/course/playCount")
+    @GetMapping("/edu/course/statistics/course/playCount/whi")
     BaseResult statisticsCoursePlayCount();
 
     @ApiOperation("统计课程报名人数")
-    @GetMapping("/edu/course/statistics/course/applyCount")
+    @GetMapping("/edu/course/statistics/course/applyCount/whi")
     BaseResult statisticsCourseApplyCount();
 
     @ApiOperation("统计课程购买量")
-    @GetMapping("/edu/course/statistics/course/buyCount")
+    @GetMapping("/edu/course/statistics/course/buyCount/whi")
     BaseResult statisticsCourseBuyCount();
 }

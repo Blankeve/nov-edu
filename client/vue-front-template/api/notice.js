@@ -3,7 +3,7 @@ import request from '@/utils/request'
 
   export function receiveNotice(params) {
     return request({
-      url: `/edu/notice/receive`,
+      url: `/edu/notice/receive/whi`,
       method: 'get',
       params
     })

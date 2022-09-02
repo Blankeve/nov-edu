@@ -93,7 +93,7 @@
         <el-form-item label="上传视频">
           <el-upload
             class="upload-demo"
-            :action="baseURL + '/upload/video'"
+            :action="baseURL + '/upload/video/whi'"
             :on-preview="handlePreview"
             :on-success="handleVideoSuccess"
             :on-remove="handleRemove"

@@ -30,18 +30,18 @@ public class UploadController {
     UploadService uploadService;
 
 
-    @PostMapping("/img")
+    @PostMapping("/img/whi")
     public BaseResult<Map> uploadImg(MultipartFile img) {
         return uploadService.uploadImg(img);
     }
 
-    @PostMapping("/img/ba64")
+    @PostMapping("/img/ba64/whi")
     public BaseResult<Map> uploadImgByBase64(@RequestBody Map img) {
         String image = (String) img.get("img");
         return uploadService.uploadImgByBase64(image);
     }
 
-    @PostMapping("/video")
+    @PostMapping("/video/whi")
     public BaseResult<Map> uploadVideo(MultipartFile video) {
         return uploadService.uploadVideo(video);
     }

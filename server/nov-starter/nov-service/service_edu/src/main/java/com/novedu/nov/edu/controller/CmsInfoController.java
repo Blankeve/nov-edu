@@ -46,7 +46,7 @@ public class CmsInfoController {
     public void exportCoursePage(HttpServletResponse response, CmsInfo cmsInfo) {
         ExcelUtils.exportExcel(cmsInfoService.queryPage(new Page(1, -1), cmsInfo).getRecords(), "文章列表", "文章列表", CmsInfoVO.class, "文章列表", response);
     }
-    @GetMapping("/page")
+    @GetMapping("/page/whi")
     public BaseResult queryPage(Page page, CmsInfo cmsInfo) {
         return BaseResult.success(cmsInfoService.queryPage(page, cmsInfo));
     }
@@ -56,7 +56,7 @@ public class CmsInfoController {
         return cmsInfoService.getDetail(id);
     }
 
-    @GetMapping("/detail-client/{id}")
+    @GetMapping("/detail/{id}/whi")
     public BaseResult getDetail(@PathVariable String id) {
         return cmsInfoService.getClientDetail(id);
     }

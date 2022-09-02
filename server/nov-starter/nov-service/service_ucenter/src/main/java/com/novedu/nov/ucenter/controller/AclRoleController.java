@@ -41,7 +41,7 @@ public class AclRoleController {
 
 
     @ApiOperation("查询用户角色")
-    @PostMapping("/by-uid/{uid}")
+    @PostMapping("/by-uid/{uid}/whi")
     public BaseResult queryUserRole(@PathVariable Long uid) {
         return roleService.queryUserRole(uid);
     }

@@ -15,17 +15,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface OpenUcenterService {
 
     @ApiOperation("删除")
-    @PostMapping("/ucenter/role/by-uid/{uid}")
+    @PostMapping("/ucenter/role/by-uid/{uid}/whi")
     BaseResult queryUserRole(@PathVariable Long uid);
 
 
     @PostMapping("/ucenter/member/info-dashboard")
     BaseResult getDashBoardInfo(@RequestParam("token") String token);
 
-    @GetMapping("/ucenter/member/dashboard-recent-users")
+    @GetMapping("/ucenter/member/dashboard-recent-users/whi")
     BaseResult getRecentAddUsers();
 
-    @GetMapping("/ucenter/member/sync-users-cache")
+    @GetMapping("/ucenter/member/sync-users-cache/whi")
     BaseResult syncUsersCache();
 
 }

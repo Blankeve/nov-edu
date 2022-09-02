@@ -25,8 +25,8 @@ export function save(data) {
 
   export function getTree(params) {
     return request({
-      url: '/edu/course/client-tree',
-      method: 'post',
+      url: '/edu/course/tree/whi',
+      method: 'get',
       params
     })
   }
@@ -41,7 +41,7 @@ export function save(data) {
 
   export function getClientCourseList(data) {
     return request({
-      url: '/edu/course/client-list',
+      url: '/edu/course/list/whi',
       method: 'get',
       data
     })
@@ -65,7 +65,7 @@ export function save(data) {
 
   export function getPage(params) {
     return request({
-      url: '/edu/course/page-client',
+      url: '/edu/course/page/whi',
       method: 'post',
       params
     })
@@ -81,7 +81,7 @@ export function save(data) {
 
   export function getOneDetailByCourseId(params) {
     return request({
-      url: `/edu/course/detail/${params}`,
+      url: `/edu/course/detail/${params}/whi`,
       method: 'post',
     })
   }
@@ -95,7 +95,7 @@ export function save(data) {
 
   export function getListByTeacherId(id) {
     return request({
-      url: '/edu/course/list-teacher',
+      url: '/edu/course/list-teacher/whi',
       method: 'post',
       params: {id}
     })
