@@ -135,7 +135,11 @@
 
         <el-table-column label="章节名称" align="center">
           <template slot-scope="scope">
-            {{ scope.row.chapterTitle }}
+            <el-button
+              type="text"
+              @click.stop="handleEdit(scope.row.chapterId)"
+              >{{ scope.row.chapterTitle }}</el-button
+            >
           </template>
         </el-table-column>
 
@@ -353,19 +357,19 @@ export default {
           });
         });
     },
-    handleEdit() {
-      let chapterId = this.selectionIds[0]["chapterId"];
+    handleEdit(id) {
+      if (!id) id = this.selectionIds[0]["chapterId"];
       this.$router.push({
         path: "/chapter/edit",
         query: {
-          chapter: chapterId,
+          chapter: id,
         },
       });
     },
     onSubmit() {
       this.fetchData();
     },
-     searchForm() {
+    searchForm() {
       this.form.current = 1;
       this.fetchData();
     },

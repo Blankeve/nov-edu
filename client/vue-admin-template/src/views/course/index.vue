@@ -156,7 +156,11 @@
 
         <el-table-column label="课程标题" width="200" align="center">
           <template slot-scope="scope">
-            {{ scope.row.courseTitle }}
+            <el-button
+              type="text"
+              @click.stop="handleEdit(scope.row.courseId)"
+              >{{ scope.row.courseTitle }}</el-button
+            >
           </template>
         </el-table-column>
 
@@ -459,12 +463,12 @@ export default {
           });
         });
     },
-    handleEdit() {
-      let courseId = this.selectionIds[0]["courseId"];
+    handleEdit(id) {
+      if (!id) id = this.selectionIds[0]["courseId"];
       this.$router.push({
         path: "/course/edit",
         query: {
-          course: courseId,
+          course: id,
         },
       });
     },
@@ -480,7 +484,7 @@ export default {
     onSubmit() {
       this.fetchData();
     },
-     searchForm() {
+    searchForm() {
       this.form.current = 1;
       this.fetchData();
     },

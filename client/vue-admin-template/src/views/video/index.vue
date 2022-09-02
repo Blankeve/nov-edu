@@ -130,7 +130,11 @@
 
         <el-table-column width="100px" label="小节标题" align="center">
           <template slot-scope="scope">
-            {{ scope.row.videoTitle }}
+            <el-button
+              type="text"
+              @click.stop="handleEdit(scope.row.videoId)"
+              >{{ scope.row.videoTitle }}</el-button
+            >
           </template>
         </el-table-column>
 
@@ -390,12 +394,12 @@ export default {
           });
         });
     },
-    handleEdit() {
-      let videoId = this.selectionIds[0]["videoId"];
+    handleEdit(id) {
+      if (!id) id = this.selectionIds[0]["videoId"];
       this.$router.push({
         path: "/video/edit",
         query: {
-          video: videoId,
+          video: id,
         },
       });
     },
@@ -416,7 +420,7 @@ export default {
       this.form.chapterId = null;
       this.form.sort = null;
     },
-     searchForm() {
+    searchForm() {
       this.form.current = 1;
       this.fetchData();
     },

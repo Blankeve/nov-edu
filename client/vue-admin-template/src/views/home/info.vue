@@ -128,7 +128,9 @@
 
         <el-table-column label="文章标题" align="center">
           <template slot-scope="scope">
-            {{ scope.row.title }}
+            <el-button type="text" @click.stop="handleEdit(scope.row.id)">{{
+              scope.row.title
+            }}</el-button>
           </template>
         </el-table-column>
 
@@ -347,8 +349,8 @@ export default {
         path: "/home/infoform",
       });
     },
-    handleEdit() {
-      let id = this.selectionIds[0]["id"];
+    handleEdit(id) {
+      if (!id) id = this.selectionIds[0]["id"];
       this.$router.push({
         path: "/home/info/edit",
         query: {
@@ -364,7 +366,7 @@ export default {
         this.$refs.table.toggleRowSelection(row);
       }
     },
-     searchForm() {
+    searchForm() {
       this.form.current = 1;
       this.fetchData();
     },
