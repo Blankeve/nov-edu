@@ -7,5 +7,7 @@ const getters = {
   code: state => state.user.code,
   roleName: state => state.user.roleName,
   routes: state => state.user.routes,
+  cachedViews: state => state.tagsView.cachedViews,
+  visitedviews: state => state.tagsview.visitedviews //新增
 }
 export default getters

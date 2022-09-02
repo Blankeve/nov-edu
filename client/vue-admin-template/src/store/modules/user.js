@@ -39,9 +39,9 @@ function filterAsyncRouter(asyncRouterMap) {
         }
       }
       if (route.title) {
-        route.meta = { title: route.title, icon: route.icon }
+        route.meta = { title: route.title, icon: route.icon}
       }
-
+      route.meta.affix = false;
       if (route.children && route.children.length) {
         route.children = filterAsyncRouter(route.children)
       }
