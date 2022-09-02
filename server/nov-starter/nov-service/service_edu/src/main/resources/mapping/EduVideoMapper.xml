@@ -40,6 +40,6 @@
         <if test="ew != null and ew.sqlSegment != null and ew.sqlSegment != ''">
             and ${ew.sqlSegment}
         </if>
-        order by course.title,teacher.name,chapter.sort, video.sort
+        order by video.create_time desc
     </select>
 </mapper>

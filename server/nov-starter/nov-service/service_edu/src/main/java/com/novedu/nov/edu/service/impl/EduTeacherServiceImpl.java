@@ -56,7 +56,7 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
         Date end = teacher.getEndTime();
         if (start != null && end != null && end.getTime() > start.getTime())
             queryWrapper.apply("create_time > date_format({0},'%Y-%m-%d %H:%i:%s') and create_time < date_format({1},'%Y-%m-%d %H:%i:%s')", start, end);
-        queryWrapper.orderByDesc(EduTeacher::getSort);
+        queryWrapper.orderByAsc(EduTeacher::getSort);
         queryWrapper.orderByDesc(EduTeacher::getCreateTime);
         return page(page, queryWrapper);
     }

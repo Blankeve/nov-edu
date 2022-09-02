@@ -95,7 +95,7 @@
             and course.create_time > date_format(#{course.startTime},'%Y-%m-%d %H:%i:%s') and
             <![CDATA[course.create_time < date_format(#{course.endTime},'%Y-%m-%d %H:%i:%s')]]>
         </if>
-        order by course.title, course.teacher_id, course.create_time
+        order by course.create_time desc
     </select>
 
     <select id="queryCourseTree" resultMap="EduCourseMap">
