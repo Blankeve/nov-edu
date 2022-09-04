@@ -13,7 +13,7 @@ export function getPage(params) {
 
 export function getOneDetailByInfoId(params) {
   return request({
-    url: `/edu/info/detail-client/${params}/whi`,
+    url: `/edu/info/detail/${params}/whi`,
     method: 'get',
   })
 }
