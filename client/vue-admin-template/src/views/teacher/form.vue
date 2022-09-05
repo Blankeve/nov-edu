@@ -1,6 +1,12 @@
 <template>
   <div class="app-container">
-    <el-form :model="teacher" :rules="formRules" label-width="80px">
+    <el-form
+      element-loading-text="玩命加载中"
+      v-loading="formLoading"
+      :model="teacher"
+      :rules="formRules"
+      label-width="80px"
+    >
       <el-form-item prop="name" label="讲师名称">
         <el-col :span="4">
           <el-input v-model="teacher.name"></el-input>
@@ -73,6 +79,7 @@ export default {
   data() {
     return {
       dialogVisible: false,
+      formLoading: false,
       teacher: {
         id: "",
         name: "",
@@ -137,7 +144,7 @@ export default {
   },
   methods: {
     closeAvatarDialog(img) {
-      uploadImgBase64({"img":img}).then((resp) => {
+      uploadImgBase64({ img: img }).then((resp) => {
         if (resp.code === 200) {
           this.teacher.avatar = resp.data.path;
         }
@@ -161,10 +168,12 @@ export default {
     fetchData() {
       let params = this.$route.query;
       if (params && params.id) {
+        this.formLoading = true;
         getById(params.id).then((resp) => {
           if (resp.code == 200) {
             this.teacher = resp.data;
             this.teacher.level += "";
+            this.formLoading = false;
           }
         });
       }

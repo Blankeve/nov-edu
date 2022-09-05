@@ -16,13 +16,6 @@ export function getListByKey(params) {
   })
 }
 
-export function getAll() {
-  return request({
-    url: '/ucenter/edu-teacher/all',
-    method: 'get',
-  })
-}
-
 export function removeById(params) {
   return request({
     url: `/ucenter/config/remove/${params}`,

@@ -1,10 +1,13 @@
 <template>
-  <div class="app-container">
+  <div
+    element-loading-text="玩命加载中"
+    v-loading="formLoading"
+    class="app-container"
+  >
     <h2>{{ this.$route.query.course ? "编辑" : "新增" }}课程</h2>
     <div class="myCourseFrm">
       <el-form
         v-show="active == 0"
-        v-loading="formLoading"
         :model="courseVO"
         :rules="formRules"
         :label-position="labelPosition"
@@ -102,11 +105,10 @@
         </el-form-item>
       </el-form>
       <div style="text-align: center">
-      <el-button icon="el-icon-check" type="primary" @click="submitForm"
-        >提交</el-button
-      >
+        <el-button icon="el-icon-check" type="primary" @click="submitForm"
+          >提交</el-button
+        >
       </div>
-
     </div>
   </div>
 </template>

@@ -48,11 +48,6 @@ public class EduSubjectController {
         return eduSubjectService.getSubjects();
     }
 
-    @GetMapping("/list")
-    public BaseResult<Map> getSubjects() {
-        return eduSubjectService.getSubjects();
-    }
-
     @GetMapping("/list-parent/{id}")
     public BaseResult<List<Integer>> getParentSubjects(@PathVariable Integer id) {
         return eduSubjectService.getParentSubjects(id);

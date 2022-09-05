@@ -100,14 +100,12 @@
             {{ scope.$index + 1 }}
           </template>
         </el-table-column>
-        <el-table-column type="expand" label="简介">
-          <template slot-scope="scope">
-            <span>{{ scope.row.intro }}</span>
-          </template>
-        </el-table-column>
+
         <el-table-column width="100" label="姓名" align="center">
           <template slot-scope="scope">
-            {{ scope.row.name }}
+            <el-button type="text" @click.stop="handleEdit(scope.row.id)">{{
+              scope.row.name
+            }}</el-button>
           </template>
         </el-table-column>
 
@@ -125,7 +123,7 @@
           </template>
         </el-table-column>
 
-        <el-table-column label="职业" align="center">
+        <el-table-column label="职业" width="200px" align="center">
           <template slot-scope="scope">
             {{ scope.row.career }}
           </template>
@@ -143,6 +141,11 @@
           </template>
         </el-table-column>
 
+        <el-table-column label="简介" align="center">
+          <template slot-scope="scope">
+            {{ scope.row.intro }}
+          </template>
+        </el-table-column>
         <el-table-column
           align="center"
           prop="created_at"
@@ -255,7 +258,7 @@ export default {
         this.listLoading = false;
       });
     },
-     searchForm() {
+    searchForm() {
       this.form.current = 1;
       this.fetchData();
     },
@@ -326,8 +329,8 @@ export default {
           });
         });
     },
-    handleEdit() {
-      let id = this.selectionIds[0]["id"];
+    handleEdit(id) {
+      if (!id) id = this.selectionIds[0]["id"];
       this.$router.push({
         path: "/teacher/edit",
         query: {

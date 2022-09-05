@@ -1,5 +1,9 @@
 <template>
-  <div class="app-container">
+  <div
+    element-loading-text="玩命加载中"
+    v-loading="formLoading"
+    class="app-container"
+  >
     <h2>{{ this.$route.query.info ? "编辑" : "新增" }}文章</h2>
     <div class="myCourseFrm">
       <el-form
@@ -67,6 +71,7 @@ import { editorOptions } from "@/utils/editor-options";
 export default {
   data() {
     return {
+      formLoading: false,
       active: 0,
       labelPosition: "left",
       key: {
@@ -88,10 +93,12 @@ export default {
       let infoId = this.$route.query.info;
       getListByKey(this.key).then((resp) => (this.cates = resp.data));
       if (infoId) {
+        this.formLoading = true;
         getOneDetailByInfoId(infoId).then((resp) => {
           if (resp.code === 200) {
             this.info = resp.data;
-            this.info.cate += '';
+            this.info.cate += "";
+            this.formLoading = false;
           }
         });
       }

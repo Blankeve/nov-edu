@@ -40,7 +40,7 @@ export function removeById(params) {
 
 export function getById(params) {
   return request({
-    url: `/edu/edu-teacher/info/${params}`,
+    url: `/edu/edu-teacher/info/${params}/whi`,
     method: 'get',
   })
 }

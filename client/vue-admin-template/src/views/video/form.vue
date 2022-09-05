@@ -7,6 +7,8 @@
     </h2>
     <div class="myFrm">
       <el-form
+        element-loading-text="玩命加载中"
+        v-loading="formLoading"
         :model="video"
         :rules="videoFormRules"
         :label-position="labelPosition"
@@ -114,11 +116,11 @@
             percentageFlag
           }}</span>
         </el-form-item>
+        <br />
+        <el-button icon="el-icon-check" type="primary" @click="submitForm"
+          >提交</el-button
+        >
       </el-form>
-      <br />
-      <el-button icon="el-icon-check" type="primary" @click="submitForm"
-        >提交</el-button
-      >
     </div>
   </div>
 </template>
@@ -130,6 +132,7 @@ import { saveVideo, getOneByVideoId } from "@/api/video";
 export default {
   data() {
     return {
+      formLoading: false,
       labelPosition: "left",
       editorOption: {
         /* quill options */
@@ -182,9 +185,11 @@ export default {
     fetchData() {
       let videoId = this.$route.query.video;
       if (videoId) {
+        this.formLoading = true;
         getOneByVideoId(videoId).then((resp) => {
           if (resp.code === 200) {
             this.video = resp.data;
+            this.formLoading = false;
           }
         });
         return;

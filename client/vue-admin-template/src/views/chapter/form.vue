@@ -9,6 +9,8 @@
     </h2>
     <div class="myFrm">
       <el-form
+        element-loading-text="玩命加载中"
+        v-loading="formLoading"
         :model="chapter"
         :rules="chapterFormRules"
         :label-position="labelPosition"
@@ -59,11 +61,11 @@
             label="总课时"
           ></el-input-number>
         </el-form-item>
+        <br />
+        <el-button icon="el-icon-check" type="primary" @click="submitForm"
+          >提交</el-button
+        >
       </el-form>
-      <br />
-      <el-button icon="el-icon-check" type="primary" @click="submitForm"
-        >提交</el-button
-      >
     </div>
   </div>
 </template>
@@ -74,6 +76,7 @@ import { save, updateById, getOneByChapterId } from "@/api/chapter";
 export default {
   data() {
     return {
+      formLoading: false,
       labelPosition: "left",
       editorOption: {
         /* quill options */
@@ -109,9 +112,11 @@ export default {
     fetchData() {
       let chapterId = this.$route.query.chapter;
       if (chapterId) {
+        this.formLoading = true;
         getOneByChapterId(chapterId).then((resp) => {
           if (resp.code === 200) {
             this.chapter = resp.data;
+            this.formLoading = false;
           }
         });
         return;

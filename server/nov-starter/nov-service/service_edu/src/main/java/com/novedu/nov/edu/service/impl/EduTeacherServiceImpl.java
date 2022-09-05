@@ -26,7 +26,6 @@ import org.springframework.util.StringUtils;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -49,7 +48,7 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
     @Override
     public IPage<List<EduTeacher>> queryTeacherPage(Page page, EduTeacherDTO teacher) {
         LambdaQueryWrapper<EduTeacher> queryWrapper = new LambdaQueryWrapper();
-            queryWrapper.like(StringUtils.hasText(teacher.getName()),EduTeacher::getName, teacher.getName());
+        queryWrapper.like(StringUtils.hasText(teacher.getName()), EduTeacher::getName, teacher.getName());
         if (teacher.getLevel() != null)
             queryWrapper.eq(EduTeacher::getLevel, teacher.getLevel());
         Date start = teacher.getStartTime();
@@ -81,21 +80,16 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
         return BaseResult.success(getById(id));
     }
 
-    @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public BaseResult<List<EduTeacher>> findAll() {
         Long uid = RequestUtils.getUid();
-        BaseResult baseResult = openUcenterService.queryUserRole(Long.valueOf(uid));
-        if (baseResult == null) {
-            return BaseResult.success();
-        }
-        Map role = (Map) baseResult.getData();
-        Integer code = (Integer) role.get("code");
+        Integer code = RequestUtils.getRoleCode();
+        LambdaQueryWrapper<EduTeacher> queryWrapper = new LambdaQueryWrapper<>();
         if (code == RoleType.TEACHER.getCode()) {
-            Long teacherId = query().eq("uid", uid).one().getId();
-            return BaseResult.success(query().eq("id", teacherId).list());
+            queryWrapper.eq(EduTeacher::getUid, uid);
         }
-        return BaseResult.success(list());
+        queryWrapper.select(EduTeacher::getId, EduTeacher::getName);
+        return BaseResult.success(list(queryWrapper));
     }
 
     @Override

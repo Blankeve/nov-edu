@@ -79,7 +79,6 @@ public class AclUserController {
     @PostMapping("/login-bg/whi")
     public BaseResult loginBg(@RequestBody AclUserDTO user) {
         return aclUserService.loginBg(user);
-
     }
 
     @PostMapping("/load-username")
@@ -87,14 +86,14 @@ public class AclUserController {
         return aclUserService.loadUserByUsername(username);
     }
 
-    @GetMapping("/info-bg")
-    public BaseResult getInfoBg(String token) {
-        return aclUserService.getInfoBg(token);
+    @GetMapping("/info-bg/whi")
+    public BaseResult getInfoBg() {
+        return aclUserService.getInfoBg();
     }
 
     @GetMapping("/info-client")
-    public BaseResult getInfoClient(String token) {
-        return aclUserService.getInfoClient(token);
+    public BaseResult getInfoClient() {
+        return aclUserService.getInfoClient();
     }
 
     @GetMapping("/login-info")

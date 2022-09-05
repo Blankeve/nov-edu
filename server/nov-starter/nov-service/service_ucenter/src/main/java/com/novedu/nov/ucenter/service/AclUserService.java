@@ -33,7 +33,7 @@ public interface AclUserService extends IService<AclUser> {
 
     BaseResult loginBg(AclUserDTO user);
 
-    BaseResult getInfoBg(String token);
+    BaseResult getInfoBg();
 
     BaseResult resetPwd(Long []uids);
 
@@ -47,7 +47,7 @@ public interface AclUserService extends IService<AclUser> {
 
     BaseResult syncUsersCache();
 
-    BaseResult getInfoClient(String token);
+    BaseResult getInfoClient();
 
     BaseResult getCode();
 

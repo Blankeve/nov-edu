@@ -49,13 +49,8 @@ public class EduTeacherController {
         eduTeacherService.exportTeacherPage(response, teacher);
     }
 
-    @GetMapping("/all")
-    public BaseResult<List<EduTeacher>> all() {
-        return eduTeacherService.findAll();
-    }
-
     @GetMapping("/all/whi")
-    public BaseResult<List<EduTeacher>> clientAll() {
+    public BaseResult<List<EduTeacher>> all() {
         return eduTeacherService.findAll();
     }
 

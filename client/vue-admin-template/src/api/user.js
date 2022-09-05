@@ -10,7 +10,7 @@ export function login(data) {
 
 export function getInfo() {
   return request({
-    url: '/ucenter/member/info-bg',
+    url: '/ucenter/member/info-bg/whi',
     method: 'get',
   })
 }

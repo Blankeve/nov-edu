@@ -258,6 +258,7 @@ import { getAWeekUserRegisterAndLoginCount } from "@/api/statistics";
 import { mapGetters } from "vuex";
 
 export default {
+  name: "dashboard",
   components: { Schart },
   data() {
     return {

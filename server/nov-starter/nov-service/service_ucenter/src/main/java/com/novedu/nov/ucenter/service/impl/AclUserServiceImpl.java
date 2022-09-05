@@ -1,5 +1,6 @@
 package com.novedu.nov.ucenter.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
@@ -253,7 +254,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
     }
 
     @Override
-    public BaseResult getInfoBg(String token) {
+    public BaseResult getInfoBg() {
         Long uid = RequestUtils.getUid();
         AclUser user = getById(uid);
         if (user == null)
@@ -346,11 +347,10 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date(System.currentTimeMillis());
         String nowDate = formatter.format(date);
-        QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.like("create_time", nowDate);
+        LambdaQueryWrapper<AclUser> queryWrapper = new LambdaQueryWrapper();
+        queryWrapper.like(AclUser::getCreateTime, nowDate);
         Integer registerCount = count(queryWrapper);
-        queryWrapper = new QueryWrapper();
-        queryWrapper.like("last_login_time", nowDate);
+        queryWrapper.like(AclUser::getLastLoginTime, nowDate);
         Integer loginCount = count(queryWrapper);
         return BaseResult.success().map("registerCount", registerCount).map("loginCount", loginCount);
     }
@@ -362,11 +362,10 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         if (!oldpass.equals(aclUser.getPassword()))
             return BaseResult.error("修改密码失败，旧密码不正确");
         String newpass = DigestUtils.md5DigestAsHex(userPasswordDto.getNewpass().getBytes(StandardCharsets.UTF_8));
-        UpdateWrapper updateWrapper = new UpdateWrapper();
-        updateWrapper.eq("id", userPasswordDto.getId());
-        updateWrapper.set("password", newpass);
-        update(updateWrapper);
-        return BaseResult.success();
+        LambdaUpdateWrapper<AclUser> updateWrapper = new LambdaUpdateWrapper();
+        updateWrapper.eq(AclUser::getId, userPasswordDto.getId());
+        updateWrapper.set(AclUser::getPassword, newpass);
+        return BaseResult.successOrError(update(updateWrapper));
     }
 
     @Override
@@ -390,7 +389,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
     }
 
     @Override
-    public BaseResult getInfoClient(String token) {
+    public BaseResult getInfoClient() {
         Long uid = RequestUtils.getUid();
         AclUser user = getById(uid);
         return BaseResult.success().map("username", user.getUsername())
