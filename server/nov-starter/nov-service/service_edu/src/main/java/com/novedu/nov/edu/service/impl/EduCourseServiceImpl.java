@@ -199,7 +199,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         DashBoardInfoVO dashBoardInfoVO = new DashBoardInfoVO();
         Long teacherId = 0l;
         if (rolecode.equals(RoleType.TEACHER.getCode())) {
-            EduTeacher teacher = teacherService.query().eq("uid", uid).one();
+            EduTeacher teacher = teacherService.lambdaQuery().eq(EduTeacher::getUid, uid).one();
             if (teacher == null)
                 return BaseResult.error("当前账号尚未绑定讲师");
             teacherId = teacher.getId();
