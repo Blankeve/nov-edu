@@ -239,7 +239,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
                         .map("token", token)
                         ;
             } else {
-                return BaseResult.error(baseResult1.getMsg());
+                return baseResult1;
             }
         } catch (Exception e) {
             return BaseResult.error("登录超时，请稍后再试");
