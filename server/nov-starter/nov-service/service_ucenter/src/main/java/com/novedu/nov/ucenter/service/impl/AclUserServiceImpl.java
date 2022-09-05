@@ -94,19 +94,12 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
 
     @Override
     public BaseResult login(AclUser ucenterMemberDto) {
-        String password = DigestUtils.md5DigestAsHex(ucenterMemberDto.getPassword().getBytes());
-        AclUser ucenterMember = lambdaQuery().eq(AclUser::getUsername, ucenterMemberDto.getUsername())
-                .eq(AclUser::getPassword, password).one();
-        if (ucenterMember == null) {
-            return BaseResult.error("用户名或密码不正确");
-        }
         Map<String, String> params = new HashMap<>();
         params.put("client_id", AuthConstant.PC_CLIENT_ID);
         params.put("client_secret", "777777");
         params.put("grant_type", "password");
         params.put("username", ucenterMemberDto.getUsername());
         params.put("password", ucenterMemberDto.getPassword());
-
         try {
             BaseResult baseResult1 = authService.postAccessToken(params);
             if (BaseResult.success().getCode().equals(baseResult1.getCode())) {
@@ -117,11 +110,11 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
                 redisTemplate.opsForValue().set(loginKey, token, 1, TimeUnit.DAYS);
                 saveLoginInfo(user2);
                 Map loginInfo = new HashMap();
-                loginInfo.put("nickname", ucenterMember.getNickname());
-                loginInfo.put("avatar", ucenterMember.getAvatar());
+                loginInfo.put("nickname", user2.getNickname());
+                loginInfo.put("avatar", user2.getAvatar());
                 return BaseResult.success().map("access_token", token).map("loginInfo", loginInfo);
             } else {
-                return BaseResult.error(baseResult1.getMsg());
+                return baseResult1;
             }
         } catch (Exception e) {
             return BaseResult.error("登录超时，请稍后再试");
