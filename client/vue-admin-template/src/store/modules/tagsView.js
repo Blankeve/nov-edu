@@ -5,17 +5,17 @@ const state = {
 
 const mutations = {
   ADD_VISITED_VIEW: (state, view) => {
-    if (state.visitedViews.some(v => v.path === view.path)) return
+    if (state.visitedViews.some(v => v.path === view.path) || !view.meta.title) return
     state.visitedViews.push(
       Object.assign({}, view, {
-        title: view.meta.title || 'no-name'
+        title: view.meta.title
       })
     )
   },
   ADD_CACHED_VIEW: (state, view) => {
-    if (state.cachedViews.includes(view.name)) return
+    if (state.cachedViews.includes(view.path)) return
     if (!view.meta.noCache) {
-      state.cachedViews.push(view.name)
+      state.cachedViews.push(view.path)
     }
   },
 
@@ -28,7 +28,7 @@ const mutations = {
     }
   },
   DEL_CACHED_VIEW: (state, view) => {
-    const index = state.cachedViews.indexOf(view.name)
+    const index = state.cachedViews.indexOf(view.path)
     index > -1 && state.cachedViews.splice(index, 1)
   },
 
@@ -38,7 +38,7 @@ const mutations = {
     })
   },
   DEL_OTHERS_CACHED_VIEWS: (state, view) => {
-    const index = state.cachedViews.indexOf(view.name)
+    const index = state.cachedViews.indexOf(view.path)
     if (index > -1) {
       state.cachedViews = state.cachedViews.slice(index, index + 1)
     } else {
@@ -63,7 +63,8 @@ const mutations = {
         break
       }
     }
-  },
+  }
+  ,
   DEL_RIGHT_VIEWS: (state, view) => {
     const index = state.visitedViews.findIndex(v => v.path === view.path)
     if (index === -1) {

@@ -1,4 +1,4 @@
-import { login, logout, getInfo } from '@/api/user'
+import { login, getInfo } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { resetRouter } from '@/router'
 import Layout from '@/layout'
@@ -39,7 +39,7 @@ function filterAsyncRouter(asyncRouterMap) {
         }
       }
       if (route.title) {
-        route.meta = { title: route.title, icon: route.icon}
+        route.meta = { title: route.title, icon: route.icon }
       }
       route.meta.affix = false;
       if (route.children && route.children.length) {
@@ -52,10 +52,14 @@ function filterAsyncRouter(asyncRouterMap) {
     delete route.parentId;
     return true
   })
-
   return accessedRouters
 }
 
+function LastStr(str){       
+  let index = str .lastIndexOf("\/");  
+  str  = str .substring(index + 1, str .length);
+  return str;
+}
 
 const mutations = {
   RESET_STATE: (state) => {
@@ -102,7 +106,6 @@ const actions = {
     return new Promise((resolve, reject) => {
       getInfo(state.token).then(response => {
         const { data } = response
-        console.log(data)
         if (!data) {
           removeToken();
         }

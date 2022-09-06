@@ -1,13 +1,18 @@
 <template>
-  <div class="sidebar-logo-container" :class="{'collapse':collapse}">
+  <div class="sidebar-logo-container" :class="{ collapse: collapse }">
     <transition name="sidebarLogoFade">
-      <router-link v-if="collapse" key="collapse" class="sidebar-logo-link" to="/">
-        <img v-if="logo" :src="logo" class="sidebar-logo">
-        <h1 v-else class="sidebar-title">{{ title }} </h1>
+      <router-link
+        v-if="collapse"
+        key="collapse"
+        class="sidebar-logo-link"
+        to="/"
+      >
+        <!-- <img v-if="logo" :src="logo" class="sidebar-logo"> -->
+        <h1 class="sidebar-title">{{ title }}</h1>
       </router-link>
       <router-link v-else key="expand" class="sidebar-logo-link" to="/">
-        <img v-if="logo" :src="logo" class="sidebar-logo">
-        <h1 class="sidebar-title">{{ title }} </h1>
+        <!-- <img v-if="logo" :src="logo" class="sidebar-logo"> -->
+        <h1 class="sidebar-title">{{ title }}</h1>
       </router-link>
     </transition>
   </div>
@@ -15,20 +20,20 @@
 
 <script>
 export default {
-  name: 'SidebarLogo',
+  name: "SidebarLogo",
   props: {
     collapse: {
       type: Boolean,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
-      title: 'nov在线课堂后台管理系统',
-      logo: 'http://159.75.234.20:8888/img/2022/06/17/1649036454237704203.png'
-    }
-  }
-}
+      title: "NOV在线课堂后台系统",
+      logo: "http://159.75.234.20:8888/img/2022/06/17/1649036454237704203.png",
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -46,7 +51,6 @@ export default {
   width: 100%;
   height: 50px;
   line-height: 50px;
-  background: #2b2f3a;
   text-align: center;
   overflow: hidden;
 
@@ -67,7 +71,7 @@ export default {
       color: #fff;
       font-weight: 600;
       line-height: 50px;
-      font-size: 14px;
+      font-size: 20px;
       font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
       vertical-align: middle;
     }

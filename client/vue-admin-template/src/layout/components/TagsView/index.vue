@@ -33,7 +33,7 @@
       <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)">
         关闭当前
       </li>
-      <li @click="closeOthersTags">关闭其它</li>
+      <li v-if="!isAffix(selectedTag)" @click="closeOthersTags">关闭其它</li>
       <li @click="closeAllTags(selectedTag)">关闭所有</li>
       <li v-if="!isFirstView()" @click="closeLeftTags">
         <i class="el-icon-back"></i> 关闭左侧
