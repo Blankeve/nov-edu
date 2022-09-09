@@ -145,7 +145,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
             Map role = (Map) baseResult.getData();
             Integer code = (Integer) role.get("code");
             if (code == RoleType.TEACHER.getCode()) {
-                Long teacherId = teacherService.query().eq("uid", uid).one().getId();
+                Long teacherId = teacherService.lambdaQuery().eq(EduTeacher::getUid, uid).one().getId();
                 courseInfoDTO.setTeacherId(teacherId);
             }
         }
@@ -237,8 +237,8 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         Map role = (Map) baseResult.getData();
         Integer code = (Integer) role.get("code");
         if (code == RoleType.TEACHER.getCode()) {
-            Long teacherId = teacherService.query().eq("uid", uid).one().getId();
-            return BaseResult.success(query().eq("teacher_id", teacherId).list());
+            Long teacherId = teacherService.lambdaQuery().eq(EduTeacher::getUid, uid).one().getId();
+            return BaseResult.success(lambdaQuery().eq(EduCourse::getTeacherId, teacherId).list());
         }
         return BaseResult.success(list());
     }
