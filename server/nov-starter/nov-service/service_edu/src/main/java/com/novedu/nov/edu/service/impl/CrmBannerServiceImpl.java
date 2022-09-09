@@ -22,7 +22,7 @@ import java.util.List;
 public class CrmBannerServiceImpl extends ServiceImpl<CrmBannerMapper, CrmBanner> implements CrmBannerService {
 
     @Override
-    public BaseResult<List<CrmBanner>> getBannerList() {
+    public BaseResult<List<CrmBanner>> queryBannerList() {
         return BaseResult.success(list());
     }
 
@@ -42,7 +42,7 @@ public class CrmBannerServiceImpl extends ServiceImpl<CrmBannerMapper, CrmBanner
 
 
     @Override
-    public BaseResult<List<CrmBanner>> getClientBannerList() {
+    public BaseResult<List<CrmBanner>> queryClientBannerList() {
         List<CrmBanner> list = lambdaQuery().orderByDesc(CrmBanner::getSort).orderByDesc(CrmBanner::getCreateTime).last("limit 5").list();
         return BaseResult.success(list);
     }

@@ -53,12 +53,12 @@ public class CmsInfoController {
 
     @GetMapping("/detail/{id}")
     public BaseResult detail(@PathVariable String id) {
-        return cmsInfoService.getDetail(id);
+        return cmsInfoService.queryDetail(id);
     }
 
     @GetMapping("/detail/{id}/whi")
-    public BaseResult getDetail(@PathVariable String id) {
-        return cmsInfoService.getClientDetail(id);
+    public BaseResult queryDetail(@PathVariable String id) {
+        return cmsInfoService.queryClientDetail(id);
     }
 }
 

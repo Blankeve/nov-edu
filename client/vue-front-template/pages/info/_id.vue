@@ -45,10 +45,9 @@
     </div>
   </div>
 </template>
-
 <script>
-import "~/assets/css/sign.css";
-import "~/assets/css/iconfont.css";
+
+
 if (process.client) {
   var editorOptions = require("@/utils/editor-options");
 }
@@ -86,7 +85,7 @@ export default {
 };
 </script>
 
-<style >
+<style scoped>
 .text2 {
   color: #24282b;
   font-size: 20px;
@@ -101,5 +100,6 @@ export default {
   font-weight: 600;
   float: right;
 }
+h1,h2,h3,h4,h5,h6{font-weight: bold}
 </style>
 

@@ -16,11 +16,11 @@ import java.util.List;
  */
 public interface CrmBannerService extends IService<CrmBanner> {
 
-    BaseResult<List<CrmBanner>> getBannerList();
+    BaseResult<List<CrmBanner>> queryBannerList();
 
     BaseResult saveBanner(CrmBanner banner);
 
     BaseResult removeBanner(Long id);
 
-    BaseResult<List<CrmBanner>> getClientBannerList();
+    BaseResult<List<CrmBanner>> queryClientBannerList();
 }

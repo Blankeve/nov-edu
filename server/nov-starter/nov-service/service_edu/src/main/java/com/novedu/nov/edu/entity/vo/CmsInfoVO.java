@@ -30,9 +30,9 @@ public class CmsInfoVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-
+    @JsonSerialize(using = ToStringSerializer.class)
     @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    private Long id;
 
     @ApiModelProperty(value = "文章分类")
     private Integer cate;

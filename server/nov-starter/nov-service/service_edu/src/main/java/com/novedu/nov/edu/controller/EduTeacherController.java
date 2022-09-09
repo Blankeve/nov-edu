@@ -97,8 +97,8 @@ public class EduTeacherController {
     }
 
     @GetMapping("/list/whi")
-    public BaseResult<List<EduTeacher>> getClientTeacherList(){
-        return eduTeacherService.getClientTeacherList();
+    public BaseResult<List<EduTeacher>> queryClientTeacherList(){
+        return eduTeacherService.queryClientTeacherList();
     }
 }
 

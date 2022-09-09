@@ -284,7 +284,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     }
 
     @Override
-    public BaseResult<List<EduCourse>> getClientCourseList() {
+    public BaseResult<List<EduCourse>> queryClientCourseList() {
         List<EduCourse> courses1;
         List<EduCourse> courses2;
         if (redisTemplate.hasKey(RedisKeyConstants.CLIENT_COURSE_LIST1)) {

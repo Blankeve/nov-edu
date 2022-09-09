@@ -50,7 +50,7 @@ public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> impl
     }
 
     @Override
-    public BaseResult getClientDetail(String id) {
+    public BaseResult queryClientDetail(String id) {
         CmsInfoVO cmsInfoVO = cmsInfoMapper.queryDetail(id);
         Long clickCount = (Long) redisTemplate.opsForValue().get(RedisKeyConstants.INFO_CLICK_COUNT + id);
         if (clickCount != null) {
@@ -86,7 +86,7 @@ public class CmsInfoServiceImpl extends ServiceImpl<CmsInfoMapper, CmsInfo> impl
 
     @Transactional
     @Override
-    public BaseResult getDetail(String id) {
+    public BaseResult queryDetail(String id) {
         return BaseResult.success(cmsInfoMapper.queryDetail(id));
     }
 }

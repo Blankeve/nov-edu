@@ -18,10 +18,10 @@ export function saveOrUpdate(data) {
   })
 }
 
-export function getPage(data) {
+export function getPage(params) {
   return request({
     url: '/edu/notice/page',
-    method: 'post',
-    data
+    method: 'get',
+    params
   })
 }

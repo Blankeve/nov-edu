@@ -31,8 +31,9 @@ public class CmsInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @JsonSerialize(using = ToStringSerializer.class)
     @TableId(value = "id", type = IdType.NONE)
-    private Integer id;
+    private Long id;
 
     @NotNull(message = "资讯分类不能为空")
     @ApiModelProperty(value = "资讯分类  ")

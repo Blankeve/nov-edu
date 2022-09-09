@@ -177,11 +177,7 @@ export default {
       list: null,
       listLoading: true,
       form: {
-        title: "",
-        content: "",
-        sendUser: "",
         current: 1,
-        type: "1",
         size: 8,
         total: 0,
       },

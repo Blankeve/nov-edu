@@ -33,7 +33,7 @@ public interface EduTeacherService extends IService<EduTeacher> {
 
     BaseResult<List<EduTeacher>> findAll();
 
-    BaseResult<List<EduTeacher>> getClientTeacherList();
+    BaseResult<List<EduTeacher>> queryClientTeacherList();
 
     void exportTeacherPage(HttpServletResponse response, EduTeacherDTO teacher);
 

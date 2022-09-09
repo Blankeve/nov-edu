@@ -999,9 +999,9 @@ file:/C:/Users/Admin/.m2/repository/com/sun/jersey/contribs/jersey-apache-client
 2022-05-19 09:41:26.547 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationResponseClassReader-Setting response class to:BaseResult
 2022-05-19 09:41:26.547 [main] DEBUG springfox.documentation.swagger.readers.operation.OperationAuthReader-Authorization count 0 for method saveOrUpdateNotice
 2022-05-19 09:41:26.548 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Adding return parameter of type Lcom/novedu/nov/common/api/BaseResult<Ljava/util/List;>;
-2022-05-19 09:41:26.548 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Reading parameters models for handlerMethod |getBannerList|
-2022-05-19 09:41:26.548 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Finished reading parameters models for handlerMethod |getBannerList|
-2022-05-19 09:41:26.548 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationModelsProvider-Reading parameters models for handlerMethod |getBannerList|
+2022-05-19 09:41:26.548 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Reading parameters models for handlerMethod |queryBannerList|
+2022-05-19 09:41:26.548 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Finished reading parameters models for handlerMethod |queryBannerList|
+2022-05-19 09:41:26.548 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationModelsProvider-Reading parameters models for handlerMethod |queryBannerList|
 2022-05-19 09:41:26.549 [main] DEBUG springfox.documentation.schema.property.OptimizedModelPropertiesProvider-Reading property code
 2022-05-19 09:41:26.549 [main] DEBUG springfox.documentation.schema.property.bean.BeanModelProperty-Evaluating unwrapped getter for member getCode
 2022-05-19 09:41:26.549 [main] DEBUG springfox.documentation.schema.property.ObjectMapperBeanPropertyNamingStrategy-Name 'code' renamed to 'code'
@@ -1105,17 +1105,17 @@ file:/C:/Users/Admin/.m2/repository/com/sun/jersey/contribs/jersey-apache-client
 2022-05-19 09:41:26.559 [main] DEBUG springfox.documentation.spring.web.scanners.ApiModelReader-Adding a new model with key CrmBanner对象
 2022-05-19 09:41:26.559 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationResponseClassReader-Setting spring response class to: BaseResult«List«CrmBanner对象»»
 2022-05-19 09:41:26.559 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationResponseClassReader-Setting response class to:BaseResult«List«CrmBanner对象»»
-2022-05-19 09:41:26.559 [main] DEBUG springfox.documentation.swagger.readers.operation.OperationAuthReader-Authorization count 0 for method getBannerList
+2022-05-19 09:41:26.559 [main] DEBUG springfox.documentation.swagger.readers.operation.OperationAuthReader-Authorization count 0 for method queryBannerList
 2022-05-19 09:41:26.560 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Adding return parameter of type Lcom/novedu/nov/common/api/BaseResult<Ljava/util/List;>;
-2022-05-19 09:41:26.560 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Reading parameters models for handlerMethod |getClientBannerList|
-2022-05-19 09:41:26.560 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Finished reading parameters models for handlerMethod |getClientBannerList|
-2022-05-19 09:41:26.560 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationModelsProvider-Reading parameters models for handlerMethod |getClientBannerList|
+2022-05-19 09:41:26.560 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Reading parameters models for handlerMethod |queryClientBannerList|
+2022-05-19 09:41:26.560 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Finished reading parameters models for handlerMethod |queryClientBannerList|
+2022-05-19 09:41:26.560 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationModelsProvider-Reading parameters models for handlerMethod |queryClientBannerList|
 2022-05-19 09:41:26.560 [main] DEBUG springfox.documentation.spring.web.scanners.ApiModelReader-Generated parameter model id: BaseResult«List«CrmBanner对象»», name: BaseResult«List«CrmBanner对象»», schema: {} models
 2022-05-19 09:41:26.560 [main] DEBUG springfox.documentation.schema.DefaultModelProvider-Skipping model of type Ljava/util/List<Lcom/novedu/nov/edu/entity/CrmBanner;>; as its either a container type, map, enum or base type, or its already been handled
 2022-05-19 09:41:26.560 [main] DEBUG springfox.documentation.schema.DefaultModelProvider-Inferred 8 properties. Properties found createTime, id, imageUrl, isDeleted, linkUrl, sort, title, updateTime
 2022-05-19 09:41:26.560 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationResponseClassReader-Setting spring response class to: BaseResult«List«CrmBanner对象»»
 2022-05-19 09:41:26.560 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationResponseClassReader-Setting response class to:BaseResult«List«CrmBanner对象»»
-2022-05-19 09:41:26.560 [main] DEBUG springfox.documentation.swagger.readers.operation.OperationAuthReader-Authorization count 0 for method getClientBannerList
+2022-05-19 09:41:26.560 [main] DEBUG springfox.documentation.swagger.readers.operation.OperationAuthReader-Authorization count 0 for method queryClientBannerList
 2022-05-19 09:41:26.561 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Adding return parameter of type Lcom/novedu/nov/common/api/BaseResult;
 2022-05-19 09:41:26.561 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Reading parameters models for handlerMethod |removeBanner|
 2022-05-19 09:41:26.561 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Finished reading parameters models for handlerMethod |removeBanner|
@@ -2513,9 +2513,9 @@ file:/C:/Users/Admin/.m2/repository/com/sun/jersey/contribs/jersey-apache-client
 2022-05-19 09:41:26.681 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationResponseClassReader-Setting response class to:BaseResult«List«EduCourse对象»»
 2022-05-19 09:41:26.681 [main] DEBUG springfox.documentation.swagger.readers.operation.OperationAuthReader-Authorization count 0 for method getClientBoughtCourseList
 2022-05-19 09:41:26.681 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Adding return parameter of type Lcom/novedu/nov/common/api/BaseResult<Ljava/util/List;>;
-2022-05-19 09:41:26.681 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Reading parameters models for handlerMethod |getClientCourseList|
-2022-05-19 09:41:26.681 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Finished reading parameters models for handlerMethod |getClientCourseList|
-2022-05-19 09:41:26.681 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationModelsProvider-Reading parameters models for handlerMethod |getClientCourseList|
+2022-05-19 09:41:26.681 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Reading parameters models for handlerMethod |queryClientCourseList|
+2022-05-19 09:41:26.681 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Finished reading parameters models for handlerMethod |queryClientCourseList|
+2022-05-19 09:41:26.681 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationModelsProvider-Reading parameters models for handlerMethod |queryClientCourseList|
 2022-05-19 09:41:26.681 [main] DEBUG springfox.documentation.spring.web.scanners.ApiModelReader-Generated parameter model id: BaseResult«List«EduCourse对象»», name: BaseResult«List«EduCourse对象»», schema: {} models
 2022-05-19 09:41:26.682 [main] DEBUG springfox.documentation.schema.DefaultModelProvider-Skipping model of type Ljava/util/List<Lcom/novedu/nov/edu/entity/EduCourse;>; as its either a container type, map, enum or base type, or its already been handled
 2022-05-19 09:41:26.682 [main] DEBUG springfox.documentation.schema.DefaultModelProvider-Inferred 19 properties. Properties found applyCount, buyCount, children, commentCount, cover, createTime, id, isDeleted, lessonNum, price, status, subjectId, teacherCareer, teacherId, teacherName, title, updateTime, version, viewCount
@@ -2524,9 +2524,9 @@ file:/C:/Users/Admin/.m2/repository/com/sun/jersey/contribs/jersey-apache-client
 2022-05-19 09:41:26.682 [main] DEBUG springfox.documentation.schema.DefaultModelProvider-Skipping model of type Ljava/util/List<Lcom/novedu/nov/edu/entity/EduVideo;>; as its either a container type, map, enum or base type, or its already been handled
 2022-05-19 09:41:26.682 [main] DEBUG springfox.documentation.schema.DefaultModelProvider-Inferred 15 properties. Properties found chapterId, createTime, duration, id, isDeleted, isFree, playCount, size, sort, status, title, updateTime, version, videoOriginalName, videoSourcePath
 2022-05-19 09:41:26.682 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationResponseClassReader-Setting spring response class to: BaseResult«List«EduCourse对象»»
-2022-05-19 09:41:26.682 [main] DEBUG springfox.documentation.swagger.readers.operation.VendorExtensionsReader-Extension count 1 for method getClientCourseList
+2022-05-19 09:41:26.682 [main] DEBUG springfox.documentation.swagger.readers.operation.VendorExtensionsReader-Extension count 1 for method queryClientCourseList
 2022-05-19 09:41:26.682 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationResponseClassReader-Setting response class to:BaseResult«List«EduCourse对象»»
-2022-05-19 09:41:26.682 [main] DEBUG springfox.documentation.swagger.readers.operation.OperationAuthReader-Authorization count 0 for method getClientCourseList
+2022-05-19 09:41:26.682 [main] DEBUG springfox.documentation.swagger.readers.operation.OperationAuthReader-Authorization count 0 for method queryClientCourseList
 2022-05-19 09:41:26.683 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Adding return parameter of type Lcom/novedu/nov/common/api/BaseResult;
 2022-05-19 09:41:26.683 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Reading parameters models for handlerMethod |queryClientCoursePage|
 2022-05-19 09:41:26.683 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Finished reading parameters models for handlerMethod |queryClientCoursePage|
@@ -3771,15 +3771,15 @@ file:/C:/Users/Admin/.m2/repository/com/sun/jersey/contribs/jersey-apache-client
 2022-05-19 09:41:26.767 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationResponseClassReader-Setting spring response class to: null
 2022-05-19 09:41:26.767 [main] DEBUG springfox.documentation.swagger.readers.operation.OperationAuthReader-Authorization count 0 for method exportTeacherPage
 2022-05-19 09:41:26.768 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Adding return parameter of type Lcom/novedu/nov/common/api/BaseResult<Ljava/util/List;>;
-2022-05-19 09:41:26.768 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Reading parameters models for handlerMethod |getClientTeacherList|
-2022-05-19 09:41:26.768 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Finished reading parameters models for handlerMethod |getClientTeacherList|
-2022-05-19 09:41:26.768 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationModelsProvider-Reading parameters models for handlerMethod |getClientTeacherList|
+2022-05-19 09:41:26.768 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Reading parameters models for handlerMethod |queryClientTeacherList|
+2022-05-19 09:41:26.768 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Finished reading parameters models for handlerMethod |queryClientTeacherList|
+2022-05-19 09:41:26.768 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationModelsProvider-Reading parameters models for handlerMethod |queryClientTeacherList|
 2022-05-19 09:41:26.768 [main] DEBUG springfox.documentation.spring.web.scanners.ApiModelReader-Generated parameter model id: BaseResult«List«EduTeacher对象»», name: BaseResult«List«EduTeacher对象»», schema: {} models
 2022-05-19 09:41:26.768 [main] DEBUG springfox.documentation.schema.DefaultModelProvider-Skipping model of type Ljava/util/List<Lcom/novedu/nov/edu/entity/EduTeacher;>; as its either a container type, map, enum or base type, or its already been handled
 2022-05-19 09:41:26.768 [main] DEBUG springfox.documentation.schema.DefaultModelProvider-Inferred 12 properties. Properties found avatar, career, createTime, id, intro, isDeleted, joinDate, level, name, sort, uid, updateTime
 2022-05-19 09:41:26.768 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationResponseClassReader-Setting spring response class to: BaseResult«List«EduTeacher对象»»
 2022-05-19 09:41:26.768 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationResponseClassReader-Setting response class to:BaseResult«List«EduTeacher对象»»
-2022-05-19 09:41:26.769 [main] DEBUG springfox.documentation.swagger.readers.operation.OperationAuthReader-Authorization count 0 for method getClientTeacherList
+2022-05-19 09:41:26.769 [main] DEBUG springfox.documentation.swagger.readers.operation.OperationAuthReader-Authorization count 0 for method queryClientTeacherList
 2022-05-19 09:41:26.769 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Adding return parameter of type Lcom/novedu/nov/common/api/BaseResult<Lcom/novedu/nov/edu/entity/EduTeacher;>;
 2022-05-19 09:41:26.769 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Reading parameters models for handlerMethod |info|
 2022-05-19 09:41:26.770 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Finished reading parameters models for handlerMethod |info|
@@ -5284,9 +5284,9 @@ file:/C:/Users/Admin/.m2/repository/com/sun/jersey/contribs/jersey-apache-client
 2022-05-19 09:42:44.821 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationResponseClassReader-Setting response class to:BaseResult
 2022-05-19 09:42:44.821 [main] DEBUG springfox.documentation.swagger.readers.operation.OperationAuthReader-Authorization count 0 for method saveOrUpdateNotice
 2022-05-19 09:42:44.822 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Adding return parameter of type Lcom/novedu/nov/common/api/BaseResult<Ljava/util/List;>;
-2022-05-19 09:42:44.822 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Reading parameters models for handlerMethod |getBannerList|
-2022-05-19 09:42:44.822 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Finished reading parameters models for handlerMethod |getBannerList|
-2022-05-19 09:42:44.822 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationModelsProvider-Reading parameters models for handlerMethod |getBannerList|
+2022-05-19 09:42:44.822 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Reading parameters models for handlerMethod |queryBannerList|
+2022-05-19 09:42:44.822 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Finished reading parameters models for handlerMethod |queryBannerList|
+2022-05-19 09:42:44.822 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationModelsProvider-Reading parameters models for handlerMethod |queryBannerList|
 2022-05-19 09:42:44.822 [main] DEBUG springfox.documentation.schema.property.OptimizedModelPropertiesProvider-Reading property code
 2022-05-19 09:42:44.822 [main] DEBUG springfox.documentation.schema.property.bean.BeanModelProperty-Evaluating unwrapped getter for member getCode
 2022-05-19 09:42:44.822 [main] DEBUG springfox.documentation.schema.property.ObjectMapperBeanPropertyNamingStrategy-Name 'code' renamed to 'code'
@@ -5390,17 +5390,17 @@ file:/C:/Users/Admin/.m2/repository/com/sun/jersey/contribs/jersey-apache-client
 2022-05-19 09:42:44.832 [main] DEBUG springfox.documentation.spring.web.scanners.ApiModelReader-Adding a new model with key CrmBanner对象
 2022-05-19 09:42:44.833 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationResponseClassReader-Setting spring response class to: BaseResult«List«CrmBanner对象»»
 2022-05-19 09:42:44.833 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationResponseClassReader-Setting response class to:BaseResult«List«CrmBanner对象»»
-2022-05-19 09:42:44.833 [main] DEBUG springfox.documentation.swagger.readers.operation.OperationAuthReader-Authorization count 0 for method getBannerList
+2022-05-19 09:42:44.833 [main] DEBUG springfox.documentation.swagger.readers.operation.OperationAuthReader-Authorization count 0 for method queryBannerList
 2022-05-19 09:42:44.833 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Adding return parameter of type Lcom/novedu/nov/common/api/BaseResult<Ljava/util/List;>;
-2022-05-19 09:42:44.833 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Reading parameters models for handlerMethod |getClientBannerList|
-2022-05-19 09:42:44.833 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Finished reading parameters models for handlerMethod |getClientBannerList|
-2022-05-19 09:42:44.833 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationModelsProvider-Reading parameters models for handlerMethod |getClientBannerList|
+2022-05-19 09:42:44.833 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Reading parameters models for handlerMethod |queryClientBannerList|
+2022-05-19 09:42:44.833 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Finished reading parameters models for handlerMethod |queryClientBannerList|
+2022-05-19 09:42:44.833 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationModelsProvider-Reading parameters models for handlerMethod |queryClientBannerList|
 2022-05-19 09:42:44.834 [main] DEBUG springfox.documentation.spring.web.scanners.ApiModelReader-Generated parameter model id: BaseResult«List«CrmBanner对象»», name: BaseResult«List«CrmBanner对象»», schema: {} models
 2022-05-19 09:42:44.834 [main] DEBUG springfox.documentation.schema.DefaultModelProvider-Skipping model of type Ljava/util/List<Lcom/novedu/nov/edu/entity/CrmBanner;>; as its either a container type, map, enum or base type, or its already been handled
 2022-05-19 09:42:44.834 [main] DEBUG springfox.documentation.schema.DefaultModelProvider-Inferred 8 properties. Properties found createTime, id, imageUrl, isDeleted, linkUrl, sort, title, updateTime
 2022-05-19 09:42:44.834 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationResponseClassReader-Setting spring response class to: BaseResult«List«CrmBanner对象»»
 2022-05-19 09:42:44.834 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationResponseClassReader-Setting response class to:BaseResult«List«CrmBanner对象»»
-2022-05-19 09:42:44.834 [main] DEBUG springfox.documentation.swagger.readers.operation.OperationAuthReader-Authorization count 0 for method getClientBannerList
+2022-05-19 09:42:44.834 [main] DEBUG springfox.documentation.swagger.readers.operation.OperationAuthReader-Authorization count 0 for method queryClientBannerList
 2022-05-19 09:42:44.834 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Adding return parameter of type Lcom/novedu/nov/common/api/BaseResult;
 2022-05-19 09:42:44.834 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Reading parameters models for handlerMethod |removeBanner|
 2022-05-19 09:42:44.834 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Finished reading parameters models for handlerMethod |removeBanner|
@@ -6798,9 +6798,9 @@ file:/C:/Users/Admin/.m2/repository/com/sun/jersey/contribs/jersey-apache-client
 2022-05-19 09:42:44.952 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationResponseClassReader-Setting response class to:BaseResult«List«EduCourse对象»»
 2022-05-19 09:42:44.952 [main] DEBUG springfox.documentation.swagger.readers.operation.OperationAuthReader-Authorization count 0 for method getClientBoughtCourseList
 2022-05-19 09:42:44.953 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Adding return parameter of type Lcom/novedu/nov/common/api/BaseResult<Ljava/util/List;>;
-2022-05-19 09:42:44.953 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Reading parameters models for handlerMethod |getClientCourseList|
-2022-05-19 09:42:44.953 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Finished reading parameters models for handlerMethod |getClientCourseList|
-2022-05-19 09:42:44.953 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationModelsProvider-Reading parameters models for handlerMethod |getClientCourseList|
+2022-05-19 09:42:44.953 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Reading parameters models for handlerMethod |queryClientCourseList|
+2022-05-19 09:42:44.953 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Finished reading parameters models for handlerMethod |queryClientCourseList|
+2022-05-19 09:42:44.953 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationModelsProvider-Reading parameters models for handlerMethod |queryClientCourseList|
 2022-05-19 09:42:44.953 [main] DEBUG springfox.documentation.spring.web.scanners.ApiModelReader-Generated parameter model id: BaseResult«List«EduCourse对象»», name: BaseResult«List«EduCourse对象»», schema: {} models
 2022-05-19 09:42:44.953 [main] DEBUG springfox.documentation.schema.DefaultModelProvider-Skipping model of type Ljava/util/List<Lcom/novedu/nov/edu/entity/EduCourse;>; as its either a container type, map, enum or base type, or its already been handled
 2022-05-19 09:42:44.953 [main] DEBUG springfox.documentation.schema.DefaultModelProvider-Inferred 19 properties. Properties found applyCount, buyCount, children, commentCount, cover, createTime, id, isDeleted, lessonNum, price, status, subjectId, teacherCareer, teacherId, teacherName, title, updateTime, version, viewCount
@@ -6809,9 +6809,9 @@ file:/C:/Users/Admin/.m2/repository/com/sun/jersey/contribs/jersey-apache-client
 2022-05-19 09:42:44.953 [main] DEBUG springfox.documentation.schema.DefaultModelProvider-Skipping model of type Ljava/util/List<Lcom/novedu/nov/edu/entity/EduVideo;>; as its either a container type, map, enum or base type, or its already been handled
 2022-05-19 09:42:44.953 [main] DEBUG springfox.documentation.schema.DefaultModelProvider-Inferred 15 properties. Properties found chapterId, createTime, duration, id, isDeleted, isFree, playCount, size, sort, status, title, updateTime, version, videoOriginalName, videoSourcePath
 2022-05-19 09:42:44.953 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationResponseClassReader-Setting spring response class to: BaseResult«List«EduCourse对象»»
-2022-05-19 09:42:44.953 [main] DEBUG springfox.documentation.swagger.readers.operation.VendorExtensionsReader-Extension count 1 for method getClientCourseList
+2022-05-19 09:42:44.953 [main] DEBUG springfox.documentation.swagger.readers.operation.VendorExtensionsReader-Extension count 1 for method queryClientCourseList
 2022-05-19 09:42:44.954 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationResponseClassReader-Setting response class to:BaseResult«List«EduCourse对象»»
-2022-05-19 09:42:44.954 [main] DEBUG springfox.documentation.swagger.readers.operation.OperationAuthReader-Authorization count 0 for method getClientCourseList
+2022-05-19 09:42:44.954 [main] DEBUG springfox.documentation.swagger.readers.operation.OperationAuthReader-Authorization count 0 for method queryClientCourseList
 2022-05-19 09:42:44.954 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Adding return parameter of type Lcom/novedu/nov/common/api/BaseResult;
 2022-05-19 09:42:44.954 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Reading parameters models for handlerMethod |queryClientCoursePage|
 2022-05-19 09:42:44.954 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Finished reading parameters models for handlerMethod |queryClientCoursePage|
@@ -8056,15 +8056,15 @@ file:/C:/Users/Admin/.m2/repository/com/sun/jersey/contribs/jersey-apache-client
 2022-05-19 09:42:45.048 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationResponseClassReader-Setting spring response class to: null
 2022-05-19 09:42:45.048 [main] DEBUG springfox.documentation.swagger.readers.operation.OperationAuthReader-Authorization count 0 for method exportTeacherPage
 2022-05-19 09:42:45.048 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Adding return parameter of type Lcom/novedu/nov/common/api/BaseResult<Ljava/util/List;>;
-2022-05-19 09:42:45.048 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Reading parameters models for handlerMethod |getClientTeacherList|
-2022-05-19 09:42:45.048 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Finished reading parameters models for handlerMethod |getClientTeacherList|
-2022-05-19 09:42:45.048 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationModelsProvider-Reading parameters models for handlerMethod |getClientTeacherList|
+2022-05-19 09:42:45.048 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Reading parameters models for handlerMethod |queryClientTeacherList|
+2022-05-19 09:42:45.048 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Finished reading parameters models for handlerMethod |queryClientTeacherList|
+2022-05-19 09:42:45.048 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationModelsProvider-Reading parameters models for handlerMethod |queryClientTeacherList|
 2022-05-19 09:42:45.048 [main] DEBUG springfox.documentation.spring.web.scanners.ApiModelReader-Generated parameter model id: BaseResult«List«EduTeacher对象»», name: BaseResult«List«EduTeacher对象»», schema: {} models
 2022-05-19 09:42:45.048 [main] DEBUG springfox.documentation.schema.DefaultModelProvider-Skipping model of type Ljava/util/List<Lcom/novedu/nov/edu/entity/EduTeacher;>; as its either a container type, map, enum or base type, or its already been handled
 2022-05-19 09:42:45.048 [main] DEBUG springfox.documentation.schema.DefaultModelProvider-Inferred 12 properties. Properties found avatar, career, createTime, id, intro, isDeleted, joinDate, level, name, sort, uid, updateTime
 2022-05-19 09:42:45.049 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationResponseClassReader-Setting spring response class to: BaseResult«List«EduTeacher对象»»
 2022-05-19 09:42:45.049 [main] DEBUG springfox.documentation.swagger.readers.operation.SwaggerOperationResponseClassReader-Setting response class to:BaseResult«List«EduTeacher对象»»
-2022-05-19 09:42:45.049 [main] DEBUG springfox.documentation.swagger.readers.operation.OperationAuthReader-Authorization count 0 for method getClientTeacherList
+2022-05-19 09:42:45.049 [main] DEBUG springfox.documentation.swagger.readers.operation.OperationAuthReader-Authorization count 0 for method queryClientTeacherList
 2022-05-19 09:42:45.049 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Adding return parameter of type Lcom/novedu/nov/common/api/BaseResult<Lcom/novedu/nov/edu/entity/EduTeacher;>;
 2022-05-19 09:42:45.049 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Reading parameters models for handlerMethod |info|
 2022-05-19 09:42:45.050 [main] DEBUG springfox.documentation.spring.web.readers.operation.OperationModelsProvider-Finished reading parameters models for handlerMethod |info|

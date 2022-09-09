@@ -99,8 +99,8 @@ public class EduCourseController {
 
     @ApiOperation("前台首页课程列表")
     @GetMapping("/list/whi")
-    public BaseResult<List<EduCourse>> getClientCourseList(){
-        return eduCourseService.getClientCourseList();
+    public BaseResult<List<EduCourse>> queryClientCourseList(){
+        return eduCourseService.queryClientCourseList();
     }
 
     @ApiOperation("获取仪表盘数据")

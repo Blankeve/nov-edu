@@ -93,7 +93,7 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
     }
 
     @Override
-    public BaseResult<List<EduTeacher>> getClientTeacherList() {
+    public BaseResult<List<EduTeacher>> queryClientTeacherList() {
         List<EduTeacher> teachers;
         if (redisTemplate.hasKey(RedisKeyConstants.CLIENT_TEACHER_LIST)) {
             teachers = (List<EduTeacher>) redisTemplate.opsForValue().get(RedisKeyConstants.CLIENT_TEACHER_LIST);

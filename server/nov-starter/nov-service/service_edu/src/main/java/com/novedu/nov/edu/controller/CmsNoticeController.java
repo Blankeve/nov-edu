@@ -38,8 +38,8 @@ public class CmsNoticeController {
         return cmsNoticeService.removeNotice(id);
     }
 
-    @PostMapping("/page")
-    public BaseResult queryNoticePage(Page page,@RequestBody CmsNotice cmsNotice) {
+    @GetMapping("/page")
+    public BaseResult queryNoticePage(Page page,CmsNotice cmsNotice) {
         return cmsNoticeService.queryNoticePage(page, cmsNotice);
     }
 

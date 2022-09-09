@@ -27,8 +27,8 @@ public class CrmBannerController {
     CrmBannerService crmBannerService;
 
     @GetMapping("/list")
-    public BaseResult<List<CrmBanner>> getBannerList(){
-        return crmBannerService.getBannerList();
+    public BaseResult<List<CrmBanner>> queryBannerList(){
+        return crmBannerService.queryBannerList();
     }
 
     @UserMultiSubmitLimit
@@ -44,8 +44,8 @@ public class CrmBannerController {
     }
 
     @GetMapping("/list/whi")
-    public BaseResult<List<CrmBanner>> getClientBannerList(){
-        return crmBannerService.getClientBannerList();
+    public BaseResult<List<CrmBanner>> queryClientBannerList(){
+        return crmBannerService.queryClientBannerList();
     }
 }
 

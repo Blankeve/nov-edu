@@ -19,9 +19,9 @@ public interface CmsInfoService extends IService<CmsInfo> {
 
     IPage<CmsInfoVO> queryPage(Page page, CmsInfo cmsInfo);
 
-    BaseResult getClientDetail(String id);
+    BaseResult queryClientDetail(String id);
 
     BaseResult saveOrUpdateInfo(CmsInfoVO cmsInfoVO);
 
-    BaseResult getDetail(String id);
+    BaseResult queryDetail(String id);
 }
