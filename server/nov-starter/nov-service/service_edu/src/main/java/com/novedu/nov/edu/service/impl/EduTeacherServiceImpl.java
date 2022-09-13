@@ -98,7 +98,7 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
         if (redisTemplate.hasKey(RedisKeyConstants.CLIENT_TEACHER_LIST)) {
             teachers = (List<EduTeacher>) redisTemplate.opsForValue().get(RedisKeyConstants.CLIENT_TEACHER_LIST);
         } else {
-            teachers = lambdaQuery().orderByDesc(EduTeacher::getSort).last("limit 4").list();
+            teachers = lambdaQuery().orderByAsc(EduTeacher::getSort).last("limit 4").list();
             redisTemplate.opsForValue().set(RedisKeyConstants.CLIENT_TEACHER_LIST, teachers, 30, TimeUnit.MINUTES);
         }
         return BaseResult.success(teachers);

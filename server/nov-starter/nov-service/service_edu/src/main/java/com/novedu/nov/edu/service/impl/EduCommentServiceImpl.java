@@ -1,5 +1,6 @@
 package com.novedu.nov.edu.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -93,8 +94,10 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
         }
         if (save(eduComment)) {
             int commentCount = lambdaQuery().eq(EduComment::getCourseId, courseId).count();
-            courseService.lambdaUpdate().eq(EduCourse::getId, courseId).set(EduCourse::getCommentCount,commentCount);
-            return BaseResult.success();
+            LambdaUpdateWrapper<EduCourse> updateWrapper = new LambdaUpdateWrapper();
+            updateWrapper.eq(EduCourse::getId, courseId);
+            updateWrapper.set(EduCourse::getCommentCount, commentCount);
+            return BaseResult.successOrError(courseService.update(updateWrapper));
         } else
             return BaseResult.error();
     }
