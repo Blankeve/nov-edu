@@ -177,6 +177,9 @@ export default {
       list: null,
       listLoading: true,
       form: {
+        type: "",
+        title: "",
+        content: "",
         current: 1,
         size: 8,
         total: 0,

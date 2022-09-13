@@ -3,6 +3,7 @@ package com.novedu.nov;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 
@@ -16,6 +17,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication(scanBasePackages = "com.novedu.nov")
 @EnableDiscoveryClient
 @EnableFeignClients
+@EnableHystrix //在启动类上添加@EnableHystrix注解开启Hystrix的熔断器功能。
 public class AuthServiceApplication {
 
     public static void main(String[] args) {

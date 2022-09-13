@@ -444,7 +444,7 @@ export default {
         if (resp.code === 200) {
           this.$message({
             type: "success",
-            message: "评论成功",
+            message: "评价成功",
           });
           this.commentClick();
         }

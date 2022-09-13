@@ -65,6 +65,7 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
         return false;
     }
 
+    @Transactional
     @Override
     public BaseResult saveComment(EduComment eduComment, HttpServletRequest request) {
         Long uid = RequestUtils.getUid();
@@ -90,7 +91,12 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
                 content += "不尽人意";
             eduComment.setContent(content);
         }
-        return BaseResult.successOrError(save(eduComment));
+        if (save(eduComment)) {
+            int commentCount = lambdaQuery().eq(EduComment::getCourseId, courseId).count();
+            courseService.lambdaUpdate().eq(EduCourse::getId, courseId).set(EduCourse::getCommentCount,commentCount);
+            return BaseResult.success();
+        } else
+            return BaseResult.error();
     }
 
     @Override

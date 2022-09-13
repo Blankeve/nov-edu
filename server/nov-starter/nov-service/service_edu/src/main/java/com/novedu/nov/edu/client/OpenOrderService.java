@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public interface OpenOrderService {
 
     @ApiOperation("查询用户是否已经下单")
-    @PostMapping("/order/trade/hasbuy/{id}/{uid}")
+    @PostMapping("/order/trade/hasbuy/{id}/{uid}/whi")
     BaseResult queryOrderByUidAndCourseId(@PathVariable Long id, @PathVariable Long uid);
 
 

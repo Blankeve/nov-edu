@@ -353,11 +353,9 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
                                     courseViewCount += playCount;
                             }
                     }
-                int count = commentService.lambdaQuery().eq(EduComment::getCourseId, course.getId()).count();
                 LambdaUpdateWrapper<EduCourse> updateWrapper = new LambdaUpdateWrapper();
                 updateWrapper.eq(EduCourse::getId, course.getId());
                 updateWrapper.set(EduCourse::getViewCount, courseViewCount);
-                updateWrapper.set(EduCourse::getCommentCount, count);
                 update(updateWrapper);
             }
         }
