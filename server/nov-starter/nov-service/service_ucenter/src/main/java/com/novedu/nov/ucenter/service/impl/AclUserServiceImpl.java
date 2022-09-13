@@ -343,6 +343,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         LambdaQueryWrapper<AclUser> queryWrapper = new LambdaQueryWrapper();
         queryWrapper.like(AclUser::getCreateTime, nowDate);
         Integer registerCount = count(queryWrapper);
+        queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.like(AclUser::getLastLoginTime, nowDate);
         Integer loginCount = count(queryWrapper);
         return BaseResult.success().map("registerCount", registerCount).map("loginCount", loginCount);

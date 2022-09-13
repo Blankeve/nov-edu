@@ -77,7 +77,7 @@ export default {
       options: {
         img: '', // 原图文件
         autoCrop: true, // 默认生成截图框
-        fixedBox: false, // 固定截图框大小
+        fixedBox: true, // 固定截图框大小
         canMoveBox: true, // 截图框可以拖动
         autoCropWidth: 200, // 截图框宽度
         autoCropHeight: 200, // 截图框高度
