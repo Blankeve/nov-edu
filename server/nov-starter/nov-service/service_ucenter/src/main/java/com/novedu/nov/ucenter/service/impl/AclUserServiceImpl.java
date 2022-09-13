@@ -46,7 +46,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-
 import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
@@ -127,7 +126,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
     @Override
     public BaseResult register(AclUser ucenterMemberDto) {
         String username = ucenterMemberDto.getUsername();
-        int count = query().eq("username", username).count();
+        int count = lambdaQuery().eq(AclUser::getUsername, username).count();
         if (count > 0)
             return BaseResult.error("用户名存在!");
         String password = DigestUtils.md5DigestAsHex(ucenterMemberDto.getPassword().getBytes());
@@ -306,7 +305,7 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
     }
 
     private List getRecentAddUsers() {
-        List list = query().orderByDesc("create_time").list();
+        List list = lambdaQuery().orderByDesc(AclUser::getCreateTime).list();
         if (list.size() > 3)
             list = list.subList(0, 3);
         return list;
@@ -318,8 +317,8 @@ public class AclUserServiceImpl extends ServiceImpl<AclUserMapper, AclUser> impl
         AclUser user = getById(uid);
         if (user == null)
             return BaseResult.error();
-        AclUserRole userRole = userRoleService.query().eq("uid", user.getId()).one();
-        AclRole role = roleService.query().eq("id", userRole.getRoleId()).one();
+        AclUserRole userRole = userRoleService.lambdaQuery().eq(AclUserRole::getUid, user.getId()).one();
+        AclRole role = roleService.lambdaQuery().eq(AclRole::getId, userRole.getRoleId()).one();
         Map userInfo = new HashMap();
         userInfo.put("lastLoginTime", user.getLastLoginTime());
         userInfo.put("lastLoginIp", user.getLastLoginIp());
