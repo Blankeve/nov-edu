@@ -125,7 +125,7 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public BaseResult updateBindTeacher(UserBindTeacherForm bindTeacherForm) {
-        EduTeacher teacher = query().eq("id", bindTeacherForm.getId()).one();
+        EduTeacher teacher = lambdaQuery().eq(EduTeacher::getId, bindTeacherForm.getId()).one();
         if (teacher.getUid() != null) {
             return BaseResult.error("该讲师已经绑定其它账号");
         }
