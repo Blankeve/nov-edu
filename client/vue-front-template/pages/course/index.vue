@@ -4,7 +4,7 @@
     <section class="container">
       <header class="comm-title">
         <h2 class="fl tac">
-          <span class="c-333">{{changeTitle}}课程</span>
+          <span class="c-333">{{ changeTitle }}课程</span>
         </h2>
       </header>
       <section class="c-sort-box">
@@ -30,7 +30,7 @@
           </dl>
           <dl>
             <dt>
-              <span class="c-999 fsize14"></span>
+              <span class="c-999 fsize14" />
             </dt>
             <dd class="c-s-dl-li">
               <ul class="clearfix">
@@ -44,7 +44,7 @@
               </ul>
             </dd>
           </dl>
-          <div class="clear"></div>
+          <div class="clear" />
         </section>
         <div class="js-wrap">
           <section class="fr">
@@ -56,13 +56,15 @@
           <section class="fl">
             <ol class="js-tap clearfix">
               <li @click="newestSearch()">
-                <a title="最新" href="#">{{
+                <a title="最新" href="#">
+                  {{
                   form.orderFieldValue == 2 ? "最新" : "最旧"
-                }}</a>
+                  }}
+                </a>
               </li>
-              <li @click="priceOrderSearch()" class="current bg-orange">
-                <a title="价格" href="#"
-                  >价格&nbsp;
+              <li class="current bg-orange" @click="priceOrderSearch()">
+                <a title="价格" href="#">
+                  价格&nbsp;
                   <span>{{ form.orderFieldValue == 3 ? "↑" : "↓" }}</span>
                 </a>
               </li>
@@ -71,33 +73,19 @@
         </div>
         <div class="mt40">
           <!-- /无数据提示 开始-->
-          <section
-            v-show="courses == null || courses.length == 0"
-            class="no-data-wrap"
-          >
+          <section v-show="courses == null || courses.length == 0" class="no-data-wrap">
             <em class="icon30 no-data-ico">&nbsp;</em>
-            <span class="c-666 fsize14 ml10 vam"
-              >没有相关数据，小编正在努力整理中...</span
-            >
+            <span class="c-666 fsize14 ml10 vam">没有相关数据，小编正在努力整理中...</span>
           </section>
           <!-- /无数据提示 结束-->
           <article class="comm-course-list">
-            <ul class="of" id="bna">
+            <ul id="bna" class="of">
               <li v-for="course in courses" :key="course.id">
                 <div class="cc-l-wrap">
                   <section class="course-img">
-                    <img
-                      :src="course.cover"
-                      class="img-responsive"
-                      :alt="course.title"
-                    />
+                    <img :src="course.cover" :alt="course.title" class="img-responsive" />
                     <div class="cc-mask">
-                      <a
-                        :href="'/course/' + course.id"
-                        title="开始学习"
-                        class="comm-btn c-btn-1"
-                        >开始学习</a
-                      >
+                      <a :href="'/course/' + course.id" title="开始学习" class="comm-btn c-btn-1">开始学习</a>
                     </div>
                   </section>
                   <h3 class="hLh30 txtOf mt10">
@@ -105,20 +93,21 @@
                       :href="'/course/' + course.id"
                       :title="course.title"
                       class="course-title fsize18 c-333"
-                      >{{ course.title }}</a
-                    >
+                    >{{ course.title }}</a>
                   </h3>
                   <section class="mt10 hLh20 of">
                     <span
-                      class="fr jgTag"
                       :class="{
                         'bg-green': course.price == 0,
                         'bg-red': course.price > 0,
                       }"
+                      class="fr jgTag"
                     >
-                      <i class="c-fff fsize18 f-fA">{{
+                      <i class="c-fff fsize18 f-fA">
+                        {{
                         course.price > 0 ? "¥" + course.price : "免费"
-                      }}</i>
+                        }}
+                      </i>
                     </span>
                     <span class="fl jgAttr c-ccc f-fA">
                       <i class="c-999 f-fA">{{ course.viewCount }}次播放</i>
@@ -129,38 +118,22 @@
                 </div>
               </li>
             </ul>
-            <div class="clear"></div>
+            <div class="clear" />
           </article>
         </div>
         <!-- 公共分页 开始 -->
         <div>
           <div class="paging">
             <!-- undisable这个class是否存在，取决于数据属性hasPrevious -->
-            <a
-              v-show="form.pages > 1 && form.current != 1"
-              @click="firstPage"
-              title="首页"
-              >首</a
-            >
-            <a
-              v-show="form.pages > 1 && form.current > 1"
-              title="前一页"
-              @click="prevPage"
-              >&lt;</a
-            >
+            <a v-show="form.pages > 1 && form.current != 1" title="首页" @click="firstPage">首</a>
+            <a v-show="form.pages > 1 && form.current > 1" title="前一页" @click="prevPage">&lt;</a>
             <a
               v-show="form.pages > 1 && form.current < form.pages"
               title="后一页"
               @click="nextPage"
-              >&gt;</a
-            >
-            <a
-              v-show="form.pages > 1 && form.current != form.pages"
-              title="末页"
-              @click="lastPage"
-              >末</a
-            >
-            <div class="clear"></div>
+            >&gt;</a>
+            <a v-show="form.pages > 1 && form.current != form.pages" title="末页" @click="lastPage">末</a>
+            <div class="clear" />
           </div>
         </div>
         <!-- 公共分页 结束 -->
@@ -173,6 +146,17 @@
 import { getPage } from "@/api/course";
 import { getList } from "@/api/subject";
 export default {
+  watch: {
+    $route(to, from) {
+      //监听路由参数变化
+      if (this.$route.query.title) {
+        // 参数变化 复用 mounted里面的方法
+        const title = this.$route.query.title;
+        if (title) this.form.title = title;
+        this.fetchData();
+      }
+    }
+  },
   data() {
     return {
       subjects: [],
@@ -186,25 +170,25 @@ export default {
         total: 0,
         pages: 1,
         orderFieldValue: 0,
-        clientSubjectId: 0,
+        clientSubjectId: 0
       },
-      liActive: -1,
+      liActive: -1
     };
   },
   created() {
-    let title = this.$route.query.title;
+    const title = this.$route.query.title;
     if (title) this.form.title = title;
     this.fetchData();
   },
   methods: {
     fetchData() {
-      getList().then((resp) => {
+      getList().then(resp => {
         if (resp.code === 200) {
           this.subjects = resp.data.subjects;
         }
       });
 
-      getPage(this.form).then((resp) => {
+      getPage(this.form).then(resp => {
         if (resp.code === 200) {
           this.courses = resp.data.records;
           this.form.pages = resp.data.pages;
@@ -232,8 +216,12 @@ export default {
         let children = [];
         for (let i = 0; i < this.subjects.length; i++) {
           console.log(this.subjects[i].children);
-          if (this.subjects[i].children && this.subjects[i].children.length > 0)
+          if (
+            this.subjects[i].children &&
+            this.subjects[i].children.length > 0
+          ) {
             children = children.concat(this.subjects[i].children);
+          }
         }
         this.subjectChildren = children;
         console.log(this.subjectChildren);
@@ -246,7 +234,7 @@ export default {
         }
       }
     },
-    childrenSelect(id,title) {
+    childrenSelect(id, title) {
       this.liActive = id;
       this.form.clientSubjectId = id;
       this.changeTitle = title;
@@ -264,9 +252,8 @@ export default {
     newestSearch() {
       this.form.orderFieldValue = this.form.orderFieldValue == 2 ? 1 : 2;
       this.fetchData();
-    },
-  },
+    }
+  }
 };
 </script>
-
 

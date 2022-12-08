@@ -26,19 +26,19 @@
             </nuxt-link>
             <!-- <nuxt-link to="/" tag="li">
               <a @click="openTip">公告</a>
-            </nuxt-link> -->
+            </nuxt-link>-->
           </ul>
           <ul class="h-r-login">
             <li v-show="!nickname" id="no-login">
               |
               <nuxt-link to="/login">
                 <em class="icon18 login-icon">&nbsp;</em>
-                <span class="vam ml5">登录</span></nuxt-link
-              >
+                <span class="vam ml5">登录</span>
+              </nuxt-link>
 
               <nuxt-link to="/register">
-                <span class="vam ml5">注册</span></nuxt-link
-              >
+                <span class="vam ml5">注册</span>
+              </nuxt-link>
             </li>
             <li v-show="nickname" id="is-login-one" class="mr10">
               <a id="headerMsgCountId" href="#" title="消息">
@@ -49,13 +49,7 @@
             <li v-show="nickname" id="is-login-two" class="h-r-user">
               <a href="/profile" title>
                 <client-only>
-                  <img
-                    :src="avatar"
-                    width="30"
-                    height="30"
-                    class="vam picImg"
-                    alt
-                  />
+                  <img :src="avatar" width="30" height="30" class="vam picImg" alt />
                 </client-only>
                 <span id="userName">{{ nickname }}</span>
               </a>
@@ -64,12 +58,7 @@
 
           <aside class="h-r-search">
             <label class="h-r-s-box">
-              <input
-                type="text"
-                placeholder="输入你想学的课程"
-                v-model="queryTitle"
-                value
-              />
+              <input type="text" placeholder="输入你想学的课程" v-model="queryTitle" value />
               <button @click="queryCourse" class="s-btn">
                 <em class="icon18">&nbsp;</em>
               </button>
@@ -102,7 +91,7 @@
             </li>
           </ul>
           <div class="clear"></div>
-        </div> -->
+        </div>-->
         <div class="b-foot">
           <section class="fl col-7">
             <section class="mr20">
@@ -159,13 +148,13 @@ export default {
         id: "",
         username: "",
         nickname: "",
-        avatar: "",
+        avatar: ""
       },
-      queryTitle: "",
+      queryTitle: ""
     };
   },
   computed: {
-    ...mapGetters(["token", "avatar", "nickname"]),
+    ...mapGetters(["token", "avatar", "nickname"])
   },
   // watch: {
   //   $route(to, from) {
@@ -175,17 +164,17 @@ export default {
   methods: {
     openTip() {
       this.$alert("该功能敬请期待", "nov在线课堂提示", {
-        confirmButtonText: "确定",
+        confirmButtonText: "确定"
       });
     },
     queryCourse() {
       this.$router.push({
         path: "/course",
         query: {
-          title: this.queryTitle,
-        },
+          title: this.queryTitle
+        }
       });
-    },
-  },
+    }
+  }
 };
 </script>
